@@ -13,8 +13,7 @@
 
      /* Panels and Controls: */
 
-#define  EXP_LIST                         1
-#define  EXP_LIST_LISTBOX                 2       /* control type: listBox, callback function: ExpListCallBack */
+#define  RESULTMENU                       1
 
 
      /* Control Arrays: */
@@ -27,9 +26,7 @@
           /* (no menu bars in the resource file) */
 
 
-     /* Callback Prototypes: */
-
-int  CVICALLBACK ExpListCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+     /* (no callbacks specified in the resource file) */ 
 
 
 #ifdef __cplusplus

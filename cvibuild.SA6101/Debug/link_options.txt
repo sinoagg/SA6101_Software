@@ -15,6 +15,7 @@
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\ExpListPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\File.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\IdVdsPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\IdVgsPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\main.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\Protocol.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\SampleCfgPanel.obj

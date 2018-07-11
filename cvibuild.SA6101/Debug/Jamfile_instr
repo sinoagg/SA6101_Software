@@ -1,6 +1,7 @@
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" ;

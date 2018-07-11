@@ -11,6 +11,8 @@
 #include "SerialCommand.h"
 #include "ExpListPanel.h"
 #include "SampleCfgPanel.h"
+#include "IdVdsPanel.h"
+#include "IdVgsPanel.h"
 
 int mainPanel;
 int expListPanel;
@@ -22,6 +24,9 @@ static int comSelect;				//Serial Com Number
 
 unsigned char UartTxBuf[32]={0};
 unsigned char UartRxBuf[64]={0};
+
+extern IdVdCfg_TypeDef IdVdCfg; 
+extern IdVgCfg_TypeDef IdVgCfg;
 
 int main (int argc, char *argv[])
 {
@@ -89,6 +94,26 @@ int CVICALLBACK RunCallBack (int panel, int control, int event,
 			}
 			else
 			{
+				int expSelVal;
+				if(GetCtrlVal(expListPanel, EXP_LIST_LISTBOX, &expSelVal)<0)
+					return -1;
+				switch(expSelVal)
+				{
+					case 0:						//IdVd
+						GetIdVdCfg (IdVdPanel);
+						break;
+					case 1:						//IdVg
+						GetIdVgCfg(IdVgPanel);
+						break;
+					case 2:
+												//I-t
+						break;
+					case 3:						//R-t
+						break;
+					default:
+						break;
+				}
+				CommandConfig(comSelect);
 				CommandRun(comSelect);  
 			}
 			break;

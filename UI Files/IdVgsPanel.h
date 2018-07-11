@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		IdVdsPanel.h
+// Title:		IdVgsPanel.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	18/7/10 at 18:10:32 by .
+// Created on:	18/7/11 at 13:36:34 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __IdVdsPanel_H__
-#define __IdVdsPanel_H__
+#ifndef __IdVgsPanel_H__
+#define __IdVgsPanel_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -33,17 +33,17 @@ typedef struct
 	int cfgVgstart;									//voltage gate start
 	int cfgVgstop;									//voltage gate stop
 	int cfgVgstep;									//voltage gate step
-}IdVdCfg_TypeDef;
+}IdVgCfg_TypeDef;
 //==============================================================================
 // External variables
 
 //==============================================================================
 // Global functions
 
-int GetIdVdCfg (int panelHandle); 
+int GetIdVgCfg (int panelHandle); 
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __IdVdsPanel_H__ */
+#endif  /* ndef __IdVgsPanel_H__ */

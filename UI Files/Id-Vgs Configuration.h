@@ -18,9 +18,13 @@
 #define  IDVGS_CFG_PIC_IDVD_SOURCE        3       /* control type: picture, callback function: (none) */
 #define  IDVGS_CFG_PIC_IDVD_BLUK          4       /* control type: picture, callback function: (none) */
 #define  IDVGS_CFG_PIC_IDVD_GATE          5       /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_COLORNUM_2             6       /* control type: color, callback function: (none) */
-#define  IDVGS_CFG_COLORNUM               7       /* control type: color, callback function: (none) */
-#define  IDVGS_CFG_PIC_FET                8       /* control type: picture, callback function: (none) */
+#define  IDVGS_CFG_VD_STEP                6       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VG_STEP                7       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VG_STOP                8       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VD_STOP                9       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_PIC_FET                10      /* control type: picture, callback function: (none) */
+#define  IDVGS_CFG_VD_START               11      /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VG_START               12      /* control type: numeric, callback function: (none) */
 
 
      /* Control Arrays: */
