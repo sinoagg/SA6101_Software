@@ -1,4 +1,10 @@
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SerialCommand.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x86\\advapi32.lib" ;
 NoCare "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x86\\advapi32.lib" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "c:\\ProgramData\\National Instruments\\CVI2017\\bin\\msvc\\analysis.lib" ;

@@ -2,3 +2,15 @@
 Class="Function"
 Prototype="int main(int argc, char **argv);"
 
+[RunCallBack]
+Class="Function"
+Prototype="int RunCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[StopCallBack]
+Class="Function"
+Prototype="int StopCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SaveCallBack]
+Class="Function"
+Prototype="int SaveCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

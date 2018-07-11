@@ -13,14 +13,13 @@
 
      /* Panels and Controls: */
 
-#define  IDVGS_CFG                        1
-#define  IDVGS_CFG_PIC_IDVD_DRAIN         2       /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_PIC_IDVD_SOURCE        3       /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_PIC_IDVD_BLUK          4       /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_PIC_IDVD_GATE          5       /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_COLORNUM_2             6       /* control type: color, callback function: (none) */
-#define  IDVGS_CFG_COLORNUM               7       /* control type: color, callback function: (none) */
-#define  IDVGS_CFG_PIC_FET                8       /* control type: picture, callback function: (none) */
+#define  SAMPLE_CFG                       1
+#define  SAMPLE_CFG_SAMPLENUM             2       /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_SAMPLERATE            3       /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_RUNTIME               4       /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_TIMEINTER             5       /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_QUIETTIME             6       /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_RANGESET              7       /* control type: ring, callback function: (none) */
 
 
      /* Control Arrays: */

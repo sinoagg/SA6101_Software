@@ -9,7 +9,7 @@ IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
-Number of Files = 4
+Number of Files = 18
 Target Type = "Executable"
 Flags = 2064
 Copied From Locked InstrDrv Directory = False
@@ -19,7 +19,6 @@ Don't Display Deploy InstrDrv Dialog = False
 
 [Folders]
 Source Files Folder Not Added Yet = True
-Include Files Folder Not Added Yet = True
 User Interface Files Folder Not Added Yet = True
 Instrument Files Folder Not Added Yet = True
 Library Files Folder Not Added Yet = True
@@ -27,18 +26,18 @@ Folder 0 = "UI Files"
 FolderEx 0 = "UI Files"
 Folder 1 = "Src"
 FolderEx 1 = "Src"
-Folder 2 = "Inc"
-FolderEx 2 = "Inc"
-Folder 3 = "Resource"
-FolderEx 3 = "Resource"
+Folder 2 = "Resource"
+FolderEx 2 = "Resource"
+Folder 3 = "Include Files"
+FolderEx 3 = "Include Files"
 
 [File 0001]
 File Type = "User Interface Resource"
 Res Id = 1
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Id-Vds Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vds Configuration.uir"
+Path Rel Path = "UI Files/Experiment List.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Experiment List.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -49,8 +48,8 @@ File Type = "User Interface Resource"
 Res Id = 2
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Id-Vgs Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vgs Configuration.uir"
+Path Rel Path = "UI Files/Id-Vds Configuration.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vds Configuration.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -61,6 +60,18 @@ File Type = "User Interface Resource"
 Res Id = 3
 Path Is Rel = True
 Path Rel To = "Project"
+Path Rel Path = "UI Files/Id-Vgs Configuration.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vgs Configuration.uir"
+Exclude = False
+Project Flags = 0
+Folder = "UI Files"
+Folder Id = 0
+
+[File 0004]
+File Type = "User Interface Resource"
+Res Id = 4
+Path Is Rel = True
+Path Rel To = "Project"
 Path Rel Path = "UI Files/MainPanel.uir"
 Path = "/e/SINOAGG/Software/SA6101/UI Files/MainPanel.uir"
 Exclude = False
@@ -68,9 +79,60 @@ Project Flags = 0
 Folder = "UI Files"
 Folder Id = 0
 
-[File 0004]
+[File 0005]
+File Type = "User Interface Resource"
+Res Id = 5
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "UI Files/Sample Configuration.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Sample Configuration.uir"
+Exclude = False
+Project Flags = 0
+Folder = "UI Files"
+Folder Id = 0
+
+[File 0006]
 File Type = "CSource"
-Res Id = 4
+Res Id = 6
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/ExpListPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src"
+Folder Id = 1
+
+[File 0007]
+File Type = "CSource"
+Res Id = 7
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/File.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src"
+Folder Id = 1
+
+[File 0008]
+File Type = "CSource"
+Res Id = 8
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/IdVdsPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src"
+Folder Id = 1
+
+[File 0009]
+File Type = "CSource"
+Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/main.c"
@@ -80,6 +142,117 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
 Folder Id = 1
+
+[File 0010]
+File Type = "CSource"
+Res Id = 10
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/Protocol.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src"
+Folder Id = 1
+
+[File 0011]
+File Type = "CSource"
+Res Id = 11
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/SampleCfgPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src"
+Folder Id = 1
+
+[File 0012]
+File Type = "CSource"
+Res Id = 12
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/SerialCommand.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/SerialCommand.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src"
+Folder Id = 1
+
+[File 0013]
+File Type = "Include"
+Res Id = 13
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/ExpListPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 3
+
+[File 0014]
+File Type = "Include"
+Res Id = 14
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/File.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 3
+
+[File 0015]
+File Type = "Include"
+Res Id = 15
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/IdVdsPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 3
+
+[File 0016]
+File Type = "Include"
+Res Id = 16
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/Protocol.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 3
+
+[File 0017]
+File Type = "Include"
+Res Id = 17
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/SampleCfgPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 3
+
+[File 0018]
+File Type = "Include"
+Res Id = 18
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/SerialCommand.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/SerialCommand.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 3
 
 [Custom Build Configs]
 Num Custom Build Configs = 0
