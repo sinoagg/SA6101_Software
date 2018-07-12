@@ -19,15 +19,6 @@
 
 //==============================================================================
 // Types
-typedef struct
-{
-	int cfgQuiteTime;								//quiet time usually 2 seconds    
-	int cfgSampleInterval;							//sample interval
-	int cfgRunTime;									//run time
-	int cfgSampleRate;								//samples per second usually 2000
-	int cfgSampleNum;									//average number usually 400
-	int cfgRangeSetting;								//range settings
-}SampleCfg_TypeDef;
 		  
 //==============================================================================
 // Static global variables
@@ -52,7 +43,7 @@ int GetSampleCfg (int panelHandle)
 	SampleCfg.cfgQuiteTime=temp;
 	if(GetCtrlVal(panelHandle, SAMPLE_CFG_TIMEINTER, &temp)<0)
 		return -1;
-	SampleCfg.cfgSampleInterval=temp;
+	SampleCfg.cfgTimeInterval=temp;
 	if(GetCtrlVal(panelHandle, SAMPLE_CFG_RUNTIME, &temp)<0)
 		return -1;
 	SampleCfg.cfgRunTime=temp;

@@ -25,14 +25,24 @@
 
 //==============================================================================
 // Types
-
+typedef struct
+{
+	unsigned char rxDevAddr;									//received Device Address
+	unsigned char rxStopSign;									//received Stop Sign 0x00 nonstop 0x01 curve stop 0x02 test stop
+	int rxVdtest;									//voltage drain undertest
+	int rxVgtest;									//voltage gate undertest
+	int rxIdmeasured;								//Id measured
+	float rxVdmeasured;								//Vd measured
+	float rxVgmeasured;								//Vg measured
+}RxDataTypeDef;
 //==============================================================================
 // External variables
 
 //==============================================================================
 // Global functions
 
-int Declare_Your_Functions_Here (int x);
+void ProtocolCfg(unsigned char devAddr, unsigned char expType, unsigned char* pUART_TxBuf);
+
 
 #ifdef __cplusplus
     }
