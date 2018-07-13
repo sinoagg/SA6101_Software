@@ -44,6 +44,7 @@ int curveInit(int curveIndex, int numOfDots, Curve_TypeDef* pCurve)
 	pCurve->numOfDots=numOfDots;
 	pCurve->pDotX=pX;
 	pCurve->pDotY=pY;
+	pCurve->numOfPlotDots=0;
 	
 	return 0;
 }

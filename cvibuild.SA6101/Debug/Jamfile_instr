@@ -1,3 +1,4 @@
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" ;

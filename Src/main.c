@@ -1,3 +1,4 @@
+#include "asynctmr.h"
 #include <ansi_c.h>
 #include <cvirte.h>		
 #include <userint.h>
@@ -8,6 +9,7 @@
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "Sample Configuration.h"
+#include "GraphDisp.h"
 
 #include "ExpListPanel.h"
 #include "SampleCfgPanel.h"
@@ -22,6 +24,9 @@ int expListPanel;
 int IdVdPanel;
 int IdVgPanel;
 int samplePanel;
+int graphDispPanel;
+
+int TimerID;
 
 Graph_TypeDef* pGraph;
 
@@ -34,6 +39,9 @@ unsigned char UartRxBuf[64]={0};
 
 extern IdVdCfg_TypeDef IdVdCfg; 
 extern IdVgCfg_TypeDef IdVgCfg;
+
+void CVICALLBACK ComCallback(int portNumber ,int eventMask, void * callbackData);
+int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
 
 int main (int argc, char *argv[])
 {
@@ -68,7 +76,7 @@ int main (int argc, char *argv[])
 	if ((samplePanel = LoadPanel (mainPanel, "Experiment List.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;
 	
-	if((graphDispPanel = LoadPanel (mainPanel, "Experiment List.uir", GRAPHDISP)) < 0))
+	if((graphDispPanel = LoadPanel (mainPanel, "Experiment List.uir", GRAPHDISP)) < 0)
 		return -1;
 	
 	DisplayPanel (mainPanel); 
@@ -134,6 +142,7 @@ int CVICALLBACK RunCallBack (int panel, int control, int event,
 				
 				ProtocolCfg(comSelect, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART
 				graphInit(graphIndex, numOfCurve, numOfDots, pGraph); 	//graph set up 
+				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
 				ProtocolRun(comSelect, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
 			}
 			break;
@@ -169,11 +178,22 @@ void CVICALLBACK ComCallback(int portNumber ,int eventMask, void * callbackData)
 {
 	int status;
 	RxDataTypeDef RxData;
-	status = ComRd(comSelect, UartRxBuffer, GetInQLen(comSelect));	//Read UART Buffer to local buffer
-	ProtocolGetData(UartRxBuf, &RxData);
-	*(pGraph->pCurveArray->pDotX)=RxData.rxVdtest;
-	*(pGraph->pCurveArray->pDotY)=RxData.rxIdmeasured;
-	PlotXY(graphDisp, GRAPH1, 
+	status = ComRd(comSelect, (char *)UartRxBuf, GetInQLen(comSelect));	//Read UART Buffer to local buffer
+	ProtocolGetData(UartRxBuf, &RxData);								//get data from uart buffer
+	pGraph->pCurveArray->numOfPlotDots++;								//number of plot dot increase
+	*(pGraph->pCurveArray->pDotX)=RxData.rxVdtest;						//get x
+	*(pGraph->pCurveArray->pDotY)=RxData.rxIdmeasured.num_float;		//get y
+	if(RxData.rxStopSign==0x02)			//if complete the test, stop the timer
+		DiscardAsyncTimer(TimerID);
 	
+}
+
+int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2)
+{
+	pGraph->pCurveArray->plotHandle=PlotXY(graphDispPanel, GRAPHDISP_GRAPH1, pGraph->pCurveArray->pDotX, pGraph->pCurveArray->pDotY, pGraph->pCurveArray->numOfPlotDots, VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, VAL_BLUE);
+	if(pGraph->pCurveArray->plotHandle<0)
+		return -1;
+	else
+		return 0;
 }
 

@@ -12,6 +12,7 @@
 -browsedeps:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\moduledependencies.txt
 -stackreserve:1048576
 -stackcommit:4096
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\asynctmr.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\Curve.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\ExpListPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\File.obj

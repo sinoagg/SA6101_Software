@@ -25,8 +25,10 @@
 // Types
 typedef struct
 {
+	int plotHandle;
 	int curveIndex;
 	int numOfDots;
+	int numOfPlotDots;
 	float* pDotX;
 	float* pDotY;
 }Curve_TypeDef;

@@ -20,5 +20,5 @@ Prototype="void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr
 
 [ProtocolGetData]
 Class="Function"
-Prototype="RxDataTypeDef *ProtocolGetData(unsigned char *pUartRxBuf);"
+Prototype="void ProtocolGetData(unsigned char *pUartRxBuf, RxDataTypeDef *pRxData);"
 

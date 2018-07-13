@@ -1,3 +1,4 @@
+asynctmr.obj
 Curve.obj
 ExpListPanel.obj
 File.obj
