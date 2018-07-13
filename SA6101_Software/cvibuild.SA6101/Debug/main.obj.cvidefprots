@@ -1,0 +1,32 @@
+[main]
+Class="Function"
+Prototype="int main(int argc, char **argv);"
+
+[MAIN_PANEL_CallBack]
+Class="Function"
+Prototype="int MAIN_PANEL_CallBack(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
+[Run_CallBack]
+Class="Function"
+Prototype="int Run_CallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[Stop_CallBack]
+Class="Function"
+Prototype="int Stop_CallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[Save_CallBack]
+Class="Function"
+Prototype="int Save_CallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[Select_CallBack]
+Class="Function"
+Prototype="int Select_CallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[Configure_CallBack]
+Class="Function"
+Prototype="int Configure_CallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[Analyze_CallBack]
+Class="Function"
+Prototype="int Analyze_CallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
