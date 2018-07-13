@@ -173,7 +173,7 @@ void CVICALLBACK ComCallback(int portNumber ,int eventMask, void * callbackData)
 	ProtocolGetData(UartRxBuf, &RxData);
 	*(pGraph->pCurveArray->pDotX)=RxData.rxVdtest;
 	*(pGraph->pCurveArray->pDotY)=RxData.rxIdmeasured;
-	PlotXY(graphDisp, GRAPH1, 
+	//PlotXY(graphDisp, GRAPH1, 
 	
 }
 

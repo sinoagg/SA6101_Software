@@ -1,0 +1,4 @@
+[graphInit]
+Class="Function"
+Prototype="int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef *pGraph);"
+

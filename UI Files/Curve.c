@@ -1,17 +1,17 @@
 //==============================================================================
 //
-// Title:		Serial Command.c
+// Title:		Curve.c
 // Purpose:		A short description of the implementation.
 //
-// Created on:	18/7/8 at 8:21:34 by .
+// Created on:	18/7/12 at 15:27:18 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
 //==============================================================================
 // Include files
-#include <rs232.h>
-#include "SerialCommand.h"
+#include <ansi_c.h>
+#include "Curve.h"
 
 //==============================================================================
 // Constants
@@ -34,29 +34,24 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-void CommandRun(int comSelect, char* UartTxBuf)
+int curveInit(int curveIndex, int numOfDots, Curve_TypeDef* pCurve)
 {
-	char UartTxBuf[16];
-	UartTxBuf[0]=0x11;
-	ComWrt(comSelect, UartTxBuf, 17);		//Send Command
+	float *pX = (float *)malloc(numOfDots * sizeof(float));
+	if(pX == NULL) return -1;
+	float *pY = (float *)malloc(numOfDots * sizeof(float));
+	if(pY == NULL) return -1;
+	pCurve->curveIndex=curveIndex;
+	pCurve->numOfDots=numOfDots;
+	pCurve->pDotX=pX;
+	pCurve->pDotY=pY;
+	
+	return 0;
 }
 
-void CommandStop(int comSelect, char* UartTxBuf)
+int curveDeinit(Curve_TypeDef* pCurve)
 {
-   	char UartTxBuf[16];
-	UartTxBuf[0]=0x12;
-	ComWrt(comSelect, UartTxBuf, 17);		//Send Command
-}
-
-void CommandConfig(int comSelect, char* UartTxBuf)
-{
-	char UartTxBuf[16];
-	UartTxBuf[0]=0x13;
-	ComWrt(comSelect, UartTxBuf, 17);		//Send Command
-}
-void CommandCalibrate(int comSelect, char* UartTxBuf)
-{
-	char UartTxBuf[16];
-	UartTxBuf[0]=0x13;
-	ComWrt(comSelect, UartTxBuf, 17, char* UartTxBuf);		//Send Command
+	free(pCurve->pDotX);
+	free(pCurve->pDotY);
+	
+	return 0;
 }

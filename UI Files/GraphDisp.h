@@ -13,8 +13,8 @@
 
      /* Panels and Controls: */
 
-#define  EXP_LIST                         1
-#define  EXP_LIST_LISTBOX                 2       /* control type: listBox, callback function: ExpListCallBack */
+#define  GRAPHDISP                        1
+#define  GRAPHDISP_GRAPH1                 2       /* control type: graph, callback function: (none) */
 
 
      /* Control Arrays: */
@@ -24,13 +24,10 @@
 
      /* Menu Bars, Menus, and Menu Items: */
 
-#define  MENUBAR                          1
-#define  MENUBAR_MENU1                    2
+          /* (no menu bars in the resource file) */
 
 
-     /* Callback Prototypes: */
-
-int  CVICALLBACK ExpListCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+     /* (no callbacks specified in the resource file) */ 
 
 
 #ifdef __cplusplus

@@ -12,14 +12,15 @@
 -browsedeps:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\moduledependencies.txt
 -stackreserve:1048576
 -stackcommit:4096
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\Curve.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\ExpListPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\File.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\Graph.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\IdVdsPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\IdVgsPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\main.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\Protocol.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\SampleCfgPanel.obj
--in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug\SerialCommand.obj
 -more:c:\program files (x86)\national instruments\cvi2017\bin\msvc\cvistart.lib
 -more:c:\program files (x86)\national instruments\cvi2017\bin\msvc\cvi.lib
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\advapi32.lib

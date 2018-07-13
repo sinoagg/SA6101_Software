@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		Graph.h
+// Title:		Curve.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	18/7/12 at 13:50:53 by .
+// Created on:	18/7/12 at 15:27:18 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __Graph_H__
-#define __Graph_H__
+#ifndef __Curve_H__
+#define __Curve_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -18,9 +18,6 @@
 //==============================================================================
 // Include files
 
-#include "cvidef.h"
-#include "curve.h"
-
 //==============================================================================
 // Constants
 
@@ -28,21 +25,28 @@
 // Types
 typedef struct
 {
-	int graphIndex;									//graph Index
-	int numOfCurve;									//number of Curves
-	Curve_TypeDef* pCurveArray;						//pointer to curve array
-}Graph_TypeDef;
+	int curveIndex;
+	int numOfDots;
+	float* pDotX;
+	float* pDotY;
+}Curve_TypeDef;
 
+typedef struct
+{
+	float x;										//x on X-Axis
+	float y;										//y on Y-Axis
+}Dot_TypeDef;
 //==============================================================================
 // External variables
 
 //==============================================================================
 // Global functions
-int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGraph);
-int graphDeinit(Graph_TypeDef* pGraph);
+
+int curveInit(int curveIndex, int numOfDots, Curve_TypeDef* pCurve);
+int curveDeinit(Curve_TypeDef* pCurve);
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __Graph_H__ */
+#endif  /* ndef __Curve_H__ */

@@ -1,11 +1,12 @@
+Curve.obj
 ExpListPanel.obj
 File.obj
+Graph.obj
 IdVdsPanel.obj
 IdVgsPanel.obj
 main.obj
 Protocol.obj
 SampleCfgPanel.obj
-SerialCommand.obj
 cvi.lib
 cvistart.lib
 kernel32.lib

@@ -1,17 +1,18 @@
 //==============================================================================
 //
-// Title:		Serial Command.c
+// Title:		Graph.c
 // Purpose:		A short description of the implementation.
 //
-// Created on:	18/7/8 at 8:21:34 by .
+// Created on:	18/7/12 at 13:50:53 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
 //==============================================================================
 // Include files
-#include <rs232.h>
-#include "SerialCommand.h"
+#include <ansi_c.h>
+#include "Curve.h"
+#include "Graph.h"
 
 //==============================================================================
 // Constants
@@ -34,29 +35,18 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-void CommandRun(int comSelect, char* UartTxBuf)
+int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGraph)
 {
-	char UartTxBuf[16];
-	UartTxBuf[0]=0x11;
-	ComWrt(comSelect, UartTxBuf, 17);		//Send Command
-}
-
-void CommandStop(int comSelect, char* UartTxBuf)
-{
-   	char UartTxBuf[16];
-	UartTxBuf[0]=0x12;
-	ComWrt(comSelect, UartTxBuf, 17);		//Send Command
-}
-
-void CommandConfig(int comSelect, char* UartTxBuf)
-{
-	char UartTxBuf[16];
-	UartTxBuf[0]=0x13;
-	ComWrt(comSelect, UartTxBuf, 17);		//Send Command
-}
-void CommandCalibrate(int comSelect, char* UartTxBuf)
-{
-	char UartTxBuf[16];
-	UartTxBuf[0]=0x13;
-	ComWrt(comSelect, UartTxBuf, 17, char* UartTxBuf);		//Send Command
+	int i;
+	pGraph->graphIndex=graphIndex;
+	pGraph->numOfCurve=numOfCurve;
+	Curve_TypeDef* pCurveArray = (Curve_TypeDef *)malloc(numOfCurve * sizeof(Curve_TypeDef)); 	//Curve Array Saving pointers to curve structure
+	if(pCurveArray==NULL) return -1;
+	pGraph->pCurveArray=pCurveArray;
+	
+	for(i=0;i<numOfCurve;i++)		//init curve
+	{
+		if(curveInit(i, numOfDots, pCurveArray+i)==-1) return -1;
+	}
+	return 0;
 }

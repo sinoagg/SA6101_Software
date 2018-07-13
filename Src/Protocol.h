@@ -25,23 +25,37 @@
 
 //==============================================================================
 // Types
+typedef union										//float union
+{
+	unsigned char num_uchar[4]; 
+	float num_float;
+}Float_Union_Data;
+		
 typedef struct
 {
-	unsigned char rxDevAddr;									//received Device Address
-	unsigned char rxStopSign;									//received Stop Sign 0x00 nonstop 0x01 curve stop 0x02 test stop
+	unsigned char rxDevAddr;						//received Device Address
+	unsigned char rxStopSign;						//received Stop Sign 0x00 nonstop 0x01 curve stop 0x02 test stop
 	int rxVdtest;									//voltage drain undertest
 	int rxVgtest;									//voltage gate undertest
-	int rxIdmeasured;								//Id measured
-	float rxVdmeasured;								//Vd measured
-	float rxVgmeasured;								//Vg measured
+	Float_Union_Data rxIdmeasured;					//Id measured
+	Float_Union_Data rxVdmeasured;					//Vd measured
+	Float_Union_Data rxVgmeasured;					//Vg measured
+	unsigned char rangeSelect;
 }RxDataTypeDef;
+
 //==============================================================================
 // External variables
 
 //==============================================================================
 // Global functions
 
-void ProtocolCfg(unsigned char devAddr, unsigned char expType, unsigned char* pUART_TxBuf);
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf);
+void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
+void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);  
+void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
+void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
+
+void ProtocolGetData(unsigned char* pUartRxBuf, RxDataTypeDef* pRxData);
 
 
 #ifdef __cplusplus
