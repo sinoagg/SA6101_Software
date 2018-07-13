@@ -20,6 +20,12 @@
 #define  SAMPLE_CFG_TIMEINTER             5       /* control type: numeric, callback function: (none) */
 #define  SAMPLE_CFG_QUIETTIME             6       /* control type: numeric, callback function: (none) */
 #define  SAMPLE_CFG_RANGESET              7       /* control type: ring, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_2             8       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_6             9       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_3             10      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG               11      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_5             12      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_4             13      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

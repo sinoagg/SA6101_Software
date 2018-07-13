@@ -1,22 +1,17 @@
-#include <userint.h>
-#include "Experiment List.h"
-
 //==============================================================================
 //
-// Title:		ExperimentList.c
+// Title:		Curve.c
 // Purpose:		A short description of the implementation.
 //
-// Created on:	18/7/11 at 9:55:13 by .
+// Created on:	18/7/12 at 15:27:18 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
 //==============================================================================
 // Include files
-
-#include "ExpListPanel.h"
-#include "Id-Vds Configuration.h"
-#include "Id-Vgs Configuration.h" 
+#include <ansi_c.h>
+#include "Curve.h"
 
 //==============================================================================
 // Constants
@@ -39,49 +34,25 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-int CVICALLBACK ExpListCallBack (int panel, int control, int event,
-								 void *callbackData, int eventData1, int eventData2)
+int curveInit(int curveIndex, int numOfDots, Curve_TypeDef* pCurve)
 {
+	float *pX = (float *)malloc(numOfDots * sizeof(float));
+	if(pX == NULL) return -1;
+	float *pY = (float *)malloc(numOfDots * sizeof(float));
+	if(pY == NULL) return -1;
+	pCurve->curveIndex=curveIndex;
+	pCurve->numOfDots=numOfDots;
+	pCurve->pDotX=pX;
+	pCurve->pDotY=pY;
+	pCurve->numOfPlotDots=0;
 	
-	int ExpSelVal;
-	
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:
-			GetCtrlVal(panel, control, &ExpSelVal);
-			if(ExpSelVal==1)
-			{
-			
-				/*SetPanelPos(IdVdPanel, 300, 200);
-				SetPanelSize(IdVdPanel, 600, 800);
-				DisplayPanel(IdVdPanel);*/
-				
-				SetPanelPos(IdVdPanel, 130, 305);
-				SetPanelSize(IdVdPanel, 880, 1293);
-				DisplayPanel(IdVdPanel);
-			}
-			else if(ExpSelVal==2)
-			{/*
-				SetPanelPos(IdVgPanel, 300, 200);
-				SetPanelSize(IdVgPanel, 600, 800);
-				DisplayPanel(IdVgPanel);*/
-				
-				SetPanelPos(IdVgPanel, 130, 305);
-				SetPanelSize(IdVgPanel, 880, 1293);
-				DisplayPanel(IdVgPanel);
-			}
-			else if(ExpSelVal==3)
-			{
-				//TODO  
-			}
-			else
-			{
-				//TODO  
-			}
-			break;
-	}
-	
-	
+	return 0;
+}
+
+int curveDeinit(Curve_TypeDef* pCurve)
+{
+	free(pCurve->pDotX);
+	free(pCurve->pDotY);
 	
 	return 0;
 }

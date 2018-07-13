@@ -25,6 +25,12 @@
 #define  IDVDS_CFG_VG_STOP                10      /* control type: numeric, callback function: (none) */
 #define  IDVDS_CFG_VG_START               11      /* control type: numeric, callback function: (none) */
 #define  IDVDS_CFG_VD_START               12      /* control type: numeric, callback function: (none) */
+#define  IDVDS_CFG_TEXTMSG_4              13      /* control type: textMsg, callback function: (none) */
+#define  IDVDS_CFG_TEXTMSG_5              14      /* control type: textMsg, callback function: (none) */
+#define  IDVDS_CFG_TEXTMSG                15      /* control type: textMsg, callback function: (none) */
+#define  IDVDS_CFG_TEXTMSG_3              16      /* control type: textMsg, callback function: (none) */
+#define  IDVDS_CFG_TEXTMSG_2              17      /* control type: textMsg, callback function: (none) */
+#define  IDVDS_CFG_TEXTMSG_6              18      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

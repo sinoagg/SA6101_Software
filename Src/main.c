@@ -10,6 +10,7 @@
 #include "Id-Vgs Configuration.h"
 #include "Sample Configuration.h"
 #include "GraphDisp.h"
+#include "Environment.h"
 
 #include "ExpListPanel.h"
 #include "SampleCfgPanel.h"
@@ -25,6 +26,7 @@ int IdVdPanel;
 int IdVgPanel;
 int samplePanel;
 int graphDispPanel;
+int environmentPanel;
 
 int TimerID;
 
@@ -64,34 +66,43 @@ int main (int argc, char *argv[])
 	if ((mainPanel = LoadPanel (0, "MainPanel.uir", MAIN_PANEL)) < 0)	  //load main panel
 		return -1;
 	
+	
 	if ((expListPanel = LoadPanel (mainPanel, "Experiment List.uir", EXP_LIST)) < 0)		//load left panel
 		return -1;
+	
 	
 	if ((IdVdPanel = LoadPanel (mainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
 		return -1;
 	
+	
 	if ((IdVgPanel = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	if ((samplePanel = LoadPanel (mainPanel, "Experiment List.uir", SAMPLE_CFG)) < 0)		//load right panel
+	if ((samplePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;
 	
-	if((graphDispPanel = LoadPanel (mainPanel, "Experiment List.uir", GRAPHDISP)) < 0)
+	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMENT)) < 0)		//load Enviroment panel
 		return -1;
 	
 	DisplayPanel (mainPanel); 
 	
-	SetPanelPos(expListPanel, 0, 200);
-	SetPanelSize(expListPanel, 600, 300);
+	SetPanelPos(expListPanel, 130, 3);  //加载面板位置 （,top,left）
+	SetPanelSize(expListPanel, 880, 300);//加载面板大小  (,height，width)
+	//加滚动条847
 	DisplayPanel(expListPanel);
 	
-	SetPanelPos(IdVdPanel, 300, 200);
-	SetPanelSize(IdVdPanel, 600, 800);
+	SetPanelPos(IdVdPanel, 130, 305);
+	//SetPanelSize(IdVdPanel, 600, 1278);//加滚动条
+	SetPanelSize(IdVdPanel, 880, 1293);
 	DisplayPanel(IdVdPanel);
 	
-	SetPanelPos(samplePanel, 1100, 200);
-	SetPanelSize(samplePanel, 600, 300);
+	SetPanelPos(samplePanel, 130, 1600);
+	SetPanelSize(samplePanel, 440, 300);
 	DisplayPanel(samplePanel);
+	
+	SetPanelPos(environmentPanel, 570, 1600);
+	SetPanelSize(environmentPanel, 440, 300);
+	DisplayPanel(environmentPanel);
 	
 	RunUserInterface ();
 	CloseCom(comSelect);
@@ -99,13 +110,36 @@ int main (int argc, char *argv[])
 	return 0;
 }
 
+//===================================================
+//   MAIN_PANEL_CallBack
 
-int CVICALLBACK RunCallBack (int panel, int control, int event,
+int CVICALLBACK MAIN_PANEL_CallBack (int panel, int event, void *callbackData,
+									 int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_GOT_FOCUS:
+
+			break;
+		case EVENT_LOST_FOCUS:
+
+			break;
+		case EVENT_CLOSE:
+			   	QuitUserInterface(0); 
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
 		case EVENT_COMMIT:
+			SetCtrlAttribute (mainPanel, MAIN_PANEL_Run, ATTR_DIMMED,1);         //禁用 开始按钮      
+		   SetCtrlAttribute (mainPanel, MAIN_PANEL_Stop, ATTR_DIMMED, 0);       //恢复 停止按钮
+	       SetCtrlAttribute (mainPanel, MAIN_PANEL_Save, ATTR_DIMMED,1);        //禁用 保存按钮
 			if(!comSelect)
 			{
 				MessagePopup ("Warning", "Instrument Unconnected");//Lost serial Connection
@@ -150,7 +184,22 @@ int CVICALLBACK RunCallBack (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK StopCallBack (int panel, int control, int event,
+int CVICALLBACK StopCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			//TODO
+			SetCtrlAttribute (mainPanel, MAIN_PANEL_Stop, ATTR_DIMMED,1);      //禁用 停止按钮      
+		     SetCtrlAttribute (mainPanel, MAIN_PANEL_Run, ATTR_DIMMED, 0);      //恢复 开始按钮
+			 SetCtrlAttribute (mainPanel, MAIN_PANEL_Save, ATTR_DIMMED, 0);     //恢复 保存按钮
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK SaveCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
@@ -158,17 +207,72 @@ int CVICALLBACK StopCallBack (int panel, int control, int event,
 		case EVENT_COMMIT:
 			//TODO
 			break;
+		case EVENT_LEFT_CLICK:			    //当Save被鼠标左键点击时 
+			
+			DisplayImageFile (mainPanel, MAIN_PANEL_Save, "icon\\Save(b).png");
+			
+			break;
+			
+		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时  
+			
+			DisplayImageFile (mainPanel, MAIN_PANEL_Save, "icon\\Save(a).png");
+
+			break;
+	}
+	return 0;
+}
+//===================================================
+//   Select_CallBack
+
+int CVICALLBACK SelectCallback (int panel, int control, int event,
+								 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK:			    //当Select被鼠标左键点击时,Select图标改变，其它两个正常状态 
+			
+			DisplayImageFile (mainPanel, MAIN_PANEL_Select, "Resource\\Select(b).ico");
+			DisplayImageFile (mainPanel, MAIN_PANEL_Configure, "Resource\\Configure(a).png"); 
+			DisplayImageFile (mainPanel, MAIN_PANEL_Analyze, "Resource\\Analyze(a).png");
+			
+			break;
 	}
 	return 0;
 }
 
-int CVICALLBACK SaveCallBack (int panel, int control, int event,
-							  void *callbackData, int eventData1, int eventData2)
+//===================================================
+//   Configure_CallBack
+
+int CVICALLBACK ConfigureCallback (int panel, int control, int event,
+									void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
-		case EVENT_COMMIT:
-			//TODO
+ 		case EVENT_LEFT_CLICK:			    //当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
+			
+			DisplayImageFile (mainPanel, MAIN_PANEL_Select, "Resource\\Select(a).png");
+			DisplayImageFile (mainPanel, MAIN_PANEL_Configure, "Resource\\Configure(b).ico"); 
+			DisplayImageFile (mainPanel, MAIN_PANEL_Analyze, "Resource\\Analyze(a).png");
+			
+			break;
+	}
+	return 0;
+}
+
+//===================================================
+//   Analyze_CallBack
+
+int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
+								  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+ 		case EVENT_LEFT_CLICK:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态 
+			
+			DisplayImageFile (mainPanel, MAIN_PANEL_Select, "Resource\\Select(a).png");
+			DisplayImageFile (mainPanel, MAIN_PANEL_Configure, "Resource\\Configure(a).png"); 
+			DisplayImageFile (mainPanel, MAIN_PANEL_Analyze, "Resource\\Analyze(b).ico");
+			
 			break;
 	}
 	return 0;

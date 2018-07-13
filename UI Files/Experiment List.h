@@ -15,6 +15,13 @@
 
 #define  EXP_LIST                         1
 #define  EXP_LIST_LISTBOX                 2       /* control type: listBox, callback function: ExpListCallBack */
+#define  EXP_LIST_LISTBOX_2               3       /* control type: listBox, callback function: (none) */
+#define  EXP_LIST_LISTBOX_3               4       /* control type: listBox, callback function: (none) */
+#define  EXP_LIST_TEXTMSG                 5       /* control type: textMsg, callback function: (none) */
+#define  EXP_LIST_TEXTMSG_3               6       /* control type: textMsg, callback function: (none) */
+#define  EXP_LIST_TEXTMSG_4               7       /* control type: textMsg, callback function: (none) */
+#define  EXP_LIST_LISTBOX_4               8       /* control type: listBox, callback function: (none) */
+#define  EXP_LIST_TEXTMSG_2               9       /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */
@@ -24,8 +31,7 @@
 
      /* Menu Bars, Menus, and Menu Items: */
 
-#define  MENUBAR                          1
-#define  MENUBAR_MENU1                    2
+          /* (no menu bars in the resource file) */
 
 
      /* Callback Prototypes: */

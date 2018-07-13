@@ -31,16 +31,19 @@ HDRS = 	"e:\\SINOAGG\\Software\\SA6101\\UI Files"
 	"e:\\SINOAGG\\Software\\SA6101\\Instrument Files"
 	;
 include Jamfile_instr ;
+TIMESTAMPFILE on "e:\\SINOAGG\\Software\\SA6101\\UI Files\\Curve.c" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\UnsavedChanges\\Curve.c" ;
+TIMESTAMPFILE on "e:\\SINOAGG\\Software\\SA6101\\UI Files\\Graph.c" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\UnsavedChanges\\Graph.c" ;
+TIMESTAMPFILE on "e:\\SINOAGG\\Software\\SA6101\\UI Files\\Curve.h" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\UnsavedChanges\\Curve.h" ;
 LOCATE on "asynctmr.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "asynctmr.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "Curve.c" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
-LOCATE on "Curve.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
+LOCATE on "Curve.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "ExpListPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "ExpListPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "File.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "File.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "Graph.c" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
-LOCATE on "Graph.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
+LOCATE on "Graph.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "IdVdsPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "IdVdsPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "IdVgsPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
