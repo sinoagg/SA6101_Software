@@ -56,8 +56,8 @@ int CVICALLBACK ExpListCallBack (int panel, int control, int event,
 				SetPanelSize(IdVdPanel, 600, 800);
 				DisplayPanel(IdVdPanel);*/
 				
-				SetPanelPos(IdVdPanel, 130, 305);
-				SetPanelSize(IdVdPanel, 880, 1293);
+				SetPanelPos(IdVdPanel, 105, 305);
+				SetPanelSize(IdVdPanel, 900, 1293);
 				DisplayPanel(IdVdPanel);
 			}
 			else if(ExpSelVal==2)
@@ -66,8 +66,8 @@ int CVICALLBACK ExpListCallBack (int panel, int control, int event,
 				SetPanelSize(IdVgPanel, 600, 800);
 				DisplayPanel(IdVgPanel);*/
 				
-				SetPanelPos(IdVgPanel, 130, 305);
-				SetPanelSize(IdVgPanel, 880, 1293);
+				SetPanelPos(IdVgPanel, 105, 305);
+				SetPanelSize(IdVgPanel, 900, 1293);
 				DisplayPanel(IdVgPanel);
 			}
 			else if(ExpSelVal==3)

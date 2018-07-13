@@ -13,20 +13,20 @@
 
      /* Panels and Controls: */
 
-#define  ENVIRONMENT                       1
-#define  ENVIRONMENT_CONTROL               2       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMENT_MEASURE_4             3       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMENT_MEASURE_3             4       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMENT_MEASURE_2             5       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMENT_QUIETTIME_3           6       /* control type: numeric, callback function: (none) */
-#define  ENVIRONMENT_QUIETTIME_2           7       /* control type: numeric, callback function: (none) */
-#define  ENVIRONMENT_QUIETTIME             8       /* control type: numeric, callback function: (none) */
-#define  ENVIRONMENT_MEASURE               9       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMENT_TEXTMSG               10      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMENT_TEXTMSG_3             11      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMENT_TEXTMSG_5             12      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMENT_TEXTMSG_2             13      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMENT_TEXTMSG_4             14      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN                       1
+#define  ENVIRONMEN_CONTROL               2       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_MEASURE_4             3       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_MEASURE_3             4       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_MEASURE_2             5       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_QUIETTIME_3           6       /* control type: numeric, callback function: (none) */
+#define  ENVIRONMEN_QUIETTIME_2           7       /* control type: numeric, callback function: (none) */
+#define  ENVIRONMEN_QUIETTIME             8       /* control type: numeric, callback function: (none) */
+#define  ENVIRONMEN_MEASURE               9       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_TEXTMSG               10      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TEXTMSG_3             11      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TEXTMSG_5             12      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TEXTMSG_2             13      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TEXTMSG_4             14      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */
