@@ -1,4 +1,0 @@
-[main]
-Class="Function"
-Prototype="int main(int argc, char **argv);"
-

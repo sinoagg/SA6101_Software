@@ -1,8 +1,0 @@
-[ProtocolCfg]
-Class="Function"
-Prototype="void ProtocolCfg(unsigned char devAddr, unsigned char expType, unsigned char *pUART_TxBuf);"
-
-[ProtocolGetData]
-Class="Function"
-Prototype="RxDataTypeDef *ProtocolGetData(unsigned char *pUART_RxBuf);"
-
