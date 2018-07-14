@@ -14,6 +14,8 @@
      /* Panels and Controls: */
 
 #define  RESULTMENU                       1
+#define  RESULTMENU_Table                 2       /* control type: picture, callback function: (none) */
+#define  RESULTMENU_Graph                 3       /* control type: picture, callback function: (none) */
 
 
      /* Control Arrays: */

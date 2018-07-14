@@ -15,10 +15,10 @@ Project 0001 = "SA6101.prj"
 Project 0001 Folder Resource Collapsed = True
 Project 0001 FolderId 2 Collapsed = True
 Drag Bar Left = 278
-Window Top = 22
-Window Left = 669
-Window Bottom = 410
-Window Right = 1411
+Window Top = -150
+Window Left = 2463
+Window Bottom = 238
+Window Right = 3205
 Maximized = True
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 12
+Number of Opened Files = 8
 Window Confinement Region Enabled = True
 MainColumnWidth = 261
 FileDateColumnWidth = 70
@@ -50,23 +50,22 @@ Batch Build Debug = False
 [File 0001]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/main.c"
 File Type = "CSource"
-Disk Date = 3614325770
+Disk Date = 3614385236
 In Projects = "1,"
 Window Top = 312
 Window Left = 154
-Window Z-Order = 6
-Source Window State = "1,105,105,105,27,30,30,0,0,77,0,46,0,2,0,18,84,0,106,14,323,577,1,27,"
+Window Z-Order = 1
+Source Window State = "1,50,50,50,4,8,8,0,0,132,0,46,0,2,0,26,144,0,155,86,323,577,1,27,"
 
 [File 0002]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/MainPanel.uir"
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Environment.uir"
 File Type = "User Interface Resource"
-Disk Date = 3614320335
+Disk Date = 3614323102
 In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 323
-Window Width = 697
-Window Z-Order = 10
+Window Top = 188
+Window Left = 90
+Window Height = 427
+Window Width = 694
 
 [File 0003]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Experiment List.uir"
@@ -77,9 +76,18 @@ Window Top = 374
 Window Left = 186
 Window Height = 427
 Window Width = 686
-Window Z-Order = 4
 
 [File 0004]
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/GraphDisp.uir"
+File Type = "User Interface Resource"
+Disk Date = 3614325739
+In Projects = "1,"
+Window Top = 343
+Window Left = 170
+Window Height = 427
+Window Width = 686
+
+[File 0005]
 Path Line0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Id-Vds Configuration.ui"
 Path Line0002 = "r"
 File Type = "User Interface Resource"
@@ -89,9 +97,8 @@ Window Top = 126
 Window Left = 58
 Window Height = 323
 Window Width = 577
-Window Z-Order = 1
 
-[File 0005]
+[File 0006]
 Path Line0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Id-Vgs Configuration.ui"
 Path Line0002 = "r"
 File Type = "User Interface Resource"
@@ -101,9 +108,30 @@ Window Top = 250
 Window Left = 122
 Window Height = 323
 Window Width = 577
+
+[File 0007]
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/MainPanel.uir"
+File Type = "User Interface Resource"
+Disk Date = 3614320335
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 323
+Window Width = 697
+Window Z-Order = 7
+
+[File 0008]
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.uir"
+File Type = "User Interface Resource"
+Disk Date = 3614387198
+In Projects = "1,"
+Window Top = 188
+Window Left = 90
+Window Height = 427
+Window Width = 686
 Window Z-Order = 3
 
-[File 0006]
+[File 0009]
 Path Line0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Sample Configuration.ui"
 Path Line0002 = "r"
 File Type = "User Interface Resource"
@@ -113,51 +141,8 @@ Window Top = 281
 Window Left = 138
 Window Height = 427
 Window Width = 694
-Window Z-Order = 2
-
-[File 0007]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/asynctmr.c"
-File Type = "CSource"
-Disk Date = 3614312294
-In Projects = "1,"
-Window Top = 62
-Window Left = 26
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,17,144,0,363,35,497,1027,1,0,"
-
-[File 0008]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Environment.uir"
-File Type = "User Interface Resource"
-Disk Date = 3614323102
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 427
-Window Width = 694
-Window Z-Order = 11
-
-[File 0009]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/GraphDisp.uir"
-File Type = "User Interface Resource"
-Disk Date = 3614325739
-In Projects = "1,"
-Window Top = 343
-Window Left = 170
-Window Height = 427
-Window Width = 686
-Window Z-Order = 8
 
 [File 0010]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.uir"
-File Type = "User Interface Resource"
-Disk Date = 3614325738
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 427
-Window Width = 686
-Window Z-Order = 7
-
-[File 0011]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Table.uir"
 File Type = "User Interface Resource"
 Disk Date = 3614312294
@@ -166,35 +151,36 @@ Window Top = 95
 Window Left = 42
 Window Height = 427
 Window Width = 686
-Window Z-Order = 9
+
+[File 0011]
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/asynctmr.c"
+File Type = "CSource"
+Disk Date = 3614312294
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,17,144,0,363,35,497,1027,1,0,"
 
 [File 0012]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/Graph.c"
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/Curve.c"
 File Type = "CSource"
 Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,0,0,0,0,0,0,0,0,70,0,0,0,0,0,16,24,0,40,4,471,898,1,0,"
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,17,0,0,0,0,497,1027,1,0,"
 
 [File 0013]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/Curve.c"
-File Type = "CSource"
-Disk Date = 3614312294
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0014]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/ExpListPanel.c"
 File Type = "CSource"
 Disk Date = 3614325886
 In Projects = "1,"
 Window Top = 157
 Window Left = 74
-Window Z-Order = 5
-Source Window State = "1,69,69,69,40,43,43,0,0,93,0,3,0,0,0,25,33,0,69,43,427,694,1,13,"
+Window Z-Order = 8
+Source Window State = "1,69,69,69,40,43,43,0,0,53,0,3,0,0,0,14,30,0,47,44,427,694,1,13,"
 
-[File 0015]
+[File 0014]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/File.c"
 File Type = "CSource"
 Disk Date = 3614312294
@@ -203,6 +189,15 @@ Window Top = 95
 Window Left = 42
 Source Window State = "1,36,39,39,0,1,1,0,0,0,0,0,0,0,0,0,2,0,36,0,427,694,1,0,"
 
+[File 0015]
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/Graph.c"
+File Type = "CSource"
+Disk Date = 3614312294
+In Projects = "1,"
+Window Top = 152
+Window Left = 74
+Source Window State = "1,0,0,0,0,0,0,0,0,70,0,0,0,0,0,16,27,0,14,42,471,898,1,0,"
+
 [File 0016]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/IdVdsPanel.c"
 File Type = "CSource"
@@ -210,7 +205,8 @@ Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 219
 Window Left = 106
-Source Window State = "1,37,37,37,4,14,14,0,3,0,0,1,0,1,0,0,25,0,37,4,427,694,1,0,"
+Window Z-Order = 5
+Source Window State = "1,37,37,37,4,14,14,0,0,53,0,1,0,1,0,14,0,0,10,21,427,694,1,0,"
 
 [File 0017]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/IdVgsPanel.c"
@@ -219,7 +215,8 @@ Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 312
 Window Left = 154
-Source Window State = "1,21,29,29,0,17,17,0,0,0,0,1,0,1,0,0,21,0,14,0,427,686,1,0,"
+Window Z-Order = 4
+Source Window State = "1,21,29,29,0,17,17,0,0,52,0,1,0,1,0,14,0,0,10,8,427,686,1,0,"
 
 [File 0018]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/Protocol.c"
@@ -237,7 +234,8 @@ Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
-Source Window State = "1,45,45,45,17,23,23,0,0,0,0,1,0,1,0,0,0,0,23,114,427,694,1,0,"
+Window Z-Order = 6
+Source Window State = "1,45,45,45,17,23,23,0,0,53,0,1,0,1,0,14,0,0,23,114,427,694,1,0,"
 
 [File 0020]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/Analyze(a).png"
@@ -290,25 +288,25 @@ In Projects = "1,"
 [File 0028]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/GND.ico"
 File Type = "Unknown"
-Disk Date = 3614312294
+Disk Date = 3614318099
 In Projects = "1,"
 
 [File 0029]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/I.ico"
 File Type = "Unknown"
-Disk Date = 3614312294
+Disk Date = 3614318671
 In Projects = "1,"
 
 [File 0030]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/I_Bias.ico"
 File Type = "Unknown"
-Disk Date = 3614312294
+Disk Date = 3614318561
 In Projects = "1,"
 
 [File 0031]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/jiantou.ico"
 File Type = "Unknown"
-Disk Date = 3614312294
+Disk Date = 0
 In Projects = "1,"
 
 [File 0032]
@@ -392,13 +390,13 @@ In Projects = "1,"
 [File 0045]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/V.ico"
 File Type = "Unknown"
-Disk Date = 3614312294
+Disk Date = 3614318403
 In Projects = "1,"
 
 [File 0046]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Resource/V_Bias.ico"
 File Type = "Unknown"
-Disk Date = 3614312294
+Disk Date = 3614318403
 In Projects = "1,"
 
 [File 0047]
@@ -406,7 +404,9 @@ Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/asynctmr.h"
 File Type = "Include"
 Disk Date = 3614312294
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 122
+Window Left = 58
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,17,47,0,14,16,497,1027,1,0,"
 
 [File 0048]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/Curve.h"
@@ -422,7 +422,7 @@ Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
-Source Window State = "1,30,33,33,0,23,23,0,0,53,0,0,0,0,0,14,6,0,15,19,427,694,1,0,"
+Source Window State = "1,30,33,33,0,23,23,0,0,0,0,0,0,0,0,0,6,0,15,19,427,694,1,0,"
 
 [File 0050]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/File.h"
@@ -447,7 +447,7 @@ Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 250
 Window Left = 122
-Source Window State = "1,27,35,35,0,18,18,0,3,0,0,0,0,0,0,0,0,0,27,0,427,694,1,0,"
+Source Window State = "1,27,35,35,0,18,18,0,0,53,0,0,0,0,0,14,24,0,40,18,427,694,1,0,"
 
 [File 0053]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/IdVgsPanel.h"
@@ -468,47 +468,42 @@ Window Left = 186
 Source Window State = "1,57,57,57,0,15,15,0,0,0,0,0,0,0,0,0,17,0,57,72,427,694,1,0,"
 
 [File 0055]
+Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.h"
+File Type = "Include"
+Disk Date = 3614385630
+In Projects = "1,"
+Window Top = 92
+Window Left = 42
+Source Window State = "1,32,33,33,0,120,120,0,0,80,0,0,0,0,0,17,14,0,32,0,497,1027,1,0,"
+
+[File 0056]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/SampleCfgPanel.h"
 File Type = "Include"
 Disk Date = 3614312294
 In Projects = "1,"
 Window Top = 219
 Window Left = 106
-Source Window State = "1,30,30,30,53,58,58,0,0,0,0,0,0,0,0,0,0,0,34,52,427,694,1,0,"
-
-[File 0056]
-Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.h"
-File Type = "Include"
-Disk Date = 3614324241
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Source Window State = "1,30,30,30,53,58,58,0,0,53,0,0,0,0,0,14,24,0,16,16,427,694,1,0,"
 
 [File 0057]
 Path = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.c"
 File Type = "CSource"
-Disk Date = 3614319288
+Disk Date = 3614385519
 In Projects = ""
-Window Top = 92
-Window Left = 42
-Window Z-Order = 12
-Source Window State = "1,14,14,14,18,28,28,0,0,141,0,0,0,0,0,29,0,0,3,20,497,1027,1,0,"
+Window Top = 182
+Window Left = 90
+Window Z-Order = 2
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,17,0,0,1,8,497,1027,1,13,"
 
 [Tab Order]
-Tab 0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/main.c"
-Tab 0002 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/MainPanel.uir"
-Tab 0003 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.c"
-Tab 0004 Line0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Id-Vds Configuration.ui"
-Tab 0004 Line0002 = "r"
-Tab 0005 Line0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Id-Vgs Configuration.ui"
-Tab 0005 Line0002 = "r"
-Tab 0006 Line0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Sample Configuration.ui"
-Tab 0006 Line0002 = "r"
-Tab 0007 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Environment.uir"
-Tab 0008 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.uir"
-Tab 0009 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/GraphDisp.uir"
-Tab 0010 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Table.uir"
-Tab 0011 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Experiment List.uir"
-Tab 0012 = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/ExpListPanel.c"
+Tab 0001 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.uir"
+Tab 0002 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/Result Menu.c"
+Tab 0003 = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/ExpListPanel.c"
+Tab 0004 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/MainPanel.uir"
+Tab 0005 = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/main.c"
+Tab 0006 = "/e/gitdocument/Sinoagg/download/SA6101_Software/UI Files/IdVgsPanel.c"
+Tab 0007 = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/SampleCfgPanel.c"
+Tab 0008 = "/e/gitdocument/Sinoagg/download/SA6101_Software/Src/IdVdsPanel.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

@@ -301,7 +301,7 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	 			DisplayPanel(resultPanel);
 				
 				
-				SetPanelPos(graphDispPanle, 175, 305);  
+				SetPanelPos(graphDispPanle, 176, 305);  
 		     	SetPanelSize(graphDispPanle, 830, 1293);      
 	 			DisplayPanel(graphDispPanle);
 			
@@ -343,4 +343,5 @@ int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callb
 	else
 		return 0;
 }
+
 
