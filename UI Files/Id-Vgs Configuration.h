@@ -19,18 +19,18 @@
 #define  IDVGS_CFG_PIC_IDVD_BLUK          4       /* control type: picture, callback function: (none) */
 #define  IDVGS_CFG_PIC_IDVD_GATE          5       /* control type: picture, callback function: (none) */
 #define  IDVGS_CFG_VD_STEP                6       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_VG_STEP                7       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_VG_STOP                8       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_VD_STOP                9       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_PIC_FET                10      /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_VD_START               11      /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_VG_START               12      /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_4              13      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_5              14      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_6              15      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG                16      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_2              17      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_3              18      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_VD_STOP                7       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VG_STEP                8       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VG_STOP                9       /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_VG_START               10      /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_TEXTMSG_10             11      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_TEXTMSG_11             12      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_VD_START               13      /* control type: numeric, callback function: (none) */
+#define  IDVGS_CFG_PIC_FET                14      /* control type: picture, callback function: (none) */
+#define  IDVGS_CFG_TEXTMSG_7              15      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_TEXTMSG_12             16      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_TEXTMSG_8              17      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_TEXTMSG_9              18      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

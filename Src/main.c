@@ -20,6 +20,7 @@
 #include "Graph.h"
 #include "Curve.h"
 #include "Result Menu.h"
+#include "Table.h"
 
 int mainPanel;
 int expListPanel;
@@ -30,8 +31,8 @@ int graphDispPanel;
 int environmentPanel;
 int resultPanel;
 int graphDispPanel;
-
 int TimerID;
+int tablePanel;
 Graph_TypeDef Graph;
 
 #define DEFAULT_ADDR 0x01
@@ -91,6 +92,9 @@ int main (int argc, char *argv[])
 		return -1;
 	
 	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+		return -1;
+	
+	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
 		return -1;
 	
 	DisplayPanel (mainPanel); 
@@ -291,9 +295,9 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK:
 		
-				/*SetPanelPos(resultPanel, 125, 305);  
+				SetPanelPos(resultPanel, 125, 305);  
 		     	SetPanelSize(resultPanel, 50, 1293);      
-	 			DisplayPanel(resultPanel);  */
+	 			DisplayPanel(resultPanel);  
 				
 				
 
