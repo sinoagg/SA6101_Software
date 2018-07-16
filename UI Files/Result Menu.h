@@ -14,8 +14,9 @@
      /* Panels and Controls: */
 
 #define  RESULTMENU                       1
-#define  RESULTMENU_Table                 2       /* control type: picture, callback function: (none) */
-#define  RESULTMENU_Graph                 3       /* control type: picture, callback function: (none) */
+#define  RESULTMENU_Table                 2       /* control type: picture, callback function: TableCallback */
+#define  RESULTMENU_SaveData              3       /* control type: picture, callback function: SaveDataCallback */
+#define  RESULTMENU_Graph                 4       /* control type: picture, callback function: GraphCallback */
 
 
      /* Control Arrays: */
@@ -28,7 +29,11 @@
           /* (no menu bars in the resource file) */
 
 
-     /* (no callbacks specified in the resource file) */ 
+     /* Callback Prototypes: */
+
+int  CVICALLBACK GraphCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveDataCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK TableCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

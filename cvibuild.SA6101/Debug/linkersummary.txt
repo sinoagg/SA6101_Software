@@ -7,6 +7,7 @@ IdVdsPanel.obj
 IdVgsPanel.obj
 main.obj
 Protocol.obj
+Result Menu.obj
 SampleCfgPanel.obj
 cvi.lib
 cvistart.lib
