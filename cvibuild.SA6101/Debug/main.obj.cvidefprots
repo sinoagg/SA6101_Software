@@ -2,9 +2,9 @@
 Class="Function"
 Prototype="int main(int argc, char **argv);"
 
-[MAIN_PANEL_CallBack]
+[MAIN_PANEL_Callback]
 Class="Function"
-Prototype="int MAIN_PANEL_CallBack(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int MAIN_PANEL_Callback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 
 [RunCallback]
 Class="Function"
