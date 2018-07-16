@@ -27,10 +27,14 @@ int IdVgPanel;
 int samplePanel;
 int graphDispPanel;
 int environmentPanel;
+<<<<<<< HEAD
+=======
+int resultPanel;
+int graphDispPanel;
+>>>>>>> f14a99b... SA6101 1.00
 
 int TimerID;
-
-Graph_TypeDef* pGraph;
+Graph_TypeDef Graph;
 
 #define DEFAULT_ADDR 0x01
 
@@ -58,7 +62,7 @@ int main (int argc, char *argv[])
 		MessagePopup("Error","Device unconnected!");
 		return 0;
 	}
-	InstallComCallback (comSelect, LWRS_RECEIVE, 18, 0, ComCallback, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
+	InstallComCallback (comSelect, LWRS_RECEIVE, 20, 0, ComCallback, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
 	SetCTSMode(comSelect, LWRS_HWHANDSHAKE_OFF);
 	FlushInQ(comSelect);	   //Clear input and output buffer
 	FlushOutQ(comSelect);
@@ -84,6 +88,18 @@ int main (int argc, char *argv[])
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMENT)) < 0)		//load Enviroment panel
 		return -1;
 	
+<<<<<<< HEAD
+=======
+	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
+		return -1;
+	
+	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+		return -1;
+	
+	
+	
+	
+>>>>>>> f14a99b... SA6101 1.00
 	DisplayPanel (mainPanel); 
 	
 	SetPanelPos(expListPanel, 130, 3);  //加载面板位置 （,top,left）
@@ -137,9 +153,17 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
+<<<<<<< HEAD
 			SetCtrlAttribute (mainPanel, MAIN_PANEL_Run, ATTR_DIMMED,1);         //禁用 开始按钮      
 		   SetCtrlAttribute (mainPanel, MAIN_PANEL_Stop, ATTR_DIMMED, 0);       //恢复 停止按钮
 	       SetCtrlAttribute (mainPanel, MAIN_PANEL_Save, ATTR_DIMMED,1);        //禁用 保存按钮
+=======
+			break;
+		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
+			SetCtrlAttribute (mainPanel, MAIN_PANEL_Run, ATTR_DIMMED,1);         //禁用 开始按钮      
+		    SetCtrlAttribute (mainPanel, MAIN_PANEL_Stop, ATTR_DIMMED, 0);       //恢复 停止按钮
+	        SetCtrlAttribute (mainPanel, MAIN_PANEL_Save, ATTR_DIMMED,1);        //禁用 保存按钮
+>>>>>>> f14a99b... SA6101 1.00
 			if(!comSelect)
 			{
 				MessagePopup ("Warning", "Instrument Unconnected");//Lost serial Connection
@@ -148,8 +172,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			{
 				int expType;
 				int graphIndex=1;	//currently only deal with one graph circumstance
-				int numOfCurve=0;
-				int numOfDots=0;
+				int numOfCurve=1;
+				int numOfDots=500;
 				if(GetCtrlVal(expListPanel, EXP_LIST_LISTBOX, &expType)<0)
 					return -1;
 				switch(expType)
@@ -175,7 +199,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				}
 				
 				ProtocolCfg(comSelect, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART
-				graphInit(graphIndex, numOfCurve, numOfDots, pGraph); 	//graph set up 
+				graphInit(graphIndex, numOfCurve, numOfDots, &Graph); 	//graph set up 
 				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
 				ProtocolRun(comSelect, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
 			}
@@ -273,29 +297,54 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_Configure, "Resource\\Configure(a).png"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_Analyze, "Resource\\Analyze(b).ico");
 			
+<<<<<<< HEAD
+=======
+	case EVENT_LEFT_CLICK:
+		
+				SetPanelPos(resultPanel, 125, 305);  
+		     	SetPanelSize(resultPanel, 50, 1293);      
+	 			DisplayPanel(resultPanel);
+				
+				
+				SetPanelPos(graphDispPanel, 176, 305);  
+		     	SetPanelSize(graphDispPanel, 830, 1293);      
+	 			DisplayPanel(graphDispPanel);
+			
+
+		
+>>>>>>> f14a99b... SA6101 1.00
 			break;
 	}
 	return 0;
 }
 
-void CVICALLBACK ComCallback(int portNumber ,int eventMask, void * callbackData)
+void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 {
 	int status;
+	int rxNum;
 	RxDataTypeDef RxData;
-	status = ComRd(comSelect, (char *)UartRxBuf, GetInQLen(comSelect));	//Read UART Buffer to local buffer
-	ProtocolGetData(UartRxBuf, &RxData);								//get data from uart buffer
-	pGraph->pCurveArray->numOfPlotDots++;								//number of plot dot increase
-	*(pGraph->pCurveArray->pDotX)=RxData.rxVdtest;						//get x
-	*(pGraph->pCurveArray->pDotY)=RxData.rxIdmeasured.num_float;		//get y
-	if(RxData.rxStopSign==0x02)			//if complete the test, stop the timer
-		DiscardAsyncTimer(TimerID);
+	rxNum = GetInQLen(comSelect);  											//读取串口中发送来的数据数量
+	while(rxNum>=20)
+	{
+		status = ComRd(comSelect, (char *)UartRxBuf, 20);					//Read UART Buffer to local buffer
+		ProtocolGetData(UartRxBuf, &RxData);								//get data from uart buffer
+		Graph.pCurveArray->numOfPlotDots++;									//number of plot dot increase
+		*(Graph.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+		*(Graph.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data
+		if(RxData.rxStopSign==0x02)											//if complete the test, stop the timer
+			DiscardAsyncTimer(TimerID);
+		rxNum-=20;
+		Graph.pCurveArray->numOfPlotDots++;
+		rxNum = GetInQLen(comSelect);  										//读取串口中发送来的数据数量 
+	}
 	
 }
 
 int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2)
 {
-	pGraph->pCurveArray->plotHandle=PlotXY(graphDispPanel, GRAPHDISP_GRAPH1, pGraph->pCurveArray->pDotX, pGraph->pCurveArray->pDotY, pGraph->pCurveArray->numOfPlotDots, VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, VAL_BLUE);
-	if(pGraph->pCurveArray->plotHandle<0)
+	if(Graph.pCurveArray->numOfPlotDots>0)
+		Graph.pCurveArray->plotHandle=PlotXY(graphDispPanel, GRAPHDISP_GRAPH1, Graph.pCurveArray->pDotX, Graph.pCurveArray->pDotY, Graph.pCurveArray->numOfPlotDots, VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, VAL_BLUE);
+	if(Graph.pCurveArray->plotHandle<0)
 		return -1;
 	else
 		return 0;
