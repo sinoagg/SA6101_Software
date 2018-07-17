@@ -46,6 +46,7 @@ extern int environmentPanel;
 extern int resultPanel;
 extern int graphDispPanel;
 extern int tablePanel;
+
 //==============================================================================
 // Global functions
 

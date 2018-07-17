@@ -85,3 +85,36 @@ int CVICALLBACK ExpListCallBack (int panel, int control, int event,
 	
 	return 0;
 }
+
+//ListBox2   2-terminnal   
+int CVICALLBACK ListBoxCallback (int panel, int control, int event,
+								 void *callbackData, int eventData1, int eventData2)
+{
+	int ListIndex;
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:
+			GetCtrlVal(panel, control, &ListIndex); 
+			if(ListIndex==1){
+
+					//º”‘ÿI-T
+				SetPanelPos(IdVdPanel, 105, 305);
+				SetPanelSize(IdVdPanel, 900, 1293);
+				DisplayPanel(IdVdPanel);
+					
+					}
+			else if(ListIndex==2){	 	
+				
+					//º”‘ÿR-T
+				SetPanelPos(IdVgPanel, 105, 305);
+				SetPanelSize(IdVgPanel, 900, 1293);
+				DisplayPanel(IdVgPanel);
+					}
+			else{
+				//
+				
+					}
+			break;
+	}
+	return 0;
+}

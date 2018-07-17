@@ -4,6 +4,7 @@
 int resultPanel;
 int tablePanel;
 int graphDispPanel;
+int saveDataPanel;
 
 int CVICALLBACK TableCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
@@ -55,7 +56,13 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 				DisplayImageFile (resultPanel, RESULTMENU_Graph, "Resource\\Graph.ico");
 				DisplayImageFile (resultPanel, RESULTMENU_Table, "Resource\\Table.ico"); 
 				DisplayImageFile (resultPanel, RESULTMENU_SaveData, "Resource\\SaveData_pressed.ico"); 
-				
+			//选择要保存的数据形式：table/graph
+				//MessagePopup ("Save Test Data As", "请保存数据");       
+			break;
+		 case EVENT_LEFT_CLICK:
+			   	SetPanelPos(saveDataPanel, 300, 700);  
+		     	SetPanelSize(saveDataPanel, 400, 500);      
+	 			DisplayPanel(saveDataPanel);
 			break;
 	}	
 	return 0;

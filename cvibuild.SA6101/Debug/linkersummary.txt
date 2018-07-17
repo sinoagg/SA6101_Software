@@ -12,6 +12,7 @@ Plot.obj
 Protocol.obj
 Result Menu.obj
 SampleCfgPanel.obj
+SaveData.obj
 Timer.obj
 cvi.lib
 cvistart.lib

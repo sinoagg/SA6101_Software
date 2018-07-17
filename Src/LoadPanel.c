@@ -37,6 +37,7 @@ int environmentPanel;
 int resultPanel;
 int graphDispPanel;
 int tablePanel;
+int saveDataPanel;
 //==============================================================================
 // Global functions
 
@@ -71,6 +72,9 @@ int LoadInitPanel (void)
 		return -1;
 	
 	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
+		return -1;
+	
+	if ((saveDataPanel = LoadPanel (mainPanel, "SaveData.uir", TABLE)) < 0)		//load TABLE panel
 		return -1;
 	
 	DisplayPanel (mainPanel); 

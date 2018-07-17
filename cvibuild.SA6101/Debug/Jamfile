@@ -1,142 +1,148 @@
 CCFLAGS = -g ;
-HDRS = 	"e:\\SINOAGG\\Software\\SA6101\\UI Files"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\activex\\word"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\activex\\excel"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\custctrl"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\custctrl\\custsupp"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\cvirtsup"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\datasock"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\daqUtil"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\printing"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\toolbox"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\reportgen"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\toolslib\\localui"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\instr"
-	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl"
-	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
-	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\instr"
+HDRS = 	"e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\activex\\word"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\activex\\excel"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\custctrl"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\custctrl\\custsupp"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\cvirtsup"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\datasock"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\daqUtil"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\printing"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\toolbox"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\reportgen"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\localui"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\instr"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\toolslib\\custctrl"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\instr"
 	"C:\\ProgramData\\National Instruments\\CVI2017\\instr"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\include"
-	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\include"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\include"
 	"C:\\ProgramData\\National Instruments\\CVI2017\\include"
 	"C:\\ProgramData\\National Instruments\\CVI\\include"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\include\\ansi"
-	"c:\\program files (x86)\\national instruments\\cvi2017\\include\\clang\\3.3"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include\\ansi"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include\\clang\\3.3"
 	"C:\\Program Files (x86)\\IVI Foundation\\IVI\\Include"
 	"C:\\Program Files (x86)\\IVI Foundation\\VISA\\winnt\\include"
-	"C:\\Program Files (x86)\\National Instruments\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
-	"c:\\Program Files (x86)\\National Instruments\\CVI2017\\bin"
+	"D:\\software\\NILWCVI\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
+	"d:\\software\\NILWCVI\\NILWCVI2017\\bin"
 	"c:\\ProgramData\\National Instruments\\CVI2017\\bin"
-	"c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin"
+	"d:\\software\\NILWCVI\\Shared\\CVI\\Bin"
 	;
 include Jamfile_instr ;
-LOCATE on "asynctmr.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "asynctmr.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Curve.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Curve.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "ExpListPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "ExpListPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "File.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "File.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Graph.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Graph.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "IdVdsPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "IdVdsPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "IdVgsPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
-LOCATE on "IdVgsPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
-LOCATE on "LoadPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "LoadPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "main.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "MainPanelCb.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "MainPanelCb.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Plot.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Plot.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Protocol.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Protocol.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Result Menu.c" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
-LOCATE on "Result Menu.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
-LOCATE on "SampleCfgPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "SampleCfgPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Timer.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-LOCATE on "Timer.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\asynctmr.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" = 1 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\Curve.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj" = 2 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Curve.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\ExpListPanel.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = 3 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\File.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" = 4 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\File.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\Graph.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj" = 5 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Graph.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\IdVdsPanel.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = 6 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" : "e:\\SINOAGG\\Software\\SA6101\\UI Files\\IdVgsPanel.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = 7 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\LoadPanel.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = 8 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\LoadPanel.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\main.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" = 9 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\main.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\MainPanelCb.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = 10 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\Plot.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj" = 11 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Plot.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\Protocol.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" = 12 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Protocol.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj" : "e:\\SINOAGG\\Software\\SA6101\\UI Files\\Result Menu.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj" = 13 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Result Menu.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\SampleCfgPanel.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = 14 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\Timer.c" ;
-FILENUM on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj" = 15 ;
-DEFPROTS on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj.cvidefprots" ;
-OUTFILE on "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj.out" ;
-PrjObjects += "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\Timer.obj" ;
-Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\resources.in.rc" ;
-Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\manifest.xml" ;
-MainFromObjects "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : $(PrjObjects) $(InstrObjects) ;
-Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\link_options.txt" ;
-Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\resources.res" ;
-Depends all : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\SA6101.exe" ;
+LOCATE on "asynctmr.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "asynctmr.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Curve.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Curve.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "ExpListPanel.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "ExpListPanel.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "File.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "File.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Graph.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Graph.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "IdVdsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "IdVdsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "IdVgsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files" ;
+LOCATE on "IdVgsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files" ;
+LOCATE on "LoadPanel.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "LoadPanel.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "main.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "MainPanelCb.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "MainPanelCb.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Plot.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Plot.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Protocol.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Protocol.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Result Menu.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files" ;
+LOCATE on "Result Menu.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files" ;
+LOCATE on "SampleCfgPanel.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "SampleCfgPanel.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "SaveData.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files" ;
+LOCATE on "Timer.c" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+LOCATE on "Timer.h" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\asynctmr.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" = 1 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\Curve.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj" = 2 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Curve.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\ExpListPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = 3 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\File.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj" = 4 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\File.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\Graph.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj" = 5 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Graph.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\IdVdsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = 6 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files\\IdVgsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = 7 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\LoadPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = 8 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\LoadPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\main.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj" = 9 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\main.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\MainPanelCb.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = 10 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\Plot.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj" = 11 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Plot.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\Protocol.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj" = 12 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Protocol.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files\\Result Menu.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj" = 13 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Result Menu.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\SampleCfgPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = 14 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\UI Files\\SaveData.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj" = 15 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SaveData.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\Src\\Timer.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" = 16 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.in.rc" ;
+Depends "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\manifest.xml" ;
+MainFromObjects "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : $(PrjObjects) $(InstrObjects) ;
+Depends "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\link_options.txt" ;
+Depends "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.res" ;
+Depends all : "e:\\GitWorkplace\\Sinoagg\\download\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" ;
