@@ -37,7 +37,7 @@ IdVgCfg_TypeDef IdVgCfg;
 /// HIRET What does your function return?
 int GetIdVgCfg (int panelHandle)
 {
-	int temp;
+	/*int temp;
 	if(GetCtrlVal(panelHandle, IDVGS_CFG_VD_START, &temp)<0)
 		return -1;
 	IdVgCfg.cfgVdstart=temp;
@@ -46,7 +46,23 @@ int GetIdVgCfg (int panelHandle)
 	IdVgCfg.cfgVdstop=temp;
 	if(GetCtrlVal(panelHandle, IDVGS_CFG_VD_STEP, &temp)<0)
 		return -1;
+	IdVgCfg.cfgVdstep=temp;*/
+	
+	
+		int temp;
+	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_BIAS, &temp)<0)
+		return -1;
+	IdVgCfg.cfgVdstart=temp;
+	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_COMPL_2, &temp)<0)
+		return -1;
+	IdVgCfg.cfgVdstop=temp;
+	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_BIAS_2, &temp)<0)
+		return -1;
 	IdVgCfg.cfgVdstep=temp;
+	
+	
+	
+	
 	
 	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_START, &temp)<0)
 		return -1;
@@ -60,3 +76,21 @@ int GetIdVgCfg (int panelHandle)
 	
 	return 0;
 }
+
+
+//----------------------------------------------------------------
+int CVICALLBACK GateCallback (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+//	int IdVgPanel;
+	
+	   switch(event){
+		   case EVENT_LEFT_CLICK_UP:
+			      DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");
+				 
+			   break;
+	   
+	   }
+	return 0;
+}
+

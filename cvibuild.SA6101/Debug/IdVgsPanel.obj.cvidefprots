@@ -2,3 +2,7 @@
 Class="Function"
 Prototype="int GetIdVgCfg(int panelHandle);"
 
+[GateCallback]
+Class="Function"
+Prototype="int GateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

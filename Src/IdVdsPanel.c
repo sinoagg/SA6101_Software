@@ -38,6 +38,8 @@ IdVdCfg_TypeDef IdVdCfg;
 int GetIdVdCfg (int panelHandle)
 {
 	int temp;
+	
+	
 	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_START, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVdstart=temp;
@@ -48,15 +50,31 @@ int GetIdVdCfg (int panelHandle)
 		return -1;
 	IdVdCfg.cfgVdstep=temp;
 	
-	if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_START, &temp)<0)
+	
+	
+	//
+	//if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_START, &temp)<0)
+	//	return -1;
+	//IdVdCfg.cfgVgstart=temp;
+	//if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_STOP, &temp)<0)
+	//	return -1;
+	//IdVdCfg.cfgVgstop=temp;
+	//if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_STEP, &temp)<0)
+	//	return -1;
+	//IdVdCfg.cfgVgstep=temp;
+	
+		
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_START_2, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVgstart=temp;
-	if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_STOP, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STOP_2, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVgstop=temp;
-	if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_STEP, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STEP_2, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVgstep=temp;
+	
+	
 	
 	return 0;
 }
