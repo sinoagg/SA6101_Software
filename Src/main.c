@@ -50,13 +50,12 @@ void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 	{
 		status = ComRd(comSelect, (char *)UartRxBuf, 20);					//Read UART Buffer to local buffer
 		ProtocolGetData(UartRxBuf, &RxData);								//get data from uart buffer
-		Graph.pCurveArray->numOfPlotDots++;									//number of plot dot increase
+		Graph.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
 		*(Graph.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
 		*(Graph.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data
 		if(RxData.rxStopSign==0x02)											//if complete the test, stop the timer
 			DiscardAsyncTimer(TimerID);
 		rxNum-=20;
-		Graph.pCurveArray->numOfPlotDots++;
 		rxNum = GetInQLen(comSelect);  										//读取串口中发送来的数据数量 
 	}
 	
