@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		IdVgsPanel.h
+// Title:		Timer.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	18/7/11 at 13:36:34 by .
+// Created on:	18/7/16 at 17:33:45 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __IdVgsPanel_H__
-#define __IdVgsPanel_H__
+#ifndef __Timer_H__
+#define __Timer_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -25,25 +25,17 @@
 
 //==============================================================================
 // Types
-typedef struct
-{
-	int cfgVdstart;									//voltage drain start
-	int cfgVdstop;									//voltage drain stop
-	int cfgVdstep;									//voltage drain step
-	int cfgVgstart;									//voltage gate start
-	int cfgVgstop;									//voltage gate stop
-	int cfgVgstep;									//voltage gate step
-}IdVgCfg_TypeDef;
+
 //==============================================================================
 // External variables
-extern IdVgCfg_TypeDef IdVgCfg;
+
 //==============================================================================
 // Global functions
 
-int GetIdVgCfg (int panelHandle); 
+int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __IdVgsPanel_H__ */
+#endif  /* ndef __Timer_H__ */

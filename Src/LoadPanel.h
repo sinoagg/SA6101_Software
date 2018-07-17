@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		IdVgsPanel.h
+// Title:		LoadPanel.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	18/7/11 at 13:36:34 by .
+// Created on:	18/7/16 at 15:21:14 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __IdVgsPanel_H__
-#define __IdVgsPanel_H__
+#ifndef __LoadPanel_H__
+#define __LoadPanel_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -19,31 +19,40 @@
 // Include files
 
 #include "cvidef.h"
-
+#include "MainPanel.h"
+#include "Experiment List.h"
+#include "Id-Vds Configuration.h"
+#include "Id-Vgs Configuration.h"
+#include "Sample Configuration.h"
+#include "GraphDisp.h"
+#include "Environment.h"
+#include "Result Menu.h"
+#include "Table.h"
 //==============================================================================
 // Constants
 
 //==============================================================================
 // Types
-typedef struct
-{
-	int cfgVdstart;									//voltage drain start
-	int cfgVdstop;									//voltage drain stop
-	int cfgVdstep;									//voltage drain step
-	int cfgVgstart;									//voltage gate start
-	int cfgVgstop;									//voltage gate stop
-	int cfgVgstep;									//voltage gate step
-}IdVgCfg_TypeDef;
+
 //==============================================================================
 // External variables
-extern IdVgCfg_TypeDef IdVgCfg;
+extern int mainPanel;
+extern int expListPanel;
+extern int IdVdPanel;
+extern int IdVgPanel;
+extern int samplePanel;
+extern int graphDispPanel;
+extern int environmentPanel;
+extern int resultPanel;
+extern int graphDispPanel;
+extern int tablePanel;
 //==============================================================================
 // Global functions
 
-int GetIdVgCfg (int panelHandle); 
+int LoadInitPanel (void);
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __IdVgsPanel_H__ */
+#endif  /* ndef __LoadPanel_H__ */

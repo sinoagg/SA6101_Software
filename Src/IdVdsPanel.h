@@ -36,7 +36,7 @@ typedef struct
 }IdVdCfg_TypeDef;
 //==============================================================================
 // External variables
-
+extern IdVdCfg_TypeDef IdVdCfg;
 //==============================================================================
 // Global functions
 

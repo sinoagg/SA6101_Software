@@ -1,19 +1,19 @@
 //==============================================================================
 //
-// Title:		Graph.c
+// Title:		Plot.c
 // Purpose:		A short description of the implementation.
 //
-// Created on:	18/7/12 at 13:50:53 by .
+// Created on:	18/7/16 at 17:35:20 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
 //==============================================================================
 // Include files
-#include <ansi_c.h>
-#include "Curve.h"
-#include "Graph.h"
 
+//#include "Plot.h"
+#include <userint.h>
+#include "Graph.h"
 //==============================================================================
 // Constants
 
@@ -28,25 +28,16 @@
 
 //==============================================================================
 // Global variables
-Graph_TypeDef Graph;
+
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
-int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGraph)
+int PlotCurve(Graph_TypeDef* pGraph, int graphDispPanel, int control)
 {
-	int i;
-	pGraph->graphIndex=graphIndex;
-	pGraph->numOfCurve=numOfCurve;
-	Curve_TypeDef* pCurveArray = (Curve_TypeDef *)malloc(numOfCurve * sizeof(Curve_TypeDef)); 	//Curve Array Saving pointers to curve structure
-	if(pCurveArray==NULL) return -1;
-	pGraph->pCurveArray=pCurveArray;
-	
-	for(i=0;i<numOfCurve;i++)		//init curve
-	{
-		if(curveInit(i, numOfDots, pCurveArray+i)==-1) return -1;
-	}
-	return 0;
+		if(pGraph->pCurveArray->numOfPlotDots>0)
+		pGraph->pCurveArray->plotHandle=PlotXY(graphDispPanel, control, pGraph->pCurveArray->pDotX, pGraph->pCurveArray->pDotY, pGraph->pCurveArray->numOfPlotDots, VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, VAL_BLUE);
+	if(pGraph->pCurveArray->plotHandle<0)
+		return -1;
+	else
+		return 0;
 }

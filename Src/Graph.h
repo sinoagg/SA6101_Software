@@ -35,7 +35,7 @@ typedef struct
 
 //==============================================================================
 // External variables
-
+extern Graph_TypeDef Graph;
 //==============================================================================
 // Global functions
 int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGraph);
