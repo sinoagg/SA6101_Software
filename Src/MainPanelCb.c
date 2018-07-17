@@ -181,6 +181,7 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_Analyze, "Resource\\Analyze.ico");
 			
 			break;
+	
 	}
 	return 0;
 }
@@ -199,6 +200,14 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_Configure, "Resource\\Configure_pressed.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_Analyze, "Resource\\Analyze.ico");
 			
+			break;
+			
+			
+		case EVENT_LEFT_CLICK:
+			//点击Configure图标回到Id_vds界面
+				SetPanelPos(IdVdPanel, 105, 305);
+				SetPanelSize(IdVdPanel, 900, 1293);
+				DisplayPanel(IdVdPanel);
 			break;
 	}
 	return 0;

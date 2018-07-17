@@ -61,7 +61,7 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 			break;
 		 case EVENT_LEFT_CLICK:
 			   	SetPanelPos(saveDataPanel, 300, 700);  
-		     	SetPanelSize(saveDataPanel, 400, 500);      
+		     	SetPanelSize(saveDataPanel,250, 400);      
 	 			DisplayPanel(saveDataPanel);
 			break;
 	}	

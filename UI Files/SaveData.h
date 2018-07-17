@@ -22,10 +22,13 @@
 #define  saveData_STRING                  7       /* control type: string, callback function: (none) */
 #define  saveData_TEXTMSG_4               8       /* control type: textMsg, callback function: (none) */
 #define  saveData_RING                    9       /* control type: ring, callback function: (none) */
-#define  saveData_TOGGLEBUTTON_3          10      /* control type: textButton, callback function: (none) */
-#define  saveData_TOGGLEBUTTON_2          11      /* control type: textButton, callback function: (none) */
-#define  saveData_TOGGLEBUTTON_4          12      /* control type: textButton, callback function: (none) */
-#define  saveData_TOGGLEBUTTON            13      /* control type: textButton, callback function: (none) */
+#define  saveData_COMMANDBUTTON_3         10      /* control type: command, callback function: (none) */
+#define  saveData_COMMANDBUTTON_2         11      /* control type: command, callback function: (none) */
+#define  saveData_COMMANDBUTTON_5         12      /* control type: command, callback function: (none) */
+#define  saveData_COMMANDBUTTON_6         13      /* control type: command, callback function: (none) */
+#define  saveData_COMMANDBUTTON_7         14      /* control type: command, callback function: (none) */
+#define  saveData_COMMANDBUTTON_4         15      /* control type: command, callback function: (none) */
+#define  saveData_COMMANDBUTTON           16      /* control type: command, callback function: (none) */
 
 
      /* Control Arrays: */
