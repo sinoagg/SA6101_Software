@@ -1,4 +1,0 @@
-[GetIdVdCfg]
-Class="Function"
-Prototype="int GetIdVdCfg(int panelHandle);"
-

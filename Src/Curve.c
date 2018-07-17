@@ -36,12 +36,14 @@
 /// HIRET What does your function return?
 int curveInit(int curveIndex, int numOfTotalDots, Curve_TypeDef* pCurve)
 {
-	pCurve->pDotX = (float *)malloc(numOfTotalDots * sizeof(float));
-	if(pCurve->pDotX == NULL) return -1;
-	pCurve->pDotY = (float *)malloc(numOfTotalDots * sizeof(float));
-	if(pCurve->pDotY == NULL) return -1;
+	pCurve->pDotXHead = (float *)malloc(numOfTotalDots * sizeof(float));
+	if(pCurve->pDotXHead == NULL) return -1;
+	pCurve->pDotYHead = (float *)malloc(numOfTotalDots * sizeof(float));
+	if(pCurve->pDotYHead == NULL) return -1;
 	pCurve->curveIndex=curveIndex;
 	pCurve->numOfTotalDots=numOfTotalDots;
+	pCurve->pDotX=pCurve->pDotXHead;
+	pCurve->pDotY=pCurve->pDotYHead;
 	pCurve->numOfPlotDots=0;		
 	pCurve->numOfDotsToPlot=0;
 	pCurve->pDotXPlot=pCurve->pDotX;				//画图的指针指向数据的指针

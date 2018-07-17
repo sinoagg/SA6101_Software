@@ -30,8 +30,10 @@ typedef struct
 	int numOfTotalDots;								//理论计算总点数
 	int numOfPlotDots;								//已画点数量
 	int numOfDotsToPlot;							//将要画点数量
-	float* pDotX;									//点X坐标数组首地址
-	float* pDotY;									//点Y坐标数组首地址
+	float* pDotXHead;								//点X坐标数组首地址   
+	float* pDotYHead;								//点Y坐标数组首地址  
+	float* pDotX;									//当前接收点X坐标地址
+	float* pDotY;									//当前接收点Y坐标地址
 	float* pDotXPlot;								//当前画线点X坐标
 	float* pDotYPlot;								//当前画线点Y坐标
 }Curve_TypeDef;

@@ -54,12 +54,12 @@ Batch Build Debug = False
 [File 0001]
 Path = "/e/SINOAGG/Software/SA6101/Src/main.c"
 File Type = "CSource"
-Disk Date = 3614638137
+Disk Date = 3614641429
 In Projects = "1,"
 Window Top = 312
 Window Left = 154
 Window Z-Order = 3
-Source Window State = "1,58,58,58,8,43,8,0,0,67,0,6,0,2,0,18,20,0,57,18,323,577,1,26,"
+Source Window State = "1,52,52,52,17,28,17,0,0,67,0,6,0,2,0,18,21,0,52,4,323,577,1,26,"
 
 [File 0002]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/GraphDisp.uir"
@@ -233,8 +233,8 @@ Disk Date = 3614638830
 In Projects = "1,"
 Window Top = 343
 Window Left = 170
-Window Z-Order = 1
-Source Window State = "1,36,36,36,24,60,24,0,0,201,0,0,0,0,0,46,19,0,43,98,427,726,1,0,"
+Window Z-Order = 4
+Source Window State = "1,36,36,36,24,60,24,0,0,85,0,0,0,0,0,25,19,0,50,23,427,726,1,0,"
 
 [File 0019]
 Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
@@ -344,12 +344,12 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,144,0,363,35,497,1027,1,0
 [File 0030]
 Path = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
 File Type = "CSource"
-Disk Date = 3614638293
+Disk Date = 3614641510
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
 Window Z-Order = 2
-Source Window State = "1,46,46,46,4,79,4,0,0,123,0,0,0,0,0,29,28,0,47,17,497,1027,1,0,"
+Source Window State = "1,45,45,45,26,35,26,0,0,123,0,0,0,0,0,29,28,0,45,27,497,1027,1,0,"
 
 [File 0031]
 Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
@@ -571,11 +571,11 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,54,21,497,1027,1,0,"
 [File 0064]
 Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
 File Type = "Include"
-Disk Date = 3614638037
+Disk Date = 3614641509
 In Projects = "1,"
 Window Top = 31
-Window Z-Order = 4
-Source Window State = "1,0,0,0,0,0,0,0,0,70,0,0,0,0,0,23,13,0,31,52,400,600,1,0,"
+Window Z-Order = 1
+Source Window State = "1,35,35,35,54,73,54,0,0,201,0,0,0,0,0,46,3,0,33,12,400,600,1,0,"
 
 [File 0065]
 Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
