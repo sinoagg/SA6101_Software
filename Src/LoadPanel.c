@@ -38,6 +38,9 @@ int resultPanel;
 int graphDispPanel;
 int tablePanel;
 int saveDataPanel;
+int iTPanel;
+int rTPanel; 
+
 //==============================================================================
 // Global functions
 
@@ -68,13 +71,23 @@ int LoadInitPanel (void)
 	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
 		return -1;
 	
+	 //用于弹出savedata面板
+	if ((saveDataPanel = LoadPanel (mainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//load savedata panel
+		return -1;
+	
 	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
 	
 	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
 		return -1;
 	
-	if ((saveDataPanel = LoadPanel (mainPanel, "SaveData.uir", TABLE)) < 0)		//load TABLE panel
+	//if ((saveDataPanel = LoadPanel (mainPanel, "SaveData.uir",SAVEDATA )) < 0)		//load SAVEDATA panel
+	//	return -1;
+	
+	if ((iTPanel = LoadPanel (mainPanel, "I-T.uir", ITPANEL)) < 0)		//load I-T  panel
+		return -1;
+	
+	if ((rTPanel = LoadPanel (mainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
 	
 	DisplayPanel (mainPanel); 

@@ -18,11 +18,26 @@
 #define  RESULTMENU_SaveData              3       /* control type: picture, callback function: SaveDataCallback */
 #define  RESULTMENU_Graph                 4       /* control type: picture, callback function: GraphCallback */
 
+#define  SAVEDATA                         2
+#define  SAVEDATA_TEXTMSG                 2       /* control type: textMsg, callback function: (none) */
+#define  SAVEDATA_TEXTMSG_3               3       /* control type: textMsg, callback function: (none) */
+#define  SAVEDATA_TEXTMSG_2               4       /* control type: textMsg, callback function: (none) */
+#define  SAVEDATA_GRAPH1PATH2             5       /* control type: string, callback function: (none) */
+#define  SAVEDATA_GRAPH1PATH              6       /* control type: string, callback function: (none) */
+#define  SAVEDATA_SHEETPATH               7       /* control type: string, callback function: (none) */
+#define  SAVEDATA_SAVEGRAPH1              8       /* control type: command, callback function: SaveGraph1Callback */
+#define  SAVEDATA_SAVEGRAPH2              9       /* control type: command, callback function: (none) */
+#define  SAVEDATA_SAVEALL                 10      /* control type: command, callback function: SaveAllCallback */
+#define  SAVEDATA_SAVESHEET               11      /* control type: command, callback function: SaveSheetCallback */
+#define  SAVEDATA_CANCEL                  12      /* control type: command, callback function: ExitCallback */
+#define  SAVEDATA_BROWSEGRAPH2            13      /* control type: command, callback function: (none) */
+#define  SAVEDATA_BROWSEGRAPH1            14      /* control type: command, callback function: BrowseGraph1Callback */
+#define  SAVEDATA_BROWSESHEET             15      /* control type: command, callback function: BrowseSheetCallback */
+
 
      /* Control Arrays: */
 
-          /* (no control arrays in the resource file) */
-
+#define  CTRLARRAY                        1
 
      /* Menu Bars, Menus, and Menu Items: */
 
@@ -31,8 +46,14 @@
 
      /* Callback Prototypes: */
 
+int  CVICALLBACK BrowseGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK BrowseSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK ExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK GraphCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveAllCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SaveDataCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK TableCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 

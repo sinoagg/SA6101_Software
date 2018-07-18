@@ -1,3 +1,4 @@
+#include "Id-Vds Configuration.h"
 #include <userint.h>
 //==============================================================================
 //
@@ -14,6 +15,8 @@
 
 #include "IdVgsPanel.h"
 #include "Id-Vgs Configuration.h"
+#define   val_pres_color  0xA0B4DCL   // 点击激活蓝色
+#define  val_color 0xA9A9A9L	   //未点击灰色
 //==============================================================================
 // Constants
 
@@ -37,28 +40,19 @@ IdVgCfg_TypeDef IdVgCfg;
 /// HIRET What does your function return?
 int GetIdVgCfg (int panelHandle)
 {
-	/*int temp;
-	if(GetCtrlVal(panelHandle, IDVGS_CFG_VD_START, &temp)<0)
+	int temp;
+	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_START, &temp)<0)
 		return -1;
 	IdVgCfg.cfgVdstart=temp;
-	if(GetCtrlVal(panelHandle, IDVGS_CFG_VD_STOP, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_STOP, &temp)<0)
 		return -1;
 	IdVgCfg.cfgVdstop=temp;
-	if(GetCtrlVal(panelHandle, IDVGS_CFG_VD_STEP, &temp)<0)
-		return -1;
-	IdVgCfg.cfgVdstep=temp;*/
-	
-	
-		int temp;
-	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_BIAS, &temp)<0)
-		return -1;
-	IdVgCfg.cfgVdstart=temp;
-	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_COMPL_2, &temp)<0)
-		return -1;
-	IdVgCfg.cfgVdstop=temp;
-	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_BIAS_2, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_STEP, &temp)<0)
 		return -1;
 	IdVgCfg.cfgVdstep=temp;
+	
+	
+		
 	
 	
 	
@@ -82,15 +76,28 @@ int GetIdVgCfg (int panelHandle)
 int CVICALLBACK GateCallback (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-//	int IdVgPanel;
-	
-	   switch(event){
+	//  Gate
+
+		   switch(event){
 		   case EVENT_LEFT_CLICK_UP:
-			      DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");
-				 
+			      //点击Gate时，其他为灰色状态
+			      DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_color);// change text bgcolor
+				  
+				  
+				/*  DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_color);
+				  DisplayImageFile (panel, IDVGS_CFG_PIC_BULK, "Resource\\bg.ico");
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_BULK, ATTR_TEXT_BGCOLOR, val_color);
+				  DisplayImageFile (panel, IDVGS_CFG_PIC_SOURCE, "Resource\\bg.ico"); 
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_SOURCE, ATTR_TEXT_BGCOLOR, val_color);*/
+				  
+				  
+ 
 			   break;
+	}
 	   
-	   }
+	  
 	return 0;
 }
 

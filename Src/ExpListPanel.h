@@ -33,6 +33,9 @@ extern int expListPanel;
 extern int IdVdPanel;
 extern int IdVgPanel;
 extern int samplePanel;
+extern int iTPanel;  //√Ê∞ÂI-T
+extern int rTPanel;//√Ê∞ÂR-T
+
 //==============================================================================
 // Global functions
 

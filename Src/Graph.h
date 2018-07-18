@@ -27,8 +27,12 @@
 //==============================================================================
 // Types
 typedef struct
+<<<<<<< HEAD
 {
 	int plotHandle;									//graph handle 
+=======
+{   int plotHandle;									//graph handle  
+>>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
 	Curve_TypeDef* pCurveArray;						//pointer to curve array

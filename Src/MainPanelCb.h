@@ -26,6 +26,7 @@
 #include "Protocol.h"
 #include "Graph.h"
 #include "Curve.h"
+
 //==============================================================================
 // Constants
 
