@@ -1,0 +1,20 @@
+[BrowseSheetCallback]
+Class="Function"
+Prototype="int BrowseSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[BrowseGraph1Callback]
+Class="Function"
+Prototype="int BrowseGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SaveSheetCallback]
+Class="Function"
+Prototype="int SaveSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SaveGraph1Callback]
+Class="Function"
+Prototype="int SaveGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SaveAllCallback]
+Class="Function"
+Prototype="int SaveAllCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

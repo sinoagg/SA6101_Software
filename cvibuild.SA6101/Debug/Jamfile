@@ -58,6 +58,7 @@ LOCATE on "Result Menu.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
 LOCATE on "SampleCfgPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "SampleCfgPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "SaveData.c" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
+LOCATE on "SaveData.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
 LOCATE on "Timer.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "Timer.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 Object "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug\\asynctmr.obj" : "e:\\SINOAGG\\Software\\SA6101\\Src\\asynctmr.c" ;

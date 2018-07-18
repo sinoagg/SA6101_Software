@@ -24,10 +24,10 @@
 #define  SAVEDATA_PICFORMAT               9       /* control type: ring, callback function: (none) */
 #define  SAVEDATA_COMMANDBUTTON_3         10      /* control type: command, callback function: (none) */
 #define  SAVEDATA_BROWSEGRAPH1            11      /* control type: command, callback function: BrowseGraph1Callback */
-#define  SAVEDATA_COMMANDBUTTON_5         12      /* control type: command, callback function: (none) */
+#define  SAVEDATA_SAVEGRAPH1              12      /* control type: command, callback function: SaveGraph1Callback */
 #define  SAVEDATA_COMMANDBUTTON_6         13      /* control type: command, callback function: (none) */
-#define  SAVEDATA_COMMANDBUTTON_7         14      /* control type: command, callback function: (none) */
-#define  SAVEDATA_COMMANDBUTTON_4         15      /* control type: command, callback function: (none) */
+#define  SAVEDATA_SAVEALL                 14      /* control type: command, callback function: SaveAllCallback */
+#define  SAVEDATA_SAVESHEET               15      /* control type: command, callback function: SaveSheetCallback */
 #define  SAVEDATA_BROWSESHEET             16      /* control type: command, callback function: BrowseSheetCallback */
 
 
@@ -45,6 +45,9 @@
 
 int  CVICALLBACK BrowseGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK BrowseSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveAllCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

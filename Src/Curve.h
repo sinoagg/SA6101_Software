@@ -25,7 +25,6 @@
 // Types
 typedef struct
 {
-	int plotHandle;
 	int curveIndex;
 	int numOfDots;
 	int numOfPlotDots;

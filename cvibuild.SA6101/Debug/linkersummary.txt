@@ -17,6 +17,10 @@ Timer.obj
 cvi.lib
 cvistart.lib
 kernel32.lib
+toolbox.obj
+advapi32.lib
+cviauto.lib
+gdi32.lib
 user32.lib
 EXE Symbol Module
 Exports Module
