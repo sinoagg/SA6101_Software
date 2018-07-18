@@ -1,8 +1,0 @@
-[ExpListCallBack]
-Class="Function"
-Prototype="int ExpListCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-
-[ListBoxCallback]
-Class="Function"
-Prototype="int ListBoxCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-

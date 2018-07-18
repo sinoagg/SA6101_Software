@@ -8,11 +8,13 @@
 #include "LoadPanel.h"
 #include "MainPanelCb.h"
 
+#define UART_RX_LEN 20
+
 extern int TimerID;
 unsigned char comSelect;				//Serial Com Number
 
 unsigned char UartTxBuf[32]={0};
-unsigned char UartRxBuf[64]={0};
+unsigned char UartRxBuf[500]={0};
 
 void CVICALLBACK ComCallback(int portNumber ,int eventMask, void * callbackData);
 int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
@@ -33,9 +35,9 @@ int main (int argc, char *argv[])
 		MessagePopup("Error","Device unconnected!");
 		return 0;
 	}
-	InstallComCallback (comSelect, LWRS_RECEIVE, 20, 0, ComCallback, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
+	InstallComCallback (comSelect, LWRS_RECEIVE, UART_RX_LEN, 0, ComCallback, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
 	SetCTSMode(comSelect, LWRS_HWHANDSHAKE_OFF);
-	FlushInQ(comSelect);	   //Clear input and output buffer
+	FlushInQ(comSelect);	   												//Clear input and output buffer
 	FlushOutQ(comSelect);
 	LoadInitPanel(); 
 	RunUserInterface ();
@@ -48,20 +50,22 @@ void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 {
 	int status;
 	int rxNum;
+	int i=0;
 	RxDataTypeDef RxData;
 	rxNum = GetInQLen(comSelect);  											//读取串口中发送来的数据数量
-	while(rxNum>=20)
+	if(rxNum>500) rxNum=500;												//防止超过内存范围
+	
+	while(rxNum>=UART_RX_LEN)
 	{
-		status = ComRd(comSelect, (char *)UartRxBuf, 20);					//Read UART Buffer to local buffer
-		ProtocolGetData(UartRxBuf, &RxData);								//get data from uart buffer
-		Graph.pCurveArray->numOfPlotDots++;									//number of plot dot increase
+		status = ComRd(comSelect, (char *)UartRxBuf, rxNum);				//Read UART Buffer to local buffer at one time
+		ProtocolGetData(UartRxBuf+i*UART_RX_LEN, &RxData);					//get data from uart buffer
+		Graph.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
 		*(Graph.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
 		*(Graph.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data
 		if(RxData.rxStopSign==0x02)											//if complete the test, stop the timer
 			DiscardAsyncTimer(TimerID);
-		rxNum-=20;
-		Graph.pCurveArray->numOfPlotDots++;
-		rxNum = GetInQLen(comSelect);  										//读取串口中发送来的数据数量 
+		rxNum-=UART_RX_LEN;
+		i++;
 	}
 	
 }

@@ -1,8 +1,0 @@
-[main]
-Class="Function"
-Prototype="int main(int argc, char **argv);"
-
-[ComCallback]
-Class="Function"
-Prototype="void ComCallback(int portNumber, int eventMask, void *callbackData);"
-

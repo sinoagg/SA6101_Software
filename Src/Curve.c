@@ -34,17 +34,20 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-int curveInit(int curveIndex, int numOfDots, Curve_TypeDef* pCurve)
+int curveInit(int curveIndex, int numOfTotalDots, Curve_TypeDef* pCurve)
 {
-	float *pX = (float *)malloc(numOfDots * sizeof(float));
-	if(pX == NULL) return -1;
-	float *pY = (float *)malloc(numOfDots * sizeof(float));
-	if(pY == NULL) return -1;
+	pCurve->pDotXHead = (float *)malloc(numOfTotalDots * sizeof(float));
+	if(pCurve->pDotXHead == NULL) return -1;
+	pCurve->pDotYHead = (float *)malloc(numOfTotalDots * sizeof(float));
+	if(pCurve->pDotYHead == NULL) return -1;
 	pCurve->curveIndex=curveIndex;
-	pCurve->numOfDots=numOfDots;
-	pCurve->pDotX=pX;
-	pCurve->pDotY=pY;
-	pCurve->numOfPlotDots=0;
+	pCurve->numOfTotalDots=numOfTotalDots;
+	pCurve->pDotX=pCurve->pDotXHead;
+	pCurve->pDotY=pCurve->pDotYHead;
+	pCurve->numOfPlotDots=0;		
+	pCurve->numOfDotsToPlot=0;
+	pCurve->pDotXPlot=pCurve->pDotX;				//画图的指针指向数据的指针
+	pCurve->pDotYPlot=pCurve->pDotY;				//画图的指针指向数据的指针 	
 	
 	return 0;
 }
