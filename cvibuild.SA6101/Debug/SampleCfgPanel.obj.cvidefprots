@@ -1,0 +1,4 @@
+[GetSampleCfg]
+Class="Function"
+Prototype="int GetSampleCfg(int panelHandle);"
+

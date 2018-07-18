@@ -54,10 +54,9 @@ void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 	RxDataTypeDef RxData;
 	rxNum = GetInQLen(comSelect);  											//读取串口中发送来的数据数量
 	if(rxNum>500) rxNum=500;												//防止超过内存范围
-	
+	status = ComRd(comSelect, (char *)UartRxBuf, rxNum);				//Read UART Buffer to local buffer at one time  
 	while(rxNum>=UART_RX_LEN)
 	{
-		status = ComRd(comSelect, (char *)UartRxBuf, rxNum);				//Read UART Buffer to local buffer at one time
 		ProtocolGetData(UartRxBuf+i*UART_RX_LEN, &RxData);					//get data from uart buffer
 		Graph.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
 		*(Graph.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
