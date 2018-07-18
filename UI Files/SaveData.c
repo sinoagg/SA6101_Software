@@ -89,7 +89,7 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 			{
 				if(GetCtrlBitmap(graphDispPanel, GRAPHDISP_GRAPH1, Graph.plotHandle,&bitmapID)<0)
 					return -1;
-				if(SaveBitmapToFile(graphSavePath, bitmapID)<0)
+				if(SaveBitmapToFile(graphSavePath, bitmapID)<0)		 //need check the file format
 					return -1;
 				DiscardBitmap(bitmapID);
 			}
@@ -104,7 +104,17 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-
+			int bitmapID;
+			if(Graph.plotHandle<=0)		//no valid plot behavior
+				MessagePopup ("Message", "No valod plot. Please run test first.");
+			else
+			{
+				if(GetCtrlBitmap(graphDispPanel, GRAPHDISP_GRAPH1, Graph.plotHandle,&bitmapID)<0)
+					return -1;
+				if(SaveBitmapToFile(graphSavePath, bitmapID)<0)		 //need check the file format
+					return -1;
+				DiscardBitmap(bitmapID);
+			}
 			break;
 	}
 	return 0;

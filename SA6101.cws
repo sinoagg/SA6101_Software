@@ -32,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 22
+Number of Opened Files = 23
 Window Confinement Region Enabled = True
 MainColumnWidth = 250
 FileDateColumnWidth = 70
@@ -54,7 +54,7 @@ Disk Date = 3614662832
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
-Window Z-Order = 22
+Window Z-Order = 23
 Source Window State = "1,15,15,15,16,97,16,0,0,123,0,0,0,0,0,29,3,0,12,84,497,1027,1,13,"
 
 [File 0002]
@@ -66,7 +66,7 @@ Window Top = 212
 Window Left = 106
 Window Height = 475
 Window Width = 1111
-Window Z-Order = 6
+Window Z-Order = 10
 
 [File 0003]
 Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.c"
@@ -75,18 +75,18 @@ Disk Date = 3614662832
 In Projects = "1,"
 Window Top = 219
 Window Left = 106
-Window Z-Order = 21
+Window Z-Order = 22
 Source Window State = "1,199,202,202,44,44,44,0,0,85,0,0,0,0,0,25,159,0,168,31,427,726,1,0,"
 
 [File 0004]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.c"
 File Type = "CSource"
-Disk Date = 3614737668
+Disk Date = 3614738223
 In Projects = "1,"
 Window Top = 242
 Window Left = 122
-Window Z-Order = 1
-Source Window State = "1,86,86,86,16,23,23,0,0,201,0,1,0,1,0,46,51,0,86,23,475,981,1,0,"
+Window Z-Order = 6
+Source Window State = "1,84,94,84,12,46,12,0,0,117,0,1,0,1,0,28,4,0,116,13,475,981,1,0,"
 
 [File 0005]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vds Configuration.uir"
@@ -97,7 +97,7 @@ Window Top = 126
 Window Left = 58
 Window Height = 323
 Window Width = 577
-Window Z-Order = 16
+Window Z-Order = 17
 
 [File 0006]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vgs Configuration.uir"
@@ -108,7 +108,7 @@ Window Top = 250
 Window Left = 122
 Window Height = 323
 Window Width = 577
-Window Z-Order = 17
+Window Z-Order = 18
 
 [File 0007]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/MainPanel.uir"
@@ -119,7 +119,7 @@ Window Top = 33
 Window Left = 10
 Window Height = 323
 Window Width = 697
-Window Z-Order = 20
+Window Z-Order = 21
 
 [File 0008]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.c"
@@ -128,18 +128,18 @@ Disk Date = 3614662950
 In Projects = "1,"
 Window Top = 312
 Window Left = 154
-Window Z-Order = 19
+Window Z-Order = 20
 Source Window State = "1,86,89,89,21,21,21,0,0,80,0,69,0,1,0,25,68,0,89,18,427,686,1,0,"
 
 [File 0009]
 Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
 File Type = "CSource"
-Disk Date = 3614736364
+Disk Date = 3614738223
 In Projects = "1,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 10
-Source Window State = "1,40,65,40,0,11,0,0,0,80,0,0,0,0,0,25,12,0,40,0,427,686,1,0,"
+Window Z-Order = 5
+Source Window State = "1,17,17,40,0,21,24,0,2,80,0,0,0,0,0,25,12,0,40,24,427,686,1,0,"
 
 [File 0010]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.h"
@@ -148,7 +148,7 @@ Disk Date = 3614736364
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
-Window Z-Order = 7
+Window Z-Order = 11
 Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,25,7,0,0,0,427,726,1,0,"
 
 [File 0011]
@@ -158,7 +158,7 @@ Disk Date = 3573565200
 In Projects = ""
 Window Top = 157
 Window Left = 74
-Window Z-Order = 18
+Window Z-Order = 19
 Source Window State = "1,2168,2168,2168,14,24,24,0,3,85,0,0,0,0,0,25,2156,0,2168,14,427,726,1,0,"
 
 [File 0012]
@@ -170,7 +170,7 @@ Window Top = 188
 Window Left = 90
 Window Height = 427
 Window Width = 694
-Window Z-Order = 15
+Window Z-Order = 16
 
 [File 0013]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Experiment List.uir"
@@ -181,7 +181,7 @@ Window Top = 374
 Window Left = 186
 Window Height = 427
 Window Width = 686
-Window Z-Order = 14
+Window Z-Order = 15
 
 [File 0014]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/GraphDisp.uir"
@@ -192,7 +192,7 @@ Window Top = 343
 Window Left = 170
 Window Height = 427
 Window Width = 686
-Window Z-Order = 3
+Window Z-Order = 8
 
 [File 0015]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.uir"
@@ -213,7 +213,7 @@ Window Top = 281
 Window Left = 138
 Window Height = 427
 Window Width = 694
-Window Z-Order = 13
+Window Z-Order = 14
 
 [File 0017]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Table.uir"
@@ -224,7 +224,7 @@ Window Top = 95
 Window Left = 42
 Window Height = 427
 Window Width = 686
-Window Z-Order = 12
+Window Z-Order = 13
 
 [File 0018]
 Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.c"
@@ -260,7 +260,7 @@ Disk Date = 3614211203
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
-Window Z-Order = 11
+Window Z-Order = 12
 Source Window State = "1,45,45,45,17,23,23,0,0,81,0,1,0,1,0,25,0,0,23,114,427,694,1,0,"
 
 [File 0022]
@@ -279,7 +279,7 @@ Disk Date = 3614662832
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Window Z-Order = 9
+Window Z-Order = 2
 Source Window State = "1,0,0,0,0,0,0,0,0,123,0,0,0,0,0,29,18,0,0,0,497,1027,1,0,"
 
 [File 0024]
@@ -289,7 +289,7 @@ Disk Date = 3614736364
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Window Z-Order = 4
+Window Z-Order = 9
 Source Window State = "1,0,0,0,0,0,0,0,0,107,0,0,0,0,0,27,0,0,30,15,471,898,1,0,"
 
 [File 0025]
@@ -308,8 +308,8 @@ Disk Date = 3614736408
 In Projects = "1,"
 Window Top = 343
 Window Left = 170
-Window Z-Order = 5
-Source Window State = "1,38,38,38,14,27,27,0,0,85,0,0,0,0,0,25,19,0,38,14,427,726,1,0,"
+Window Z-Order = 3
+Source Window State = "1,34,34,34,4,13,13,0,0,85,0,0,0,0,0,25,19,0,40,41,427,726,1,0,"
 
 [File 0027]
 Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
@@ -327,7 +327,8 @@ Disk Date = 3614650223
 In Projects = "1,"
 Window Top = 281
 Window Left = 138
-Source Window State = "1,39,39,39,14,30,30,0,0,0,0,0,0,0,0,0,8,0,17,16,427,726,1,0,"
+Window Z-Order = 4
+Source Window State = "1,39,39,39,14,30,30,0,0,85,0,0,0,0,0,25,8,0,41,8,427,726,1,0,"
 
 [File 0029]
 Path = "/e/SINOAGG/Software/SA6101/Resource/Analyze(a).png"
@@ -569,8 +570,8 @@ File Type = "Include"
 Disk Date = 3614736364
 In Projects = "1,"
 Window Top = 31
-Window Z-Order = 8
-Source Window State = "1,27,27,27,0,20,20,0,0,70,0,0,0,0,0,23,13,0,26,1,400,600,1,0,"
+Window Z-Order = 1
+Source Window State = "1,27,27,27,0,20,20,0,0,201,0,0,0,0,0,46,13,0,26,1,400,600,1,0,"
 
 [File 0065]
 Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
@@ -588,7 +589,7 @@ Disk Date = 3614736201
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Window Z-Order = 2
+Window Z-Order = 7
 Source Window State = "1,33,33,33,1,14,14,0,0,123,0,0,0,0,0,29,19,0,30,66,497,1027,1,0,"
 
 [File 0067]
@@ -641,6 +642,7 @@ Tab 0019 = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
 Tab 0020 = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
 Tab 0021 = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.h"
 Tab 0022 = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
+Tab 0023 = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
