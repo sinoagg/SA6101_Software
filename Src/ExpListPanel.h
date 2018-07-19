@@ -1,6 +1,6 @@
 //==============================================================================
 //
-// Title:		ExperimentList.h
+// Title:		ExpListPanel.h
 // Purpose:		A short description of the interface.
 //
 // Created on:	18/7/11 at 9:55:13 by .
@@ -8,8 +8,8 @@
 //
 //==============================================================================
 
-#ifndef __ExperimentList_H__
-#define __ExperimentList_H__
+#ifndef __ExpListPanel_H__
+#define __ExpListPanel_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -28,21 +28,14 @@
 
 //==============================================================================
 // External variables
-extern int mainPanel;
-extern int expListPanel;
-extern int IdVdPanel;
-extern int IdVgPanel;
-extern int samplePanel;
-extern int iTPanel;  //√Ê∞ÂI-T
-extern int rTPanel;//√Ê∞ÂR-T
 
 //==============================================================================
 // Global functions
 
-int Declare_Your_Functions_Here (int x);
+
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __ExperimentList_H__ */
+#endif  /* ndef __ExpListPanel_H__ */

@@ -1,15 +1,39 @@
-	
+//==============================================================================
+//
+// Title:		LoadPanel.c
+// Purpose:		A short description of the implementation.
+//
+// Created on:	18/7/16 at 15:21:14 by .
+// Copyright:	. All Rights Reserved.
+//
+//==============================================================================
+
+//==============================================================================
+// Include files
 #include <userint.h>
 #include "toolbox.h"   
 #include "Result Menu.h"
 #include "Graph.h"
 #include "LoadPanel.h"
-int resultPanel;
-int tablePanel;
-int graphDispPanel;
-int saveDataPanel;
+//==============================================================================
+// Constants
 
+//==============================================================================
+// Types
 
+//==============================================================================
+// Static global variables
+
+//==============================================================================
+// Static functions
+
+//==============================================================================
+// Global variables
+char sheetSavePath[512];
+char graphSavePath[512];
+
+//==============================================================================
+// Global functions	
 
 int CVICALLBACK TableCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
@@ -18,9 +42,9 @@ int CVICALLBACK TableCallback (int panel, int control, int event,
 	//点击table图标切换到table面板
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-				DisplayImageFile (resultPanel, RESULTMENU_Table, "Resource\\Table_pressed.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_Graph, "Resource\\Graph.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_SaveData, "Resource\\SaveData.ico");
+				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
+				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico"); 
+				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico");
 			break;
 		case EVENT_LEFT_CLICK:
 			   	SetPanelPos(tablePanel, 176, 305);  
@@ -38,9 +62,9 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 		//点击graph图标切换到graph面板
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-				DisplayImageFile (resultPanel, RESULTMENU_Graph, "Resource\\Graph_pressed.ico");
-				DisplayImageFile (resultPanel, RESULTMENU_Table, "Resource\\Table.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_SaveData, "Resource\\SaveData.ico"); 
+				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
 				
 			break;
 		case EVENT_LEFT_CLICK:
@@ -58,9 +82,9 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 {
 	   switch(event){
 		case EVENT_LEFT_CLICK_UP:
-				DisplayImageFile (resultPanel, RESULTMENU_Graph, "Resource\\Graph.ico");
-				DisplayImageFile (resultPanel, RESULTMENU_Table, "Resource\\Table.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_SaveData, "Resource\\SaveData_pressed.ico"); 
+				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
 			//选择要保存的数据形式：table/graph
 				//MessagePopup ("Save Test Data As", "请保存数据");       
 			break;
@@ -85,15 +109,6 @@ if (event == EVENT_COMMIT)
 	return 0;
 }
 
-
-char sheetSavePath[512];
-char graphSavePath[512];
-//==============================================================================
-// Global functions
-
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
 
 int CVICALLBACK BrowseSheetCallback (int panel, int control, int event,
 								   	 void *callbackData, int eventData1, int eventData2)

@@ -14,15 +14,15 @@
      /* Panels and Controls: */
 
 #define  RESULTMENU                       1
-#define  RESULTMENU_Table                 2       /* control type: picture, callback function: TableCallback */
-#define  RESULTMENU_SaveData              3       /* control type: picture, callback function: SaveDataCallback */
-#define  RESULTMENU_Graph                 4       /* control type: picture, callback function: GraphCallback */
+#define  RESULTMENU_TABLE                 2       /* control type: picture, callback function: TableCallback */
+#define  RESULTMENU_SAVE                  3       /* control type: picture, callback function: SaveDataCallback */
+#define  RESULTMENU_GRAPH                 4       /* control type: picture, callback function: GraphCallback */
 
 #define  SAVEDATA                         2
 #define  SAVEDATA_TEXTMSG                 2       /* control type: textMsg, callback function: (none) */
 #define  SAVEDATA_TEXTMSG_3               3       /* control type: textMsg, callback function: (none) */
 #define  SAVEDATA_TEXTMSG_2               4       /* control type: textMsg, callback function: (none) */
-#define  SAVEDATA_GRAPH1PATH2             5       /* control type: string, callback function: (none) */
+#define  SAVEDATA_GRAPH2PATH              5       /* control type: string, callback function: (none) */
 #define  SAVEDATA_GRAPH1PATH              6       /* control type: string, callback function: (none) */
 #define  SAVEDATA_SHEETPATH               7       /* control type: string, callback function: (none) */
 #define  SAVEDATA_SAVEGRAPH1              8       /* control type: command, callback function: SaveGraph1Callback */

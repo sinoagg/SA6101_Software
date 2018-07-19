@@ -1,25 +1,15 @@
 [Project Header]
 Version = 1700
-<<<<<<< HEAD
 Pathname = "/e/SINOAGG/Software/SA6101/SA6101.prj"
 CVI Dir = "/c/program files (x86)/national instruments/cvi2017"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
-=======
-Pathname = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/SA6101.prj"
-CVI Dir = "/d/software/nilwcvi/nilwcvi2017"
-CVI Shared Dir = "/D/software/NILWCVI/Shared/CVI"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2017"
 CVI Pub Global Dir = "/C/ProgramData/National Instruments/CVI"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
-<<<<<<< HEAD
-Number of Files = 68
-=======
-Number of Files = 71
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Number of Files = 70
 Target Type = "Executable"
 Flags = 2064
 Copied From Locked InstrDrv Directory = False
@@ -53,11 +43,7 @@ Res Id = 1
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/Environment.uir"
-<<<<<<< HEAD
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Environment.uir"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Environment.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -69,11 +55,7 @@ Res Id = 2
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/Experiment List.uir"
-<<<<<<< HEAD
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Experiment List.uir"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Experiment List.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -85,11 +67,7 @@ Res Id = 3
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/GraphDisp.uir"
-<<<<<<< HEAD
 Path = "/e/SINOAGG/Software/SA6101/UI Files/GraphDisp.uir"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/GraphDisp.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -100,13 +78,8 @@ File Type = "User Interface Resource"
 Res Id = 4
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Id-Vds Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vds Configuration.uir"
-=======
 Path Rel Path = "UI Files/I-T.uir"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/I-T.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/I-T.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -117,14 +90,8 @@ File Type = "User Interface Resource"
 Res Id = 5
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Id-Vgs Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vgs Configuration.uir"
-=======
 Path Rel Path = "UI Files/Id-Vds Configuration.uir"
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Id-Vds Configuration.u"
-Path Line0002 = "ir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vds Configuration.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -135,14 +102,8 @@ File Type = "User Interface Resource"
 Res Id = 6
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/MainPanel.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/MainPanel.uir"
-=======
 Path Rel Path = "UI Files/Id-Vgs Configuration.uir"
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Id-Vgs Configuration.u"
-Path Line0002 = "ir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vgs Configuration.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -153,13 +114,8 @@ File Type = "User Interface Resource"
 Res Id = 7
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Result Menu.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.uir"
-=======
 Path Rel Path = "UI Files/MainPanel.uir"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/MainPanel.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/MainPanel.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -170,13 +126,8 @@ File Type = "User Interface Resource"
 Res Id = 8
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Sample Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Sample Configuration.uir"
-=======
 Path Rel Path = "UI Files/R-T.uir"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/R-T.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/R-T.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -187,13 +138,8 @@ File Type = "User Interface Resource"
 Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/SaveData.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.uir"
-=======
 Path Rel Path = "UI Files/Result Menu.uir"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Result Menu.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -204,14 +150,8 @@ File Type = "User Interface Resource"
 Res Id = 10
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Table.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Table.uir"
-=======
 Path Rel Path = "UI Files/Sample Configuration.uir"
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Sample Configuration.u"
-Path Line0002 = "ir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Sample Configuration.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -222,13 +162,8 @@ File Type = "User Interface Resource"
 Res Id = 11
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/ExpListPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.c"
-=======
 Path Rel Path = "UI Files/Table.uir"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Table.uir"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Table.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files"
@@ -239,13 +174,8 @@ File Type = "CSource"
 Res Id = 12
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/IdVdsPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.c"
-=======
 Path Rel Path = "Src/ExpListPanel.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/ExpListPanel.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -257,13 +187,8 @@ File Type = "CSource"
 Res Id = 13
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/IdVgsPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.c"
-=======
 Path Rel Path = "UI Files/I-T.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/I-T.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/I-T.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -275,13 +200,8 @@ File Type = "CSource"
 Res Id = 14
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/LoadPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/LoadPanel.c"
-=======
 Path Rel Path = "Src/IdVdsPanel.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/IdVdsPanel.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -293,13 +213,8 @@ File Type = "CSource"
 Res Id = 15
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/MainPanelCb.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.c"
-=======
 Path Rel Path = "UI Files/IdVgsPanel.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/IdVgsPanel.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -311,13 +226,8 @@ File Type = "CSource"
 Res Id = 16
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Result Menu.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.c"
-=======
 Path Rel Path = "Src/LoadPanel.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/LoadPanel.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/LoadPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -329,13 +239,8 @@ File Type = "CSource"
 Res Id = 17
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/SampleCfgPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.c"
-=======
 Path Rel Path = "Src/MainPanelCb.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/MainPanelCb.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -347,13 +252,8 @@ File Type = "CSource"
 Res Id = 18
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/SaveData.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.c"
-=======
 Path Rel Path = "UI Files/R-T.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/R-T.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/R-T.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -365,13 +265,8 @@ File Type = "CSource"
 Res Id = 19
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/asynctmr.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.c"
-=======
 Path Rel Path = "UI Files/Result Menu.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Result Menu.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -383,13 +278,8 @@ File Type = "CSource"
 Res Id = 20
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/Curve.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
-=======
 Path Rel Path = "Src/SampleCfgPanel.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/SampleCfgPanel.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -401,13 +291,8 @@ File Type = "CSource"
 Res Id = 21
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/File.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
-=======
 Path Rel Path = "Src/asynctmr.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/asynctmr.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -419,13 +304,8 @@ File Type = "CSource"
 Res Id = 22
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/Graph.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
-=======
 Path Rel Path = "Src/Curve.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -437,13 +317,8 @@ File Type = "CSource"
 Res Id = 23
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/main.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/main.c"
-=======
 Path Rel Path = "Src/File.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/File.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -455,13 +330,8 @@ File Type = "CSource"
 Res Id = 24
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/Plot.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
-=======
 Path Rel Path = "Src/Graph.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -473,13 +343,8 @@ File Type = "CSource"
 Res Id = 25
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/Protocol.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
-=======
 Path Rel Path = "Src/main.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/main.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -491,13 +356,8 @@ File Type = "CSource"
 Res Id = 26
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/Timer.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
-=======
 Path Rel Path = "Src/Plot.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -509,13 +369,8 @@ File Type = "CSource"
 Res Id = 27
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Resource/Analyze(a).png"
-Path = "/e/SINOAGG/Software/SA6101/Resource/Analyze(a).png"
-=======
 Path Rel Path = "Src/Protocol.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -527,13 +382,8 @@ File Type = "CSource"
 Res Id = 28
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Resource/Analyze(b).ico"
-Path = "/e/SINOAGG/Software/SA6101/Resource/Analyze(b).ico"
-=======
 Path Rel Path = "Src/Timer.c"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Timer.c"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -545,13 +395,8 @@ File Type = "Unknown"
 Res Id = 29
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/analyze.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/analyze.ico"
-=======
-Path Rel Path = "Resource/Analyze(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Analyze(a).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -562,13 +407,8 @@ File Type = "Unknown"
 Res Id = 30
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Arrow.png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Arrow.png"
-=======
-Path Rel Path = "Resource/Analyze(b).ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Analyze(b).ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -579,13 +419,8 @@ File Type = "Unknown"
 Res Id = 31
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Config.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Config.ico"
-=======
-Path Rel Path = "Resource/analyze.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/analyze.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -596,13 +431,8 @@ File Type = "Unknown"
 Res Id = 32
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Configure(a).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(a).png"
-=======
-Path Rel Path = "Resource/Arrow.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Arrow.png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -613,13 +443,8 @@ File Type = "Unknown"
 Res Id = 33
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Configure(b).ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(b).ico"
-=======
-Path Rel Path = "Resource/Config.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Config.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -630,13 +455,8 @@ File Type = "Unknown"
 Res Id = 34
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/FET.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/FET.ico"
-=======
-Path Rel Path = "Resource/Configure(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(a).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -647,13 +467,8 @@ File Type = "Unknown"
 Res Id = 35
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/GND.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/GND.ico"
-=======
-Path Rel Path = "Resource/Configure(b).ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(b).ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -664,13 +479,8 @@ File Type = "Unknown"
 Res Id = 36
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/I.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/I.ico"
-=======
-Path Rel Path = "Resource/FET.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/FET.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -681,13 +491,8 @@ File Type = "Unknown"
 Res Id = 37
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/I_Bias.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/I_Bias.ico"
-=======
-Path Rel Path = "Resource/GND.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/GND.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -698,13 +503,8 @@ File Type = "Unknown"
 Res Id = 38
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/jiantou.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/jiantou.ico"
-=======
-Path Rel Path = "Resource/I.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -715,13 +515,8 @@ File Type = "Unknown"
 Res Id = 39
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/My Projects.png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/My Projects.png"
-=======
-Path Rel Path = "Resource/I_Bias.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I_Bias.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -732,13 +527,8 @@ File Type = "Unknown"
 Res Id = 40
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/My Settings.png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/My Settings.png"
-=======
-Path Rel Path = "Resource/jiantou.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/jiantou.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -749,13 +539,8 @@ File Type = "Unknown"
 Res Id = 41
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Run.png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Run.png"
-=======
-Path Rel Path = "Resource/My Projects.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Projects.png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -766,13 +551,8 @@ File Type = "Unknown"
 Res Id = 42
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Save(a).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Save(a).png"
-=======
-Path Rel Path = "Resource/My Settings.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Settings.png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -783,13 +563,8 @@ File Type = "Unknown"
 Res Id = 43
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Save(b).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Save(b).png"
-=======
-Path Rel Path = "Resource/Run.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Run.png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -800,13 +575,8 @@ File Type = "Unknown"
 Res Id = 44
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Save_Path(a).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(a).png"
-=======
-Path Rel Path = "Resource/Save(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(a).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -817,13 +587,8 @@ File Type = "Unknown"
 Res Id = 45
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Save_Path(b).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(b).png"
-=======
-Path Rel Path = "Resource/Save(b).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(b).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -834,13 +599,8 @@ File Type = "Unknown"
 Res Id = 46
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Select(a).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Select(a).png"
-=======
-Path Rel Path = "Resource/Save_Path(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(a).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -851,13 +611,8 @@ File Type = "Unknown"
 Res Id = 47
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Select(b).ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Select(b).ico"
-=======
-Path Rel Path = "Resource/Save_Path(b).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(b).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -868,13 +623,8 @@ File Type = "Unknown"
 Res Id = 48
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Stop.png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Stop.png"
-=======
-Path Rel Path = "Resource/Select(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(a).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -885,13 +635,8 @@ File Type = "Unknown"
 Res Id = 49
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/Tools.png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/Tools.png"
-=======
-Path Rel Path = "Resource/Select(b).ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(b).ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -902,13 +647,8 @@ File Type = "Unknown"
 Res Id = 50
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/User(a).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/User(a).png"
-=======
-Path Rel Path = "Resource/Stop.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Stop.png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -919,13 +659,8 @@ File Type = "Unknown"
 Res Id = 51
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/User(b).png"
 Path = "/e/SINOAGG/Software/SA6101/Resource/User(b).png"
-=======
-Path Rel Path = "Resource/Tools.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Tools.png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -936,13 +671,8 @@ File Type = "Unknown"
 Res Id = 52
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/V.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/V.ico"
-=======
-Path Rel Path = "Resource/User(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(a).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
@@ -953,64 +683,44 @@ File Type = "Unknown"
 Res Id = 53
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Resource/V_Bias.ico"
 Path = "/e/SINOAGG/Software/SA6101/Resource/V_Bias.ico"
-=======
-Path Rel Path = "Resource/User(b).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(b).png"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
 Folder Id = 3
 
 [File 0054]
-File Type = "Unknown"
+File Type = "Include"
 Res Id = 54
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
 Path Rel Path = "Src/ExpListPanel.h"
 Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.h"
-=======
-Path Rel Path = "Resource/V.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
-Folder = "Resource"
-Folder Id = 3
+Folder = "Include Files/Panel"
+Folder Id = 5
 
 [File 0055]
-File Type = "Unknown"
+File Type = "Include"
 Res Id = 55
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/IdVdsPanel.h"
-Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.h"
-=======
-Path Rel Path = "Resource/V_Bias.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V_Bias.ico"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "UI Files/I-T.h"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/I-T.h"
 Exclude = False
 Project Flags = 0
-Folder = "Resource"
-Folder Id = 3
+Folder = "Include Files/Panel"
+Folder Id = 5
 
 [File 0056]
 File Type = "Include"
 Res Id = 56
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/IdVgsPanel.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.h"
-=======
-Path Rel Path = "Src/ExpListPanel.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/ExpListPanel.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/IdVdsPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1021,13 +731,8 @@ File Type = "Include"
 Res Id = 57
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/LoadPanel.h"
-Path = "/e/SINOAGG/Software/SA6101/Src/LoadPanel.h"
-=======
-Path Rel Path = "UI Files/I-T.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/I-T.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "UI Files/IdVgsPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1038,13 +743,8 @@ File Type = "Include"
 Res Id = 58
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/MainPanelCb.h"
-Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.h"
-=======
-Path Rel Path = "Src/IdVdsPanel.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/IdVdsPanel.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/LoadPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/LoadPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1055,13 +755,8 @@ File Type = "Include"
 Res Id = 59
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "UI Files/Result Menu.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.h"
-=======
-Path Rel Path = "UI Files/IdVgsPanel.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/IdVgsPanel.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/MainPanelCb.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1072,13 +767,8 @@ File Type = "Include"
 Res Id = 60
 Path Is Rel = True
 Path Rel To = "Project"
-<<<<<<< HEAD
-Path Rel Path = "Src/SampleCfgPanel.h"
-Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.h"
-=======
-Path Rel Path = "Src/LoadPanel.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/LoadPanel.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "UI Files/R-T.h"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/R-T.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1089,8 +779,8 @@ File Type = "Include"
 Res Id = 61
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/MainPanelCb.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/MainPanelCb.h"
+Path Rel Path = "UI Files/Result Menu.h"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1101,8 +791,8 @@ File Type = "Include"
 Res Id = 62
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/R-T.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/R-T.h"
+Path Rel Path = "Src/SampleCfgPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
@@ -1113,36 +803,32 @@ File Type = "Include"
 Res Id = 63
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Result Menu.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Result Menu.h"
+Path Rel Path = "Src/asynctmr.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.h"
 Exclude = False
 Project Flags = 0
-Folder = "Include Files/Panel"
-Folder Id = 5
+Folder = "Include Files"
+Folder Id = 4
 
 [File 0064]
 File Type = "Include"
 Res Id = 64
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/SampleCfgPanel.h"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/SampleCfgPanel.h"
+Path Rel Path = "Src/Curve.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
 Exclude = False
 Project Flags = 0
-Folder = "Include Files/Panel"
-Folder Id = 5
+Folder = "Include Files"
+Folder Id = 4
 
 [File 0065]
 File Type = "Include"
 Res Id = 65
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/asynctmr.h"
-<<<<<<< HEAD
-Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/asynctmr.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/File.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -1153,12 +839,8 @@ File Type = "Include"
 Res Id = 66
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/Curve.h"
-<<<<<<< HEAD
-Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/Graph.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -1169,12 +851,8 @@ File Type = "Include"
 Res Id = 67
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/File.h"
-<<<<<<< HEAD
-Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/File.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/Plot.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -1185,12 +863,8 @@ File Type = "Include"
 Res Id = 68
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/Graph.h"
-<<<<<<< HEAD
-Path = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "Src/Protocol.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -1201,12 +875,8 @@ File Type = "Include"
 Res Id = 69
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/Plot.h"
-<<<<<<< HEAD
-Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
+Path Rel Path = "UI Files/SaveData.h"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -1217,40 +887,8 @@ File Type = "Include"
 Res Id = 70
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/Protocol.h"
-<<<<<<< HEAD
-Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
-Exclude = False
-Project Flags = 0
-Folder = "Include Files"
-Folder Id = 4
-
-[File 0071]
-File Type = "Include"
-Res Id = 71
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "UI Files/SaveData.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files"
-Folder Id = 4
-
-[File 0068]
-File Type = "Include"
-Res Id = 68
-Path Is Rel = True
-Path Rel To = "Project"
 Path Rel Path = "Src/Timer.h"
-<<<<<<< HEAD
 Path = "/e/SINOAGG/Software/SA6101/Src/Timer.h"
-=======
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Timer.h"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -1547,17 +1185,12 @@ Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
 Include Path 1 Is Rel = True
 Include Path 1 Rel To = "Project"
 Include Path 1 Rel Path = "UI Files"
-<<<<<<< HEAD
 Include Path 1 = "/e/SINOAGG/Software/SA6101/UI Files"
-=======
-Include Path 1 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 
 [Create Executable]
 Executable File_Debug Is Rel = True
 Executable File_Debug Rel To = "Project"
 Executable File_Debug Rel Path = "SA6101.exe"
-<<<<<<< HEAD
 Executable File_Debug = "/e/SINOAGG/Software/SA6101/SA6101.exe"
 Executable File_Release Is Rel = True
 Executable File_Release Rel To = "Project"
@@ -1571,21 +1204,6 @@ Executable File_Release64 Is Rel = True
 Executable File_Release64 Rel To = "Project"
 Executable File_Release64 Rel Path = "SA6101.exe"
 Executable File_Release64 = "/e/SINOAGG/Software/SA6101/SA6101.exe"
-=======
-Executable File_Debug = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/SA6101.exe"
-Executable File_Release Is Rel = True
-Executable File_Release Rel To = "Project"
-Executable File_Release Rel Path = "SA6101.exe"
-Executable File_Release = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/SA6101.exe"
-Executable File_Debug64 Is Rel = True
-Executable File_Debug64 Rel To = "Project"
-Executable File_Debug64 Rel Path = "SA6101.exe"
-Executable File_Debug64 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/SA6101.exe"
-Executable File_Release64 Is Rel = True
-Executable File_Release64 Rel To = "Project"
-Executable File_Release64 Rel Path = "SA6101.exe"
-Executable File_Release64 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/SA6101.exe"
->>>>>>> 4b1de4b52e60772cd2eff4579725758e99f3bd93
 Icon File Is Rel = False
 Icon File = ""
 Application Title = ""

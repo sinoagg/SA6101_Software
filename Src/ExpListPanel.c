@@ -18,6 +18,7 @@
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "I-T.h"
+#include "LoadPanel.h"
 
 //==============================================================================
 // Constants
