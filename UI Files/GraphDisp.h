@@ -15,6 +15,7 @@
 
 #define  GRAPHDISP                        1
 #define  GRAPHDISP_GRAPH1                 2       /* control type: graph, callback function: (none) */
+#define  GRAPHDISP_LISTBOX                3       /* control type: listBox, callback function: (none) */
 
 
      /* Control Arrays: */

@@ -15,18 +15,18 @@
 
 #define  ENVIRONMEN                       1
 #define  ENVIRONMEN_CONTROL               2       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMEN_MEASURE_4             3       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMEN_MEASURE_3             4       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMEN_MEASURE_2             5       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMEN_QUIETTIME_3           6       /* control type: numeric, callback function: (none) */
-#define  ENVIRONMEN_QUIETTIME_2           7       /* control type: numeric, callback function: (none) */
-#define  ENVIRONMEN_QUIETTIME             8       /* control type: numeric, callback function: (none) */
+#define  ENVIRONMEN_PRESSURE              3       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_HUMIDITY              4       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_TEMPTER               5       /* control type: radioButton, callback function: (none) */
+#define  ENVIRONMEN_QUIETTIME_PRESS       6       /* control type: numeric, callback function: (none) */
+#define  ENVIRONMEN_QUIETTIME_HUM         7       /* control type: numeric, callback function: (none) */
+#define  ENVIRONMEN_QUIETTIME_TEMP        8       /* control type: numeric, callback function: (none) */
 #define  ENVIRONMEN_MEASURE               9       /* control type: radioButton, callback function: (none) */
-#define  ENVIRONMEN_TEXTMSG               10      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMEN_TEXTMSG_3             11      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMEN_TEXTMSG_5             12      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMEN_TEXTMSG_2             13      /* control type: textMsg, callback function: (none) */
-#define  ENVIRONMEN_TEXTMSG_4             14      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TEX_MEAS              10      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TXT_HUM               11      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TXT_PRESS             12      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TXT_CTRL              13      /* control type: textMsg, callback function: (none) */
+#define  ENVIRONMEN_TXT_TEMP              14      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

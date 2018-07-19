@@ -13,12 +13,14 @@
 
      /* Panels and Controls: */
 
-#define  RESULTMENU                       1
+#define  GRAPANEL                         1
+
+#define  RESULTMENU                       2
 #define  RESULTMENU_TABLE                 2       /* control type: picture, callback function: TableCallback */
 #define  RESULTMENU_SAVE                  3       /* control type: picture, callback function: SaveDataCallback */
 #define  RESULTMENU_GRAPH                 4       /* control type: picture, callback function: GraphCallback */
 
-#define  SAVEDATA                         2
+#define  SAVEDATA                         3
 #define  SAVEDATA_TEXTMSG                 2       /* control type: textMsg, callback function: (none) */
 #define  SAVEDATA_TEXTMSG_3               3       /* control type: textMsg, callback function: (none) */
 #define  SAVEDATA_TEXTMSG_2               4       /* control type: textMsg, callback function: (none) */
@@ -41,7 +43,8 @@
 
      /* Menu Bars, Menus, and Menu Items: */
 
-          /* (no menu bars in the resource file) */
+#define  MENUBAR                          1
+#define  MENUBAR_UNNAMEDM                 2
 
 
      /* Callback Prototypes: */

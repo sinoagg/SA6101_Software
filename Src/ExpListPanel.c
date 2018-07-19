@@ -41,74 +41,52 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-int CVICALLBACK ExpListCallBack (int panel, int control, int event,
-								 void *callbackData, int eventData1, int eventData2)
+
+
+int CVICALLBACK TreeCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
 {
 	
-	int ExpSelVal;
-	
+	int activeIndex;
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			GetCtrlVal(panel, control, &ExpSelVal);
-			if(ExpSelVal==1)
-			{
-	
-				SetPanelPos(IdVdPanel, 105, 305);
-				SetPanelSize(IdVdPanel, 900, 1293);
-				DisplayPanel(IdVdPanel);
-			}
-			else if(ExpSelVal==2)
-			{
-				SetPanelPos(IdVgPanel, 105, 305);
-				SetPanelSize(IdVgPanel, 900, 1293);
-				DisplayPanel(IdVgPanel);
-			}
-			else if(ExpSelVal==3)
-			{
-				//TODO  
-			}
-			else
-			{
-				//TODO  
-			}
-			break;
-	}
-	
-	
-	
-	return 0;
-}
+			
+			GetActiveTreeItem (panel, control, &activeIndex);//获得当前点击项目值		   
+			if(activeIndex==1){
 
-//ListBox2   2-terminnal   
-int CVICALLBACK ListBoxCallback (int panel, int control, int event,
-								 void *callbackData, int eventData1, int eventData2)
-{
-	int ListIndex;
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:
-			GetCtrlVal(panel, control, &ListIndex); 
-			if(ListIndex==1){
-
-					//加载I-T
+				//加载I-T
 				SetPanelPos(iTPanel, 105, 305);
 				SetPanelSize(iTPanel, 900, 1293);
 				DisplayPanel(iTPanel);
 					
 					}
-			else if(ListIndex==2){	 	
+			else if(activeIndex==2){	 	
 				
-					//加载R-T
+				//加载R-T
 				SetPanelPos(rTPanel, 105, 305);
 				SetPanelSize(rTPanel, 900, 1293);
 				DisplayPanel(rTPanel);
 					}
-			else{
-				//
-				
+			else if(activeIndex==4 ){
+				// 加载Id_Vds Configuration
+				SetPanelPos(IdVdPanel, 105, 305);
+				SetPanelSize(IdVdPanel, 900, 1293);
+				DisplayPanel(IdVdPanel);
+					
+					}
+			else if(activeIndex==5){
+				//  加载Id_Vgs Configuration
+				SetPanelPos(IdVgPanel, 105, 305);
+				SetPanelSize(IdVgPanel, 900, 1293);
+				DisplayPanel(IdVgPanel);
+					}
+			
+				else {
+					//
+					
 					}
 			break;
-	}
+	}  
 	return 0;
 }

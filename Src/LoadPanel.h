@@ -46,12 +46,12 @@ extern int samplePanel;
 extern int graphDispPanel;
 extern int environmentPanel;
 extern int resultPanel;
-extern int graphDispPanel;
 extern int tablePanel;
 extern int saveDataPanel;
 extern int iTPanel;
-extern int rTPanel; 
-
+extern int rTPanel;
+//extern int chosePanel;
+		
 //==============================================================================
 // Global functions
 

@@ -14,10 +14,7 @@
      /* Panels and Controls: */
 
 #define  EXP_LIST                         1
-#define  EXP_LIST_LISTBOX                 2       /* control type: listBox, callback function: ExpListCallBack */
-#define  EXP_LIST_LISTBOX2                3       /* control type: listBox, callback function: ListBoxCallback */
-#define  EXP_LIST_TEXTMSG                 4       /* control type: textMsg, callback function: (none) */
-#define  EXP_LIST_TEXTMSG_3               5       /* control type: textMsg, callback function: (none) */
+#define  EXP_LIST_TREE                    2       /* control type: tree, callback function: TreeCallback */
 
 
      /* Control Arrays: */
@@ -32,8 +29,7 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK ExpListCallBack(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK ListBoxCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK TreeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

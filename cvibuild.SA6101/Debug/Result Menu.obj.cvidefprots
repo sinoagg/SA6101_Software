@@ -34,3 +34,7 @@ Prototype="int SaveSheetCallback(int panel, int control, int event, void *callba
 Class="Function"
 Prototype="int SaveAllCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
+[graphCallback]
+Class="Function"
+Prototype="int graphCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

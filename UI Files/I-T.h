@@ -17,20 +17,18 @@
 #define  ITPANEL_VG_STEP                  2       /* control type: numeric, callback function: (none) */
 #define  ITPANEL_VG_STOP                  3       /* control type: numeric, callback function: (none) */
 #define  ITPANEL_VG_START                 4       /* control type: numeric, callback function: (none) */
-#define  ITPANEL_RING_3                   5       /* control type: ring, callback function: (none) */
-#define  ITPANEL_RING_4                   6       /* control type: ring, callback function: (none) */
-#define  ITPANEL_TEXTMSG_17               7       /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_TEXTMSG_18               8       /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_PIC_GATE                 9       /* control type: picture, callback function: (none) */
-#define  ITPANEL_TEXTMSG_14               10      /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_TEXTMSG_22               11      /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_TEXTMSG_19               12      /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_TXT_SWEEP                13      /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_TEXTMSG_15               14      /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_DECORATION_GATE          15      /* control type: deco, callback function: (none) */
-#define  ITPANEL_TEXTMSG_20               16      /* control type: textMsg, callback function: (none) */
-#define  ITPANEL_PICTURE                  17      /* control type: picture, callback function: (none) */
-#define  ITPANEL_PICTURE_2                18      /* control type: picture, callback function: (none) */
+#define  ITPANEL_RING_MODE                5       /* control type: ring, callback function: (none) */
+#define  ITPANEL_TXT_STEP                 6       /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_TEXTMSG_18               7       /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_PIC_GATE                 8       /* control type: picture, callback function: (none) */
+#define  ITPANEL_TXT_MODE                 9       /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_TEXTMSG_22               10      /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_VG_TXT_START             11      /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_TXT_STOP                 12      /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_DECORATION_GATE          13      /* control type: deco, callback function: (none) */
+#define  ITPANEL_TEXTMSG_20               14      /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_PIC_R                    15      /* control type: picture, callback function: (none) */
+#define  ITPANEL_PIC_GND                  16      /* control type: picture, callback function: (none) */
 
 
      /* Control Arrays: */

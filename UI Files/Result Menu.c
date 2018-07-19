@@ -1,3 +1,5 @@
+#include "GraphDisp.h"
+
 //==============================================================================
 //
 // Title:		LoadPanel.c
@@ -68,10 +70,21 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 				
 			break;
 		case EVENT_LEFT_CLICK:
-			   	SetPanelPos(graphDispPanel, 176, 305);  
-		     	SetPanelSize(graphDispPanel, 830, 1293);      
-	 			DisplayPanel(graphDispPanel);
+			
+			    SetPanelPos(graphDispPanel, 176, 305);  
+		     	SetPanelSize(graphDispPanel, 830, 1293);
+				DisplayPanel(graphDispPanel);
+				
+				
+			  /* 	SetPanelPos(chosePanel, 176, 305);  
+		     	SetPanelSize(chosePanel, 830, 1293);      
+	 			DisplayPanel(chosePanel);*/
+			//InstallPopup(chosePanel); 	
 			break;
+		case EVENT_RIGHT_CLICK:
+			
+			break;
+		
 	}	
 	return 0;
 }
@@ -82,16 +95,14 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 {
 	   switch(event){
 		case EVENT_LEFT_CLICK_UP:
+			
 				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
 				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
-			//选择要保存的数据形式：table/graph
-				//MessagePopup ("Save Test Data As", "请保存数据");       
+		  
 			break;
 		 case EVENT_LEFT_CLICK:
-			    /*SetPanelPos(saveDataPanel, 300, 700);  
-		    	SetPanelSize(saveDataPanel,260, 460);      
-	 			DisplayPanel(saveDataPanel);*/
+			  
 			   InstallPopup(saveDataPanel);
 			break;
 	}	
@@ -188,6 +199,18 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 					return -1;
 				DiscardBitmap(bitmapID);
 			}
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK graphCallback (int panel, int control, int event,
+							   void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+
 			break;
 	}
 	return 0;
