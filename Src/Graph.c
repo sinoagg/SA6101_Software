@@ -55,30 +55,3 @@ int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGra
 	return 0;
 }
 
-//int CVICALLBACK choseCallback (int panel, int control, int event,
-//							   void *callbackData, int eventData1, int eventData2)
-//{	 int listIndex;
-//	switch (event)
-//	{
-//		case EVENT_LEFT_CLICK_UP:
-//			  GetCtrlVal(panel,control,&listIndex);
-//			   if(listIndex==1){
-//				SetPanelPos(chosePanel, 176, 305);
-//				SetPanelSize(chosePanel, 450, 1200);
-//				DisplayPanel(chosePanel);
-//			   } else if(listIndex==2){
-//				 SetPanelPos(chosePanel, 627, 305);
-//				SetPanelSize(chosePanel, 450, 1200);
-//				DisplayPanel(chosePanel);
-//			   } else if((listIndex==1)&&(listIndex==2)){
-//				SetPanelPos(chosePanel, 176, 305);
-//				SetPanelSize(chosePanel, 450, 1200);
-//				DisplayPanel(chosePanel);
-//				SetPanelPos(chosePanel, 627, 305);
-//				SetPanelSize(chosePanel, 450, 1200);
-//				DisplayPanel(chosePanel);
-//			   }
-//			break;
-//	}
-//	return 0;
-//}

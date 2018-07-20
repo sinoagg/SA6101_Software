@@ -38,8 +38,6 @@
 #define  MAIN_PANEL_CANVAS_2              23      /* control type: canvas, callback function: (none) */
 #define  MAIN_PANEL_SAVE                  24      /* control type: picture, callback function: SaveCallback */
 
-#define  PANEL                            2
-
 
      /* Control Arrays: */
 

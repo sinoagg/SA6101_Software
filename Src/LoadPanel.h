@@ -45,13 +45,14 @@ extern int IdVgPanel;
 extern int samplePanel;
 extern int graphDispPanel;
 extern int environmentPanel;
-extern int resultPanel;
+extern int resultPanel;	     //result menu panel
 extern int tablePanel;
-extern int saveDataPanel;
-extern int iTPanel;
-extern int rTPanel;
-//extern int chosePanel;
-		
+extern int saveDataPanel;  
+extern int iTPanel;          //I-T panel
+extern int rTPanel;          //R-T panel
+
+extern int doublePanel;      // double graph panel 
+extern int chPanel;          //chose panel
 //==============================================================================
 // Global functions
 

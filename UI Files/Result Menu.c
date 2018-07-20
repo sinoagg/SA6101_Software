@@ -70,21 +70,16 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 				
 			break;
 		case EVENT_LEFT_CLICK:
-			
+			/*
 			    SetPanelPos(graphDispPanel, 176, 305);  
 		     	SetPanelSize(graphDispPanel, 830, 1293);
-				DisplayPanel(graphDispPanel);
-				
-				
-			  /* 	SetPanelPos(chosePanel, 176, 305);  
-		     	SetPanelSize(chosePanel, 830, 1293);      
-	 			DisplayPanel(chosePanel);*/
-			//InstallPopup(chosePanel); 	
-			break;
-		case EVENT_RIGHT_CLICK:
-			
-			break;
+				DisplayPanel(graphDispPanel);*/
 		
+											                                          
+			  	SetPanelPos(chPanel, 176, 1457);  
+		     	SetPanelSize(chPanel, 26, 140);      
+	 			DisplayPanel(chPanel);
+			break;
 	}	
 	return 0;
 }
@@ -102,7 +97,7 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 		  
 			break;
 		 case EVENT_LEFT_CLICK:
-			  
+			   //弹出savedata面板
 			   InstallPopup(saveDataPanel);
 			break;
 	}	
@@ -112,12 +107,12 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 int CVICALLBACK ExitCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
-if (event == EVENT_COMMIT)
-		{
-		RemovePopup (saveDataPanel);
-       // SetActiveCtrl (resultPanel, RESULTMENU);
-        }
-	return 0;
+		if (event == EVENT_COMMIT)
+				{
+	    		//移除、关闭savedata面板
+				RemovePopup (saveDataPanel);
+		        }
+			return 0;
 }
 
 
@@ -125,7 +120,7 @@ int CVICALLBACK BrowseSheetCallback (int panel, int control, int event,
 								   	 void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
-	{
+	{			
 		case EVENT_LEFT_CLICK_UP:
 			
 			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".xls", "*.xls", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, sheetSavePath)>0)
@@ -134,13 +129,14 @@ int CVICALLBACK BrowseSheetCallback (int panel, int control, int event,
 	}
 	return 0;
 }
-
+		 
 int CVICALLBACK BrowseGraph1Callback (int panel, int control, int event,
 									  void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
 		case EVENT_COMMIT:
+		     
 			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".jpg", "*.jpg;*.png;*.bmp;*.tif", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 1, graphSavePath)>0)
 				SetCtrlVal(panel, SAVEDATA_GRAPH1PATH, graphSavePath);
 			break;
@@ -148,6 +144,8 @@ int CVICALLBACK BrowseGraph1Callback (int panel, int control, int event,
 	return 0;
 }
 
+
+//=======================saveGraph1=====================
 int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 									void *callbackData, int eventData1, int eventData2)
 {
@@ -170,6 +168,7 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	return 0;
 }
 
+//======================saveSheet==========================
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {
@@ -182,6 +181,7 @@ int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 	return 0;
 }
 
+//=======================saveAll============================
 int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
@@ -204,14 +204,27 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK graphCallback (int panel, int control, int event,
-							   void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_COMMIT:
 
-			break;
+//======================Chose=================================
+int CVICALLBACK ChoseCallback (int panel, int control, int event,
+							 void *callbackData, int eventData1, int eventData2)
+{
+	int CheckValue;
+	if( event == EVENT_VAL_CHANGED)
+	{
+		GetCtrlVal(panel, CHPANEL_CHECKBOX, &CheckValue);
+				 if(CheckValue)
+			 {	 //如果CheckBox是选中状态则显示两个graph
+				SetPanelPos(doublePanel, 176, 305);
+				SetPanelSize(doublePanel, 829, 1293);
+				DisplayPanel(doublePanel);
+			    HidePanel(tablePanel);
+				//HidePanel(graphDispPanel);
+			 }else{
+				HidePanel(doublePanel); 
+				
+				 }
+	  	      	
 	}
 	return 0;
 }
