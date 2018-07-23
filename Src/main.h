@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		MainPanel.h
+// Title:		main.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	18/7/16 at 15:58:31 by .
+// Created on:	18/7/23 at 13:28:04 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __MainPanel_H__
-#define __MainPanel_H__
+#ifndef __main_H__
+#define __main_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -19,13 +19,6 @@
 // Include files
 
 #include "cvidef.h"
-#include "ExpListPanel.h"
-#include "SampleCfgPanel.h"
-#include "IdVdsPanel.h"
-#include "IdVgsPanel.h"
-#include "Protocol.h"
-#include "Graph.h"
-#include "Curve.h"
 
 //==============================================================================
 // Constants
@@ -35,15 +28,17 @@
 
 //==============================================================================
 // External variables
-extern unsigned char comSelect1;
-extern unsigned char comSelect2; 
+
 //==============================================================================
 // Global functions
 
+void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData);
+int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
 
+static int CheckPortStatus(unsigned char portNumber);
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __MainPanel_H__ */
+#endif  /* ndef __main_H__ */

@@ -47,6 +47,7 @@ LOCATE on "IdVgsPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\UI Files" ;
 LOCATE on "LoadPanel.c" = "e:\\SINOAGG\\Software\\SA6101\\Src\\Panel" ;
 LOCATE on "LoadPanel.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "main.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
+LOCATE on "main.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "MainPanelCb.c" = "e:\\SINOAGG\\Software\\SA6101\\Src\\Panel" ;
 LOCATE on "MainPanelCb.h" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;
 LOCATE on "Plot.c" = "e:\\SINOAGG\\Software\\SA6101\\Src" ;

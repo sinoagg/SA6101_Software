@@ -76,7 +76,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
 		    SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
 	        SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
-			if(!comSelect)
+			if(!comSelect1)
 			{
 				MessagePopup ("Warning", "Instrument Unconnected");   //Lost serial Connection
 			}
@@ -111,10 +111,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						break;
 				}
 				
-				ProtocolCfg(comSelect, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART
+				ProtocolCfg(comSelect1, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART
 				graphInit(graphIndex, numOfCurve, numOfDots, pGraph1); 	//graph set up 
 				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
-				ProtocolRun(comSelect, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
+				ProtocolRun(comSelect1, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
 			}
 			break;
 	}
