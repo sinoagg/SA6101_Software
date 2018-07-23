@@ -15,8 +15,8 @@
 
 #include "IdVgsPanel.h"
 #include "Id-Vgs Configuration.h"
-#define   val_pres_color  0xA0B4DCL   // 点击激活蓝色
-#define  val_color 0xA9A9A9L	   //未点击灰色
+#define   val_pres_blue  0xA0B4DCL   // 点击激活蓝色
+#define  val_gray 0xA9A9A9L	   //未点击灰色
 //==============================================================================
 // Constants
 
@@ -82,7 +82,7 @@ int CVICALLBACK GateCallback (int panel, int control, int event,
 		   case EVENT_LEFT_CLICK_UP:
 			      //点击Gate时，其他为灰色状态
 			      DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_color);// change text bgcolor
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
 				  
 				  
 				/*  DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
@@ -91,13 +91,11 @@ int CVICALLBACK GateCallback (int panel, int control, int event,
 				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_BULK, ATTR_TEXT_BGCOLOR, val_color);
 				  DisplayImageFile (panel, IDVGS_CFG_PIC_SOURCE, "Resource\\bg.ico"); 
 				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_SOURCE, ATTR_TEXT_BGCOLOR, val_color);*/
-				  
-				  
- 
 			   break;
 	}
 	   
 	  
 	return 0;
 }
+
 

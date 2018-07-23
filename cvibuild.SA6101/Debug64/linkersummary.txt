@@ -1,5 +1,6 @@
 asynctmr.obj
 Curve.obj
+Environment.obj
 ExpListPanel.obj
 File.obj
 Graph.obj
@@ -12,6 +13,7 @@ Plot.obj
 Protocol.obj
 ResultMenuPanel.obj
 SampleCfgPanel.obj
+Table.obj
 Timer.obj
 cvi.lib
 cvistart.lib

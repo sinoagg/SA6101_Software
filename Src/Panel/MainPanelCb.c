@@ -178,7 +178,9 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-			
+			HidePanel( samplePanel  );
+			HidePanel( environmentPanel);
+			HidePanel(AnalyenvirPanel);
 			break;
 	
 	}
@@ -207,6 +209,14 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 				SetPanelPos(IdVdPanel, 105, 305);
 				SetPanelSize(IdVdPanel, 900, 1293);
 				DisplayPanel(IdVdPanel);
+				
+				SetPanelPos(samplePanel, 105, 1600);
+				SetPanelSize(samplePanel, 450, 300);
+				DisplayPanel(samplePanel);
+				
+				SetPanelPos(environmentPanel, 557, 1600);
+				SetPanelSize(environmentPanel, 450, 300);
+				DisplayPanel(environmentPanel);
 			break;
 	}
 	return 0;
@@ -222,16 +232,23 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK:
 		
-				SetPanelPos(resultPanel, 125, 305);  
-		     	SetPanelSize(resultPanel, 50, 1293);      
+				SetPanelPos(resultPanel, 105, 305);  
+		     	SetPanelSize(resultPanel, 65, 1293);      
 	 			DisplayPanel(resultPanel);  
 				
 				
 
-				SetPanelPos(graphDispPanel, 176, 305);  
-		     	SetPanelSize(graphDispPanel, 830, 1293);      
+				SetPanelPos(graphDispPanel, 172, 305);  
+		     	SetPanelSize(graphDispPanel, 834, 1293);      
 	 			DisplayPanel(graphDispPanel);
-			
+			   
+				SetPanelPos(samplePanel, 105, 1600);
+				SetPanelSize(samplePanel, 450, 300);
+				DisplayPanel(samplePanel);
+				
+				SetPanelPos(AnalyenvirPanel, 557, 1600);
+				SetPanelSize(AnalyenvirPanel, 450, 300);
+				DisplayPanel(AnalyenvirPanel);
 
 
 			break;

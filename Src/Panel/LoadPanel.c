@@ -41,6 +41,7 @@ int iTPanel;
 int rTPanel;
 int chPanel;
 int doubleGraphDispPanel;
+int AnalyenvirPanel;
 //==============================================================================
 // Global functions
 
@@ -67,6 +68,9 @@ int LoadInitPanel (void)
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;
+	if ((AnalyenvirPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
+		return -1;
+	
 
 	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
 		return -1;
@@ -109,7 +113,7 @@ int LoadInitPanel (void)
 	SetPanelSize(samplePanel, 450, 300);
 	DisplayPanel(samplePanel);
 	
-	SetPanelPos(environmentPanel, 555, 1600);
+	SetPanelPos(environmentPanel, 557, 1600);
 	SetPanelSize(environmentPanel, 450, 300);
 	DisplayPanel(environmentPanel);
 	

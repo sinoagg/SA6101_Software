@@ -50,8 +50,8 @@ int CVICALLBACK TableCallback (int panel, int control, int event,
 				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico");
 			break;
 		case EVENT_LEFT_CLICK:
-			   	SetPanelPos(tablePanel, 176, 305);  
-		     	SetPanelSize(tablePanel, 830, 1293);      
+			   	SetPanelPos(tablePanel, 172, 305);  
+		     	SetPanelSize(tablePanel, 826, 1293);      
 	 			DisplayPanel(tablePanel);
 			break;
 	
@@ -76,8 +76,8 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 		     	SetPanelSize(graphDispPanel, 830, 1293);
 				DisplayPanel(graphDispPanel);*/
 		
-											                                          
-			  	SetPanelPos(chPanel, 176, 1457);  
+				HidePanel(tablePanel);  							                                          
+			  	SetPanelPos(chPanel, 172, 1457);  
 		     	SetPanelSize(chPanel, 26, 140);      
 	 			DisplayPanel(chPanel);
 			break;
@@ -221,17 +221,16 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 		GetCtrlVal(panel, CHPANEL_CHECKBOX, &CheckValue);
 		if(CheckValue)
 		{	 //如果CheckBox是选中状态则显示两个graph
-			SetPanelPos(doubleGraphDispPanel, 176, 305);
+			SetPanelPos(doubleGraphDispPanel, 172, 305);
 			SetPanelSize(doubleGraphDispPanel, 829, 1293);
 			DisplayPanel(doubleGraphDispPanel);
 		    HidePanel(tablePanel);
-			HidePanel(graphDispPanel);
+			//HidePanel(graphDispPanel);
 		}
 		else
 		{
 			HidePanel(doubleGraphDispPanel); 
-			HidePanel(tablePanel);
-			DisplayPanel(graphDispPanel);
+		
 		}
 	}
 	return 0;

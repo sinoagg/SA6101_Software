@@ -54,6 +54,7 @@ extern int rTPanel;          //R-T panel
 
 extern int doubleGraphDispPanel;      // double graph panel 
 extern int chPanel;          //chose panel
+extern int AnalyenvirPanel;
 //==============================================================================
 // Global functions
 

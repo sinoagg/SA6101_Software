@@ -15,8 +15,8 @@
 #include "IdVdsPanel.h"
 #include "Id-Vds Configuration.h"
 
-#define val_color 0xA9A9A9L
-#define   val_pres_color  0xA0B4DCL   // 点击激活蓝色   
+#define val_gray 0xA9A9A9L
+#define   val_pres_blue  0xA0B4DCL   // 点击激活蓝色   
 //==============================================================================
 // Constants
 
@@ -96,11 +96,11 @@ int CVICALLBACK VDGateCallback (int panel, int control, int event,
 		   case EVENT_LEFT_CLICK_UP:
 			      //点击Gate时，其他为灰色状态
 			      DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_color);// change text bgcolor
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
 				  
 				  
 				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
-				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_color);
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);
 				  
 				  
 				  
@@ -120,10 +120,10 @@ int CVICALLBACK VDDrainCallback (int panel, int control, int event,
 	switch(event){
 		   case EVENT_LEFT_CLICK_UP:
 			      DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
-				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_color);
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);
 				  
 				  DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_color);// change text bgcolor
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
 				  
 				  
  
@@ -136,3 +136,110 @@ int CVICALLBACK VDDrainCallback (int panel, int control, int event,
 
 
 
+int CVICALLBACK VdmodeCallbzck (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP){
+		        DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
+				  
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);
+		 }
+	return 0;
+}
+
+
+int CVICALLBACK StartCallback (int panel, int control, int event,
+							   void *callbackData, int eventData1, int eventData2)
+{
+	 if(event==EVENT_LEFT_CLICK_UP){
+		       DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
+				  
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);
+		 }
+	return 0;
+}
+
+
+
+int CVICALLBACK StepCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP){
+		        DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
+				  
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);
+		 }
+	return 0;
+}
+
+int CVICALLBACK VdStopCallback (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+		       if(event==EVENT_LEFT_CLICK_UP){
+		        DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+				 SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
+				  
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);
+		 }
+	return 0;
+}
+
+int CVICALLBACK ModeCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{				 if(event==EVENT_LEFT_CLICK_UP){ 
+	           DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+}
+				  return 0;
+}
+
+int CVICALLBACK VdSartCallback (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{				   if(event==EVENT_LEFT_CLICK_UP){ 
+	               DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+}
+	return 0;
+}
+
+int CVICALLBACK VdStepCallback (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{				if(event==EVENT_LEFT_CLICK_UP){ 
+                 DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+	
+}
+				  return 0;
+}
+
+int CVICALLBACK VdStCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{			   if(event==EVENT_LEFT_CLICK_UP){ 
+   				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);
+				  
+				  DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
+				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+}
+				  return 0;
+}
