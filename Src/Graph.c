@@ -32,14 +32,15 @@
 
 //==============================================================================
 // Global variables
-Graph_TypeDef* pGraph;
+GraphTypeDef* pGraph1;
+GraphTypeDef* pGraph2;
 //==============================================================================
 // Global functions
 
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGraph)
+int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
 {
 	int i;
 	pGraph->graphIndex=graphIndex;

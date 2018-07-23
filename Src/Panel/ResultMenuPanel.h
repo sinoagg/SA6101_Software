@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		Source File.h
+// Title:		ResultMenuPanel.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	18/7/8 at 8:21:34 by .
+// Created on:	18/7/23 at 12:04:35 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __SourceFile_H__
-#define __SourceFile_H__
+#ifndef __ResultMenuPanel_H__
+#define __ResultMenuPanel_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -32,12 +32,10 @@
 //==============================================================================
 // Global functions
 
-void CommandRun(int comSelect);
-void CommandStop(int comSelect);
-void CommandConfig(int comSelect);
+static int SaveGraph(int panel, int control, int plotHandle, const char path[]);
 
 #ifdef __cplusplus
     }
 #endif
 
-#endif  /* ndef __SourceFile_H__ */
+#endif  /* ndef __ResultMenuPanel_H__ */

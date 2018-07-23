@@ -30,6 +30,7 @@
 #include "Table.h"
 #include "I-T.h"
 #include "R-T.h"
+#include "DoubleGraphDisp.h"
 //==============================================================================
 // Constants
 
@@ -51,7 +52,7 @@ extern int saveDataPanel;
 extern int iTPanel;          //I-T panel
 extern int rTPanel;          //R-T panel
 
-extern int doublePanel;      // double graph panel 
+extern int doubleGraphDispPanel;      // double graph panel 
 extern int chPanel;          //chose panel
 //==============================================================================
 // Global functions

@@ -32,15 +32,17 @@ typedef struct
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
 	Curve_TypeDef* pCurveArray;						//pointer to curve array
-}Graph_TypeDef;
+}GraphTypeDef;
 
 //==============================================================================
 // External variables
-extern Graph_TypeDef Graph;
+extern GraphTypeDef* pGraph1;
+extern GraphTypeDef* pGraph2;
+
 //==============================================================================
 // Global functions
-int graphInit(int graphIndex, int numOfCurve, int numOfDots, Graph_TypeDef* pGraph);
-int graphDeinit(Graph_TypeDef* pGraph);
+int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
+int graphDeinit(GraphTypeDef* pGraph);
 
 #ifdef __cplusplus
     }

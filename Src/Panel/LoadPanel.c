@@ -40,7 +40,7 @@ int saveDataPanel;
 int iTPanel;
 int rTPanel;
 int chPanel;
-int doublePanel;
+int doubleGraphDispPanel;
 //==============================================================================
 // Global functions
 
@@ -76,7 +76,7 @@ int LoadInitPanel (void)
 		return -1;
 	
 	 //用于显示电学和环境graph  
-	if ((doublePanel = LoadPanel (mainPanel, "Result Menu.uir", PANELDOUBL)) < 0)		//load resPanel panel
+	if ((doubleGraphDispPanel = LoadPanel (mainPanel, "DoubleGraphDisp.uir", DBLDISP)) < 0)		//load double Graph Disp Panel 
 		return -1;
 	//选择
 	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel

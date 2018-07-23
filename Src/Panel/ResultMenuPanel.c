@@ -14,7 +14,7 @@
 // Include files
 #include <userint.h>
 #include "toolbox.h"   
-#include "Result Menu.h"
+#include "ResultMenuPanel.h"
 #include "Graph.h"
 #include "LoadPanel.h"
 //==============================================================================
@@ -32,7 +32,8 @@
 //==============================================================================
 // Global variables
 char sheetSavePath[512];
-char graphSavePath[512];
+char graph1SavePath[512];
+char graph2SavePath[512];
 
 //==============================================================================
 // Global functions	
@@ -137,13 +138,25 @@ int CVICALLBACK BrowseGraph1Callback (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 		     
-			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".jpg", "*.jpg;*.png;*.bmp;*.tif", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 1, graphSavePath)>0)
-				SetCtrlVal(panel, SAVEDATA_GRAPH1PATH, graphSavePath);
+			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\UserData", ".jpg", "*.jpg;*.png;*.bmp;*.tif", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 1, graph1SavePath)>0)
+				SetCtrlVal(panel, SAVEDATA_GRAPH1PATH, graph1SavePath);
 			break;
 	}
 	return 0;
 }
 
+int CVICALLBACK BrowseGraph2Callback (int panel, int control, int event,
+									  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\UserData", ".jpg", "*.jpg;*.png;*.bmp;*.tif", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 1, graph2SavePath)>0)
+				SetCtrlVal(panel, SAVEDATA_GRAPH2PATH, graph2SavePath);
+			break;
+	}
+	return 0;
+}
 
 //=======================saveGraph1=====================
 int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
@@ -152,17 +165,19 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			int bitmapID;
-			if(Graph.plotHandle<=0)		//no valid plot behavior
-				MessagePopup ("Message", "No valod plot. Please run test first.");
-			else
-			{
-				if(GetCtrlBitmap(graphDispPanel, GRAPHDISP_GRAPH1, Graph.plotHandle,&bitmapID)<0)
-					return -1;
-				if(SaveBitmapToFile(graphSavePath, bitmapID)<0)		 //need check the file format
-					return -1;
-				DiscardBitmap(bitmapID);
-			}
+			SaveGraph(graphDispPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
+									void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			SaveGraph(doubleGraphDispPanel, DBLDISP_GRAPH2_2, pGraph2->plotHandle, graph2SavePath); 
 			break;
 	}
 	return 0;
@@ -188,17 +203,8 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			int bitmapID;
-			if(Graph.plotHandle<=0)		//no valid plot behavior
-				MessagePopup ("Message", "No valod plot. Please run test first.");
-			else
-			{
-				if(GetCtrlBitmap(graphDispPanel, GRAPHDISP_GRAPH1, Graph.plotHandle,&bitmapID)<0)
-					return -1;
-				if(SaveBitmapToFile(graphSavePath, bitmapID)<0)		 //need check the file format
-					return -1;
-				DiscardBitmap(bitmapID);
-			}
+			SaveGraph(graphDispPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
+			SaveGraph(doubleGraphDispPanel, DBLDISP_GRAPH2_2, pGraph2->plotHandle, graph2SavePath);
 			break;
 	}
 	return 0;
@@ -213,18 +219,36 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 	if( event == EVENT_VAL_CHANGED)
 	{
 		GetCtrlVal(panel, CHPANEL_CHECKBOX, &CheckValue);
-				 if(CheckValue)
-			 {	 //如果CheckBox是选中状态则显示两个graph
-				SetPanelPos(doublePanel, 176, 305);
-				SetPanelSize(doublePanel, 829, 1293);
-				DisplayPanel(doublePanel);
-			    HidePanel(tablePanel);
-				//HidePanel(graphDispPanel);
-			 }else{
-				HidePanel(doublePanel); 
-				
-				 }
-	  	      	
+		if(CheckValue)
+		{	 //如果CheckBox是选中状态则显示两个graph
+			SetPanelPos(doubleGraphDispPanel, 176, 305);
+			SetPanelSize(doubleGraphDispPanel, 829, 1293);
+			DisplayPanel(doubleGraphDispPanel);
+		    HidePanel(tablePanel);
+			HidePanel(graphDispPanel);
+		}
+		else
+		{
+			HidePanel(doubleGraphDispPanel); 
+			HidePanel(tablePanel);
+			DisplayPanel(graphDispPanel);
+		}
+	}
+	return 0;
+}
+
+static int SaveGraph(int panel, int control, int plotHandle, const char path[])
+{
+	int bitmapID;
+	if(plotHandle<=0)		//no valid plot behavior
+		MessagePopup ("Message", "No valod plot. Please run test first.");
+	else
+	{
+		if(GetCtrlBitmap(panel, control, plotHandle,&bitmapID)<0)
+			return -1;
+		if(SaveBitmapToFile(path, bitmapID)<0)		 //need check the file format
+			return -1;
+		DiscardBitmap(bitmapID);
 	}
 	return 0;
 }

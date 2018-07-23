@@ -34,7 +34,6 @@
 //==============================================================================
 // Global variables
 int TimerID;
-Graph_TypeDef Graph;
 extern unsigned char UartTxBuf[32];
 extern unsigned char UartRxBuf[64];
 //==============================================================================
@@ -113,7 +112,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				}
 				
 				ProtocolCfg(comSelect, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART
-				graphInit(graphIndex, numOfCurve, numOfDots, &Graph); 	//graph set up 
+				graphInit(graphIndex, numOfCurve, numOfDots, pGraph1); 	//graph set up 
 				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
 				ProtocolRun(comSelect, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
 			}

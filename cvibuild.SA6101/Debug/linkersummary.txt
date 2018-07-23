@@ -3,7 +3,6 @@ Curve.obj
 ExpListPanel.obj
 File.obj
 Graph.obj
-I-T.obj
 IdVdsPanel.obj
 IdVgsPanel.obj
 LoadPanel.obj
@@ -11,8 +10,7 @@ main.obj
 MainPanelCb.obj
 Plot.obj
 Protocol.obj
-R-T.obj
-Result Menu.obj
+ResultMenuPanel.obj
 SampleCfgPanel.obj
 Timer.obj
 cvi.lib

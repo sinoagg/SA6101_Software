@@ -9,7 +9,7 @@ IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
-Number of Files = 70
+Number of Files = 66
 Target Type = "Executable"
 Flags = 2064
 Copied From Locked InstrDrv Directory = False
@@ -24,271 +24,260 @@ Instrument Files Folder Not Added Yet = True
 Library Files Folder Not Added Yet = True
 Folder 0 = "UI Files"
 FolderEx 0 = "UI Files"
-Folder 1 = "Src"
-FolderEx 1 = "Src"
-Folder 2 = "Src/Panel"
-FolderEx 2 = "Panel"
-FolderEx 2 Parent = 1
-Folder 3 = "Resource"
-FolderEx 3 = "Resource"
-Folder 4 = "Include Files"
-FolderEx 4 = "Include Files"
-Folder 5 = "Include Files/Panel"
-FolderEx 5 = "Panel"
-FolderEx 5 Parent = 4
+Folder 1 = "UI Files/Panel"
+FolderEx 1 = "Panel"
+FolderEx 1 Parent = 0
+Folder 2 = "Src"
+FolderEx 2 = "Src"
+Folder 3 = "Src/Panel"
+FolderEx 3 = "Panel"
+FolderEx 3 Parent = 2
+Folder 4 = "Resource"
+FolderEx 4 = "Resource"
+Folder 5 = "Include Files"
+FolderEx 5 = "Include Files"
+Folder 6 = "Include Files/Panel"
+FolderEx 6 = "Panel"
+FolderEx 6 Parent = 5
 
 [File 0001]
 File Type = "User Interface Resource"
 Res Id = 1
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Environment.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Environment.uir"
+Path Rel Path = "UI Files/Panel/DoubleGraphDisp.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/DoubleGraphDisp.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0002]
 File Type = "User Interface Resource"
 Res Id = 2
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Experiment List.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Experiment List.uir"
+Path Rel Path = "UI Files/Panel/Environment.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0003]
 File Type = "User Interface Resource"
 Res Id = 3
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/GraphDisp.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/GraphDisp.uir"
+Path Rel Path = "UI Files/Panel/Experiment List.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Experiment List.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0004]
 File Type = "User Interface Resource"
 Res Id = 4
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/I-T.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/I-T.uir"
+Path Rel Path = "UI Files/Panel/GraphDisp.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/GraphDisp.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0005]
 File Type = "User Interface Resource"
 Res Id = 5
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Id-Vds Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vds Configuration.uir"
+Path Rel Path = "UI Files/Panel/I-T.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/I-T.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0006]
 File Type = "User Interface Resource"
 Res Id = 6
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Id-Vgs Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Id-Vgs Configuration.uir"
+Path Rel Path = "UI Files/Panel/Id-Vds Configuration.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vds Configuration.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0007]
 File Type = "User Interface Resource"
 Res Id = 7
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/MainPanel.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/MainPanel.uir"
+Path Rel Path = "UI Files/Panel/Id-Vgs Configuration.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vgs Configuration.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0008]
 File Type = "User Interface Resource"
 Res Id = 8
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/R-T.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/R-T.uir"
+Path Rel Path = "UI Files/Panel/MainPanel.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/MainPanel.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0009]
 File Type = "User Interface Resource"
 Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Result Menu.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.uir"
+Path Rel Path = "UI Files/Panel/R-T.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/R-T.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0010]
 File Type = "User Interface Resource"
 Res Id = 10
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Sample Configuration.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Sample Configuration.uir"
+Path Rel Path = "UI Files/Panel/Result Menu.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Result Menu.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0011]
 File Type = "User Interface Resource"
 Res Id = 11
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Table.uir"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Table.uir"
+Path Rel Path = "UI Files/Panel/Sample Configuration.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Sample Configuration.uir"
 Exclude = False
 Project Flags = 0
-Folder = "UI Files"
-Folder Id = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0012]
-File Type = "CSource"
+File Type = "User Interface Resource"
 Res Id = 12
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/ExpListPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.c"
+Path Rel Path = "UI Files/Panel/Table.uir"
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.uir"
 Exclude = False
-Compile Into Object File = False
 Project Flags = 0
-Folder = "Src/Panel"
-Folder Id = 2
+Folder = "UI Files/Panel"
+Folder Id = 1
 
 [File 0013]
 File Type = "CSource"
 Res Id = 13
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/I-T.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/I-T.c"
+Path Rel Path = "Src/Panel/ExpListPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0014]
 File Type = "CSource"
 Res Id = 14
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/IdVdsPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.c"
+Path Rel Path = "Src/Panel/IdVdsPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVdsPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0015]
 File Type = "CSource"
 Res Id = 15
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/IdVgsPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.c"
+Path Rel Path = "Src/Panel/IdVgsPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVgsPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0016]
 File Type = "CSource"
 Res Id = 16
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/LoadPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/LoadPanel.c"
+Path Rel Path = "Src/Panel/LoadPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0017]
 File Type = "CSource"
 Res Id = 17
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "Src/MainPanelCb.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.c"
+Path Rel Path = "Src/Panel/MainPanelCb.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0018]
 File Type = "CSource"
 Res Id = 18
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/R-T.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/R-T.c"
+Path Rel Path = "Src/Panel/ResultMenuPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0019]
 File Type = "CSource"
 Res Id = 19
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Result Menu.c"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.c"
+Path Rel Path = "Src/Panel/SampleCfgPanel.c"
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src/Panel"
-Folder Id = 2
+Folder Id = 3
 
 [File 0020]
 File Type = "CSource"
 Res Id = 20
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Src/SampleCfgPanel.c"
-Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.c"
-Exclude = False
-Compile Into Object File = False
-Project Flags = 0
-Folder = "Src/Panel"
-Folder Id = 2
-
-[File 0021]
-File Type = "CSource"
-Res Id = 21
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/asynctmr.c"
@@ -297,11 +286,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0022]
+[File 0021]
 File Type = "CSource"
-Res Id = 22
+Res Id = 21
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Curve.c"
@@ -310,11 +299,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0023]
+[File 0022]
 File Type = "CSource"
-Res Id = 23
+Res Id = 22
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/File.c"
@@ -323,11 +312,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0024]
+[File 0023]
 File Type = "CSource"
-Res Id = 24
+Res Id = 23
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Graph.c"
@@ -336,11 +325,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0025]
+[File 0024]
 File Type = "CSource"
-Res Id = 25
+Res Id = 24
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/main.c"
@@ -349,11 +338,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0026]
+[File 0025]
 File Type = "CSource"
-Res Id = 26
+Res Id = 25
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Plot.c"
@@ -362,11 +351,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0027]
+[File 0026]
 File Type = "CSource"
-Res Id = 27
+Res Id = 26
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Protocol.c"
@@ -375,11 +364,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0028]
+[File 0027]
 File Type = "CSource"
-Res Id = 28
+Res Id = 27
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Timer.c"
@@ -388,11 +377,11 @@ Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
-Folder Id = 1
+Folder Id = 2
 
-[File 0029]
+[File 0028]
 File Type = "Unknown"
-Res Id = 29
+Res Id = 28
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/analyze.ico"
@@ -400,11 +389,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/analyze.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0030]
+[File 0029]
 File Type = "Unknown"
-Res Id = 30
+Res Id = 29
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Arrow.png"
@@ -412,11 +401,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Arrow.png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0031]
+[File 0030]
 File Type = "Unknown"
-Res Id = 31
+Res Id = 30
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Config.ico"
@@ -424,11 +413,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Config.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0032]
+[File 0031]
 File Type = "Unknown"
-Res Id = 32
+Res Id = 31
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Configure(a).png"
@@ -436,11 +425,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(a).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0033]
+[File 0032]
 File Type = "Unknown"
-Res Id = 33
+Res Id = 32
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Configure(b).ico"
@@ -448,11 +437,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(b).ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0034]
+[File 0033]
 File Type = "Unknown"
-Res Id = 34
+Res Id = 33
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/FET.ico"
@@ -460,11 +449,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/FET.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0035]
+[File 0034]
 File Type = "Unknown"
-Res Id = 35
+Res Id = 34
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/GND.ico"
@@ -472,11 +461,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/GND.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0036]
+[File 0035]
 File Type = "Unknown"
-Res Id = 36
+Res Id = 35
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/I.ico"
@@ -484,11 +473,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/I.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0037]
+[File 0036]
 File Type = "Unknown"
-Res Id = 37
+Res Id = 36
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/I_Bias.ico"
@@ -496,11 +485,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/I_Bias.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0038]
+[File 0037]
 File Type = "Unknown"
-Res Id = 38
+Res Id = 37
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/jiantou.ico"
@@ -508,11 +497,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/jiantou.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0039]
+[File 0038]
 File Type = "Unknown"
-Res Id = 39
+Res Id = 38
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/My Projects.png"
@@ -520,11 +509,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/My Projects.png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0040]
+[File 0039]
 File Type = "Unknown"
-Res Id = 40
+Res Id = 39
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/My Settings.png"
@@ -532,11 +521,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/My Settings.png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0041]
+[File 0040]
 File Type = "Unknown"
-Res Id = 41
+Res Id = 40
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Run.png"
@@ -544,11 +533,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Run.png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0042]
+[File 0041]
 File Type = "Unknown"
-Res Id = 42
+Res Id = 41
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save(a).png"
@@ -556,11 +545,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Save(a).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0043]
+[File 0042]
 File Type = "Unknown"
-Res Id = 43
+Res Id = 42
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save(b).png"
@@ -568,11 +557,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Save(b).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0044]
+[File 0043]
 File Type = "Unknown"
-Res Id = 44
+Res Id = 43
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save_Path(a).png"
@@ -580,11 +569,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(a).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0045]
+[File 0044]
 File Type = "Unknown"
-Res Id = 45
+Res Id = 44
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save_Path(b).png"
@@ -592,11 +581,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(b).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0046]
+[File 0045]
 File Type = "Unknown"
-Res Id = 46
+Res Id = 45
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Select(a).png"
@@ -604,11 +593,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Select(a).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0047]
+[File 0046]
 File Type = "Unknown"
-Res Id = 47
+Res Id = 46
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Select(b).ico"
@@ -616,11 +605,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Select(b).ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0048]
+[File 0047]
 File Type = "Unknown"
-Res Id = 48
+Res Id = 47
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Stop.png"
@@ -628,11 +617,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Stop.png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0049]
+[File 0048]
 File Type = "Unknown"
-Res Id = 49
+Res Id = 48
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Tools.png"
@@ -640,11 +629,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/Tools.png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0050]
+[File 0049]
 File Type = "Unknown"
-Res Id = 50
+Res Id = 49
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/User(a).png"
@@ -652,11 +641,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/User(a).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0051]
+[File 0050]
 File Type = "Unknown"
-Res Id = 51
+Res Id = 50
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/User(b).png"
@@ -664,11 +653,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/User(b).png"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0052]
+[File 0051]
 File Type = "Unknown"
-Res Id = 52
+Res Id = 51
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/V.ico"
@@ -676,11 +665,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/V.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0053]
+[File 0052]
 File Type = "Unknown"
-Res Id = 53
+Res Id = 52
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/V_Bias.ico"
@@ -688,11 +677,11 @@ Path = "/e/SINOAGG/Software/SA6101/Resource/V_Bias.ico"
 Exclude = False
 Project Flags = 0
 Folder = "Resource"
-Folder Id = 3
+Folder Id = 4
 
-[File 0054]
+[File 0053]
 File Type = "Include"
-Res Id = 54
+Res Id = 53
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/ExpListPanel.h"
@@ -700,23 +689,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/ExpListPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0055]
+[File 0054]
 File Type = "Include"
-Res Id = 55
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "UI Files/I-T.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/I-T.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files/Panel"
-Folder Id = 5
-
-[File 0056]
-File Type = "Include"
-Res Id = 56
+Res Id = 54
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/IdVdsPanel.h"
@@ -724,11 +701,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/IdVdsPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0057]
+[File 0055]
 File Type = "Include"
-Res Id = 57
+Res Id = 55
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/IdVgsPanel.h"
@@ -736,11 +713,11 @@ Path = "/e/SINOAGG/Software/SA6101/UI Files/IdVgsPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0058]
+[File 0056]
 File Type = "Include"
-Res Id = 58
+Res Id = 56
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/LoadPanel.h"
@@ -748,11 +725,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/LoadPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0059]
+[File 0057]
 File Type = "Include"
-Res Id = 59
+Res Id = 57
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/MainPanelCb.h"
@@ -760,35 +737,23 @@ Path = "/e/SINOAGG/Software/SA6101/Src/MainPanelCb.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0060]
+[File 0058]
 File Type = "Include"
-Res Id = 60
+Res Id = 58
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/R-T.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/R-T.h"
+Path Rel Path = "Src/ResultMenuPanel.h"
+Path = "/e/SINOAGG/Software/SA6101/Src/ResultMenuPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0061]
+[File 0059]
 File Type = "Include"
-Res Id = 61
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "UI Files/Result Menu.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Result Menu.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files/Panel"
-Folder Id = 5
-
-[File 0062]
-File Type = "Include"
-Res Id = 62
+Res Id = 59
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/SampleCfgPanel.h"
@@ -796,11 +761,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/SampleCfgPanel.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files/Panel"
-Folder Id = 5
+Folder Id = 6
 
-[File 0063]
+[File 0060]
 File Type = "Include"
-Res Id = 63
+Res Id = 60
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/asynctmr.h"
@@ -808,11 +773,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
-[File 0064]
+[File 0061]
 File Type = "Include"
-Res Id = 64
+Res Id = 61
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Curve.h"
@@ -820,11 +785,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
-[File 0065]
+[File 0062]
 File Type = "Include"
-Res Id = 65
+Res Id = 62
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/File.h"
@@ -832,11 +797,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
-[File 0066]
+[File 0063]
 File Type = "Include"
-Res Id = 66
+Res Id = 63
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Graph.h"
@@ -844,11 +809,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
-[File 0067]
+[File 0064]
 File Type = "Include"
-Res Id = 67
+Res Id = 64
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Plot.h"
@@ -856,11 +821,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
-[File 0068]
+[File 0065]
 File Type = "Include"
-Res Id = 68
+Res Id = 65
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Protocol.h"
@@ -868,23 +833,11 @@ Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
-[File 0069]
+[File 0066]
 File Type = "Include"
-Res Id = 69
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "UI Files/SaveData.h"
-Path = "/e/SINOAGG/Software/SA6101/UI Files/SaveData.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files"
-Folder Id = 4
-
-[File 0070]
-File Type = "Include"
-Res Id = 70
+Res Id = 66
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Timer.h"
@@ -892,7 +845,7 @@ Path = "/e/SINOAGG/Software/SA6101/Src/Timer.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
-Folder Id = 4
+Folder Id = 5
 
 [Custom Build Configs]
 Num Custom Build Configs = 0

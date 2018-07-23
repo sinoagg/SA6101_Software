@@ -58,9 +58,9 @@ void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 	while(rxNum>=UART_RX_LEN)
 	{
 		ProtocolGetData(UartRxBuf+i*UART_RX_LEN, &RxData);					//get data from uart buffer
-		Graph.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
-		*(Graph.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
-		*(Graph.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data
+		pGraph1->pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
+		*(pGraph1->pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+		*(pGraph1->pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data
 		if(RxData.rxStopSign==0x02)											//if complete the test, stop the timer
 			DiscardAsyncTimer(TimerID);
 		rxNum-=UART_RX_LEN;

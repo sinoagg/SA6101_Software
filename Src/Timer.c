@@ -39,6 +39,6 @@
 /// HIRET What does your function return?
 int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2)
 {
-	PlotCurve(&Graph, graphDispPanel, GRAPHDISP_GRAPH1); 
+	PlotCurve(pGraph1, graphDispPanel, GRAPHDISP_GRAPH1); 
 	return 0;
 }

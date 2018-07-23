@@ -31,7 +31,7 @@
 
 //==============================================================================
 // Global functions
-int PlotCurve(Graph_TypeDef* pGraph, int graphDispPanel, int control);
+int PlotCurve(GraphTypeDef* pGraph, int graphDispPanel, int control);
 
 #ifdef __cplusplus
     }

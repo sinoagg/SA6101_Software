@@ -32,7 +32,7 @@
 //==============================================================================
 // Global functions
 
-int PlotCurve(Graph_TypeDef* pGraph, int graphDispPanel, int control)
+int PlotCurve(GraphTypeDef* pGraph, int graphDispPanel, int control)
 {
 	int numOfDotsToPlot=pGraph->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据 
 	if(numOfDotsToPlot>0)																//如果有需要画图的点
