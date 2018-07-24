@@ -35,9 +35,6 @@ IdVdCfg_TypeDef IdVdCfg;
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
 int GetIdVdCfg (int panelHandle)
 {
 	int temp;

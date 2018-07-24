@@ -10,6 +10,8 @@
 
 //==============================================================================
 // Include files
+#include <utility.h>
+#include <formatio.h>
 #include "asynctmr.h"
 #include "MainPanelCb.h"
 #include <ansi_c.h>
@@ -36,6 +38,7 @@
 int TimerID;
 extern unsigned char UartTxBuf[32];
 extern unsigned char UartRxBuf[64];
+char configSavePath[512]={0};
 //==============================================================================
 // Global functions
 
@@ -140,9 +143,6 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 	return 0;
 }
 
-//===================================================
-//   SaveCallback
-
 int CVICALLBACK SaveCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
@@ -160,7 +160,8 @@ int CVICALLBACK SaveCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时  
 			
 			DisplayImageFile (mainPanel, MAIN_PANEL_SAVE, "Resource\\Save.ico");
-
+			//if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, configSavePath)>0)
+				SaveConfigToFile(configSavePath);
 			break;
 	}
 	return 0;
@@ -263,4 +264,34 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			
 	}
 	return 0;
+}
+
+static int SaveConfigToFile(char* pConfigSavePath)
+{
+	FILE * fp = NULL;							//表示打开的文件
+	fp = fopen(pConfigSavePath, "w");
+	if(fp == NULL)
+	{
+		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
+		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePath)<0)
+			return -1;
+	}
+	else
+	{
+		int maxCommentSize=255;
+		char comment[maxCommentSize];
+		GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置
+		GetIdVgCfg(IdVgPanel);						//获取IdVg面板设置
+		//GetITCfg(iTPanel);
+		//GetRTCfg(rTPanel);
+		GetSampleCfg(samplePanel);
+		//GetEnvironmentCfg(environmentPanel);
+		PromptPopup("Message", "Please enter comment for this configuration:", comment, maxCommentSize-1);
+		fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
+		fprintf(fp, "Comment: %s", comment);
+		
+		fclose(fp);//关闭文件
+	}
+	return 0;
+	
 }

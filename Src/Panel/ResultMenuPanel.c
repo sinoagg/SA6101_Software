@@ -123,9 +123,10 @@ int CVICALLBACK BrowseSheetCallback (int panel, int control, int event,
 	switch (event)
 	{			
 		case EVENT_LEFT_CLICK_UP:
-			
 			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".xls", "*.xls", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, sheetSavePath)>0)
 				SetCtrlVal(panel, SAVEDATA_SHEETPATH, sheetSavePath);
+			else 
+				return -1;
 			break;
 	}
 	return 0;

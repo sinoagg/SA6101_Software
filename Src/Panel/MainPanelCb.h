@@ -40,7 +40,7 @@ extern unsigned char comSelect2;
 //==============================================================================
 // Global functions
 
-
+static int SaveConfigToFile(char* pConfigSavePath);
 
 #ifdef __cplusplus
     }
