@@ -242,9 +242,9 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 		     	SetPanelSize(graphDispPanel, 834, 1293);      
 	 			DisplayPanel(graphDispPanel);
 			   
-				SetPanelPos(samplePanel, 105, 1600);
-				SetPanelSize(samplePanel, 450, 300);
-				DisplayPanel(samplePanel);
+				SetPanelPos(smPanel, 105, 1600);
+				SetPanelSize(smPanel, 450, 300);
+				DisplayPanel(smPanel);
 				
 				SetPanelPos(AnalyenvirPanel, 557, 1600);
 				SetPanelSize(AnalyenvirPanel, 450, 300);

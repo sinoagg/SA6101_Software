@@ -12,18 +12,14 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "SA6101.prj"
-Project 0001 Folder UI Files/Panel Collapsed = True
-Project 0001 FolderId 1 Collapsed = True
-Project 0001 Folder Src/Panel Collapsed = True
-Project 0001 FolderId 3 Collapsed = True
 Project 0001 Folder Resource Collapsed = True
 Project 0001 FolderId 4 Collapsed = True
 Drag Bar Left = 287
-Window Top = 10
+Window Top = 517
 Window Left = 139
-Window Bottom = 772
+Window Bottom = 1279
 Window Right = 1178
-Maximized = True
+Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -36,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 0
+Number of Opened Files = 7
 Window Confinement Region Enabled = True
 MainColumnWidth = 270
 FileDateColumnWidth = 70
@@ -52,6 +48,42 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
+Path Line0002 = "tion.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615179200
+In Projects = "1,"
+Window Top = 122
+Window Left = 58
+Window Height = 533
+Window Width = 1163
+Window Z-Order = 4
+
+[File 0002]
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vgs Configura"
+Path Line0002 = "tion.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615192020
+In Projects = "1,"
+Window Top = 212
+Window Left = 106
+Window Height = 533
+Window Width = 1137
+Window Z-Order = 6
+
+[File 0003]
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
+Path Line0002 = "tion.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615239102
+In Projects = "1,"
+Window Top = 272
+Window Left = 138
+Window Height = 533
+Window Width = 1163
+Window Z-Order = 1
+
+[File 0004]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/DoubleGraphDisp."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -62,7 +94,7 @@ Window Left = 10
 Window Height = 533
 Window Width = 1163
 
-[File 0002]
+[File 0005]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Environment.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615180324
@@ -72,7 +104,7 @@ Window Left = 10
 Window Height = 533
 Window Width = 1137
 
-[File 0003]
+[File 0006]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Experiment List."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -83,7 +115,7 @@ Window Left = 122
 Window Height = 533
 Window Width = 1163
 
-[File 0004]
+[File 0007]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615171821
@@ -93,7 +125,7 @@ Window Left = 26
 Window Height = 411
 Window Width = 686
 
-[File 0005]
+[File 0008]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/I-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615170937
@@ -103,29 +135,7 @@ Window Left = 74
 Window Height = 533
 Window Width = 1137
 
-[File 0006]
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
-Path Line0002 = "tion.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615179200
-In Projects = "1,"
-Window Top = 122
-Window Left = 58
-Window Height = 533
-Window Width = 1163
-
-[File 0007]
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vgs Configura"
-Path Line0002 = "tion.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615178012
-In Projects = "1,"
-Window Top = 212
-Window Left = 106
-Window Height = 533
-Window Width = 1137
-
-[File 0008]
+[File 0009]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615170937
@@ -134,14 +144,15 @@ Window Top = 62
 Window Left = 26
 Window Height = 533
 Window Width = 1137
+Window Z-Order = 3
 
-[File 0009]
+[File 0010]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/R-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615170937
 In Projects = "1,"
 
-[File 0010]
+[File 0011]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615171781
@@ -150,17 +161,6 @@ Window Top = 33
 Window Left = 10
 Window Height = 411
 Window Width = 726
-
-[File 0011]
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
-Path Line0002 = "tion.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615176940
-In Projects = "1,"
-Window Top = 272
-Window Left = 138
-Window Height = 533
-Window Width = 1163
 
 [File 0012]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Table.uir"
@@ -211,19 +211,21 @@ Source Window State = "1,101,122,101,0,0,0,0,0,0,0,0,0,0,0,0,88,0,101,0,533,1137
 [File 0017]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.c"
 File Type = "CSource"
-Disk Date = 3615176231
+Disk Date = 3615238340
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
-Source Window State = "1,115,115,115,36,37,36,0,0,0,0,109,0,121,0,0,93,0,95,32,533,1137,1,0,"
+Window Z-Order = 5
+Source Window State = "1,111,114,114,30,30,30,0,0,78,0,112,0,124,0,17,36,0,44,12,533,1137,1,0,"
 
 [File 0018]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
 File Type = "CSource"
-Disk Date = 3615176361
+Disk Date = 3615239000
 In Projects = "1,"
 Window Top = 31
-Source Window State = "1,248,248,248,46,48,48,0,0,0,0,0,0,0,0,0,12,0,17,0,400,600,1,0,"
+Window Z-Order = 2
+Source Window State = "1,246,246,246,30,35,35,0,0,37,0,0,0,0,0,12,229,0,239,13,400,600,1,0,"
 
 [File 0019]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.c"
@@ -504,11 +506,12 @@ Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 [File 0059]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.h"
 File Type = "Include"
-Disk Date = 3615175484
+Disk Date = 3615238294
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,30,30,30,13,14,14,0,0,0,0,0,0,0,0,0,16,0,29,0,533,1163,1,0,"
+Window Z-Order = 7
+Source Window State = "1,45,45,45,0,23,23,0,0,80,0,0,0,0,0,17,42,0,46,18,533,1163,1,0,"
 
 [File 0060]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.h"
@@ -613,6 +616,18 @@ Disk Date = 3615170937
 In Projects = "1,"
 Window Top = 30
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,24,400,600,1,0,"
+
+[Tab Order]
+Tab 0001 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vgs Configura"
+Tab 0001 Line0002 = "tion.uir"
+Tab 0002 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
+Tab 0002 Line0002 = "tion.uir"
+Tab 0003 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
+Tab 0003 Line0002 = "tion.uir"
+Tab 0004 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.c"
+Tab 0005 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.h"
+Tab 0006 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
+Tab 0007 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

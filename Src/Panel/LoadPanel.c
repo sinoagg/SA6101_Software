@@ -42,6 +42,7 @@ int rTPanel;
 int chPanel;
 int doubleGraphDispPanel;
 int AnalyenvirPanel;
+int smPanel;
 //==============================================================================
 // Global functions
 
@@ -64,6 +65,8 @@ int LoadInitPanel (void)
 		return -1;
 	
 	if ((samplePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
+		return -1;
+	if ((smPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE)) < 0)		//load right panel
 		return -1;
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
