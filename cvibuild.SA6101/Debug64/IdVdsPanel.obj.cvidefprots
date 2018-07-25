@@ -1,0 +1,44 @@
+[GetIdVdCfg]
+Class="Function"
+Prototype="int GetIdVdCfg(int panelHandle);"
+
+[VDGateCallback]
+Class="Function"
+Prototype="int VDGateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VDDrainCallback]
+Class="Function"
+Prototype="int VDDrainCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VdmodeCallbzck]
+Class="Function"
+Prototype="int VdmodeCallbzck(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[StartCallback]
+Class="Function"
+Prototype="int StartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[StepCallback]
+Class="Function"
+Prototype="int StepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VdStopCallback]
+Class="Function"
+Prototype="int VdStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ModeCallback]
+Class="Function"
+Prototype="int ModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VdSartCallback]
+Class="Function"
+Prototype="int VdSartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VdStepCallback]
+Class="Function"
+Prototype="int VdStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VdStCallback]
+Class="Function"
+Prototype="int VdStCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

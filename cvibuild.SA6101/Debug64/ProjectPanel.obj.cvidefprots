@@ -1,0 +1,24 @@
+[OpenCallback]
+Class="Function"
+Prototype="int OpenCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ProExitCallback]
+Class="Function"
+Prototype="int ProExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[defCallback]
+Class="Function"
+Prototype="int defCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ImgCallback]
+Class="Function"
+Prototype="int ImgCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[DescCallback]
+Class="Function"
+Prototype="int DescCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SearchCallback]
+Class="Function"
+Prototype="int SearchCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
