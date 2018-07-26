@@ -2,13 +2,10 @@
 Class="Function"
 Prototype="void Table_init(char (*table_title_IV)[20], int column, int column_width);"
 
-<<<<<<< HEAD
-=======
 [AddTitleCallback]
 Class="Function"
 Prototype="int AddTitleCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 [AddRowCallback]
 Class="Function"
 Prototype="int AddRowCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
@@ -21,10 +18,3 @@ Prototype="int DeleteCalback(int panel, int control, int event, void *callbackDa
 Class="Function"
 Prototype="int ColorCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-<<<<<<< HEAD
-[AddTitleCallback]
-Class="Function"
-Prototype="int AddTitleCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-
-=======
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd

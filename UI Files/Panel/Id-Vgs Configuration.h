@@ -19,22 +19,6 @@
 #define  IDVGS_CFG_PIC_IDVD_BLUK          4       /* control type: picture, callback function: (none) */
 #define  IDVGS_CFG_PIC_IDVD_GATE          5       /* control type: picture, callback function: (none) */
 #define  IDVGS_CFG_PIC_FET                6       /* control type: picture, callback function: (none) */
-<<<<<<< HEAD
-#define  IDVGS_CFG_VG_STEP                7       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_VG_STOP                8       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_VG_START               9       /* control type: numeric, callback function: (none) */
-#define  IDVGS_CFG_RING_MODE              10      /* control type: ring, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_18             11      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TXT_MODE               12      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TXT_START              13      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TXT_STOP               14      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_20             15      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TXT_STEP               16      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_PIC_GATE               17      /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_22             18      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TXT_GATE               19      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_DECORATION_GATE        20      /* control type: deco, callback function: GateCallback */
-=======
 #define  IDVGS_CFG_VD_STEP_2              7       /* control type: numeric, callback function: VgStepCallback */
 #define  IDVGS_CFG_VD_STOP_2              8       /* control type: numeric, callback function: VgStCallback */
 #define  IDVGS_CFG_VD_START_2             9       /* control type: numeric, callback function: VgSartCallback */
@@ -63,7 +47,6 @@
 #define  IDVGS_CFG_TXT_DRAIN              32      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_DECORATION_GATE        33      /* control type: deco, callback function: GateCallback */
 #define  IDVGS_CFG_DECORATION_DRAIN       34      /* control type: deco, callback function: VGDrainCallback */
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 
 
      /* Control Arrays: */
@@ -79,8 +62,6 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK GateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-<<<<<<< HEAD
-=======
 int  CVICALLBACK VGDrainCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VgModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VgSartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
@@ -88,7 +69,6 @@ int  CVICALLBACK VGstartCallback(int panel, int control, int event, void *callba
 int  CVICALLBACK VgStCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VgStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VGstopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 
 
 #ifdef __cplusplus

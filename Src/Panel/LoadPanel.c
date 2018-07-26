@@ -37,24 +37,18 @@ int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
-<<<<<<< HEAD
-=======
 int ENVTPanel; 
 int GRAPHPanel;
 int ABOUTPanel;
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 int iTPanel;
 int rTPanel;
 int chPanel;
 int doubleGraphDispPanel;
 int AnalyenvirPanel;
 int smPanel;
-<<<<<<< HEAD
-=======
 int setPanel;
 int proPanel;
 int defPanel;
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 //==============================================================================
 // Global functions
 
@@ -93,9 +87,6 @@ int LoadInitPanel (void)
 	 //用于弹出savedata面板
 	if ((saveDataPanel = LoadPanel (mainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//load savedata panel
 		return -1;
-<<<<<<< HEAD
-	
-=======
 
 		//用于弹出settings面板
 	if ((setPanel = LoadPanel (mainPanel, "SetPanel.uir", SETTINGS)) < 0)		//load settings panel
@@ -111,7 +102,6 @@ int LoadInitPanel (void)
 	//用于弹出About面板
 	if ((ABOUTPanel = LoadPanel (setPanel, "SetPanel.uir", ABOUT)) < 0)		//load graph panel
 		return -1;
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 	 //用于显示电学和环境graph  
 	if ((doubleGraphDispPanel = LoadPanel (mainPanel, "DoubleGraphDisp.uir", DBLDISP)) < 0)		//load double Graph Disp Panel 
 		return -1;
@@ -132,15 +122,12 @@ int LoadInitPanel (void)
 	if ((rTPanel = LoadPanel (mainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
 	
-<<<<<<< HEAD
-=======
 	//弹出projects		
 	 if ((proPanel = LoadPanel (mainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
 	 if ((defPanel = LoadPanel (proPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
 	
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 	DisplayPanel (mainPanel); 
 	
 	SetPanelPos(expListPanel, 105, 3);  //加载面板位置 （,top,left）

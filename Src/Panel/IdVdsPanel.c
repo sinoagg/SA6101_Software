@@ -135,17 +135,6 @@ int CVICALLBACK VDDrainCallback (int panel, int control, int event,
 
 int CVICALLBACK VdmodeCallbzck (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
-<<<<<<< HEAD
-{
-	if(event==EVENT_LEFT_CLICK_UP){
-		        DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-				  
-				  
-				  DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg.ico"); 
-				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);
-		 }
-=======
 {	   
 	
 	
@@ -173,7 +162,6 @@ int CVICALLBACK VdmodeCallbzck (int panel, int control, int event,
 		
 	
 
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 	return 0;
 }
 
@@ -225,11 +213,7 @@ int CVICALLBACK VdStopCallback (int panel, int control, int event,
 int CVICALLBACK ModeCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {				 if(event==EVENT_LEFT_CLICK_UP){ 
-<<<<<<< HEAD
-	           DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
-=======
 	              DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico"); 
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 				  SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);
 				  
 				  DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture

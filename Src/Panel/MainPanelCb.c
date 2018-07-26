@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 #include "MainPanel.h"
 
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 //==============================================================================
 //
 // Title:		MainPanel.c
@@ -16,14 +13,10 @@
 //==============================================================================
 // Include files
 #include <utility.h>
-<<<<<<< HEAD
-#include <formatio.h>
-=======
 //<<<<<<< HEAD
 //=======
 #include <formatio.h>
 //>>>>>>> refs/remotes/origin/master
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 #include "asynctmr.h"
 #include "MainPanelCb.h"
 #include <ansi_c.h>
@@ -36,26 +29,19 @@
 //==============================================================================
 // Constants
 #define DEFAULT_ADDR 0x01 
-<<<<<<< HEAD
-=======
 
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
 
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 //==============================================================================
 // Types
 
 //==============================================================================
 // Static global variables
-<<<<<<< HEAD
-
-=======
 int ENVPanel;
 int GRAPHPanel; 
 int ABOUTPanel;
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 //==============================================================================
 // Static functions
 
@@ -186,11 +172,7 @@ int CVICALLBACK SaveCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时  
 			
 			DisplayImageFile (mainPanel, MAIN_PANEL_SAVE, "Resource\\Save.ico");
-<<<<<<< HEAD
-			//if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, configSavePath)>0)
-=======
 			if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1,  configSavePath)>0)
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 				SaveConfigToFile(configSavePath);
 			break;
 	}
@@ -209,12 +191,8 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-<<<<<<< HEAD
-			HidePanel( samplePanel  );
-=======
 			HidePanel( samplePanel  );	 
 			HidePanel( smPanel  );
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 			HidePanel( environmentPanel);
 			HidePanel(AnalyenvirPanel);
 			break;
@@ -301,8 +279,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	return 0;
 }
 
-<<<<<<< HEAD
-=======
 
 int CVICALLBACK SettingsCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
@@ -342,7 +318,6 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 
 //=======
 //>>>>>>> refs/remotes/origin/master
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 static int SaveConfigToFile(char* pConfigSavePath)
 {
 	FILE * fp = NULL;							//表示打开的文件
@@ -372,8 +347,6 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	return 0;
 	
 }
-<<<<<<< HEAD
-=======
 //<<<<<<< HEAD
 
 
@@ -398,4 +371,3 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 	 
 	return 0;
 }
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd

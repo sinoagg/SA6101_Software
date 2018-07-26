@@ -38,11 +38,6 @@
 extern unsigned char comSelect1;
 extern unsigned char comSelect2; 
 //==============================================================================
-<<<<<<< HEAD
-// Global functions
-
-static int SaveConfigToFile(char* pConfigSavePath);
-=======
 //// Global functions
 //<<<<<<< HEAD
 static int SaveConfigToFile(char* pConfigSavePath);
@@ -51,7 +46,6 @@ static int SaveConfigToFile(char* pConfigSavePath);
 
 static int SaveConfigToFile(char* pConfigSavePath);
 //>>>>>>> refs/remotes/origin/master
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 
 #ifdef __cplusplus
     }

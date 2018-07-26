@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 #include "ProjectPanel.h"
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 #include "GraphDisp.h"
 
 //==============================================================================
@@ -115,11 +112,7 @@ int CVICALLBACK ExitCallback (int panel, int control, int event,
 		if (event == EVENT_COMMIT)
 				{
 	    		//ÒÆ³ý¡¢¹Ø±ÕsavedataÃæ°å
-<<<<<<< HEAD
-				RemovePopup (saveDataPanel);
-=======
 				RemovePopup(saveDataPanel);
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 		        }
 			return 0;
 }
@@ -260,7 +253,4 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 	}
 	return 0;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
