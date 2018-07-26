@@ -10,9 +10,17 @@ LoadPanel.obj
 main.obj
 MainPanelCb.obj
 Plot.obj
+<<<<<<< HEAD
 Protocol.obj
 ResultMenuPanel.obj
 SampleCfgPanel.obj
+=======
+ProjectPanel.obj
+Protocol.obj
+ResultMenuPanel.obj
+SampleCfgPanel.obj
+SetPanel.obj
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Table.obj
 Timer.obj
 cvi.lib

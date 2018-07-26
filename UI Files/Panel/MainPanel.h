@@ -23,9 +23,15 @@
 #define  MAIN_PANEL_TXT_RUN               8       /* control type: textMsg, callback function: (none) */
 #define  MAIN_PANEL_CANVAS                9       /* control type: canvas, callback function: (none) */
 #define  MAIN_PANEL_TXT_SAVE              10      /* control type: textMsg, callback function: (none) */
+<<<<<<< HEAD
 #define  MAIN_PANEL_PROJECTS              11      /* control type: picture, callback function: (none) */
 #define  MAIN_PANEL_TOOLS                 12      /* control type: picture, callback function: (none) */
 #define  MAIN_PANEL_SETTINGS              13      /* control type: picture, callback function: (none) */
+=======
+#define  MAIN_PANEL_PROJECTS              11      /* control type: picture, callback function: ProjectCallback */
+#define  MAIN_PANEL_TOOLS                 12      /* control type: picture, callback function: (none) */
+#define  MAIN_PANEL_SETTINGS              13      /* control type: picture, callback function: SettingsCallback */
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 #define  MAIN_PANEL_TXT_PROJECTS          14      /* control type: textMsg, callback function: (none) */
 #define  MAIN_PANEL_TXT_SET               15      /* control type: textMsg, callback function: (none) */
 #define  MAIN_PANEL_TXT_TOOLS             16      /* control type: textMsg, callback function: (none) */
@@ -54,9 +60,17 @@
 int  CVICALLBACK AnalyzeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ConfigureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK MAIN_PANEL_Callback(int panel, int event, void *callbackData, int eventData1, int eventData2);
+<<<<<<< HEAD
 int  CVICALLBACK RunCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SaveCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+=======
+int  CVICALLBACK ProjectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK RunCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SaveCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SettingsCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 int  CVICALLBACK StopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 

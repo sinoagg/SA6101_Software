@@ -6,3 +6,42 @@ Prototype="int GetIdVgCfg(int panelHandle);"
 Class="Function"
 Prototype="int GateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
+<<<<<<< HEAD
+=======
+[VGstartCallback]
+Class="Function"
+Prototype="int VGstartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VGstopCallback]
+Class="Function"
+Prototype="int VGstopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VGstepCallback]
+Class="Function"
+Prototype="int VGstepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VgModeCallback]
+Class="Function"
+Prototype="int VgModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VgSartCallback]
+Class="Function"
+Prototype="int VgSartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VgStCallback]
+Class="Function"
+Prototype="int VgStCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VgStepCallback]
+Class="Function"
+Prototype="int VgStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VGmodeCallback]
+Class="Function"
+Prototype="int VGmodeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[VGDrainCallback]
+Class="Function"
+Prototype="int VGDrainCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd

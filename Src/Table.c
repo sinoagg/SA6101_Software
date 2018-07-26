@@ -9,7 +9,11 @@ char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K"};
 char Table_title_IV[11][20] ={"Current(A)","Voltage(V)","Current(A)","Voltage(V)"};
 char Table_title_VI[11][20] ={"Current(A)","Voltage(V)","Current(A)","Voltage(V)"}; 
 char Table_title_IT[11][20] ={"Current(A)","Time(S)","Current(A)","Time(S)"};
+<<<<<<< HEAD
  int column=4;//列数
+=======
+ int column=4;        //列数
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
  int column_width=285;//列宽
 
 
@@ -30,7 +34,25 @@ char Table_title_IT[11][20] ={"Current(A)","Time(S)","Current(A)","Time(S)"};
 			}
 			
 }
+<<<<<<< HEAD
 
+=======
+//添加列名
+int CVICALLBACK AddTitleCallback (int panel, int control, int event,
+								  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)											  
+	{
+		case EVENT_LEFT_CLICK_UP:
+			Table_init(Table_title_IT,column, column_width );
+			
+			SetCtrlAttribute (tablePanel, TABLE_ADDROW, ATTR_DIMMED,0);       
+			SetCtrlAttribute (tablePanel, TABLE_ADDTITLE,  ATTR_DIMMED,1); 				
+			break;
+	}
+	return 0;
+}
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 
 //添加行数
 int CVICALLBACK AddRowCallback (int panel, int control, int event,
@@ -47,6 +69,12 @@ int CVICALLBACK AddRowCallback (int panel, int control, int event,
 							SetTableCellVal (tablePanel, TABLE_DISTABLE, MakePoint (2,row ), 200.0); 
 							SetTableCellVal (tablePanel, TABLE_DISTABLE, MakePoint (3,row ), 300.0); 
 							SetTableCellVal (tablePanel, TABLE_DISTABLE, MakePoint (4,row ), 400.0);
+<<<<<<< HEAD
+=======
+							int MaxRow;//最后一行行数
+							GetNumTableRows(tablePanel,TABLE_DISTABLE,&MaxRow);
+							SetCtrlAttribute(tablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 				break;
 	}
 	return 0;
@@ -102,6 +130,7 @@ int CVICALLBACK ColorCallback (int panel, int control, int event,
 
 
 
+<<<<<<< HEAD
 //添加列名
 int CVICALLBACK AddTitleCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
@@ -117,3 +146,6 @@ int CVICALLBACK AddTitleCallback (int panel, int control, int event,
 	}
 	return 0;
 }
+=======
+
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd

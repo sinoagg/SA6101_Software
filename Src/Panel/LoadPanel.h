@@ -31,6 +31,12 @@
 #include "I-T.h"
 #include "R-T.h"
 #include "DoubleGraphDisp.h"
+<<<<<<< HEAD
+=======
+#include "SetPanel.h"
+#include "ProjectPanel.h"
+
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 //==============================================================================
 // Constants
 
@@ -49,6 +55,7 @@ extern int graphDispPanel;
 extern int environmentPanel;
 extern int resultPanel;	     //result menu panel
 extern int tablePanel;
+<<<<<<< HEAD
 extern int saveDataPanel;  
 extern int iTPanel;          //I-T panel
 extern int rTPanel;          //R-T panel
@@ -56,6 +63,20 @@ extern int rTPanel;          //R-T panel
 extern int doubleGraphDispPanel;      // double graph panel 
 extern int chPanel;          //chose panel
 extern int AnalyenvirPanel;
+=======
+extern int saveDataPanel; 
+extern int ENVTPanel;  
+extern int GRAPHPanel;
+extern int ABOUTPanel;
+extern int iTPanel;          //I-T panel
+extern int rTPanel;          //R-T panel
+extern int setPanel;
+extern int doubleGraphDispPanel;      // double graph panel 
+extern int chPanel;          //chose panel
+extern int AnalyenvirPanel;
+extern int proPanel;
+extern int defPanel;
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 //==============================================================================
 // Global functions
 

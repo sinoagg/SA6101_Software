@@ -9,7 +9,11 @@ IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
+<<<<<<< HEAD
 Number of Files = 71
+=======
+Number of Files = 77
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Target Type = "Executable"
 Flags = 2064
 Copied From Locked InstrDrv Directory = False
@@ -145,8 +149,13 @@ File Type = "User Interface Resource"
 Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
+<<<<<<< HEAD
 Path Rel Path = "UI Files/Panel/R-T.uir"
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/R-T.uir"
+=======
+Path Rel Path = "UI Files/Panel/ProjectPanel.uir"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ProjectPanel.uir"
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Exclude = False
 Project Flags = 0
 Folder = "UI Files/Panel"
@@ -157,8 +166,13 @@ File Type = "User Interface Resource"
 Res Id = 10
 Path Is Rel = True
 Path Rel To = "Project"
+<<<<<<< HEAD
 Path Rel Path = "UI Files/Panel/Result Menu.uir"
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
+=======
+Path Rel Path = "UI Files/Panel/R-T.uir"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/R-T.uir"
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Exclude = False
 Project Flags = 0
 Folder = "UI Files/Panel"
@@ -169,9 +183,10 @@ File Type = "User Interface Resource"
 Res Id = 11
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "UI Files/Panel/Sample Configuration.uir"
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
-Path Line0002 = "tion.uir"
+<<<<<<< HEAD
+=======
+Path Rel Path = "UI Files/Panel/Result Menu.uir"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
 Exclude = False
 Project Flags = 0
 Folder = "UI Files/Panel"
@@ -182,6 +197,38 @@ File Type = "User Interface Resource"
 Res Id = 12
 Path Is Rel = True
 Path Rel To = "Project"
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
+Path Rel Path = "UI Files/Panel/Sample Configuration.uir"
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
+Path Line0002 = "tion.uir"
+Exclude = False
+Project Flags = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
+
+<<<<<<< HEAD
+[File 0012]
+File Type = "User Interface Resource"
+Res Id = 12
+=======
+[File 0013]
+File Type = "User Interface Resource"
+Res Id = 13
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "UI Files/Panel/SetPanel.uir"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/SetPanel.uir"
+Exclude = False
+Project Flags = 0
+Folder = "UI Files/Panel"
+Folder Id = 1
+
+[File 0014]
+File Type = "User Interface Resource"
+Res Id = 14
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
+Path Is Rel = True
+Path Rel To = "Project"
 Path Rel Path = "UI Files/Panel/Table.uir"
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Table.uir"
 Exclude = False
@@ -189,9 +236,15 @@ Project Flags = 0
 Folder = "UI Files/Panel"
 Folder Id = 1
 
+<<<<<<< HEAD
 [File 0013]
 File Type = "CSource"
 Res Id = 13
+=======
+[File 0015]
+File Type = "CSource"
+Res Id = 15
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/Environment.c"
@@ -202,9 +255,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0014]
 File Type = "CSource"
 Res Id = 14
+=======
+[File 0016]
+File Type = "CSource"
+Res Id = 16
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/ExpListPanel.c"
@@ -215,9 +274,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0015]
 File Type = "CSource"
 Res Id = 15
+=======
+[File 0017]
+File Type = "CSource"
+Res Id = 17
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/IdVdsPanel.c"
@@ -228,9 +293,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0016]
 File Type = "CSource"
 Res Id = 16
+=======
+[File 0018]
+File Type = "CSource"
+Res Id = 18
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/IdVgsPanel.c"
@@ -241,9 +312,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0017]
 File Type = "CSource"
 Res Id = 17
+=======
+[File 0019]
+File Type = "CSource"
+Res Id = 19
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/LoadPanel.c"
@@ -254,9 +331,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0018]
 File Type = "CSource"
 Res Id = 18
+=======
+[File 0020]
+File Type = "CSource"
+Res Id = 20
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/MainPanelCb.c"
@@ -267,9 +350,28 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0019]
 File Type = "CSource"
 Res Id = 19
+=======
+[File 0021]
+File Type = "CSource"
+Res Id = 21
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Src/Panel/ProjectPanel.c"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ProjectPanel.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src/Panel"
+Folder Id = 3
+
+[File 0022]
+File Type = "CSource"
+Res Id = 22
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/ResultMenuPanel.c"
@@ -280,9 +382,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0020]
 File Type = "CSource"
 Res Id = 20
+=======
+[File 0023]
+File Type = "CSource"
+Res Id = 23
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/SampleCfgPanel.c"
@@ -293,9 +401,28 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0021]
 File Type = "CSource"
 Res Id = 21
+=======
+[File 0024]
+File Type = "CSource"
+Res Id = 24
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "UI Files/Panel/SetPanel.c"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/SetPanel.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Src/Panel"
+Folder Id = 3
+
+[File 0025]
+File Type = "CSource"
+Res Id = 25
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Table.c"
@@ -306,9 +433,15 @@ Project Flags = 0
 Folder = "Src/Panel"
 Folder Id = 3
 
+<<<<<<< HEAD
 [File 0022]
 File Type = "CSource"
 Res Id = 22
+=======
+[File 0026]
+File Type = "CSource"
+Res Id = 26
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/asynctmr.c"
@@ -319,9 +452,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0023]
 File Type = "CSource"
 Res Id = 23
+=======
+[File 0027]
+File Type = "CSource"
+Res Id = 27
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Curve.c"
@@ -332,9 +471,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0024]
 File Type = "CSource"
 Res Id = 24
+=======
+[File 0028]
+File Type = "CSource"
+Res Id = 28
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/File.c"
@@ -345,9 +490,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0025]
 File Type = "CSource"
 Res Id = 25
+=======
+[File 0029]
+File Type = "CSource"
+Res Id = 29
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Graph.c"
@@ -358,9 +509,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0026]
 File Type = "CSource"
 Res Id = 26
+=======
+[File 0030]
+File Type = "CSource"
+Res Id = 30
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/main.c"
@@ -371,9 +528,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0027]
 File Type = "CSource"
 Res Id = 27
+=======
+[File 0031]
+File Type = "CSource"
+Res Id = 31
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Plot.c"
@@ -384,9 +547,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0028]
 File Type = "CSource"
 Res Id = 28
+=======
+[File 0032]
+File Type = "CSource"
+Res Id = 32
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Protocol.c"
@@ -397,9 +566,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0029]
 File Type = "CSource"
 Res Id = 29
+=======
+[File 0033]
+File Type = "CSource"
+Res Id = 33
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Timer.c"
@@ -410,9 +585,15 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
+<<<<<<< HEAD
 [File 0030]
 File Type = "Unknown"
 Res Id = 30
+=======
+[File 0034]
+File Type = "Unknown"
+Res Id = 34
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/analyze.ico"
@@ -422,9 +603,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0031]
 File Type = "Unknown"
 Res Id = 31
+=======
+[File 0035]
+File Type = "Unknown"
+Res Id = 35
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Arrow.png"
@@ -434,9 +621,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0032]
 File Type = "Unknown"
 Res Id = 32
+=======
+[File 0036]
+File Type = "Unknown"
+Res Id = 36
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Config.ico"
@@ -446,9 +639,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0033]
 File Type = "Unknown"
 Res Id = 33
+=======
+[File 0037]
+File Type = "Unknown"
+Res Id = 37
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Configure(a).png"
@@ -458,9 +657,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0034]
 File Type = "Unknown"
 Res Id = 34
+=======
+[File 0038]
+File Type = "Unknown"
+Res Id = 38
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Configure(b).ico"
@@ -470,9 +675,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0035]
 File Type = "Unknown"
 Res Id = 35
+=======
+[File 0039]
+File Type = "Unknown"
+Res Id = 39
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/FET.ico"
@@ -482,9 +693,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0036]
 File Type = "Unknown"
 Res Id = 36
+=======
+[File 0040]
+File Type = "Unknown"
+Res Id = 40
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/GND.ico"
@@ -494,9 +711,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0037]
 File Type = "Unknown"
 Res Id = 37
+=======
+[File 0041]
+File Type = "Unknown"
+Res Id = 41
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/I.ico"
@@ -506,9 +729,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0038]
 File Type = "Unknown"
 Res Id = 38
+=======
+[File 0042]
+File Type = "Unknown"
+Res Id = 42
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/I_Bias.ico"
@@ -518,9 +747,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0039]
 File Type = "Unknown"
 Res Id = 39
+=======
+[File 0043]
+File Type = "Unknown"
+Res Id = 43
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/jiantou.ico"
@@ -530,9 +765,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0040]
 File Type = "Unknown"
 Res Id = 40
+=======
+[File 0044]
+File Type = "Unknown"
+Res Id = 44
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/My Projects.png"
@@ -542,9 +783,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0041]
 File Type = "Unknown"
 Res Id = 41
+=======
+[File 0045]
+File Type = "Unknown"
+Res Id = 45
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/My Settings.png"
@@ -554,9 +801,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0042]
 File Type = "Unknown"
 Res Id = 42
+=======
+[File 0046]
+File Type = "Unknown"
+Res Id = 46
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Run.png"
@@ -566,9 +819,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0043]
 File Type = "Unknown"
 Res Id = 43
+=======
+[File 0047]
+File Type = "Unknown"
+Res Id = 47
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save(a).png"
@@ -578,9 +837,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0044]
 File Type = "Unknown"
 Res Id = 44
+=======
+[File 0048]
+File Type = "Unknown"
+Res Id = 48
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save(b).png"
@@ -590,9 +855,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0045]
 File Type = "Unknown"
 Res Id = 45
+=======
+[File 0049]
+File Type = "Unknown"
+Res Id = 49
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save_Path(a).png"
@@ -602,9 +873,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0046]
 File Type = "Unknown"
 Res Id = 46
+=======
+[File 0050]
+File Type = "Unknown"
+Res Id = 50
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Save_Path(b).png"
@@ -614,9 +891,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0047]
 File Type = "Unknown"
 Res Id = 47
+=======
+[File 0051]
+File Type = "Unknown"
+Res Id = 51
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Select(a).png"
@@ -626,9 +909,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0048]
 File Type = "Unknown"
 Res Id = 48
+=======
+[File 0052]
+File Type = "Unknown"
+Res Id = 52
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Select(b).ico"
@@ -638,9 +927,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0049]
 File Type = "Unknown"
 Res Id = 49
+=======
+[File 0053]
+File Type = "Unknown"
+Res Id = 53
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Stop.png"
@@ -650,9 +945,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0050]
 File Type = "Unknown"
 Res Id = 50
+=======
+[File 0054]
+File Type = "Unknown"
+Res Id = 54
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/Tools.png"
@@ -662,9 +963,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0051]
 File Type = "Unknown"
 Res Id = 51
+=======
+[File 0055]
+File Type = "Unknown"
+Res Id = 55
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/User(a).png"
@@ -674,9 +981,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0052]
 File Type = "Unknown"
 Res Id = 52
+=======
+[File 0056]
+File Type = "Unknown"
+Res Id = 56
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/User(b).png"
@@ -686,9 +999,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0053]
 File Type = "Unknown"
 Res Id = 53
+=======
+[File 0057]
+File Type = "Unknown"
+Res Id = 57
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/V.ico"
@@ -698,9 +1017,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0054]
 File Type = "Unknown"
 Res Id = 54
+=======
+[File 0058]
+File Type = "Unknown"
+Res Id = 58
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Resource/V_Bias.ico"
@@ -710,9 +1035,15 @@ Project Flags = 0
 Folder = "Resource"
 Folder Id = 4
 
+<<<<<<< HEAD
 [File 0055]
 File Type = "Include"
 Res Id = 55
+=======
+[File 0059]
+File Type = "Include"
+Res Id = 59
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/Panel/Environment.h"
@@ -722,9 +1053,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0056]
 File Type = "Include"
 Res Id = 56
+=======
+[File 0060]
+File Type = "Include"
+Res Id = 60
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/ExpListPanel.h"
@@ -734,9 +1071,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0057]
 File Type = "Include"
 Res Id = 57
+=======
+[File 0061]
+File Type = "Include"
+Res Id = 61
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/Panel/Id-Vgs Configuration.h"
@@ -747,9 +1090,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0058]
 File Type = "Include"
 Res Id = 58
+=======
+[File 0062]
+File Type = "Include"
+Res Id = 62
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/IdVdsPanel.h"
@@ -759,9 +1108,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0059]
 File Type = "Include"
 Res Id = 59
+=======
+[File 0063]
+File Type = "Include"
+Res Id = 63
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/LoadPanel.h"
@@ -771,9 +1126,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0060]
 File Type = "Include"
 Res Id = 60
+=======
+[File 0064]
+File Type = "Include"
+Res Id = 64
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/MainPanelCb.h"
@@ -783,9 +1144,27 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0061]
 File Type = "Include"
 Res Id = 61
+=======
+[File 0065]
+File Type = "Include"
+Res Id = 65
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "UI Files/Panel/ProjectPanel.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ProjectPanel.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files/Panel"
+Folder Id = 6
+
+[File 0066]
+File Type = "Include"
+Res Id = 66
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/ResultMenuPanel.h"
@@ -795,9 +1174,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0062]
 File Type = "Include"
 Res Id = 62
+=======
+[File 0067]
+File Type = "Include"
+Res Id = 67
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Panel/SampleCfgPanel.h"
@@ -807,9 +1192,27 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0063]
 File Type = "Include"
 Res Id = 63
+=======
+[File 0068]
+File Type = "Include"
+Res Id = 68
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "UI Files/Panel/SetPanel.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/SetPanel.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files/Panel"
+Folder Id = 6
+
+[File 0069]
+File Type = "Include"
+Res Id = 69
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "UI Files/Panel/Table.h"
@@ -819,9 +1222,15 @@ Project Flags = 0
 Folder = "Include Files/Panel"
 Folder Id = 6
 
+<<<<<<< HEAD
 [File 0064]
 File Type = "Include"
 Res Id = 64
+=======
+[File 0070]
+File Type = "Include"
+Res Id = 70
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/asynctmr.h"
@@ -831,9 +1240,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0065]
 File Type = "Include"
 Res Id = 65
+=======
+[File 0071]
+File Type = "Include"
+Res Id = 71
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Curve.h"
@@ -843,9 +1258,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0066]
 File Type = "Include"
 Res Id = 66
+=======
+[File 0072]
+File Type = "Include"
+Res Id = 72
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/File.h"
@@ -855,9 +1276,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0067]
 File Type = "Include"
 Res Id = 67
+=======
+[File 0073]
+File Type = "Include"
+Res Id = 73
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Graph.h"
@@ -867,9 +1294,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0068]
 File Type = "Include"
 Res Id = 68
+=======
+[File 0074]
+File Type = "Include"
+Res Id = 74
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/main.h"
@@ -879,9 +1312,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0069]
 File Type = "Include"
 Res Id = 69
+=======
+[File 0075]
+File Type = "Include"
+Res Id = 75
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Plot.h"
@@ -891,9 +1330,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0070]
 File Type = "Include"
 Res Id = 70
+=======
+[File 0076]
+File Type = "Include"
+Res Id = 76
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Protocol.h"
@@ -903,9 +1348,15 @@ Project Flags = 0
 Folder = "Include Files"
 Folder Id = 5
 
+<<<<<<< HEAD
 [File 0071]
 File Type = "Include"
 Res Id = 71
+=======
+[File 0077]
+File Type = "Include"
+Res Id = 77
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Timer.h"

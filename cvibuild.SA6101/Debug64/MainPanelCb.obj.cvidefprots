@@ -26,3 +26,14 @@ Prototype="int ConfigureCallback(int panel, int control, int event, void *callba
 Class="Function"
 Prototype="int AnalyzeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
+<<<<<<< HEAD
+=======
+[SettingsCallback]
+Class="Function"
+Prototype="int SettingsCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ProjectCallback]
+Class="Function"
+Prototype="int ProjectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+>>>>>>> c470c37cb1316d04d8132fad4521adc588b849fd
