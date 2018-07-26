@@ -19,12 +19,15 @@ Table.obj
 Timer.obj
 cvi.lib
 cvistart.lib
+excelreport.obj
 kernel32.lib
 toolbox.obj
 advapi32.lib
 cviauto.lib
+excel2000.obj
 gdi32.lib
 user32.lib
+uuid.lib
 EXE Symbol Module
 Exports Module
 Resource Module

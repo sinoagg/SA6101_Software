@@ -1,3 +1,6 @@
+#include "excel2000.h"
+#include "excelreport.h"
+
 #include "ProjectPanel.h"
 #include "GraphDisp.h"
 
@@ -186,17 +189,62 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 }
 
 //======================saveSheet==========================
+//保存为Excel表格
+static CAObjHandle applicationHandle = 0;
+static CAObjHandle workbookHandle = 0;
+static CAObjHandle worksheetHandle = 0;
+static row=0;
+static clomun=0;
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {
+	
+	
+    int error;
+	char strBuf[20]={0};
+	char strB[20]={0};
+
+	char dataA[12]={"第一列 "};
+	char dataB[12]={"第二列 "};
+	
+	//char ExcelFileName[MAX_PATHNAME_LEN]={"E:\GitWorkplace\Sinoagg\\Software\\"};
+	
 	switch (event)
 	{
 		case EVENT_COMMIT:
-
-			break;
+		   //启动Excel ExcelRpt_ApplicationNew   ExcelRpt_WorkbookNew
+			
+			error = ExcelRpt_ApplicationNew(VTRUE, &applicationHandle);  
+			if (error<0) 
+			{
+        		MessagePopup ("启动Excel错误","自动启动接口发生错误");
+               
+			}
+	 		ExcelRpt_WorkbookNew(applicationHandle, &workbookHandle);
+			
+			
+		//创建新工作簿	
+	    ExcelRpt_WorksheetNew(workbookHandle, -1, &worksheetHandle);
+		
+		SetCtrlAttribute(panel, SAVEDATA_SAVESHEET, ATTR_DIMMED, 1);
+		//将table中的数据读取并存储到Excel中
+		for(clomun;clomun<10;){
+			
+		  	for(row;row<=clomun;){
+				
+				sprintf(strBuf,"%s%d","A",++row); //格式化字符串
+			
+				ExcelRpt_SetCellValue(worksheetHandle,strBuf,CAVT_CSTRING,dataA);//第一列
+				  
+			
+			} 	
+			sprintf(strB,"%s%d","B",++clomun);
+			ExcelRpt_SetCellValue(worksheetHandle,strB,CAVT_CSTRING,dataB); //第二列
+		} 
+		break;
 	}
-	return 0;
-}
+   return 0;}
+
 
 //=======================saveAll============================
 int CVICALLBACK SaveAllCallback (int panel, int control, int event,
