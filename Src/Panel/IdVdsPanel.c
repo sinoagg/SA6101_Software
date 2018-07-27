@@ -35,6 +35,59 @@ ExpPanelTypeDef IdVdExpPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CF
 
 //==============================================================================
 // Global functions
+<<<<<<< HEAD
+=======
+
+int GetIdVdCfg (int panelHandle)
+{
+	int temp;
+	
+	
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_START, &temp)<0)
+		return -1;
+	IdVdCfg.cfgVdstart=temp;
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STOP, &temp)<0)
+		return -1;
+	IdVdCfg.cfgVdstop=temp;
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STEP, &temp)<0)
+		return -1;
+	IdVdCfg.cfgVdstep=temp;
+	
+	
+	
+	//
+	//if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_START, &temp)<0)
+	//	return -1;
+	//IdVdCfg.cfgVgstart=temp;
+	//if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_STOP, &temp)<0)
+	//	return -1;
+	//IdVdCfg.cfgVgstop=temp;
+	//if(GetCtrlVal(panelHandle, IDVDS_CFG_VG_STEP, &temp)<0)
+	//	return -1;
+	//IdVdCfg.cfgVgstep=temp;
+	
+		
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_START, &temp)<0)
+		return -1;
+	IdVdCfg.cfgVgstart=temp;
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STOP, &temp)<0)
+		return -1;
+	IdVdCfg.cfgVgstop=temp;
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STEP, &temp)<0)
+		return -1;
+	IdVdCfg.cfgVgstep=temp;
+	
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+>>>>>>> 0159491713906f009c32b7b632326928dc744cc8
 int CVICALLBACK VDGateCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
@@ -84,7 +137,7 @@ int CVICALLBACK VdmodeCallbzck (int panel, int control, int event,
 			 break;
 		 }  
 		     int RingValue;
-	              GetCtrlVal(panel,IDVDS_CFG_VDGATE,&RingValue);
+	              GetCtrlVal(panel,IDVDS_CFG_VDGRING,&RingValue);
 			 if(event == EVENT_VAL_CHANGED ){
 			 
 				  if(RingValue==1){

@@ -24,15 +24,16 @@
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "Sample Configuration.h"
+#include "SampleAnalyze.h"
 #include "GraphDisp.h"
 #include "Environment.h"
 #include "Result Menu.h"
 #include "Table.h"
 #include "I-T.h"
 #include "R-T.h"
-#include "DoubleGraphDisp.h"
 #include "SetPanel.h"
 #include "ProjectPanel.h"
+		
 
 //==============================================================================
 // Constants
@@ -47,7 +48,8 @@ extern int expListPanel;
 extern int IdVdPanel;
 extern int IdVgPanel;
 extern int samplePanel;
-extern int smPanel;
+//extern int smPanel;
+extern int smpanlzPanel;
 extern int graphDispPanel;
 extern int environmentPanel;
 extern int resultPanel;	     //result menu panel
@@ -64,6 +66,7 @@ extern int chPanel;          //chose panel
 extern int AnalyenvirPanel;
 extern int proPanel;
 extern int defPanel;
+
 //==============================================================================
 // Global functions
 

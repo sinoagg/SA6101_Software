@@ -73,7 +73,7 @@ int GetIdVgCfg (int panelHandle)
 
 
 //----------------------------------------------------------------
-int CVICALLBACK GateCallback (int panel, int control, int event,
+int CVICALLBACK VGDrainCallback (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
 	//  Gate
@@ -216,7 +216,7 @@ int CVICALLBACK VGmodeCallback (int panel, int control, int event,
 	}
 	
 	         int RingValue;
-	         GetCtrlVal(panel,IDVGS_CFG_RING_MODE,&RingValue);
+	         GetCtrlVal(panel,IDVGS_CFG_VGDRING,&RingValue);
 			 if(event == EVENT_VAL_CHANGED ){
 			 
 				  if(RingValue==1){
@@ -232,7 +232,7 @@ int CVICALLBACK VGmodeCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VGDrainCallback (int panel, int control, int event,
+int CVICALLBACK VdgateCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
 	if(event==EVENT_LEFT_CLICK_UP){  

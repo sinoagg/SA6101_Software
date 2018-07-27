@@ -21,6 +21,7 @@
 #include "cvidef.h"
 #include "ExpListPanel.h"
 #include "SampleCfgPanel.h"
+#include "SampleAnalyze.h"
 #include "IdVdsPanel.h"
 #include "IdVgsPanel.h"
 #include "Protocol.h"
@@ -44,7 +45,7 @@ static int SaveConfigToFile(char* pConfigSavePath);
 
 //=======
 
-static int SaveConfigToFile(char* pConfigSavePath);
+static int SaveConfigToFiles(char* pConfigSavePaths);
 //>>>>>>> refs/remotes/origin/master
 
 #ifdef __cplusplus

@@ -23,7 +23,6 @@
 #include "ExpListPanel.h"
 #include "Result Menu.h"
 #include "GraphDisp.h"
-#include "DoubleGraphDisp.h"
 #include "Experiment List.h"
 #include "I-T.h"
 #include "Id-Vds Configuration.h"

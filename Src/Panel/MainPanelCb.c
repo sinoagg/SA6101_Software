@@ -191,10 +191,13 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-			HidePanel( samplePanel  );	 
-			HidePanel( smPanel  );
-			HidePanel( environmentPanel);
+	 		SetPanelPos(IdVdPanel, 105, 305);
+	        SetPanelSize(IdVdPanel, 900, 1293);
+	        DisplayPanel(IdVdPanel);
+			HidePanel(samplePanel);	 
+			HidePanel(smpanlzPanel);
 			HidePanel(AnalyenvirPanel);
+			HidePanel(environmentPanel);
 			break;
 	
 	}
@@ -225,11 +228,11 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 				DisplayPanel(IdVdPanel);
 				
 				SetPanelPos(samplePanel, 105, 1600);
-				SetPanelSize(samplePanel, 450, 300);
+				SetPanelSize(samplePanel, 449, 300);
 				DisplayPanel(samplePanel);
 				
-				SetPanelPos(environmentPanel, 557, 1600);
-				SetPanelSize(environmentPanel, 450, 300);
+				SetPanelPos(environmentPanel, 556, 1600);
+				SetPanelSize(environmentPanel, 449, 300);
 				DisplayPanel(environmentPanel);
 			break;
 	}
@@ -253,15 +256,17 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				
 
 				SetPanelPos(graphDispPanel, 172, 305);  
-		     	SetPanelSize(graphDispPanel, 834, 1293);      
+		     	SetPanelSize(graphDispPanel, 833, 1293);
+				SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
 	 			DisplayPanel(graphDispPanel);
 			   
-				SetPanelPos(smPanel, 105, 1600);
-				SetPanelSize(smPanel, 450, 300);
-				DisplayPanel(smPanel);
+				SetPanelPos(smpanlzPanel, 105, 1600);
+				SetPanelSize(smpanlzPanel, 449, 300);
+				DisplayPanel(smpanlzPanel);
 				
-				SetPanelPos(AnalyenvirPanel, 557, 1600);
-				SetPanelSize(AnalyenvirPanel, 450, 300);
+				SetPanelPos(AnalyenvirPanel, 556, 1600);
+				SetPanelSize(AnalyenvirPanel, 449, 300);
 				DisplayPanel(AnalyenvirPanel);
 
 

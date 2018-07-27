@@ -45,10 +45,11 @@ int rTPanel;
 int chPanel;
 int doubleGraphDispPanel;
 int AnalyenvirPanel;
-int smPanel;
+
 int setPanel;
 int proPanel;
 int defPanel;
+int smpanlzPanel;
 //==============================================================================
 // Global functions
 
@@ -72,13 +73,13 @@ int LoadInitPanel (void)
 	
 	if ((samplePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;
-	if ((smPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE)) < 0)		//load right panel
+	if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
 		return -1;
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
-		return -1;
+		return -1;													 
 	if ((AnalyenvirPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
-		return -1;
+		return -1;													 
 	
 
 	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
@@ -89,22 +90,20 @@ int LoadInitPanel (void)
 		return -1;
 
 		//用于弹出settings面板
-	if ((setPanel = LoadPanel (mainPanel, "SetPanel.uir", SETTINGS)) < 0)		//load settings panel
+	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
 		return -1;	
 	 //用于弹出Environment Settings面板
 	//if ((ENVPanel = LoadPanel (mainPanel, "SetPanel.uir", ENV)) < 0)		//load ENV panel
 	//	return -1;
-	if ((ENVTPanel = LoadPanel (setPanel, "SetPanel.uir", ENVT)) < 0)		//load ENV panel
+	if ((ENVTPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
 		return -1;
 	//用于弹出Graph Defaults面板
-	if ((GRAPHPanel = LoadPanel (setPanel, "SetPanel.uir", GRAPH)) < 0)		//load graph panel
+	if ((GRAPHPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
 		return -1;  
 	//用于弹出About面板
-	if ((ABOUTPanel = LoadPanel (setPanel, "SetPanel.uir", ABOUT)) < 0)		//load graph panel
+	if ((ABOUTPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
 		return -1;
-	 //用于显示电学和环境graph  
-	if ((doubleGraphDispPanel = LoadPanel (mainPanel, "DoubleGraphDisp.uir", DBLDISP)) < 0)		//load double Graph Disp Panel 
-		return -1;
+ 
 	//选择
 	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel
 		return -1;
@@ -139,11 +138,11 @@ int LoadInitPanel (void)
 	DisplayPanel(IdVdPanel);
 	
 	SetPanelPos(samplePanel, 105, 1600);
-	SetPanelSize(samplePanel, 450, 300);
+	SetPanelSize(samplePanel, 449, 300);
 	DisplayPanel(samplePanel);
 	
-	SetPanelPos(environmentPanel, 557, 1600);
-	SetPanelSize(environmentPanel, 450, 300);
+	SetPanelPos(environmentPanel, 556, 1600);
+	SetPanelSize(environmentPanel, 449, 300);
 	DisplayPanel(environmentPanel);
 	
 	return 0;

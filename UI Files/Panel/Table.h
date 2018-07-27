@@ -19,6 +19,7 @@
 #define  TABLE_ADDROW                     4       /* control type: command, callback function: AddRowCallback */
 #define  TABLE_ADDTITLE                   5       /* control type: command, callback function: AddTitleCallback */
 #define  TABLE_ADDBGCOLOR                 6       /* control type: radioButton, callback function: ColorCallback */
+#define  TABLE_EXC                        7       /* control type: command, callback function: ExcCallback */
 
 
      /* Control Arrays: */
@@ -37,6 +38,7 @@ int  CVICALLBACK AddRowCallback(int panel, int control, int event, void *callbac
 int  CVICALLBACK AddTitleCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ColorCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK DeleteCalback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK ExcCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

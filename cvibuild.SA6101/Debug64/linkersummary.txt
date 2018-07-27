@@ -13,6 +13,7 @@ Plot.obj
 ProjectPanel.obj
 Protocol.obj
 ResultMenuPanel.obj
+SampleAnalyze.obj
 SampleCfgPanel.obj
 SetPanel.obj
 Table.obj
