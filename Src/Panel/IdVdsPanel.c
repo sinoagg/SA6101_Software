@@ -64,13 +64,13 @@ int GetIdVdCfg (int panelHandle)
 	//IdVdCfg.cfgVgstep=temp;
 	
 		
-	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_START_2, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_START, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVgstart=temp;
-	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STOP_2, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STOP, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVgstop=temp;
-	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STEP_2, &temp)<0)
+	if(GetCtrlVal(panelHandle, IDVDS_CFG_VD_STEP, &temp)<0)
 		return -1;
 	IdVdCfg.cfgVgstep=temp;
 	
@@ -148,7 +148,7 @@ int CVICALLBACK VdmodeCallbzck (int panel, int control, int event,
 			 break;
 		 }  
 		     int RingValue;
-	              GetCtrlVal(panel,IDVDS_CFG_VDGATE,&RingValue);
+	              GetCtrlVal(panel,IDVDS_CFG_VDGRING,&RingValue);
 			 if(event == EVENT_VAL_CHANGED ){
 			 
 				  if(RingValue==1){

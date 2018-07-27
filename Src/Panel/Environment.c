@@ -15,7 +15,7 @@ int CVICALLBACK MesaureCallback (int panel, int control, int event,
 					   SetCtrlVal(panel,ENVIRONMEN_PRESSURE,CheckValue);
 						 
 				   } else{
-				   		 SetCtrlVal(panel,ENVIRONMEN_TEMPTER,0);
+				   	   SetCtrlVal(panel,ENVIRONMEN_TEMPTER,0);
 					   SetCtrlVal(panel,ENVIRONMEN_HUMIDITY,0);
 					   SetCtrlVal(panel,ENVIRONMEN_PRESSURE,0);
 				   }

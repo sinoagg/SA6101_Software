@@ -13,21 +13,19 @@ Plot.obj
 ProjectPanel.obj
 Protocol.obj
 ResultMenuPanel.obj
+SampleAnalyze.obj
 SampleCfgPanel.obj
 SetPanel.obj
 Table.obj
 Timer.obj
 cvi.lib
 cvistart.lib
-excelreport.obj
 kernel32.lib
 toolbox.obj
 advapi32.lib
 cviauto.lib
-excel2000.obj
 gdi32.lib
 user32.lib
-uuid.lib
 EXE Symbol Module
 Exports Module
 Resource Module
