@@ -11,17 +11,28 @@
 //==============================================================================
 // Include files
 
+#include <userint.h>
 #include "Protocol.h"
 #include "IdVdsPanel.h"
 #include "IdVgsPanel.h"
 #include "SampleCfgPanel.h"
 #include <rs232.h>
+#include "ExpListPanel.h"
 //==============================================================================
 // Constants
 
 //==============================================================================
 // Types
-
+enum MsgType
+{
+	MSG_TYPE_NULL=0,
+	MSG_TYPE_SETTING=0x11,					
+	MSG_TYPE_RUN=0x12,
+	MSG_TYPE_STOP=0x13,
+	MSG_TYPE_QUERY=0x14,
+	MSG_TYPE_CALIBRATION=0x15,
+	MSG_TYPE_REPORT_ID=0xFF
+};
 //==============================================================================
 // Static global variables
 
@@ -30,24 +41,64 @@
 
 //==============================================================================
 // Global variables
-extern IdVdCfg_TypeDef IdVdCfg; 
-extern IdVgCfg_TypeDef IdVgCfg; 
 extern SampleCfg_TypeDef SampleCfg;
+TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
+void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
+{
+	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStartID, &(pTestPara->VdStart));
+	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStopID, &(pTestPara->VdStop));
+	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStepID, &(pTestPara->VdStep));
+	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStartID, &(pTestPara->VgStart));
+	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStopID, &(pTestPara->VgStop));
+	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStepID, &(pTestPara->VgStep));
+	//GetCtrlVal(panelHandle, GET_ID(PANEL_ID, VG_STEP), &(pTestPara->quietTime));
+}
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
-void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)	//Make config info to UART Tx Buffer
+void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
+{
+	*pUartTxBuf=devAddr;
+	*(pUartTxBuf+1)=MSG_TYPE_SETTING;     
+	*(pUartTxBuf+2)=(unsigned char)expType;
+	*(pUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);
+	*(pUartTxBuf+5)=(unsigned char)(pTestPara->VdStart&0xFF);
+	*(pUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);
+	*(pUartTxBuf+7)=(unsigned char)(pTestPara->VdStop&0xFF);
+	*(pUartTxBuf+8)=(unsigned char)((pTestPara->VdStep)>>8);
+	*(pUartTxBuf+9)=(unsigned char)(pTestPara->VdStep&0xFF);
+	*(pUartTxBuf+10)=(unsigned char)((pTestPara->VgStart)>>8);
+	*(pUartTxBuf+11)=(unsigned char)(pTestPara->VgStart&0xFF);
+	*(pUartTxBuf+12)=(unsigned char)((pTestPara->VgStop)>>8);
+	*(pUartTxBuf+13)=(unsigned char)(pTestPara->VgStop&0xFF);
+	*(pUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
+	*(pUartTxBuf+15)=(unsigned char)(pTestPara->VgStep&0xFF);
+}
+
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
+{
+	unsigned char i, xorcheck=0;
+	
+	
+	switch((enum ExpType)expType)
+	{
+		case SWEEP_DRAIN_VOL:
+			GetTestPara(&IdVdExpPanel, &TestPara);
+			PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf); 
+			break;
+	}
+}
+
+/*void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)	//Make config info to UART Tx Buffer
 {
 	unsigned char i, xorcheck=0;
 	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=0x11;
-	*(pUartTxBuf+2)=expType;
-	switch(expType)
+	*(pUartTxBuf+1)=MSG_TYPE_SETTING;
+	switch((enum ExpType)expType)
 	{
-		case 0:
+		case SWEEP_DRAIN_VOL:
+			*(pUartTxBuf+2)=(unsigned char)SWEEP_DRAIN_VOL;
+			//GetTestPara(panelHandle, pTestPara);
 			*(pUartTxBuf+4)=(unsigned char)(IdVdCfg.cfgVdstart)>>8;
 			*(pUartTxBuf+5)=(unsigned char)(IdVdCfg.cfgVdstart&0xFF);
 			*(pUartTxBuf+6)=(unsigned char)(IdVdCfg.cfgVdstop)>>8;
@@ -61,7 +112,8 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 			*(pUartTxBuf+14)=(unsigned char)(IdVdCfg.cfgVgstep)>>8;
 			*(pUartTxBuf+15)=(unsigned char)(IdVdCfg.cfgVgstep&0xFF);
 			break;
-		case 1:
+		case SWEEP_GATE_VOL:
+			*(pUartTxBuf+2)=(unsigned char)SWEEP_GATE_VOL;   
 			*(pUartTxBuf+4)=(unsigned char)(IdVgCfg.cfgVdstart)>>8;
 			*(pUartTxBuf+5)=(unsigned char)(IdVgCfg.cfgVdstart&0xFF);
 			*(pUartTxBuf+6)=(unsigned char)(IdVgCfg.cfgVdstop)>>8;
@@ -103,7 +155,7 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	
 	ComWrt(comSelect, (const char*)pUartTxBuf, 28);
 
-}
+}*/
 
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {

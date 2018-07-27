@@ -17,30 +17,20 @@
 
 //==============================================================================
 // Include files
-
+#include "Id-Vds Configuration.h"
 #include "cvidef.h"
-
+#include "ExpListPanel.h"
 //==============================================================================
 // Constants
 
 //==============================================================================
 // Types
-typedef struct
-{
-	int cfgVdstart;									//voltage drain start
-	int cfgVdstop;									//voltage drain stop
-	int cfgVdstep;									//voltage drain step
-	int cfgVgstart;									//voltage gate start
-	int cfgVgstop;									//voltage gate stop
-	int cfgVgstep;									//voltage gate step
-}IdVdCfg_TypeDef;
+
 //==============================================================================
 // External variables
-extern IdVdCfg_TypeDef IdVdCfg;
+ExpPanelTypeDef IdVdExpPanel;
 //==============================================================================
 // Global functions
-
-int GetIdVdCfg (int panelHandle); 
 
 #ifdef __cplusplus
     }

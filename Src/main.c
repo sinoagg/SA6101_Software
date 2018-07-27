@@ -48,8 +48,8 @@ void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 	RxDataTypeDef RxData;
 	if(portNumber==comSelect1)
 	{
-		rxNum = GetInQLen(portNumber);  											//读取串口中发送来的数据数量
-		if(rxNum>500) rxNum=500;												//防止超过内存范围
+		rxNum = GetInQLen(portNumber);  									//读取串口中发送来的数据数量
+		if(rxNum>500) rxNum=500;											//防止超过内存范围
 		status = ComRd(portNumber, (char *)UartRxBuf, rxNum);				//Read UART Buffer to local buffer at one time  
 		while(rxNum>=UART_RX_LEN)
 		{
@@ -82,7 +82,7 @@ static int CheckPortStatus(unsigned char portNumber)
 	{
 		InstallComCallback (portNumber, LWRS_RECEIVE, UART_RX_LEN, 0, ComCallback, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
 		SetCTSMode(portNumber, LWRS_HWHANDSHAKE_OFF);
-		FlushInQ(portNumber);	   												//Clear input and output buffer
+		FlushInQ(portNumber);	   														//Clear input and output buffer
 		FlushOutQ(portNumber);
 		return 0;
 	}

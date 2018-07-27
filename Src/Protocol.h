@@ -25,12 +25,51 @@
 
 //==============================================================================
 // Types
+enum TestCmd
+{
+	CMD_START=0x11,
+	CMD_PAUSE=0x12,
+	CMD_STOP=0x13,
+	CMD_CONTINUE=0x14
+};		
+
 typedef union										//float union
 {
 	unsigned char num_uchar[4]; 
 	float num_float;
 }Float_Union_Data;
-		
+
+enum TestMode
+{
+	CALIBRATION=0,
+	SWEEP_DRAIN_VOL=1,
+	SWEEP_GATE_VOL=2,
+	NO_SWEEP_IT=3,
+	NO_SWEEP_RT=4
+};
+
+typedef struct
+{
+	unsigned char devAddr;
+	enum TestCmd testCmd;
+	enum TestMode testMode;
+	unsigned char outputConnection;
+	int VdStart;									//voltage drain start
+	int VdStop;									//voltage drain stop
+	int VdStep;									//voltage drain step
+	int VgStart;									//voltage gate start
+	int VgStop;									//voltage gate stop
+	int VgStep;									//voltage gate step
+	unsigned int quietTime;
+	unsigned int timeStep;
+	unsigned int sampleTime;								//effective only under R-t and I-t mode
+	unsigned int sampleRate;
+	unsigned int avgNumber;
+	unsigned char rangeMode;
+	unsigned char maxRange;
+	unsigned char minRange;
+}TestParaTypeDef;
+
 typedef struct
 {
 	unsigned char rxDevAddr;						//received Device Address
