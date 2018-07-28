@@ -17,7 +17,7 @@ char Table_title_IT[11][20] ={"Current(A)","Time(S)","Current(A)","Time(S)"};
    void Table_init(char table_title_IV[][20], int column, column_width)
 {			
 		   
-			//SetTableRowAttribute (tablePanel, TABLE_DISTABLE,-1, ATTR_CELL_JUSTIFY, VAL_CENTER_CENTER_JUSTIFIED);  
+		
 			InsertTableColumns(tablePanel,TABLE_DISTABLE,1,column,VAL_CELL_STRING);              //向表中插入多少列 
 			InsertTableRows (tablePanel,TABLE_DISTABLE ,-1 , 1, VAL_CELL_STRING);				      		  //插入1行 
 			for(int i=1;i<column+1;i++)
@@ -39,10 +39,8 @@ int CVICALLBACK AddTitleCallback (int panel, int control, int event,
 	switch (event)											  
 	{
 		case EVENT_LEFT_CLICK_UP:
-				//居中显示
-			//SetTableColumnAttribute (tablePanel,TABLE_DISTABLE ,-1, ATTR_CELL_JUSTIFY, VAL_CENTER_CENTER_JUSTIFIED);
 			
-			Table_init(Table_title_IT,column, column_width );
+		   	Table_init(Table_title_IT,column, column_width );
 			
 			SetCtrlAttribute (tablePanel, TABLE_ADDROW, ATTR_DIMMED,0);       
 			SetCtrlAttribute (tablePanel, TABLE_ADDTITLE,  ATTR_DIMMED,1); 				

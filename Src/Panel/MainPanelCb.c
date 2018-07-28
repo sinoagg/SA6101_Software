@@ -214,7 +214,7 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
- 		case EVENT_LEFT_CLICK_UP:			    //当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
+ 		case EVENT_LEFT_CLICK_UP://当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
 			
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
@@ -224,8 +224,8 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			
 			
 		case EVENT_LEFT_CLICK:
-			//点击Configure图标回到Id_vds界面
-				SetPanelPos(IdVdPanel.panelHandle, 105, 305);
+		
+				SetPanelPos(IdVdPanel.panelHandle, 105, 305);	//点击Configure图标回到Id_vds界面   
 				SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
 				
@@ -237,8 +237,8 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 				SetPanelSize(environmentPanel, 449, 300);
 				DisplayPanel(environmentPanel);
 				
-				//清除显示双图表value
-			int val; 
+			
+			int val;  	//清除显示双图表value 
 			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
 			if(val)
 				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
@@ -281,8 +281,8 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
 			
-			//清除显示双图表value
-			int val; 
+		
+			int val; 	//清除显示双图表value 
 			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
 			if(val)
 				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
@@ -315,20 +315,7 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 
 
 
-//int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
-//								  void *callbackData, int eventData1, int eventData2)
-//{
-//	
-//}
 
-//int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
-//								  void *callbackData, int eventData1, int eventData2)
-//{
-//	
-//}
-//=======
-
-//=======
 //>>>>>>> refs/remotes/origin/master
 static int SaveConfigToFile(char* pConfigSavePath)
 {

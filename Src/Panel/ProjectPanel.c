@@ -40,13 +40,10 @@ int CVICALLBACK DefaultCallback (int panel, int event, void *callbackData,
 			break;
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelAttribute (panel, ATTR_BACKCOLOR, 0x94CEFF);
-		//	SetPanelAttribute (panel, ATTR_HEIGHT, 150);
 			SetCtrlAttribute (panel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, 0x94CEFF);
 			SetCtrlAttribute (panel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, 0x94CEFF);
 			SetCtrlAttribute (proPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
-		    
-			SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, 0x065279);
-		//	SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_HEIGHT, 150);
+		    SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, 0x065279);
 			break;
 	}
 	return 0;
@@ -61,12 +58,10 @@ int CVICALLBACK ImgCallback (int panel, int control, int event,
 	   
    			  if(boxValue){
 				   SetCtrlAttribute(defPanel, DEFPANEL_PICS, ATTR_VISIBLE,1);
-				   //DisplayImageFile(defPanel, DEFPANEL_PICS,"Resource\\SA6101.png");
-				   
+				  
 			  }else{
 			  	 SetCtrlAttribute(defPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
-				 //DisplayImageFile(defPanel, DEFPANEL_PICS,"Resource\\Wbg.ico");   
-			  }
+				}
    
    }
 	return 0;
@@ -99,10 +94,8 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelAttribute (defPanel, ATTR_BACKCOLOR, 0xFFFFFF);
-			//SetPanelAttribute (defPanel, ATTR_HEIGHT, 125);
 			SetCtrlAttribute (defPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, 0xFFFFFF);
-			//SetCtrlAttribute (defPanel, DEFPANEL_CANVAS, ATTR_HEIGHT, 125);
-			
+	
 			SetCtrlAttribute (defPanel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, 0xFFFFFF);
 			SetCtrlAttribute (defPanel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, 0xFFFFFF);
 			SetCtrlAttribute (proPanel,PROPANEL_OPEN , ATTR_DIMMED, 1);

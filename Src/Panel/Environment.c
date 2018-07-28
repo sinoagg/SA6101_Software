@@ -7,8 +7,8 @@ int CVICALLBACK MesaureCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			//Measure 多选
-			GetCtrlVal(panel,control,&val);
+			
+			GetCtrlVal(panel,control,&val); //Measure 多选
 				   if(val){
 					   SetCtrlVal(panel,ENVIRONMEN_TEMPTER,val);
 					   SetCtrlVal(panel,ENVIRONMEN_HUMIDITY,val);
@@ -23,3 +23,5 @@ int CVICALLBACK MesaureCallback (int panel, int control, int event,
 	}
 	return 0;
 }
+
+

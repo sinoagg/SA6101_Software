@@ -117,11 +117,7 @@ int CVICALLBACK ProCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			
-			/*if(FileSelectPopup ("E:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\", ".", "*.*", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 0, projectSavePath)>0)
-			{
-				SetCtrlVal(panel, ENVT_PROPATH, projectSavePath);
-			}*/
+
 			if(DirSelectPopup ("E:\\GitWorkplace\\Sinoagg\\Software\\", "Select Directory", 1, 1, projectSavePath)>0)     
 			{
 			 SetCtrlVal(panel, ENVT_PROPATH, projectSavePath); 

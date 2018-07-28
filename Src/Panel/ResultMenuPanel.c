@@ -213,10 +213,9 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 	if( event == EVENT_VAL_CHANGED)
 	{   HidePanel(chPanel);
 		GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
-		if(val)
-		{	 //如果CheckBox是选中状态则显示两个graph
-		
-			SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400);
+		if(val) //如果CheckBox是选中状态则显示两个graph    
+		{	 
+		   	SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400);
 			SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 		
 			HidePanel(chPanel);
