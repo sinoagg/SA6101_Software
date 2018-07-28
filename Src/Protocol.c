@@ -69,42 +69,39 @@ static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth
 	return xorCheck;	
 }
 
-static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
+static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pmeasUartTxBuf)
 {
-	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=MSG_TYPE_SETTING;     
-	*(pUartTxBuf+2)=(unsigned char)expType;
-	*(pUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);
-	*(pUartTxBuf+5)=(unsigned char)((pTestPara->VdStart)&0xFF);
-	*(pUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);
-	*(pUartTxBuf+7)=(unsigned char)((pTestPara->VdStop)&0xFF);
-	*(pUartTxBuf+8)=(unsigned char)((pTestPara->VdStep)>>8);
-	*(pUartTxBuf+9)=(unsigned char)((pTestPara->VdStep)&0xFF);
-	*(pUartTxBuf+10)=(unsigned char)((pTestPara->VgStart)>>8);
-	*(pUartTxBuf+11)=(unsigned char)((pTestPara->VgStart)&0xFF);
-	*(pUartTxBuf+12)=(unsigned char)((pTestPara->VgStop)>>8);
-	*(pUartTxBuf+13)=(unsigned char)((pTestPara->VgStop)&0xFF);
-	*(pUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
-	*(pUartTxBuf+15)=(unsigned char)((pTestPara->VgStep)&0xFF);
-	*(pUartTxBuf+16)=(unsigned char)((pTestPara->quietTime)>>8);
-	*(pUartTxBuf+17)=(unsigned char)((pTestPara->quietTime)&0xFF);
-	*(pUartTxBuf+18)=(unsigned char)((pTestPara->timeStep)>>8);
-	*(pUartTxBuf+19)=(unsigned char)((pTestPara->timeStep)&0xFF);
-	*(pUartTxBuf+20)=(unsigned char)((pTestPara->runTime)>>8);
-	*(pUartTxBuf+21)=(unsigned char)((pTestPara->runTime)&0xFF);
-	*(pUartTxBuf+22)=(unsigned char)((pTestPara->sampleRate)>>8);
-	*(pUartTxBuf+23)=(unsigned char)((pTestPara->sampleRate)&0xFF);
-	*(pUartTxBuf+24)=(unsigned char)((pTestPara->sampleNumber)>>8);
-	*(pUartTxBuf+25)=(unsigned char)((pTestPara->sampleNumber)&0xFF);
-	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1); 
+	*pmeasUartTxBuf=devAddr;
+	*(pmeasUartTxBuf+1)=MSG_TYPE_SETTING;     
+	*(pmeasUartTxBuf+2)=(unsigned char)expType;
+	*(pmeasUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);
+	*(pmeasUartTxBuf+5)=(unsigned char)((pTestPara->VdStart)&0xFF);
+	*(pmeasUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);
+	*(pmeasUartTxBuf+7)=(unsigned char)((pTestPara->VdStop)&0xFF);
+	*(pmeasUartTxBuf+8)=(unsigned char)((pTestPara->VdStep)>>8);
+	*(pmeasUartTxBuf+9)=(unsigned char)((pTestPara->VdStep)&0xFF);
+	*(pmeasUartTxBuf+10)=(unsigned char)((pTestPara->VgStart)>>8);
+	*(pmeasUartTxBuf+11)=(unsigned char)((pTestPara->VgStart)&0xFF);
+	*(pmeasUartTxBuf+12)=(unsigned char)((pTestPara->VgStop)>>8);
+	*(pmeasUartTxBuf+13)=(unsigned char)((pTestPara->VgStop)&0xFF);
+	*(pmeasUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
+	*(pmeasUartTxBuf+15)=(unsigned char)((pTestPara->VgStep)&0xFF);
+	*(pmeasUartTxBuf+16)=(unsigned char)((pTestPara->quietTime)>>8);
+	*(pmeasUartTxBuf+17)=(unsigned char)((pTestPara->quietTime)&0xFF);
+	*(pmeasUartTxBuf+18)=(unsigned char)((pTestPara->timeStep)>>8);
+	*(pmeasUartTxBuf+19)=(unsigned char)((pTestPara->timeStep)&0xFF);
+	*(pmeasUartTxBuf+20)=(unsigned char)((pTestPara->runTime)>>8);
+	*(pmeasUartTxBuf+21)=(unsigned char)((pTestPara->runTime)&0xFF);
+	*(pmeasUartTxBuf+22)=(unsigned char)((pTestPara->sampleRate)>>8);
+	*(pmeasUartTxBuf+23)=(unsigned char)((pTestPara->sampleRate)&0xFF);
+	*(pmeasUartTxBuf+24)=(unsigned char)((pTestPara->sampleNumber)>>8);
+	*(pmeasUartTxBuf+25)=(unsigned char)((pTestPara->sampleNumber)&0xFF);
+	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1); 
 }
 
 
-void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pmeasUartTxBuf)
 {
-	unsigned char i, xorcheck=0;
-	
-	
 	switch((enum ExpType)expType)
 	{
 		case SWEEP_DRAIN_VOL:
@@ -120,61 +117,61 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 			//GetTestPara(&IdVdPanel, &TestPara);
 			break;
 	}
-	PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf);      
-	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
+	PrepareCfgTxData(&TestPara, devAddr, expType, pmeasUartTxBuf);      
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
-void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
+void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
-	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=0x12;
-	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
-	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
+	*pmeasUartTxBuf=devAddr;
+	*(pmeasUartTxBuf+1)=MSG_TYPE_RUN;
+	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
-void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
+void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
-	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=0x13;
-	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
-	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
+	*pmeasUartTxBuf=devAddr;
+	*(pmeasUartTxBuf+1)=MSG_TYPE_STOP;
+	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
-void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
+void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
-	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=0x14;
-	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
-	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
+	*pmeasUartTxBuf=devAddr;
+	*(pmeasUartTxBuf+1)=MSG_TYPE_QUERY;
+	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
-void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
+void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
-	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=0x15;
-	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
-	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
+	*pmeasUartTxBuf=devAddr;
+	*(pmeasUartTxBuf+1)=MSG_TYPE_CALIBRATION;
+	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
-void ProtocolGetData(unsigned char* pUartRxBuf, RxDataTypeDef* pRxData)	//Get data from UART Rx Buffer
+void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData)	//Get data from UART Rx Buffer
 {
-	pRxData->rxDevAddr=*pUartRxBuf;
-	pRxData->rxStopSign=*(pUartRxBuf+1);
-	pRxData->rxVdtest=((int)*(pUartRxBuf+2))|*(pUartRxBuf+3);
-	pRxData->rxVgtest=((int)*(pUartRxBuf+4))|*(pUartRxBuf+5);
-	pRxData->rxIdmeasured.num_uchar[0]=*(pUartRxBuf+6);
-	pRxData->rxIdmeasured.num_uchar[1]=*(pUartRxBuf+7); 
-	pRxData->rxIdmeasured.num_uchar[2]=*(pUartRxBuf+8); 
-	pRxData->rxIdmeasured.num_uchar[3]=*(pUartRxBuf+9);
-	pRxData->rxVdmeasured.num_uchar[0]=*(pUartRxBuf+10); 
-	pRxData->rxVdmeasured.num_uchar[1]=*(pUartRxBuf+11);
-	pRxData->rxVdmeasured.num_uchar[2]=*(pUartRxBuf+12);
-	pRxData->rxVdmeasured.num_uchar[3]=*(pUartRxBuf+13);
-	pRxData->rxVgmeasured.num_uchar[0]=*(pUartRxBuf+14); 
-	pRxData->rxVgmeasured.num_uchar[1]=*(pUartRxBuf+15);
-	pRxData->rxVgmeasured.num_uchar[2]=*(pUartRxBuf+16);
-	pRxData->rxVgmeasured.num_uchar[3]=*(pUartRxBuf+17);
-	pRxData->rangeSelect=*(pUartRxBuf+18);
+	pRxData->rxDevAddr=*pmeasUartRxBuf;
+	pRxData->rxStopSign=*(pmeasUartRxBuf+1);
+	pRxData->rxVdtest=((int)*(pmeasUartRxBuf+2))|*(pmeasUartRxBuf+3);
+	pRxData->rxVgtest=((int)*(pmeasUartRxBuf+4))|*(pmeasUartRxBuf+5);
+	pRxData->rxIdmeasured.num_uchar[0]=*(pmeasUartRxBuf+6);
+	pRxData->rxIdmeasured.num_uchar[1]=*(pmeasUartRxBuf+7); 
+	pRxData->rxIdmeasured.num_uchar[2]=*(pmeasUartRxBuf+8); 
+	pRxData->rxIdmeasured.num_uchar[3]=*(pmeasUartRxBuf+9);
+	pRxData->rxVdmeasured.num_uchar[0]=*(pmeasUartRxBuf+10); 
+	pRxData->rxVdmeasured.num_uchar[1]=*(pmeasUartRxBuf+11);
+	pRxData->rxVdmeasured.num_uchar[2]=*(pmeasUartRxBuf+12);
+	pRxData->rxVdmeasured.num_uchar[3]=*(pmeasUartRxBuf+13);
+	pRxData->rxVgmeasured.num_uchar[0]=*(pmeasUartRxBuf+14); 
+	pRxData->rxVgmeasured.num_uchar[1]=*(pmeasUartRxBuf+15);
+	pRxData->rxVgmeasured.num_uchar[2]=*(pmeasUartRxBuf+16);
+	pRxData->rxVgmeasured.num_uchar[3]=*(pmeasUartRxBuf+17);
+	pRxData->rangeSelect=*(pmeasUartRxBuf+18);
 }
 
 

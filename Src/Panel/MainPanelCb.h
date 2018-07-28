@@ -36,8 +36,8 @@
 
 //==============================================================================
 // External variables
-extern unsigned char comSelect1;
-extern unsigned char comSelect2; 
+extern unsigned char measureComPort;
+extern unsigned char controlComPort; 
 //==============================================================================
 //// Global functions
 //<<<<<<< HEAD

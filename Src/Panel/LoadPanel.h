@@ -48,7 +48,7 @@ extern int expListPanel;
 extern int samplePanel;
 //extern int smPanel;
 extern int smpanlzPanel;
-extern int graphDispPanel;
+extern int graphPanelHandle;
 extern int environmentPanel;
 extern int resultPanel;	     //result menu panel
 extern int tablePanel;

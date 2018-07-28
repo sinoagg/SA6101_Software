@@ -87,15 +87,15 @@ typedef struct
 
 //==============================================================================
 // External variables
-
+extern TestParaTypeDef TestPara; 
 //==============================================================================
 // Global functions
-void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf); 
-void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf); 
-void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
-void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
-void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
-void ProtocolGetData(unsigned char* pUartRxBuf, RxDataTypeDef* pRxData);
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pmeasUartTxBuf); 
+void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf); 
+void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
+void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
+void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
+void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData);
 
 #ifdef __cplusplus
     }

@@ -1,4 +1,4 @@
 [PlotCurve]
 Class="Function"
-Prototype="int PlotCurve(GraphTypeDef *pGraph, int graphDispPanel, int control);"
+Prototype="int PlotCurve(GraphTypeDef *pGraph, int graphPanelHandle, int control);"
 

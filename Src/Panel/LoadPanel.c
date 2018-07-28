@@ -31,13 +31,13 @@
 // Global variables
 int mainPanel;
 int expListPanel;
-int graphDispPanel;
+int graphPanelHandle;
 int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
 int ENVTPanel; 
-int GRAPHPanel;
+int graphPanelHandle;
 int ABOUTPanel;
 int iTPanel;
 int rTPanel;
@@ -112,7 +112,7 @@ int LoadInitPanel (void)
 		return -1;
 	
 	
-	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+	if ((graphPanelHandle = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
 	
 	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
