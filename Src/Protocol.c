@@ -75,18 +75,27 @@ static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, 
 	*(pUartTxBuf+1)=MSG_TYPE_SETTING;     
 	*(pUartTxBuf+2)=(unsigned char)expType;
 	*(pUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);
-	*(pUartTxBuf+5)=(unsigned char)(pTestPara->VdStart&0xFF);
+	*(pUartTxBuf+5)=(unsigned char)((pTestPara->VdStart)&0xFF);
 	*(pUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);
-	*(pUartTxBuf+7)=(unsigned char)(pTestPara->VdStop&0xFF);
+	*(pUartTxBuf+7)=(unsigned char)((pTestPara->VdStop)&0xFF);
 	*(pUartTxBuf+8)=(unsigned char)((pTestPara->VdStep)>>8);
-	*(pUartTxBuf+9)=(unsigned char)(pTestPara->VdStep&0xFF);
+	*(pUartTxBuf+9)=(unsigned char)((pTestPara->VdStep)&0xFF);
 	*(pUartTxBuf+10)=(unsigned char)((pTestPara->VgStart)>>8);
-	*(pUartTxBuf+11)=(unsigned char)(pTestPara->VgStart&0xFF);
+	*(pUartTxBuf+11)=(unsigned char)((pTestPara->VgStart)&0xFF);
 	*(pUartTxBuf+12)=(unsigned char)((pTestPara->VgStop)>>8);
-	*(pUartTxBuf+13)=(unsigned char)(pTestPara->VgStop&0xFF);
+	*(pUartTxBuf+13)=(unsigned char)((pTestPara->VgStop)&0xFF);
 	*(pUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
-	*(pUartTxBuf+15)=(unsigned char)(pTestPara->VgStep&0xFF);
-	
+	*(pUartTxBuf+15)=(unsigned char)((pTestPara->VgStep)&0xFF);
+	*(pUartTxBuf+16)=(unsigned char)((pTestPara->quietTime)>>8);
+	*(pUartTxBuf+17)=(unsigned char)((pTestPara->quietTime)&0xFF);
+	*(pUartTxBuf+18)=(unsigned char)((pTestPara->timeStep)>>8);
+	*(pUartTxBuf+19)=(unsigned char)((pTestPara->timeStep)&0xFF);
+	*(pUartTxBuf+20)=(unsigned char)((pTestPara->runTime)>>8);
+	*(pUartTxBuf+21)=(unsigned char)((pTestPara->runTime)&0xFF);
+	*(pUartTxBuf+22)=(unsigned char)((pTestPara->sampleRate)>>8);
+	*(pUartTxBuf+23)=(unsigned char)((pTestPara->sampleRate)&0xFF);
+	*(pUartTxBuf+24)=(unsigned char)((pTestPara->sampleNumber)>>8);
+	*(pUartTxBuf+25)=(unsigned char)((pTestPara->sampleNumber)&0xFF);
 	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1); 
 }
 

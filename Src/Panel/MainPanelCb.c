@@ -99,6 +99,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				int numOfDots=500;
 				if(GetCtrlVal(expListPanel, EXP_LIST_TREE, &expType)<0)
 					return -1;
+				ProtocolCfg(comSelect1, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART 
 				switch(expType)
 				{
 					case 0:
@@ -121,8 +122,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					default:
 						break;
 				}
-				
-				ProtocolCfg(comSelect1, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART
 				graphInit(graphIndex, numOfCurve, numOfDots, pGraph1); 	//graph set up 
 				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
 				ProtocolRun(comSelect1, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
@@ -249,8 +248,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 		     	SetPanelSize(resultPanel, 65, 1293);      
 	 			DisplayPanel(resultPanel);  
 				
-				
-
 				SetPanelPos(graphDispPanel, 172, 305);  
 		     	SetPanelSize(graphDispPanel, 833, 1293);
 				SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
@@ -264,8 +261,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				SetPanelPos(AnalyenvirPanel, 556, 1600);
 				SetPanelSize(AnalyenvirPanel, 449, 300);
 				DisplayPanel(AnalyenvirPanel);
-
-
 			break;
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
 			
@@ -274,7 +269,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
 		
 			break;
-			
 			
 	}
 	return 0;
