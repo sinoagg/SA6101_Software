@@ -13,6 +13,7 @@
 // Include files
 #include "LoadPanel.h"
 #include "IdVdsPanel.h"
+#include "IdVgsPanel.h"
 #include "SampleCfgPanel.h"
 //==============================================================================
 // Constants
@@ -30,9 +31,6 @@
 // Global variables
 int mainPanel;
 int expListPanel;
-
-int IdVgPanel;
-
 int graphDispPanel;
 int environmentPanel;
 int resultPanel;
@@ -46,7 +44,6 @@ int rTPanel;
 int chPanel;
 int doubleGraphDispPanel;
 int AnalyenvirPanel;
-
 int setPanel;
 int proPanel;
 int defPanel;
@@ -69,23 +66,15 @@ int LoadInitPanel (void)
 	if ((IdVdPanel.panelHandle = LoadPanel (mainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	
-	if ((IdVgPanel = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
+	if ((IdVgPanel.panelHandle = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
 	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 		return -1;	  
 		//Basic Settings
-	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_BSC)) < 0)		//load right panel
->>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
-=======
-		return -1;	  
-		//Basic Settings
-	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_BSC)) < 0)		//load right panel
->>>>>>> 04328f5797ade0bd4442e9a23d7f5cc992f44e38
+	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
+
 		return -1;
 	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
 		//return -1;

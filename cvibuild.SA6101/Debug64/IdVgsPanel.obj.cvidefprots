@@ -1,44 +1,40 @@
-[GetIdVgCfg]
+[IdVgGateDecoCallback]
 Class="Function"
-Prototype="int GetIdVgCfg(int panelHandle);"
+Prototype="int IdVgGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgDrainCallback]
+[IdVgDrainDecoCallback]
 Class="Function"
-Prototype="int VgDrainCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgDrainDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgDrainStartCallback]
+[IdVgGateModeCallback]
 Class="Function"
-Prototype="int VgDrainStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgGateModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgDrainStopCallback]
+[IdVgDrainModeCallback]
 Class="Function"
-Prototype="int VgDrainStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgDrainModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgDrainStepCallback]
+[IdVgDrainStartCallback]
 Class="Function"
-Prototype="int VgDrainStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgDrainStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgGateModeCallback]
+[IdVgDrainStopCallback]
 Class="Function"
-Prototype="int VgGateModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgDrainStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgGateSartCallback]
+[IdVgDrainStepCallback]
 Class="Function"
-Prototype="int VgGateSartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgDrainStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgGateStopCallback]
+[IdVgGateStartCallback]
 Class="Function"
-Prototype="int VgGateStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgGateStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgGateStepCallback]
+[IdVgGateStopCallback]
 Class="Function"
-Prototype="int VgGateStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgGateStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VgDrainModeCallback]
+[IdVgGateStepCallback]
 Class="Function"
-Prototype="int VgDrainModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-
-[VgGateDecoCallback]
-Class="Function"
-Prototype="int VgGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int IdVgGateStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 

@@ -13,14 +13,7 @@
 //==============================================================================
 // Include files
 #include "SampleCfgPanel.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 #include "LoadPanel.h"
->>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
-=======
-#include "LoadPanel.h"
->>>>>>> 04328f5797ade0bd4442e9a23d7f5cc992f44e38
 //==============================================================================
 // Constants
 
@@ -38,13 +31,6 @@
 int samplePanelHandle;
 //==============================================================================
 // Global functions
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 04328f5797ade0bd4442e9a23d7f5cc992f44e38
 int CVICALLBACK AdvancSetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {
@@ -71,4 +57,4 @@ int CVICALLBACK BasicSetCallback (int panel, int control, int event,
 	}
 	return 0;
 }
->>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
+

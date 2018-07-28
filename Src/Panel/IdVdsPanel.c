@@ -21,7 +21,6 @@
 #define UNFOCUS 1
 //==============================================================================
 // Constants
-ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP};
 
 //==============================================================================
 // Types
@@ -34,7 +33,7 @@ ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_V
 
 //==============================================================================
 // Global variables
-
+ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP}; 
 //==============================================================================
 // Global functions
 static void SetDrainDisp(int panel, char focus)
@@ -65,7 +64,7 @@ static void SetGateDisp(int panel, char focus)
 	}
 }
 
-int CVICALLBACK GateDecoCallback (int panel, int control, int event,
+int CVICALLBACK IdVdGateDecoCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	switch(event){
@@ -77,7 +76,7 @@ int CVICALLBACK GateDecoCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK DrainDecoCallback (int panel, int control, int event,
+int CVICALLBACK IdVdDrainDecoCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	switch(event){
@@ -89,7 +88,7 @@ int CVICALLBACK DrainDecoCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK GateModeCallback (int panel, int control, int event,
+int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {	   
 	 switch(event){
@@ -110,7 +109,7 @@ int CVICALLBACK GateModeCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK DrainModeCallback (int panel, int control, int event,
+int CVICALLBACK IdVdDrainModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {	   
 	 switch(event){
@@ -122,7 +121,7 @@ int CVICALLBACK DrainModeCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK GateStartCallback (int panel, int control, int event,
+int CVICALLBACK IdVdGateStartCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	 if(event==EVENT_LEFT_CLICK_UP){
@@ -132,7 +131,7 @@ int CVICALLBACK GateStartCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK GateStopCallback (int panel, int control, int event,
+int CVICALLBACK IdVdGateStopCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	 if(event==EVENT_LEFT_CLICK_UP){
@@ -142,7 +141,7 @@ int CVICALLBACK GateStopCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK GateStepCallback (int panel, int control, int event,
+int CVICALLBACK IdVdGateStepCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	 if(event==EVENT_LEFT_CLICK_UP){
@@ -152,7 +151,7 @@ int CVICALLBACK GateStepCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK DrainStartCallback (int panel, int control, int event,
+int CVICALLBACK IdVdDrainStartCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	 if(event==EVENT_LEFT_CLICK_UP){
@@ -162,7 +161,7 @@ int CVICALLBACK DrainStartCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK DrainStopCallback (int panel, int control, int event,
+int CVICALLBACK IdVdDrainStopCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	 if(event==EVENT_LEFT_CLICK_UP){
@@ -172,7 +171,7 @@ int CVICALLBACK DrainStopCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK DrainStepCallback (int panel, int control, int event,
+int CVICALLBACK IdVdDrainStepCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	 if(event==EVENT_LEFT_CLICK_UP){

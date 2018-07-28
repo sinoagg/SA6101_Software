@@ -27,8 +27,7 @@
 
 //==============================================================================
 // External variables
-ExpPanelTypeDef IdVdPanel;
-
+extern ExpPanelTypeDef IdVdPanel;
 //==============================================================================
 // Global functions
 
