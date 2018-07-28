@@ -106,15 +106,15 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				switch(expType)
 				{
 					case 0:
-						GetIdVdCfg (IdVdPanel);
+						//GetIdVdCfg (IdVdPanel);
 						//if((IdVgCfg.cfgVgstart==IdVdCfg.cfgVgstop)||IdVgCfg.cfgVgstep==0)	//如果起始电压和终止电压相同
-						numOfCurve=abs(IdVdCfg.cfgVgstart-IdVdCfg.cfgVgstop)/IdVdCfg.cfgVgstep;
-						numOfDots=abs(IdVdCfg.cfgVdstart-IdVdCfg.cfgVdstop)/IdVdCfg.cfgVdstep;
+						//numOfCurve=abs(IdVdCfg.cfgVgstart-IdVdCfg.cfgVgstop)/IdVdCfg.cfgVgstep;
+						//numOfDots=abs(IdVdCfg.cfgVdstart-IdVdCfg.cfgVdstop)/IdVdCfg.cfgVdstep;
 						break;
 					case 1:
-						GetIdVgCfg (IdVgPanel);
-						numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
-						numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;
+						//GetIdVgCfg (IdVgPanel);
+						//numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
+						//numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;
 						break;
 					case 2:
 						//TODO
@@ -337,8 +337,8 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	{
 		int maxCommentSize=255;
 		char comment[maxCommentSize];
-		GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置
-		GetIdVgCfg(IdVgPanel);						//获取IdVg面板设置
+		//GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置
+		//GetIdVgCfg(IdVgPanel);						//获取IdVg面板设置
 		//GetITCfg(iTPanel);
 		//GetRTCfg(rTPanel);
 		GetSampleCfg(samplePanel);

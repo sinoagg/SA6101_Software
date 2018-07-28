@@ -73,8 +73,8 @@ int LoadInitPanel (void)
 	
 	if ((samplePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;
-	if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
-		return -1;
+	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
+		//return -1;
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;													 
@@ -90,19 +90,19 @@ int LoadInitPanel (void)
 		return -1;
 
 		//用于弹出settings面板
-	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
-		return -1;	
+	//if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
+	//	return -1;	
 	 //用于弹出Environment Settings面板
 	//if ((ENVPanel = LoadPanel (mainPanel, "SetPanel.uir", ENV)) < 0)		//load ENV panel
 	//	return -1;
-	if ((ENVTPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
-		return -1;
+	//if ((ENVTPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
+	//	return -1;
 	//用于弹出Graph Defaults面板
-	if ((GRAPHPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
-		return -1;  
+	//if ((GRAPHPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
+	//	return -1;  
 	//用于弹出About面板
-	if ((ABOUTPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
-		return -1;
+	//if ((ABOUTPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
+	//	return -1;
  
 	//选择
 	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel

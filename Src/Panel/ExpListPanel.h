@@ -25,7 +25,16 @@
 
 //==============================================================================
 // Types
-
+typedef struct
+{
+	int panelHandle;
+	int VdStartID;									//voltage drain start
+	int VdStopID;									//voltage drain stop
+	int VdStepID;									//voltage drain step
+	int VgStartID;									//voltage gate start
+	int VgStopID;									//voltage gate stop
+	int VgStepID;									//voltage gate step
+}ExpPanelTypeDef;
 //==============================================================================
 // External variables
 

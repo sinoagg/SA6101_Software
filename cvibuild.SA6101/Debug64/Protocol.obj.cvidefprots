@@ -1,3 +1,11 @@
+[GetTestPara]
+Class="Function"
+Prototype="void GetTestPara(ExpPanelTypeDef *pExpPanel, TestParaTypeDef *pTestPara);"
+
+[PrepareCfgTxData]
+Class="Function"
+Prototype="void PrepareCfgTxData(TestParaTypeDef *pTestPara, unsigned char devAddr, unsigned char expType, unsigned char *pUartTxBuf);"
+
 [ProtocolCfg]
 Class="Function"
 Prototype="void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char *pUartTxBuf);"
