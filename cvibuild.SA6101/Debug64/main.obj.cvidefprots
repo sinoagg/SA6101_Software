@@ -1,8 +1,12 @@
+[MeasureComCallback]
+Class="Function"
+Prototype="void MeasureComCallback(int portNumber, int eventMask, void *callbackData);"
+
 [main]
 Class="Function"
 Prototype="int main(int argc, char **argv);"
 
-[ComCallback]
+[CtrlComCallback]
 Class="Function"
-Prototype="void ComCallback(int portNumber, int eventMask, void *callbackData);"
+Prototype="void CtrlComCallback(int portNumber, int eventMask, void *callbackData);"
 

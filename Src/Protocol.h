@@ -19,10 +19,13 @@
 // Include files
 
 #include "cvidef.h"
+#include "ExpListPanel.h"
 
 //==============================================================================
 // Constants
-
+#define SA61_UART_TX_LEN 30
+#define SA61_UART_RX_LEN 20
+		
 //==============================================================================
 // Types
 enum TestCmd
@@ -65,7 +68,6 @@ typedef struct
 	unsigned int runTime;								//effective only under R-t and I-t mode
 	unsigned int sampleRate;
 	unsigned int sampleNumber;
-
 	unsigned char rangeMode;
 	unsigned char maxRange;
 	unsigned char minRange;
@@ -88,15 +90,12 @@ typedef struct
 
 //==============================================================================
 // Global functions
-
-void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf);
-void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
-void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);  
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf); 
+void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf); 
+void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
 void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
 void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf);
-
 void ProtocolGetData(unsigned char* pUartRxBuf, RxDataTypeDef* pRxData);
-
 
 #ifdef __cplusplus
     }

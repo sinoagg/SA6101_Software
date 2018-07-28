@@ -35,7 +35,7 @@
 void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData);
 int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
 
-static int CheckPortStatus(unsigned char portNumber);
+static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen,void (*pFunc)(int, int, void*));
 
 #ifdef __cplusplus
     }

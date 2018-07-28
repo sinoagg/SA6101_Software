@@ -17,7 +17,6 @@
 #include "IdVgsPanel.h"
 #include "SampleCfgPanel.h"
 #include <rs232.h>
-#include "ExpListPanel.h"
 //==============================================================================
 // Constants
 
@@ -44,7 +43,7 @@ enum MsgType
 TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
-void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
+static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 {
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStartID, &(pTestPara->VdStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStopID, &(pTestPara->VdStop));
@@ -62,7 +61,15 @@ void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 
 }
 
-void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
+static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth)
+{
+	unsigned char i, xorCheck=0;
+	for(i=0;i<lenth;i++)
+		xorCheck^=*(pUartBuf+i);	
+	return xorCheck;	
+}
+
+static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
 {
 	*pUartTxBuf=devAddr;
 	*(pUartTxBuf+1)=MSG_TYPE_SETTING;     
@@ -79,8 +86,9 @@ void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigne
 	*(pUartTxBuf+13)=(unsigned char)(pTestPara->VgStop&0xFF);
 	*(pUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
 	*(pUartTxBuf+15)=(unsigned char)(pTestPara->VgStep&0xFF);
+	
+	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1); 
 }
-
 
 void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
 {
@@ -91,62 +99,51 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	{
 		case SWEEP_DRAIN_VOL:
 			GetTestPara(&IdVdPanel, &TestPara);
-			PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf); 
+			break;
+		case SWEEP_GATE_VOL:
+			//GetTestPara(&IdVgPanel, &TestPara);
+			break;
+		case NO_SWEEP_IT:
+			//GetTestPara(&IdVdPanel, &TestPara);
+			break;
+		case NO_SWEEP_RT:
+			//GetTestPara(&IdVdPanel, &TestPara);
 			break;
 	}
+	PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf);      
+	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
 }
-
 
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {
-	unsigned char i, xorcheck=0;
 	*pUartTxBuf=devAddr;
 	*(pUartTxBuf+1)=0x12;
-	for(i=0;i<27;i++)
-		xorcheck^=*(pUartTxBuf+i);	
-	
-	*(pUartTxBuf+27)=xorcheck;
-	
-	ComWrt(comSelect, (const char*)pUartTxBuf, 28);
+	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
 }
 
 void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {
-	unsigned char i, xorcheck=0;
 	*pUartTxBuf=devAddr;
 	*(pUartTxBuf+1)=0x13;
-	for(i=0;i<27;i++)
-		xorcheck^=*(pUartTxBuf+i);	
-	
-	*(pUartTxBuf+27)=xorcheck;
-	
-	ComWrt(comSelect, (const char*)pUartTxBuf, 28);
+	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
 }
 
 void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {
-	unsigned char i, xorcheck=0;
 	*pUartTxBuf=devAddr;
 	*(pUartTxBuf+1)=0x14;
-	for(i=0;i<27;i++)
-		xorcheck^=*(pUartTxBuf+i);	
-	
-	*(pUartTxBuf+27)=xorcheck;
-	
-	ComWrt(comSelect, (const char*)pUartTxBuf, 28);
+	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
 }
 
 void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {
-	unsigned char i, xorcheck=0;
 	*pUartTxBuf=devAddr;
 	*(pUartTxBuf+1)=0x15;
-	for(i=0;i<27;i++)
-		xorcheck^=*(pUartTxBuf+i);	
-	
-	*(pUartTxBuf+27)=xorcheck;
-	
-	ComWrt(comSelect, (const char*)pUartTxBuf, 28);
+	*(pUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pUartTxBuf, SA61_UART_TX_LEN-1);
+	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
 }
 
 void ProtocolGetData(unsigned char* pUartRxBuf, RxDataTypeDef* pRxData)	//Get data from UART Rx Buffer

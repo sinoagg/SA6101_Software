@@ -55,7 +55,6 @@ char configSavePath[512]={0};
 
 //===================================================
 //   MAIN_PANEL_Callback
-
 int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 									 int eventData1, int eventData2)
 {
@@ -76,7 +75,6 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 
 //===================================================
 //   RunCallback
-
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
