@@ -98,6 +98,7 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 		  	SetGateDisp(panel, FOCUS);
 			break;
 		case EVENT_VAL_CHANGED:
+			
 			int val;
 			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
 			if(val==1)

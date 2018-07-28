@@ -45,26 +45,23 @@
 // External variables
 extern int mainPanel;
 extern int expListPanel;
-extern int samplePanel;
-//extern int smPanel;
-extern int smpanlzPanel;
+extern int sampleAnlzPanel;
 extern int graphDispPanel;
 extern int environmentPanel;
 extern int resultPanel;	     //result menu panel
 extern int tablePanel;
 extern int saveDataPanel; 
-extern int ENVTPanel;  
-extern int GRAPHPanel;
-extern int ABOUTPanel;
+extern int envtPanel;  
+extern int setGraphPanel;
+extern int aboutPanel;
 extern int iTPanel;          //I-T panel
 extern int rTPanel;          //R-T panel
 extern int setPanel;
-extern int doubleGraphDispPanel;      // double graph panel 
 extern int chPanel;          //chose panel
-extern int AnalyenvirPanel;
+extern int analyEnvtPanel;
 extern int proPanel;
 extern int defPanel;
-extern int sampleBasicPanel;
+extern int sampleAdvancePanel;
 
 //==============================================================================
 // Global functions

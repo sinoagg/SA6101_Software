@@ -190,9 +190,16 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	        DisplayPanel(IdVdPanel.panelHandle);
 			HidePanel(samplePanelHandle);	 
-			HidePanel(smpanlzPanel);
-			HidePanel(AnalyenvirPanel);
+			HidePanel(sampleAnlzPanel);
+			HidePanel(analyEnvtPanel);
 			HidePanel(environmentPanel);
+			
+			//清除显示双图表value
+			int val; 
+			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
+			if(val){
+				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
+			}
 			break;
 	
 	}
@@ -229,6 +236,12 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 				SetPanelPos(environmentPanel, 556, 1600);
 				SetPanelSize(environmentPanel, 449, 300);
 				DisplayPanel(environmentPanel);
+				
+				//清除显示双图表value
+			int val; 
+			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
+			if(val)
+				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
 			break;
 	}
 	return 0;
@@ -254,20 +267,25 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
 	 			DisplayPanel(graphDispPanel);
 			   
-				SetPanelPos(smpanlzPanel, 105, 1600);
-				SetPanelSize(smpanlzPanel, 449, 300);
-				DisplayPanel(smpanlzPanel);
+				SetPanelPos(sampleAnlzPanel, 105, 1600);
+				SetPanelSize(sampleAnlzPanel, 449, 300);
+				DisplayPanel(sampleAnlzPanel);
 				
-				SetPanelPos(AnalyenvirPanel, 556, 1600);
-				SetPanelSize(AnalyenvirPanel, 449, 300);
-				DisplayPanel(AnalyenvirPanel);
+				SetPanelPos(analyEnvtPanel, 556, 1600);
+				SetPanelSize(analyEnvtPanel, 449, 300);
+				DisplayPanel(analyEnvtPanel);
 			break;
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
 			
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
-		
+			
+			//清除显示双图表value
+			int val; 
+			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
+			if(val)
+				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
 			break;
 			
 	}
@@ -281,11 +299,10 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-	         InstallPopup (setPanel);    //弹出setPanel 
-	
-			SetPanelPos(ENVTPanel, 5, 170);
-			SetPanelSize(ENVTPanel, 350, 650);
-			DisplayPanel(ENVTPanel);
+	        InstallPopup (setPanel);    //弹出setPanel 
+			SetPanelPos(envtPanel, 5, 170);
+			SetPanelSize(envtPanel, 350, 650);
+			DisplayPanel(envtPanel);
 			
 		
 			

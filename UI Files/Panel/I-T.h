@@ -14,9 +14,9 @@
      /* Panels and Controls: */
 
 #define  ITPANEL                          1
-#define  ITPANEL_VG_STEP                  2       /* control type: numeric, callback function: (none) */
-#define  ITPANEL_VG_STOP                  3       /* control type: numeric, callback function: (none) */
-#define  ITPANEL_VG_START                 4       /* control type: numeric, callback function: (none) */
+#define  ITPANEL_IT_STEP                  2       /* control type: numeric, callback function: (none) */
+#define  ITPANEL_IT_STOP                  3       /* control type: numeric, callback function: (none) */
+#define  ITPANEL_IT_START                 4       /* control type: numeric, callback function: (none) */
 #define  ITPANEL_RING_MODE                5       /* control type: ring, callback function: (none) */
 #define  ITPANEL_TXT_STEP                 6       /* control type: textMsg, callback function: (none) */
 #define  ITPANEL_TEXTMSG_18               7       /* control type: textMsg, callback function: (none) */

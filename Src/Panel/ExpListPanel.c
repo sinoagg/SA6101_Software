@@ -49,34 +49,34 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	
-	int activeIndex;
+	int index;
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
 			
-			GetActiveTreeItem (panel, control, &activeIndex);//获得当前点击项目值		   
-			if(activeIndex==1)
+			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
+			if(index==1)
 			{
 				//加载I-T
 				SetPanelPos(iTPanel, 105, 305);
 				SetPanelSize(iTPanel, 900, 1293);
 				DisplayPanel(iTPanel);
 			}
-			else if(activeIndex==2)
+			else if(index==2)
 			{	 	
 				//加载R-T
 				SetPanelPos(rTPanel, 105, 305);
 				SetPanelSize(rTPanel, 900, 1293);
 				DisplayPanel(rTPanel);
 			}
-			else if(activeIndex==4)
+			else if(index==4)
 			{
 				// 加载Id_Vds Configuration
 				SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 				SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
 			}
-			else if(activeIndex==5)
+			else if(index==5)
 			{
 				//  加载Id_Vgs Configuration
 				SetPanelPos(IdVgPanel.panelHandle, 105, 305);

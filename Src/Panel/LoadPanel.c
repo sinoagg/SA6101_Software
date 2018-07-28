@@ -36,19 +36,18 @@ int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
-int ENVTPanel; 
-int GRAPHPanel;
-int ABOUTPanel;
+int envtPanel; 
+int setGraphPanel;
+int aboutPanel;
 int iTPanel;
 int rTPanel;
 int chPanel;
-int doubleGraphDispPanel;
-int AnalyenvirPanel;
+int analyEnvtPanel;
 int setPanel;
 int proPanel;
 int defPanel;
-int smpanlzPanel;
-int sampleBasicPanel;
+int sampleAnlzPanel;
+int sampleAdvancePanel;
 //==============================================================================
 // Global functions
 
@@ -69,47 +68,48 @@ int LoadInitPanel (void)
 	if ((IdVgPanel.panelHandle = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
-
-		return -1;	  
-		//Basic Settings
-	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
-
+	
+	//load SampleBasicPanel panel  
+	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)
+	   	return -1;	  
+		//AdvanceSettings Panel
+	if ((sampleAdvancePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
 		return -1;
-	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
-		//return -1;
+	if ((sampleAnlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
+		return -1;
+	
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;													 
-	if ((AnalyenvirPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
+	if ((analyEnvtPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
 		return -1;													 
 	
 
 	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
 		return -1;
-	
-	 //用于弹出savedata面板
+        //savedata
 	if ((saveDataPanel = LoadPanel (mainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//load savedata panel
 		return -1;
-
-		//用于弹出settings面板
-	//if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
-	//	return -1;	
-	 //用于弹出Environment Settings面板
-	//if ((ENVPanel = LoadPanel (mainPanel, "SetPanel.uir", ENV)) < 0)		//load ENV panel
-	//	return -1;
-	//if ((ENVTPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
-	//	return -1;
-	//用于弹出Graph Defaults面板
-	//if ((GRAPHPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
-	//	return -1;  
-	//用于弹出About面板
-	//if ((ABOUTPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
-	//	return -1;
- 
-	//选择
+	 	//选择
 	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel
 		return -1;
+	
+	
+	//Settings
+	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
+		return -1;	
+	 //用于弹出Environment Settings面板
+	if ((envtPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
+		return -1;
+	//用于弹出Graph Defaults面板
+	if ((setGraphPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
+		return -1;  
+	//用于弹出About面板
+	if ((aboutPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
+		return -1;
+ 
+	
+
 	
 	
 	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
@@ -130,6 +130,8 @@ int LoadInitPanel (void)
 	 if ((defPanel = LoadPanel (proPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
 	
+	 
+	 
 	DisplayPanel (mainPanel); 
 	
 	SetPanelPos(expListPanel, 105, 3);  //加载面板位置 （,top,left）
