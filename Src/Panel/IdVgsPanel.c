@@ -154,13 +154,11 @@ int CVICALLBACK VgModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 	if(event==EVENT_LEFT_CLICK_UP){  
-
-	  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
-
-   }
+	   
+			 SetDrainDisp(panel, UNFOCUS);
+			 SetGateDisp(panel, FOCUS);
+	
+	   }
 	return 0;
 }
 
