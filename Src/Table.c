@@ -55,8 +55,6 @@ int CVICALLBACK AddRowCallback (int panel, int control, int event,
 {   	switch (event)
 	{			   
 				case EVENT_LEFT_CLICK_UP:
-			
-							
 						    int row;
    	                  		InsertTableRows (tablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);				          //插入1行 
 							GetNumTableRows (tablePanel, TABLE_DISTABLE, &row); 										  //得到当前行数
@@ -101,8 +99,8 @@ int CVICALLBACK ColorCallback (int panel, int control, int event,
 	
 	  switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			int CheckValue;
-			GetCtrlVal(tablePanel,TABLE_ADDBGCOLOR,&CheckValue); //获得checkbox的值
+			int val;
+			GetCtrlVal(tablePanel,TABLE_ADDBGCOLOR,&val); //获得checkbox的值
 
 			
 					 
@@ -111,7 +109,7 @@ int CVICALLBACK ColorCallback (int panel, int control, int event,
 			 GetNumTableRows (tablePanel, TABLE_DISTABLE, &numRows);
 			   for (rowIndex=1; rowIndex <= numRows; rowIndex++)
 		        {
-		         if((CheckValue) &&((rowIndex % 2) ==1))
+		         if((val) &&((rowIndex % 2) ==1))
 					 SetTableCellRangeAttribute (tablePanel, TABLE_DISTABLE,VAL_TABLE_ROW_RANGE(rowIndex),ATTR_TEXT_BGCOLOR, 0xD0D0D0L);//灰色      
 		        
 		        else
