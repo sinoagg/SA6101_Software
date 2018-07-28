@@ -13,7 +13,7 @@
 
      /* Panels and Controls: */
 
-#define  DEFPANEL                         1       /* callback function: defCallback */
+#define  DEFPANEL                         1       /* callback function: DefaultCallback */
 #define  DEFPANEL_TXT                     2       /* control type: textMsg, callback function: (none) */
 #define  DEFPANEL_CANVAS                  3       /* control type: canvas, callback function: (none) */
 #define  DEFPANEL_TXT_DESC                4       /* control type: textMsg, callback function: (none) */
@@ -41,7 +41,7 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK defCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK DefaultCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK DescCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ImgCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OpenCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

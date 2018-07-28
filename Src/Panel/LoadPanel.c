@@ -51,6 +51,7 @@ int setPanel;
 int proPanel;
 int defPanel;
 int smpanlzPanel;
+int sampleBasicPanel;
 //==============================================================================
 // Global functions
 
@@ -73,6 +74,12 @@ int LoadInitPanel (void)
 		return -1;
 	
 	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
+<<<<<<< HEAD
+=======
+		return -1;	  
+		//Basic Settings
+	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_BSC)) < 0)		//load right panel
+>>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
 		return -1;
 	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
 		//return -1;

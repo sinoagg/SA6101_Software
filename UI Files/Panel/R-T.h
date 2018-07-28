@@ -17,7 +17,7 @@
 #define  RTPANEL_VG_STEP                  2       /* control type: numeric, callback function: (none) */
 #define  RTPANEL_VG_STOP                  3       /* control type: numeric, callback function: (none) */
 #define  RTPANEL_VG_START                 4       /* control type: numeric, callback function: (none) */
-#define  RTPANEL_RING_3                   5       /* control type: ring, callback function: (none) */
+#define  RTPANEL_RINGMODE                 5       /* control type: ring, callback function: (none) */
 #define  RTPANEL_TXT_STEP                 6       /* control type: textMsg, callback function: (none) */
 #define  RTPANEL_TEXTMSG_18               7       /* control type: textMsg, callback function: (none) */
 #define  RTPANEL_PIC_GATE                 8       /* control type: picture, callback function: (none) */

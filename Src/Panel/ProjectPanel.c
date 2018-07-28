@@ -24,7 +24,7 @@ int CVICALLBACK ProExitCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK defCallback (int panel, int event, void *callbackData,
+int CVICALLBACK DefaultCallback (int panel, int event, void *callbackData,
 							 int eventData1, int eventData2)
 {
 	switch (event)

@@ -6,9 +6,9 @@ Prototype="int OpenCallback(int panel, int control, int event, void *callbackDat
 Class="Function"
 Prototype="int ProExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[defCallback]
+[DefaultCallback]
 Class="Function"
-Prototype="int defCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int DefaultCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 
 [ImgCallback]
 Class="Function"

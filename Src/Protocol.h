@@ -68,6 +68,10 @@ typedef struct
 	unsigned int runTime;								//effective only under R-t and I-t mode
 	unsigned int sampleRate;
 	unsigned int sampleNumber;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
 	unsigned char rangeMode;
 	unsigned char maxRange;
 	unsigned char minRange;

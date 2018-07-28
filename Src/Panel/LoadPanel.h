@@ -66,6 +66,7 @@ extern int chPanel;          //chose panel
 extern int AnalyenvirPanel;
 extern int proPanel;
 extern int defPanel;
+extern int sampleBasicPanel;
 
 //==============================================================================
 // Global functions
