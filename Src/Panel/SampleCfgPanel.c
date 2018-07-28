@@ -1,3 +1,4 @@
+#include "Sample Configuration.h"
 #include <userint.h>
 //==============================================================================
 //
@@ -11,9 +12,8 @@
 
 //==============================================================================
 // Include files
-
 #include "SampleCfgPanel.h"
-#include "Sample Configuration.h"
+#include "LoadPanel.h"
 //==============================================================================
 // Constants
 
@@ -28,37 +28,34 @@
 
 //==============================================================================
 // Global variables
-SampleCfg_TypeDef SampleCfg;
+int samplePanelHandle;
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
-int GetSampleCfg (int panelHandle)
+
+int CVICALLBACK AdvancSetCallback (int panel, int control, int event,
+								   void *callbackData, int eventData1, int eventData2)
 {
+	switch(event){
 	
-	//
-	//int temp;
-	//if(GetCtrlVal(panelHandle, SAMPLE_CFG_QUIETTIME, &temp)<0)
-	//	return -1;
-	//SampleCfg.cfgQuiteTime=temp;
-	//if(GetCtrlVal(panelHandle, SAMPLE_CFG_TIMEINTER, &temp)<0)
-	//	return -1;
-	///*SampleCfg.cfgTimeInterval=temp;
-	//if(GetCtrlVal(panelHandle, SAMPLE_CFG_RUNTIME, &temp)<0)
-	//	return -1;
-	//SampleCfg.cfgRunTime=temp;
-	//if(GetCtrlVal(panelHandle, SAMPLE_CFG_SAMPLERATE, &temp)<0)
-	//	return -1;
-	//SampleCfg.cfgSampleRate=temp;
-	//if(GetCtrlVal(panelHandle, SAMPLE_CFG_SAMPLENUM, &temp)<0)
-	//	return -1;*/
-	//SampleCfg.cfgSampleNum=temp;
-	//if(GetCtrlVal(panelHandle, SAMPLE_CFG_RANGESET, &temp)<0)
-	//	return -1;
-	//SampleCfg.cfgRangeSetting=temp;
-	//
+		case EVENT_LEFT_CLICK_UP:
+			SetPanelPos(sampleBasicPanel, 105, 1600);
+			SetPanelSize(sampleBasicPanel, 449, 300);
+			DisplayPanel(sampleBasicPanel);
+			break;
+	}
 	return 0;
-	
+}
+
+int CVICALLBACK BasicSetCallback (int panel, int control, int event,
+								  void *callbackData, int eventData1, int eventData2)
+{
+	switch(event){
+		case EVENT_LEFT_CLICK_UP:
+			    SetPanelPos(samplePanelHandle, 105, 1600);
+				SetPanelSize(samplePanelHandle, 449, 300);
+				DisplayPanel(samplePanelHandle);
+			break;
+	}
+	return 0;
 }

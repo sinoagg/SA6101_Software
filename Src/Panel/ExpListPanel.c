@@ -15,6 +15,7 @@
 // Include files
 
 #include "ExpListPanel.h"
+#include "IdVdsPanel.h"
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "I-T.h"
@@ -62,7 +63,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 					
 					}
 			else if(activeIndex==2){	 	
-				
 				//º”‘ÿR-T
 				SetPanelPos(rTPanel, 105, 305);
 				SetPanelSize(rTPanel, 900, 1293);
@@ -70,9 +70,9 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 					}
 			else if(activeIndex==4 ){
 				// º”‘ÿId_Vds Configuration
-				SetPanelPos(IdVdPanel, 105, 305);
-				SetPanelSize(IdVdPanel, 900, 1293);
-				DisplayPanel(IdVdPanel);
+				SetPanelPos(IdVdPanel.panelHandle, 105, 305);
+				SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+				DisplayPanel(IdVdPanel.panelHandle);
 					
 					}
 			else if(activeIndex==5){

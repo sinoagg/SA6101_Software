@@ -41,7 +41,6 @@ enum MsgType
 
 //==============================================================================
 // Global variables
-extern SampleCfg_TypeDef SampleCfg;
 TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
@@ -53,7 +52,14 @@ void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStartID, &(pTestPara->VgStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStopID, &(pTestPara->VgStop));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStepID, &(pTestPara->VgStep));
-	//GetCtrlVal(panelHandle, GET_ID(PANEL_ID, VG_STEP), &(pTestPara->quietTime));
+
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLERATE, &(pTestPara->sampleRate));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLENUMBER, &(pTestPara->sampleNumber));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
+
 }
 
 void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
@@ -75,6 +81,7 @@ void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigne
 	*(pUartTxBuf+15)=(unsigned char)(pTestPara->VgStep&0xFF);
 }
 
+
 void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
 {
 	unsigned char i, xorcheck=0;
@@ -83,79 +90,12 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	switch((enum ExpType)expType)
 	{
 		case SWEEP_DRAIN_VOL:
-			GetTestPara(&IdVdExpPanel, &TestPara);
+			GetTestPara(&IdVdPanel, &TestPara);
 			PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf); 
 			break;
 	}
 }
 
-/*void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)	//Make config info to UART Tx Buffer
-{
-	unsigned char i, xorcheck=0;
-	*pUartTxBuf=devAddr;
-	*(pUartTxBuf+1)=MSG_TYPE_SETTING;
-	switch((enum ExpType)expType)
-	{
-		case SWEEP_DRAIN_VOL:
-			*(pUartTxBuf+2)=(unsigned char)SWEEP_DRAIN_VOL;
-			//GetTestPara(panelHandle, pTestPara);
-			*(pUartTxBuf+4)=(unsigned char)(IdVdCfg.cfgVdstart)>>8;
-			*(pUartTxBuf+5)=(unsigned char)(IdVdCfg.cfgVdstart&0xFF);
-			*(pUartTxBuf+6)=(unsigned char)(IdVdCfg.cfgVdstop)>>8;
-			*(pUartTxBuf+7)=(unsigned char)(IdVdCfg.cfgVdstop&0xFF);
-			*(pUartTxBuf+8)=(unsigned char)(IdVdCfg.cfgVdstep)>>8;
-			*(pUartTxBuf+9)=(unsigned char)(IdVdCfg.cfgVdstep&0xFF);
-			*(pUartTxBuf+10)=(unsigned char)(IdVdCfg.cfgVgstart)>>8;
-			*(pUartTxBuf+11)=(unsigned char)(IdVdCfg.cfgVgstart&0xFF);
-			*(pUartTxBuf+12)=(unsigned char)(IdVdCfg.cfgVgstop)>>8;
-			*(pUartTxBuf+13)=(unsigned char)(IdVdCfg.cfgVgstop&0xFF);
-			*(pUartTxBuf+14)=(unsigned char)(IdVdCfg.cfgVgstep)>>8;
-			*(pUartTxBuf+15)=(unsigned char)(IdVdCfg.cfgVgstep&0xFF);
-			break;
-		case SWEEP_GATE_VOL:
-			*(pUartTxBuf+2)=(unsigned char)SWEEP_GATE_VOL;   
-			*(pUartTxBuf+4)=(unsigned char)(IdVgCfg.cfgVdstart)>>8;
-			*(pUartTxBuf+5)=(unsigned char)(IdVgCfg.cfgVdstart&0xFF);
-			*(pUartTxBuf+6)=(unsigned char)(IdVgCfg.cfgVdstop)>>8;
-			*(pUartTxBuf+7)=(unsigned char)(IdVgCfg.cfgVdstop&0xFF);
-			*(pUartTxBuf+8)=(unsigned char)(IdVgCfg.cfgVdstep)>>8;
-			*(pUartTxBuf+9)=(unsigned char)(IdVgCfg.cfgVdstep&0xFF);
-			*(pUartTxBuf+10)=(unsigned char)(IdVgCfg.cfgVgstart)>>8;
-			*(pUartTxBuf+11)=(unsigned char)(IdVgCfg.cfgVgstart&0xFF);
-			*(pUartTxBuf+12)=(unsigned char)(IdVgCfg.cfgVgstop)>>8;
-			*(pUartTxBuf+13)=(unsigned char)(IdVgCfg.cfgVgstop&0xFF);
-			*(pUartTxBuf+14)=(unsigned char)(IdVgCfg.cfgVgstep)>>8;
-			*(pUartTxBuf+15)=(unsigned char)(IdVgCfg.cfgVgstep&0xFF);
-			break;
-		case 2:
-			//TODO
-			break; 
-		case 3:
-			//TODO
-			break;
-		default:
-			break;
-	}
-	*(pUartTxBuf+16)=(unsigned char)(SampleCfg.cfgQuiteTime)>>8;
-	*(pUartTxBuf+17)=(unsigned char)(SampleCfg.cfgQuiteTime&0xFF);
-	*(pUartTxBuf+18)=(unsigned char)(SampleCfg.cfgTimeInterval)>>8;
-	*(pUartTxBuf+19)=(unsigned char)(SampleCfg.cfgTimeInterval&0xFF);
-	*(pUartTxBuf+20)=(unsigned char)(SampleCfg.cfgRunTime)>>8;
-	*(pUartTxBuf+21)=(unsigned char)(SampleCfg.cfgRunTime&0xFF);
-	*(pUartTxBuf+22)=(unsigned char)(SampleCfg.cfgSampleRate)>>8;
-	*(pUartTxBuf+23)=(unsigned char)(SampleCfg.cfgSampleRate&0xFF);
-	*(pUartTxBuf+24)=(unsigned char)(SampleCfg.cfgSampleNum)>>8;
-	*(pUartTxBuf+25)=(unsigned char)(SampleCfg.cfgSampleNum&0xFF);
-	*(pUartTxBuf+26)=(unsigned char)(SampleCfg.cfgRangeSetting&0xFF);  
-	
-	for(i=0;i<27;i++)
-		xorcheck^=*(pUartTxBuf+i);	
-	
-	*(pUartTxBuf+27)=xorcheck;
-	
-	ComWrt(comSelect, (const char*)pUartTxBuf, 28);
-
-}*/
 
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {

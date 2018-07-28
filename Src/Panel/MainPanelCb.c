@@ -13,10 +13,7 @@
 //==============================================================================
 // Include files
 #include <utility.h>
-//<<<<<<< HEAD
-//=======
 #include <formatio.h>
-//>>>>>>> refs/remotes/origin/master
 #include "asynctmr.h"
 #include "MainPanelCb.h"
 #include <ansi_c.h>
@@ -25,6 +22,7 @@
 #include "LoadPanel.h"
 #include "Protocol.h"
 #include "Timer.h"
+#include "SampleCfgPanel.h"
 
 //==============================================================================
 // Constants
@@ -191,10 +189,10 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-	 		SetPanelPos(IdVdPanel, 105, 305);
-	        SetPanelSize(IdVdPanel, 900, 1293);
-	        DisplayPanel(IdVdPanel);
-			HidePanel(samplePanel);	 
+	 		SetPanelPos(IdVdPanel.panelHandle, 105, 305);
+	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+	        DisplayPanel(IdVdPanel.panelHandle);
+			HidePanel(samplePanelHandle);	 
 			HidePanel(smpanlzPanel);
 			HidePanel(AnalyenvirPanel);
 			HidePanel(environmentPanel);
@@ -223,13 +221,13 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			
 		case EVENT_LEFT_CLICK:
 			//点击Configure图标回到Id_vds界面
-				SetPanelPos(IdVdPanel, 105, 305);
-				SetPanelSize(IdVdPanel, 900, 1293);
-				DisplayPanel(IdVdPanel);
+				SetPanelPos(IdVdPanel.panelHandle, 105, 305);
+				SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+				DisplayPanel(IdVdPanel.panelHandle);
 				
-				SetPanelPos(samplePanel, 105, 1600);
-				SetPanelSize(samplePanel, 449, 300);
-				DisplayPanel(samplePanel);
+				SetPanelPos(samplePanelHandle, 105, 1600);
+				SetPanelSize(samplePanelHandle, 449, 300);
+				DisplayPanel(samplePanelHandle);
 				
 				SetPanelPos(environmentPanel, 556, 1600);
 				SetPanelSize(environmentPanel, 449, 300);
@@ -341,7 +339,7 @@ static int SaveConfigToFile(char* pConfigSavePath)
 		//GetIdVgCfg(IdVgPanel);						//获取IdVg面板设置
 		//GetITCfg(iTPanel);
 		//GetRTCfg(rTPanel);
-		GetSampleCfg(samplePanel);
+		//GetSampleCfg(samplePanel);
 		//GetEnvironmentCfg(environmentPanel);
 		PromptPopup("Message", "Please enter comment for this configuration:", comment, maxCommentSize-1);
 		fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
@@ -352,12 +350,6 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	return 0;
 	
 }
-//<<<<<<< HEAD
-
-
-//>>>>>>> 8d2b85158ba46c70afb115b45e9d7b754e79c8f5
-//=======
-//>>>>>>> refs/remotes/origin/master
 
 //弹出projects内容
 int CVICALLBACK ProjectCallback (int panel, int control, int event,

@@ -91,7 +91,7 @@ static  void SetGateDisp(int panel, char focus){
 	}
 	
 }
-int CVICALLBACK VGDrainCallback (int panel, int control, int event,
+int CVICALLBACK VgDrainCallback (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
 	//  DRAIN
@@ -100,11 +100,6 @@ int CVICALLBACK VGDrainCallback (int panel, int control, int event,
 		   case EVENT_LEFT_CLICK_UP:
 			   SetGateDisp(panel,UNFOCUS);
 			   SetDrainDisp(panel,FOCUS);
-			      /*//点击DRAIN时，其他为灰色状态
-			      DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
-				  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor*/
 			
 			   break;
 	}
@@ -114,7 +109,7 @@ int CVICALLBACK VGDrainCallback (int panel, int control, int event,
 }
 
 
-int CVICALLBACK VGstartCallback (int panel, int control, int event,
+int CVICALLBACK VgDrainStartCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
 	if(event==EVENT_LEFT_CLICK_UP){  
@@ -126,7 +121,7 @@ int CVICALLBACK VGstartCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VGstopCallback (int panel, int control, int event,
+int CVICALLBACK VgDrainStopCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 	if(event==EVENT_LEFT_CLICK_UP){  
@@ -138,7 +133,7 @@ int CVICALLBACK VGstopCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VGstepCallback (int panel, int control, int event,
+int CVICALLBACK VgDrainStepCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
        if(event==EVENT_LEFT_CLICK_UP){  
@@ -150,7 +145,7 @@ int CVICALLBACK VGstepCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VgModeCallback (int panel, int control, int event,
+int CVICALLBACK VgGateModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 	if(event==EVENT_LEFT_CLICK_UP){  
@@ -162,7 +157,7 @@ int CVICALLBACK VgModeCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VgSartCallback (int panel, int control, int event,
+int CVICALLBACK VgGateSartCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 
@@ -180,7 +175,7 @@ int CVICALLBACK VgSartCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VgStCallback (int panel, int control, int event,
+int CVICALLBACK VgGateStopCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	
@@ -193,7 +188,7 @@ int CVICALLBACK VgStCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VgStepCallback (int panel, int control, int event,
+int CVICALLBACK VgGateStepCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 	
@@ -206,7 +201,7 @@ int CVICALLBACK VgStepCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VGmodeCallback (int panel, int control, int event,
+int CVICALLBACK VgDrainModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 
@@ -233,7 +228,7 @@ int CVICALLBACK VGmodeCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK VGateDecoCallback (int panel, int control, int event,
+int CVICALLBACK VgGateDecoCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
 	switch(event){

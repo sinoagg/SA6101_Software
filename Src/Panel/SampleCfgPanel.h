@@ -19,28 +19,18 @@
 // Include files
 
 #include "cvidef.h"
-
+#include "Sample Configuration.h"
 //==============================================================================
 // Constants
 
 //==============================================================================
 // Types
-typedef struct
-{
-	int cfgQuiteTime;								//quiet time usually 2 seconds    
-	int cfgTimeInterval;							//data interval
-	int cfgRunTime;									//run time
-	int cfgSampleRate;								//samples per second usually 2000
-	int cfgSampleNum;								//average number usually 400
-	int cfgRangeSetting;							//range settings
-}SampleCfg_TypeDef;
+
 //==============================================================================
 // External variables
-
+extern int samplePanelHandle; 
 //==============================================================================
 // Global functions
-
-int GetSampleCfg (int panelHandle); 
 
 #ifdef __cplusplus
     }

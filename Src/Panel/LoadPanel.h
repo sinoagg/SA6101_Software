@@ -45,7 +45,7 @@
 // External variables
 extern int mainPanel;
 extern int expListPanel;
-extern int IdVdPanel;
+
 extern int IdVgPanel;
 extern int samplePanel;
 //extern int smPanel;
@@ -66,6 +66,7 @@ extern int chPanel;          //chose panel
 extern int AnalyenvirPanel;
 extern int proPanel;
 extern int defPanel;
+extern int sampleBasicPanel;
 
 //==============================================================================
 // Global functions
