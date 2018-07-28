@@ -11,8 +11,9 @@
 
 //==============================================================================
 // Include files
-
 #include "LoadPanel.h"
+#include "IdVdsPanel.h"
+#include "SampleCfgPanel.h"
 //==============================================================================
 // Constants
 
@@ -29,9 +30,9 @@
 // Global variables
 int mainPanel;
 int expListPanel;
-int IdVdPanel;
+
 int IdVgPanel;
-int samplePanel;
+
 int graphDispPanel;
 int environmentPanel;
 int resultPanel;
@@ -64,14 +65,14 @@ int LoadInitPanel (void)
 	if ((expListPanel = LoadPanel (mainPanel, "Experiment List.uir", EXP_LIST)) < 0)		//load left panel
 		return -1;
 	
-	if ((IdVdPanel = LoadPanel (mainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
+	if ((IdVdPanel.panelHandle = LoadPanel (mainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
 		return -1;
 	
 	
 	if ((IdVgPanel = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	if ((samplePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
+	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;
 	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
 		//return -1;
@@ -133,13 +134,13 @@ int LoadInitPanel (void)
 	SetPanelSize(expListPanel, 900, 300);//加载面板大小  (,height，width)
 	DisplayPanel(expListPanel);
 	
-	SetPanelPos(IdVdPanel, 105, 305);
-	SetPanelSize(IdVdPanel, 900, 1293);
-	DisplayPanel(IdVdPanel);
+	SetPanelPos(IdVdPanel.panelHandle, 105, 305);
+	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+	DisplayPanel(IdVdPanel.panelHandle);
 	
-	SetPanelPos(samplePanel, 105, 1600);
-	SetPanelSize(samplePanel, 449, 300);
-	DisplayPanel(samplePanel);
+	SetPanelPos(samplePanelHandle, 105, 1600);
+	SetPanelSize(samplePanelHandle, 449, 300);
+	DisplayPanel(samplePanelHandle);
 	
 	SetPanelPos(environmentPanel, 556, 1600);
 	SetPanelSize(environmentPanel, 449, 300);

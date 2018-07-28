@@ -41,7 +41,6 @@ enum MsgType
 
 //==============================================================================
 // Global variables
-extern SampleCfg_TypeDef SampleCfg;
 TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
@@ -53,7 +52,14 @@ void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStartID, &(pTestPara->VgStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStopID, &(pTestPara->VgStop));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStepID, &(pTestPara->VgStep));
-	//GetCtrlVal(panelHandle, GET_ID(PANEL_ID, VG_STEP), &(pTestPara->quietTime));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLERATE, &(pTestPara->sampleRate));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLENUMBER, &(pTestPara->sampleNumber));
+	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
+	
+	
 }
 
 void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
@@ -83,7 +89,7 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	switch((enum ExpType)expType)
 	{
 		case SWEEP_DRAIN_VOL:
-			GetTestPara(&IdVdExpPanel, &TestPara);
+			GetTestPara(&IdVdPanel, &TestPara);
 			PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf); 
 			break;
 	}

@@ -45,7 +45,7 @@
 // External variables
 extern int mainPanel;
 extern int expListPanel;
-extern int IdVdPanel;
+
 extern int IdVgPanel;
 extern int samplePanel;
 //extern int smPanel;
