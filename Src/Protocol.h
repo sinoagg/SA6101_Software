@@ -62,15 +62,10 @@ typedef struct
 	int VgStep;									//voltage gate step
 	unsigned int quietTime;
 	unsigned int timeStep;
-<<<<<<< HEAD
 	unsigned int runTime;								//effective only under R-t and I-t mode
 	unsigned int sampleRate;
 	unsigned int sampleNumber;
-=======
-	unsigned int sampleTime;								//effective only under R-t and I-t mode
-	unsigned int sampleRate;
-	unsigned int avgNumber;
->>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
+
 	unsigned char rangeMode;
 	unsigned char maxRange;
 	unsigned char minRange;
