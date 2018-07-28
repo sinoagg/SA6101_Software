@@ -15,8 +15,10 @@
 
 #include "IdVgsPanel.h"
 #include "Id-Vgs Configuration.h"
-#define   val_pres_blue  0xA0B4DCL   // 点击激活蓝色
-#define  val_gray 0xA9A9A9L	   //未点击灰色
+#define   COLOR_BLUE  0xA0B4DCL   // 点击激活蓝色
+#define  COLOR_GREY 0xA9A9A9L	   //未点击灰色
+#define FOCUS	0
+#define UNFOCUS 1
 //==============================================================================
 // Constants
 
@@ -50,14 +52,7 @@ int GetIdVgCfg (int panelHandle)
 	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_STEP, &temp)<0)
 		return -1;
 	IdVgCfg.cfgVdstep=temp;
-	
-	
-		
-	
-	
-	
-	
-	
+
 	if(GetCtrlVal(panelHandle, IDVGS_CFG_VG_START, &temp)<0)
 		return -1;
 	IdVgCfg.cfgVgstart=temp;
@@ -73,18 +68,43 @@ int GetIdVgCfg (int panelHandle)
 
 
 //----------------------------------------------------------------
+
+
+static  void SetDrainDisp(int panel, char focus){
+	if(focus==FOCUS){
+		          DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
+	}else{
+				  DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
+	}
+	
+}
+
+static  void SetGateDisp(int panel, char focus){
+	if(focus==FOCUS){
+		          DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
+	}else{
+				  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
+	}
+	
+}
 int CVICALLBACK VGDrainCallback (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-	//  Gate
+	//  DRAIN
 
 		   switch(event){
 		   case EVENT_LEFT_CLICK_UP:
-			      //点击Gate时，其他为灰色状态
+			   SetGateDisp(panel,UNFOCUS);
+			   SetDrainDisp(panel,FOCUS);
+			      /*//点击DRAIN时，其他为灰色状态
 			      DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
 				  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor*/
 			
 			   break;
 	}
@@ -97,14 +117,11 @@ int CVICALLBACK VGDrainCallback (int panel, int control, int event,
 int CVICALLBACK VGstartCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
-if(event==EVENT_LEFT_CLICK_UP){
-
-	              DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-				  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
+	if(event==EVENT_LEFT_CLICK_UP){  
 	   
+		 SetDrainDisp(panel, FOCUS);
+		 SetGateDisp(panel, UNFOCUS);
+	
    }
 	return 0;
 }
@@ -112,15 +129,11 @@ if(event==EVENT_LEFT_CLICK_UP){
 int CVICALLBACK VGstopCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-if(event==EVENT_LEFT_CLICK_UP){
-
-
-	    DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-		SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-	    DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-		SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
+	if(event==EVENT_LEFT_CLICK_UP){  
 	   
+		 SetDrainDisp(panel, FOCUS);
+		 SetGateDisp(panel, UNFOCUS);
+	
    }
 	return 0;
 }
@@ -128,15 +141,11 @@ if(event==EVENT_LEFT_CLICK_UP){
 int CVICALLBACK VGstepCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-if(event==EVENT_LEFT_CLICK_UP){
-
-//=======
-	DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-	SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-	DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-	SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
+       if(event==EVENT_LEFT_CLICK_UP){  
 	   
+		 SetDrainDisp(panel, FOCUS);
+		 SetGateDisp(panel, UNFOCUS);
+	
    }
 	return 0;
 }
@@ -147,9 +156,9 @@ int CVICALLBACK VgModeCallback (int panel, int control, int event,
 	if(event==EVENT_LEFT_CLICK_UP){  
 
 	  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
 	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
 
    }
 	return 0;
@@ -160,13 +169,16 @@ int CVICALLBACK VgSartCallback (int panel, int control, int event,
 {
 
 	if(event==EVENT_LEFT_CLICK_UP){  
-
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
+	   
+		 SetDrainDisp(panel, UNFOCUS);
+		 SetGateDisp(panel, FOCUS);
+	
    }
+	 /*  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
+	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor*/
+
 	return 0;
 }
 
@@ -174,14 +186,11 @@ int CVICALLBACK VgStCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	
-	if(event==EVENT_LEFT_CLICK_UP){  
-
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
-	   							 
+		if(event==EVENT_LEFT_CLICK_UP){  
+	   
+		 SetDrainDisp(panel, UNFOCUS);
+		 SetGateDisp(panel, FOCUS);
+	
    }
 	return 0;
 }
@@ -191,13 +200,10 @@ int CVICALLBACK VgStepCallback (int panel, int control, int event,
 {
 	
 	if(event==EVENT_LEFT_CLICK_UP){  
-
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
-	   							 
+	   
+		 SetDrainDisp(panel, UNFOCUS);
+		 SetGateDisp(panel, FOCUS);
+	
    }
 	return 0;
 }
@@ -207,42 +213,38 @@ int CVICALLBACK VGmodeCallback (int panel, int control, int event,
 {
 
 	switch(event){
-		case  EVENT_LEFT_CLICK_UP:
-	   			  DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-				  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
+	case EVENT_LEFT_CLICK_UP:
+			SetDrainDisp(panel, FOCUS);
+		  	SetGateDisp(panel, UNFOCUS);
 			break;
-	}
+
 	
-	         int RingValue;
-	         GetCtrlVal(panel,IDVGS_CFG_VGDRING,&RingValue);
-			 if(event == EVENT_VAL_CHANGED ){
-			 
-				  if(RingValue==1){
-		        		DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
-			
-				  } else if(RingValue==2){
-				    DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Bias.ico");
-					
-				  } 
-			 }
+	         
+	case EVENT_VAL_CHANGED:
+		    int RingValue;
+	        GetCtrlVal(panel,IDVGS_CFG_VGDRING,&RingValue);
+			if(RingValue==1){
+		        DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
+			}else if(RingValue==2){
+				DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Bias.ico");
+			} 
+			break;
+}
  
 //>>>>>>> 8d2b85158ba46c70afb115b45e9d7b754e79c8f5
 	return 0;
 }
 
-int CVICALLBACK VdgateCallback (int panel, int control, int event,
+int CVICALLBACK VGateDecoCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
-	if(event==EVENT_LEFT_CLICK_UP){  
+	switch(event){
+		case EVENT_LEFT_CLICK_UP:  
+			SetGateDisp(panel,FOCUS);  
+	        SetDrainDisp(panel,UNFOCUS);
+			break;
+	}
 
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, val_pres_blue);// change text bgcolor
-	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, val_gray);// change text bgcolor
-
-   }
 	
 	return 0;
 }

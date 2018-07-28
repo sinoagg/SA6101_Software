@@ -73,8 +73,8 @@ int LoadInitPanel (void)
 	
 	if ((samplePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;
-	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
-		//return -1;
+	if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
+		return -1;
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;													 

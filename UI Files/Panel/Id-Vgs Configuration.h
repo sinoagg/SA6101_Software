@@ -46,7 +46,7 @@
 #define  IDVGS_CFG_TEXTMSG_22             31      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_DRAIN              32      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_DECORATION_GATE        33      /* control type: deco, callback function: VGDrainCallback */
-#define  IDVGS_CFG_DECORATION_DRAIN       34      /* control type: deco, callback function: VdgateCallback */
+#define  IDVGS_CFG_DECORATION_DRAIN       34      /* control type: deco, callback function: VGateDecoCallback */
 
 
      /* Control Arrays: */
@@ -61,7 +61,7 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK VdgateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK VGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VGDrainCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VgModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK VgSartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
