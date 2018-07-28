@@ -66,7 +66,7 @@ Window Top = 32
 Window Left = 10
 Window Height = 417
 Window Width = 1163
-Window Z-Order = 1
+Window Z-Order = 2
 
 [File 0003]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
@@ -242,7 +242,7 @@ Disk Date = 3615589144
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Window Z-Order = 2
+Window Z-Order = 3
 Source Window State = "1,63,63,63,17,31,31,0,3,78,0,56,0,0,0,17,56,0,63,17,533,1137,1,0,"
 
 [File 0021]
@@ -261,8 +261,8 @@ Disk Date = 3615588976
 In Projects = "1,"
 Window Top = 272
 Window Left = 138
-Window Z-Order = 3
-Source Window State = "1,235,235,235,16,33,33,0,0,78,0,75,7,0,0,17,228,0,237,24,533,1137,1,15,"
+Window Z-Order = 1
+Source Window State = "1,235,235,235,16,33,33,0,0,117,0,75,7,0,0,21,30,0,237,24,533,1137,1,15,"
 
 [File 0023]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.uir"
