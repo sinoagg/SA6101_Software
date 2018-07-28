@@ -21,7 +21,11 @@
 #define UNFOCUS 1
 //==============================================================================
 // Constants
+<<<<<<< HEAD
 ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP};
+=======
+ExpPanelTypeDef IdVdExpPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP};
+>>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
 //==============================================================================
 // Types
 
@@ -92,16 +96,30 @@ int CVICALLBACK GateModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {	   
 	 switch(event){
+<<<<<<< HEAD
+=======
+			 
+>>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
 		case EVENT_LEFT_CLICK_UP:
 			SetDrainDisp(panel, UNFOCUS);
 		  	SetGateDisp(panel, FOCUS);
 			break;
+<<<<<<< HEAD
 		case EVENT_VAL_CHANGED:
 			int val;
 			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
 			if(val==1)
 		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
 			else if(val==2)
+=======
+			
+		case EVENT_VAL_CHANGED:
+			int val;
+			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
+			if(val == 1)
+		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
+			else if(val == 2)
+>>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
 				DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Bias.ico");
 			break;
 		 }  

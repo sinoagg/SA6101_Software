@@ -38,7 +38,7 @@ Prototype="int VgStepCallback(int panel, int control, int event, void *callbackD
 Class="Function"
 Prototype="int VGmodeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[VdgateCallback]
+[VGateDecoCallback]
 Class="Function"
-Prototype="int VdgateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int VGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 

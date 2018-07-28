@@ -41,6 +41,10 @@ enum MsgType
 
 //==============================================================================
 // Global variables
+<<<<<<< HEAD
+=======
+extern SampleCfg_TypeDef SampleCfg;
+>>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
 TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
@@ -52,6 +56,7 @@ void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStartID, &(pTestPara->VgStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStopID, &(pTestPara->VgStop));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStepID, &(pTestPara->VgStep));
+<<<<<<< HEAD
 	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
 	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
 	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));
@@ -60,6 +65,9 @@ void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
 	
 	
+=======
+	//GetCtrlVal(panelHandle, GET_ID(PANEL_ID, VG_STEP), &(pTestPara->quietTime));
+>>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
 }
 
 void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
@@ -80,6 +88,7 @@ void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigne
 	*(pUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
 	*(pUartTxBuf+15)=(unsigned char)(pTestPara->VgStep&0xFF);
 }
+<<<<<<< HEAD
 
 void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
 {
@@ -95,6 +104,23 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	}
 }
 
+=======
+
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
+{
+	unsigned char i, xorcheck=0;
+	
+	
+	switch((enum ExpType)expType)
+	{
+		case SWEEP_DRAIN_VOL:
+			GetTestPara(&IdVdExpPanel, &TestPara);
+			PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf); 
+			break;
+	}
+}
+
+>>>>>>> 98dbd53049900e12cf527b826630036f3f7e263c
 /*void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)	//Make config info to UART Tx Buffer
 {
 	unsigned char i, xorcheck=0;
