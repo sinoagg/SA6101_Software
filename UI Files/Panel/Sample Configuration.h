@@ -12,10 +12,6 @@
 #endif
 
      /* Panels and Controls: */
-
-<<<<<<< HEAD
-#define  SAMPLE_CFG                       1
-=======
 #define  SAMPLE_BSC                       1
 #define  SAMPLE_BSC_PIC_SET               2       /* control type: picture, callback function: (none) */
 #define  SAMPLE_BSC_BSCSET                3       /* control type: textMsg, callback function: BasicSetCallback */
@@ -25,7 +21,6 @@
 #define  SAMPLE_BSC_TEXTMSG_7             7       /* control type: textMsg, callback function: (none) */
 
 #define  SAMPLE_CFG                       2
->>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
 #define  SAMPLE_CFG_SAMPLENUMBER          2       /* control type: string, callback function: (none) */
 #define  SAMPLE_CFG_SAMPLERATE            3       /* control type: string, callback function: (none) */
 #define  SAMPLE_CFG_RANGESETTING          4       /* control type: ring, callback function: (none) */

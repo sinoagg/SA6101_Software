@@ -59,7 +59,6 @@ static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLENUMBER, &(pTestPara->sampleNumber));
 	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
 
-<<<<<<< HEAD
 }
 
 static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth)
@@ -68,8 +67,6 @@ static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth
 	for(i=0;i<lenth;i++)
 		xorCheck^=*(pUartBuf+i);	
 	return xorCheck;	
-=======
->>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
 }
 
 static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pUartTxBuf)
@@ -103,7 +100,6 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	{
 		case SWEEP_DRAIN_VOL:
 			GetTestPara(&IdVdPanel, &TestPara);
-<<<<<<< HEAD
 			break;
 		case SWEEP_GATE_VOL:
 			//GetTestPara(&IdVgPanel, &TestPara);
@@ -118,13 +114,6 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char e
 	PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf);      
 	ComWrt(comSelect, (const char*)pUartTxBuf, SA61_UART_TX_LEN);
 }
-=======
-			PrepareCfgTxData(&TestPara, devAddr, expType, pUartTxBuf); 
-			break;
-	}
-}
-
->>>>>>> a0ab2d7488dc2715558bcf7b33d9ee1aa747214e
 
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pUartTxBuf)
 {

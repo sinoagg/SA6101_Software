@@ -1,8 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 [AdvancSetCallback]
 Class="Function"
 Prototype="int AdvancSetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+=======
+[AdvancSetCallback]
+Class="Function"
+Prototype="int AdvancSetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[BasicSetCallback]
+Class="Function"
+Prototype="int BasicSetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+>>>>>>> 04328f5797ade0bd4442e9a23d7f5cc992f44e38
 
 [BasicSetCallback]
 Class="Function"
