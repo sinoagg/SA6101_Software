@@ -161,7 +161,7 @@ In Projects = "1,"
 Window Top = 212
 Window Left = 106
 Window Z-Order = 1
-Source Window State = "1,103,103,103,78,86,86,0,0,117,0,0,0,0,0,21,74,0,103,85,446,1163,1,0,"
+Source Window State = "1,103,103,103,78,86,86,0,0,117,0,0,0,0,0,21,83,0,89,53,446,1163,1,0,"
 
 [File 0013]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.c"
