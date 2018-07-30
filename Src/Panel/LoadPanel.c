@@ -69,7 +69,6 @@ int LoadInitPanel (void)
 		return -1;
 	
 	
-	 
 	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0) //load SampleBasicPanel panel 
 	   	return -1;	  
 	
@@ -93,7 +92,6 @@ int LoadInitPanel (void)
 		return -1;
 	
 	
-
 	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
 		return -1;	
 	if ((envtPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load Environment Settings panel
@@ -121,7 +119,6 @@ int LoadInitPanel (void)
 	 if ((defPanel = LoadPanel (proPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
 	
-	 
 	 
 	DisplayPanel (mainPanel); 
 	

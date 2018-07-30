@@ -1,9 +1,6 @@
 #include <userint.h>
 #include "Table.h"
 #include "LoadPanel.h"
-/*
-Table_TypeDef Table_ATTR*/;
-
 char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K"};
 
 char Table_title_IV[11][20] ={"Current(A)","Voltage(V)","Current(A)","Voltage(V)"};
@@ -17,7 +14,6 @@ char Table_title_IT[11][20] ={"Current(A)","Time(S)","Current(A)","Time(S)"};
    void Table_init(char table_title_IV[][20], int column, column_width)
 {			
 		   
-		
 			InsertTableColumns(tablePanel,TABLE_DISTABLE,1,column,VAL_CELL_STRING);              //向表中插入多少列 
 			InsertTableRows (tablePanel,TABLE_DISTABLE ,-1 , 1, VAL_CELL_STRING);				      		  //插入1行 
 			for(int i=1;i<column+1;i++)
@@ -101,9 +97,7 @@ int CVICALLBACK ColorCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			int val;
 			GetCtrlVal(tablePanel,TABLE_ADDBGCOLOR,&val); //获得checkbox的值
-
-			
-					 
+			 		 
 			 int rowIndex;
              int numRows;
 			 GetNumTableRows (tablePanel, TABLE_DISTABLE, &numRows);

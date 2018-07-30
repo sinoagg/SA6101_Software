@@ -108,8 +108,8 @@ int CVICALLBACK CancelCallback (int panel, int control, int event,
 	return 0;
 }
 
-//本地工作目录
-char projectSavePath[512];
+
+char projectSavePath[512]; //本地工作目录
 
 int CVICALLBACK ProCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)

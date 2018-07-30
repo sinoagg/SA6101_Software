@@ -39,22 +39,22 @@ ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_V
 static  void SetDrainDisp(int panel, char focus)
 {
 	if(focus==FOCUS){
-		          DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
-	}else{
-				  DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
+       DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
+     }else{
+	   DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
 	}
 }
 
 static  void SetGateDisp(int panel, char focus)
 {
 	if(focus==FOCUS){
-		          DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
+	   DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
 	}else{
-				  DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
-				  SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
+	   DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
+	   SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
 	}
 }
 
@@ -106,8 +106,7 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 		    GetCtrlVal(panel,IDVGS_CFG_VGDRING,&val);
 			if(val==1){
 		        DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
-			}
-			else if(val==2){
+			}else if(val==2){
 				DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Bias.ico");
 			} 
 			break;

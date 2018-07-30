@@ -303,20 +303,12 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 			SetPanelPos(envtPanel, 5, 170);
 			SetPanelSize(envtPanel, 350, 650);
 			DisplayPanel(envtPanel);
-			
-		
-			
 			break;
 
 	}
 	return 0;
 }
 
-
-
-
-
-//>>>>>>> refs/remotes/origin/master
 static int SaveConfigToFile(char* pConfigSavePath)
 {
 	FILE * fp = NULL;							//表示打开的文件
@@ -326,9 +318,7 @@ static int SaveConfigToFile(char* pConfigSavePath)
 		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
 		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePath)<0)
 			return -1;
-	}
-	else
-	{
+	  }else{
 		int maxCommentSize=255;
 		char comment[maxCommentSize];
 		//GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置
