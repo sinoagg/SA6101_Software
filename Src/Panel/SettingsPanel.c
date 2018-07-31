@@ -13,12 +13,12 @@ int CVICALLBACK EnvBtnCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			
-			SetPanelPos(ENVTPanel, 3 , 170);
-			SetPanelSize(ENVTPanel, 350, 650);
-			DisplayPanel(ENVTPanel); 
+			SetPanelPos(envtPanel, 3 , 170);
+			SetPanelSize(envtPanel, 350, 650);
+			DisplayPanel(envtPanel); 
 			
-			HidePanel (GRAPHPanel);
-			HidePanel (ABOUTPanel); 
+			HidePanel (graphPanel);
+			HidePanel (aboutPanel); 
 			
 			SetCtrlAttribute (panel, SETTINGS_ENVBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //environment背景色
 	     	SetCtrlAttribute (panel, SETTINGS_ENVBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //environment文本颜色
@@ -42,12 +42,12 @@ int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			
-			SetPanelPos(GRAPHPanel, 5, 170);
-			SetPanelSize(GRAPHPanel, 350, 650);
-			DisplayPanel(GRAPHPanel);
+			SetPanelPos(graphPanel, 5, 170);
+			SetPanelSize(graphPanel, 350, 650);
+			DisplayPanel(graphPanel);
 			
-			HidePanel (ENVTPanel); 
-			HidePanel (ABOUTPanel);
+			HidePanel (envtPanel); 
+			HidePanel (aboutPanel);
 			
 			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //graph背景色
 	     	SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //graph文本颜色
@@ -72,12 +72,12 @@ switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
 			 
-			SetPanelPos(ABOUTPanel, 5, 170);
-			SetPanelSize(ABOUTPanel, 350, 650);
-			DisplayPanel(ABOUTPanel);
+			SetPanelPos(aboutPanel, 5, 170);
+			SetPanelSize(aboutPanel, 350, 650);
+			DisplayPanel(aboutPanel);
 			
-		    HidePanel (ENVTPanel); 
-			HidePanel (GRAPHPanel);
+		    HidePanel (envtPanel); 
+			HidePanel (graphPanel);
 		
 			
 			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //about背景色

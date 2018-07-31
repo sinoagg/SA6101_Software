@@ -283,9 +283,9 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 	         InstallPopup (setPanel);    //µ¯³ösetPanel 
 	
-			SetPanelPos(ENVTPanel, 5, 170);
-			SetPanelSize(ENVTPanel, 350, 650);
-			DisplayPanel(ENVTPanel);
+			SetPanelPos(envtPanel, 5, 170);
+			SetPanelSize(envtPanel, 350, 650);
+			DisplayPanel(envtPanel);
 			
 		
 			

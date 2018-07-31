@@ -36,9 +36,9 @@ int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
-int ENVTPanel; 
-int hGraphPanel;
-int ABOUTPanel;
+int envtPanel; 
+int graphPanel;
+int aboutPanel;
 int iTPanel;
 int rTPanel;
 int chPanel;
@@ -89,21 +89,21 @@ int LoadInitPanel (void)
 	 //用于弹出savedata面板
 	if ((saveDataPanel = LoadPanel (mainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//load savedata panel
 		return -1;
-
+/*
 		//用于弹出settings面板
-	//if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
-	//	return -1;	
+	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
+		return -1;	
 	 //用于弹出Environment Settings面板
 
-	//if ((ENVTPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
-	//	return -1;
+	if ((envtPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
+		return -1;
 	//用于弹出Graph Defaults面板
-	//if ((GRAPHPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
-	//	return -1;  
+	if ((graphPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
+		return -1;  
 	//用于弹出About面板
-	//if ((ABOUTPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
-	//	return -1;
- 
+	if ((aboutPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
+		return -1;
+ */
 	//选择
 	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel
 		return -1;

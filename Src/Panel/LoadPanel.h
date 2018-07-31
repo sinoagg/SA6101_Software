@@ -53,9 +53,9 @@ extern int resultPanel;	     //result menu panel
 extern int tablePanel;
 extern int hResultDispPanel;
 extern int saveDataPanel; 
-extern int ENVTPanel;  
-extern int GRAPHPanel;
-extern int ABOUTPanel;
+extern int envtPanel;  
+extern int graphPanel;
+extern int aboutPanel;
 extern int iTPanel;          //I-T panel
 extern int rTPanel;          //R-T panel
 extern int setPanel;
