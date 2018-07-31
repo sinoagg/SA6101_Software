@@ -23,11 +23,10 @@
 #include "Protocol.h"
 #include "Timer.h"
 #include "SampleCfgPanel.h"
+#include "main.h"
 
 //==============================================================================
 // Constants
-#define DEFAULT_ADDR 0x01 
-
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
@@ -46,8 +45,6 @@ int ABOUTPanel;
 //==============================================================================
 // Global variables
 int TimerID;
-extern unsigned char UartTxBuf[32];
-extern unsigned char UartRxBuf[64];
 char configSavePath[512]={0};
 //==============================================================================
 // Global functions
@@ -87,7 +84,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
 		    SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
 	        SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
-			if(!comSelect1)
+			if(!measureComPort)
 			{
 				MessagePopup ("Warning", "Instrument Unconnected");   //Lost serial Connection
 			}
@@ -99,11 +96,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				int numOfDots=500;
 				if(GetCtrlVal(expListPanel, EXP_LIST_TREE, &expType)<0)
 					return -1;
-				ProtocolCfg(comSelect1, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART 
+				ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (unsigned char)expType, measUartTxBuf);		//send config to instrument via UART 
 				switch(expType)
 				{
 					case 0:
-						//GetIdVdCfg (IdVdPanel);
+						
 						//if((IdVgCfg.cfgVgstart==IdVdCfg.cfgVgstop)||IdVgCfg.cfgVgstep==0)	//如果起始电压和终止电压相同
 						//numOfCurve=abs(IdVdCfg.cfgVgstart-IdVdCfg.cfgVgstop)/IdVdCfg.cfgVgstep;
 						//numOfDots=abs(IdVdCfg.cfgVdstart-IdVdCfg.cfgVdstop)/IdVdCfg.cfgVdstep;
@@ -124,7 +121,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				}
 				graphInit(graphIndex, numOfCurve, numOfDots, pGraph1); 	//graph set up 
 				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
-				ProtocolRun(comSelect1, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
+				ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
 			}
 			break;
 	}
@@ -140,11 +137,12 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			//TODO
+			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+			break;
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
-		  	 SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-		     SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			 SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+		  	SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+		    SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+			SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 			break;
 	}
 	return 0;
@@ -189,17 +187,12 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 	 		SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	        DisplayPanel(IdVdPanel.panelHandle);
-			HidePanel(samplePanelHandle);	 
-			HidePanel(sampleAnlzPanel);
-			HidePanel(analyEnvtPanel);
-			HidePanel(environmentPanel);
 			
-			//清除显示双图表value
-			int val; 
-			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
-			}
+			HidePanel(samplePanelHandle);
+			HidePanel(sampleBasicPanel);
+			HidePanel(AnalyenvirPanel);
+			HidePanel(environmentPanel);
+			HidePanel(hResultDispPanel);  
 			break;
 	
 	}
@@ -214,7 +207,7 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
- 		case EVENT_LEFT_CLICK_UP://当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
+ 		case EVENT_LEFT_CLICK_UP:			    //当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
 			
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
@@ -224,8 +217,8 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			
 			
 		case EVENT_LEFT_CLICK:
-		
-				SetPanelPos(IdVdPanel.panelHandle, 105, 305);	//点击Configure图标回到Id_vds界面   
+			//点击Configure图标回到Id_vds界面
+				SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 				SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
 				
@@ -236,12 +229,6 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 				SetPanelPos(environmentPanel, 556, 1600);
 				SetPanelSize(environmentPanel, 449, 300);
 				DisplayPanel(environmentPanel);
-				
-			
-			int val;  	//清除显示双图表value 
-			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
-			if(val)
-				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
 			break;
 	}
 	return 0;
@@ -261,31 +248,26 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 		     	SetPanelSize(resultPanel, 65, 1293);      
 	 			DisplayPanel(resultPanel);  
 				
-				SetPanelPos(graphDispPanel, 172, 305);  
-		     	SetPanelSize(graphDispPanel, 833, 1293);
-				SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-				SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
-	 			DisplayPanel(graphDispPanel);
+				SetPanelPos(hGraphPanel, 172, 305);  
+		     	SetPanelSize(hGraphPanel, 833, 1293);
+				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+	 			DisplayPanel(hGraphPanel);
 			   
-				SetPanelPos(sampleAnlzPanel, 105, 1600);
-				SetPanelSize(sampleAnlzPanel, 449, 300);
-				DisplayPanel(sampleAnlzPanel);
+				SetPanelPos(hResultDispPanel, 105, 1600);
+				SetPanelSize(hResultDispPanel, 449, 300);
+				DisplayPanel(hResultDispPanel);
 				
-				SetPanelPos(analyEnvtPanel, 556, 1600);
-				SetPanelSize(analyEnvtPanel, 449, 300);
-				DisplayPanel(analyEnvtPanel);
+				SetPanelPos(AnalyenvirPanel, 556, 1600);
+				SetPanelSize(AnalyenvirPanel, 449, 300);
+				DisplayPanel(AnalyenvirPanel);
 			break;
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
 			
 			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
-			
 		
-			int val; 	//清除显示双图表value 
-			GetCtrlVal(chPanel, CHPANEL_CHECKBOX, &val); 
-			if(val)
-				SetCtrlVal(chPanel, CHPANEL_CHECKBOX,0);  
 			break;
 			
 	}
@@ -299,16 +281,38 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-	        InstallPopup (setPanel);    //弹出setPanel 
-			SetPanelPos(envtPanel, 5, 170);
-			SetPanelSize(envtPanel, 350, 650);
-			DisplayPanel(envtPanel);
+	         InstallPopup (setPanel);    //弹出setPanel 
+	
+			SetPanelPos(ENVTPanel, 5, 170);
+			SetPanelSize(ENVTPanel, 350, 650);
+			DisplayPanel(ENVTPanel);
+			
+		
+			
 			break;
 
 	}
 	return 0;
 }
 
+
+
+
+//int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
+//								  void *callbackData, int eventData1, int eventData2)
+//{
+//	
+//}
+
+//int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
+//								  void *callbackData, int eventData1, int eventData2)
+//{
+//	
+//}
+//=======
+
+//=======
+//>>>>>>> refs/remotes/origin/master
 static int SaveConfigToFile(char* pConfigSavePath)
 {
 	FILE * fp = NULL;							//表示打开的文件
@@ -318,7 +322,9 @@ static int SaveConfigToFile(char* pConfigSavePath)
 		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
 		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePath)<0)
 			return -1;
-	  }else{
+	}
+	else
+	{
 		int maxCommentSize=255;
 		char comment[maxCommentSize];
 		//GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置

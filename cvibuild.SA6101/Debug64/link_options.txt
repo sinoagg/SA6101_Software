@@ -27,9 +27,8 @@
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\ProjectPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\Protocol.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\ResultMenuPanel.obj
--in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\SampleAnalyze.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\SampleCfgPanel.obj
--in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\SetPanel.obj
+-in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\SettingsPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\Table.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\Timer.obj
 -more:d:\software\nilwcvi\nilwcvi2017\bin\msvc64\cvistart.lib

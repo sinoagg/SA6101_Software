@@ -31,23 +31,23 @@
 // Global variables
 int mainPanel;
 int expListPanel;
-int graphDispPanel;
+int hGraphPanel;
 int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
-int envtPanel; 
-int setGraphPanel;
-int aboutPanel;
+int ENVTPanel; 
+int hGraphPanel;
+int ABOUTPanel;
 int iTPanel;
 int rTPanel;
 int chPanel;
-int analyEnvtPanel;
+int AnalyenvirPanel;
 int setPanel;
 int proPanel;
 int defPanel;
-int sampleAnlzPanel;
-int sampleAdvancePanel;
+int hResultDispPanel;
+int sampleBasicPanel;
 //==============================================================================
 // Global functions
 
@@ -68,40 +68,48 @@ int LoadInitPanel (void)
 	if ((IdVgPanel.panelHandle = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	
-	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0) //load SampleBasicPanel panel 
-	   	return -1;	  
-	
-	if ((sampleAdvancePanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)	//AdvanceSettings Panel 	
+	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
+
+		return -1;	  
+		
+	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
 		return -1;
-	if ((sampleAnlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
+	if ((hResultDispPanel = LoadPanel (mainPanel, "ResultDispPanel.uir", RESULTDISP)) < 0)		//load right panel
 		return -1;
-	
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;													 
-	if ((analyEnvtPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
+	if ((AnalyenvirPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
 		return -1;													 
 	
 
 	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
 		return -1;
+	
+	 //用于弹出savedata面板
 	if ((saveDataPanel = LoadPanel (mainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//load savedata panel
 		return -1;
-	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel	选择 
-		return -1;
-	
-	
-	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
-		return -1;	
-	if ((envtPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load Environment Settings panel
-		return -1;
-	if ((setGraphPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load Graph Defaults panel
-		return -1;  
-	if ((aboutPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load About panel
-		return -1;
+
+		//用于弹出settings面板
+	//if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
+	//	return -1;	
+	 //用于弹出Environment Settings面板
+
+	//if ((ENVTPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
+	//	return -1;
+	//用于弹出Graph Defaults面板
+	//if ((GRAPHPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
+	//	return -1;  
+	//用于弹出About面板
+	//if ((ABOUTPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
+	//	return -1;
  
-	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+	//选择
+	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel
+		return -1;
+	
+	
+	if ((hGraphPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
 	
 	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
@@ -113,13 +121,12 @@ int LoadInitPanel (void)
 	if ((rTPanel = LoadPanel (mainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
 	
-		
+	//弹出projects		
 	 if ((proPanel = LoadPanel (mainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
 	 if ((defPanel = LoadPanel (proPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
 	
-	 
 	DisplayPanel (mainPanel); 
 	
 	SetPanelPos(expListPanel, 105, 3);  //加载面板位置 （,top,left）

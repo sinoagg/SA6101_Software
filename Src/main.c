@@ -8,66 +8,75 @@
 #include "main.h"
 #include "LoadPanel.h"
 #include "MainPanelCb.h"
-
-#define MEASURE_UART_RX_LEN 20
+#include "Plot.h"
+#include "Protocol.h"
 
 extern int TimerID;
-unsigned char comSelect1;				//Serial Com Number
-unsigned char comSelect2;
+unsigned char measureComPort;				//Serial Com Number
+unsigned char controlComPort;
 
-unsigned char UartTxBuf[32]={0};
-unsigned char UartRxBuf[500]={0};
+unsigned char measUartTxBuf[32]={0};
+unsigned char measUartRxBuf[500]={0};
 
 unsigned char SA11_Status=0;
 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
-	int status;
 	int rxNum;
 	int i=0;
 	RxDataTypeDef RxData;
-	if(portNumber==comSelect1)
-	{
-		rxNum = GetInQLen(portNumber);  									//读取串口中发送来的数据数量
-		if(rxNum>500) rxNum=500;											//防止超过内存范围
-		status = ComRd(portNumber, (char *)UartRxBuf, rxNum);				//Read UART Buffer to local buffer at one time  
-		while(rxNum>=MEASURE_UART_RX_LEN)
-		{
-			ProtocolGetData(UartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);					//get data from uart buffer
-			pGraph1->pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
-			*(pGraph1->pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
-			*(pGraph1->pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data
-			if(RxData.rxStopSign==0x02)											//if complete the test, stop the timer
-				DiscardAsyncTimer(TimerID);
-			rxNum-=MEASURE_UART_RX_LEN;
-			i++;
-		}
-	}
-}
-
-int main (int argc, char *argv[])
-{
-	if (InitCVIRTE (0, argv, 0) == 0)
-		return -1;	/* out of memory */
-	//comSelect1=argc;		//pass comSelect1 variable 
-	comSelect1=1;
-	comSelect2=5;
-	if(CheckPortStatus(comSelect1, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
-	//if(CheckPortStatus(comSelect2)<0) SA11_Status=0;
-	//else SA11_Status=1;
+	rxNum = GetInQLen(portNumber);  									//读取串口中发送来的数据数量
+	if(rxNum>500) rxNum=500;											//防止超过内存范围
+	ComRd(portNumber, (char *)measUartRxBuf, rxNum);					//Read UART Buffer to local buffer at one time  
 	
-	LoadInitPanel(); 
-	RunUserInterface();
-	CloseCom(comSelect1);
-	if(SA11_Status==1) CloseCom(comSelect2);
-	DiscardPanel (mainPanel);
-	return 0;
+	while(rxNum>=MEASURE_UART_RX_LEN)
+	{
+		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
+		pGraph1->pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
+		
+		if(TestPara.testMode==SWEEP_DRAIN_VOL)
+			*(pGraph1->pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+		else if(TestPara.testMode==SWEEP_GATE_VOL)
+			*(pGraph1->pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
+		else if(TestPara.testMode==NO_SWEEP_IT)
+			*(pGraph1->pCurveArray->pDotX++)=pGraph1->pCurveArray->time;			//get x, set pointer to the next data
+		else if(TestPara.testMode==NO_SWEEP_RT)
+			*(pGraph1->pCurveArray->pDotX++)=pGraph1->pCurveArray->time;			//get x, set pointer to the next data
+		
+		pGraph1->pCurveArray->time+=TestPara.timeStep;
+		*(pGraph1->pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
+		if(RxData.rxStopSign==0x02)													//if complete the test, stop the timer
+			DiscardAsyncTimer(TimerID);
+		rxNum-=MEASURE_UART_RX_LEN;
+		i++;
+	}
+	
+	PlotCurve(pGraph1, hGraphPanel, GRAPHDISP_GRAPH1);
 }
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
 	
 
+}
+
+int main (int argc, char *argv[])
+{
+	if (InitCVIRTE (0, argv, 0) == 0)
+		return -1;	/* out of memory */
+	//measureComPort=argc;		//pass measureComPort variable 
+	measureComPort=1;
+	controlComPort=5;
+	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
+	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
+	//else SA11_Status=1;
+	
+	LoadInitPanel(); 
+	RunUserInterface();
+	CloseCom(measureComPort);
+	if(SA11_Status==1) CloseCom(controlComPort);
+	DiscardPanel (mainPanel);
+	return 0;
 }
 
 static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, void (*pFunc)(int, int, void*))
@@ -88,3 +97,4 @@ static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, vo
 		return 0;
 	}
 }
+

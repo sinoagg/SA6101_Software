@@ -37,9 +37,9 @@ int CVICALLBACK AdvancSetCallback (int panel, int control, int event,
 	switch(event){
 	
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelPos(sampleAdvancePanel, 105, 1600);
-			SetPanelSize(sampleAdvancePanel, 449, 300);
-			DisplayPanel(sampleAdvancePanel);
+			SetPanelPos(sampleBasicPanel, 105, 1600);
+			SetPanelSize(sampleBasicPanel, 449, 300);
+			DisplayPanel(sampleBasicPanel);
 			break;
 	}
 	return 0;

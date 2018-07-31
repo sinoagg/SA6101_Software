@@ -1,11 +1,9 @@
 #include <userint.h>
 #include "ProjectPanel.h"
 #include "LoadPanel.h"
-
-#define CHANGECOLOR 0x94CEFF
+#define CHANGECOLOR 0x94CEFF//«≥¿∂
 #define BGCOLOR 0xFFFFFF
-#define COLOR  0x065279
-
+#define COLOR  0x065279		//…Ó¿∂
 int CVICALLBACK OpenCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
@@ -47,7 +45,7 @@ int CVICALLBACK DefaultCallback (int panel, int event, void *callbackData,
 			SetCtrlAttribute (panel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (panel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (proPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
-		    SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, COLOR);
+			SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, COLOR);
 			break;
 	}
 	return 0;
@@ -56,16 +54,16 @@ int CVICALLBACK DefaultCallback (int panel, int event, void *callbackData,
 int CVICALLBACK ImgCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
-   int boxValue;
-   GetCtrlVal(panel,PROPANEL_IMGBOX,&boxValue);
-   if(event == EVENT_VAL_CHANGED){
+	   int val;
+	   GetCtrlVal(panel,PROPANEL_IMGBOX,&val);
+	   if(event == EVENT_VAL_CHANGED){
 	   
-   			  if(boxValue){
+   			  if(val){
 				   SetCtrlAttribute(defPanel, DEFPANEL_PICS, ATTR_VISIBLE,1);
 				  
 			  }else{
 			  	 SetCtrlAttribute(defPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
-				}
+			  }
    
    }
 	return 0;
@@ -74,17 +72,15 @@ int CVICALLBACK ImgCallback (int panel, int control, int event,
 int CVICALLBACK DescCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
-int boxValue;
-   GetCtrlVal(panel,PROPANEL_DESCBOX,&boxValue);
-   if(event == EVENT_VAL_CHANGED){
+		 int val;
+  		 GetCtrlVal(panel,PROPANEL_DESCBOX,&val);
+  		 if(event == EVENT_VAL_CHANGED){
 	   
-   			  if(boxValue){
-				  
-			SetCtrlAttribute(defPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
+   			  if(val){
+				  SetCtrlAttribute(defPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
 				   
 			  }else{
-			  	 
-				 SetCtrlAttribute (defPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
+			  	  SetCtrlAttribute (defPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
 			  }
    
    }
@@ -96,10 +92,9 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK_UP:						 
-			SetPanelAttribute (defPanel, ATTR_BACKCOLOR,BGCOLOR );
+		case EVENT_LEFT_CLICK_UP:
+			SetPanelAttribute (defPanel, ATTR_BACKCOLOR, BGCOLOR);
 			SetCtrlAttribute (defPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
-	
 			SetCtrlAttribute (defPanel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (defPanel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (proPanel,PROPANEL_OPEN , ATTR_DIMMED, 1);

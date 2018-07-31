@@ -32,9 +32,9 @@
 #define  ENVIRPANEL_STR_TEMP              7       /* control type: string, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG_2             8       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG               9       /* control type: textMsg, callback function: (none) */
-#define  ENVIRPANEL_PRESSURE              10      /* control type: radioButton, callback function: (none) */
-#define  ENVIRPANEL_HUMIDITY              11      /* control type: radioButton, callback function: (none) */
-#define  ENVIRPANEL_TEMPTER               12      /* control type: radioButton, callback function: (none) */
+#define  ENVIRPANEL_CHECKBOX_3            10      /* control type: radioButton, callback function: (none) */
+#define  ENVIRPANEL_CHECKBOX_2            11      /* control type: radioButton, callback function: (none) */
+#define  ENVIRPANEL_CHECKBOX              12      /* control type: radioButton, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG_3             13      /* control type: textMsg, callback function: (none) */
 
 

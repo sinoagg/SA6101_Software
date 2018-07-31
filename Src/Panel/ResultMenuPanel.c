@@ -112,8 +112,7 @@ int CVICALLBACK ExitCallback (int panel, int control, int event,
 {
 		if (event == EVENT_COMMIT)
 				{
-	    		//移除、关闭savedata面板
-				RemovePopup(saveDataPanel);
+				RemovePopup(saveDataPanel);  	//移除、关闭savedata面板    
 		        }
 			return 0;
 }
@@ -169,7 +168,7 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(graphDispPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
 			break;
 	}
 	return 0;
@@ -182,7 +181,7 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(graphDispPanel, GRAPHDISP_GRAPH2, pGraph2->plotHandle, graph2SavePath); 
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, pGraph2->plotHandle, graph2SavePath); 
 			break;
 	}
 	return 0;
@@ -197,8 +196,8 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(graphDispPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
-			SaveGraph(graphDispPanel, GRAPHDISP_GRAPH2, pGraph2->plotHandle, graph2SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, pGraph2->plotHandle, graph2SavePath);
 			break;
 	}
 	return 0;
@@ -209,15 +208,14 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 int CVICALLBACK ChoseCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
-	int val;
+	int CheckValue;
 	if( event == EVENT_VAL_CHANGED)
 	{   HidePanel(chPanel);
-		GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
-		if(val) //如果CheckBox是选中状态则显示两个graph    
-		{	 
-		   	SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400);
-			SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-		
+		GetCtrlVal(panel, CHPANEL_CHECKBOX, &CheckValue);
+		if(CheckValue)
+		{	
+			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 			HidePanel(chPanel);
 		    HidePanel(tablePanel);
 		
@@ -225,8 +223,8 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 		else
 		{
 			
-			SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-			SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
+			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
 		}
 	}
 	return 0;
@@ -249,15 +247,31 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 }
 
 //======================saveSheet==========================
-//保存为Excel表格
-
-
+static int SaveConfigToFiles(char* pConfigSavePaths)
+{
+	FILE * fp = NULL;							//表示打开的文件
+	fp = fopen(pConfigSavePaths, "w");
+	if(fp == NULL)
+	{
+		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
+		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePaths)<0)
+			return -1;
+	}
+	else
+	{
+		int maxCommentSize=255;
+		char comment[maxCommentSize];
+ 
+		fclose(fp);//关闭文件
+	}
+	return 0;
+	
+}
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {
 	
-	
- 
+
    return 0;
 }
 

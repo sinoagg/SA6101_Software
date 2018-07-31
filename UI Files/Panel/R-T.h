@@ -14,9 +14,9 @@
      /* Panels and Controls: */
 
 #define  RTPANEL                          1
-#define  RTPANEL_RT_STEP                  2       /* control type: numeric, callback function: (none) */
-#define  RTPANEL_RT_STOP                  3       /* control type: numeric, callback function: (none) */
-#define  RTPANEL_RT_START                 4       /* control type: numeric, callback function: (none) */
+#define  RTPANEL_VG_STEP                  2       /* control type: numeric, callback function: (none) */
+#define  RTPANEL_VG_STOP                  3       /* control type: numeric, callback function: (none) */
+#define  RTPANEL_VG_START                 4       /* control type: numeric, callback function: (none) */
 #define  RTPANEL_RINGMODE                 5       /* control type: ring, callback function: (none) */
 #define  RTPANEL_TXT_STEP                 6       /* control type: textMsg, callback function: (none) */
 #define  RTPANEL_TEXTMSG_18               7       /* control type: textMsg, callback function: (none) */
