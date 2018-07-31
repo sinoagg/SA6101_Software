@@ -31,14 +31,20 @@
 // Global variables
 int mainPanel;
 int expListPanel;
-int graphDispPanel;
+int hGraphPanel;
 int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
+<<<<<<< HEAD
 int envtPanel; 
 int setGraphPanel;
 int aboutPanel;
+=======
+int ENVTPanel; 
+int hGraphPanel;
+int ABOUTPanel;
+>>>>>>> e6865722ad9c1d63251d2f69189acf0bc2af1905
 int iTPanel;
 int rTPanel;
 int chPanel;
@@ -46,8 +52,13 @@ int analyEnvtPanel;
 int setPanel;
 int proPanel;
 int defPanel;
+<<<<<<< HEAD
 int sampleAnlzPanel;
 int sampleAdvancePanel;
+=======
+int hResultDispPanel;
+int sampleBasicPanel;
+>>>>>>> e6865722ad9c1d63251d2f69189acf0bc2af1905
 //==============================================================================
 // Global functions
 
@@ -68,6 +79,7 @@ int LoadInitPanel (void)
 	if ((IdVgPanel.panelHandle = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
+<<<<<<< HEAD
 	
 	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0) //load SampleBasicPanel panel 
 	   	return -1;	  
@@ -77,6 +89,16 @@ int LoadInitPanel (void)
 	if ((sampleAnlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
 		return -1;
 	
+=======
+	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
+
+		return -1;	  
+		//Basic Settings
+	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
+		return -1;
+	if ((hResultDispPanel = LoadPanel (mainPanel, "Sample Analyze.uir", RESULTDISP)) < 0)		//load right panel
+		return -1;
+>>>>>>> e6865722ad9c1d63251d2f69189acf0bc2af1905
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;													 
@@ -92,6 +114,7 @@ int LoadInitPanel (void)
 		return -1;
 	
 	
+<<<<<<< HEAD
 	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
 		return -1;	
 	if ((envtPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load Environment Settings panel
@@ -102,6 +125,9 @@ int LoadInitPanel (void)
 		return -1;
  
 	if ((graphDispPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+=======
+	if ((hGraphPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+>>>>>>> e6865722ad9c1d63251d2f69189acf0bc2af1905
 		return -1;
 	
 	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel

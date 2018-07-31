@@ -46,6 +46,7 @@ int curveInit(int curveIndex, int numOfTotalDots, Curve_TypeDef* pCurve)
 	pCurve->pDotY=pCurve->pDotYHead;
 	pCurve->numOfPlotDots=0;		
 	pCurve->numOfDotsToPlot=0;
+	pCurve->time=0;
 	pCurve->pDotXPlot=pCurve->pDotX;				//画图的指针指向数据的指针
 	pCurve->pDotYPlot=pCurve->pDotY;				//画图的指针指向数据的指针 	
 	

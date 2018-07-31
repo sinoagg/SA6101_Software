@@ -23,11 +23,10 @@
 #include "Protocol.h"
 #include "Timer.h"
 #include "SampleCfgPanel.h"
+#include "main.h"
 
 //==============================================================================
 // Constants
-#define DEFAULT_ADDR 0x01 
-
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
@@ -46,8 +45,6 @@ int ABOUTPanel;
 //==============================================================================
 // Global variables
 int TimerID;
-extern unsigned char UartTxBuf[32];
-extern unsigned char UartRxBuf[64];
 char configSavePath[512]={0};
 //==============================================================================
 // Global functions
@@ -87,7 +84,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
 		    SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
 	        SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
-			if(!comSelect1)
+			if(!measureComPort)
 			{
 				MessagePopup ("Warning", "Instrument Unconnected");   //Lost serial Connection
 			}
@@ -99,11 +96,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				int numOfDots=500;
 				if(GetCtrlVal(expListPanel, EXP_LIST_TREE, &expType)<0)
 					return -1;
-				ProtocolCfg(comSelect1, DEFAULT_ADDR, (unsigned char)expType, UartTxBuf);		//send config to instrument via UART 
+				ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (unsigned char)expType, measUartTxBuf);		//send config to instrument via UART 
 				switch(expType)
 				{
 					case 0:
-						//GetIdVdCfg (IdVdPanel);
+						
 						//if((IdVgCfg.cfgVgstart==IdVdCfg.cfgVgstop)||IdVgCfg.cfgVgstep==0)	//如果起始电压和终止电压相同
 						//numOfCurve=abs(IdVdCfg.cfgVgstart-IdVdCfg.cfgVgstop)/IdVdCfg.cfgVgstep;
 						//numOfDots=abs(IdVdCfg.cfgVdstart-IdVdCfg.cfgVdstop)/IdVdCfg.cfgVdstep;
@@ -124,7 +121,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				}
 				graphInit(graphIndex, numOfCurve, numOfDots, pGraph1); 	//graph set up 
 				TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)  
-				ProtocolRun(comSelect1, DEFAULT_ADDR, UartTxBuf);		//send RUN command to instrument via UART
+				ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
 			}
 			break;
 	}
@@ -140,11 +137,12 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			//TODO
+			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+			break;
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
-		  	 SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-		     SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			 SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+		  	SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+		    SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+			SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 			break;
 	}
 	return 0;
@@ -190,8 +188,13 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	        DisplayPanel(IdVdPanel.panelHandle);
 			HidePanel(samplePanelHandle);	 
+<<<<<<< HEAD
 			HidePanel(sampleAnlzPanel);
 			HidePanel(analyEnvtPanel);
+=======
+			HidePanel(hResultDispPanel);
+			HidePanel(AnalyenvirPanel);
+>>>>>>> e6865722ad9c1d63251d2f69189acf0bc2af1905
 			HidePanel(environmentPanel);
 			
 			//清除显示双图表value
@@ -261,15 +264,21 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 		     	SetPanelSize(resultPanel, 65, 1293);      
 	 			DisplayPanel(resultPanel);  
 				
-				SetPanelPos(graphDispPanel, 172, 305);  
-		     	SetPanelSize(graphDispPanel, 833, 1293);
-				SetCtrlAttribute (graphDispPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-				SetCtrlAttribute (graphDispPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
-	 			DisplayPanel(graphDispPanel);
+				SetPanelPos(hGraphPanel, 172, 305);  
+		     	SetPanelSize(hGraphPanel, 833, 1293);
+				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+	 			DisplayPanel(hGraphPanel);
 			   
+<<<<<<< HEAD
 				SetPanelPos(sampleAnlzPanel, 105, 1600);
 				SetPanelSize(sampleAnlzPanel, 449, 300);
 				DisplayPanel(sampleAnlzPanel);
+=======
+				SetPanelPos(hResultDispPanel, 105, 1600);
+				SetPanelSize(hResultDispPanel, 449, 300);
+				DisplayPanel(hResultDispPanel);
+>>>>>>> e6865722ad9c1d63251d2f69189acf0bc2af1905
 				
 				SetPanelPos(analyEnvtPanel, 556, 1600);
 				SetPanelSize(analyEnvtPanel, 449, 300);
