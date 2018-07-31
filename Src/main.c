@@ -51,7 +51,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		i++;
 	}
 	
-	PlotCurve(pGraph1, graphPanelHandle, GRAPHDISP_GRAPH1);
+	PlotCurve(pGraph1, hGraphPanel, GRAPHDISP_GRAPH1);
 }
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)

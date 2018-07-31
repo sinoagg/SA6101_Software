@@ -13,9 +13,8 @@ Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : 
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\ProjectPanel.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\Protocol.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\ResultMenuPanel.obj" ;
-Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SampleAnalyze.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SampleCfgPanel.obj" ;
-Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SetPanel.obj" ;
+Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SettingsPanel.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\Table.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\Timer.obj" ;
 Depends "e:\\SINOAGG\\Software\\SA6101\\cvibuild.SA6101\\Debug64\\SA6101.exe" : "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\advapi32.lib" ;

@@ -100,7 +100,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				switch(expType)
 				{
 					case 0:
-						//GetIdVdCfg (IdVdPanel);
+						
 						//if((IdVgCfg.cfgVgstart==IdVdCfg.cfgVgstop)||IdVgCfg.cfgVgstep==0)	//如果起始电压和终止电压相同
 						//numOfCurve=abs(IdVdCfg.cfgVgstart-IdVdCfg.cfgVgstop)/IdVdCfg.cfgVgstep;
 						//numOfDots=abs(IdVdCfg.cfgVdstart-IdVdCfg.cfgVdstop)/IdVdCfg.cfgVdstep;
@@ -188,7 +188,7 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	        DisplayPanel(IdVdPanel.panelHandle);
 			HidePanel(samplePanelHandle);	 
-			HidePanel(smpanlzPanel);
+			HidePanel(hResultDispPanel);
 			HidePanel(AnalyenvirPanel);
 			HidePanel(environmentPanel);
 			break;
@@ -246,15 +246,15 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 		     	SetPanelSize(resultPanel, 65, 1293);      
 	 			DisplayPanel(resultPanel);  
 				
-				SetPanelPos(graphPanelHandle, 172, 305);  
-		     	SetPanelSize(graphPanelHandle, 833, 1293);
-				SetCtrlAttribute (graphPanelHandle,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-				SetCtrlAttribute (graphPanelHandle, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
-	 			DisplayPanel(graphPanelHandle);
+				SetPanelPos(hGraphPanel, 172, 305);  
+		     	SetPanelSize(hGraphPanel, 833, 1293);
+				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+	 			DisplayPanel(hGraphPanel);
 			   
-				SetPanelPos(smpanlzPanel, 105, 1600);
-				SetPanelSize(smpanlzPanel, 449, 300);
-				DisplayPanel(smpanlzPanel);
+				SetPanelPos(hResultDispPanel, 105, 1600);
+				SetPanelSize(hResultDispPanel, 449, 300);
+				DisplayPanel(hResultDispPanel);
 				
 				SetPanelPos(AnalyenvirPanel, 556, 1600);
 				SetPanelSize(AnalyenvirPanel, 449, 300);

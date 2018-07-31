@@ -33,7 +33,7 @@
 
 //==============================================================================
 // Global variables
-ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP};  
+ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVGS_CFG_GATEMODE, IDVGS_CFG_DRAINMODE};  
 //==============================================================================
 // Global functions
 static  void SetDrainDisp(int panel, char focus)
@@ -103,7 +103,7 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 			break;
 		case EVENT_VAL_CHANGED:
 		    int val;
-		    GetCtrlVal(panel,IDVGS_CFG_VGDRING,&val);
+		    GetCtrlVal(panel,IDVGS_CFG_GATEMODE,&val);
 			if(val==1){
 		        DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
 			}

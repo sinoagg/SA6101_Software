@@ -21,7 +21,6 @@
 #include "cvidef.h"
 #include "ExpListPanel.h"
 #include "SampleCfgPanel.h"
-#include "SampleAnalyze.h"
 #include "IdVdsPanel.h"
 #include "IdVgsPanel.h"
 #include "Protocol.h"

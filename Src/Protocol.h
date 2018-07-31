@@ -57,6 +57,8 @@ typedef struct
 	enum TestCmd testCmd;
 	enum TestMode testMode;
 	unsigned char outputConnection;
+	int gateOutputMode;
+	int drainOutputMode;
 	int VdStart;									//voltage drain start
 	int VdStop;									//voltage drain stop
 	int VdStep;									//voltage drain step

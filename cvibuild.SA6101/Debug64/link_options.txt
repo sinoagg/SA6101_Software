@@ -27,9 +27,8 @@
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\ProjectPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Protocol.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\ResultMenuPanel.obj
--in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SampleAnalyze.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SampleCfgPanel.obj
--in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SetPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SettingsPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Table.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Timer.obj
 -more:c:\program files (x86)\national instruments\cvi2017\bin\msvc64\cvistart.lib

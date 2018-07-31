@@ -31,13 +31,13 @@
 // Global variables
 int mainPanel;
 int expListPanel;
-int graphPanelHandle;
+int hGraphPanel;
 int environmentPanel;
 int resultPanel;
 int tablePanel;
 int saveDataPanel;
 int ENVTPanel; 
-int graphPanelHandle;
+int hGraphPanel;
 int ABOUTPanel;
 int iTPanel;
 int rTPanel;
@@ -47,7 +47,7 @@ int AnalyenvirPanel;
 int setPanel;
 int proPanel;
 int defPanel;
-int smpanlzPanel;
+int hResultDispPanel;
 int sampleBasicPanel;
 //==============================================================================
 // Global functions
@@ -74,10 +74,9 @@ int LoadInitPanel (void)
 		return -1;	  
 		//Basic Settings
 	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
-
 		return -1;
-	//if ((smpanlzPanel = LoadPanel (mainPanel, "Sample Analyze.uir", SMALZPANEL)) < 0)		//load right panel
-		//return -1;
+	if ((hResultDispPanel = LoadPanel (mainPanel, "Sample Analyze.uir", RESULTDISP)) < 0)		//load right panel
+		return -1;
 	
 	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;													 
@@ -112,7 +111,7 @@ int LoadInitPanel (void)
 		return -1;
 	
 	
-	if ((graphPanelHandle = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+	if ((hGraphPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
 	
 	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel

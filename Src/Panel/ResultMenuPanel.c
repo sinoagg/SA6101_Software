@@ -169,7 +169,7 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(graphPanelHandle, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
 			break;
 	}
 	return 0;
@@ -197,8 +197,8 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(graphPanelHandle, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
-			SaveGraph(graphPanelHandle, GRAPHDISP_GRAPH2, pGraph2->plotHandle, graph2SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, pGraph1->plotHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, pGraph2->plotHandle, graph2SavePath);
 			break;
 	}
 	return 0;
@@ -216,8 +216,8 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 		if(CheckValue)
 		{	 //如果CheckBox是选中状态则显示两个graph
 		
-			SetCtrlAttribute (graphPanelHandle,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400);
-			SetCtrlAttribute (graphPanelHandle, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
+			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400);
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 		
 			HidePanel(chPanel);
 		    HidePanel(tablePanel);
@@ -226,8 +226,8 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 		else
 		{
 			
-			SetCtrlAttribute (graphPanelHandle,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-			SetCtrlAttribute (graphPanelHandle, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
+			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
 		}
 	}
 	return 0;

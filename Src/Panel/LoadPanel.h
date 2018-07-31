@@ -24,15 +24,16 @@
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "Sample Configuration.h"
-#include "SampleAnalyze.h"
+
 #include "GraphDisp.h"
 #include "Environment.h"
 #include "Result Menu.h"
 #include "Table.h"
 #include "I-T.h"
 #include "R-T.h"
-#include "SetPanel.h"
+#include "SettingsPanel.h"
 #include "ProjectPanel.h"
+#include "ResultDispPanel.h"
 		
 
 //==============================================================================
@@ -46,12 +47,11 @@
 extern int mainPanel;
 extern int expListPanel;
 extern int samplePanel;
-//extern int smPanel;
-extern int smpanlzPanel;
-extern int graphPanelHandle;
+extern int hGraphPanel;
 extern int environmentPanel;
 extern int resultPanel;	     //result menu panel
 extern int tablePanel;
+extern int hResultDispPanel;
 extern int saveDataPanel; 
 extern int ENVTPanel;  
 extern int GRAPHPanel;
