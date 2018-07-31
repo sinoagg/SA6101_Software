@@ -25,7 +25,7 @@
 #define  IDVGS_CFG_TEXTMSG_14             10      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TEXTMSG_15             11      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TEXTMSG_17             12      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_GATEMODE               13      /* control type: ring, callback function: IdVgGateModeCallback */
+#define  IDVGS_CFG_VGRING                 13      /* control type: ring, callback function: IdVgGateModeCallback */
 #define  IDVGS_CFG_TEXTMSG_23             14      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TEXTMSG_19             15      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TEXTMSG_24             16      /* control type: textMsg, callback function: (none) */
@@ -35,7 +35,7 @@
 #define  IDVGS_CFG_VD_STEP                20      /* control type: numeric, callback function: IdVgDrainStepCallback */
 #define  IDVGS_CFG_VD_STOP                21      /* control type: numeric, callback function: IdVgDrainStopCallback */
 #define  IDVGS_CFG_VD_START               22      /* control type: numeric, callback function: IdVgDrainStartCallback */
-#define  IDVGS_CFG_DRAINMODE              23      /* control type: ring, callback function: IdVgDrainModeCallback */
+#define  IDVGS_CFG_VGDRING                23      /* control type: ring, callback function: IdVgDrainModeCallback */
 #define  IDVGS_CFG_TEXTMSG_18             24      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_MODE               25      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_START              26      /* control type: textMsg, callback function: (none) */

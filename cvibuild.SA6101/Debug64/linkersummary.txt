@@ -13,8 +13,9 @@ Plot.obj
 ProjectPanel.obj
 Protocol.obj
 ResultMenuPanel.obj
+SampleAnalyze.obj
 SampleCfgPanel.obj
-SettingsPanel.obj
+SetPanel.obj
 Table.obj
 Timer.obj
 cvi.lib

@@ -33,7 +33,7 @@
 
 //==============================================================================
 // Global variables
-ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_GATEMODE, IDVDS_CFG_DRAINMODE}; 
+ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP}; 
 //==============================================================================
 // Global functions
 static void SetDrainDisp(int panel, char focus)
@@ -98,13 +98,13 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 		  	SetGateDisp(panel, FOCUS);
 			break;
 		case EVENT_VAL_CHANGED:
-		    int val;
-		    GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
-			if(val == 1){
-		        DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
-			}else if(val == 2){
+			
+			int val;
+			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
+			if(val==1)
+		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
+			else if(val==2)
 				DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Bias.ico");
-			} 
 			break;
 		 }  
 	return 0;

@@ -22,12 +22,7 @@
 
 //==============================================================================
 // Constants
-enum OutputModeType
-{
-	VOL_BIAS=0,
-	VOL_SWEEP=1,
-	VOL_STEP=2
-};
+
 //==============================================================================
 // Types
 typedef struct
@@ -39,8 +34,6 @@ typedef struct
 	int VgStartID;									//voltage gate start
 	int VgStopID;									//voltage gate stop
 	int VgStepID;									//voltage gate step
-	int drainModeID;
-	int gateModeID;
 }ExpPanelTypeDef;
 //==============================================================================
 // External variables

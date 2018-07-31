@@ -1,24 +1,24 @@
 [ProtocolCfg]
 Class="Function"
-Prototype="void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char *pUartTxBuf);"
 
 [ProtocolRun]
 Class="Function"
-Prototype="void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char *pUartTxBuf);"
 
 [ProtocolStop]
 Class="Function"
-Prototype="void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char *pUartTxBuf);"
 
 [ProtocolQuery]
 Class="Function"
-Prototype="void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char *pUartTxBuf);"
 
 [ProtocolCalibrate]
 Class="Function"
-Prototype="void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char *pUartTxBuf);"
 
 [ProtocolGetData]
 Class="Function"
-Prototype="void ProtocolGetData(unsigned char *pmeasUartRxBuf, RxDataTypeDef *pRxData);"
+Prototype="void ProtocolGetData(unsigned char *pUartRxBuf, RxDataTypeDef *pRxData);"
 

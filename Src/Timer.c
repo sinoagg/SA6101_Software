@@ -50,17 +50,12 @@
 
 //==============================================================================
 // Global functions
-int CVICALLBACK TimerCallback (int panel, int control, int event,								//定时去查询
-								void *callbackData, int eventData1, int eventData2)
+
+/// HIFN  What does your function do?
+/// HIPAR x/What inputs does your function expect?
+/// HIRET What does your function return?
+int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2)
 {
-	switch (event)
-	{
-		case EVENT_TIMER_TICK:
-			ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
-			//SA10_ProtocolQuery(contrlComPort, CONTROL_MEASURE_DEV_ADDR, ctrlUartTxBuf);
-			break;
-	}
+	PlotCurve(pGraph1, graphDispPanel, GRAPHDISP_GRAPH1); 
 	return 0;
 }
-
-
