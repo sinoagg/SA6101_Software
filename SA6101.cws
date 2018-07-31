@@ -19,7 +19,7 @@ Window Top = 30
 Window Left = 309
 Window Bottom = 1032
 Window Right = 1407
-Maximized = True
+Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -54,7 +54,7 @@ Disk Date = 3615847837
 In Projects = "1,"
 Window Top = 31
 Window Z-Order = 1
-Source Window State = "1,101,101,101,49,52,52,0,0,117,0,90,0,0,0,21,87,0,104,38,400,600,1,0,"
+Source Window State = "1,101,101,101,49,52,52,0,0,117,0,90,0,0,0,21,87,0,101,12,400,600,1,0,"
 
 [File 0002]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/Environment.c"
