@@ -40,10 +40,6 @@
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
-
 
 int CVICALLBACK TreeCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)

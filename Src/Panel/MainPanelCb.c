@@ -90,10 +90,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			int numOfCurve=0;
 			int numOfDots=500;
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
-				return -1;
-			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)expType, measUartTxBuf);		//send config to instrument via UART 
- 
-			switch((enum TestMode)expType)
+				return -1; 
+			
+			TestPara.testMode=(enum TestMode)expType;
+			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
+ 			
+			switch(TestPara.testMode)
 			{
 				case SWEEP_DRAIN_VOL:
 					if(TestPara.gateOutputMode==VOL_BIAS)
@@ -105,6 +107,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
 					}
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
+					GraphInit(graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
+					Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
+					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
+					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
+					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//…Ë÷√ X ÷·µƒ∑∂Œß
 					break;
 				case SWEEP_GATE_VOL:
 					//GetIdVgCfg (IdVgPanel);
@@ -120,7 +127,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				default:
 					break;
 			}
-			graphInit(graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up
+			
 			Delay(1);
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
 			TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)

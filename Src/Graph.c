@@ -36,15 +36,13 @@ GraphTypeDef Graph2;
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
-int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
+
+int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
 {
 	int i;
 	pGraph->graphIndex=graphIndex;
 	pGraph->numOfCurve=numOfCurve;
-	Curve_TypeDef* pCurveArray = (Curve_TypeDef *)malloc(numOfCurve * sizeof(Curve_TypeDef)); 	//Curve Array Saving pointers to curve structure
+	CurveTypeDef* pCurveArray = (CurveTypeDef *)malloc(numOfCurve * sizeof(CurveTypeDef)); 	//Curve Array Saving pointers to curve structure
 	if(pCurveArray==NULL) return -1;
 	pGraph->pCurveArray=pCurveArray;
 	
@@ -52,10 +50,15 @@ int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGrap
 	{
 		if(curveInit(i, numOfDots, pCurveArray+i)==-1) return -1;
 	}
+	
+	GraphAttrTypeDef* pGraphAttr = (GraphAttrTypeDef *)malloc(sizeof(CurveTypeDef));
+	if(pGraphAttr==NULL) return -1;
+	pGraph->pGraphAttr=pGraphAttr;
+	
 	return 0;
 }
 
-int graphDeinit(GraphTypeDef* pGraph)
+int GraphDeinit(GraphTypeDef* pGraph)
 {
 	int i=0;
 	for(i=0;i<(pGraph->numOfCurve);i++)

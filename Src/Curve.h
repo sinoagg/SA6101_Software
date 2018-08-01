@@ -36,7 +36,7 @@ typedef struct
 	float* pDotY;									//当前接收点Y坐标地址
 	float* pDotXPlot;								//当前画线点X坐标
 	float* pDotYPlot;								//当前画线点Y坐标
-}Curve_TypeDef;
+}CurveTypeDef;
 
 typedef struct
 {
@@ -49,8 +49,8 @@ typedef struct
 //==============================================================================
 // Global functions
 
-int curveInit(int curveIndex, int numOfDots, Curve_TypeDef* pCurve);
-int curveDeinit(Curve_TypeDef* pCurve);
+int curveInit(int curveIndex, int numOfDots, CurveTypeDef* pCurve);
+int curveDeinit(CurveTypeDef* pCurve);
 
 #ifdef __cplusplus
     }

@@ -28,16 +28,20 @@
 // Types
 typedef struct
 {
+	int xAxisHead;
+	int xAxisTail;
+	int yAxisHead;
+	int yAxisTail;
+}GraphAttrTypeDef;		
+		
+typedef struct
+{
 	int plotHandle;									//graph handle 
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
-	int xAxisMax;
-	int yAxisMax;
-	int xAxisName;
-	int yAxisName;
-	Curve_TypeDef* pCurveArray;						//pointer to curve array
+	GraphAttrTypeDef* pGraphAttr;
+	CurveTypeDef* pCurveArray;						//pointer to curve array
 }GraphTypeDef;
-
 //==============================================================================
 // External variables
 extern GraphTypeDef Graph1;
@@ -45,8 +49,8 @@ extern GraphTypeDef Graph2;
 
 //==============================================================================
 // Global functions
-int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
-int graphDeinit(GraphTypeDef* pGraph);
+int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
+int GraphDeinit(GraphTypeDef* pGraph);
 
 #ifdef __cplusplus
     }

@@ -161,18 +161,18 @@ void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData)	//Ge
 	pRxData->rxStopSign=*(pmeasUartRxBuf+1);
 	pRxData->rxVdtest=(((int)*(pmeasUartRxBuf+2))<<8)|*(pmeasUartRxBuf+3);
 	pRxData->rxVgtest=(((int)*(pmeasUartRxBuf+4))<<8)|*(pmeasUartRxBuf+5);
-	pRxData->rxIdmeasured.num_uchar[0]=*(pmeasUartRxBuf+6);
-	pRxData->rxIdmeasured.num_uchar[1]=*(pmeasUartRxBuf+7); 
-	pRxData->rxIdmeasured.num_uchar[2]=*(pmeasUartRxBuf+8); 
-	pRxData->rxIdmeasured.num_uchar[3]=*(pmeasUartRxBuf+9);
-	pRxData->rxVdmeasured.num_uchar[0]=*(pmeasUartRxBuf+10); 
-	pRxData->rxVdmeasured.num_uchar[1]=*(pmeasUartRxBuf+11);
-	pRxData->rxVdmeasured.num_uchar[2]=*(pmeasUartRxBuf+12);
-	pRxData->rxVdmeasured.num_uchar[3]=*(pmeasUartRxBuf+13);
-	pRxData->rxVgmeasured.num_uchar[0]=*(pmeasUartRxBuf+14); 
-	pRxData->rxVgmeasured.num_uchar[1]=*(pmeasUartRxBuf+15);
-	pRxData->rxVgmeasured.num_uchar[2]=*(pmeasUartRxBuf+16);
-	pRxData->rxVgmeasured.num_uchar[3]=*(pmeasUartRxBuf+17);
+	pRxData->rxIdmeasured.num_uchar[3]=*(pmeasUartRxBuf+6);
+	pRxData->rxIdmeasured.num_uchar[2]=*(pmeasUartRxBuf+7); 
+	pRxData->rxIdmeasured.num_uchar[1]=*(pmeasUartRxBuf+8); 
+	pRxData->rxIdmeasured.num_uchar[0]=*(pmeasUartRxBuf+9);
+	pRxData->rxVdmeasured.num_uchar[3]=*(pmeasUartRxBuf+10); 
+	pRxData->rxVdmeasured.num_uchar[2]=*(pmeasUartRxBuf+11);
+	pRxData->rxVdmeasured.num_uchar[1]=*(pmeasUartRxBuf+12);
+	pRxData->rxVdmeasured.num_uchar[0]=*(pmeasUartRxBuf+13);
+	pRxData->rxVgmeasured.num_uchar[3]=*(pmeasUartRxBuf+14); 
+	pRxData->rxVgmeasured.num_uchar[2]=*(pmeasUartRxBuf+15);
+	pRxData->rxVgmeasured.num_uchar[1]=*(pmeasUartRxBuf+16);
+	pRxData->rxVgmeasured.num_uchar[0]=*(pmeasUartRxBuf+17);
 	pRxData->rangeSelect=*(pmeasUartRxBuf+18);
 }
 
