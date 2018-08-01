@@ -45,8 +45,8 @@
 #define  IDVDS_CFG_PIC_GATE               30      /* control type: picture, callback function: (none) */
 #define  IDVDS_CFG_MV_STEP                31      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_TXT_GATE               32      /* control type: textMsg, callback function: (none) */
-#define  IDVDS_CFG_DECORATION_GATE        33      /* control type: deco, callback function: IdVdGateDecoCallback */
-#define  IDVDS_CFG_DECORATION_DRAIN       34      /* control type: deco, callback function: IdVdDrainDecoCallback */
+#define  IDVDS_CFG_DECORATION_DRAIN       33      /* control type: deco, callback function: IdVdDrainDecoCallback */
+#define  IDVDS_CFG_DECORATION_GATE        34      /* control type: deco, callback function: IdVdGateDecoCallback */
 
 
      /* Control Arrays: */

@@ -51,6 +51,13 @@ enum TestMode
 	NO_SWEEP_RT=4
 };
 
+enum OutputModeType
+{
+	VOL_BIAS=0,
+	VOL_SWEEP=1,
+	VOL_STEP=2
+};
+
 typedef struct
 {
 	unsigned char devAddr;
@@ -67,7 +74,7 @@ typedef struct
 	int VgStep;									//voltage gate step
 	unsigned int quietTime;
 	unsigned int timeStep;
-	unsigned int runTime;								//effective only under R-t and I-t mode
+	unsigned long int runTime;								//effective only under R-t and I-t mode
 	unsigned int sampleRate;
 	unsigned int sampleNumber;
 	unsigned char rangeMode;
@@ -92,7 +99,7 @@ typedef struct
 extern TestParaTypeDef TestPara; 
 //==============================================================================
 // Global functions
-void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pmeasUartTxBuf); 
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode expType, unsigned char* pmeasUartTxBuf);
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf); 
 void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
 void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);

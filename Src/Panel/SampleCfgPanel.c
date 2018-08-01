@@ -28,7 +28,7 @@
 
 //==============================================================================
 // Global variables
-int samplePanelHandle;
+
 //==============================================================================
 // Global functions
 int CVICALLBACK AdvancSetCallback (int panel, int control, int event,
@@ -37,9 +37,9 @@ int CVICALLBACK AdvancSetCallback (int panel, int control, int event,
 	switch(event){
 	
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelPos(sampleBasicPanel, 105, 1600);
-			SetPanelSize(sampleBasicPanel, 449, 300);
-			DisplayPanel(sampleBasicPanel);
+			SetPanelPos(hAdvanceSamplePanel, 105, 1600);
+			SetPanelSize(hAdvanceSamplePanel, 449, 300);
+			DisplayPanel(hAdvanceSamplePanel);
 			break;
 	}
 	return 0;
@@ -50,9 +50,9 @@ int CVICALLBACK BasicSetCallback (int panel, int control, int event,
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			    SetPanelPos(samplePanelHandle, 105, 1600);
-				SetPanelSize(samplePanelHandle, 449, 300);
-				DisplayPanel(samplePanelHandle);
+			    SetPanelPos(hBasicSamplePanel, 105, 1600);
+				SetPanelSize(hBasicSamplePanel, 449, 300);
+				DisplayPanel(hBasicSamplePanel);
 			break;
 	}
 	return 0;

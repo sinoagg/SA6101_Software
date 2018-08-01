@@ -34,7 +34,7 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-int curveInit(int curveIndex, int numOfTotalDots, Curve_TypeDef* pCurve)
+int curveInit(int curveIndex, int numOfTotalDots, CurveTypeDef* pCurve)
 {
 	pCurve->pDotXHead = (float *)malloc(numOfTotalDots * sizeof(float));
 	if(pCurve->pDotXHead == NULL) return -1;
@@ -53,10 +53,10 @@ int curveInit(int curveIndex, int numOfTotalDots, Curve_TypeDef* pCurve)
 	return 0;
 }
 
-int curveDeinit(Curve_TypeDef* pCurve)
+int curveDeinit(CurveTypeDef* pCurve)
 {
-	free(pCurve->pDotX);
-	free(pCurve->pDotY);
+	free(pCurve->pDotXHead);
+	free(pCurve->pDotYHead);
 	
 	return 0;
 }

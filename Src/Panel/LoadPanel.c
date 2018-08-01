@@ -14,7 +14,6 @@
 #include "LoadPanel.h"
 #include "IdVdsPanel.h"
 #include "IdVgsPanel.h"
-#include "SampleCfgPanel.h"
 //==============================================================================
 // Constants
 
@@ -29,121 +28,117 @@
 
 //==============================================================================
 // Global variables
-int mainPanel;
-int expListPanel;
+int hMainPanel;
+int hExpListPanel;
 int hGraphPanel;
-int environmentPanel;
-int resultPanel;
-int tablePanel;
-int saveDataPanel;
-int envtPanel; 
-int graphPanel;
-int aboutPanel;
-int iTPanel;
-int rTPanel;
-int chPanel;
-int AnalyenvirPanel;
-int setPanel;
-int proPanel;
-int defPanel;
+int hBasicSamplePanel;
+int hAdvanceSamplePanel;
+int hEnvCfgPanel;
+int hResultMenuPanel;
+int hTablePanel;
+int hSaveDataPanel;
+int hSettingsPrjPanel; 
+int hGraphSelectPanel;
+int hSettingsAboutPanel;
+int hIT_Panel;
+int hRT_Panel;
+int hSettingsGraphPanel;
+int hEnvResultPanel;
+int hSettingsPanel;
+int hPrjPanel;
+int hPrjListPanel;
 int hResultDispPanel;
-int sampleBasicPanel;
+
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
 int LoadInitPanel (void)
 {
-	if ((mainPanel = LoadPanel (0, "MainPanel.uir", MAIN_PANEL)) < 0)	  //load main panel
+	if ((hMainPanel = LoadPanel (0, "MainPanel.uir", MAIN_PANEL)) < 0)	  //load main panel
 		return -1;
 	
-	if ((expListPanel = LoadPanel (mainPanel, "Experiment List.uir", EXP_LIST)) < 0)		//load left panel
+	if ((hExpListPanel = LoadPanel (hMainPanel, "Experiment List.uir", EXP_LIST)) < 0)		//load left panel
 		return -1;
 	
-	if ((IdVdPanel.panelHandle = LoadPanel (mainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
+	if ((IdVdPanel.panelHandle = LoadPanel (hMainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	if ((IdVgPanel.panelHandle = LoadPanel (mainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
+	if ((IdVgPanel.panelHandle = LoadPanel (hMainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	if ((samplePanelHandle = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
-
+	if ((hBasicSamplePanel = LoadPanel (hMainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;	  
-		
-	if ((sampleBasicPanel = LoadPanel (mainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
-		return -1;
-	if ((hResultDispPanel = LoadPanel (mainPanel, "ResultDispPanel.uir", RESULTDISP)) < 0)		//load right panel
-		return -1;
-	
-	if ((environmentPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
-		return -1;													 
-	if ((AnalyenvirPanel = LoadPanel (mainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
-		return -1;													 
-	
 
-	if ((resultPanel = LoadPanel (mainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load resultPanel panel
+	if ((hAdvanceSamplePanel = LoadPanel (hMainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
 		return -1;
 	
-	 //用于弹出savedata面板
-	if ((saveDataPanel = LoadPanel (mainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//load savedata panel
+	if ((hResultDispPanel = LoadPanel (hMainPanel, "ResultDispPanel.uir", RESULTDISP)) < 0)		//load right panel
 		return -1;
-/*
-		//用于弹出settings面板
-	if ((setPanel = LoadPanel (mainPanel, "Settings.uir", SETTINGS)) < 0)		//load settings panel
+	
+	if ((hEnvCfgPanel = LoadPanel (hMainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;	
-	 //用于弹出Environment Settings面板
+	
+	if ((hEnvResultPanel = LoadPanel (hMainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
+		return -1;													 
 
-	if ((envtPanel = LoadPanel (setPanel, "Settings.uir", ENVT)) < 0)		//load ENV panel
+	if ((hResultMenuPanel = LoadPanel (hMainPanel, "Result Menu.uir", RESULTMENU)) < 0)		//load hResultMenuPanel panel
 		return -1;
-	//用于弹出Graph Defaults面板
-	if ((graphPanel = LoadPanel (setPanel, "Settings.uir", GRAPH)) < 0)		//load graph panel
+	
+	if ((hSaveDataPanel = LoadPanel (hMainPanel, "Result Menu.uir", SAVEDATA)) < 0)		//用于弹出savedata面板   
+		return -1;
+		
+	if ((hSettingsPanel = LoadPanel (hMainPanel, "Settings.uir", SETTINGS)) < 0)		//用于弹出settings面板 
+		return -1;	
+
+	if ((hSettingsPrjPanel = LoadPanel (hSettingsPanel, "Settings.uir", ENVT)) < 0)		//用于弹出Project Settings面板
+		return -1;
+	
+	if ((hSettingsGraphPanel = LoadPanel (hSettingsPanel, "Settings.uir", GRAPH)) < 0)		//用于弹出Settings->Graph面板  
 		return -1;  
-	//用于弹出About面板
-	if ((aboutPanel = LoadPanel (setPanel, "Settings.uir", ABOUT)) < 0)		//load graph panel
+	
+	if ((hSettingsAboutPanel = LoadPanel (hSettingsPanel, "Settings.uir", ABOUT)) < 0)		//用于弹出Settings->About面板
 		return -1;
- */
+
 	//选择
-	if ((chPanel = LoadPanel (mainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load chPanel panel
+	if ((hGraphSelectPanel = LoadPanel (hMainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load hGraphSelectPanel panel
 		return -1;
 	
 	
-	if ((hGraphPanel = LoadPanel (mainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
+	if ((hGraphPanel = LoadPanel (hMainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
 	
-	if ((tablePanel = LoadPanel (mainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
+	if ((hTablePanel = LoadPanel (hMainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
 		return -1;
 	
-	if ((iTPanel = LoadPanel (mainPanel, "I-T.uir", ITPANEL)) < 0)		//load I-T  panel
+	if ((hIT_Panel = LoadPanel (hMainPanel, "I-T.uir", ITPANEL)) < 0)		//load I-T  panel
 		return -1;
 	
-	if ((rTPanel = LoadPanel (mainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
+	if ((hRT_Panel = LoadPanel (hMainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
 	
 	//弹出projects		
-	 if ((proPanel = LoadPanel (mainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
+	 if ((hPrjPanel = LoadPanel (hMainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
-	 if ((defPanel = LoadPanel (proPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
+	 if ((hPrjListPanel = LoadPanel (hPrjPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
 	
-	DisplayPanel (mainPanel); 
+	DisplayPanel (hMainPanel); 
 	
-	SetPanelPos(expListPanel, 105, 3);  //加载面板位置 （,top,left）
-	SetPanelSize(expListPanel, 900, 300);//加载面板大小  (,height，width)
-	DisplayPanel(expListPanel);
+	SetPanelPos(hExpListPanel, 105, 3);  //加载面板位置 （,top,left）
+	SetPanelSize(hExpListPanel, 900, 300);//加载面板大小  (,height，width)
+	DisplayPanel(hExpListPanel);
 	
 	SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	DisplayPanel(IdVdPanel.panelHandle);
-	
-	SetPanelPos(samplePanelHandle, 105, 1600);
-	SetPanelSize(samplePanelHandle, 449, 300);
-	DisplayPanel(samplePanelHandle);
-	
-	SetPanelPos(environmentPanel, 556, 1600);
-	SetPanelSize(environmentPanel, 449, 300);
-	DisplayPanel(environmentPanel);
-	
+	//
+	//SetPanelPos(hBasicSamplePanel, 105, 1600);
+	//SetPanelSize(hBasicSamplePanel, 449, 300);
+	//DisplayPanel(hBasicSamplePanel);
+	//
+	//SetPanelPos(hEnvCfgPanel, 556, 1600);
+	//SetPanelSize(hEnvCfgPanel, 449, 300);
+	//DisplayPanel(hEnvCfgPanel);
+	//
 	return 0;
 }

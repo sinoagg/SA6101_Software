@@ -20,6 +20,11 @@ unsigned char measUartRxBuf[500]={0};
 
 unsigned char SA11_Status=0;
 
+
+
+	 
+
+
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
 	int rxNum;
@@ -32,26 +37,41 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	while(rxNum>=MEASURE_UART_RX_LEN)
 	{
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
-		pGraph1->pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
+		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
+		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
+		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
+		
+		Graph1.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
+		
+		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
 		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
-			*(pGraph1->pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
-			*(pGraph1->pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
 		else if(TestPara.testMode==NO_SWEEP_IT)
-			*(pGraph1->pCurveArray->pDotX++)=pGraph1->pCurveArray->time;			//get x, set pointer to the next data
+		{
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
+			Graph1.pCurveArray->time+=TestPara.timeStep; 
+		}
 		else if(TestPara.testMode==NO_SWEEP_RT)
-			*(pGraph1->pCurveArray->pDotX++)=pGraph1->pCurveArray->time;			//get x, set pointer to the next data
+		{
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
+			Graph1.pCurveArray->time+=TestPara.timeStep; 
+		}
 		
-		pGraph1->pCurveArray->time+=TestPara.timeStep;
-		*(pGraph1->pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
-		if(RxData.rxStopSign==0x02)													//if complete the test, stop the timer
+		if(RxData.rxStopSign==0x01)													//if complete the test, stop the timer
+		{
 			DiscardAsyncTimer(TimerID);
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+		}
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++;
 	}
 	
-	PlotCurve(pGraph1, hGraphPanel, GRAPHDISP_GRAPH1);
+	PlotCurve(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1);
 }
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
@@ -75,7 +95,7 @@ int main (int argc, char *argv[])
 	RunUserInterface();
 	CloseCom(measureComPort);
 	if(SA11_Status==1) CloseCom(controlComPort);
-	DiscardPanel (mainPanel);
+	DiscardPanel (hMainPanel);
 	return 0;
 }
 

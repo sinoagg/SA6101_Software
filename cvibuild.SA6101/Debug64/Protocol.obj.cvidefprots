@@ -1,6 +1,6 @@
 [ProtocolCfg]
 Class="Function"
-Prototype="void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode expType, unsigned char *pmeasUartTxBuf);"
 
 [ProtocolRun]
 Class="Function"

@@ -21,7 +21,7 @@ int CVICALLBACK ProExitCallback (int panel, int control, int event,
 {	
 	
 	 if(event==EVENT_COMMIT)
-			  RemovePopup (proPanel);  
+			  RemovePopup (hPrjPanel);  
 
 	return 0;
 }
@@ -44,7 +44,7 @@ int CVICALLBACK DefaultCallback (int panel, int event, void *callbackData,
 			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (panel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (panel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (proPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
+			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
 			SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, COLOR);
 			break;
 	}
@@ -59,10 +59,10 @@ int CVICALLBACK ImgCallback (int panel, int control, int event,
 	   if(event == EVENT_VAL_CHANGED){
 	   
    			  if(val){
-				   SetCtrlAttribute(defPanel, DEFPANEL_PICS, ATTR_VISIBLE,1);
+				   SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,1);
 				  
 			  }else{
-			  	 SetCtrlAttribute(defPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
+			  	 SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
 			  }
    
    }
@@ -77,10 +77,10 @@ int CVICALLBACK DescCallback (int panel, int control, int event,
   		 if(event == EVENT_VAL_CHANGED){
 	   
    			  if(val){
-				  SetCtrlAttribute(defPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
+				  SetCtrlAttribute(hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
 				   
 			  }else{
-			  	  SetCtrlAttribute (defPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
+			  	  SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
 			  }
    
    }
@@ -93,11 +93,11 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelAttribute (defPanel, ATTR_BACKCOLOR, BGCOLOR);
-			SetCtrlAttribute (defPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (defPanel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (defPanel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (proPanel,PROPANEL_OPEN , ATTR_DIMMED, 1);
+			SetPanelAttribute (hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 1);
 			break;
 	}
 	return 0;
