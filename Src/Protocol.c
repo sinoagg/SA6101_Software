@@ -15,8 +15,8 @@
 #include "Protocol.h"
 #include "IdVdsPanel.h"
 #include "IdVgsPanel.h"
-#include "SampleCfgPanel.h"
 #include <rs232.h>
+#include "LoadPanel.h"
 //==============================================================================
 // Constants
 
@@ -53,13 +53,14 @@ static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStepID, &(pTestPara->VgStep));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->drainModeID, &(pTestPara->drainOutputMode));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->gateModeID, &(pTestPara->gateOutputMode));
-	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
-	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
-	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));
-	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLERATE, &(pTestPara->sampleRate));
-	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_SAMPLENUMBER, &(pTestPara->sampleNumber));
-	GetCtrlVal(samplePanelHandle, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
-
+	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
+	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
+	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));
+	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_SAMPLERATE, &(pTestPara->sampleRate));
+	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_SAMPLENUMBER, &(pTestPara->sampleNumber));
+	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
+	GetCtrlVal(hAdvanceSamplePanel, SAMPLE_ADV_MAXRANGE, &(pTestPara->maxRange));
+	GetCtrlVal(hAdvanceSamplePanel, SAMPLE_ADV_MINRANGE, &(pTestPara->minRange));
 }
 
 static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth)
@@ -101,9 +102,9 @@ static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, 
 }
 
 
-void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, unsigned char expType, unsigned char* pmeasUartTxBuf)
+void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode expType, unsigned char* pmeasUartTxBuf)
 {
-	switch((enum ExpType)expType)
+	switch(expType)
 	{
 		case SWEEP_DRAIN_VOL:
 			GetTestPara(&IdVdPanel, &TestPara);
@@ -158,8 +159,8 @@ void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData)	//Ge
 {
 	pRxData->rxDevAddr=*pmeasUartRxBuf;
 	pRxData->rxStopSign=*(pmeasUartRxBuf+1);
-	pRxData->rxVdtest=((int)*(pmeasUartRxBuf+2))|*(pmeasUartRxBuf+3);
-	pRxData->rxVgtest=((int)*(pmeasUartRxBuf+4))|*(pmeasUartRxBuf+5);
+	pRxData->rxVdtest=(((int)*(pmeasUartRxBuf+2))<<8)|*(pmeasUartRxBuf+3);
+	pRxData->rxVgtest=(((int)*(pmeasUartRxBuf+4))<<8)|*(pmeasUartRxBuf+5);
 	pRxData->rxIdmeasured.num_uchar[0]=*(pmeasUartRxBuf+6);
 	pRxData->rxIdmeasured.num_uchar[1]=*(pmeasUartRxBuf+7); 
 	pRxData->rxIdmeasured.num_uchar[2]=*(pmeasUartRxBuf+8); 

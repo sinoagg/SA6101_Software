@@ -48,6 +48,8 @@ extern int mainPanel;
 extern int expListPanel;
 extern int samplePanel;
 extern int hGraphPanel;
+extern int hBasicSamplePanel;  
+extern int hAdvanceSamplePanel;
 extern int environmentPanel;
 extern int resultPanel;	     //result menu panel
 extern int tablePanel;
@@ -64,7 +66,7 @@ extern int chPanel;          //chose panel
 extern int AnalyenvirPanel;
 extern int proPanel;
 extern int defPanel;
-extern int sampleBasicPanel;
+
 
 //==============================================================================
 // Global functions

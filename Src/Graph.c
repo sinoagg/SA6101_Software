@@ -16,7 +16,6 @@
 #include <ansi_c.h>
 #include "Curve.h"
 #include "Graph.h"
-#include"LoadPanel.h"
 
 //==============================================================================
 // Constants
@@ -32,8 +31,8 @@
 
 //==============================================================================
 // Global variables
-GraphTypeDef* pGraph1;
-GraphTypeDef* pGraph2;
+GraphTypeDef Graph1;
+GraphTypeDef Graph2;
 //==============================================================================
 // Global functions
 
@@ -52,6 +51,16 @@ int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGrap
 	for(i=0;i<numOfCurve;i++)		//init curve
 	{
 		if(curveInit(i, numOfDots, pCurveArray+i)==-1) return -1;
+	}
+	return 0;
+}
+
+int graphDeinit(GraphTypeDef* pGraph)
+{
+	int i=0;
+	for(i=0;i<(pGraph->numOfCurve);i++)
+	{
+		curveDeinit(pGraph->pCurveArray++); 	
 	}
 	return 0;
 }

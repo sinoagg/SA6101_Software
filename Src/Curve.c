@@ -55,8 +55,8 @@ int curveInit(int curveIndex, int numOfTotalDots, Curve_TypeDef* pCurve)
 
 int curveDeinit(Curve_TypeDef* pCurve)
 {
-	free(pCurve->pDotX);
-	free(pCurve->pDotY);
+	free(pCurve->pDotXHead);
+	free(pCurve->pDotYHead);
 	
 	return 0;
 }

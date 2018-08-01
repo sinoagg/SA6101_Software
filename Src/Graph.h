@@ -31,13 +31,17 @@ typedef struct
 	int plotHandle;									//graph handle 
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
+	int xAxisMax;
+	int yAxisMax;
+	int xAxisName;
+	int yAxisName;
 	Curve_TypeDef* pCurveArray;						//pointer to curve array
 }GraphTypeDef;
 
 //==============================================================================
 // External variables
-extern GraphTypeDef* pGraph1;
-extern GraphTypeDef* pGraph2;
+extern GraphTypeDef Graph1;
+extern GraphTypeDef Graph2;
 
 //==============================================================================
 // Global functions

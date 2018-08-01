@@ -33,7 +33,7 @@
 
 //==============================================================================
 // Global variables
-ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_GATEMODE, IDVDS_CFG_DRAINMODE}; 
+ExpPanelTypeDef IdVdPanel={0, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_VD_START, IDVDS_CFG_VD_STOP, IDVDS_CFG_VD_STEP, IDVDS_CFG_DRAINMODE, IDVDS_CFG_GATEMODE}; 
 //==============================================================================
 // Global functions
 static void SetDrainDisp(int panel, char focus)

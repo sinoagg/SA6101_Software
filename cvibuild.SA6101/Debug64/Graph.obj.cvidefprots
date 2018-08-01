@@ -2,3 +2,7 @@
 Class="Function"
 Prototype="int graphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef *pGraph);"
 
+[graphDeinit]
+Class="Function"
+Prototype="int graphDeinit(GraphTypeDef *pGraph);"
+
