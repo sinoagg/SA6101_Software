@@ -50,14 +50,14 @@ int CVICALLBACK TableCallback (int panel, int control, int event,
 	//点击table图标切换到table面板
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico");
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico");
 			break;
 		case EVENT_LEFT_CLICK:
-			   	SetPanelPos(tablePanel, 172, 305);  
-		     	SetPanelSize(tablePanel, 833, 1293);      
-	 			DisplayPanel(tablePanel);
+			   	SetPanelPos(hTablePanel, 172, 305);  
+		     	SetPanelSize(hTablePanel, 833, 1293);      
+	 			DisplayPanel(hTablePanel);
 			break;
 	
 	}
@@ -70,18 +70,18 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 		//点击graph图标切换到graph面板
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
 				
 			break;
 		case EVENT_LEFT_CLICK:
 		
 		
-				HidePanel(tablePanel);  							                                          
-			  	SetPanelPos(chPanel, 172, 1457);  
-		     	SetPanelSize(chPanel, 26, 140);      
-	 			DisplayPanel(chPanel);
+				HidePanel(hTablePanel);  							                                          
+			  	SetPanelPos(hGraphSelectPanel, 172, 1457);  
+		     	SetPanelSize(hGraphSelectPanel, 26, 140);      
+	 			DisplayPanel(hGraphSelectPanel);
 			break;
 	}	
 	return 0;
@@ -94,14 +94,14 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 	   switch(event){
 		case EVENT_LEFT_CLICK_UP:
 			
-				DisplayImageFile (resultPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
-				DisplayImageFile (resultPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (resultPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
 		  
 			break;
 		 case EVENT_LEFT_CLICK:
 			   //弹出savedata面板
-			   InstallPopup(saveDataPanel);
+			   InstallPopup(hSaveDataPanel);
 			break;
 	}	
 	return 0;
@@ -112,8 +112,7 @@ int CVICALLBACK ExitCallback (int panel, int control, int event,
 {
 		if (event == EVENT_COMMIT)
 				{
-	    		//移除、关闭savedata面板
-				RemovePopup(saveDataPanel);
+				RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板    
 		        }
 			return 0;
 }
@@ -182,7 +181,7 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(doubleGraphDispPanel, GRAPHDISP_GRAPH2, Graph2.plotHandle, graph2SavePath); 
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.plotHandle, graph2SavePath); 
 			break;
 	}
 	return 0;
@@ -211,16 +210,14 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 {
 	int CheckValue;
 	if( event == EVENT_VAL_CHANGED)
-	{   HidePanel(chPanel);
+	{   HidePanel(hGraphSelectPanel);
 		GetCtrlVal(panel, CHPANEL_CHECKBOX, &CheckValue);
 		if(CheckValue)
-		{	 //如果CheckBox是选中状态则显示两个graph
-		
-			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400);
+		{	
+			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
 			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-		
-			HidePanel(chPanel);
-		    HidePanel(tablePanel);
+			HidePanel(hGraphSelectPanel);
+		    HidePanel(hTablePanel);
 		
 		}
 		else
@@ -250,13 +247,6 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 }
 
 //======================saveSheet==========================
-//保存为Excel表格
-static CAObjHandle applicationHandle = 0;
-static CAObjHandle workbookHandle = 0;
-static CAObjHandle worksheetHandle = 0;
-static row=0;
-static clomun=0;
-
 static int SaveConfigToFiles(char* pConfigSavePaths)
 {
 	FILE * fp = NULL;							//表示打开的文件
@@ -281,59 +271,7 @@ int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {
 	
-	
- /*   int error;
-	char strBuf[20]={0};
-	char strB[20]={0};
 
-	char dataA[12]={"第一列 "};
-	char dataB[12]={"第二列 "};
-	char configSavePaths[512]={0};
-
-	
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:
-			
-			 	if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".xls", "*.xls", "Select Path", VAL_OK_BUTTON, 1, 0,  configSavePaths)>0)
-				SaveConfigToFiles(configSavePaths);
-		
-	//启动Excel ExcelRpt_ApplicationNew   ExcelRpt_WorkbookNew
-			
-			error = ExcelRpt_ApplicationNew(VTRUE, &applicationHandle);  
-			if (error<0) 
-			{
-        		MessagePopup ("启动Excel错误","自动启动接口发生错误");
-               
-			}
-	 		ExcelRpt_WorkbookNew(applicationHandle, &workbookHandle);
-			
-			
-		//创建新工作簿	
-	    ExcelRpt_WorksheetNew(workbookHandle, -1, &worksheetHandle);
-		
-		SetCtrlAttribute(panel, SAVEDATA_SAVESHEET, ATTR_DIMMED, 1);
-		//将table中的数据读取并存储到Excel中
-		for(clomun;clomun<10;){
-			
-		  	for(row;row<=clomun;){
-				
-				sprintf(strBuf,"%s%d","A",++row); //格式化字符串
-			
-				ExcelRpt_SetCellValue(worksheetHandle,strBuf,CAVT_CSTRING,dataA);//第一列
-				  
-			
-			} 	
-			sprintf(strB,"%s%d","B",++clomun);
-			ExcelRpt_SetCellValue(worksheetHandle,strB,CAVT_CSTRING,dataB); //第二列
-		}
-	
-			//FileSelectPopupEx ;
-		
-			
-		break; 
-	
-	}*/
    return 0;
 }
 

@@ -32,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 9
+Number of Opened Files = 15
 Window Confinement Region Enabled = True
 MainColumnWidth = 250
 FileDateColumnWidth = 70
@@ -48,52 +48,103 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Sample Configuration.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615853453
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
+File Type = "CSource"
+Disk Date = 3615938417
+In Projects = "1,"
+Window Top = 64
+Window Left = 42
+Window Z-Order = 3
+Source Window State = "1,39,39,39,4,21,4,0,0,80,0,0,0,0,0,24,5,0,13,18,411,686,1,0,"
+
+[File 0002]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.c"
+File Type = "CSource"
+Disk Date = 3615938502
+In Projects = "1,"
+Window Top = 152
+Window Left = 74
+Window Z-Order = 4
+Source Window State = "1,276,276,276,25,33,25,0,0,140,0,0,0,0,0,24,115,0,276,42,417,1163,1,0,"
+
+[File 0003]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.c"
+File Type = "CSource"
+Disk Date = 3615937683
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
-Window Height = 533
-Window Width = 1163
+Window Z-Order = 9
+Source Window State = "1,57,57,62,16,21,28,0,0,85,0,0,0,0,0,24,35,0,41,67,411,726,1,0,"
 
-[File 0002]
+[File 0004]
 Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVdsPanel.c"
 File Type = "CSource"
-Disk Date = 3615861491
+Disk Date = 3615936480
 In Projects = "1,"
 Window Top = 31
-Source Window State = "1,35,35,35,166,185,185,0,0,70,0,0,0,0,0,23,30,0,35,167,400,600,1,0,"
+Window Left = 90
+Source Window State = "1,34,34,34,4,13,13,0,0,0,0,0,0,0,0,0,25,0,43,8,411,726,1,0,"
 
-[File 0003]
-Path = "/e/SINOAGG/Software/SA6101/Src/main.c"
+[File 0005]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVgsPanel.c"
 File Type = "CSource"
-Disk Date = 3615871142
+Disk Date = 3615936480
+In Projects = "1,"
+Window Top = 188
+Window Left = 90
+Window Height = 411
+Window Width = 726
+Source Window State = "1,157,157,157,5,20,20,0,0,0,0,0,0,0,0,0,153,0,164,81,411,726,1,0,"
+
+[File 0006]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.c"
+File Type = "CSource"
+Disk Date = 3615938747
+In Projects = "1,"
+Window Top = 95
+Window Left = 42
+Window Z-Order = 1
+Source Window State = "1,78,78,78,23,32,32,0,0,201,0,0,0,0,0,38,42,0,79,32,411,726,1,0,"
+
+[File 0007]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.h"
+File Type = "Include"
+Disk Date = 3615938688
+In Projects = "1,"
+Window Top = 126
+Window Left = 58
+Window Z-Order = 2
+Source Window State = "1,55,55,55,11,20,20,0,0,85,0,0,0,0,0,24,36,0,58,20,411,726,1,0,"
+
+[File 0008]
+Path = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
+File Type = "Include"
+Disk Date = 3615936375
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
-Window Z-Order = 5
-Source Window State = "1,53,53,53,8,12,8,0,0,85,0,0,0,0,0,24,71,0,84,4,411,726,1,0,"
+Window Z-Order = 15
+Source Window State = "1,34,34,34,1,13,13,0,0,85,0,0,0,0,0,25,31,0,33,17,427,726,1,0,"
 
-[File 0004]
-Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.h"
-File Type = "Include"
-Disk Date = 3615590156
+[File 0009]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615427323
 In Projects = "1,"
 Window Top = 33
 Window Left = 10
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,20,0,0,0,411,726,1,0,"
+Window Height = 411
+Window Width = 726
+Window Z-Order = 12
 
-[File 0005]
-Path = "/e/SINOAGG/Software/SA6101/Src/main.h"
-File Type = "Include"
-Disk Date = 3615613311
+[File 0010]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Experiment List.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615850082
 In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,24,24,24,8,32,32,0,0,85,0,0,0,0,0,25,0,0,24,24,427,726,1,0,"
 
-[File 0006]
+[File 0011]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/GraphDisp.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615534704
@@ -102,244 +153,66 @@ Window Top = 33
 Window Left = 10
 Window Height = 411
 Window Width = 726
-
-[File 0007]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/I-T.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615604828
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 411
-Window Width = 686
-
-[File 0008]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vds Configuration.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615861408
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 411
-Window Width = 726
-
-[File 0009]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vgs Configuration.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615846358
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Window Height = 411
-Window Width = 686
-
-[File 0010]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.c"
-File Type = "CSource"
-Disk Date = 3615847467
-In Projects = "1,"
-Window Top = 122
-Window Left = 58
-Source Window State = "1,60,60,60,16,29,29,0,0,140,0,0,0,0,0,31,13,0,16,17,533,1163,1,0,"
-
-[File 0011]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVgsPanel.c"
-File Type = "CSource"
-Disk Date = 3615861489
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,35,35,35,166,185,166,0,0,85,0,0,0,0,0,24,27,8,35,167,411,726,1,0,"
+Window Z-Order = 14
 
 [File 0012]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
-File Type = "CSource"
-Disk Date = 3615852522
-In Projects = "1,"
-Window Top = 95
-Window Left = 42
-Window Z-Order = 4
-Source Window State = "1,34,34,34,0,24,24,0,3,80,0,0,0,0,0,24,29,0,34,0,411,686,1,0,"
-
-[File 0013]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.c"
-File Type = "CSource"
-Disk Date = 3615864771
-In Projects = "1,"
-Window Top = 152
-Window Left = 74
-Window Z-Order = 1
-Source Window State = "1,144,146,144,12,96,12,0,0,201,0,0,0,0,0,26,241,0,124,12,417,1163,1,0,"
-
-[File 0014]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.c"
-File Type = "CSource"
-Disk Date = 3615854016
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Source Window State = "1,184,184,184,62,71,71,0,0,85,0,172,0,0,0,24,172,0,184,62,411,726,1,0,"
-
-[File 0015]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.c"
-File Type = "CSource"
-Disk Date = 3615852549
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Source Window State = "1,41,41,41,25,41,25,0,0,85,0,0,0,0,0,24,27,0,41,42,411,726,1,0,"
-
-[File 0016]
-Path = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
-File Type = "CSource"
-Disk Date = 3615862154
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Source Window State = "1,55,61,61,0,2,2,0,3,85,0,0,0,0,0,24,45,0,55,0,411,726,1,0,"
-
-[File 0017]
-Path = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
-File Type = "CSource"
-Disk Date = 3615862236
-In Projects = "1,"
-Window Top = 219
-Window Left = 106
-Window Z-Order = 3
-Source Window State = "1,57,57,62,16,21,28,0,0,85,0,0,0,0,0,24,35,0,41,67,411,726,1,0,"
-
-[File 0018]
-Path = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
-File Type = "CSource"
-Disk Date = 3615847382
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/I-T.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615936480
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
-Window Z-Order = 8
-Source Window State = "1,34,34,34,4,13,13,0,0,85,0,0,0,0,0,24,25,0,43,8,411,726,1,0,"
+Window Height = 411
+Window Width = 686
 
-[File 0019]
-Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
-File Type = "CSource"
-Disk Date = 3615934851
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Z-Order = 6
-Source Window State = "1,157,157,157,5,20,20,0,0,85,0,0,0,0,0,24,153,0,164,81,411,726,1,0,"
-
-[File 0020]
-Path = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
-File Type = "CSource"
-Disk Date = 3615613311
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Z-Order = 9
-Source Window State = "1,52,52,52,16,29,29,0,0,85,0,0,0,0,0,24,49,0,58,12,411,726,1,0,"
-
-[File 0021]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVdsPanel.h"
-File Type = "Include"
-Disk Date = 3615602130
-In Projects = "1,"
-Window Top = 242
-Window Left = 122
-Source Window State = "1,20,20,20,0,25,25,0,3,140,0,0,0,0,0,31,11,0,20,0,533,1163,1,0,"
-
-[File 0022]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.h"
-File Type = "Include"
-Disk Date = 3615852521
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,67,67,67,0,29,29,0,0,85,0,0,0,0,0,24,39,0,51,31,411,726,1,0,"
-
-[File 0023]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.h"
-File Type = "Include"
-Disk Date = 3615847382
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,23,23,23,0,26,26,0,0,85,0,0,0,0,0,24,17,0,22,27,411,726,1,0,"
-
-[File 0024]
-Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
-File Type = "Include"
-Disk Date = 3615862154
-In Projects = "1,"
-Window Top = 157
-Window Left = 74
-Source Window State = "1,52,52,52,4,40,40,0,3,85,0,0,0,0,0,24,42,0,52,4,411,726,1,0,"
-
-[File 0025]
-Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
-File Type = "Include"
-Disk Date = 3615847382
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
-
-[File 0026]
-Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
-File Type = "Include"
-Disk Date = 3615853496
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Window Z-Order = 7
-Source Window State = "1,94,94,94,1,14,14,0,3,85,0,0,0,0,0,24,73,0,94,1,411,726,1,0,"
-
-[File 0027]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.uir"
+[File 0013]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vds Configuration.uir"
 File Type = "User Interface Resource"
-Disk Date = 3615427323
+Disk Date = 3615936480
 In Projects = "1,"
-Window Top = 95
-Window Left = 42
+Window Top = 188
+Window Left = 90
 Window Height = 411
 Window Width = 726
 
-[File 0028]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Experiment List.uir"
+[File 0014]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vgs Configuration.uir"
 File Type = "User Interface Resource"
-Disk Date = 3615850082
+Disk Date = 3615936480
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
 Window Height = 411
-Window Width = 726
+Window Width = 686
 
-[File 0029]
+[File 0015]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/MainPanel.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615534704
 In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 411
-Window Width = 726
+Window Top = 152
+Window Left = 74
+Window Height = 446
+Window Width = 1163
 
-[File 0030]
+[File 0016]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ProjectPanel.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615600428
 In Projects = "1,"
-Window Top = 188
-Window Left = 90
+Window Top = 95
+Window Left = 42
 Window Height = 411
 Window Width = 726
+Window Z-Order = 10
 
-[File 0031]
+[File 0017]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/R-T.uir"
 File Type = "User Interface Resource"
-Disk Date = 3615600428
+Disk Date = 3615936480
 In Projects = "1,"
 
-[File 0032]
+[File 0018]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Result Menu.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615304048
@@ -348,291 +221,9 @@ Window Top = 33
 Window Left = 10
 Window Height = 411
 Window Width = 726
+Window Z-Order = 13
 
-[File 0033]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Settings.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615534704
-In Projects = "1,"
-
-[File 0034]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615534704
-In Projects = "1,"
-
-[File 0035]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/Environment.c"
-File Type = "CSource"
-Disk Date = 3615590156
-In Projects = "1,"
-Window Top = 152
-Window Left = 74
-Source Window State = "1,3,3,3,16,31,31,0,3,0,0,0,0,0,0,0,0,0,3,16,533,1137,1,13,"
-
-[File 0036]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ProjectPanel.c"
-File Type = "CSource"
-Disk Date = 3615847467
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
-
-[File 0037]
-Path = "/e/SINOAGG/Software/SA6101/Src/Table.c"
-File Type = "CSource"
-Disk Date = 3615590156
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0038]
-Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.c"
-File Type = "CSource"
-Disk Date = 3615590156
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0039]
-Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
-File Type = "CSource"
-Disk Date = 3615590156
-In Projects = "1,"
-Window Top = 157
-Window Left = 74
-Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,411,726,1,0,"
-
-[File 0040]
-Path = "/e/SINOAGG/Software/SA6101/Resource/analyze.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0041]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Arrow.png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0042]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Config.ico"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0043]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(a).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0044]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(b).ico"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0045]
-Path = "/e/SINOAGG/Software/SA6101/Resource/FET.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0046]
-Path = "/e/SINOAGG/Software/SA6101/Resource/GND.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0047]
-Path = "/e/SINOAGG/Software/SA6101/Resource/I.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0048]
-Path = "/e/SINOAGG/Software/SA6101/Resource/I_Bias.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0049]
-Path = "/e/SINOAGG/Software/SA6101/Resource/jiantou.ico"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0050]
-Path = "/e/SINOAGG/Software/SA6101/Resource/My Projects.png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0051]
-Path = "/e/SINOAGG/Software/SA6101/Resource/My Settings.png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0052]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Run.png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0053]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save(a).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0054]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save(b).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0055]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(a).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0056]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(b).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0057]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Select(a).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0058]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Select(b).ico"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0059]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Stop.png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0060]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Tools.png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0061]
-Path = "/e/SINOAGG/Software/SA6101/Resource/User(a).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0062]
-Path = "/e/SINOAGG/Software/SA6101/Resource/User(b).png"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
-
-[File 0063]
-Path = "/e/SINOAGG/Software/SA6101/Resource/V.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0064]
-Path = "/e/SINOAGG/Software/SA6101/Resource/V_Bias.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
-
-[File 0065]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.h"
-File Type = "Include"
-Disk Date = 3615304048
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0066]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.h"
-File Type = "Include"
-Disk Date = 3615849625
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,38,38,38,1,16,16,0,3,85,0,0,0,0,0,24,29,0,38,1,411,726,1,0,"
-
-[File 0067]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vgs Configuration.h"
-File Type = "Include"
-Disk Date = 3615846358
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0068]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ProjectPanel.h"
-File Type = "Include"
-Disk Date = 3615600428
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0069]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.h"
-File Type = "Include"
-Disk Date = 3615590156
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0070]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.h"
-File Type = "Include"
-Disk Date = 3615851721
-In Projects = "1,"
-Window Top = 157
-Window Left = 74
-Source Window State = "1,30,30,30,0,24,24,0,0,85,0,0,0,0,0,24,16,0,30,0,411,726,1,0,"
-
-[File 0071]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.h"
-File Type = "Include"
-Disk Date = 3615534704
-In Projects = "1,"
-Window Top = 182
-Window Left = 90
-Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,551,1164,1,0,"
-
-[File 0072]
-Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
-File Type = "Include"
-Disk Date = 3615590156
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0073]
-Path = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
-File Type = "Include"
-Disk Date = 3615853897
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Window Z-Order = 2
-Source Window State = "1,34,34,34,1,13,13,0,0,85,0,0,0,0,0,25,31,0,33,17,427,726,1,0,"
-
-[File 0074]
-Path = "/e/SINOAGG/Software/SA6101/Src/Timer.h"
-File Type = "Include"
-Disk Date = 3615590156
-In Projects = "1,"
-Window Top = 31
-Source Window State = "1,0,0,0,0,0,0,0,0,70,0,0,0,0,0,23,24,0,34,20,400,600,1,0,"
-
-[File 0075]
+[File 0019]
 Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ResultDispPanel.uir"
 File Type = "User Interface Resource"
 Disk Date = 3615847593
@@ -642,32 +233,469 @@ Window Left = 106
 Window Height = 411
 Window Width = 726
 
-[File 0076]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.c"
-File Type = "CSource"
-Disk Date = 3615847467
+[File 0020]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Sample Configuration.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615853453
 In Projects = "1,"
-Window Top = 95
-Window Left = 42
+Window Top = 122
+Window Left = 58
+Window Height = 533
+Window Width = 1163
+
+[File 0021]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Settings.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615534704
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Window Height = 411
+Window Width = 726
+Window Z-Order = 11
+
+[File 0022]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.uir"
+File Type = "User Interface Resource"
+Disk Date = 3615534704
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Window Height = 446
+Window Width = 1137
+
+[File 0023]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/Environment.c"
+File Type = "CSource"
+Disk Date = 3615936480
+In Projects = "1,"
+Window Top = 152
+Window Left = 58
+Source Window State = "1,9,9,9,12,21,12,0,0,0,0,0,0,0,0,0,5,0,11,12,533,1137,1,13,"
+
+[File 0024]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ProjectPanel.c"
+File Type = "CSource"
+Disk Date = 3615937896
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Window Z-Order = 6
+Source Window State = "1,82,82,82,18,19,19,0,0,85,0,0,0,0,0,24,84,0,82,18,411,726,1,0,"
+
+[File 0025]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.c"
+File Type = "CSource"
+Disk Date = 3615938417
+In Projects = "1,"
+Window Top = 126
+Window Left = 58
+Window Z-Order = 5
+Source Window State = "1,183,183,183,0,12,12,0,0,85,0,172,0,0,0,24,164,0,183,28,411,726,1,0,"
+
+[File 0026]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.c"
+File Type = "CSource"
+Disk Date = 3615852549
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Source Window State = "1,23,23,23,0,26,26,0,0,0,0,0,0,0,0,0,17,0,22,27,411,726,1,0,"
+
+[File 0027]
+Path = "/e/SINOAGG/Software/SA6101/Src/Table.c"
+File Type = "CSource"
+Disk Date = 3615937793
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Window Z-Order = 7
 Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
 
-[File 0077]
+[File 0028]
+Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.c"
+File Type = "CSource"
+Disk Date = 3615590156
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0029]
+Path = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
+File Type = "CSource"
+Disk Date = 3615862154
+In Projects = "1,"
+Window Top = 126
+Window Left = 58
+Source Window State = "1,48,48,48,15,29,15,0,0,0,0,0,0,0,0,0,21,0,48,16,411,726,1,0,"
+
+[File 0030]
+Path = "/e/SINOAGG/Software/SA6101/Src/File.c"
+File Type = "User Interface Resource"
+Disk Date = 3615590156
+In Projects = "1,"
+Window Top = 157
+Window Left = 74
+Window Height = 411
+Window Width = 726
+
+[File 0031]
+Path = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
+File Type = "CSource"
+Disk Date = 3615862236
+In Projects = "1,"
+Window Top = 219
+Window Left = 106
+Window Height = 411
+Window Width = 726
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,411,726,1,0,"
+
+[File 0032]
+Path = "/e/SINOAGG/Software/SA6101/Src/main.c"
+File Type = "CSource"
+Disk Date = 3615937793
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Window Z-Order = 8
+Source Window State = "1,52,52,53,23,41,39,0,0,85,0,0,0,0,0,24,41,0,53,23,411,726,1,0,"
+
+[File 0033]
+Path = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
+File Type = "CSource"
+Disk Date = 3615847382
+In Projects = "1,"
+Window Top = 188
+Window Left = 90
+Source Window State = "1,34,34,34,13,68,13,0,0,0,0,0,0,0,0,0,13,0,34,68,411,726,1,0,"
+
+[File 0034]
+Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
+File Type = "CSource"
+Disk Date = 3615934851
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,53,53,53,76,80,80,0,0,0,0,0,0,0,0,0,70,0,45,0,411,726,1,0,"
+
+[File 0035]
+Path = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
+File Type = "CSource"
+Disk Date = 3615613311
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,58,58,58,42,50,42,0,0,0,0,0,0,0,0,0,43,0,59,14,411,726,1,0,"
+
+[File 0036]
+Path = "/e/SINOAGG/Software/SA6101/Resource/analyze.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0037]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Arrow.png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0038]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Config.ico"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+
+[File 0039]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(a).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0040]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(b).ico"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0041]
+Path = "/e/SINOAGG/Software/SA6101/Resource/FET.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0042]
+Path = "/e/SINOAGG/Software/SA6101/Resource/GND.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0043]
+Path = "/e/SINOAGG/Software/SA6101/Resource/I.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0044]
+Path = "/e/SINOAGG/Software/SA6101/Resource/I_Bias.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0045]
+Path = "/e/SINOAGG/Software/SA6101/Resource/jiantou.ico"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0046]
+Path = "/e/SINOAGG/Software/SA6101/Resource/My Projects.png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0047]
+Path = "/e/SINOAGG/Software/SA6101/Resource/My Settings.png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0048]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Run.png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0049]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Save(a).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0050]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Save(b).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0051]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(a).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0052]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(b).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0053]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Select(a).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0054]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Select(b).ico"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0055]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Stop.png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0056]
+Path = "/e/SINOAGG/Software/SA6101/Resource/Tools.png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0057]
+Path = "/e/SINOAGG/Software/SA6101/Resource/User(a).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0058]
+Path = "/e/SINOAGG/Software/SA6101/Resource/User(b).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0059]
+Path = "/e/SINOAGG/Software/SA6101/Resource/V.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0060]
+Path = "/e/SINOAGG/Software/SA6101/Resource/V_Bias.ico"
+File Type = "Unknown"
+Disk Date = 3615304048
+In Projects = "1,"
+
+[File 0061]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.h"
+File Type = "Include"
+Disk Date = 3615304048
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0062]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.h"
+File Type = "Include"
+Disk Date = 3615849625
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,36,36,36,1,16,16,0,0,0,0,0,0,0,0,0,9,0,29,2,411,726,1,0,"
+
+[File 0063]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vgs Configuration.h"
+File Type = "Include"
+Disk Date = 3615936480
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0064]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVdsPanel.h"
+File Type = "Include"
+Disk Date = 3615602130
+In Projects = "1,"
+Window Top = 242
+Window Left = 122
+Source Window State = "1,20,20,20,0,25,25,0,3,0,0,0,0,0,0,0,11,0,20,0,533,1163,1,0,"
+
+[File 0065]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.h"
+File Type = "Include"
+Disk Date = 3615847382
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Source Window State = "1,23,23,23,0,26,26,0,0,0,0,0,0,0,0,0,17,0,22,27,411,726,1,0,"
+
+[File 0066]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ProjectPanel.h"
+File Type = "Include"
+Disk Date = 3615600428
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0067]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.h"
+File Type = "Include"
+Disk Date = 3615590156
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,38,38,38,1,16,16,0,3,0,0,0,0,0,0,0,29,0,38,1,411,726,1,0,"
+
+[File 0068]
+Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.h"
+File Type = "Include"
+Disk Date = 3615851721
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0069]
 Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.h"
 File Type = "Include"
 Disk Date = 3615304048
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
+[File 0070]
+Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.h"
+File Type = "Include"
+Disk Date = 3615534704
+In Projects = "1,"
+Window Top = 182
+Window Left = 90
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,551,1164,1,0,"
+
+[File 0071]
+Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.h"
+File Type = "Include"
+Disk Date = 3615590156
+In Projects = "1,"
+Window Top = 33
+Window Left = 74
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,20,0,0,0,411,726,1,0,"
+
+[File 0072]
+Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
+File Type = "Include"
+Disk Date = 3615862154
+In Projects = "1,"
+Window Top = 157
+Window Left = 74
+Source Window State = "1,31,31,31,54,76,54,0,0,0,0,0,0,0,0,0,9,0,31,58,411,726,1,0,"
+
+[File 0073]
+Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
+File Type = "Include"
+Disk Date = 3615590156
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0074]
+Path = "/e/SINOAGG/Software/SA6101/Src/main.h"
+File Type = "Include"
+Disk Date = 3615613311
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,0,34,20,400,600,1,0,"
+
+[File 0075]
+Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
+File Type = "Include"
+Disk Date = 3615847382
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Window Height = 411
+Window Width = 726
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,411,726,1,0,"
+
+[File 0076]
+Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
+File Type = "Include"
+Disk Date = 3615853496
+In Projects = "1,"
+Window Top = 64
+Window Left = 42
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,411,726,1,0,"
+
+[File 0077]
+Path = "/e/SINOAGG/Software/SA6101/Src/Timer.h"
+File Type = "Include"
+Disk Date = 3615590156
+In Projects = "1,"
+Window Top = 30
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,24,400,600,1,0,"
+
 [Tab Order]
 Tab 0001 = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.c"
-Tab 0002 = "/e/SINOAGG/Software/SA6101/Src/main.c"
-Tab 0003 = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
-Tab 0004 = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
-Tab 0005 = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
-Tab 0006 = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
-Tab 0007 = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
-Tab 0008 = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
-Tab 0009 = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
+Tab 0002 = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
+Tab 0003 = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
+Tab 0004 = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.c"
+Tab 0005 = "/e/SINOAGG/Software/SA6101/UI Files/Panel/GraphDisp.uir"
+Tab 0006 = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.uir"
+Tab 0007 = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.h"
+Tab 0008 = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Result Menu.uir"
+Tab 0009 = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Settings.uir"
+Tab 0010 = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ProjectPanel.uir"
+Tab 0011 = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.c"
+Tab 0012 = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.c"
+Tab 0013 = "/e/SINOAGG/Software/SA6101/Src/main.c"
+Tab 0014 = "/e/SINOAGG/Software/SA6101/Src/Table.c"
+Tab 0015 = "/e/SINOAGG/Software/SA6101/Src/Panel/ProjectPanel.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

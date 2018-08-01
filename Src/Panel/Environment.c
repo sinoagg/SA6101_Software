@@ -3,16 +3,16 @@
 
 int CVICALLBACK MesaureCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
-{ int CheckValue;
+{ 	
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			//Measure 多选
-			GetCtrlVal(panel,control,&CheckValue);
-				   if(CheckValue){
-					   SetCtrlVal(panel,ENVIRONMEN_TEMPTER,CheckValue);
-					   SetCtrlVal(panel,ENVIRONMEN_HUMIDITY,CheckValue);
-					   SetCtrlVal(panel,ENVIRONMEN_PRESSURE,CheckValue);
+			int val; //Measure 多选
+			GetCtrlVal(panel,control,&val);
+				   if(val){
+					   SetCtrlVal(panel,ENVIRONMEN_TEMPTER,val);
+					   SetCtrlVal(panel,ENVIRONMEN_HUMIDITY,val);
+					   SetCtrlVal(panel,ENVIRONMEN_PRESSURE,val);
 						 
 				   } else{
 				   	   SetCtrlVal(panel,ENVIRONMEN_TEMPTER,0);

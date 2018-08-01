@@ -36,14 +36,14 @@
 #define  IDVGS_CFG_VD_STOP                21      /* control type: numeric, callback function: IdVgDrainStopCallback */
 #define  IDVGS_CFG_VD_START               22      /* control type: numeric, callback function: IdVgDrainStartCallback */
 #define  IDVGS_CFG_DRAINMODE              23      /* control type: ring, callback function: IdVgDrainModeCallback */
-#define  IDVGS_CFG_TEXTMSG_18             24      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_MV_START               24      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_MODE               25      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_START              26      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_STOP               27      /* control type: textMsg, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_20             28      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_MV_STOP                28      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_STEP               29      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_PIC_DRAIN              30      /* control type: picture, callback function: (none) */
-#define  IDVGS_CFG_TEXTMSG_22             31      /* control type: textMsg, callback function: (none) */
+#define  IDVGS_CFG_MV_STEP                31      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_TXT_DRAIN              32      /* control type: textMsg, callback function: (none) */
 #define  IDVGS_CFG_DECORATION_GATE        33      /* control type: deco, callback function: IdVgDrainDecoCallback */
 #define  IDVGS_CFG_DECORATION_DRAIN       34      /* control type: deco, callback function: IdVgGateDecoCallback */

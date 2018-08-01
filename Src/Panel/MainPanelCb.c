@@ -80,16 +80,16 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 
 			break;
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
-			SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
-		    SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
-	        SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
+		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
+	        SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线 
 			
 			int expType;
 			int graphIndex=1;	//currently only deal with one graph circumstance
 			int numOfCurve=0;
 			int numOfDots=500;
-			if(GetCtrlVal(expListPanel, EXP_LIST_TREE, &expType)<0)
+			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
 				return -1;
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)expType, measUartTxBuf);		//send config to instrument via UART 
  
@@ -142,9 +142,9 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
 			DiscardAsyncTimer(TimerID);
 			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
-		  	SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-		    SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+		  	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 			break;
 	}
 	return 0;
@@ -159,10 +159,10 @@ int CVICALLBACK SaveCallback (int panel, int control, int event,
 			//TODO
 			break;
 		case EVENT_LEFT_CLICK:			    //当Save被鼠标左键点击时 
-			DisplayImageFile (mainPanel, MAIN_PANEL_SAVE, "Resource\\Save_pressed.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SAVE, "Resource\\Save_pressed.ico");
 			break;
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时  
-			DisplayImageFile (mainPanel, MAIN_PANEL_SAVE, "Resource\\Save.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SAVE, "Resource\\Save.ico");
 			if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1,  configSavePath)>0)
 				SaveConfigToFile(configSavePath);
 			break;
@@ -178,16 +178,18 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:			    //当Select被鼠标左键点击时,Select图标改变，其它两个正常状态 
-			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
-			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
-			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 	 		SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	        DisplayPanel(IdVdPanel.panelHandle);
+
 			HidePanel(hBasicSamplePanel);	 
 			HidePanel(hResultDispPanel);
-			HidePanel(AnalyenvirPanel);
-			HidePanel(environmentPanel);
+			HidePanel(hEnvResultPanel);
+			HidePanel(hEnvCfgPanel);
+			HidePanel(hResultDispPanel);  
 			break;
 	}
 	return 0;
@@ -202,9 +204,9 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 	switch (event)
 	{
  		case EVENT_LEFT_CLICK_UP:			    //当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
-			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
-			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
-			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 			break;
 		case EVENT_LEFT_CLICK:
 			//点击Configure图标回到Id_vds界面
@@ -216,9 +218,9 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			SetPanelSize(hBasicSamplePanel, 449, 300);
 			DisplayPanel(hBasicSamplePanel);
 			
-			SetPanelPos(environmentPanel, 556, 1600);
-			SetPanelSize(environmentPanel, 449, 300);
-			DisplayPanel(environmentPanel);
+			SetPanelPos(hEnvCfgPanel, 556, 1600);
+			SetPanelSize(hEnvCfgPanel, 449, 300);
+			DisplayPanel(hEnvCfgPanel);
 			break;
 	}
 	return 0;
@@ -233,9 +235,9 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK:
-			SetPanelPos(resultPanel, 105, 305);  
-	     	SetPanelSize(resultPanel, 65, 1293);      
- 			DisplayPanel(resultPanel);  
+			SetPanelPos(hResultMenuPanel, 105, 305);  
+	     	SetPanelSize(hResultMenuPanel, 65, 1293);      
+ 			DisplayPanel(hResultMenuPanel);  
 			
 			SetPanelPos(hGraphPanel, 172, 305);  
 	     	SetPanelSize(hGraphPanel, 833, 1293);
@@ -247,15 +249,15 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			SetPanelSize(hResultDispPanel, 449, 300);
 			DisplayPanel(hResultDispPanel);
 			
-			SetPanelPos(AnalyenvirPanel, 556, 1600);
-			SetPanelSize(AnalyenvirPanel, 449, 300);
-			DisplayPanel(AnalyenvirPanel);
+			SetPanelPos(hEnvResultPanel, 556, 1600);
+			SetPanelSize(hEnvResultPanel, 449, 300);
+			DisplayPanel(hEnvResultPanel);
 			break;
 			
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
-			DisplayImageFile (mainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
-			DisplayImageFile (mainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
-			DisplayImageFile (mainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
 			break;
 	}
 	return 0;
@@ -268,11 +270,12 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-	         InstallPopup (setPanel);    //弹出setPanel 
-	
-			SetPanelPos(ENVTPanel, 5, 170);
-			SetPanelSize(ENVTPanel, 350, 650);
-			DisplayPanel(ENVTPanel);
+	         InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
+
+			SetPanelPos(hSettingsPrjPanel, 5, 170);
+			SetPanelSize(hSettingsPrjPanel, 350, 650);
+			DisplayPanel(hSettingsPrjPanel);
+
 			break;
 	}
 	return 0;
@@ -309,10 +312,10 @@ static int SaveConfigToFile(char* pConfigSavePath)
 		char comment[maxCommentSize];
 		//GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置
 		//GetIdVgCfg(IdVgPanel);						//获取IdVg面板设置
-		//GetITCfg(iTPanel);
-		//GetRTCfg(rTPanel);
+		//GetITCfg(hIT_Panel);
+		//GetRTCfg(hRT_Panel);
 		//GetSampleCfg(samplePanel);
-		//GetEnvironmentCfg(environmentPanel);
+		//GetEnvironmentCfg(hEnvCfgPanel);
 		PromptPopup("Message", "Please enter comment for this configuration:", comment, maxCommentSize-1);
 		fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
 		fprintf(fp, "Comment: %s", comment);
@@ -330,10 +333,10 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
 		
-			InstallPopup (proPanel); 
-			SetPanelPos(defPanel, 90, -10);
-			SetPanelSize(defPanel, 115, 1300);
-			DisplayPanel(defPanel);  
+			InstallPopup (hPrjPanel); 
+			SetPanelPos(hPrjListPanel, 90, -10);
+			SetPanelSize(hPrjListPanel, 115, 1300);
+			DisplayPanel(hPrjListPanel);  
 			break;
 	}	 
 	 

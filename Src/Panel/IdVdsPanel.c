@@ -80,6 +80,7 @@ int CVICALLBACK IdVdDrainDecoCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	switch(event){
+			
 	   case EVENT_LEFT_CLICK_UP:
 		  SetDrainDisp(panel, FOCUS);
 		  SetGateDisp(panel, UNFOCUS);
@@ -100,10 +101,23 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 		case EVENT_VAL_CHANGED:
 			int val;
 			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
-			if(val==1)
+			if(val==1){
 		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
-			else if(val==2)
+				SetCtrlAttribute(panel, IDVDS_CFG_VG_STOP,ATTR_VISIBLE,1);
+				SetCtrlAttribute(panel, IDVDS_CFG_TXT_STOP,ATTR_VISIBLE,1);
+				SetCtrlAttribute(panel, IDVDS_CFG_MV_STOP,ATTR_VISIBLE,1);
+				SetCtrlAttribute(panel, IDVDS_CFG_VG_STEP,ATTR_VISIBLE,1);
+				SetCtrlAttribute(panel, IDVDS_CFG_TXT_STEP,ATTR_VISIBLE,1);
+				SetCtrlAttribute(panel, IDVDS_CFG_MV_STEP,ATTR_VISIBLE,1);
+			}else if(val==2){
 				DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Bias.ico");
+				SetCtrlAttribute(panel, IDVDS_CFG_VG_STOP,ATTR_VISIBLE,0);
+				SetCtrlAttribute(panel, IDVDS_CFG_TXT_STOP,ATTR_VISIBLE,0);
+				SetCtrlAttribute(panel, IDVDS_CFG_MV_STOP,ATTR_VISIBLE,0);
+				SetCtrlAttribute(panel, IDVDS_CFG_VG_STEP,ATTR_VISIBLE,0);
+				SetCtrlAttribute(panel, IDVDS_CFG_TXT_STEP,ATTR_VISIBLE,0);
+				SetCtrlAttribute(panel, IDVDS_CFG_MV_STEP,ATTR_VISIBLE,0);
+			}
 			break;
 		 }  
 	return 0;

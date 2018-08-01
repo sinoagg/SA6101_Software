@@ -2,7 +2,6 @@ asynctmr.obj
 Curve.obj
 Environment.obj
 ExpListPanel.obj
-File.obj
 Graph.obj
 IdVdsPanel.obj
 IdVgsPanel.obj

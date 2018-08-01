@@ -44,28 +44,27 @@
 
 //==============================================================================
 // External variables
-extern int mainPanel;
-extern int expListPanel;
+extern int hMainPanel;
+extern int hExpListPanel;
 extern int samplePanel;
 extern int hGraphPanel;
 extern int hBasicSamplePanel;  
 extern int hAdvanceSamplePanel;
-extern int environmentPanel;
-extern int resultPanel;	     //result menu panel
-extern int tablePanel;
+extern int hEnvCfgPanel;
+extern int hResultMenuPanel;	     //result menu panel
+extern int hTablePanel;
 extern int hResultDispPanel;
-extern int saveDataPanel; 
-extern int ENVTPanel;  
-extern int GRAPHPanel;
-extern int ABOUTPanel;
-extern int iTPanel;          //I-T panel
-extern int rTPanel;          //R-T panel
-extern int setPanel;
-extern int doubleGraphDispPanel;      // double graph panel 
-extern int chPanel;          //chose panel
-extern int AnalyenvirPanel;
-extern int proPanel;
-extern int defPanel;
+extern int hSaveDataPanel; 
+extern int hSettingsPrjPanel;  
+extern int hSettingsGraphPanel;
+extern int hSettingsAboutPanel;
+extern int hIT_Panel;          //I-T panel
+extern int hRT_Panel;          //R-T panel
+extern int hSettingsPanel;
+extern int hGraphSelectPanel;          //chose panel
+extern int hEnvResultPanel;
+extern int hPrjPanel;
+extern int hPrjListPanel;
 
 
 //==============================================================================

@@ -53,9 +53,9 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		if(RxData.rxStopSign==0x01)													//if complete the test, stop the timer
 		{
 			DiscardAsyncTimer(TimerID);
-			SetCtrlAttribute (mainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-		    SetCtrlAttribute (mainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			SetCtrlAttribute (mainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 		}
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++;
@@ -85,7 +85,7 @@ int main (int argc, char *argv[])
 	RunUserInterface();
 	CloseCom(measureComPort);
 	if(SA11_Status==1) CloseCom(controlComPort);
-	DiscardPanel (mainPanel);
+	DiscardPanel (hMainPanel);
 	return 0;
 }
 
