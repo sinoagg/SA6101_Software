@@ -16,8 +16,8 @@
 #define  SAMPLE_ADV                       1
 #define  SAMPLE_ADV_PIC_SET               2       /* control type: picture, callback function: (none) */
 #define  SAMPLE_ADV_BSCSET                3       /* control type: textMsg, callback function: BasicSetCallback */
-#define  SAMPLE_ADV_MINRANGE              4       /* control type: ring, callback function: (none) */
-#define  SAMPLE_ADV_MAXRANGE              5       /* control type: ring, callback function: (none) */
+#define  SAMPLE_ADV_MAXRANGE              4       /* control type: ring, callback function: (none) */
+#define  SAMPLE_ADV_MINRANGE              5       /* control type: ring, callback function: (none) */
 #define  SAMPLE_ADV_TEXTMSG_6             6       /* control type: textMsg, callback function: (none) */
 #define  SAMPLE_ADV_TEXTMSG_7             7       /* control type: textMsg, callback function: (none) */
 
