@@ -76,8 +76,26 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_COMMIT:
-
+		case EVENT_LEFT_CLICK:
+		    SetPanelPos(hResultMenuPanel, 105, 305);  
+	     	SetPanelSize(hResultMenuPanel, 65, 1293);      
+ 			DisplayPanel(hResultMenuPanel);  
+			
+			SetPanelPos(hGraphPanel, 172, 305);  
+	     	SetPanelSize(hGraphPanel, 833, 1293);
+			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+ 			DisplayPanel(hGraphPanel);
+		   
+			SetPanelPos(hResultDispPanel, 105, 1600);
+			SetPanelSize(hResultDispPanel, 449, 300);
+			DisplayPanel(hResultDispPanel);
+			SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
+			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
+			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
+			SetPanelPos(hEnvResultPanel, 556, 1600);
+			SetPanelSize(hEnvResultPanel, 449, 300);
+			DisplayPanel(hEnvResultPanel);
 			break;
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
@@ -188,8 +206,13 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
+<<<<<<< HEAD
 	 		SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 	        SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+=======
+	 		SetPanelPos(IdVdPanel.panelHandle, 104, 305);
+	        SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 	        DisplayPanel(IdVdPanel.panelHandle);
 
 			HidePanel(hBasicSamplePanel);	 
@@ -197,6 +220,13 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			HidePanel(hEnvResultPanel);
 			HidePanel(hEnvCfgPanel);
 			HidePanel(hResultDispPanel);  
+			
+			//清除显示双图表value
+			int val; 
+			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			if(val){
+				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			}
 			break;
 	}
 	return 0;
@@ -217,8 +247,13 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			break;
 		case EVENT_LEFT_CLICK:
 			//点击Configure图标回到Id_vds界面
+<<<<<<< HEAD
 			SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 			SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+=======
+			SetPanelPos(IdVdPanel.panelHandle, 104, 305);
+			SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 			DisplayPanel(IdVdPanel.panelHandle);
 			
 			SetPanelPos(hBasicSamplePanel, 105, 1600);
@@ -228,6 +263,15 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			SetPanelPos(hEnvCfgPanel, 556, 1600);
 			SetPanelSize(hEnvCfgPanel, 449, 300);
 			DisplayPanel(hEnvCfgPanel);
+<<<<<<< HEAD
+=======
+			//清除显示双图表value
+			int val; 
+			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			if(val){
+				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			}
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 			break;
 	}
 	return 0;
@@ -255,6 +299,13 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			SetPanelPos(hResultDispPanel, 105, 1600);
 			SetPanelSize(hResultDispPanel, 449, 300);
 			DisplayPanel(hResultDispPanel);
+<<<<<<< HEAD
+=======
+			SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
+			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
+			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
+			
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 			
 			SetPanelPos(hEnvResultPanel, 556, 1600);
 			SetPanelSize(hEnvResultPanel, 449, 300);
@@ -265,6 +316,15 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
+<<<<<<< HEAD
+=======
+			//清除显示双图表value
+			int val; 
+			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			if(val){
+				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			}
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 			break;
 	}
 	return 0;

@@ -2,7 +2,7 @@
 #include "Table.h"
 #include "LoadPanel.h"
 /*
-Table_TypeDef Table_ATTR*/;
+Table_TypeDef Table_ATTR*/
 
 char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K"};
 

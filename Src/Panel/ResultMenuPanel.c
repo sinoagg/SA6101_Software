@@ -207,9 +207,9 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 //======================Chose=================================
 int CVICALLBACK ChoseCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
-{
-	int CheckValue;
+{  
 	if( event == EVENT_VAL_CHANGED)
+<<<<<<< HEAD
 	{   HidePanel(hGraphSelectPanel);
 		GetCtrlVal(panel, CHPANEL_CHECKBOX, &CheckValue);
 		if(CheckValue)
@@ -223,6 +223,18 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 		else
 		{
 			
+=======
+		 {      	
+			 HidePanel(hGraphSelectPanel); 
+			 int val;
+		  	 GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
+		     if(val){	
+				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
+				HidePanel(hGraphSelectPanel);
+			    HidePanel(hTablePanel);
+		    }else{   	
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
 			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
 		}

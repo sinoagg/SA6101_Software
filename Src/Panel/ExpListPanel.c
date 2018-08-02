@@ -52,6 +52,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			int index;
 			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
 			if(index==1){ 	//加载I-T
+<<<<<<< HEAD
 				SetPanelPos(hIT_Panel, 105, 305);
 				SetPanelSize(hIT_Panel, 900, 1293);
 				DisplayPanel(hIT_Panel);
@@ -62,15 +63,42 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			} else if(index==4) {// 加载Id_Vds Configuration 
 				SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 				SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
+=======
+				SetPanelPos(hIT_Panel, 104, 305);
+				SetPanelSize(hIT_Panel, 901, 1293);
+				DisplayPanel(hIT_Panel);
+				SetPanelPos(hResultDispPanel, 104, 1600);
+			    SetPanelSize(hResultDispPanel, 450 ,300);
+			    DisplayPanel(hResultDispPanel);
+		        SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,1);
+				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,1);
+				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,1);
+			}else if(index==2){	//加载R-T 	
+				SetPanelPos(hRT_Panel, 104, 305);
+				SetPanelSize(hRT_Panel, 901, 1293);
+				DisplayPanel(hRT_Panel);	
+				SetPanelPos(hResultDispPanel, 104, 1600);
+			    SetPanelSize(hResultDispPanel, 450, 300);
+			    DisplayPanel(hResultDispPanel);
+		        SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,1);
+				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,1);
+				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,1);
+			}else if(index==4) {// 加载Id_Vds Configuration 
+				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
+				SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
+>>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 				DisplayPanel(IdVdPanel.panelHandle);
 			}else if(index==5){ 	//  加载Id_Vgs Configuration    
-				SetPanelPos(IdVgPanel.panelHandle, 105, 305);
-				SetPanelSize(IdVgPanel.panelHandle, 900, 1293);
+				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVgPanel.panelHandle);
-			}else {
+				
+			}else if(index==0||index==3||index==4||index==5){
 					//
-					
-					}
+			    SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
+				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
+				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
+			}
 			break;
 	}  
 	return 0;
