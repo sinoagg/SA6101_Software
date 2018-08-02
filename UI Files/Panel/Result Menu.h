@@ -14,7 +14,7 @@
      /* Panels and Controls: */
 
 #define  CHPANEL                          1
-#define  CHPANEL_CHECKBOX                 2       /* control type: radioButton, callback function: ChoseCallback */
+#define  CHPANEL_CHECKBOX                 2       /* control type: radioButton, callback function: GraphSelectCallback */
 
 #define  RESULTMENU                       2
 #define  RESULTMENU_TABLE                 2       /* control type: picture, callback function: TableCallback */
@@ -53,9 +53,9 @@
 int  CVICALLBACK BrowseGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK BrowseGraph2Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK BrowseSheetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK ChoseCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK GraphCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK GraphSelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SaveAllCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SaveDataCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SaveGraph1Callback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

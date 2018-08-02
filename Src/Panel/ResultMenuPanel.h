@@ -31,8 +31,7 @@
 
 //==============================================================================
 // Global functions
-
-static int SaveGraph(int panel, int control, int plotHandle, const char path[]);
+void DispResultTableGraph(void);
 
 #ifdef __cplusplus
     }

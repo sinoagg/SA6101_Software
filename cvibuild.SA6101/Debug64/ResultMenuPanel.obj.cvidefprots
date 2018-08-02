@@ -1,3 +1,7 @@
+[DispResultTableGraph]
+Class="Function"
+Prototype="void DispResultTableGraph();"
+
 [TableCallback]
 Class="Function"
 Prototype="int TableCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
@@ -5,6 +9,10 @@ Prototype="int TableCallback(int panel, int control, int event, void *callbackDa
 [GraphCallback]
 Class="Function"
 Prototype="int GraphCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[GraphSelectCallback]
+Class="Function"
+Prototype="int GraphSelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [SaveDataCallback]
 Class="Function"
@@ -37,10 +45,6 @@ Prototype="int SaveGraph2Callback(int panel, int control, int event, void *callb
 [SaveAllCallback]
 Class="Function"
 Prototype="int SaveAllCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-
-[ChoseCallback]
-Class="Function"
-Prototype="int ChoseCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [SaveSheetCallback]
 Class="Function"

@@ -37,7 +37,7 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 	}
 	else
 	{
-		switch(CurveIndex)
+		switch(CurveIndex%3)
 		{
 			case CURVE1:
 				pCurveAttr=&Graph2_CurveAttr1;

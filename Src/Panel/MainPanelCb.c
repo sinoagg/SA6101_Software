@@ -24,6 +24,7 @@
 #include "Timer.h"
 #include "SampleCfgPanel.h"
 #include "main.h"
+#include "ResultMenuPanel.h"
 
 //==============================================================================
 // Constants
@@ -266,6 +267,30 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 	return 0;
 }
 
+static void DispResultMenu(void)
+{
+	SetPanelPos(hResultMenuPanel, 105, 305);  
+ 	SetPanelSize(hResultMenuPanel, 65, 1293);      
+	DisplayPanel(hResultMenuPanel);
+}
+
+static void DispResultNumber(void)
+{
+	SetPanelPos(hResultDispPanel, 105, 1600);
+	SetPanelSize(hResultDispPanel, 449, 300);
+	DisplayPanel(hResultDispPanel);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
+}
+
+static void DispEnvironmentCfg(void)
+{
+	SetPanelPos(hEnvResultPanel, 556, 1600);
+	SetPanelSize(hEnvResultPanel, 449, 300);
+	DisplayPanel(hEnvResultPanel);
+}
+
 //===================================================
 //   Analyze_Callback
 
@@ -274,41 +299,23 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK:
-			SetPanelPos(hResultMenuPanel, 105, 305);  
-	     	SetPanelSize(hResultMenuPanel, 65, 1293);      
- 			DisplayPanel(hResultMenuPanel);  
-			
-			SetPanelPos(hGraphPanel, 172, 305);  
-	     	SetPanelSize(hGraphPanel, 833, 1293);
-			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
- 			DisplayPanel(hGraphPanel);
-		   
-			SetPanelPos(hResultDispPanel, 105, 1600);
-			SetPanelSize(hResultDispPanel, 449, 300);
-			DisplayPanel(hResultDispPanel);
-
-			SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
-			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
-			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
-			
-			SetPanelPos(hEnvResultPanel, 556, 1600);
-			SetPanelSize(hEnvResultPanel, 449, 300);
-			DisplayPanel(hEnvResultPanel);
-			break;
-			
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
-
+			
+			DispResultMenu();
+			DispResultTableGraph();
+			DispResultNumber();
+			
+			DispEnvironmentCfg();
+			
 			//清除显示双图表value
-			int val; 
-			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			}
+			//int val; 
+			//GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			//if(val){
+			//	SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			//}
 			break;
 	}
 	return 0;
