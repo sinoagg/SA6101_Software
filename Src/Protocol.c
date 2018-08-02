@@ -71,11 +71,11 @@ static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth
 	return xorCheck;	
 }
 
-static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char expType, unsigned char* pmeasUartTxBuf)
+static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
 	*pmeasUartTxBuf=devAddr;
 	*(pmeasUartTxBuf+1)=MSG_TYPE_SETTING;     
-	*(pmeasUartTxBuf+2)=(unsigned char)expType;
+	*(pmeasUartTxBuf+2)=(unsigned char)(pTestPara->testMode);
 	*(pmeasUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);
 	*(pmeasUartTxBuf+5)=(unsigned char)((pTestPara->VdStart)&0xFF);
 	*(pmeasUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);
@@ -98,6 +98,9 @@ static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, 
 	*(pmeasUartTxBuf+23)=(unsigned char)((pTestPara->sampleRate)&0xFF);
 	*(pmeasUartTxBuf+24)=(unsigned char)((pTestPara->sampleNumber)>>8);
 	*(pmeasUartTxBuf+25)=(unsigned char)((pTestPara->sampleNumber)&0xFF);
+	*(pmeasUartTxBuf+26)=(unsigned char)(pTestPara->rangeMode);
+	*(pmeasUartTxBuf+27)=(unsigned char)(pTestPara->maxRange);
+	*(pmeasUartTxBuf+28)=(unsigned char)(pTestPara->minRange);
 	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1); 
 }
 
@@ -119,7 +122,7 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 			//GetTestPara(&IdVdPanel, &TestPara);
 			break;
 	}
-	PrepareCfgTxData(&TestPara, devAddr, expType, pmeasUartTxBuf);      
+	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      
 	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
