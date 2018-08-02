@@ -254,7 +254,16 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			SetPanelSize(hEnvCfgPanel, 449, 300);
 			DisplayPanel(hEnvCfgPanel);
 
+<<<<<<< HEAD
 	
+=======
+			//清除显示双图表value
+			int val; 
+			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			if(val){
+				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			}
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 			break;
 	}
 	return 0;
@@ -287,8 +296,11 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
 			
+<<<<<<< HEAD
 
 			
+=======
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 			SetPanelPos(hEnvResultPanel, 556, 1600);
 			SetPanelSize(hEnvResultPanel, 449, 300);
 			DisplayPanel(hEnvResultPanel);
@@ -312,8 +324,12 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 		  	DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
+<<<<<<< HEAD
 			
 			
+=======
+
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 			//清除显示双图表value
 			
 		 

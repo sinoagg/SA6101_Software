@@ -53,8 +53,13 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
 			if(index==1)
 			{ 	//加载I-T
+<<<<<<< HEAD
 				SetPanelPos(hIT_Panel, 105, 305);
 				SetPanelSize(hIT_Panel, 900, 1293);
+=======
+				SetPanelPos(hIT_Panel, 104, 305);
+				SetPanelSize(hIT_Panel, 901, 1293);
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 				DisplayPanel(hIT_Panel);
 				SetPanelPos(hResultDispPanel, 104, 1600);
 			    SetPanelSize(hResultDispPanel, 450 ,300);
@@ -62,6 +67,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 		        SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,1);
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,1);
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,1);
+<<<<<<< HEAD
 				
 				
 				DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
@@ -71,12 +77,21 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hRT_Panel, 105, 305);
 				SetPanelSize(hRT_Panel, 900, 1293);
 				DisplayPanel(hRT_Panel);
+=======
+			}
+			else if(index==2)
+			{	//加载R-T 	
+				SetPanelPos(hRT_Panel, 104, 305);
+				SetPanelSize(hRT_Panel, 901, 1293);
+				DisplayPanel(hRT_Panel);	
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 				SetPanelPos(hResultDispPanel, 104, 1600);
 			    SetPanelSize(hResultDispPanel, 450, 300);
 			    DisplayPanel(hResultDispPanel);
 		        SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,1);
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,1);
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,1);
+<<<<<<< HEAD
 			
 			    DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 				DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
@@ -87,12 +102,24 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				DisplayPanel(IdVdPanel.panelHandle);
 
 			}else if(index==5){ 	//  加载Id_Vgs Configuration    
+=======
+			}
+			else if(index==4) 
+			{// 加载Id_Vds Configuration 
+				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
+				SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
+				DisplayPanel(IdVdPanel.panelHandle);
+			}
+			else if(index==5)
+			{ 	//  加载Id_Vgs Configuration    
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVgPanel.panelHandle);
-				
-			}else if(index==0||index==3||index==4||index==5){
-					//
+			}
+			else if(index==0||index==3||index==4||index==5)
+			{
+				//
 			    SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);

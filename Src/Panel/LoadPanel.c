@@ -132,6 +132,7 @@ int LoadInitPanel (void)
 	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	DisplayPanel(IdVdPanel.panelHandle);
 
+<<<<<<< HEAD
 	
 	SetPanelPos(hBasicSamplePanel, 105, 1600);
 	SetPanelSize(hBasicSamplePanel, 449, 300);
@@ -142,6 +143,8 @@ int LoadInitPanel (void)
 	DisplayPanel(hEnvCfgPanel);
 	
 
+=======
+>>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 	//
 	//SetPanelPos(hBasicSamplePanel, 105, 1600);
 	//SetPanelSize(hBasicSamplePanel, 449, 300);

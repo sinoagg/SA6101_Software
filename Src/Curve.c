@@ -31,10 +31,7 @@
 //==============================================================================
 // Global functions
 
-/// HIFN  What does your function do?
-/// HIPAR x/What inputs does your function expect?
-/// HIRET What does your function return?
-int curveInit(int curveIndex, int numOfTotalDots, CurveTypeDef* pCurve)
+int curveInit(CurveTypeDef* pCurve, int curveIndex, int numOfTotalDots, CurveAttrTypeDef* pCurveAttr)
 {
 	pCurve->pDotXHead = (float *)malloc(numOfTotalDots * sizeof(float));
 	if(pCurve->pDotXHead == NULL) return -1;
@@ -49,7 +46,7 @@ int curveInit(int curveIndex, int numOfTotalDots, CurveTypeDef* pCurve)
 	pCurve->time=0;
 	pCurve->pDotXPlot=pCurve->pDotX;				//画图的指针指向数据的指针
 	pCurve->pDotYPlot=pCurve->pDotY;				//画图的指针指向数据的指针 	
-	
+	pCurve->pCurveAttr=pCurveAttr;					//直接把指针指向其他定义好的CurveAttr， 这里没有必要重新定义
 	return 0;
 }
 
