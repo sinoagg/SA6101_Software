@@ -51,8 +51,8 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			int index;
 			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
-			if(index==1){ 	//加载I-T
-
+			if(index==1)
+			{ 	//加载I-T
 				SetPanelPos(hIT_Panel, 105, 305);
 				SetPanelSize(hIT_Panel, 900, 1293);
 				DisplayPanel(hIT_Panel);

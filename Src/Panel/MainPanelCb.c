@@ -217,13 +217,9 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			HidePanel(hEnvResultPanel);
 			HidePanel(hEnvCfgPanel);
 			HidePanel(hResultDispPanel);  
+			 
 			
-			//清除显示双图表value
-			int val; 
-			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			}
+		
 			break;
 	}
 	return 0;
@@ -258,13 +254,7 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			SetPanelSize(hEnvCfgPanel, 449, 300);
 			DisplayPanel(hEnvCfgPanel);
 
-			//清除显示双图表value
-			int val; 
-			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			}
-
+	
 			break;
 	}
 	return 0;
@@ -302,19 +292,32 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			SetPanelPos(hEnvResultPanel, 556, 1600);
 			SetPanelSize(hEnvResultPanel, 449, 300);
 			DisplayPanel(hEnvResultPanel);
+			int val; 
+			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			if(val)
+			{
+				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0); 	
+				//DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico"); 
+			}
+			else
+			{
+			 //DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");
+			    
+			}
 			break;
 			
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+		  	DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
-
+			
+			
 			//清除显示双图表value
-			int val; 
-			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			}
+			
+		 
+			
 break;
 	}
 	return 0;
