@@ -1,6 +1,6 @@
 //==============================================================================
 //
-// Title:		SettingsPanel.h
+// Title:		IdVdsPanel.h
 // Purpose:		A short description of the interface.
 //
 // Created on:	18/7/10 at 18:10:32 by .
@@ -8,8 +8,8 @@
 //
 //==============================================================================
 
-#ifndef __SettingsPanel_H__
-#define __SettingsPanel_H__
+#ifndef __EnvironmentPanel_H__
+#define __EnvironmentPanel_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -18,15 +18,10 @@
 //==============================================================================
 // Include files
 #include "cvidef.h"
-#include "Settings.h"
-#include "Curve.h"
+#include "Environment.h"
 //==============================================================================
 // Constants
-#define GRAPH1 0
-#define GRAPH2 1
-#define CURVE1 0
-#define CURVE2 1  
-#define CURVE3 2  
+
 //==============================================================================
 // Types
 
@@ -35,7 +30,7 @@
 
 //==============================================================================
 // Global functions
-CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex);
+
 #ifdef __cplusplus
     }
 #endif

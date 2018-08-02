@@ -1,10 +1,59 @@
 #include <userint.h>
 #include "MainPanel.h"
-
 #include "LoadPanel.h"
+#include "SettingsPanel.h"
+#include "Curve.h"
+
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
+CurveAttrTypeDef Graph1_CurveAttr1;
+CurveAttrTypeDef Graph1_CurveAttr2;
+CurveAttrTypeDef Graph1_CurveAttr3;
+
+CurveAttrTypeDef Graph2_CurveAttr1;
+CurveAttrTypeDef Graph2_CurveAttr2;
+CurveAttrTypeDef Graph2_CurveAttr3;
+
+CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
+{
+	CurveAttrTypeDef* pCurveAttr;
+	if(GraphIndex==GRAPH1)
+	{
+		switch(CurveIndex)
+		{
+			case CURVE1:
+				pCurveAttr=&Graph1_CurveAttr1;
+				break;
+			case CURVE2:
+				pCurveAttr=&Graph1_CurveAttr2;
+				break;
+			case CURVE3:
+				pCurveAttr=&Graph1_CurveAttr3;
+				break;
+			default:
+				pCurveAttr=&Graph1_CurveAttr1; 
+		}
+	}
+	else
+	{
+		switch(CurveIndex)
+		{
+			case CURVE1:
+				pCurveAttr=&Graph2_CurveAttr1;
+				break;
+			case CURVE2:
+				pCurveAttr=&Graph2_CurveAttr2;
+				break;
+			case CURVE3:
+				pCurveAttr=&Graph2_CurveAttr3;
+				break;
+			default:
+				pCurveAttr=&Graph2_CurveAttr1; 
+		}	
+	}
+	return pCurveAttr;
+}
 
 int CVICALLBACK EnvBtnCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)

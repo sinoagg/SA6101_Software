@@ -16,6 +16,7 @@
 #include <ansi_c.h>
 #include "Curve.h"
 #include "Graph.h"
+#include "SettingsPanel.h"
 
 //==============================================================================
 // Constants
@@ -48,7 +49,7 @@ int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGrap
 	
 	for(i=0;i<numOfCurve;i++)		//init curve
 	{
-		if(curveInit(i, numOfDots, pCurveArray+i)==-1) return -1;
+		if(curveInit(pCurveArray+i, i, numOfDots, GetSettingsCurveAttr(graphIndex, i))==-1) return -1;
 	}
 	
 	GraphAttrTypeDef* pGraphAttr = (GraphAttrTypeDef *)malloc(sizeof(CurveTypeDef));

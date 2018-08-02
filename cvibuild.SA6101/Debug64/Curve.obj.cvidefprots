@@ -1,6 +1,6 @@
 [curveInit]
 Class="Function"
-Prototype="int curveInit(int curveIndex, int numOfTotalDots, CurveTypeDef *pCurve);"
+Prototype="int curveInit(CurveTypeDef *pCurve, int curveIndex, int numOfTotalDots, CurveAttrTypeDef *pCurveAttr);"
 
 [curveDeinit]
 Class="Function"

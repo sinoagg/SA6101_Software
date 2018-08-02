@@ -224,7 +224,7 @@ int CVICALLBACK ChoseCallback (int panel, int control, int event,
 	else
 	{   	
 
-		SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
 		SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
 	}
 	return 0;

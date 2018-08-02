@@ -131,17 +131,7 @@ int LoadInitPanel (void)
 	SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	DisplayPanel(IdVdPanel.panelHandle);
-<<<<<<< HEAD
-	
-	SetPanelPos(hBasicSamplePanel, 105, 1600);
-	SetPanelSize(hBasicSamplePanel, 449, 300);
-	DisplayPanel(hBasicSamplePanel);
-	
-	SetPanelPos(hEnvCfgPanel, 556, 1600);
-	SetPanelSize(hEnvCfgPanel, 449, 300);
-	DisplayPanel(hEnvCfgPanel);
-	
-=======
+
 	//
 	//SetPanelPos(hBasicSamplePanel, 105, 1600);
 	//SetPanelSize(hBasicSamplePanel, 449, 300);
@@ -151,6 +141,5 @@ int LoadInitPanel (void)
 	//SetPanelSize(hEnvCfgPanel, 449, 300);
 	//DisplayPanel(hEnvCfgPanel);
 	//
->>>>>>> 5e26666d9116b8cf55638b542ca53b89331c91ab
 	return 0;
 }

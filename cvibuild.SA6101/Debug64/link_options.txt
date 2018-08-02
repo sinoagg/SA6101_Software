@@ -14,7 +14,7 @@
 -stackcommit:4096
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\asynctmr.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Curve.obj
--in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Environment.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\EnvironmentPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\ExpListPanel.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Graph.obj
 -in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\IdVdsPanel.obj

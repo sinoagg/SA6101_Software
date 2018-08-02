@@ -25,6 +25,13 @@
 // Types
 typedef struct
 {
+	int pointStyle;			//点样式
+	int plotStyle;			//画图样式
+	int lineStyle;			//曲线样式
+}CurveAttrTypeDef;
+		
+typedef struct
+{
 	int curveIndex;									//曲线序数
 	int numOfTotalDots;								//理论计算总点数
 	int numOfPlotDots;								//已画点数量
@@ -36,20 +43,21 @@ typedef struct
 	float* pDotY;									//当前接收点Y坐标地址
 	float* pDotXPlot;								//当前画线点X坐标
 	float* pDotYPlot;								//当前画线点Y坐标
+	CurveAttrTypeDef* pCurveAttr;
 }CurveTypeDef;
 
 typedef struct
 {
 	float x;										//x on X-Axis
 	float y;										//y on Y-Axis
-}Dot_TypeDef;
+}DotTypeDef;
 //==============================================================================
 // External variables
 
 //==============================================================================
 // Global functions
 
-int curveInit(int curveIndex, int numOfDots, CurveTypeDef* pCurve);
+int curveInit(CurveTypeDef* pCurve, int curveIndex, int numOfTotalDots, CurveAttrTypeDef* pCurveAttr);
 int curveDeinit(CurveTypeDef* pCurve);
 
 #ifdef __cplusplus
