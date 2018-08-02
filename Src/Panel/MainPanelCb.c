@@ -69,14 +69,13 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 	return 0;
 }
 
-//===================================================
-//   RunCallback
+//=====================RunCallback ==============================
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK:
+		case EVENT_LEFT_CLICK_UP://configure
 		    SetPanelPos(hResultMenuPanel, 105, 305);  
 	     	SetPanelSize(hResultMenuPanel, 65, 1293);      
  			DisplayPanel(hResultMenuPanel);  
@@ -96,8 +95,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			SetPanelPos(hEnvResultPanel, 556, 1600);
 			SetPanelSize(hEnvResultPanel, 449, 300);
 			DisplayPanel(hEnvResultPanel);
-			break;
-		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
+		
+		    //当鼠标释放时
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         //禁用 开始按钮      
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
 	        SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
@@ -154,8 +153,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	return 0;
 }
 
-//===================================================
-//   StopCallback
+//================== StopCallback =================================
+
 
 int CVICALLBACK StopCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
@@ -254,16 +253,13 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			SetPanelSize(hEnvCfgPanel, 449, 300);
 			DisplayPanel(hEnvCfgPanel);
 
-<<<<<<< HEAD
-	
-=======
 			//清除显示双图表value
 			int val; 
 			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
 			if(val){
 				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
 			}
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+
 			break;
 	}
 	return 0;
@@ -296,11 +292,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_ms,ATTR_VISIBLE,0);
 			
-<<<<<<< HEAD
-
-			
-=======
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 			SetPanelPos(hEnvResultPanel, 556, 1600);
 			SetPanelSize(hEnvResultPanel, 449, 300);
 			DisplayPanel(hEnvResultPanel);
@@ -309,32 +300,20 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			if(val)
 			{
 				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0); 	
-				//DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico"); 
 			}
 			else
 			{
-			 //DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");
-			    
+			 DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");
+			 DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");   
 			}
 			break;
 			
  		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
 		  	DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
-<<<<<<< HEAD
-			
-			
-=======
-
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-			//清除显示双图表value
-			
-		 
-			
-break;
+			break;
 	}
 	return 0;
 }
@@ -346,9 +325,8 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-	         InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
-
-			SetPanelPos(hSettingsPrjPanel, 5, 170);
+	        InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
+		   	SetPanelPos(hSettingsPrjPanel, 5, 170);
 			SetPanelSize(hSettingsPrjPanel, 350, 650);
 			DisplayPanel(hSettingsPrjPanel);
 
@@ -395,7 +373,8 @@ static int SaveConfigToFile(char* pConfigSavePath)
 int CVICALLBACK ProjectCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
-	switch(event){
+	switch(event)
+	{
 		case EVENT_LEFT_CLICK_UP:
 		
 			InstallPopup (hPrjPanel); 
@@ -403,7 +382,7 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 			SetPanelSize(hPrjListPanel, 115, 1300);
 			DisplayPanel(hPrjListPanel);  
 			break;
-	}	 
+	 }	 
 	 
 	return 0;
 }

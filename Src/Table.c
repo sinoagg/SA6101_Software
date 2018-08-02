@@ -19,13 +19,12 @@ char Table_title_IT[11][20] ={"Current(A)","Time(S)","Current(A)","Time(S)"};
 		   
 			InsertTableColumns(hTablePanel,TABLE_DISTABLE,1,column,VAL_CELL_STRING);              //向表中插入多少列 
 			InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1 , 1, VAL_CELL_STRING);				      		  //插入1行 
-			for(int i=1;i<column+1;i++) {
-			SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,i,ATTR_USE_LABEL_TEXT,1);                     //启用列首
-			SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,i,ATTR_COLUMN_WIDTH,column_width); 			  //设置列宽
-			SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE, i, ATTR_LABEL_TEXT, ABC[i-1]);              //列标号
-		    SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (i, 1), table_title_IV[i-1]);	          //分别设置标题 
-
-			
+			for(int i=1;i<column+1;i++) 
+			{
+				SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,i,ATTR_USE_LABEL_TEXT,1);                     //启用列首
+				SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,i,ATTR_COLUMN_WIDTH,column_width); 			  //设置列宽
+				SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE, i, ATTR_LABEL_TEXT, ABC[i-1]);              //列标号
+			    SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (i, 1), table_title_IV[i-1]);	          //分别设置标题 
 			}
 			
 }
@@ -53,15 +52,16 @@ int CVICALLBACK AddRowCallback (int panel, int control, int event,
 				int row;
    	            InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);				          //插入1行 
 				GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  //得到当前行数
-				for(int i=1;i<=column;i++){
+				for(int i=1;i<=column;i++)
+				{
 					//添加表格内容
 					 SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (i,row ), i*100.0);//第i列     
 					//内容居中显示效果   
 					 SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (i,row ), ATTR_CELL_JUSTIFY, VAL_CENTER_CENTER_JUSTIFIED); 
-				}
-					int MaxRow; //超出tanle高度后显示总能显示最后一行数据 
-					GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
-					SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);
+				 }
+				int MaxRow; //超出tanle高度后显示总能显示最后一行数据 
+				GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
+				SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);
 							
 				break;
 	}

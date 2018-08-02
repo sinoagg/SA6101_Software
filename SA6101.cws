@@ -1,8 +1,8 @@
 [Workspace Header]
 Version = 1700
-Pathname = "/e/SINOAGG/Software/SA6101/SA6101.cws"
-CVI Dir = "/c/program files (x86)/national instruments/cvi2017"
-CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
+Pathname = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/SA6101.cws"
+CVI Dir = "/d/software/nilwcvi/nilwcvi2017"
+CVI Shared Dir = "/D/software/NILWCVI/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2017"
 CVI Pub Global Dir = "/C/ProgramData/National Instruments/CVI"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
@@ -14,19 +14,11 @@ Active Project = 1
 Project 0001 = "SA6101.prj"
 Project 0001 Folder Resource Collapsed = True
 Project 0001 FolderId 4 Collapsed = True
-<<<<<<< HEAD
 Drag Bar Left = 299
-Window Top = 490
-Window Left = 2432
-Window Bottom = 1312
-Window Right = 3216
-=======
-Drag Bar Left = 267
 Window Top = 157
-Window Left = 716
-Window Bottom = 894
-Window Right = 1814
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Window Left = 1510
+Window Bottom = 979
+Window Right = 2294
 Maximized = True
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -40,15 +32,9 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-<<<<<<< HEAD
-Number of Opened Files = 11
+Number of Opened Files = 14
 Window Confinement Region Enabled = True
 MainColumnWidth = 282
-=======
-Number of Opened Files = 8
-Window Confinement Region Enabled = True
-MainColumnWidth = 250
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -62,219 +48,113 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.c"
 File Type = "CSource"
-<<<<<<< HEAD
-Disk Date = 3616031810
+Disk Date = 3616041112
 In Projects = "1,"
 Window Top = 64
 Window Left = 42
-Window Z-Order = 11
-Source Window State = "1,40,40,40,4,21,21,0,3,53,0,0,0,0,0,15,27,0,40,4,411,686,1,0,"
+Window Z-Order = 8
+Source Window State = "1,130,130,130,26,37,37,0,0,44,0,0,0,0,0,12,120,0,130,40,411,686,1,0,"
 
 [File 0002]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ExpListPanel.c"
 File Type = "CSource"
-Disk Date = 3616039325
+Disk Date = 3616042012
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
-Window Z-Order = 3
-Source Window State = "1,55,56,56,16,12,12,0,0,57,0,0,0,0,0,15,57,63,55,12,411,726,1,0,"
+Source Window State = "1,97,97,97,16,23,16,0,0,57,0,0,0,0,0,15,91,0,85,12,411,726,1,0,"
 
 [File 0003]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.c"
-File Type = "CSource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 95
-Window Left = 42
-Source Window State = "1,78,78,78,23,32,32,0,0,43,0,0,0,0,0,11,95,0,31,36,411,726,1,0,"
-
-[File 0004]
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ResultDispPanel."
-Path Line0002 = "uir"
-File Type = "User Interface Resource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 219
-Window Left = 106
-Window Height = 411
-Window Width = 726
-
-[File 0005]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ProjectPanel.c"
 File Type = "CSource"
-Disk Date = 3616031536
+Disk Date = 3616041295
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
-Source Window State = "1,82,82,82,18,19,19,0,0,43,0,0,0,0,0,11,33,0,96,29,411,726,1,0,"
-=======
-Disk Date = 3616038015
-In Projects = "1,"
-Window Top = 64
-Window Left = 42
-Window Z-Order = 1
-Source Window State = "1,143,143,143,0,48,48,0,0,201,0,0,0,0,0,38,97,0,142,6,411,686,1,0,"
-
-[File 0002]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.c"
-File Type = "CSource"
-Disk Date = 3616037979
-In Projects = "1,"
-Window Top = 122
-Window Left = 58
-Window Z-Order = 8
-Source Window State = "1,81,81,81,0,49,49,0,0,85,0,0,0,0,0,24,63,0,51,12,411,726,1,0,"
-
-[File 0003]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.c"
-File Type = "CSource"
-Disk Date = 3616039160
-In Projects = "1,"
-Window Top = 95
-Window Left = 42
-Window Z-Order = 3
-Source Window State = "1,33,34,33,12,48,12,0,0,85,0,0,0,0,0,24,81,0,51,34,411,726,1,0,"
+Source Window State = "1,92,93,93,18,4,4,0,0,57,0,0,0,0,0,15,54,0,90,0,411,726,1,0,"
 
 [File 0004]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ResultDispPanel.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027275
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.c"
+File Type = "CSource"
+Disk Date = 3616043979
 In Projects = "1,"
-Window Top = 219
-Window Left = 106
-Window Height = 411
-Window Width = 726
+Window Top = 126
+Window Left = 58
+Window Z-Order = 11
+Source Window State = "1,218,218,218,16,29,29,0,0,47,0,172,0,0,0,12,224,12,231,51,411,726,1,0,"
 
 [File 0005]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ProjectPanel.c"
-File Type = "CSource"
-Disk Date = 3615937896
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,82,82,82,18,19,19,0,0,85,0,0,0,0,0,24,33,0,96,29,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-
-[File 0006]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.c"
-File Type = "CSource"
-<<<<<<< HEAD
-Disk Date = 3616039196
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Window Z-Order = 5
-Source Window State = "1,90,90,90,56,72,72,0,0,57,0,172,0,0,0,15,56,0,44,6,411,726,1,0,"
-
-[File 0007]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.c"
-File Type = "CSource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Source Window State = "1,48,48,48,15,29,15,0,0,43,0,0,0,0,0,11,21,0,48,16,411,726,1,0,"
-
-[File 0008]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
 File Type = "CSource"
-Disk Date = 3616031821
+Disk Date = 3616040763
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
-Window Z-Order = 7
-Source Window State = "1,87,87,87,19,20,20,0,0,57,0,61,0,0,0,15,18,0,88,22,411,726,1,0,"
+Window Z-Order = 13
+Source Window State = "1,87,87,87,19,20,20,0,0,47,0,61,0,0,0,12,93,0,95,14,411,726,1,0,"
 
-[File 0009]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.c"
-File Type = "CSource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Source Window State = "1,34,34,34,4,13,13,0,0,43,0,0,0,0,0,11,22,0,41,33,411,726,1,0,"
-
-[File 0010]
+[File 0006]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.uir"
 File Type = "User Interface Resource"
-Disk Date = 3616033466
-=======
-Disk Date = 3616036790
+Disk Date = 3616039547
 In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Window Z-Order = 2
-Source Window State = "1,217,220,217,8,32,8,0,0,85,0,172,0,0,0,24,148,0,226,39,411,726,1,0,"
+Window Top = 182
+Window Left = 90
+Window Height = 361
+Window Width = 986
+Window Z-Order = 6
 
 [File 0007]
-Path = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
-File Type = "CSource"
-Disk Date = 3616038850
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Window Z-Order = 7
-Source Window State = "1,33,33,48,0,102,12,0,0,85,0,0,0,0,0,24,3,0,13,18,411,726,1,0,"
-
-[File 0008]
-Path = "/e/SINOAGG/Software/SA6101/Src/main.c"
-File Type = "CSource"
-Disk Date = 3616027275
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,54,54,55,7,18,12,0,0,85,0,0,0,0,0,24,82,0,94,4,411,726,1,0,"
-
-[File 0009]
-Path = "/e/SINOAGG/Software/SA6101/Src/Plot.c"
-File Type = "CSource"
-Disk Date = 3615945480
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Source Window State = "1,34,34,34,4,13,13,0,0,85,0,0,0,0,0,24,22,106,39,169,411,726,1,0,"
-
-[File 0010]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/GraphDisp.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027275
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Window Height = 411
-Window Width = 686
-
-[File 0011]
-<<<<<<< HEAD
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
 File Type = "User Interface Resource"
 Disk Date = 3616031536
-=======
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/MainPanel.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027274
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Window Top = 33
 Window Left = 10
 Window Height = 411
 Window Width = 726
-<<<<<<< HEAD
-Window Z-Order = 9
+Window Z-Order = 4
 
-[File 0012]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SampleCfgPanel.c"
+[File 0008]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/asynctmr.c"
 File Type = "CSource"
 Disk Date = 3616031536
 In Projects = "1,"
-Window Top = 30
-Source Window State = "1,42,42,42,0,48,48,0,0,34,0,0,0,0,0,11,39,0,37,41,400,600,1,0,"
+Window Top = 64
+Window Left = 26
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0013]
+[File 0009]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVdsPanel.h"
+File Type = "Include"
+Disk Date = 3616031536
+In Projects = "1,"
+Window Top = 126
+Window Left = 58
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,38,361,986,1,0,"
+
+[File 0010]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.h"
+File Type = "Include"
+Disk Date = 3616039546
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,59,59,59,0,68,68,0,0,0,0,0,0,0,0,0,44,0,59,28,411,726,1,0,"
+
+[File 0011]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Environment.uir"
+File Type = "User Interface Resource"
+Disk Date = 3616037538
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 411
+Window Width = 726
+
+[File 0012]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Experiment List."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -285,16 +165,23 @@ Window Left = 26
 Window Height = 459
 Window Width = 1253
 
+[File 0013]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/I-T.uir"
+File Type = "User Interface Resource"
+Disk Date = 3616031536
+In Projects = "1,"
+
 [File 0014]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
-Disk Date = 3616032690
+Disk Date = 3616039547
 In Projects = "1,"
-Window Top = 122
-Window Left = 58
-Window Height = 459
-Window Width = 1253
+Window Top = 32
+Window Left = 10
+Window Height = 417
+Window Width = 903
+Window Z-Order = 5
 
 [File 0015]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vgs Configura"
@@ -308,759 +195,478 @@ Window Height = 459
 Window Width = 1141
 
 [File 0016]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616033688
-In Projects = "1,"
-Window Top = 92
-Window Left = 42
-Window Height = 459
-Window Width = 1253
-Window Z-Order = 2
-
-[File 0017]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVdsPanel.c"
-File Type = "CSource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Source Window State = "1,91,91,91,16,36,36,0,0,72,0,0,0,0,0,13,109,0,102,42,459,1141,1,0,"
-
-[File 0018]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
-File Type = "CSource"
-Disk Date = 3616038389
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Z-Order = 8
-Source Window State = "1,303,303,303,49,65,65,0,0,105,0,0,0,0,0,16,298,0,303,15,459,1253,1,0,"
-
-[File 0019]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Environment.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616037538
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 411
-Window Width = 726
-
-[File 0020]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/I-T.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616031536
-In Projects = "1,"
-
-[File 0021]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ProjectPanel.uir"
 File Type = "User Interface Resource"
 Disk Date = 3616031536
 In Projects = "1,"
 
-[File 0022]
+[File 0017]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/R-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3616031536
 In Projects = "1,"
 
-[File 0023]
+[File 0018]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
+File Type = "User Interface Resource"
+Disk Date = 3616033688
+In Projects = "1,"
+Window Top = 122
+Window Left = 58
+Window Height = 361
+Window Width = 788
+Window Z-Order = 12
+
+[File 0019]
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ResultDispPanel."
+Path Line0002 = "uir"
+File Type = "User Interface Resource"
+Disk Date = 3616031536
+In Projects = "1,"
+Window Top = 219
+Window Left = 106
+Window Height = 411
+Window Width = 726
+Window Z-Order = 9
+
+[File 0020]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
 Disk Date = 3616031536
 In Projects = "1,"
 
-[File 0024]
+[File 0021]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Settings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3616031536
 In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Height = 361
-Window Width = 788
-Window Z-Order = 1
-
-[File 0025]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Table.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Height = 459
-Window Width = 1099
-
-[File 0026]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/Environment.c"
-File Type = "CSource"
-Disk Date = 3616039309
-In Projects = "1,"
 Window Top = 152
-Window Left = 58
-Window Z-Order = 4
-Source Window State = "1,19,19,19,16,22,22,0,0,94,0,0,0,0,0,19,0,0,18,12,533,1137,1,13,"
-
-[File 0027]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVgsPanel.c"
-File Type = "CSource"
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 411
-Window Width = 726
-Source Window State = "1,157,157,157,5,20,20,0,0,0,0,0,0,0,0,0,153,0,164,81,411,726,1,0,"
-
-[File 0028]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Table.c"
-File Type = "CSource"
-Disk Date = 3616031536
-=======
-
-[File 0012]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.c"
-File Type = "CSource"
-Disk Date = 3616027389
-In Projects = "1,"
-Window Top = 31
-Source Window State = "1,42,42,42,0,48,48,0,0,201,0,0,0,0,0,39,27,0,42,105,400,600,1,0,"
-
-[File 0013]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Environment.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615427323
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 411
-Window Width = 726
-
-[File 0014]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Experiment List.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027275
-In Projects = "1,"
-
-[File 0015]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/I-T.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027274
-In Projects = "1,"
-
-[File 0016]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vds Configuration.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027275
-In Projects = "1,"
-
-[File 0017]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Id-Vgs Configuration.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027274
-In Projects = "1,"
-
-[File 0018]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ProjectPanel.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615600428
-In Projects = "1,"
-
-[File 0019]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/R-T.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027274
-In Projects = "1,"
-
-[File 0020]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Result Menu.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027274
-In Projects = "1,"
-
-[File 0021]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Sample Configuration.uir"
-File Type = "User Interface Resource"
-Disk Date = 3616027275
-In Projects = "1,"
+Window Left = 74
+Window Height = 361
+Window Width = 986
 
 [File 0022]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Settings.uir"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Table.uir"
 File Type = "User Interface Resource"
-Disk Date = 3615534704
+Disk Date = 3616042833
 In Projects = "1,"
+Window Top = 212
+Window Left = 106
+Window Height = 361
+Window Width = 788
 
 [File 0023]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.uir"
-File Type = "User Interface Resource"
-Disk Date = 3615534704
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/EnvironmentPanel.c"
+File Type = "CSource"
+Disk Date = 3616039547
 In Projects = "1,"
+Window Top = 32
+Window Left = 10
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,8,0,23,62,436,986,1,0,"
 
 [File 0024]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVdsPanel.c"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVdsPanel.c"
 File Type = "CSource"
-Disk Date = 3615936480
+Disk Date = 3616042091
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 32
+Window Left = 10
+Source Window State = "1,83,84,84,4,7,7,0,0,95,0,0,0,0,0,16,123,0,106,14,459,1141,1,0,"
 
 [File 0025]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVgsPanel.c"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVgsPanel.c"
 File Type = "CSource"
-Disk Date = 3615936480
+Disk Date = 3616042196
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
 Window Height = 411
 Window Width = 726
-Source Window State = "1,157,157,157,5,20,20,0,0,0,0,0,0,0,0,0,153,0,164,81,411,726,1,0,"
+Source Window State = "1,157,157,157,5,20,20,0,0,57,0,0,0,0,0,15,190,0,205,7,411,726,1,0,"
 
 [File 0026]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.c"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
 File Type = "CSource"
-Disk Date = 3616037109
+Disk Date = 3616043854
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Window Z-Order = 2
+Source Window State = "1,117,117,117,23,31,31,0,0,67,0,0,0,0,0,11,115,0,125,56,361,986,1,0,"
+
+[File 0027]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SampleCfgPanel.c"
+File Type = "CSource"
+Disk Date = 3616041585
+In Projects = "1,"
+Window Top = 30
+Source Window State = "1,42,42,42,0,48,48,0,0,45,0,0,0,0,0,14,42,0,44,4,400,600,1,0,"
+
+[File 0028]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.c"
+File Type = "CSource"
+Disk Date = 3616041640
+In Projects = "1,"
+Window Top = 95
+Window Left = 42
+Window Z-Order = 14
+Source Window State = "1,122,139,122,8,77,8,0,0,47,0,0,0,0,0,12,155,0,141,7,411,726,1,0,"
+
+[File 0029]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Table.c"
+File Type = "CSource"
+Disk Date = 3616041680
+In Projects = "1,"
+Window Top = 92
+Window Left = 42
+Window Z-Order = 3
+Source Window State = "1,54,54,54,39,43,43,0,0,67,0,0,0,0,0,11,48,0,52,5,361,986,1,0,"
+
+[File 0030]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.c"
+File Type = "CSource"
+Disk Date = 3616039546
+In Projects = "1,"
+Window Top = 126
+Window Left = 58
+Source Window State = "1,48,48,48,15,29,15,0,0,0,0,0,0,0,0,0,21,0,48,16,411,726,1,0,"
+
+[File 0031]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.c"
+File Type = "CSource"
+Disk Date = 3616039546
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0032]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.c"
+File Type = "CSource"
+Disk Date = 3616031536
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
-Source Window State = "1,311,311,311,0,49,49,0,0,85,0,0,0,0,0,24,281,0,293,81,411,726,1,0,"
+Source Window State = "1,34,34,34,4,13,13,0,0,0,0,0,0,0,0,0,22,106,39,169,411,726,1,0,"
 
-[File 0027]
-Path = "/e/SINOAGG/Software/SA6101/Src/Table.c"
-File Type = "CSource"
-Disk Date = 3616027275
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0028]
-Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.c"
-File Type = "CSource"
-Disk Date = 3615590156
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0029]
-<<<<<<< HEAD
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/asynctmr.c"
-File Type = "CSource"
-Disk Date = 3616031536
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Path = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
-File Type = "CSource"
-Disk Date = 3616039029
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Window Z-Order = 6
-Source Window State = "1,51,51,51,35,48,35,0,0,85,0,0,0,0,0,24,39,0,51,36,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-
-[File 0030]
-Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.c"
-File Type = "CSource"
-<<<<<<< HEAD
-Disk Date = 3616031536
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0031]
+[File 0033]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.c"
 File Type = "CSource"
 Disk Date = 3616031536
 In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,116,116,116,118,119,119,0,0,0,0,0,0,0,0,0,45,0,112,44,411,726,1,0,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0032]
+[File 0034]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Timer.c"
 File Type = "CSource"
 Disk Date = 3616031536
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Disk Date = 3616027275
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,116,116,116,118,119,119,0,0,0,0,0,0,0,0,0,45,0,112,44,411,726,1,0,"
-
-[File 0031]
-Path = "/e/SINOAGG/Software/SA6101/Src/Timer.c"
-File Type = "CSource"
-Disk Date = 3615613311
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0032]
-Path = "/e/SINOAGG/Software/SA6101/Resource/analyze.ico"
-File Type = "Unknown"
-Disk Date = 3615304048
-In Projects = "1,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-
-[File 0033]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Arrow.png"
-File Type = "Unknown"
-<<<<<<< HEAD
-Disk Date = 3616031536
-=======
-Disk Date = 0
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-In Projects = "1,"
-
-[File 0034]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Config.ico"
-File Type = "Unknown"
-Disk Date = 0
-In Projects = "1,"
 
 [File 0035]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/analyze.ico"
 File Type = "Unknown"
-Disk Date = 0
+Disk Date = 3616031536
 In Projects = "1,"
 
 [File 0036]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Configure(b).ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Arrow.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0037]
-Path = "/e/SINOAGG/Software/SA6101/Resource/FET.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Config.ico"
 File Type = "Unknown"
-Disk Date = 3615304048
+Disk Date = 0
 In Projects = "1,"
 
 [File 0038]
-Path = "/e/SINOAGG/Software/SA6101/Resource/GND.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(a).png"
 File Type = "Unknown"
-<<<<<<< HEAD
-Disk Date = 3616031536
-=======
-Disk Date = 3615304048
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Disk Date = 0
 In Projects = "1,"
 
 [File 0039]
-Path = "/e/SINOAGG/Software/SA6101/Resource/I.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(b).ico"
 File Type = "Unknown"
-<<<<<<< HEAD
-Disk Date = 3616031536
-=======
-Disk Date = 3615304048
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Disk Date = 0
 In Projects = "1,"
 
 [File 0040]
-Path = "/e/SINOAGG/Software/SA6101/Resource/I_Bias.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/FET.ico"
 File Type = "Unknown"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615304048
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 
 [File 0041]
-Path = "/e/SINOAGG/Software/SA6101/Resource/jiantou.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/GND.ico"
 File Type = "Unknown"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 0
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 
 [File 0042]
-Path = "/e/SINOAGG/Software/SA6101/Resource/My Projects.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I.ico"
 File Type = "Unknown"
-Disk Date = 0
+Disk Date = 3616031536
 In Projects = "1,"
 
 [File 0043]
-Path = "/e/SINOAGG/Software/SA6101/Resource/My Settings.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I_Bias.ico"
 File Type = "Unknown"
-Disk Date = 0
+Disk Date = 3616031536
 In Projects = "1,"
 
 [File 0044]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Run.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/jiantou.ico"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0045]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Projects.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0046]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save(b).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Settings.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0047]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Run.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0048]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Save_Path(b).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0049]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Select(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(b).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0050]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Select(b).ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0051]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Stop.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(b).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0052]
-Path = "/e/SINOAGG/Software/SA6101/Resource/Tools.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0053]
-Path = "/e/SINOAGG/Software/SA6101/Resource/User(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(b).ico"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0054]
-Path = "/e/SINOAGG/Software/SA6101/Resource/User(b).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Stop.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
 [File 0055]
-Path = "/e/SINOAGG/Software/SA6101/Resource/V.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Tools.png"
 File Type = "Unknown"
-Disk Date = 3615304048
+Disk Date = 0
 In Projects = "1,"
 
 [File 0056]
-Path = "/e/SINOAGG/Software/SA6101/Resource/V_Bias.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(a).png"
 File Type = "Unknown"
-<<<<<<< HEAD
-Disk Date = 3616031536
+Disk Date = 0
 In Projects = "1,"
 
 [File 0057]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(b).png"
+File Type = "Unknown"
+Disk Date = 0
+In Projects = "1,"
+
+[File 0058]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V.ico"
+File Type = "Unknown"
+Disk Date = 3616031536
+In Projects = "1,"
+
+[File 0059]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V_Bias.ico"
 File Type = "Unknown"
 Disk Date = 3616031536
-=======
-Disk Date = 3615304048
 In Projects = "1,"
-
-[File 0057]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.h"
-File Type = "Include"
-Disk Date = 3615849625
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-In Projects = "1,"
-Window Top = 219
-Window Left = 106
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
-
-[File 0058]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/IdVdsPanel.h"
-File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
-In Projects = "1,"
-Window Top = 122
-Window Left = 58
-Window Z-Order = 10
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,13,0,0,3,38,361,986,1,0,"
-=======
-Disk Date = 3615602130
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,1,0,0,0,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-
-[File 0059]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.h"
-File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Disk Date = 3615938688
-In Projects = "1,"
-Window Top = 95
-Window Left = 42
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 
 [File 0060]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/MainPanelCb.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/EnvironmentPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
-=======
-Disk Date = 3615847382
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Disk Date = 3616039546
 In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
+Window Top = 33
+Window Left = 10
+Source Window State = "1,0,37,37,0,37,37,0,3,0,0,0,0,0,0,0,0,0,0,0,411,726,1,0,"
 
 [File 0061]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/ProjectPanel.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ExpListPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615600428
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0062]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615590156
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 95
+Window Left = 42
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,411,726,1,0,"
 
 [File 0063]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SampleCfgPanel.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Disk Date = 3615851721
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,2,0,0,0,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Window Top = 64
+Window Left = 26
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,411,726,1,0,"
 
 [File 0064]
-Path = "/e/SINOAGG/Software/SA6101/UI Files/Panel/Table.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ProjectPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615534704
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0065]
-Path = "/e/SINOAGG/Software/SA6101/Src/asynctmr.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615590156
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0066]
-Path = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SampleCfgPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3616036480
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 5
-Source Window State = "1,59,59,59,0,68,68,0,0,85,0,0,0,0,0,24,44,0,59,28,411,726,1,0,"
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,411,726,1,0,"
 
 [File 0067]
-Path = "/e/SINOAGG/Software/SA6101/Src/File.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.h"
 File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
-=======
-Disk Date = 3615590156
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Disk Date = 3616039546
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0068]
-Path = "/e/SINOAGG/Software/SA6101/Src/Graph.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Table.h"
 File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
+Disk Date = 3616042833
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Disk Date = 3615945772
-In Projects = "1,"
-Window Top = 126
-Window Left = 58
-Source Window State = "1,43,43,43,1,13,13,0,0,85,0,0,0,0,0,24,22,0,41,13,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 
 [File 0069]
-Path = "/e/SINOAGG/Software/SA6101/Src/main.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/asynctmr.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615613311
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0070]
-Path = "/e/SINOAGG/Software/SA6101/Src/Plot.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/File.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615847382
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0071]
-Path = "/e/SINOAGG/Software/SA6101/Src/Protocol.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
-=======
-Disk Date = 3615853496
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 126
+Window Left = 58
+Source Window State = "1,43,43,43,1,13,13,0,0,0,0,0,0,0,0,0,22,0,41,13,411,726,1,0,"
 
 [File 0072]
-Path = "/e/SINOAGG/Software/SA6101/Src/Timer.h"
-File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
-=======
-Disk Date = 3615590156
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0073]
-<<<<<<< HEAD
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.h"
 File Type = "Include"
 Disk Date = 3616031536
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/EnvironmentPanel.c"
-File Type = "CSource"
-Disk Date = 3615936480
+
+[File 0073]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.h"
+File Type = "Include"
+Disk Date = 3616031536
 In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,0,0,0,0,0,0,0,0,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Window Top = 92
+Window Left = 42
+Window Z-Order = 7
+Source Window State = "1,0,0,0,0,0,0,0,0,74,0,0,0,0,0,13,23,0,10,13,417,1085,1,0,"
 
 [File 0074]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/EnvironmentPanel.h"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.h"
 File Type = "Include"
-<<<<<<< HEAD
 Disk Date = 3616031536
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-=======
-Disk Date = 3616037618
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,0,37,37,0,37,37,0,3,85,0,0,0,0,0,24,0,0,0,0,411,726,1,0,"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Window Top = 122
+Window Left = 58
+Window Z-Order = 1
+Source Window State = "1,60,61,60,13,13,13,0,0,91,0,0,0,0,0,18,75,0,67,51,361,986,1,0,"
 
 [File 0075]
-Path = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.h"
-File Type = "Include"
-<<<<<<< HEAD
-Disk Date = 3616031536
-In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0076]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Timer.h"
 File Type = "Include"
 Disk Date = 3616031536
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0077]
-Path = "/d/software/NILWCVI/NILWCVI2017/include/ansi/stdio.h"
+[File 0076]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.h"
 File Type = "Include"
-Disk Date = 3573565200
-In Projects = ""
-Window Top = 152
-Window Left = 74
-Window Z-Order = 6
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,13,195,0,201,34,361,986,1,0,"
-
-[Tab Order]
-Tab 0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
-Tab 0002 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.c"
-Tab 0003 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.c"
-Tab 0004 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
-Tab 0005 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
-Tab 0006 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
-Tab 0007 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/Environment.c"
-Tab 0008 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Environment.h"
-Tab 0009 = "/d/software/NILWCVI/NILWCVI2017/include/ansi/stdio.h"
-Tab 0010 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ExpListPanel.c"
-Tab 0011 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Settings.uir"
-=======
-Disk Date = 3616039051
+Disk Date = 3616031536
 In Projects = "1,"
-Window Top = 95
-Window Left = 42
-Window Z-Order = 4
-Source Window State = "1,25,25,25,0,18,18,0,0,85,0,0,0,0,0,24,5,0,28,14,411,726,1,0,"
+Window Top = 62
+Window Left = 26
+Window Z-Order = 10
+Source Window State = "1,16,16,16,9,25,25,0,0,74,0,0,0,0,0,13,9,0,17,18,417,1085,1,0,"
 
 [Tab Order]
-Tab 0001 = "/e/SINOAGG/Software/SA6101/Src/Panel/ExpListPanel.c"
-Tab 0002 = "/e/SINOAGG/Software/SA6101/Src/Panel/LoadPanel.c"
-Tab 0003 = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.c"
-Tab 0004 = "/e/SINOAGG/Software/SA6101/Src/Panel/SettingsPanel.h"
-Tab 0005 = "/e/SINOAGG/Software/SA6101/Src/Graph.c"
-Tab 0006 = "/e/SINOAGG/Software/SA6101/Src/Curve.h"
-Tab 0007 = "/e/SINOAGG/Software/SA6101/Src/Curve.c"
-Tab 0008 = "/e/SINOAGG/Software/SA6101/Src/Panel/ResultMenuPanel.c"
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
+Tab 0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.uir"
+Tab 0002 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
+Tab 0003 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.h"
+Tab 0004 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.c"
+Tab 0005 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
+Tab 0006 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
+Tab 0007 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Table.c"
+Tab 0008 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.c"
+Tab 0009 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ResultDispPanel."
+Tab 0009 Line0002 = "uir"
+Tab 0010 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.c"
+Tab 0011 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.h"
+Tab 0012 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.h"
+Tab 0013 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
+Tab 0013 Line0002 = "tion.uir"
+Tab 0014 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

@@ -56,16 +56,19 @@ int CVICALLBACK ImgCallback (int panel, int control, int event,
 {
 	   int val;
 	   GetCtrlVal(panel,PROPANEL_IMGBOX,&val);
-	   if(event == EVENT_VAL_CHANGED){
+	   if(event == EVENT_VAL_CHANGED)
+	   {
 	   
-   			  if(val){
+   			  if(val)
+			  {
 				   SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,1);
-				  
-			  }else{
-			  	 SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
 			  }
+			  else
+			  {
+			  	 SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
+		       }
    
-   }
+       }
 	return 0;
 }
 
@@ -74,16 +77,13 @@ int CVICALLBACK DescCallback (int panel, int control, int event,
 {
 		 int val;
   		 GetCtrlVal(panel,PROPANEL_DESCBOX,&val);
-  		 if(event == EVENT_VAL_CHANGED){
-	   
-   			  if(val){
-				  SetCtrlAttribute(hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
-				   
-			  }else{
-			  	  SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
-			  }
-   
-   }
+  		 if(event == EVENT_VAL_CHANGED)
+		 {
+	   		 if(val)
+			     SetCtrlAttribute(hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
+			 else
+			    SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
+		 }
 	return 0;
 }
 

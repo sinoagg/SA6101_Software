@@ -117,29 +117,29 @@ int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
 int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {
-switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:
+	switch (event)
+		{
+			case EVENT_LEFT_CLICK_UP:
 			 
-			SetPanelPos(hSettingsAboutPanel, 5, 170);
-			SetPanelSize(hSettingsAboutPanel, 350, 650);
-			DisplayPanel(hSettingsAboutPanel);
+				SetPanelPos(hSettingsAboutPanel, 5, 170);
+				SetPanelSize(hSettingsAboutPanel, 350, 650);
+				DisplayPanel(hSettingsAboutPanel);
 			
-		    HidePanel (hSettingsPrjPanel); 
-			HidePanel (hSettingsGraphPanel);
+			    HidePanel (hSettingsPrjPanel); 
+				HidePanel (hSettingsGraphPanel);
 		
 			
-			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //about背景色
-	     	SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //about文本颜色
+				SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //about背景色
+		     	SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //about文本颜色
 			
-			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);           //graph背景色
-	     	SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_BLACK);              //graph文本颜色
+				SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);           //graph背景色
+		     	SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_BLACK);              //graph文本颜色
 	
-			SetCtrlAttribute (panel, SETTINGS_ENVBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);             //environment背景色
-	     	SetCtrlAttribute (panel, SETTINGS_ENVBTN, ATTR_TEXT_COLOR, VAL_BLACK);                //environment文本颜色
-			break;
+				SetCtrlAttribute (panel, SETTINGS_ENVBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);             //environment背景色
+		     	SetCtrlAttribute (panel, SETTINGS_ENVBTN, ATTR_TEXT_COLOR, VAL_BLACK);                //environment文本颜色
+				break;
 
-	}
+ 	   }
 	return 0;
 }
 

@@ -76,7 +76,9 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 		//点击graph图标切换到graph面板
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-				
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico");
 				HidePanel(hTablePanel);  							                                          
 			  	SetPanelPos(hGraphSelectPanel, 172, 1457);  
 		     	SetPanelSize(hGraphSelectPanel, 26, 140);      
@@ -86,18 +88,14 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,
 				if(val)
 				{
 			     	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
-				}else
+				}
+			    else
 				{
 					DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
 					DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 					DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
-				}
-				/*int bitmapID;
-				GetBitmapFromFile("E:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Resource\\SaveData.ico", &bitmapID);
-				printf("%p",&bitmapID);*/
-				
-
-			break;
+				 }
+			    break;
 	
 	}	
 	return 0;
@@ -107,16 +105,15 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 
 {
-	   switch(event){
-		case EVENT_LEFT_CLICK_UP:
-			
+	   switch(event)
+	   {
+			case EVENT_LEFT_CLICK_UP:
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
 				InstallPopup(hSaveDataPanel); 
-		  
-			break;
-	}	
+		  		break;
+	   }	
 	return 0;
 }
 
@@ -124,12 +121,10 @@ int CVICALLBACK ExitCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {															  
 		if (event == EVENT_COMMIT)
-				{
-				RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板  
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
-		        }
+		{
+			RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板  
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
+		 }
 			return 0;
 }
 
@@ -224,48 +219,32 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 int CVICALLBACK ChoseCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {  
-<<<<<<< HEAD
-	switch(event){
+
+	switch(event)
+	{
 			
 		case EVENT_VAL_CHANGED: 
 			HidePanel(hGraphSelectPanel);
 		    int val;
 			GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
-			if(val) {	
+			if(val) 
+			{	
 				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico"); 
 			    HidePanel(hTablePanel);
-				}else{   	
+		 	}
+			else
+			{   	
 
 				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-		       }
+		     }
 		break;
-=======
-	if( event == EVENT_VAL_CHANGED)
-	{      	
-		HidePanel(hGraphSelectPanel); 
-		int val;
-	  	GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
-	    if(val)
-		{	
-			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
-			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-			HidePanel(hGraphSelectPanel);
-		    HidePanel(hTablePanel);
-		}
->>>>>>> fe1a8b197b1254c3bf4f69817ef4eba8206c16ad
-	}
-	else
-	{   	
-
-		SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-		SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
-	}
-	return 0;
-} 
+    }
+  	return 0;  
+}
 
 //===================saveGraph================
 static int SaveGraph(int panel, int control, int plotHandle, const char path[])
