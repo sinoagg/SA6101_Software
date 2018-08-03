@@ -38,3 +38,11 @@ Prototype="int IdVgGateStopCallback(int panel, int control, int event, void *cal
 Class="Function"
 Prototype="int IdVgGateStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
+[IdVgGatePicCallback]
+Class="Function"
+Prototype="int IdVgGatePicCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainPicCallback]
+Class="Function"
+Prototype="int IdVgDrainPicCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

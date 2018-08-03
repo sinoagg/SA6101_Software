@@ -24,16 +24,18 @@
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "Sample Configuration.h"
-
 #include "GraphDisp.h"
 #include "Environment.h"
 #include "Result Menu.h"
 #include "Table.h"
 #include "I-T.h"
-#include "R-T.h"
+#include "R-T.h" 
+#include "I-V.h"  
 #include "SettingsPanel.h"
 #include "ProjectPanel.h"
 #include "ResultDispPanel.h"
+#include "Id-t Configuration.h"
+
 		
 
 //==============================================================================
@@ -60,12 +62,13 @@ extern int hSettingsGraphPanel;
 extern int hSettingsAboutPanel;
 extern int hIT_Panel;          //I-T panel
 extern int hRT_Panel;          //R-T panel
+extern int hIV_Panel;          //I-V panel
 extern int hSettingsPanel;
 extern int hGraphSelectPanel;          //chose panel
 extern int hEnvResultPanel;
 extern int hPrjPanel;
 extern int hPrjListPanel;
-
+extern int hIdtPanel;
 
 //==============================================================================
 // Global functions

@@ -80,7 +80,7 @@ typedef struct
 	unsigned char rangeMode;
 	unsigned char maxRange;
 	unsigned char minRange;
-}TestParaTypeDef;
+}TestParaTypeDef;  //¶ÁÈ¡ÊıÖµ
 
 typedef struct
 {

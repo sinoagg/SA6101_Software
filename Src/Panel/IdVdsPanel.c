@@ -1,3 +1,4 @@
+#include "Id-Vgs Configuration.h"
 #include <userint.h>
 //==============================================================================
 //
@@ -67,8 +68,7 @@ static void SetGateDisp(int panel, char focus)
 int CVICALLBACK IdVdGateDecoCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
-	switch(event)
-	{
+	switch(event){
 	   case EVENT_LEFT_CLICK_UP:
 	      SetDrainDisp(panel, UNFOCUS);
 		  SetGateDisp(panel, FOCUS);
@@ -80,12 +80,12 @@ int CVICALLBACK IdVdGateDecoCallback (int panel, int control, int event,
 int CVICALLBACK IdVdDrainDecoCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
-	switch(event)
-	{
-		case EVENT_LEFT_CLICK_UP:
-		    SetDrainDisp(panel, FOCUS);
-		    SetGateDisp(panel, UNFOCUS);
-		    break;
+	switch(event){
+			
+	   case EVENT_LEFT_CLICK_UP:
+		  SetDrainDisp(panel, FOCUS);
+		  SetGateDisp(panel, UNFOCUS);
+		  break;
 	}
 	return 0;
 }
@@ -93,13 +93,12 @@ int CVICALLBACK IdVdDrainDecoCallback (int panel, int control, int event,
 int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {	   
-	 switch(event)
-	 {
+	 switch(event){
 
 		case EVENT_LEFT_CLICK_UP:
 			SetDrainDisp(panel, UNFOCUS);
 		  	SetGateDisp(panel, FOCUS);
-			break;
+		 	break;
 		case EVENT_VAL_CHANGED:
 			int val;
 			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
@@ -124,7 +123,7 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 				SetCtrlAttribute(panel, IDVDS_CFG_MV_STEP,ATTR_VISIBLE,0);
 			}
 			break;
-	  }  
+		 }  
 	return 0;
 }
 
@@ -146,9 +145,9 @@ int CVICALLBACK IdVdGateStartCallback (int panel, int control, int event,
 {
 	 if(event==EVENT_LEFT_CLICK_UP)
 	 {
-		  SetDrainDisp(panel, UNFOCUS);
-		  SetGateDisp(panel, FOCUS);
-	  }
+		 SetDrainDisp(panel, UNFOCUS);
+		 SetGateDisp(panel, FOCUS);
+     }
 	return 0;
 }
 
@@ -159,7 +158,7 @@ int CVICALLBACK IdVdGateStopCallback (int panel, int control, int event,
 	 {
 		 SetDrainDisp(panel, UNFOCUS);
 		 SetGateDisp(panel, FOCUS);
-	  }
+	 }
 	return 0;
 }
 
@@ -170,7 +169,7 @@ int CVICALLBACK IdVdGateStepCallback (int panel, int control, int event,
 	 {
 		 SetDrainDisp(panel, UNFOCUS);
 		 SetGateDisp(panel, FOCUS);
-	  }
+	 }
 	return 0;
 }
 
@@ -192,7 +191,7 @@ int CVICALLBACK IdVdDrainStopCallback (int panel, int control, int event,
 	 {
 		 SetDrainDisp(panel, FOCUS);
 		 SetGateDisp(panel, UNFOCUS);
-	  }
+	 }
 	return 0;
 }
 
@@ -203,7 +202,30 @@ int CVICALLBACK IdVdDrainStepCallback (int panel, int control, int event,
 	 {
 		 SetDrainDisp(panel, FOCUS);
 		 SetGateDisp(panel, UNFOCUS);
-	  }
+	 }
+	return 0;
+}
+
+
+int CVICALLBACK IdVdDrainPicCallback (int panel, int control, int event,
+									  void *callbackData, int eventData1, int eventData2)
+{
+ if(event==EVENT_LEFT_CLICK_UP)
+	 {
+		 SetDrainDisp(panel, FOCUS);
+		 SetGateDisp(panel, UNFOCUS);
+	 }
+	return 0;
+}
+
+int CVICALLBACK IdVdGatePicCallback (int panel, int control, int event,
+									 void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP)
+	 {
+		 SetDrainDisp(panel, UNFOCUS);
+		 SetGateDisp(panel, FOCUS);
+	 }
 	return 0;
 }
 

@@ -33,7 +33,7 @@
 
 //==============================================================================
 // Global variables
-ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVDS_CFG_DRAINMODE, IDVGS_CFG_GATEMODE};  
+ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VG_START, IDVGS_CFG_VG_STOP, IDVGS_CFG_VG_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVDS_CFG_DRAINMODE, IDVGS_CFG_GATEMODE};  
 //==============================================================================
 // Global functions
 static  void SetDrainDisp(int panel, char focus)
@@ -80,21 +80,20 @@ int CVICALLBACK IdVgGateDecoCallback (int panel, int control, int event,
 int CVICALLBACK IdVgDrainDecoCallback (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-	switch(event)
-	{
+		switch(event)
+		{
 		  case EVENT_LEFT_CLICK_UP:
 	  	 	  SetGateDisp(panel,UNFOCUS);
 	  	 	  SetDrainDisp(panel,FOCUS);
 	  	      break;
-	}
+     	}
 	return 0;
 }
 
 int CVICALLBACK IdVgGateModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP)
-		{  
+		if(event==EVENT_LEFT_CLICK_UP){  
 			SetDrainDisp(panel, UNFOCUS);
 			SetGateDisp(panel, FOCUS);
 		   }
@@ -159,7 +158,7 @@ int CVICALLBACK IdVgDrainStopCallback (int panel, int control, int event,
 		{  
 			SetDrainDisp(panel, FOCUS);
 			SetGateDisp(panel, UNFOCUS);
-	     }
+	    }
 	return 0;
 }
 
@@ -203,8 +202,28 @@ int CVICALLBACK IdVgGateStepCallback (int panel, int control, int event,
 		{  
 			SetDrainDisp(panel, UNFOCUS);
 			SetGateDisp(panel, FOCUS);
+	     }
+	return 0;
+}
+
+ int CVICALLBACK IdVgGatePicCallback (int panel, int control, int event,
+									 void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP)
+		{  
+			SetDrainDisp(panel, UNFOCUS);
+			SetGateDisp(panel, FOCUS);
 	    }
 	return 0;
 }
 
-
+int CVICALLBACK IdVgDrainPicCallback (int panel, int control, int event,
+									  void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP)
+		{  
+			  SetGateDisp(panel,UNFOCUS);
+	  	 	  SetDrainDisp(panel,FOCUS);
+	    }
+	return 0;
+}

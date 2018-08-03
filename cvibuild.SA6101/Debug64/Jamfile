@@ -46,6 +46,7 @@ LOCATE on "Graph.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src
 LOCATE on "IdVdsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 LOCATE on "IdVdsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 LOCATE on "IdVgsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "IdVgsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 LOCATE on "LoadPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 LOCATE on "LoadPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 LOCATE on "main.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;

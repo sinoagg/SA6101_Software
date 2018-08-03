@@ -48,19 +48,8 @@ char graph2SavePath[512];
 static int SaveGraph(int panel, int control, int plotHandle, const char path[]); 
 //==============================================================================
 // Global variables
-<<<<<<< HEAD
-char sheetSavePath[512];
-char graph1SavePath[512];
-char graph2SavePath[512];
-
-struct Img{
-
-	
-}img;
-=======
 enum ResultDispSelect resultDispSelect=DISP_GRAPH;
 enum GraphDispSelect graphDispSelect=DISP_SINGLE_GRAPH;
->>>>>>> 5e089f0250bff32fee3367b5eafc24025e2a42f2
 //==============================================================================
 // Global functions	
 
@@ -89,6 +78,7 @@ static void DispDoubleGraph(void)
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 	DisplayPanel(hGraphPanel);
+	
 }
 
 static void DispGraphSelectCheckBox(void)
@@ -96,10 +86,12 @@ static void DispGraphSelectCheckBox(void)
 	//int val=0;
 	if(graphDispSelect==DISP_SINGLE_GRAPH)
 	{
-		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 0); 
+		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 0);
 	}
-	else
+	else{
 		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 1);
+	 
+	}
 	SetPanelPos(hGraphSelectPanel, 172, 1457);  
 	SetPanelSize(hGraphSelectPanel, 26, 140);      
  	DisplayPanel(hGraphSelectPanel);
@@ -121,63 +113,47 @@ void DispResultTableGraph(void)
 int CVICALLBACK TableCallback (int panel, int control, int event,						//点击table图标切换到table面板     
 							   void *callbackData, int eventData1, int eventData2)
 {
-	switch(event){
-		case EVENT_LEFT_CLICK:
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
-			break;
+	switch(event)
+	{
 		case EVENT_LEFT_CLICK_UP:
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
 			resultDispSelect=DISP_TABLE;
 			DispResultTableGraph();
 			break;
 	}
-	
-//	GetImageInfo (hResultMenuPanel, RESULTMENU_TABLE, 0, , , );
 	return 0;
 }
 
 int CVICALLBACK GraphCallback (int panel, int control, int event,						//点击graph图标切换到graph面板    
 							   void *callbackData, int eventData1, int eventData2)
 {
-	switch(event){
-<<<<<<< HEAD
+	switch(event)
+	{
+		
 		case EVENT_LEFT_CLICK_UP:
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico");
-				HidePanel(hTablePanel);  							                                          
-			  	SetPanelPos(hGraphSelectPanel, 172, 1457);  
-		     	SetPanelSize(hGraphSelectPanel, 26, 140);      
-	 			DisplayPanel(hGraphSelectPanel);
-				int val;
-				GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
-				if(val)
-				{
-			     	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
-				}
-			    else
-				{
-					DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
-					DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-					DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
-				 }
-			    break;
-	
-=======
-		case EVENT_LEFT_CLICK:
-			DisplayImageFile(hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-			break;
-		case EVENT_LEFT_CLICK_UP:
-			DisplayImageFile(hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
+			 
 			if(resultDispSelect==DISP_GRAPH)//如果此时在显示图的时候还去点击图的图标，则认为是想切换显示
+			{	
 		  		DispGraphSelectCheckBox();
+			}
 			else
 			{
 				resultDispSelect=DISP_GRAPH;
 				DispResultTableGraph();
 			}
+			
+			int val;
+	  	    GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
+			if(val)
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
+			 else
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico"); 
 			break;
->>>>>>> 5e089f0250bff32fee3367b5eafc24025e2a42f2
 	}	
 	return 0;
 }
@@ -185,18 +161,20 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,						//点击gra
 int CVICALLBACK GraphSelectCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {  
-	if( event == EVENT_COMMIT)
+	if(event == EVENT_COMMIT)
 	{      	
 		HidePanel(hGraphSelectPanel); 
 		int val;
-	  	GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
+	  	GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
 	    if(val)
 		{	
+		    DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
 			DispDoubleGraph();
 			graphDispSelect=DISP_DOUBLE_GRAPH;
 		}
 		else
-		{   	
+		{   
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
 			DispSingleGraph();
 			graphDispSelect=DISP_SINGLE_GRAPH;
 		}
@@ -207,36 +185,29 @@ int CVICALLBACK GraphSelectCallback (int panel, int control, int event,
 int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {
-	   switch(event)
-	   {
-			case EVENT_LEFT_CLICK_UP:
+	   switch(event){
+		case EVENT_LEFT_CLICK_UP:
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
-				InstallPopup(hSaveDataPanel); 
-		  		break;
-	   }	
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData_pressed.ico"); 
+		  		//弹出savedata面板
+			   InstallPopup(hSaveDataPanel);
+			break;
+		 
+	}	
 	return 0;
 }
 
 int CVICALLBACK ExitCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
-<<<<<<< HEAD
-{															  
-		if (event == EVENT_COMMIT)
-		{
-			RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板  
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData.ico"); 
-		 }
-			return 0;
-=======
 {
 	if (event == EVENT_COMMIT)
 	{
-		RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板    
+		RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+		
 	}
 	return 0;
->>>>>>> 5e089f0250bff32fee3367b5eafc24025e2a42f2
 }
 
 int CVICALLBACK BrowseSheetCallback (int panel, int control, int event,
@@ -325,41 +296,6 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	return 0;
 }
 
-<<<<<<< HEAD
-
-//======================Chose=================================
-int CVICALLBACK ChoseCallback (int panel, int control, int event,
-							 void *callbackData, int eventData1, int eventData2)
-{  
-
-	switch(event)
-	{
-			
-		case EVENT_VAL_CHANGED: 
-			HidePanel(hGraphSelectPanel);
-		    int val;
-			GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
-			if(val) 
-			{	
-				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico"); 
-			    HidePanel(hTablePanel);
-		 	}
-			else
-			{   	
-
-				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0); 
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-		     }
-		break;
-    }
-  	return 0;  
-}
-
-=======
->>>>>>> 5e089f0250bff32fee3367b5eafc24025e2a42f2
 //===================saveGraph================
 static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 {

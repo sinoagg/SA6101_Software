@@ -23,23 +23,23 @@
 
 #define  SAMPLE_CFG                       2
 #define  SAMPLE_CFG_RANGESETTING          2       /* control type: ring, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_3             3       /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_2             4       /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_4             5       /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_6             6       /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_5             7       /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_PIC_SET               8       /* control type: picture, callback function: (none) */
-#define  SAMPLE_CFG_ADVCSET               9       /* control type: textMsg, callback function: AdvancSetCallback */
-#define  SAMPLE_CFG_SAMPLENUMBER          10      /* control type: numeric, callback function: IdVdGateStartCallback */
-#define  SAMPLE_CFG_SAMPLERATE            11      /* control type: numeric, callback function: (none) */
-#define  SAMPLE_CFG_RUNTIME               12      /* control type: numeric, callback function: (none) */
-#define  SAMPLE_CFG_TIMESTEP              13      /* control type: numeric, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG               14      /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_QUIETTIME             15      /* control type: numeric, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_7             16      /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_8             17      /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_9             18      /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TEXTMSG_10            19      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_2             3       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_4             4       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_6             5       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_5             6       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_PIC_SET               7       /* control type: picture, callback function: (none) */
+#define  SAMPLE_CFG_ADVCSET               8       /* control type: textMsg, callback function: AdvancSetCallback */
+#define  SAMPLE_CFG_SAMPLENUMBER          9       /* control type: numeric, callback function: IdVdGateStartCallback */
+#define  SAMPLE_CFG_SAMPLERATE            10      /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_RUNTIME               11      /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_TIMESTEP              12      /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG               13      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_QUIETTIME             14      /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_7             15      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_8             16      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TEXTMSG_10            17      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TXT_RUNTIME           18      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_TXT_S                 19      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

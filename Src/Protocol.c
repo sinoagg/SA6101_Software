@@ -113,13 +113,13 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 			GetTestPara(&IdVdPanel, &TestPara);
 			break;
 		case SWEEP_GATE_VOL:
-			//GetTestPara(&IdVgPanel, &TestPara);
+		    GetTestPara(&IdVgPanel, &TestPara);
 			break;
 		case NO_SWEEP_IT:
-			//GetTestPara(&IdVdPanel, &TestPara);
+			//GetTestPara(&hIT_Panel, &TestPara);
 			break;
 		case NO_SWEEP_RT:
-			//GetTestPara(&IdVdPanel, &TestPara);
+			//GetTestPara(&RtPanel, &TestPara);
 			break;
 	}
 	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      
