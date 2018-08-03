@@ -73,7 +73,7 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
-	int ControlID;
+	//int ControlID;
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
@@ -104,11 +104,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			
 			int expType;
 			int graphIndex=1;	//currently only deal with one graph circumstance
-			int numOfCurve=0;
+			int numOfCurve=1;
 			int numOfDots=500;
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
 				return -1; 
-			
+			//curveInit(&Graph1,grapIndex,pCurveAttr.pointStyle );
 			TestPara.testMode=(enum TestMode)expType;
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
  			
@@ -142,25 +142,25 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
 					}
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
-					GraphInit(graphIndex,numOfCurve,numOfDots,&Graph2);
+					GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
-					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis,int AxisScaling,double min,double max);
+					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-				
+					 
 					break;
 				case NO_SWEEP_IT:
-					/*if(TestPara.gateOutputMode==VOL_BIAS)
+					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
-						numOfDots=TestPara.VgStart+1;
+						numOfDots=TestPara.VgStart;
 						SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
 					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis,int AxisScaling,double min,double max);
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					}*/
+					}
 					//TODO
 					break;
 				case  NO_SWEEP_RT:
@@ -168,7 +168,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 				default:
 					break;
-			}
+			}	
 			
 			Delay(1);
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
