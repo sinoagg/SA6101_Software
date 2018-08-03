@@ -77,9 +77,9 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			}
 			else if(index==4) 
 			{// º”‘ÿId_Vds Configuration 
-				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
-				SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
-				DisplayPanel(IdVdPanel.panelHandle);
+				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
+				DisplayPanel(IdVgPanel.panelHandle);
 			}
 			else if(index==5)
 			{ 	//  º”‘ÿId_Vgs Configuration    

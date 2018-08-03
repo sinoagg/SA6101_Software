@@ -85,7 +85,7 @@ int main (int argc, char *argv[])
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=4;
+	measureComPort=1;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;

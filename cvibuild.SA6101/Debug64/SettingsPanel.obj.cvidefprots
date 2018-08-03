@@ -2,9 +2,9 @@
 Class="Function"
 Prototype="CurveAttrTypeDef *GetSettingsCurveAttr(int GraphIndex, int CurveIndex);"
 
-[EnvBtnCallback]
+[PrjBtnCallback]
 Class="Function"
-Prototype="int EnvBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int PrjBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [GraphBtnCallback]
 Class="Function"
@@ -14,11 +14,11 @@ Prototype="int GraphBtnCallback(int panel, int control, int event, void *callbac
 Class="Function"
 Prototype="int AboutBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[CancelCallback]
+[PrjDirCallback]
 Class="Function"
-Prototype="int CancelCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int PrjDirCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[ProCallback]
+[SettingsPanelCallback]
 Class="Function"
-Prototype="int ProCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int SettingsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 

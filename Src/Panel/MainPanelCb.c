@@ -25,21 +25,20 @@
 #include "SampleCfgPanel.h"
 #include "main.h"
 #include "ResultMenuPanel.h"
+#include "SettingsPanel.h"
+#include "File.h"
 
 //==============================================================================
 // Constants
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
-
 //==============================================================================
 // Types
 
 //==============================================================================
 // Static global variables
-int ENVPanel;
-int GRAPHPanel; 
-int ABOUTPanel;
+
 //==============================================================================
 // Static functions
 
@@ -47,11 +46,10 @@ int ABOUTPanel;
 // Global variables
 int TimerID;
 char configSavePath[512]={0};
+FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针
 //==============================================================================
 // Global functions
 
-//===================================================
-//   MAIN_PANEL_Callback
 int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 									 int eventData1, int eventData2)
 {
@@ -70,8 +68,6 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 	return 0;
 }
 
-//===================================================
-//   RunCallback
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
@@ -133,7 +129,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
 					break;
 				case SWEEP_GATE_VOL:
-					//GetIdVgCfg (IdVgPanel);
+					//GetIdVgCfg (hIdVgPanel);
 					//numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
 					//numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;
 					break;
@@ -154,9 +150,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	}
 	return 0;
 }
-
-//===================================================
-//   StopCallback
 
 int CVICALLBACK StopCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
@@ -195,8 +188,6 @@ int CVICALLBACK SaveCallback (int panel, int control, int event,
 	}
 	return 0;
 }
-//===================================================
-//   SelectCallback
 
 int CVICALLBACK SelectCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
@@ -208,9 +199,9 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 
-	 		SetPanelPos(IdVdPanel.panelHandle, 104, 305);
-	        SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
-	        DisplayPanel(IdVdPanel.panelHandle);
+	 		SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+	        SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
+	        DisplayPanel(IdVgPanel.panelHandle);
 
 			HidePanel(hBasicSamplePanel);	 
 			HidePanel(hResultDispPanel);
@@ -219,18 +210,15 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			HidePanel(hResultDispPanel);  
 			
 			//清除显示双图表value
-			int val; 
-			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			}
+			//int val; 
+			//GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			//if(val){
+			//	SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			//}
 			break;
 	}
 	return 0;
 }
-
-//===================================================
-//   Configure_Callback
 
 int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 									void *callbackData, int eventData1, int eventData2)
@@ -244,9 +232,9 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			break;
 		case EVENT_LEFT_CLICK:
 			//点击Configure图标回到Id_vds界面
-			SetPanelPos(IdVdPanel.panelHandle, 104, 305);
-			SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
-			DisplayPanel(IdVdPanel.panelHandle);
+			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
+			DisplayPanel(IdVgPanel.panelHandle);
 			
 			SetPanelPos(hBasicSamplePanel, 105, 1600);
 			SetPanelSize(hBasicSamplePanel, 449, 300);
@@ -257,11 +245,11 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayPanel(hEnvCfgPanel);
 
 			//清除显示双图表value
-			int val; 
-			GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			if(val){
-				SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			}
+			//int val; 
+			//GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
+			//if(val){
+			//	SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
+			//}
 			break;
 	}
 	return 0;
@@ -291,9 +279,6 @@ static void DispEnvironmentCfg(void)
 	DisplayPanel(hEnvResultPanel);
 }
 
-//===================================================
-//   Analyze_Callback
-
 int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {
@@ -309,18 +294,10 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DispResultNumber();
 			
 			DispEnvironmentCfg();
-			
-			//清除显示双图表value
-			//int val; 
-			//GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val); 
-			//if(val){
-			//	SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX,0);  
-			//}
 			break;
 	}
 	return 0;
 }
-
 
 int CVICALLBACK SettingsCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
@@ -339,20 +316,19 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	return 0;
 }
 
-
-
-
-//int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
-//								  void *callbackData, int eventData1, int eventData2)
-//{
-//	
-//}
-
-//int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
-//								  void *callbackData, int eventData1, int eventData2)
-//{
-//	
-//}
+static int SaveAllPanelState(char* pConfigSavePath)
+{
+	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 0);						
+	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 1);						
+	SavePanelState(hIT_Panel, pConfigSavePath, 2);
+	SavePanelState(hRT_Panel, pConfigSavePath, 3);
+	SavePanelState(hBasicSamplePanel, pConfigSavePath, 10);
+	SavePanelState(hAdvanceSamplePanel, pConfigSavePath, 11);
+	SavePanelState(hEnvCfgPanel, pConfigSavePath, 14);
+	SavePanelState(hSettingsPrjPanel, pConfigSavePath, 15);
+	SavePanelState(hSettingsGraphPanel, pConfigSavePath, 16);
+	return 0;
+}
 
 static int SaveConfigToFile(char* pConfigSavePath)
 {
@@ -367,16 +343,11 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	else
 	{
 		int maxCommentSize=255;
-		char comment[maxCommentSize];
-		//GetIdVdCfg(IdVdPanel);						//获取IdVd面板设置
-		//GetIdVgCfg(IdVgPanel);						//获取IdVg面板设置
-		//GetITCfg(hIT_Panel);
-		//GetRTCfg(hRT_Panel);
-		//GetSampleCfg(samplePanel);
-		//GetEnvironmentCfg(hEnvCfgPanel);
-		PromptPopup("Message", "Please enter comment for this configuration:", comment, maxCommentSize-1);
-		fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
-		fprintf(fp, "Comment: %s", comment);
+		char description[maxCommentSize];
+		PromptPopup("Message", "Please enter comment for this configuration:", description, maxCommentSize-1);
+		//fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
+		fprintf(fp, "%s\r\n", description);
+		SaveAllPanelState(pConfigSavePath);		//保存所有面板的数据
 		
 		fclose(fp);//关闭文件
 	}
@@ -384,19 +355,56 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	
 }
 
-//弹出projects内容
+static int LoadAndDispPrj(FileLableTypeDef *pFileLable, char sequence)						//sequence为prj所在位置排序
+{
+	int hTempPanel;
+	if ((hTempPanel = LoadPanel (hPrjPanel, "Project.uir", DEFPANEL)) < 0)		//load projects panel
+		return -1;
+	SetCtrlVal(hTempPanel, DEFPANEL_NAME, pFileLable->FileName);
+	SetCtrlVal(hTempPanel, DEFPANEL_DATE, pFileLable->FileDate);
+	SetCtrlVal(hTempPanel, DEFPANEL_TIME, pFileLable->FileTime);
+	SetCtrlVal(hTempPanel, DEFPANEL_DESC, pFileLable->FileDesc);
+	SetPanelPos(hTempPanel, 90+sequence*117, -10);
+	SetPanelSize(hTempPanel, 115, 1300);
+	DisplayPanel(hTempPanel);
+	return 0;
+}
+
+static int LoadAllProject(char* pProjectSavePath)
+{
+	char tempFileName[512];
+	char tempFilePath[512];
+	char i=0;
+	char tempPathToSearch[512];
+	sprintf(tempPathToSearch, "%s%s", pProjectSavePath, "\\*.sac");
+	if(0==GetFirstFile(tempPathToSearch, 1, 1, 1, 1, 1, 0, tempFileName))		//如果第一个文件获取成功
+	{
+		sprintf(tempFilePath, "%s%s%s", pProjectSavePath, "\\", tempFileName);
+		pFileLable[i] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
+		InitFileLable(pFileLable[i], tempFilePath); 				//读文件时间和文件名称及description，并展示
+		LoadAndDispPrj(pFileLable[i], i);
+		i++;
+		
+		while(GetNextFile(tempFileName)==0)								//如果读取正确，持续读取
+		{
+			sprintf(tempFilePath, "%s%s%s", pProjectSavePath, "\\", tempFileName);
+			pFileLable[i] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
+			InitFileLable(pFileLable[i], tempFilePath); //读文件时间和文件名称及description
+			LoadAndDispPrj(pFileLable[i], i);
+			i++;
+		}
+	}
+	return 0;
+}
+
 int CVICALLBACK ProjectCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-		
-			InstallPopup (hPrjPanel); 
-			SetPanelPos(hPrjListPanel, 90, -10);
-			SetPanelSize(hPrjListPanel, 115, 1300);
-			DisplayPanel(hPrjListPanel);  
+			InstallPopup (hPrjPanel);
+			LoadAllProject(ProjectSavePath);
 			break;
 	}	 
-	 
 	return 0;
 }
