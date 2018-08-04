@@ -40,6 +40,7 @@ int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 			RecallAllPanelState(pFileLable[selectedPrjIndex]->pFileName);//load all panel and other parameters
+			
 			DiscardAllPrjPanel(SingleProject);
 			RemovePopup (hPrjPanel);
 			break;
