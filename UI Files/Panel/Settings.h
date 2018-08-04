@@ -18,7 +18,7 @@
 
 #define  ENVT                             2
 #define  ENVT_PROPATH                     2       /* control type: string, callback function: (none) */
-#define  ENVT_DIRECT                      3       /* control type: command, callback function: ProCallback */
+#define  ENVT_DIRECT                      3       /* control type: command, callback function: PrjDirCallback */
 
 #define  GRAPH                            3
 #define  GRAPH_RING                       2       /* control type: ring, callback function: (none) */
@@ -36,14 +36,12 @@
 #define  GRAPH_CHECKBOX_2                 14      /* control type: radioButton, callback function: (none) */
 #define  GRAPH_CHECKBOX                   15      /* control type: radioButton, callback function: (none) */
 
-#define  SETTINGS                         4
+#define  SETTINGS                         4       /* callback function: SettingsPanelCallback */
 #define  SETTINGS_CANVAS                  2       /* control type: canvas, callback function: (none) */
 #define  SETTINGS_DECORATION              3       /* control type: deco, callback function: (none) */
 #define  SETTINGS_ABOUTBTN                4       /* control type: textMsg, callback function: AboutBtnCallback */
 #define  SETTINGS_GRAPHBTN                5       /* control type: textMsg, callback function: GraphBtnCallback */
-#define  SETTINGS_ENVBTN                  6       /* control type: textMsg, callback function: EnvBtnCallback */
-#define  SETTINGS_OK                      7       /* control type: command, callback function: (none) */
-#define  SETTINGS_CANCEL                  8       /* control type: command, callback function: CancelCallback */
+#define  SETTINGS_PRJBTN                  6       /* control type: textMsg, callback function: PrjBtnCallback */
 
 
      /* Control Arrays: */
@@ -59,10 +57,10 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK AboutBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK CancelCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK EnvBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK GraphBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK ProCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK PrjBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK PrjDirCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK SettingsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

@@ -1,22 +1,9 @@
+//==============================================================================
+// Include files
 #include "Result Menu.h"
 #include "excel2000.h"
 #include "excelreport.h"
-
-#include "ProjectPanel.h"
 #include "GraphDisp.h"
-
-//==============================================================================
-//
-// Title:		LoadPanel.c
-// Purpose:		A short description of the implementation.
-//
-// Created on:	18/7/16 at 15:21:14 by .
-// Copyright:	. All Rights Reserved.
-//
-//==============================================================================
-
-//==============================================================================
-// Include files
 #include <userint.h>
 #include "toolbox.h"   
 #include "ResultMenuPanel.h"
@@ -256,7 +243,6 @@ int CVICALLBACK BrowseGraph2Callback (int panel, int control, int event,
 	return 0;
 }
 
-//=======================saveGraph1=====================
 int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 									void *callbackData, int eventData1, int eventData2)
 {
@@ -269,7 +255,6 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	return 0;
 }
 
- //=======================saveGraph2===================== 
 int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 									void *callbackData, int eventData1, int eventData2)
 {
@@ -282,7 +267,6 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	return 0;
 }
 
-//=======================saveAll============================
 int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
@@ -296,7 +280,6 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	return 0;
 }
 
-//===================saveGraph================
 static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 {
 	int bitmapID;
@@ -313,27 +296,27 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 	return 0;
 }
 
-//======================saveConfiguration==========================
-static int SaveConfigToFiles(char* pConfigSavePaths)
-{
-	FILE * fp = NULL;							//表示打开的文件
-	fp = fopen(pConfigSavePaths, "w");
-	if(fp == NULL)
-	{
-		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
-		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePaths)<0)
-			return -1;
-	}
-	else
-	{
-		int maxCommentSize=255;
-		char comment[maxCommentSize];
- 
-		fclose(fp);//关闭文件
-	}
-	return 0;
-	
-}
+
+//static int SaveConfigToFiles(char* pConfigSavePaths)
+//{
+//	FILE * fp = NULL;							//表示打开的文件
+//	fp = fopen(pConfigSavePaths, "w");
+//	if(fp == NULL)
+//	{
+//		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
+//		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePaths)<0)
+//			return -1;
+//	}
+//	else
+//	{
+//		int maxCommentSize=255;
+//		//char comment[maxCommentSize];
+// 
+//		fclose(fp);//关闭文件
+//	}
+//	return 0;
+//	
+//}
 
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)

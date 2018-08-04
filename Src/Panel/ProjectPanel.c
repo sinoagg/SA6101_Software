@@ -1,10 +1,13 @@
 #include <userint.h>
-#include "ProjectPanel.h"
+#include "Project.h"
 #include "LoadPanel.h"
+//#include "ProjectPanel.h"
+
 #define CHANGECOLOR 0x94CEFF//«≥¿∂
-#define BGCOLOR 0xFFFFFF
-#define COLOR  0x065279		//…Ó¿∂
-int CVICALLBACK OpenCallback (int panel, int control, int event,
+#define BGCOLOR 	0xFFFFFF
+#define COLOR  		0x065279//…Ó¿∂
+
+int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
@@ -16,7 +19,7 @@ int CVICALLBACK OpenCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK ProExitCallback (int panel, int control, int event,
+int CVICALLBACK PrjExitCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {	
 	
@@ -31,19 +34,10 @@ int CVICALLBACK DefaultCallback (int panel, int event, void *callbackData,
 {
 	switch (event)
 	{
-		case EVENT_GOT_FOCUS:
-
-			break;
-		case EVENT_LOST_FOCUS:
-
-			break;
-		case EVENT_CLOSE:
-
-			break;
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (panel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (panel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+			SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+			SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
 			SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, COLOR);
 			break;
@@ -77,10 +71,10 @@ int CVICALLBACK DescCallback (int panel, int control, int event,
   		 if(event == EVENT_VAL_CHANGED){
 	   
    			  if(val){
-				  SetCtrlAttribute(hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE,1);
+				  SetCtrlAttribute(hPrjListPanel, DEFPANEL_DESC, ATTR_VISIBLE,1);
 				   
 			  }else{
-			  	  SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_VISIBLE, 0);
+			  	  SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_VISIBLE, 0);
 			  }
    
    }
@@ -95,8 +89,8 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelAttribute (hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjListPanel, DEFPANEL_TXT_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjListPanel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 1);
 			break;
 	}
