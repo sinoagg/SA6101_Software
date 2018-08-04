@@ -273,7 +273,7 @@ In Projects = "1,"
 Window Top = 188
 Window Left = 90
 Window Z-Order = 1
-Source Window State = "1,348,348,348,21,29,21,0,0,201,0,0,0,0,0,26,372,0,389,12,411,726,1,0,"
+Source Window State = "1,348,348,348,21,29,21,0,0,201,0,0,0,0,0,26,385,0,391,72,411,726,1,0,"
 
 [File 0026]
 Path = "/e/SINOAGG/Software/SA6101/Src/Table.c"
@@ -791,5 +791,5 @@ Watch Expression = "tempPathToSearch"
 Watch Expression = "pFileLable[0]"
 
 [Watch 6]
-Watch Expression = "pFileLable[0].FileName"
+Watch Expression = "i"
 
