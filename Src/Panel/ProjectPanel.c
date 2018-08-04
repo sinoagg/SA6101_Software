@@ -7,13 +7,30 @@
 #define BGCOLOR 	0xFFFFFF
 #define COLOR  		0x065279//深蓝
 
+int selectedPrjIndex=0;			//当前选中的项目序号
+
 static void DiscardAllPrjPanel(PrjHandleTypeDef *pSingleProject)
 {
 	int i=0;
 	while((pSingleProject+i)->index != -1)
 	{
-		DiscardPanel(pSingleProject->hSinglePrjPanel);
+		DiscardPanel((pSingleProject+i)->hSinglePrjPanel);
+		i++;
 	}
+}
+
+static int RecallAllPanelState(char* pConfigSavePath)
+{
+	RecallPanelState(IdVgPanel.panelHandle, pConfigSavePath, 1);						
+	RecallPanelState(IdVgPanel.panelHandle, pConfigSavePath, 2);						
+	RecallPanelState(hIT_Panel, pConfigSavePath, 3);
+	RecallPanelState(hRT_Panel, pConfigSavePath, 4);
+	RecallPanelState(hBasicSamplePanel, pConfigSavePath, 10);
+	RecallPanelState(hAdvanceSamplePanel, pConfigSavePath, 11);
+	RecallPanelState(hEnvCfgPanel, pConfigSavePath, 14);
+	RecallPanelState(hSettingsPrjPanel, pConfigSavePath, 15);
+	RecallPanelState(hSettingsGraphPanel, pConfigSavePath, 16);
+	return 0;
 }
 
 int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
@@ -22,7 +39,9 @@ int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-
+			RecallAllPanelState(pFileLable[selectedPrjIndex]->pFileName);//load all panel and other parameters
+			DiscardAllPrjPanel(SingleProject);
+			RemovePopup (hPrjPanel);
 			break;
 	}
 	return 0;
@@ -31,10 +50,11 @@ int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
 int CVICALLBACK ExitPrjCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {	
-	
 	 if(event==EVENT_COMMIT)
-			  RemovePopup (hPrjPanel);  
-
+	 {
+		 DiscardAllPrjPanel(SingleProject); 
+		 RemovePopup (hPrjPanel);   
+	 }
 	return 0;
 }
 
@@ -76,11 +96,11 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 		case EVENT_LEFT_CLICK_UP:
 			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
 			SelectProject(panel, 1);
-			int selectIndex=GetPanelIndex(panel);
+			selectedPrjIndex=GetPanelIndex(panel);
 			int i=0;
 			while(SingleProject[i].index!=-1)
 			{
-				if(i!=selectIndex)
+				if(i!=selectedPrjIndex)
 					SelectProject(SingleProject[i].hSinglePrjPanel, 0);
 				i++;
 			}

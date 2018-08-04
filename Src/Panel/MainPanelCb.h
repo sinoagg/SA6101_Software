@@ -26,6 +26,7 @@
 #include "Protocol.h"
 #include "Graph.h"
 #include "Curve.h"
+#include "File.h"
 
 //==============================================================================
 // Constants
@@ -41,6 +42,7 @@ typedef struct
 // External variables
 extern unsigned char measureComPort;
 extern unsigned char controlComPort; 
+extern FileLableTypeDef *pFileLable[];
 extern PrjHandleTypeDef SingleProject[];
 //==============================================================================
 //// Global functions

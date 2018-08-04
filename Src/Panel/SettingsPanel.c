@@ -14,7 +14,7 @@ CurveAttrTypeDef Graph2_CurveAttr1;
 CurveAttrTypeDef Graph2_CurveAttr2;
 CurveAttrTypeDef Graph2_CurveAttr3;
 
-char ProjectSavePath[512];	   //本地工作目录Dir 
+char ProjectSavePath[512]="C:\\Sinoagg\\SA6101\\Users\\";	   //本地工作目录Dir 
 
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 {
@@ -131,7 +131,7 @@ int CVICALLBACK PrjDirCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 		
-			if(DirSelectPopup ("C:\\Sinoagg\\SA6101\\Users", "Select Directory", 1, 1, ProjectSavePath)>0)     
+			if(DirSelectPopup ("C:\\Sinoagg\\SA6101\\Users\\", "Select Directory", 1, 1, ProjectSavePath)>0)     
 			{
 			 	SetCtrlVal(panel, ENVT_PROPATH, ProjectSavePath); 
 			}

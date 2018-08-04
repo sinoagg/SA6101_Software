@@ -39,7 +39,7 @@
 
 void InitFileLable(FileLableTypeDef* pFileLable, char* pFileName)
 {
-	int fileHandle;
+	//int fileHandle;
 	int month, day, year;
 	int hours, minutes, seconds;
 	pFileLable->pFileName=pFileLable->FileName;
@@ -52,13 +52,12 @@ void InitFileLable(FileLableTypeDef* pFileLable, char* pFileName)
 	sprintf(pFileLable->pFileDate, "%02d/%02d/%4d", month, day, year);
 	GetFileTime (pFileName, &hours, &minutes, &seconds);
 	sprintf(pFileLable->pFileTime, "%02d:%02d:%02d", hours, minutes, seconds);
-	//FILE * fp = NULL;							//表示打开的文件
-	fileHandle=OpenFile (pFileName, VAL_READ_ONLY, VAL_OPEN_AS_IS, VAL_ASCII);
-	ReadFile (fileHandle, pFileLable->pFileDesc, 63);
-	CloseFile (fileHandle);
-	//fp = fopen(pFileName, "r");
-	//fread (pFileLable->pFileDesc, 64, 64, fp);
-	//fclose(fp);//关闭文件  
+	FILE * fp = NULL;							//表示打开的文件
+	fp= fopen (pFileName, "a+");
+	fseek(fp, -64, SEEK_END);					//从最后起向前64
+	fgets(pFileLable->pFileDesc, 63, fp);
+	fclose(fp);
+
 	
 }
 
