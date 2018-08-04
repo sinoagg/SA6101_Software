@@ -29,7 +29,7 @@
 #define  IDVDS_CFG_TEXTMSG_18             14      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_TEXTMSG_19             15      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_TEXTMSG_20             16      /* control type: textMsg, callback function: (none) */
-#define  IDVDS_CFG_PIC_DRAIN              17      /* control type: picture, callback function: (none) */
+#define  IDVDS_CFG_PIC_DRAIN              17      /* control type: picture, callback function: IdVdDrainPicCallback */
 #define  IDVDS_CFG_TEXTMSG_22             18      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_TXT_DRAIN              19      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_VG_STEP                20      /* control type: numeric, callback function: IdVdGateStepCallback */
@@ -42,7 +42,7 @@
 #define  IDVDS_CFG_MV_START               27      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_TXT_START              28      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_MV_STOP                29      /* control type: textMsg, callback function: (none) */
-#define  IDVDS_CFG_PIC_GATE               30      /* control type: picture, callback function: (none) */
+#define  IDVDS_CFG_PIC_GATE               30      /* control type: picture, callback function: IdVdGatePicCallback */
 #define  IDVDS_CFG_MV_STEP                31      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_TXT_GATE               32      /* control type: textMsg, callback function: (none) */
 #define  IDVDS_CFG_DECORATION_DRAIN       33      /* control type: deco, callback function: IdVdDrainDecoCallback */
@@ -63,11 +63,13 @@
 
 int  CVICALLBACK IdVdDrainDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdDrainModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK IdVdDrainPicCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdDrainStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdDrainStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdDrainStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdGateModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK IdVdGatePicCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdGateStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdGateStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK IdVdGateStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

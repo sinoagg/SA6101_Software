@@ -9,7 +9,8 @@ int CVICALLBACK MesaureCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			int val; //Measure ∂‡—°
 			GetCtrlVal(panel,control,&val);
-				   if(val){
+				   if(val)
+				   {
 					   SetCtrlVal(panel,ENVIRONMEN_TEMPTER,val);
 					   SetCtrlVal(panel,ENVIRONMEN_HUMIDITY,val);
 					   SetCtrlVal(panel,ENVIRONMEN_PRESSURE,val);

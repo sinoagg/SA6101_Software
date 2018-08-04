@@ -42,12 +42,14 @@ int hGraphSelectPanel;
 int hSettingsAboutPanel;
 int hIT_Panel;
 int hRT_Panel;
+int hIV_Panel;
 int hSettingsGraphPanel;
 int hEnvResultPanel;
 int hSettingsPanel;
 int hPrjPanel;
 int hPrjListPanel;
 int hResultDispPanel;
+int hIdtPanel;
 
 //==============================================================================
 // Global functions
@@ -64,6 +66,9 @@ int LoadInitPanel (void)
 		return -1;
 	
 	if ((IdVgPanel.panelHandle = LoadPanel (hMainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
+		return -1;
+	
+	if((hIdtPanel = LoadPanel(hMainPanel,"Id-t Configuration.uir",IDT_CFG))<0) //load Id-t panel
 		return -1;
 	
 	if ((hBasicSamplePanel = LoadPanel (hMainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
@@ -114,8 +119,19 @@ int LoadInitPanel (void)
 	
 	if ((hRT_Panel = LoadPanel (hMainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
+<<<<<<< HEAD
 		
 	if ((hPrjPanel = LoadPanel (hMainPanel, "Project.uir", PROPANEL)) < 0)		//load projects panel
+=======
+	
+	if ((hIV_Panel = LoadPanel (hMainPanel, "I-V.uir", IVPANEL))<0)
+		return -1;
+	
+	//µ¯³öprojects		
+	 if ((hPrjPanel = LoadPanel (hMainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
+		return -1;
+	 if ((hPrjListPanel = LoadPanel (hPrjPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
+>>>>>>> c2968d55325049810faf6030f4c75b914f2bb4c4
 		return -1;
 	
 	DisplayPanel (hMainPanel); 
@@ -128,14 +144,5 @@ int LoadInitPanel (void)
 	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	DisplayPanel(IdVdPanel.panelHandle);
 
-	//
-	//SetPanelPos(hBasicSamplePanel, 105, 1600);
-	//SetPanelSize(hBasicSamplePanel, 449, 300);
-	//DisplayPanel(hBasicSamplePanel);
-	//
-	//SetPanelPos(hEnvCfgPanel, 556, 1600);
-	//SetPanelSize(hEnvCfgPanel, 449, 300);
-	//DisplayPanel(hEnvCfgPanel);
-	//
 	return 0;
 }

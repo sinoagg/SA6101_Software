@@ -33,15 +33,18 @@
 
 //==============================================================================
 // Global variables
-ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVDS_CFG_DRAINMODE, IDVGS_CFG_GATEMODE};  
+ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VG_START, IDVGS_CFG_VG_STOP, IDVGS_CFG_VG_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVDS_CFG_DRAINMODE, IDVGS_CFG_GATEMODE};  
 //==============================================================================
 // Global functions
 static  void SetDrainDisp(int panel, char focus)
 {
-	if(focus==FOCUS){
+	if(focus==FOCUS)
+	{
 		DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg_pressed.ico");// change picture
 		SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
-	}else{
+	}
+	else
+	{
 		DisplayImageFile (panel, IDVGS_CFG_PIC_DRAIN, "Resource\\bg.ico");// change picture
 		SetCtrlAttribute (panel, IDVGS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
 	}
@@ -49,10 +52,13 @@ static  void SetDrainDisp(int panel, char focus)
 
 static  void SetGateDisp(int panel, char focus)
 {
-	if(focus==FOCUS){
+	if(focus==FOCUS)
+	{
 		DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg_pressed.ico");// change picture
 		SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor
-	}else{
+	}
+	else
+	{
 		DisplayImageFile (panel, IDVGS_CFG_PIC_GATE, "Resource\\bg.ico");// change picture
 		SetCtrlAttribute (panel, IDVGS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor
 	}
@@ -61,7 +67,8 @@ static  void SetGateDisp(int panel, char focus)
 int CVICALLBACK IdVgGateDecoCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
-	switch(event){
+	switch(event)
+	{
 		case EVENT_LEFT_CLICK_UP:  
 			SetGateDisp(panel,FOCUS);  
 		    SetDrainDisp(panel,UNFOCUS);
@@ -73,12 +80,13 @@ int CVICALLBACK IdVgGateDecoCallback (int panel, int control, int event,
 int CVICALLBACK IdVgDrainDecoCallback (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-		switch(event){
+		switch(event)
+		{
 		  case EVENT_LEFT_CLICK_UP:
 	  	 	  SetGateDisp(panel,UNFOCUS);
 	  	 	  SetDrainDisp(panel,FOCUS);
 	  	      break;
-	}
+     	}
 	return 0;
 }
 
@@ -96,7 +104,8 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
 
-	switch(event){
+	switch(event)
+	{
 		case EVENT_LEFT_CLICK_UP:
 			SetDrainDisp(panel, FOCUS);
 			SetGateDisp(panel, UNFOCUS);
@@ -104,7 +113,8 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 		case EVENT_VAL_CHANGED:
 		    int valu;
 		    GetCtrlVal(panel,IDVGS_CFG_DRAINMODE,&valu);
-			if(valu==1){
+			if(valu==1)
+			{
 		        DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STOP,ATTR_VISIBLE,1);
 				SetCtrlAttribute(panel, IDVGS_CFG_TXT_STOP,ATTR_VISIBLE,1);
@@ -112,7 +122,9 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STEP,ATTR_VISIBLE,1);
 				SetCtrlAttribute(panel, IDVGS_CFG_TXT_STEP,ATTR_VISIBLE,1);
 				SetCtrlAttribute(panel, IDVGS_CFG_MV_STEP,ATTR_VISIBLE,1);
-			}else if(valu==2){
+			}
+			else if(valu==2)
+			{
 				DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Bias.ico");
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STOP,ATTR_VISIBLE,0);
 				SetCtrlAttribute(panel, IDVGS_CFG_TXT_STOP,ATTR_VISIBLE,0);
@@ -131,61 +143,87 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 int CVICALLBACK IdVgDrainStartCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, FOCUS);
 			SetGateDisp(panel, UNFOCUS);
-	   }
+	    }
 	return 0;
 }
 
 int CVICALLBACK IdVgDrainStopCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, FOCUS);
 			SetGateDisp(panel, UNFOCUS);
-	   }
+	    }
 	return 0;
 }
 
 int CVICALLBACK IdVgDrainStepCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, FOCUS);
 			SetGateDisp(panel, UNFOCUS);
-	   }
+	    }
 	return 0;
 }
 
 int CVICALLBACK IdVgGateStartCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, UNFOCUS);
 			SetGateDisp(panel, FOCUS);
-	   }
+	    }
 	return 0;
 }
 
 int CVICALLBACK IdVgGateStopCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, UNFOCUS);
 			SetGateDisp(panel, FOCUS);
-	   }
+	    }
 	return 0;
 }
 
 int CVICALLBACK IdVgGateStepCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, UNFOCUS);
 			SetGateDisp(panel, FOCUS);
-	   }
+	     }
 	return 0;
 }
 
+ int CVICALLBACK IdVgGatePicCallback (int panel, int control, int event,
+									 void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP)
+		{  
+			SetDrainDisp(panel, UNFOCUS);
+			SetGateDisp(panel, FOCUS);
+	    }
+	return 0;
+}
 
+int CVICALLBACK IdVgDrainPicCallback (int panel, int control, int event,
+									  void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK_UP)
+		{  
+			  SetGateDisp(panel,UNFOCUS);
+	  	 	  SetDrainDisp(panel,FOCUS);
+	    }
+	return 0;
+}

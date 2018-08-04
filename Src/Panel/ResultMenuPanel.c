@@ -65,6 +65,7 @@ static void DispDoubleGraph(void)
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 	DisplayPanel(hGraphPanel);
+	
 }
 
 static void DispGraphSelectCheckBox(void)
@@ -72,10 +73,12 @@ static void DispGraphSelectCheckBox(void)
 	//int val=0;
 	if(graphDispSelect==DISP_SINGLE_GRAPH)
 	{
-		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 0); 
+		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 0);
 	}
-	else
+	else{
 		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 1);
+	 
+	}
 	SetPanelPos(hGraphSelectPanel, 172, 1457);  
 	SetPanelSize(hGraphSelectPanel, 26, 140);      
  	DisplayPanel(hGraphSelectPanel);
@@ -97,12 +100,12 @@ void DispResultTableGraph(void)
 int CVICALLBACK TableCallback (int panel, int control, int event,						//点击table图标切换到table面板     
 							   void *callbackData, int eventData1, int eventData2)
 {
-	switch(event){
-		case EVENT_LEFT_CLICK:
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
-			break;
+	switch(event)
+	{
 		case EVENT_LEFT_CLICK_UP:
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table_pressed.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
 			resultDispSelect=DISP_TABLE;
 			DispResultTableGraph();
 			break;
@@ -113,19 +116,30 @@ int CVICALLBACK TableCallback (int panel, int control, int event,						//点击tab
 int CVICALLBACK GraphCallback (int panel, int control, int event,						//点击graph图标切换到graph面板    
 							   void *callbackData, int eventData1, int eventData2)
 {
-	switch(event){
-		case EVENT_LEFT_CLICK:
-			DisplayImageFile(hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-			break;
+	switch(event)
+	{
+		
 		case EVENT_LEFT_CLICK_UP:
-			DisplayImageFile(hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
+			 
 			if(resultDispSelect==DISP_GRAPH)//如果此时在显示图的时候还去点击图的图标，则认为是想切换显示
+			{	
 		  		DispGraphSelectCheckBox();
+			}
 			else
 			{
 				resultDispSelect=DISP_GRAPH;
 				DispResultTableGraph();
 			}
+			
+			int val;
+	  	    GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
+			if(val)
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
+			 else
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico"); 
 			break;
 	}	
 	return 0;
@@ -134,18 +148,20 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,						//点击gra
 int CVICALLBACK GraphSelectCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {  
-	if( event == EVENT_COMMIT)
+	if(event == EVENT_COMMIT)
 	{      	
 		HidePanel(hGraphSelectPanel); 
 		int val;
-	  	GetCtrlVal(panel, CHPANEL_CHECKBOX, &val);
+	  	GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
 	    if(val)
 		{	
+		    DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
 			DispDoubleGraph();
 			graphDispSelect=DISP_DOUBLE_GRAPH;
 		}
 		else
-		{   	
+		{   
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
 			DispSingleGraph();
 			graphDispSelect=DISP_SINGLE_GRAPH;
 		}
@@ -158,16 +174,13 @@ int CVICALLBACK SaveDataCallback (int panel, int control, int event,
 {
 	   switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph.ico");
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\SaveData_pressed.ico"); 
-		  
-			break;
-		 case EVENT_LEFT_CLICK:
-			   //弹出savedata面板
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData_pressed.ico"); 
+		  		//弹出savedata面板
 			   InstallPopup(hSaveDataPanel);
 			break;
+		 
 	}	
 	return 0;
 }
@@ -177,7 +190,9 @@ int CVICALLBACK ExitCallback (int panel, int control, int event,
 {
 	if (event == EVENT_COMMIT)
 	{
-		RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板    
+		RemovePopup(hSaveDataPanel);  	//移除、关闭savedata面板
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+		
 	}
 	return 0;
 }

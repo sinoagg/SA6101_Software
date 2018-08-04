@@ -28,7 +28,7 @@
 // Types
 typedef struct
 {
-	int xAxisHead;
+	int xAxisHead;//
 	int xAxisTail;
 	int yAxisHead;
 	int yAxisTail;
