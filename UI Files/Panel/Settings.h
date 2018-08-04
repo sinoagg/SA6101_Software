@@ -21,20 +21,25 @@
 #define  ENVT_DIRECT                      3       /* control type: command, callback function: PrjDirCallback */
 
 #define  GRAPH                            3
-#define  GRAPH_RING                       2       /* control type: ring, callback function: (none) */
-#define  GRAPH_TEXTMSG                    3       /* control type: textMsg, callback function: (none) */
-#define  GRAPH_TEXTMSG_2                  4       /* control type: textMsg, callback function: (none) */
-#define  GRAPH_TEXTMSG_3                  5       /* control type: textMsg, callback function: (none) */
-#define  GRAPH_TEXTMSG_4                  6       /* control type: textMsg, callback function: (none) */
-#define  GRAPH_TEXTMSG_5                  7       /* control type: textMsg, callback function: (none) */
-#define  GRAPH_TEXTMSG_6                  8       /* control type: textMsg, callback function: (none) */
-#define  GRAPH_RING_2                     9       /* control type: ring, callback function: (none) */
-#define  GRAPH_COLORNUM_4                 10      /* control type: color, callback function: (none) */
-#define  GRAPH_COLORNUM_3                 11      /* control type: color, callback function: (none) */
-#define  GRAPH_COLORNUM_2                 12      /* control type: color, callback function: (none) */
-#define  GRAPH_COLORNUM                   13      /* control type: color, callback function: (none) */
-#define  GRAPH_CHECKBOX_2                 14      /* control type: radioButton, callback function: (none) */
-#define  GRAPH_CHECKBOX                   15      /* control type: radioButton, callback function: (none) */
+#define  GRAPH_PLOT_STYLE                 2       /* control type: ring, callback function: (none) */
+#define  GRAPH_PLOT_STYLE_2               3       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TXT_PLOT_STYLE             4       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_2                  5       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_3                  6       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_7                  7       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_4                  8       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_5                  9       /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_8                  10      /* control type: textMsg, callback function: (none) */
+#define  GRAPH_TEXTMSG_6                  11      /* control type: textMsg, callback function: (none) */
+#define  GRAPH_POINT_STYLE                12      /* control type: ring, callback function: (none) */
+#define  GRAPH_LINE_STYLE                 13      /* control type: ring, callback function: (none) */
+#define  GRAPH_GRAPH2CLR3                 14      /* control type: color, callback function: (none) */
+#define  GRAPH_GRAPH2CLR2                 15      /* control type: color, callback function: (none) */
+#define  GRAPH_GRAPH2CLR1                 16      /* control type: color, callback function: (none) */
+#define  GRAPH_GRAPH1CLR3                 17      /* control type: color, callback function: (none) */
+#define  GRAPH_GRAPH1CLR2                 18      /* control type: color, callback function: (none) */
+#define  GRAPH_GRAPH1CLR1                 19      /* control type: color, callback function: (none) */
+#define  GRAPH_CHECKBOX                   20      /* control type: radioButton, callback function: (none) */
 
 #define  SETTINGS                         4       /* callback function: SettingsPanelCallback */
 #define  SETTINGS_CANVAS                  2       /* control type: canvas, callback function: (none) */

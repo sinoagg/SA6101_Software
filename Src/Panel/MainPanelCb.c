@@ -351,10 +351,10 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 
 static int SaveAllPanelState(char* pConfigSavePath)
 {
-	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 0);						
 	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 1);						
-	SavePanelState(hIT_Panel, pConfigSavePath, 2);
-	SavePanelState(hRT_Panel, pConfigSavePath, 3);
+	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 2);						
+	SavePanelState(hIT_Panel, pConfigSavePath, 3);
+	SavePanelState(hRT_Panel, pConfigSavePath, 4);
 	SavePanelState(hBasicSamplePanel, pConfigSavePath, 10);
 	SavePanelState(hAdvanceSamplePanel, pConfigSavePath, 11);
 	SavePanelState(hEnvCfgPanel, pConfigSavePath, 14);
@@ -370,19 +370,20 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	if(fp == NULL)
 	{
 		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
-		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePath)<0)
+		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\Users\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePath)<0)
 			return -1;
 	}
 	else
 	{
 		int maxCommentSize=255;
 		char description[maxCommentSize];
-		PromptPopup("Message", "Please enter comment for this configuration:", description, maxCommentSize-1);
+		PromptPopup("Message", "Please enter description for this configuration:", description, maxCommentSize-1);
 		//fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
-		fprintf(fp, "%s\r\n", description);
-		SaveAllPanelState(pConfigSavePath);		//保存所有面板的数据
-		
+		SaveAllPanelState(pConfigSavePath);		//保存所有面板的数据 
+		fp = fopen(pConfigSavePath, "a+");
+		fprintf(fp, "\r\n%-61s\r\n", description);		//左对齐打满64字符
 		fclose(fp);//关闭文件
+		
 	}
 	return 0;
 	
