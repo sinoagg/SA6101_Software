@@ -24,6 +24,14 @@
 
 //==============================================================================
 // Constants
+#define TWO_TERMINAL 0
+#define EXP_I_T 1
+#define EXP_R_T 2
+#define EXP_I_V 3
+#define FOUR_TERMINAL 4
+#define EXP_ID_VDS 5
+#define EXP_ID_VGS 6
+#define EXP_ID_T 7
 
 //==============================================================================
 // Types
@@ -40,92 +48,102 @@
 //==============================================================================
 // Global functions
 
- void ChangeImg(int panel, int control){
+static void ChangeImg(void)
+{
 	DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 	DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
 	DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-	SetPanelPos(hResultDispPanel, 104, 1600);
-	SetPanelSize(hResultDispPanel, 450 ,300);
-	DisplayPanel(hResultDispPanel);
-
 }
+
+static void DisplaySampleCfgPanel(int display)
+{
+	if(display)
+	{
+		SetPanelPos(hBasicSamplePanel, 104, 1600);
+		SetPanelSize(hBasicSamplePanel, 450 ,300);
+		DisplayPanel(hBasicSamplePanel);
+	}
+	else 
+		HidePanel(hBasicSamplePanel);
+}
+
+static void DisplayRunTime(int display)
+{
+	SetCtrlAttribute(hBasicSamplePanel, SAMPLE_CFG_TXT_RUNTIME,ATTR_VISIBLE, display);
+	SetCtrlAttribute(hBasicSamplePanel, SAMPLE_CFG_RUNTIME,ATTR_VISIBLE, display);
+	SetCtrlAttribute(hBasicSamplePanel, SAMPLE_CFG_RUNTIME_UNIT,ATTR_VISIBLE, display);
+}
+
 int CVICALLBACK TreeCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
-	
-	
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-		
+			ChangeImg();
 			int index;
 			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
-			if(index==0)
+			if(index==TWO_TERMINAL)
 			{
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_MS,ATTR_VISIBLE,0);	
+				DisplaySampleCfgPanel(0);	
 			}
-			else if(index==1)	//加载I-T
+			else if(index==EXP_I_T)	//加载I-T
 			{ 
 				SetPanelPos(hIT_Panel, 104, 305);
 				SetPanelSize(hIT_Panel, 901, 1293);
 				DisplayPanel(hIT_Panel);
 				
-		        SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,1);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,1);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_MS,ATTR_VISIBLE,1);
-				ChangeImg(panel,control);
+		        DisplaySampleCfgPanel(1);
+				DisplayRunTime(1);
 			}
-			else if(index==2)	//加载R-T 
+			else if(index==EXP_R_T)	//加载R-T 
 			{	
 				SetPanelPos(hRT_Panel, 104, 305);
 				SetPanelSize(hRT_Panel, 901, 1293);
-				DisplayPanel(hRT_Panel);	
-		        SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,1);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,1);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_MS,ATTR_VISIBLE,1);
-				ChangeImg(panel,control);
-			}else if(index==3)
+				DisplayPanel(hRT_Panel);
+				
+				DisplaySampleCfgPanel(1);
+				DisplayRunTime(1);
+			}
+			else if(index==EXP_I_V)
 			{
 				SetPanelPos(hIV_Panel, 104, 305);
 				SetPanelSize(hIV_Panel, 901, 1293);
 				DisplayPanel(hIV_Panel);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_MS,ATTR_VISIBLE,0);
-				ChangeImg(panel,control);
+				
+				DisplaySampleCfgPanel(1);
+				DisplayRunTime(0);
 			}
-			else if(index==5)// 加载Id_Vds Configuration   
+			else if(index==FOUR_TERMINAL) 
+			{
+				DisplaySampleCfgPanel(0);
+			}
+			else if(index==EXP_ID_VDS)// 加载Id_Vds Configuration   
 			{
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_RUNTIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_RUNTIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_S,ATTR_VISIBLE,0);
-			/*	ChangeImg(panel,control);*/
+				
+				DisplaySampleCfgPanel(1);
+				DisplayRunTime(0);
 			}
-			else if(index==6)//  加载Id_Vgs Configuration  
+			else if(index==EXP_ID_VGS)//  加载Id_Vgs Configuration  
 			{ 	  
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVgPanel.panelHandle);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_RUNTIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_RUNTIME,ATTR_VISIBLE,0);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_S,ATTR_VISIBLE,0);
-			/*	ChangeImg(panel,control);*/
-			}else if(index==7)//Id-T
+				
+				DisplaySampleCfgPanel(1);
+				DisplayRunTime(0);
+			}else if(index==EXP_ID_T)//Id-T
 			{
 			    SetPanelPos(hIdtPanel, 104, 305);
 				SetPanelSize(hIdtPanel, 901, 1293);
 				DisplayPanel(hIdtPanel);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_RUNTIME,ATTR_VISIBLE,1);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_RUNTIME,ATTR_VISIBLE,1);
-				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_S,ATTR_VISIBLE,1);
-			/*	ChangeImg(panel,control);*/
+				
+				DisplaySampleCfgPanel(1);
+				DisplayRunTime(1);
 			}
-			
 			break;
 	}  
 	return 0;

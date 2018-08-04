@@ -104,10 +104,8 @@ int LoadInitPanel (void)
 	if ((hSettingsAboutPanel = LoadPanel (hSettingsPanel, "Settings.uir", ABOUT)) < 0)		//用于弹出Settings->About面板
 		return -1;
 
-	//选择
 	if ((hGraphSelectPanel = LoadPanel (hMainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load hGraphSelectPanel panel
 		return -1;
-	
 	
 	if ((hGraphPanel = LoadPanel (hMainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
@@ -120,15 +118,14 @@ int LoadInitPanel (void)
 	
 	if ((hRT_Panel = LoadPanel (hMainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
-	
+
 	if ((hIV_Panel = LoadPanel (hMainPanel, "I-V.uir", IVPANEL))<0)
 		return -1;
-	
-	//弹出projects		
-	 if ((hPrjPanel = LoadPanel (hMainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
+		
+	if ((hPrjPanel = LoadPanel (hMainPanel, "Project.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
-	 if ((hPrjListPanel = LoadPanel (hPrjPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
-		return -1;
+	//if((hPrjListPanel = LoadPanel(hPrjPanel,"Project.uir",DEFPANEL))<0)
+	//	return -1;
 	
 	DisplayPanel (hMainPanel); 
 	

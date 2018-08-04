@@ -23,7 +23,7 @@
 #define  RESULTDISP_SAMPLETIME            8       /* control type: textMsg, callback function: (none) */
 #define  RESULTDISP_TEXTMSG_5             9       /* control type: textMsg, callback function: (none) */
 #define  RESULTDISP_TEXTMSG_3             10      /* control type: textMsg, callback function: (none) */
-#define  RESULTDISP_TXT_MS                11      /* control type: textMsg, callback function: (none) */
+#define  RESULTDISP_TIME_UNIT             11      /* control type: textMsg, callback function: (none) */
 #define  RESULTDISP_TEXTMSG_7             12      /* control type: textMsg, callback function: (none) */
 #define  RESULTDISP_TEXTMSG_6             13      /* control type: textMsg, callback function: (none) */
 

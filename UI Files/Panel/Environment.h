@@ -26,10 +26,10 @@
 #define  ENVIRPANEL                       2
 #define  ENVIRPANEL_TXT_HUM               2       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TXT_PRESS             3       /* control type: textMsg, callback function: (none) */
-#define  ENVIRPANEL_STR_PRES              4       /* control type: string, callback function: (none) */
-#define  ENVIRPANEL_STR_HUM               5       /* control type: string, callback function: (none) */
-#define  ENVIRPANEL_TXT_TEMP              6       /* control type: textMsg, callback function: (none) */
-#define  ENVIRPANEL_STR_TEMP              7       /* control type: string, callback function: (none) */
+#define  ENVIRPANEL_PRESSURE              4       /* control type: numeric, callback function: (none) */
+#define  ENVIRPANEL_HUMIDITY              5       /* control type: numeric, callback function: (none) */
+#define  ENVIRPANEL_TEMP                  6       /* control type: numeric, callback function: (none) */
+#define  ENVIRPANEL_TXT_TEMP              7       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG_2             8       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG               9       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_CHECKBOX_3            10      /* control type: radioButton, callback function: (none) */
