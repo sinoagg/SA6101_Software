@@ -39,7 +39,7 @@
 #define  SAMPLE_CFG_TEXTMSG_8             16      /* control type: textMsg, callback function: (none) */
 #define  SAMPLE_CFG_TEXTMSG_10            17      /* control type: textMsg, callback function: (none) */
 #define  SAMPLE_CFG_TXT_RUNTIME           18      /* control type: textMsg, callback function: (none) */
-#define  SAMPLE_CFG_TXT_S                 19      /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_CFG_RUNTIME_UNIT          19      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

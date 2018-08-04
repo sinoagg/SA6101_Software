@@ -107,7 +107,6 @@ int LoadInitPanel (void)
 	if ((hGraphSelectPanel = LoadPanel (hMainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load hGraphSelectPanel panel
 		return -1;
 	
-	
 	if ((hGraphPanel = LoadPanel (hMainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;
 	
@@ -119,19 +118,11 @@ int LoadInitPanel (void)
 	
 	if ((hRT_Panel = LoadPanel (hMainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
-<<<<<<< HEAD
-		
-	if ((hPrjPanel = LoadPanel (hMainPanel, "Project.uir", PROPANEL)) < 0)		//load projects panel
-=======
-	
+
 	if ((hIV_Panel = LoadPanel (hMainPanel, "I-V.uir", IVPANEL))<0)
 		return -1;
-	
-	//µ¯³öprojects		
-	 if ((hPrjPanel = LoadPanel (hMainPanel, "ProjectPanel.uir", PROPANEL)) < 0)		//load projects panel
-		return -1;
-	 if ((hPrjListPanel = LoadPanel (hPrjPanel, "ProjectPanel.uir", DEFPANEL)) < 0)		//load projects panel
->>>>>>> c2968d55325049810faf6030f4c75b914f2bb4c4
+		
+	if ((hPrjPanel = LoadPanel (hMainPanel, "Project.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
 	
 	DisplayPanel (hMainPanel); 

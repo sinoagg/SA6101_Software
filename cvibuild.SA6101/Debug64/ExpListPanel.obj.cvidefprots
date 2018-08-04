@@ -1,7 +1,3 @@
-[ChangeImg]
-Class="Function"
-Prototype="void ChangeImg(int panel, int control);"
-
 [TreeCallback]
 Class="Function"
 Prototype="int TreeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
