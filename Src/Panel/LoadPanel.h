@@ -32,7 +32,7 @@
 #include "R-T.h" 
 #include "I-V.h"  
 #include "SettingsPanel.h"
-#include "Project.h"
+#include "ProjectPanel.h"
 #include "ResultDispPanel.h"
 #include "Id-t Configuration.h"
 
@@ -48,6 +48,7 @@
 // External variables
 extern int hMainPanel;
 extern int hExpListPanel;
+extern int samplePanel;
 extern int hGraphPanel;
 extern int hBasicSamplePanel;  
 extern int hAdvanceSamplePanel;
@@ -59,7 +60,6 @@ extern int hSaveDataPanel;
 extern int hSettingsPrjPanel;  
 extern int hSettingsGraphPanel;
 extern int hSettingsAboutPanel;
-extern int hIdVgPanel;
 extern int hIT_Panel;          //I-T panel
 extern int hRT_Panel;          //R-T panel
 extern int hIV_Panel;          //I-V panel

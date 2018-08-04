@@ -25,23 +25,14 @@
 
 //==============================================================================
 // Types
-typedef struct
-{
-	char FileName[512];
-	char FileDate[16];
-	char FileTime[16];
-	char FileDesc[64];
-	char *pFileName;
-	char *pFileDate;
-	char *pFileTime;
-	char *pFileDesc;
-}FileLableTypeDef;
+
 //==============================================================================
 // External variables
 
 //==============================================================================
 // Global functions
-void InitFileLable(FileLableTypeDef* pFileLable, char* pFileName);
+
+int Declare_Your_Functions_Here (int x);
 
 #ifdef __cplusplus
     }

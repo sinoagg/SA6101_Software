@@ -96,7 +96,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_MS,ATTR_VISIBLE,0);
 				ChangeImg(panel,control);
 			}
-<<<<<<< HEAD
 			else if(index==5)// º”‘ÿId_Vds Configuration   
 			{
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
@@ -106,13 +105,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_RUNTIME,ATTR_VISIBLE,0);
 				SetCtrlAttribute(hBasicSamplePanel,SAMPLE_CFG_TXT_S,ATTR_VISIBLE,0);
 			/*	ChangeImg(panel,control);*/
-=======
-			else if(index==4) 
-			{// º”‘ÿId_Vds Configuration 
-				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
-				DisplayPanel(IdVgPanel.panelHandle);
->>>>>>> f15195555b1b24c0f49b3f8a201f6468855fde39
 			}
 			else if(index==6)//  º”‘ÿId_Vgs Configuration  
 			{ 	  

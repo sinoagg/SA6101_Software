@@ -1,10 +1,10 @@
-[OpenPrjCallback]
+[OpenCallback]
 Class="Function"
-Prototype="int OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int OpenCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[PrjExitCallback]
+[ProExitCallback]
 Class="Function"
-Prototype="int PrjExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int ProExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [DefaultCallback]
 Class="Function"
