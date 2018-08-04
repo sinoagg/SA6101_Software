@@ -166,7 +166,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 				case NO_SWEEP_IT:
-					if(TestPara.gateOutputMode==VOL_BIAS)
+				/*	if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
 						numOfDots=TestPara.VgStart;
@@ -174,7 +174,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
 					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis,int AxisScaling,double min,double max);
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					}
+					}*/
 					//TODO
 					break;
 				case  NO_SWEEP_RT:
