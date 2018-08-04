@@ -1,17 +1,18 @@
 -nologo
--out:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\SA6101.exe
+-out:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SA6101.exe
 -arch:x64
 -timestamp
 -debug:2
--res:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\resources.res
+-res:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\resources.res
 -entry:CVIWinMainStartupCodeForDebugging
 -base:0x400000
--linked:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\linkersummary.txt
--dlldeps:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\dlldependencies.txt
--licensing:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\linkerlicensing.txt
--browsedeps:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\moduledependencies.txt
+-linked:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\linkersummary.txt
+-dlldeps:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\dlldependencies.txt
+-licensing:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\linkerlicensing.txt
+-browsedeps:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\moduledependencies.txt
 -stackreserve:1048576
 -stackcommit:4096
+<<<<<<< HEAD
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\asynctmr.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\Curve.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\EnvironmentPanel.obj
@@ -34,19 +35,43 @@
 -more:d:\software\nilwcvi\nilwcvi2017\bin\msvc64\cvistart.lib
 -more:d:\software\nilwcvi\nilwcvi2017\bin\msvc64\cvi.lib
 -more:D:\software\SDK8.1\Lib\winv6.3\um\x64\advapi32.lib
+=======
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\asynctmr.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Curve.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\EnvironmentPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\ExpListPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\File.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Graph.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\IdVdsPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\IdVgsPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\LoadPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\main.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\MainPanelCb.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Plot.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\ProjectPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Protocol.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\ResultMenuPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SampleCfgPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\SettingsPanel.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Table.obj
+-in:e:\SINOAGG\Software\SA6101\cvibuild.SA6101\Debug64\Timer.obj
+-more:c:\program files (x86)\national instruments\cvi2017\bin\msvc64\cvistart.lib
+-more:c:\program files (x86)\national instruments\cvi2017\bin\msvc64\cvi.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\advapi32.lib
+>>>>>>> e73900e378028359f1677ade8da974220349c79d
 -more:c:\ProgramData\National Instruments\CVI2017\bin\msvc64\analysis.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cviauto.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvidotnet.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvinetstreams.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvinetv.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvintwrk.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvitdms.lib
--more:D:\software\SDK8.1\Lib\winv6.3\um\x64\gdi32.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\gpib.lib
--more:D:\software\SDK8.1\Lib\winv6.3\um\x64\kernel32.lib
--more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\omp.lib
--more:d:\software\NILWCVI\NILWCVI2017\toolslib\toolbox\msvc64\toolbox.obj
--more:D:\software\SDK8.1\Lib\winv6.3\um\x64\user32.lib
--more:D:\software\SDK8.1\Lib\winv6.3\um\x64\uuid.lib
--more:d:\software\NILWCVI\Shared\CVI\Bin\msvc64\visa.lib
--more:D:\software\SDK8.1\Lib\winv6.3\um\x64\winmm.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\cviauto.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\cvidotnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\cvinetstreams.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\cvinetv.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\cvintwrk.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\cvitdms.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\gdi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\gpib.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\kernel32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\bin\msvc64\omp.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2017\toolslib\toolbox\msvc64\toolbox.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\user32.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\uuid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\visa.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\winmm.lib

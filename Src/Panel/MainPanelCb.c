@@ -54,9 +54,19 @@
 // Global variables
 int TimerID;
 char configSavePath[512]={0};
-FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针
+FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针，最多只能加载一个文件夹下的64个文件
+PrjHandleTypeDef SingleProject[64];									
+
 //==============================================================================
 // Global functions
+static void InitSingleProject(PrjHandleTypeDef *pSingleProject)
+{
+	int i;
+	for(i=0;i<64;i++)
+	{
+		(pSingleProject+i)->index=-1;	
+	}
+}
 
 int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 									 int eventData1, int eventData2)
@@ -79,7 +89,6 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
-	//int ControlID;
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
@@ -308,6 +317,7 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DispResultMenu();
 			DispResultTableGraph();
 			DispResultNumber();
+<<<<<<< HEAD
 		    DispEnvironmentCfg();
 			int index;
 			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
@@ -315,6 +325,10 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				DispRuntime(1);
 			else 
 				DispRuntime(0);
+=======
+			
+			DispEnvironmentCfg();
+>>>>>>> e73900e378028359f1677ade8da974220349c79d
 			break;
 	}
 	return 0;
@@ -376,43 +390,48 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	
 }
 
-static int LoadAndDispPrj(FileLableTypeDef *pFileLable, char sequence)						//sequence为prj所在位置排序
+static int LoadAndDispPrj(FileLableTypeDef *pFileLable, char index)						//index为prj所在位置排序
 {
-	int hTempPanel;
-	if ((hTempPanel = LoadPanel (hPrjPanel, "Project.uir", DEFPANEL)) < 0)		//load projects panel
+	int hSinglePrjPanel;
+	if ((hSinglePrjPanel = LoadPanel (hPrjPanel, "Project.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
-	SetCtrlVal(hTempPanel, DEFPANEL_NAME, pFileLable->FileName);
-	SetCtrlVal(hTempPanel, DEFPANEL_DATE, pFileLable->FileDate);
-	SetCtrlVal(hTempPanel, DEFPANEL_TIME, pFileLable->FileTime);
-	SetCtrlVal(hTempPanel, DEFPANEL_DESC, pFileLable->FileDesc);
-	SetPanelPos(hTempPanel, 90+sequence*117, -10);
-	SetPanelSize(hTempPanel, 115, 1300);
-	DisplayPanel(hTempPanel);
-	return 0;
+	SetCtrlVal(hSinglePrjPanel, DEFPANEL_NAME, pFileLable->FileName);
+	SetCtrlVal(hSinglePrjPanel, DEFPANEL_DATE, pFileLable->FileDate);
+	SetCtrlVal(hSinglePrjPanel, DEFPANEL_TIME, pFileLable->FileTime);
+	SetCtrlVal(hSinglePrjPanel, DEFPANEL_DESC, pFileLable->FileDesc);
+	SetPanelPos(hSinglePrjPanel, 90+index*117, -10);
+	SetPanelSize(hSinglePrjPanel, 115, 1300);
+	DisplayPanel(hSinglePrjPanel);
+	return hSinglePrjPanel;
 }
 
 static int LoadAllProject(char* pProjectSavePath)
 {
 	char tempFileName[512];
 	char tempFilePath[512];
-	char i=0;
+	char index=0;
 	char tempPathToSearch[512];
+	
+	InitSingleProject(SingleProject);
+	
 	sprintf(tempPathToSearch, "%s%s", pProjectSavePath, "\\*.sac");
 	if(0==GetFirstFile(tempPathToSearch, 1, 1, 1, 1, 1, 0, tempFileName))		//如果第一个文件获取成功
 	{
 		sprintf(tempFilePath, "%s%s%s", pProjectSavePath, "\\", tempFileName);
-		pFileLable[i] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
-		InitFileLable(pFileLable[i], tempFilePath); 				//读文件时间和文件名称及description，并展示
-		LoadAndDispPrj(pFileLable[i], i);
-		i++;
+		pFileLable[index] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
+		InitFileLable(pFileLable[index], tempFilePath); 				//读文件时间和文件名称及description，并展示
+		SingleProject[index].hSinglePrjPanel = LoadAndDispPrj(pFileLable[index], index);
+		SingleProject[index].index=index;
+		index++;
 		
 		while(GetNextFile(tempFileName)==0)								//如果读取正确，持续读取
 		{
 			sprintf(tempFilePath, "%s%s%s", pProjectSavePath, "\\", tempFileName);
-			pFileLable[i] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
-			InitFileLable(pFileLable[i], tempFilePath); //读文件时间和文件名称及description
-			LoadAndDispPrj(pFileLable[i], i);
-			i++;
+			pFileLable[index] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
+			InitFileLable(pFileLable[index], tempFilePath); //读文件时间和文件名称及description
+			SingleProject[index].hSinglePrjPanel = LoadAndDispPrj(pFileLable[index], index);
+			SingleProject[index].index=index; 
+			index++;
 		}
 	}
 	return 0;
@@ -425,9 +444,12 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			InstallPopup (hPrjPanel);
 			LoadAllProject(ProjectSavePath);
+<<<<<<< HEAD
 			SetPanelPos(hPrjListPanel, 90, -10);
 			SetPanelSize(hPrjListPanel, 115, 1300);
 			DisplayPanel(hPrjListPanel);
+=======
+>>>>>>> e73900e378028359f1677ade8da974220349c79d
 			break;
 	}	 
 	return 0;
