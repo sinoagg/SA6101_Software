@@ -297,31 +297,13 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 }
 
 
-//static int SaveConfigToFiles(char* pConfigSavePaths)
-//{
-//	FILE * fp = NULL;							//表示打开的文件
-//	fp = fopen(pConfigSavePaths, "w");
-//	if(fp == NULL)
-//	{
-//		MessagePopup ("Error", "Invalid Path, please select path to save configurations.");
-//		if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, pConfigSavePaths)<0)
-//			return -1;
-//	}
-//	else
-//	{
-//		int maxCommentSize=255;
-//		//char comment[maxCommentSize];
-// 
-//		fclose(fp);//关闭文件
-//	}
-//	return 0;
-//	
-//}
+	
 
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
-{
-	
+{	 
+
+
 
    return 0;
 }

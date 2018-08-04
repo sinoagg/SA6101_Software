@@ -1,3 +1,4 @@
+#include "Result Menu.h"
 #include <userint.h>
 #include "Project.h"
 #include "LoadPanel.h"
@@ -28,13 +29,13 @@ int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK ExitPrjCallback (int panel, int control, int event,
-								 void *callbackData, int eventData1, int eventData2)
-{	
-	
-	 if(event==EVENT_COMMIT)
-			  RemovePopup (hPrjPanel);  
 
+int CVICALLBACK ExitPrjCallback (int panel, int control, int event,
+							void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK){
+		RemovePopup (hPrjPanel);  
+	}
 	return 0;
 }
 
@@ -74,15 +75,15 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-<<<<<<< HEAD
-			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-			SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-=======
->>>>>>> e73900e378028359f1677ade8da974220349c79d
-			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 0);
+//<<<<<<< HEAD
+//			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
+//			SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+//			SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+//			SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+//			SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+//=======
+//>>>>>>> e73900e378028359f1677ade8da974220349c79d
+			SetCtrlAttribute (hPrjPanel,PROPANEL_OPENPROJECT , ATTR_DIMMED, 0);
 			SelectProject(panel, 1);
 			int selectIndex=GetPanelIndex(panel);
 			int i=0;
@@ -143,8 +144,9 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjPanel,PROPANEL_OPEN , ATTR_DIMMED, 1);
+			SetCtrlAttribute (hPrjPanel,PROPANEL_OPENPROJECT , ATTR_DIMMED, 1);
 			break;
 	}
 	return 0;
 }
+

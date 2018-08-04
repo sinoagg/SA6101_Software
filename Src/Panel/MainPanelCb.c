@@ -317,7 +317,7 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DispResultMenu();
 			DispResultTableGraph();
 			DispResultNumber();
-<<<<<<< HEAD
+
 		    DispEnvironmentCfg();
 			int index;
 			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
@@ -325,10 +325,8 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				DispRuntime(1);
 			else 
 				DispRuntime(0);
-=======
-			
-			DispEnvironmentCfg();
->>>>>>> e73900e378028359f1677ade8da974220349c79d
+		   	DispEnvironmentCfg();
+
 			break;
 	}
 	return 0;
@@ -444,12 +442,12 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			InstallPopup (hPrjPanel);
 			LoadAllProject(ProjectSavePath);
-<<<<<<< HEAD
-			SetPanelPos(hPrjListPanel, 90, -10);
-			SetPanelSize(hPrjListPanel, 115, 1300);
-			DisplayPanel(hPrjListPanel);
-=======
->>>>>>> e73900e378028359f1677ade8da974220349c79d
+//<<<<<<< HEAD
+//			SetPanelPos(hPrjListPanel, 90, -10);
+//			SetPanelSize(hPrjListPanel, 115, 1300);
+//			DisplayPanel(hPrjListPanel);
+//=======
+//>>>>>>> e73900e378028359f1677ade8da974220349c79d
 			break;
 	}	 
 	return 0;

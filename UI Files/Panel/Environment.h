@@ -28,7 +28,7 @@
 #define  ENVIRPANEL_TXT_PRESS             3       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_PRESSURE              4       /* control type: numeric, callback function: (none) */
 #define  ENVIRPANEL_HUMIDITY              5       /* control type: numeric, callback function: (none) */
-#define  ENVIRPANEL_TEMP                  6       /* control type: numeric, callback function: (none) */
+#define  ENVIRPANEL_TEMPETATURE           6       /* control type: numeric, callback function: (none) */
 #define  ENVIRPANEL_TXT_TEMP              7       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG_2             8       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG               9       /* control type: textMsg, callback function: (none) */

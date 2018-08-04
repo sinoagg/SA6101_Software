@@ -1,0 +1,4 @@
+[MesaureCallback]
+Class="Function"
+Prototype="int MesaureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

@@ -1,0 +1,78 @@
+CCFLAGS = -g ;
+HDRS = 	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\UI Files"
+	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\UI Files\\Panel"
+	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\activex\\word"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\activex\\excel"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\custctrl"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\custctrl\\custsupp"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\cvirtsup"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\datasock"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\daqUtil"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\printing"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\toolbox"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\reportgen"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\localui"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\instr"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\toolslib\\custctrl"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\instr"
+	"C:\\ProgramData\\National Instruments\\CVI2017\\instr"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\include"
+	"C:\\ProgramData\\National Instruments\\CVI2017\\include"
+	"C:\\ProgramData\\National Instruments\\CVI\\include"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include\\ansi"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include\\clang\\3.3"
+	"C:\\Program Files (x86)\\IVI Foundation\\IVI\\Include"
+	"C:\\Program Files (x86)\\IVI Foundation\\VISA\\winnt\\include"
+	"D:\\software\\NILWCVI\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
+	"d:\\software\\NILWCVI\\NILWCVI2017\\bin"
+	"c:\\ProgramData\\National Instruments\\CVI2017\\bin"
+	"d:\\software\\NILWCVI\\Shared\\CVI\\Bin"
+	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Instrument Files"
+	;
+LOCATE on "asynctmr.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "asynctmr.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Curve.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Curve.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "EnvironmentPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "EnvironmentPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "ExpListPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "ExpListPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "File.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "File.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Graph.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Graph.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "IdVdsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "IdVdsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "IdVgsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "LoadPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "LoadPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "main.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "main.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "MainPanelCb.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "MainPanelCb.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "Plot.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Plot.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "ProjectPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "ProjectPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\UI Files\\Panel" ;
+LOCATE on "Protocol.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Protocol.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "ResultMenuPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "ResultMenuPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "SampleCfgPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "SampleCfgPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "SettingsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "SettingsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "Table.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Table.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\UI Files\\Panel" ;
+LOCATE on "Timer.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "Timer.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel\\ResultMenuPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" = 1 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" ;
+Always $(PrjObjects) ;
+Depends all : $(PrjObjects) ;
