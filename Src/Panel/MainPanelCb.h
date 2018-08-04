@@ -32,20 +32,20 @@
 
 //==============================================================================
 // Types
-
+typedef struct
+{
+	int hSinglePrjPanel;				//加载后每个项目的panel句柄
+	int index;							//自定义的目录，决定了位置和显示
+}PrjHandleTypeDef;
 //==============================================================================
 // External variables
 extern unsigned char measureComPort;
 extern unsigned char controlComPort; 
+extern PrjHandleTypeDef SingleProject[];
 //==============================================================================
 //// Global functions
-//<<<<<<< HEAD
 static int SaveConfigToFile(char* pConfigSavePath);
 
-//=======
-
-static int SaveConfigToFiles(char* pConfigSavePaths);
-//>>>>>>> refs/remotes/origin/master
 
 #ifdef __cplusplus
     }

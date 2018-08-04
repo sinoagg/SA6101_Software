@@ -2,13 +2,13 @@
 Class="Function"
 Prototype="int OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[PrjExitCallback]
+[ExitPrjCallback]
 Class="Function"
-Prototype="int PrjExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[DefaultCallback]
+[PrjSelectCallback]
 Class="Function"
-Prototype="int DefaultCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int PrjSelectCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 
 [ImgCallback]
 Class="Function"

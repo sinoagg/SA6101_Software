@@ -13,7 +13,7 @@
 
      /* Panels and Controls: */
 
-#define  DEFPANEL                         1       /* callback function: DefaultCallback */
+#define  DEFPANEL                         1       /* callback function: PrjSelectCallback */
 #define  DEFPANEL_NAME                    2       /* control type: textMsg, callback function: (none) */
 #define  DEFPANEL_CANVAS                  3       /* control type: canvas, callback function: (none) */
 #define  DEFPANEL_TIME                    4       /* control type: textMsg, callback function: (none) */
@@ -23,7 +23,7 @@
 
 #define  PROPANEL                         2
 #define  PROPANEL_OPEN                    2       /* control type: command, callback function: OpenPrjCallback */
-#define  PROPANEL_EXIT                    3       /* control type: command, callback function: PrjExitCallback */
+#define  PROPANEL_EXIT                    3       /* control type: command, callback function: ExitPrjCallback */
 #define  PROPANEL_SPLITTER                4       /* control type: splitter, callback function: (none) */
 #define  PROPANEL_DESCBOX                 5       /* control type: radioButton, callback function: DescCallback */
 #define  PROPANEL_IMGBOX                  6       /* control type: radioButton, callback function: ImgCallback */
@@ -43,11 +43,11 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK DefaultCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK DescCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ImgCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK PrjExitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK PrjSelectCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SearchCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
