@@ -34,7 +34,7 @@ static int RecallAllPanelState(char* pConfigSavePath)
 	return 0;
 }
 
-int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
+int CVICALLBACK TXT_OpenPrjCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
@@ -49,27 +49,42 @@ int CVICALLBACK OpenPrjCallback (int panel, int control, int event,
 	return 0;
 }
 
-<<<<<<< HEAD
-
-int CVICALLBACK ExitPrjCallback (int panel, int control, int event,
-							void *callbackData, int eventData1, int eventData2)
+int CVICALLBACK PIC_OpenPrjCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
 {
-	if(event==EVENT_LEFT_CLICK){
-		RemovePopup (hPrjPanel);  
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			RecallAllPanelState(pFileLable[selectedPrjIndex]->pFileName);//load all panel and other parameters
+			
+			DiscardAllPrjPanel(SingleProject);
+			RemovePopup (hPrjPanel);
+			break;
 	}
-=======
-int CVICALLBACK ExitPrjCallback (int panel, int control, int event,
-								 void *callbackData, int eventData1, int eventData2)
-{	
-	 if(event==EVENT_COMMIT)
-	 {
-		 DiscardAllPrjPanel(SingleProject); 
-		 RemovePopup (hPrjPanel);   
-	 }
->>>>>>> 0257670adf1a64f998aabc4f40be0847cd28e0f7
 	return 0;
 }
 
+int CVICALLBACK TXT_ExitPrjCallback (int panel, int control, int event,
+							void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK)
+	{
+		DiscardAllPrjPanel(SingleProject);
+		RemovePopup (hPrjPanel);  
+	}
+	return 0;
+}
+
+int CVICALLBACK PIC_ExitPrjCallback (int panel, int control, int event,
+							void *callbackData, int eventData1, int eventData2)
+{
+	if(event==EVENT_LEFT_CLICK)
+	{
+		DiscardAllPrjPanel(SingleProject);
+		RemovePopup (hPrjPanel);  
+	}
+	return 0;
+}
 
 static void SelectProject(int panel, int select)
 {
@@ -106,15 +121,14 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-//<<<<<<< HEAD
-//			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
-//			SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-//			SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-//			SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-//			SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-//=======
-//>>>>>>> e73900e378028359f1677ade8da974220349c79d
-			SetCtrlAttribute (hPrjPanel,PROPANEL_OPENPROJECT , ATTR_DIMMED, 0);
+			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
+			SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+			SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+			SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+			SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+
+			SetCtrlAttribute (hPrjPanel, PROPANEL_PIC_OPENPRJ, ATTR_DIMMED, 0);
+			SetCtrlAttribute (hPrjPanel, PROPANEL_TXT_OPENPRJ, ATTR_DIMMED, 0);
 			SelectProject(panel, 1);
 			selectedPrjIndex=GetPanelIndex(panel);
 			int i=0;
@@ -175,7 +189,8 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjPanel,PROPANEL_OPENPROJECT , ATTR_DIMMED, 1);
+			SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
+			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 
 			break;
 	}
 	return 0;
