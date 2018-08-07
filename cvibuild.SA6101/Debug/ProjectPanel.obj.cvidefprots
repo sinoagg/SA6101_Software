@@ -1,22 +1,22 @@
-[OpenPrjCallback]
+[TXT_OpenPrjCallback]
 Class="Function"
-Prototype="int OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int TXT_OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[ExitPrjCallback]
+[PIC_OpenPrjCallback]
 Class="Function"
-Prototype="int ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+Prototype="int PIC_OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[TXT_ExitPrjCallback]
+Class="Function"
+Prototype="int TXT_ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[PIC_ExitPrjCallback]
+Class="Function"
+Prototype="int PIC_ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [PrjSelectCallback]
 Class="Function"
 Prototype="int PrjSelectCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
-
-[ImgCallback]
-Class="Function"
-Prototype="int ImgCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-
-[DescCallback]
-Class="Function"
-Prototype="int DescCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
 [SearchCallback]
 Class="Function"

@@ -6,6 +6,7 @@ File.obj
 Graph.obj
 IdVdsPanel.obj
 IdVgsPanel.obj
+ItPanel.obj
 LoadPanel.obj
 main.obj
 MainPanelCb.obj
@@ -13,6 +14,7 @@ Plot.obj
 ProjectPanel.obj
 Protocol.obj
 ResultMenuPanel.obj
+RtPanel.obj
 SampleCfgPanel.obj
 SettingsPanel.obj
 Table.obj

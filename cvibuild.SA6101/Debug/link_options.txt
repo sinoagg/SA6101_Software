@@ -20,6 +20,7 @@
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\Graph.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\IdVdsPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\IdVgsPanel.obj
+-in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\ItPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\LoadPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\main.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\MainPanelCb.obj
@@ -27,6 +28,7 @@
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\ProjectPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\Protocol.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\ResultMenuPanel.obj
+-in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\RtPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\SampleCfgPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\SettingsPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\Table.obj

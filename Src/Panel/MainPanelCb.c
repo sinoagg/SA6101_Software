@@ -130,6 +130,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			switch(TestPara.testMode)
 			{
 				case SWEEP_DRAIN_VOL:
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -149,6 +150,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				/*	GetIdVgCfg (IdVgPanel);
 					numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
 					numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;*/
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -166,19 +168,26 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 				case NO_SWEEP_IT:
-				/*	if(TestPara.gateOutputMode==VOL_BIAS)
-					{
-						numOfCurve=1;
-						numOfDots=TestPara.VgStart;
-						SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
+					GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
+					Graph1.pGraphAttr->xAxisHead=0;
+					Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
-					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis,int AxisScaling,double min,double max);
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					}*/
-					//TODO
 					break;
 				case  NO_SWEEP_RT:
-					//TODO
+				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+					  numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
+					  GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
+					  Graph1.pGraphAttr->xAxisHead=0;
+					  Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
+					 //设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
+					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+				
+					  
 					break;
 				default:
 					break;

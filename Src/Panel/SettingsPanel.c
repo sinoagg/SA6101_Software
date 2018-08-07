@@ -1,3 +1,5 @@
+#include "Settings.h"
+#include <ansi_c.h>
 #include <userint.h>
 #include "LoadPanel.h"
 #include "SettingsPanel.h"
@@ -6,6 +8,9 @@
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
+int indexs;
+char buf[800];   
+int vertDivision;
 CurveAttrTypeDef Graph1_CurveAttr1;
 CurveAttrTypeDef Graph1_CurveAttr2;
 CurveAttrTypeDef Graph1_CurveAttr3;
@@ -16,6 +21,25 @@ CurveAttrTypeDef Graph2_CurveAttr3;
 
 char ProjectSavePath[512]="C:\\Sinoagg\\SA6101\\Users\\";	   //本地工作目录Dir 
 
+
+
+static void GetSingleCurveAttr(CurveAttrTypeDef *pCurveAttr, int GraphIndex, int CurveIndex)
+{
+	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_LINE_STYLE, &(pCurveAttr->lineStyle));
+	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle)); 
+	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE, &(pCurveAttr->pointStyle)); 
+	
+	//根据index获取颜色
+	 
+	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(pCurveAttr->lineColor));
+	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(pCurveAttr->lineColor));
+	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(pCurveAttr->lineColor));
+	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR1,&(pCurveAttr->lineColor));
+	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR2,&(pCurveAttr->lineColor));
+	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR3,&(pCurveAttr->lineColor));
+	
+}
+
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 {
 	CurveAttrTypeDef* pCurveAttr;
@@ -24,6 +48,7 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 		switch(CurveIndex)
 		{
 			case CURVE1:
+				GetSingleCurveAttr(&Graph1_CurveAttr1, GraphIndex, CurveIndex);
 				pCurveAttr=&Graph1_CurveAttr1;
 				break;
 			case CURVE2:

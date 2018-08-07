@@ -20,7 +20,10 @@
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
 #include "I-T.h"
+#include "ItPanel.h"
 #include "LoadPanel.h"
+#include "R-T.h"
+#include "RtPanel.h"
 
 //==============================================================================
 // Constants
@@ -84,7 +87,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			int index;
 			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
 			if(index==TWO_TERMINAL)
-			{
+			{   SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
 				DisplaySampleCfgPanel(0);	
 			}
 			else if(index==EXP_I_T)	//加载I-T
@@ -92,7 +95,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hIT_Panel, 104, 305);
 				SetPanelSize(hIT_Panel, 901, 1293);
 				DisplayPanel(hIT_Panel);
-				
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
 		        DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
 			}
@@ -101,7 +104,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hRT_Panel, 104, 305);
 				SetPanelSize(hRT_Panel, 901, 1293);
 				DisplayPanel(hRT_Panel);
-				
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
 			}
@@ -110,12 +113,13 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hIV_Panel, 104, 305);
 				SetPanelSize(hIV_Panel, 901, 1293);
 				DisplayPanel(hIV_Panel);
-				
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
 			}
 			else if(index==FOUR_TERMINAL) 
 			{
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1); 
 				DisplaySampleCfgPanel(0);
 			}
 			else if(index==EXP_ID_VDS)// 加载Id_Vds Configuration   
@@ -123,7 +127,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
-				
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
 			}
@@ -132,7 +136,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVgPanel.panelHandle);
-				
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
 			}else if(index==EXP_ID_T)//Id-T
@@ -140,7 +144,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			    SetPanelPos(hIdtPanel, 104, 305);
 				SetPanelSize(hIdtPanel, 901, 1293);
 				DisplayPanel(hIdtPanel);
-				
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
 			}

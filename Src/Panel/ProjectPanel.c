@@ -7,6 +7,7 @@
 #define CHANGECOLOR 0x94CEFF//浅蓝
 #define BGCOLOR 	0xFFFFFF
 #define COLOR  		0x065279//深蓝
+#define SEARCHCOLOR 0xA8BFCB
 
 int selectedPrjIndex=0;			//当前选中的项目序号
 
@@ -129,6 +130,8 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 
 			SetCtrlAttribute (hPrjPanel, PROPANEL_PIC_OPENPRJ, ATTR_DIMMED, 0);
 			SetCtrlAttribute (hPrjPanel, PROPANEL_TXT_OPENPRJ, ATTR_DIMMED, 0);
+			SetCtrlAttribute (hPrjPanel, PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,COLOR ); 
+			
 			SelectProject(panel, 1);
 			selectedPrjIndex=GetPanelIndex(panel);
 			int i=0;
@@ -143,41 +146,7 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 	return 0;
 }
 
-int CVICALLBACK ImgCallback (int panel, int control, int event,
-							 void *callbackData, int eventData1, int eventData2)
-{
-	   /*int val;
-	   GetCtrlVal(panel,PROPANEL_IMGBOX,&val);
-	   if(event == EVENT_VAL_CHANGED){
-	   
-   			  if(val){
-				   SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,1);
-				  
-			  }else{
-			  	 SetCtrlAttribute(hPrjListPanel, DEFPANEL_PICS, ATTR_VISIBLE,0);
-			  }
-   
-   }*/
-	return 0;
-}
 
-int CVICALLBACK DescCallback (int panel, int control, int event,
-							  void *callbackData, int eventData1, int eventData2)
-{
-		 /*int val;
-  		 GetCtrlVal(panel,PROPANEL_DESCBOX,&val);
-  		 if(event == EVENT_VAL_CHANGED){
-	   
-   			  if(val){
-				  SetCtrlAttribute(hPrjListPanel, DEFPANEL_DESC, ATTR_VISIBLE,1);
-				   
-			  }else{
-			  	  SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_VISIBLE, 0);
-			  }
-   
-   }*/
-	return 0;
-}
 
 int CVICALLBACK SearchCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
@@ -185,11 +154,12 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelAttribute (hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
+			SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
+			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 
 			break;
 	}

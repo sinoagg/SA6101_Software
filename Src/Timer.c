@@ -11,7 +11,7 @@
 //==============================================================================
 // Include files
 
-//#include "Timer.h"
+#include "Timer.h"
 #include "Graph.h"
 #include "GraphDisp.h"
 #include "Graph.h"
@@ -23,7 +23,7 @@
 #include "ExpListPanel.h"
 #include "Result Menu.h"
 #include "GraphDisp.h"
-#include "Experiment List.h"
+ #include "Experiment List.h"
 #include "I-T.h"
 #include "Id-Vds Configuration.h"
 #include "Id-Vgs Configuration.h"
@@ -33,6 +33,7 @@
 #include "Table.h"
 #include "LoadPanel.h"
 #include "Plot.h"
+#include "LoadPanel.h"
 //==============================================================================
 // Constants
 
@@ -60,7 +61,15 @@ int CVICALLBACK TimerCallback (int panel, int control, int event,								//¶¨Ê±È
 			//SA10_ProtocolQuery(contrlComPort, CONTROL_MEASURE_DEV_ADDR, ctrlUartTxBuf);
 			break;
 	}
+	
+
+	
+	
+	
 	return 0;
+	
+	
+	
 }
 
 

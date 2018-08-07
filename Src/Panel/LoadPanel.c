@@ -14,6 +14,9 @@
 #include "LoadPanel.h"
 #include "IdVdsPanel.h"
 #include "IdVgsPanel.h"
+#include "ItPanel.h"
+#include "RtPanel.h"
+
 //==============================================================================
 // Constants
 
@@ -64,7 +67,7 @@ int LoadInitPanel (void)
 	
 	if ((IdVdPanel.panelHandle = LoadPanel (hMainPanel, "Id-Vds Configuration.uir", IDVDS_CFG)) < 0)		//load middle panel
 		return -1;
-	
+		
 	if ((IdVgPanel.panelHandle = LoadPanel (hMainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
@@ -98,7 +101,7 @@ int LoadInitPanel (void)
 	if ((hSettingsPrjPanel = LoadPanel (hSettingsPanel, "Settings.uir", ENVT)) < 0)		//用于弹出Project Settings面板
 		return -1;
 	
-	if ((hSettingsGraphPanel = LoadPanel (hSettingsPanel, "Settings.uir", GRAPH)) < 0)		//用于弹出Settings->Graph面板  
+	if ((hSettingsGraphPanel = LoadPanel (hSettingsPanel, "Settings.uir", SETGRAPH)) < 0)		//用于弹出Settings->Graph面板  
 		return -1;  
 	
 	if ((hSettingsAboutPanel = LoadPanel (hSettingsPanel, "Settings.uir", ABOUT)) < 0)		//用于弹出Settings->About面板
@@ -112,13 +115,15 @@ int LoadInitPanel (void)
 	
 	if ((hTablePanel = LoadPanel (hMainPanel, "Table.uir", TABLE)) < 0)		//load TABLE panel
 		return -1;
-	
-	if ((hIT_Panel = LoadPanel (hMainPanel, "I-T.uir", ITPANEL)) < 0)		//load I-T  panel
+		 
+	if ((ItPanel.panelHandle = LoadPanel (hMainPanel, "I-T.uir", ITPANEL)) < 0)		//load I-T  panel
 		return -1;
-	
-	if ((hRT_Panel = LoadPanel (hMainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
+	   hIT_Panel = ItPanel.panelHandle;
+				   
+	if ((RtPanel.panelHandle= LoadPanel (hMainPanel, "R-T.uir", RTPANEL)) < 0)		//load R-T  panel
 		return -1;
-
+     hRT_Panel = RtPanel.panelHandle;
+	
 	if ((hIV_Panel = LoadPanel (hMainPanel, "I-V.uir", IVPANEL))<0)
 		return -1;
 		

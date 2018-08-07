@@ -27,6 +27,8 @@
 #include "Graph.h"
 #include "Curve.h"
 #include "File.h"
+#include "ItPanel.h"
+#include "RtPanel.h"
 
 //==============================================================================
 // Constants

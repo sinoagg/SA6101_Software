@@ -28,6 +28,7 @@ typedef struct
 	int pointStyle;			//点样式
 	int plotStyle;			//画图样式
 	int lineStyle;			//曲线样式
+	int lineColor;
 }CurveAttrTypeDef;
 		
 typedef struct

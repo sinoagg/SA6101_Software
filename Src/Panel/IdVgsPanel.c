@@ -15,6 +15,7 @@
 
 #include "IdVgsPanel.h"
 #include "Id-Vgs Configuration.h"
+
 #define COLOR_BLUE 0xA0B4DCL   // 点击激活蓝色
 #define COLOR_GREY 0xA9A9A9L	   //未点击灰色
 #define FOCUS	0
@@ -33,7 +34,19 @@
 
 //==============================================================================
 // Global variables
-ExpPanelTypeDef IdVgPanel={0, IDVGS_CFG_VG_START, IDVGS_CFG_VG_STOP, IDVGS_CFG_VG_STEP, IDVGS_CFG_VD_START, IDVGS_CFG_VD_STOP, IDVGS_CFG_VD_STEP, IDVDS_CFG_DRAINMODE, IDVGS_CFG_GATEMODE};  
+ ExpPanelTypeDef IdVgPanel={
+	0, 
+	IDVGS_CFG_VG_START, 
+	IDVGS_CFG_VG_STOP, 
+	IDVGS_CFG_VG_STEP, 
+	IDVGS_CFG_VD_START, 
+	IDVGS_CFG_VD_STOP, 
+	IDVGS_CFG_VD_STEP, 
+	IDVGS_CFG_DRAINMODE, 
+	IDVGS_CFG_GATEMODE,
+	IDVGS_CFG_VG_START,
+	IDVGS_CFG_VG_START, 
+};
 //==============================================================================
 // Global functions
 static  void SetDrainDisp(int panel, char focus)
@@ -93,10 +106,12 @@ int CVICALLBACK IdVgDrainDecoCallback (int panel, int control, int event,
 int CVICALLBACK IdVgGateModeCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		if(event==EVENT_LEFT_CLICK_UP){  
+		if(event==EVENT_LEFT_CLICK_UP)
+		{  
 			SetDrainDisp(panel, UNFOCUS);
 			SetGateDisp(panel, FOCUS);
-		   }
+		   
+		}
 	return 0;
 }
 

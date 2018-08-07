@@ -23,14 +23,12 @@
 
 #define  PROPANEL                         2
 #define  PROPANEL_SPLITTER                2       /* control type: splitter, callback function: (none) */
-#define  PROPANEL_DESCBOX                 3       /* control type: radioButton, callback function: DescCallback */
-#define  PROPANEL_IMGBOX                  4       /* control type: radioButton, callback function: ImgCallback */
-#define  PROPANEL_STRING                  5       /* control type: string, callback function: (none) */
-#define  PROPANEL_SEARCH                  6       /* control type: command, callback function: SearchCallback */
-#define  PROPANEL_PIC_OPENPRJ             7       /* control type: picture, callback function: PIC_OpenPrjCallback */
-#define  PROPANEL_TXT_OPENPRJ             8       /* control type: textMsg, callback function: TXT_OpenPrjCallback */
-#define  PROPANEL_PIC_EXIT                9       /* control type: picture, callback function: PIC_ExitPrjCallback */
-#define  PROPANEL_TXT_EXIT                10      /* control type: textMsg, callback function: TXT_ExitPrjCallback */
+#define  PROPANEL_STRING                  3       /* control type: string, callback function: (none) */
+#define  PROPANEL_SEARCH                  4       /* control type: command, callback function: SearchCallback */
+#define  PROPANEL_PIC_OPENPRJ             5       /* control type: picture, callback function: PIC_OpenPrjCallback */
+#define  PROPANEL_TXT_OPENPRJ             6       /* control type: textMsg, callback function: TXT_OpenPrjCallback */
+#define  PROPANEL_PIC_EXIT                7       /* control type: picture, callback function: PIC_ExitPrjCallback */
+#define  PROPANEL_TXT_EXIT                8       /* control type: textMsg, callback function: TXT_ExitPrjCallback */
 
 
      /* Control Arrays: */
@@ -45,8 +43,6 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK DescCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK ImgCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PIC_ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PIC_OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PrjSelectCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);

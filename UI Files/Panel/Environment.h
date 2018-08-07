@@ -28,13 +28,13 @@
 #define  ENVIRPANEL_TXT_PRESS             3       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_PRESSURE              4       /* control type: numeric, callback function: (none) */
 #define  ENVIRPANEL_HUMIDITY              5       /* control type: numeric, callback function: (none) */
-#define  ENVIRPANEL_TEMPETATURE           6       /* control type: numeric, callback function: (none) */
+#define  ENVIRPANEL_TEMPERATURE           6       /* control type: numeric, callback function: (none) */
 #define  ENVIRPANEL_TXT_TEMP              7       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG_2             8       /* control type: textMsg, callback function: (none) */
 #define  ENVIRPANEL_TEXTMSG               9       /* control type: textMsg, callback function: (none) */
-#define  ENVIRPANEL_CHECKBOX_3            10      /* control type: radioButton, callback function: (none) */
-#define  ENVIRPANEL_CHECKBOX_2            11      /* control type: radioButton, callback function: (none) */
-#define  ENVIRPANEL_CHECKBOX              12      /* control type: radioButton, callback function: (none) */
+#define  ENVIRPANEL_PRESS_BOX             10      /* control type: radioButton, callback function: (none) */
+#define  ENVIRPANEL_HUM_BOX               11      /* control type: radioButton, callback function: (none) */
+#define  ENVIRPANEL_TEMP_BOX              12      /* control type: radioButton, callback function: TemperatureCallback */
 #define  ENVIRPANEL_TEXTMSG_3             13      /* control type: textMsg, callback function: (none) */
 
 
@@ -51,6 +51,7 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK MesaureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK TemperatureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

@@ -17,6 +17,9 @@
 #include "IdVgsPanel.h"
 #include <rs232.h>
 #include "LoadPanel.h"
+#include "ItPanel.h"
+#include "RtPanel.h"
+
 //==============================================================================
 // Constants
 
@@ -116,10 +119,10 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 		    GetTestPara(&IdVgPanel, &TestPara);
 			break;
 		case NO_SWEEP_IT:
-			//GetTestPara(&hIT_Panel, &TestPara);
+			GetTestPara(&ItPanel, &TestPara);
 			break;
 		case NO_SWEEP_RT:
-			//GetTestPara(&RtPanel, &TestPara);
+			GetTestPara(&RtPanel, &TestPara);
 			break;
 	}
 	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      

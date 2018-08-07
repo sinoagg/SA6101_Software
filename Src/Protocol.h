@@ -72,6 +72,8 @@ typedef struct
 	int VgStart;									//voltage gate start
 	int VgStop;									//voltage gate stop
 	int VgStep;									//voltage gate step
+	//int ItStart;
+	//int RtStart;
 	unsigned int quietTime;
 	unsigned int timeStep;
 	unsigned long int runTime;								//effective only under R-t and I-t mode
@@ -80,6 +82,7 @@ typedef struct
 	unsigned char rangeMode;
 	unsigned char maxRange;
 	unsigned char minRange;
+	
 }TestParaTypeDef;  //¶ÁÈ¡ÊıÖµ
 
 typedef struct

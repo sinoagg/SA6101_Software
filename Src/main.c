@@ -61,8 +61,8 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
-			GraphDeinit(&Graph1);
-			GraphDeinit(&Graph2);
+			/*GraphDeinit(&Graph1);
+			GraphDeinit(&Graph2);*/
 		}
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++;

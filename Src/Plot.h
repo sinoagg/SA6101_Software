@@ -19,6 +19,7 @@
 // Include files
 
 #include "cvidef.h"
+#include "Graph.h" 
 
 //==============================================================================
 // Constants
@@ -31,8 +32,10 @@
 
 //==============================================================================
 // Global functions
-int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control);
 
+int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control);
+//int PlotCurve2(GraphTypeDef* pGraph, int hGraphPanel, int control);    
+//void DisplayTempGraph();  
 #ifdef __cplusplus
     }
 #endif
