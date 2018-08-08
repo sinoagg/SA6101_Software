@@ -39,7 +39,14 @@
 
 int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 {
-
+	unsigned int colorval;
+	unsigned int pointval;
+	unsigned int plotval;
+	unsigned int lineval;
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&colorval);
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_PLOT_STYLE,&plotval);  
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_LINE_STYLE,&lineval);  
+	
 	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_LINE_STYLE, &(pCurveAttr->lineStyle));
 	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle)); 
 	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE,&(pCurveAttr->pointStyle));
@@ -49,14 +56,14 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 	if(numOfDotsToPlot>0)
 	{
 	   	if(pGraph->pCurveArray->numOfPlotDots >= 1)																//如果有需要画图的点
-		{  			
-			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_DASH, 1, VAL_CYAN);
+		{  																																																						 
+			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, plotval/*VAL_CONNECTED_POINTS*/,VAL_DOTTED_SOLID_SQUARE,lineval, 1,  colorval);
 
 			//pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, pCurveAttr->plotStyle, pCurveAttr->pointStyle, (pCurveAttr->lineStyle), 1, pCurveAttr->lineColor);
 		}
 		else
 		{   		
-			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, VAL_BLUE);
+			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,plotval /*VAL_CONNECTED_POINTS*/, VAL_DOTTED_SOLID_SQUARE,  lineval, 1, colorval);
 
 		//	pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,pCurveAttr->plotStyle, pCurveAttr->pointStyle, (pCurveAttr->lineStyle), 1, pCurveAttr->lineColor);
 		}

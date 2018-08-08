@@ -8,8 +8,8 @@
 #define VAL_TEXTBG                        0xF0F0F0L    //未被选中背景色
 #define VAL_TEXTBG_PRESSED                0x065279L    //被选中背景色
 
-int indexs;
-char buf[800];   
+
+char buf[800];
 int vertDivision;
 CurveAttrTypeDef Graph1_CurveAttr1;
 CurveAttrTypeDef Graph1_CurveAttr2;
@@ -19,25 +19,26 @@ CurveAttrTypeDef Graph2_CurveAttr1;
 CurveAttrTypeDef Graph2_CurveAttr2;
 CurveAttrTypeDef Graph2_CurveAttr3;
 
-char ProjectSavePath[512]="C:\\Sinoagg\\SA6101\\Users\\";	   //本地工作目录Dir 
+char ProjectSavePath[512]="C:\\Sinoagg\\SA6101\\Users\\";	   //本地工作目录Dir
 
 
 
 static void GetSingleCurveAttr(CurveAttrTypeDef *pCurveAttr, int GraphIndex, int CurveIndex)
 {
 	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_LINE_STYLE, &(pCurveAttr->lineStyle));
-	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle)); 
-	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE, &(pCurveAttr->pointStyle)); 
-	
+	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle));
+	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE,&(pCurveAttr->pointStyle));
 	//根据index获取颜色
-	 
-	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(pCurveAttr->lineColor));
-	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(pCurveAttr->lineColor));
-	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(pCurveAttr->lineColor));
-	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR1,&(pCurveAttr->lineColor));
-	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR2,&(pCurveAttr->lineColor));
-	//GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR3,&(pCurveAttr->lineColor));
-	
+
+
+/*
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(pCurveAttr->lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(pCurveAttr->lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(pCurveAttr->lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR1,&(pCurveAttr->lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR2,&(pCurveAttr->lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR3,&(pCurveAttr->lineColor));
+*/
 }
 
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
@@ -52,13 +53,16 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 				pCurveAttr=&Graph1_CurveAttr1;
 				break;
 			case CURVE2:
+				GetSingleCurveAttr(&Graph1_CurveAttr2, GraphIndex, CurveIndex);       
 				pCurveAttr=&Graph1_CurveAttr2;
 				break;
 			case CURVE3:
+				GetSingleCurveAttr(&Graph1_CurveAttr3, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph1_CurveAttr3;
 				break;
 			default:
-				pCurveAttr=&Graph1_CurveAttr1; 
+				GetSingleCurveAttr(&Graph1_CurveAttr1, GraphIndex, CurveIndex);   
+				pCurveAttr=&Graph1_CurveAttr1;
 		}
 	}
 	else
@@ -75,8 +79,8 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 				pCurveAttr=&Graph2_CurveAttr3;
 				break;
 			default:
-				pCurveAttr=&Graph2_CurveAttr1; 
-		}	
+				pCurveAttr=&Graph2_CurveAttr1;
+		}
 	}
 	return pCurveAttr;
 }
@@ -89,16 +93,16 @@ int CVICALLBACK PrjBtnCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelPos(hSettingsPrjPanel, 5, 170);
 			SetPanelSize(hSettingsPrjPanel, 350, 650);
-			DisplayPanel(hSettingsPrjPanel); 
+			DisplayPanel(hSettingsPrjPanel);
 			HidePanel(hSettingsGraphPanel);
 			HidePanel(hSettingsAboutPanel);
 			SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //environment背景色
-	     	SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //environment文本颜色
+			SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //environment文本颜色
 			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);         //graph背景色
-	     	SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_BLACK);            //graph文本颜色
+			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_BLACK);            //graph文本颜色
 			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);         //about背景色
-	     	SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_BLACK);            //about文本颜色
-																								 
+			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_BLACK);            //about文本颜色
+
 			break;
 
 	}
@@ -117,11 +121,11 @@ int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
 			HidePanel(hSettingsPrjPanel);
 			HidePanel(hSettingsAboutPanel);
 			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //graph背景色
-	     	SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //graph文本颜色
+			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //graph文本颜色
 			SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);             //environment背景色
-	     	SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_COLOR, VAL_BLACK);                //environment文本颜色
+			SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_COLOR, VAL_BLACK);                //environment文本颜色
 			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);           //about背景色
-	     	SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_BLACK);              //about文本颜色
+			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_BLACK);              //about文本颜色
 			break;
 	}
 	return 0;
@@ -139,28 +143,28 @@ int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
 			HidePanel(hSettingsGraphPanel);
 			HidePanel(hSettingsPrjPanel);
 			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG_PRESSED);   //about背景色
-	     	SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //about文本颜色
+			SetCtrlAttribute (panel, SETTINGS_ABOUTBTN, ATTR_TEXT_COLOR, VAL_WHITE);              //about文本颜色
 			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);           //graph背景色
-	     	SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_BLACK);              //graph文本颜色
+			SetCtrlAttribute (panel, SETTINGS_GRAPHBTN, ATTR_TEXT_COLOR, VAL_BLACK);              //graph文本颜色
 			SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_BGCOLOR, VAL_TEXTBG);             //environment背景色
-	     	SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_COLOR, VAL_BLACK);                //environment文本颜色
+			SetCtrlAttribute (panel, SETTINGS_PRJBTN, ATTR_TEXT_COLOR, VAL_BLACK);                //environment文本颜色
 			break;
 	}
 	return 0;
 }
 
 int CVICALLBACK PrjDirCallback (int panel, int control, int event,
-							   void *callbackData, int eventData1, int eventData2)
+								void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-		
-			if(DirSelectPopup ("C:\\Sinoagg\\SA6101\\Users\\", "Select Directory", 1, 1, ProjectSavePath)>0)     
+
+			if(DirSelectPopup ("C:\\Sinoagg\\SA6101\\Users\\", "Select Directory", 1, 1, ProjectSavePath)>0)
 			{
-			 	SetCtrlVal(panel, ENVT_PROPATH, ProjectSavePath); 
+				SetCtrlVal(panel, ENVT_PROPATH, ProjectSavePath);
 			}
-			else 
+			else
 			{
 				return -1;
 			}
@@ -174,9 +178,9 @@ int  CVICALLBACK SettingsPanelCallback(int panel, int event, void *callbackData,
 	switch (event)
 	{
 		case EVENT_CLOSE:
-			   	RemovePopup(hSettingsPanel);
+			RemovePopup(hSettingsPanel);
 			break;
 	}
-	return 0;	
+	return 0;
 }
 

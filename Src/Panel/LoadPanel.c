@@ -134,7 +134,7 @@ int LoadInitPanel (void)
 	
 	DisplayPanel (hMainPanel); 
 	
-	SetPanelPos(hExpListPanel, 105, 3);  //加载面板位置 （,top,left）
+	SetPanelPos(hExpListPanel, 105, 3);  //加载面板位置 （,top,left）  i
 	SetPanelSize(hExpListPanel, 900, 300);//加载面板大小  (,height，width)
 	DisplayPanel(hExpListPanel);
 	

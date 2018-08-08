@@ -37,6 +37,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
 		
 		Graph1.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
+		Graph2.pCurveArray->numOfDotsToPlot++;
 		
 		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
 		
@@ -82,7 +83,7 @@ int main (int argc, char *argv[])
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=1;
+	measureComPort=2;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
