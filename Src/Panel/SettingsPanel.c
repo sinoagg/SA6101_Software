@@ -31,7 +31,7 @@ static void GetSingleCurveAttr(CurveAttrTypeDef *pCurveAttr, int GraphIndex, int
 	//根据index获取颜色
 
 
-/*
+/*																		                                                                                                                                                                                                                                  
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(pCurveAttr->lineColor));

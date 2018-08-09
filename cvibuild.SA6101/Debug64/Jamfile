@@ -179,6 +179,11 @@ FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA610
 DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\Timer.obj.cvidefprots" ;
 OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\Timer.obj.out" ;
 PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\Timer.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj" : "d:\\software\\NILWCVI\\NILWCVI2017\\toolslib\\activex\\excel\\excelreport.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj" = 22 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj.out" ;
+InstrObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\excelreport.obj" ;
 Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\resources.in.rc" ;
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\manifest.xml" ;
 MainFromObjects "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug64\\SA6101.exe" : $(PrjObjects) $(InstrObjects) ;

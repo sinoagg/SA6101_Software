@@ -298,13 +298,32 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 
 
 	
-
+			                        
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {	 
 
-
-
+	static ExcelObj_App               ExcelAppHandle = 0;       
+	static ExcelObj_Workbooks         ExcelWorkbooksHandle = 0; 
+	static ExcelObj_Workbook          ExcelWorkbookHandle = 0;  
+	static ExcelObj_Sheets            ExcelSheetsHandle = 0;    
+	static ExcelObj_Worksheet         ExcelWorksheetHandle = 0;
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			
+			Excel_NewApp (NULL, 1, LOCALE_NEUTRAL, 0, &ExcelAppHandle);	  //create a new Application object, and obtain a handle to the object.
+			Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppWorkbooks, CAVT_OBJHANDLE, &ExcelWorkbooksHandle);
+			Excel_WorkbooksAdd (ExcelWorkbooksHandle, NULL, CA_DEFAULT_VAL,&ExcelWorkbookHandle);
+			Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppSheets,CAVT_OBJHANDLE, &ExcelSheetsHandle);
+			Excel_SheetsItem (ExcelSheetsHandle, NULL, CA_VariantInt(1),&ExcelWorksheetHandle);
+			Excel_WorksheetActivate (ExcelWorksheetHandle, NULL);
+			ExcelRpt_WriteDataFromTableControl (ExcelWorksheetHandle, "A1:D100", hTablePanel, TABLE_DISTABLE);	//write data from table control
+			ExcelRpt_WorkbookSave (ExcelWorkbookHandle, sheetSavePath, ExRConst_DefaultFileFormat);
+			Excel_AppQuit (ExcelAppHandle, NULL);
+			
+			break;
+	}
    return 0;
 }
 

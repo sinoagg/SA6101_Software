@@ -4,10 +4,10 @@
 #include "LoadPanel.h"
 #include "MainPanelCb.h"
 
-#define CHANGECOLOR 0x94CEFF//浅蓝
+#define CHANGECOLOR 0x94CEFF //浅蓝
 #define BGCOLOR 	0xFFFFFF
-#define COLOR  		0x065279//深蓝
-#define SEARCHCOLOR 0xA8BFCB
+#define COLOR  		0x065279 //深蓝
+#define SEARCHCOLOR 0xA8BFCB //不可用颜色
 
 int selectedPrjIndex=0;			//当前选中的项目序号
 

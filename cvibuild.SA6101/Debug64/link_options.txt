@@ -43,6 +43,8 @@
 -more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvinetv.lib
 -more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvintwrk.lib
 -more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\cvitdms.lib
+-more:d:\software\NILWCVI\NILWCVI2017\toolslib\activex\excel\msvc64\excel2000.obj
+-more:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug64\excelreport.obj
 -more:D:\software\SDK8.1\Lib\winv6.3\um\x64\gdi32.lib
 -more:d:\software\NILWCVI\NILWCVI2017\bin\msvc64\gpib.lib
 -more:D:\software\SDK8.1\Lib\winv6.3\um\x64\kernel32.lib

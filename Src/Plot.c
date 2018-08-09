@@ -58,13 +58,11 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 	   	if(pGraph->pCurveArray->numOfPlotDots >= 1)																//如果有需要画图的点
 		{  																																																						 
 			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, plotval/*VAL_CONNECTED_POINTS*/,VAL_DOTTED_SOLID_SQUARE,lineval, 1,  colorval);
-
 			//pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, pCurveAttr->plotStyle, pCurveAttr->pointStyle, (pCurveAttr->lineStyle), 1, pCurveAttr->lineColor);
 		}
 		else
 		{   		
 			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,plotval /*VAL_CONNECTED_POINTS*/, VAL_DOTTED_SOLID_SQUARE,  lineval, 1, colorval);
-
 		//	pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,pCurveAttr->plotStyle, pCurveAttr->pointStyle, (pCurveAttr->lineStyle), 1, pCurveAttr->lineColor);
 		}
 		pGraph->pCurveArray->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增

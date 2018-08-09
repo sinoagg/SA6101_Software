@@ -32,6 +32,8 @@ typedef struct
 	int xAxisTail;
 	int yAxisHead;
 	int yAxisTail;
+	//int xAxisMax;
+	//int yAxisMax;
 }GraphAttrTypeDef;		
 		
 typedef struct
@@ -39,6 +41,7 @@ typedef struct
 	int plotHandle;									//graph handle 
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
+  
 	GraphAttrTypeDef* pGraphAttr;
 	CurveTypeDef* pCurveArray;						//pointer to curve array
 }GraphTypeDef;
