@@ -36,7 +36,24 @@ GraphTypeDef Graph1;
 GraphTypeDef Graph2;
 //==============================================================================
 // Global functions
+ 	int currentY_val=1000;      
+void SetYAxis(int hGraphPanel,int currentY_val,GraphTypeDef* pGraph )
+{
+	pGraph->graphHanle=hGraphPanel;
 
+	if(pGraph->pGraphAttr->yAxisTail > currentY_val)
+    {
+		pGraph->pGraphAttr->yAxisTail = pGraph->pGraphAttr->yAxisTail * 2;
+			SetAxisScalingMode(pGraph->graphHanle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//设置 Y  轴的范围  
+
+	}else if(pGraph->pGraphAttr->yAxisHead > currentY_val || pGraph->pGraphAttr->yAxisHead >=0)
+	{
+	   pGraph->pGraphAttr->yAxisTail = pGraph->pGraphAttr->yAxisTail / 2;
+	   	SetAxisScalingMode(pGraph->graphHanle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//设置 Y  轴的范围  
+
+	}
+
+}
 
 int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
 {
@@ -55,7 +72,7 @@ int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGrap
 	GraphAttrTypeDef* pGraphAttr = (GraphAttrTypeDef *)malloc(sizeof(CurveTypeDef));
 	if(pGraphAttr==NULL) return -1;
 	pGraph->pGraphAttr=pGraphAttr;
-	
+	SetYAxis(pGraph->graphHanle,currentY_val,pGraph);
 	return 0;
 }
 
@@ -65,6 +82,66 @@ int GraphDeinit(GraphTypeDef* pGraph)
 	for(i=0;i<(pGraph->numOfCurve);i++)
 	{
 		curveDeinit(pGraph->pCurveArray++); 	
+	}
+	return 0;
+}
+
+int CVICALLBACK CanvasCallback (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+
+	int LeftButtonDown;
+	int x;
+	int y;
+	int CtrlTop;
+	int CtrlLeft;
+
+
+	static int OldX = 0;	  //局部静态变量，旧X、坐标值 
+	static int OldY = 0;	
+	switch (event)
+	{
+		case EVENT_MOUSE_POINTER_MOVE:
+			
+			GetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, &CtrlLeft);
+			GetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, &CtrlTop);
+			GetGlobalMouseState (&panel, &x, &y, &LeftButtonDown, NULL, NULL);	     // 获得鼠标绝对位置、按键等属性
+		
+			if (LeftButtonDown == 1)	  // 当鼠标左键按下时
+			{
+				SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, CtrlLeft + (x-OldX) );
+				SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, CtrlTop + (y-OldY) );
+		
+				OldX = x;
+				OldY = y;				   // 将旧X、Y 坐标值以当前新值代替 
+			
+				if( ( CtrlTop + (y-OldY) )<420)			 //图例不能超出graph2的范围
+				{
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, CtrlLeft + (x-OldX) );
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, 420 );
+				}
+				if( ( CtrlTop + (y-OldY) )>670)
+				{
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, CtrlLeft + (x-OldX) );
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, 670 );
+				}
+				if( (CtrlLeft + (x-OldX) )<15)
+				{
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, 15 );
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, CtrlTop + (y-OldY) );
+				}
+				if( (CtrlLeft + (x-OldX) )>1010)
+				{
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, 1010 );
+					SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, CtrlTop + (y-OldY) );
+				}
+			
+			}
+		 
+			OldX = x;
+			OldY = y;					  // 将旧X、坐标值以当前新值代替
+			
+		break;
 	}
 	return 0;
 }

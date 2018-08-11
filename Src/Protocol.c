@@ -19,6 +19,7 @@
 #include "LoadPanel.h"
 #include "ItPanel.h"
 #include "RtPanel.h"
+#include "IvPanel.h"
 
 //==============================================================================
 // Constants
@@ -124,6 +125,12 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 		case NO_SWEEP_RT:
 			GetTestPara(&RtPanel, &TestPara);
 			break;
+		case SWEEP_IV:
+			GetTestPara(&IvPanel,&TestPara);
+			break;
+	/*	case ID_T:
+			GetTestPara(&IdtPanel,&TestPara);
+			break;*/
 	}
 	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      
 	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);

@@ -2,10 +2,6 @@
 Class="Function"
 Prototype="void MeasureComCallback(int portNumber, int eventMask, void *callbackData);"
 
-[CtrlComCallback]
-Class="Function"
-Prototype="void CtrlComCallback(int portNumber, int eventMask, void *callbackData);"
-
 [main]
 Class="Function"
 Prototype="int main(int argc, char **argv);"

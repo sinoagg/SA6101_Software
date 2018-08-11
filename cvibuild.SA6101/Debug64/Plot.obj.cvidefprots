@@ -2,3 +2,11 @@
 Class="Function"
 Prototype="int PlotCurve(GraphTypeDef *pGraph, int hGraphPanel, int control);"
 
+[DisplayTempGraph]
+Class="Function"
+Prototype="void DisplayTempGraph();"
+
+[PlotCurve2]
+Class="Function"
+Prototype="int PlotCurve2(GraphTypeDef *Graph2, int hGraphPanel, int control);"
+

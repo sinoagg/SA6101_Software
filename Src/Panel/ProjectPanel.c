@@ -154,15 +154,26 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
+		/*	SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
 			SetCtrlAttribute (hPrjListPanel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
+			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);*/
 			SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 
-			break;
+			break;														    
 	}
 	return 0;
 }
 
+int CVICALLBACK PrjPanelCallback (int panel, int event, void *callbackData,
+								  int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_CLOSE:										   
+			RemovePopup(hPrjPanel);
+			break;
+	}
+	return 0;
+}

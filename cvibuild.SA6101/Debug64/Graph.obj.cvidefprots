@@ -1,3 +1,7 @@
+[SetYAxis]
+Class="Function"
+Prototype="void SetYAxis(int hGraphPanel, int currentY_val, GraphTypeDef *pGraph);"
+
 [GraphInit]
 Class="Function"
 Prototype="int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef *pGraph);"
@@ -5,4 +9,8 @@ Prototype="int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTyp
 [GraphDeinit]
 Class="Function"
 Prototype="int GraphDeinit(GraphTypeDef *pGraph);"
+
+[CanvasCallback]
+Class="Function"
+Prototype="int CanvasCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 

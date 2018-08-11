@@ -21,7 +21,7 @@
 #define  DEFPANEL_DESC                    6       /* control type: textMsg, callback function: (none) */
 #define  DEFPANEL_PICS                    7       /* control type: picture, callback function: (none) */
 
-#define  PROPANEL                         2
+#define  PROPANEL                         2       /* callback function: PrjPanelCallback */
 #define  PROPANEL_SPLITTER                2       /* control type: splitter, callback function: (none) */
 #define  PROPANEL_STRING                  3       /* control type: string, callback function: (none) */
 #define  PROPANEL_SEARCH                  4       /* control type: command, callback function: SearchCallback */
@@ -45,6 +45,7 @@
 
 int  CVICALLBACK PIC_ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PIC_OpenPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK PrjPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PrjSelectCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SearchCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK TXT_ExitPrjCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

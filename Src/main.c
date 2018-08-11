@@ -37,7 +37,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
 		
 		Graph1.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
-		Graph2.pCurveArray->numOfDotsToPlot++;
+	
 		
 		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
 		
@@ -54,6 +54,11 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
+		}
+		else if(TestPara.testMode==SWEEP_IV)
+		{
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;
+			Graph1.pCurveArray->time += TestPara.timeStep;
 		}
 		
 		if(RxData.rxStopSign==0x01)													//if complete the test, stop the timer
@@ -72,23 +77,18 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	PlotCurve(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1);
 }
 
-void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
-{
-	
-
-}
 
 int main (int argc, char *argv[])
 {
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=1;
+	measureComPort=4;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
 	//else SA11_Status=1;
-	
+	  	      
 	LoadInitPanel(); 
 	RunUserInterface();
 	CloseCom(measureComPort);

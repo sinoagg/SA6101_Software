@@ -2,10 +2,6 @@
 Class="Function"
 Prototype="int MAIN_PANEL_Callback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
 
-[SetYAxis]
-Class="Function"
-Prototype="void SetYAxis();"
-
 [RunCallback]
 Class="Function"
 Prototype="int RunCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"

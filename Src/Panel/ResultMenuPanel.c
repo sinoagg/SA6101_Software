@@ -158,12 +158,22 @@ int CVICALLBACK GraphSelectCallback (int panel, int control, int event,
 		    DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
 			DispDoubleGraph();
 			graphDispSelect=DISP_DOUBLE_GRAPH;
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_VISIBLE, 1);
+			SetCtrlAttribute (hEnvResultPanel, ENVIRPANEL_LEGEND, ATTR_VISIBLE, 1);
+			SetCtrlAttribute (hEnvResultPanel, ENVIRPANEL_TXT_LEGEND, ATTR_VISIBLE, 1);
+			SetCtrlVal(hEnvResultPanel, ENVIRPANEL_LEGEND,1);
 		}
 		else
 		{   
 			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
 			DispSingleGraph();
 			graphDispSelect=DISP_SINGLE_GRAPH;
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_VISIBLE, 0);
+		    SetCtrlAttribute (hEnvResultPanel, ENVIRPANEL_LEGEND, ATTR_VISIBLE,0); 
+			SetCtrlAttribute (hEnvResultPanel, ENVIRPANEL_TXT_LEGEND, ATTR_VISIBLE,0);
+			SetCtrlVal(hEnvResultPanel, ENVIRPANEL_TEMP_BOX,0); 
+			SetCtrlVal(hEnvResultPanel, ENVIRPANEL_HUM_BOX,0); 
+			SetCtrlVal(hEnvResultPanel, ENVIRPANEL_PRESS_BOX,0); 
 		}
 	}
 	return 0;

@@ -1,12 +1,15 @@
 #include <userint.h>
 #include "Environment.h"
 #include "Plot.h"
+#include "GraphDisp.h"
+#include  "LoadPanel.h"
+#include "EnvironmentPanel.h"
 
 
 
-int temp_flag,humidity_flag,pressure_flag;  
+// Global variables
 
-
+int temp_flag,humidity_flag,pressure_flag;
 
 int CVICALLBACK MesaureCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
@@ -38,8 +41,50 @@ int CVICALLBACK TemperatureCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-		//	DisplayTempGraph();
+		     DisplayTempGraph();
 			break;
 	}
+	return 0;
+}
+
+
+int CVICALLBACK HumidityCallback (int panel, int control, int event,
+								  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			DisplayTempGraph();
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK PressureCallback (int panel, int control, int event,
+								  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			DisplayTempGraph();
+			break;
+	}
+	return 0;
+}
+
+
+
+int CVICALLBACK LegendCallback (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{  if( event == EVENT_VAL_CHANGED) 
+	{   
+		int legendval;
+		GetCtrlVal(hEnvResultPanel,ENVIRPANEL_LEGEND, &legendval);
+
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_VISIBLE, legendval);
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_LEFT, 1070); 
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_TOP, 450);
+	}
+       
 	return 0;
 }
