@@ -39,8 +39,6 @@
 	 ITPANEL_VD_START,
 	 ITPANEL_VD_MODE,
 	 ITPANEL_VD_MODE,
-	 ITPANEL_VD_START,
-	 ITPANEL_VD_START,
  };
 //==============================================================================
 // Global functions

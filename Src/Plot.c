@@ -49,11 +49,7 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_PLOT_STYLE,&plotval);  
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_LINE_STYLE,&lineval);  
 	
-	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_LINE_STYLE, &(pCurveAttr->lineStyle));
-	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle)); 
-	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE,&(pCurveAttr->pointStyle));
-	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_GRAPH1CLR1, &(pCurveAttr->lineColor));
-	int numOfDotsToPlot=pGraph->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据 
+    int numOfDotsToPlot=pGraph->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据 
 	   
 	if(numOfDotsToPlot>0)
 	{

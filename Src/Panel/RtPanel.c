@@ -39,8 +39,7 @@
 	 RTPANEL_VG_START,
 	 RTPANEL_VG_MODE,
 	 RTPANEL_VG_MODE,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_START,
+
  };
 //==============================================================================
 // Global functions

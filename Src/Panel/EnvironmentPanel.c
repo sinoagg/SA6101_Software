@@ -41,7 +41,7 @@ int CVICALLBACK TemperatureCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-	//	DisplayTempGraph();              
+		DisplayTempGraph();              
 			break;
 	}
 	return 0;

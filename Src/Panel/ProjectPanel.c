@@ -122,7 +122,7 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
+			SetPanelAttribute(panel, ATTR_BACKCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 			SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);

@@ -9,6 +9,7 @@
 #include "ResultMenuPanel.h"
 #include "Graph.h"
 #include "LoadPanel.h"
+#include <userint.h>  
 //==============================================================================
 // Constants
 
@@ -37,6 +38,8 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[]);
 // Global variables
 enum ResultDispSelect resultDispSelect=DISP_GRAPH;
 enum GraphDispSelect graphDispSelect=DISP_SINGLE_GRAPH;
+Rect rc;
+int nBitmapID;
 //==============================================================================
 // Global functions	
 
@@ -95,6 +98,52 @@ void DispResultTableGraph(void)
 		else if(graphDispSelect==DISP_DOUBLE_GRAPH)
 		DispDoubleGraph();
 	}
+}
+
+static void SaveSheet()
+{
+	static ExcelObj_App               ExcelAppHandle = 0;       
+	static ExcelObj_Workbooks         ExcelWorkbooksHandle = 0; 
+	static ExcelObj_Workbook          ExcelWorkbookHandle = 0;  
+	static ExcelObj_Sheets            ExcelSheetsHandle = 0;    
+	static ExcelObj_Worksheet         ExcelWorksheetHandle = 0;
+	Excel_NewApp (NULL, 1, LOCALE_NEUTRAL, 0, &ExcelAppHandle);	  //create a new Application object, and obtain a handle to the object.
+	Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppWorkbooks, CAVT_OBJHANDLE, &ExcelWorkbooksHandle);
+	Excel_WorkbooksAdd (ExcelWorkbooksHandle, NULL, CA_DEFAULT_VAL,&ExcelWorkbookHandle);
+	Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppSheets,CAVT_OBJHANDLE, &ExcelSheetsHandle);
+	Excel_SheetsItem (ExcelSheetsHandle, NULL, CA_VariantInt(1),&ExcelWorksheetHandle);
+	Excel_WorksheetActivate (ExcelWorksheetHandle, NULL);
+	ExcelRpt_WriteDataFromTableControl (ExcelWorksheetHandle, "A1:D100", hTablePanel, TABLE_DISTABLE);	//write data from table control
+	ExcelRpt_WorkbookSave (ExcelWorkbookHandle, sheetSavePath, ExRConst_DefaultFileFormat);
+	Excel_AppQuit (ExcelAppHandle, NULL);
+
+
+}
+
+
+static void SaveGraph1()
+{
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_LEFT, &rc.left);
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_HEIGHT, &rc.height);
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_WIDTH, &rc.width);
+	GetPanelDisplayBitmap (hGraphPanel, VAL_FULL_PANEL, rc, &nBitmapID);
+	SaveBitmapToJPEGFile (nBitmapID, graph1SavePath, JPEG_INTERLACE, 100);
+	DiscardBitmap (nBitmapID);
+
+}
+
+static void SaveGraph2()
+{
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_LEFT, &rc.left);
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_HEIGHT, &rc.height);
+	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_WIDTH, &rc.width);
+	GetPanelDisplayBitmap (hGraphPanel, VAL_FULL_PANEL, rc, &nBitmapID);
+	SaveBitmapToJPEGFile (nBitmapID, graph2SavePath, JPEG_INTERLACE, 100);
+	DiscardBitmap (nBitmapID);
+
+
 }
 
 int CVICALLBACK TableCallback (int panel, int control, int event,						//点击table图标切换到table面板     
@@ -253,13 +302,16 @@ int CVICALLBACK BrowseGraph2Callback (int panel, int control, int event,
 	return 0;
 }
 
+
 int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 									void *callbackData, int eventData1, int eventData2)
 {
+
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
+			//SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
+			SaveGraph1(); 
 			break;
 	}
 	return 0;
@@ -271,7 +323,8 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath); 
+			//SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath); 
+			 SaveGraph2();
 			break;
 	}
 	return 0;
@@ -283,8 +336,11 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath);
+		/*	SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath);*/
+		SaveSheet();
+		SaveGraph1();
+		SaveGraph2();
 			break;
 	}
 	return 0;
@@ -307,30 +363,16 @@ static int SaveGraph(int panel, int control, int plotHandle, const char path[])
 }
 
 
-	
-			                        
 int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 								   void *callbackData, int eventData1, int eventData2)
 {	 
 
-	static ExcelObj_App               ExcelAppHandle = 0;       
-	static ExcelObj_Workbooks         ExcelWorkbooksHandle = 0; 
-	static ExcelObj_Workbook          ExcelWorkbookHandle = 0;  
-	static ExcelObj_Sheets            ExcelSheetsHandle = 0;    
-	static ExcelObj_Worksheet         ExcelWorksheetHandle = 0;
+
 	switch (event)
 	{
 		case EVENT_COMMIT:
 			
-			Excel_NewApp (NULL, 1, LOCALE_NEUTRAL, 0, &ExcelAppHandle);	  //create a new Application object, and obtain a handle to the object.
-			Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppWorkbooks, CAVT_OBJHANDLE, &ExcelWorkbooksHandle);
-			Excel_WorkbooksAdd (ExcelWorkbooksHandle, NULL, CA_DEFAULT_VAL,&ExcelWorkbookHandle);
-			Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppSheets,CAVT_OBJHANDLE, &ExcelSheetsHandle);
-			Excel_SheetsItem (ExcelSheetsHandle, NULL, CA_VariantInt(1),&ExcelWorksheetHandle);
-			Excel_WorksheetActivate (ExcelWorksheetHandle, NULL);
-			ExcelRpt_WriteDataFromTableControl (ExcelWorksheetHandle, "A1:D100", hTablePanel, TABLE_DISTABLE);	//write data from table control
-			ExcelRpt_WorkbookSave (ExcelWorkbookHandle, sheetSavePath, ExRConst_DefaultFileFormat);
-			Excel_AppQuit (ExcelAppHandle, NULL);
+		SaveSheet();
 			
 			break;
 	}

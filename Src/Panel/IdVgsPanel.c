@@ -44,8 +44,7 @@
 	IDVGS_CFG_VD_STEP, 
 	IDVGS_CFG_DRAINMODE, 
 	IDVGS_CFG_GATEMODE,
-	IDVGS_CFG_VG_START,
-	IDVGS_CFG_VG_START, 
+	
 };
 //==============================================================================
 // Global functions

@@ -45,7 +45,7 @@
 
 //==============================================================================
 // Types
-
+ GraphTypeDef* pGraph;   
 //==============================================================================
 // Static global variables
 
@@ -143,9 +143,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					
 					
 					Table_ATTR.column = 2 ;   		//列数
-					Table_ATTR.column_width = 300;  //列宽
+					Table_ATTR.column_width = 290;  //列宽  	
 					Table_init(Table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width );
-
+				
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -156,13 +156,16 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					}
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
-					Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
+				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-					Graph1.pGraphAttr->yAxisHead=0;
-					Graph1.pGraphAttr->yAxisTail=2e-34;
+				   /* Graph1.pGraphAttr->yAxisTail=2e-1;
+						float currentY_Val=1e-2;    
+					currentY_Val=Graph1.pGraphAttr->yAxisTail;*/   
+					Graph1.pGraphAttr->yAxisHead=0; 			 
+					//SetGraphY_Axis(&Graph1,currentY_Val); 
 					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
 					//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead, Graph1.pGraphAttr->yAxisTail);//设置 X 轴的范围
-				   	//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
+				   	SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
 					break;
 				case SWEEP_GATE_VOL:
 				/*	GetIdVgCfg (IdVgPanel);
@@ -183,7 +186,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围
 					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);
-					  
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					 
 					break;
@@ -478,8 +480,9 @@ static int LoadAllProject(char* pProjectSavePath)
 			pFileLable[index] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
 			InitFileLable(pFileLable[index], tempFilePath); //读文件时间和文件名称及description
 			SingleProject[index].hSinglePrjPanel = LoadAndDispPrj(pFileLable[index], index);
-			SingleProject[index].index=index; 
+			SingleProject[index].index=index;
 			index++;
+			
 		}
 	}
 	return 0;

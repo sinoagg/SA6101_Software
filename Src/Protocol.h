@@ -74,8 +74,9 @@ typedef struct
 	int VgStart;									//voltage gate start
 	int VgStop;									//voltage gate stop
 	int VgStep;									//voltage gate step
-	//int ItStart;
-	//int RtStart;
+	int Current_Start;									//start2
+	int Current_Stop;									//stop2
+	int Current_Step;
 	unsigned int quietTime;
 	unsigned int timeStep;
 	unsigned long int runTime;								//effective only under R-t and I-t mode

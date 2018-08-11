@@ -54,6 +54,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
 			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));
+			
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data

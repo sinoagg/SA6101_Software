@@ -34,12 +34,14 @@
 // Global variables
 GraphTypeDef Graph1;
 GraphTypeDef Graph2;
+
 //==============================================================================
 // Global functions
 
 
 int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
 {
+
 	int i;
 	pGraph->graphHandle=hGraphPanel;
 	pGraph->graphIndex=graphIndex;
@@ -56,7 +58,7 @@ int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, Gr
 	GraphAttrTypeDef* pGraphAttr = (GraphAttrTypeDef *)malloc(sizeof(CurveTypeDef));
 	if(pGraphAttr==NULL) return -1;
 	pGraph->pGraphAttr=pGraphAttr;
-	
+
 	return 0;
 }
 
@@ -72,15 +74,18 @@ int GraphDeinit(GraphTypeDef* pGraph)
 
 void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)
 {
-	if(pGraph->pGraphAttr->yAxisTail < currentY_Val)
+	if(pGraph->pGraphAttr->yAxisTail < currentY_Val &&  pGraph->pGraphAttr->yAxisHead >=0)
 	{
 		pGraph->pGraphAttr->yAxisTail = currentY_Val*2;
+		//SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//设置 Y  轴的范围
+
 	}
-	else if(pGraph->pGraphAttr->yAxisHead > currentY_Val)
+     else if(pGraph->pGraphAttr->yAxisHead > currentY_Val && pGraph->pGraphAttr->yAxisHead >=0)
 	{
 		pGraph->pGraphAttr->yAxisHead = currentY_Val/2;	
+		SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//设置 Y  轴的范围
+
 	}
-	SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//设置 Y  轴的范围
 }
 
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentY_Val)

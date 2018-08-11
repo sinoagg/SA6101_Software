@@ -27,10 +27,7 @@ cvistart.lib
 cvi.lib
 cviauto.lib
 kernel32.lib
-toolbox.obj
 uuid.lib
-advapi32.lib
-gdi32.lib
 user32.lib
 EXE Symbol Module
 Exports Module
