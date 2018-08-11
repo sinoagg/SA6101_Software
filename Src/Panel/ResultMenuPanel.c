@@ -371,8 +371,7 @@ int CVICALLBACK SaveSheetCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			
-		SaveSheet();
+			SaveSheet();
 			
 			break;
 	}
