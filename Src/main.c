@@ -16,33 +16,45 @@ unsigned char measureComPort;				//Serial Com Number
 unsigned char controlComPort;
 
 unsigned char measUartTxBuf[32]={0};
-unsigned char measUartRxBuf[500]={0};
+unsigned char measUartRxBuf[1024]={0};
 
 unsigned char SA11_Status=0;
 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
-	int rxNum;
-	int i=0;
+	static int leftNum=0;
+	int row;
+	int rxNum=0;
+	int i=0, j=0;
 	RxDataTypeDef RxData;
+	RxData.rxStopSign=0x00;
 	rxNum = GetInQLen(portNumber);  									//读取串口中发送来的数据数量
 	if(rxNum>500) rxNum=500;											//防止超过内存范围
-	ComRd(portNumber, (char *)measUartRxBuf, rxNum);					//Read UART Buffer to local buffer at one time  
-	
-	while(rxNum>=MEASURE_UART_RX_LEN)
+	ComRd(portNumber, (char *)measUartRxBuf+leftNum, rxNum);					//Read UART Buffer to local buffer at one time  
+	leftNum+=rxNum;
+	while(leftNum>=MEASURE_UART_RX_LEN)
 	{
+		
+		InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);				          //插入1行 
+		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  //得到当前行数
+
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
+		
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
+		//SetGraphY_Axis(&Graph1, RxData.rxIdmeasured.num_float);
 		
 		Graph1.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
-	
-		
 		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
+		SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2,row), *(Graph1.pCurveArray->pDotY-1));
+		
 		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
+		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));
+		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
 		else if(TestPara.testMode==NO_SWEEP_IT)
@@ -64,31 +76,44 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		if(RxData.rxStopSign==0x01)													//if complete the test, stop the timer
 		{
 			DiscardAsyncTimer(TimerID);
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
-			/*GraphDeinit(&Graph1);
-			GraphDeinit(&Graph2);*/
 		}
-		rxNum-=MEASURE_UART_RX_LEN;
+		leftNum-=MEASURE_UART_RX_LEN;
 		i++;
 	}
 	
+	for(j=0;j++;j<leftNum) //把最后几个字节散开的数据往前挪
+	{
+		measUartRxBuf[j]=measUartRxBuf[i*MEASURE_UART_RX_LEN+j];
+	}
+	
 	PlotCurve(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1);
+	if(RxData.rxStopSign==0x01)
+	{
+		GraphDeinit(&Graph1);												//内存释放在画图之后
+		GraphDeinit(&Graph2);
+		SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+	    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+		SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+	}
 }
 
+void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
+{
+	
+
+}
 
 int main (int argc, char *argv[])
 {
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=4;
+	measureComPort=6;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
 	//else SA11_Status=1;
-	  	      
+	
 	LoadInitPanel(); 
 	RunUserInterface();
 	CloseCom(measureComPort);
@@ -100,7 +125,7 @@ int main (int argc, char *argv[])
 static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, void (*pFunc)(int, int, void*))
 {
 	int status;
-	status = OpenComConfig(portNumber, "", 115200, 0, 8, 1, 512, 512);	   //Config and Connect serial port
+	status = OpenComConfig(portNumber, "", 115200, 0, 8, 1, 1024, 1024);	   //Config and Connect serial port
 	if(status != 0) 
 	{
 		MessagePopup("Error","Device unconnected.");

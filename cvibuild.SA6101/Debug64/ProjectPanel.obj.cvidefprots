@@ -22,7 +22,3 @@ Prototype="int PrjSelectCallback(int panel, int event, void *callbackData, int e
 Class="Function"
 Prototype="int SearchCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[PrjPanelCallback]
-Class="Function"
-Prototype="int PrjPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
-

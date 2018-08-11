@@ -21,7 +21,6 @@
 #include "cvidef.h"
 #include "curve.h"
 
-
 //==============================================================================
 // Constants
 
@@ -29,19 +28,21 @@
 // Types
 typedef struct
 {
-	float xAxisHead;//
+	float xAxisHead;
 	float xAxisTail;
 	float yAxisHead;
 	float yAxisTail;
+	//int xAxisMax;
+	//int yAxisMax;
 }GraphAttrTypeDef;		
 		
 typedef struct
 {
-	int plotHandle;									//graph handle 
+	int graphHandle;									//graph handle 
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
-	int graphHanle;
-  
+    int plotHandle;									//后期需要整改属于plot
+	
 	GraphAttrTypeDef* pGraphAttr;
 	CurveTypeDef* pCurveArray;						//pointer to curve array
 }GraphTypeDef;
@@ -52,9 +53,10 @@ extern GraphTypeDef Graph2;
 
 //==============================================================================
 // Global functions
-int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
+int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
 int GraphDeinit(GraphTypeDef* pGraph);
-void SetYAxis(int hGraphPanel,int currentY_val,GraphTypeDef* pGraph );
+void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val);  
+void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val);  
 
 #ifdef __cplusplus
     }

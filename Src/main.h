@@ -31,8 +31,8 @@
 // External variables
 extern unsigned char measureComPort;				//Serial Com Number
 extern unsigned char controlComPort;
-extern unsigned char measUartTxBuf[32];
-extern unsigned char measUartRxBuf[500];
+extern unsigned char measUartTxBuf[];
+extern unsigned char measUartRxBuf[];
 //==============================================================================
 // Global functions
 

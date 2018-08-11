@@ -1,4 +1,4 @@
-@"d:\software\nilwcvi\nilwcvi2017\bin\cvilink.exe" -cmd:link_options.txt -flags:0 -expiry:0 > Link.out 2>&1
+@"c:\program files\national instruments\cvi2017\bin\cvilink.exe" -cmd:link_options.txt -flags:0 -expiry:0 > Link.out 2>&1
 @if errorlevel 1 goto err
 @echo Link success
 @echo Link complete

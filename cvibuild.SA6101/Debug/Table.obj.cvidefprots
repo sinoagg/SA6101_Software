@@ -18,7 +18,3 @@ Prototype="int DeleteCalback(int panel, int control, int event, void *callbackDa
 Class="Function"
 Prototype="int ColorCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[ExcCallback]
-Class="Function"
-Prototype="int ExcCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-

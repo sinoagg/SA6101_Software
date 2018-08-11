@@ -18,7 +18,7 @@
 //==============================================================================
 // Include files
 #include "cvidef.h"
-
+#include "Environment.h"
 //==============================================================================
 // Constants
 
@@ -27,7 +27,7 @@
 
 //==============================================================================
 // External variables
-extern int temp_flag,humidity_flag,pressure_flag;
+ extern int temp_flag,humidity_flag,pressure_flag; 
 //==============================================================================
 // Global functions
 

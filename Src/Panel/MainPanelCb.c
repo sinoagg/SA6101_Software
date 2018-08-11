@@ -1,3 +1,4 @@
+#include <rs232.h>
 #include "MainPanel.h"
 
 //==============================================================================
@@ -27,6 +28,7 @@
 #include "ResultMenuPanel.h"
 #include "SettingsPanel.h"
 #include "File.h"
+#include "TablePanel.h"
 
 //==============================================================================
 // Constants
@@ -55,7 +57,9 @@
 int TimerID;
 char configSavePath[512]={0};
 FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针，最多只能加载一个文件夹下的64个文件
-PrjHandleTypeDef SingleProject[64];									
+PrjHandleTypeDef SingleProject[64];	
+Table_TypeDef Table_ATTR;
+char Table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
 
 //==============================================================================
 // Global functions
@@ -82,7 +86,7 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 		case EVENT_CLOSE:
 			   	QuitUserInterface(0); 
 			break;
-	}								    
+	}
 	return 0;
 }
 
@@ -118,6 +122,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	        SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线 
 			
+			FlushInQ(measureComPort);	   														//Clear input and output buffer,在测试开始之前还应该清楚一次
+			FlushOutQ(measureComPort);
+		
 			int expType;
 			int graphIndex=1;	//currently only deal with one graph circumstance
 			int numOfCurve=1;
@@ -133,6 +140,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			    
 				case SWEEP_DRAIN_VOL:				 
 					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+					
+					
+					Table_ATTR.column = 2 ;   		//列数
+					Table_ATTR.column_width = 300;  //列宽
+					Table_init(Table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width );
+
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -142,12 +155,14 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
 					}
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
-					GraphInit(graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
+					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
 					Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
 					Graph1.pGraphAttr->yAxisHead=0;
+					Graph1.pGraphAttr->yAxisTail=2e-34;
 					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
-				   	SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
+					//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead, Graph1.pGraphAttr->yAxisTail);//设置 X 轴的范围
+				   	//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
 					break;
 				case SWEEP_GATE_VOL:
 				/*	GetIdVgCfg (IdVgPanel);
@@ -162,55 +177,63 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
 					}
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
-					GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围
 					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);
+					  
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					 
 					break;
 				case NO_SWEEP_IT: 
 					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
 					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
-					GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围
+					   
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 				case  NO_SWEEP_RT:
 				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
 					  numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
-					  GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
+					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					  Graph1.pGraphAttr->xAxisHead=0;
 					  Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
 					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					 //设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
+					    
 					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 				case SWEEP_IV:
 					
 					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线 
 					  numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
-					  GraphInit(graphIndex,numOfCurve,numOfDots,&Graph1);
+					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					  Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
 					  Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
 					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
+					     
 					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 				
 					break;
-				case ID_T:
+				case IDT:
+					  
 					  
 					break;
 				default:
 					break;
 			}	
 			
-			Delay(1);
+			Delay(0.5);
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
-			TimerID = NewAsyncTimer(1,-1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval 1s, continue generating evernt, enabled, callback function name, passing no pointer)
+			double temp=((double)TestPara.timeStep)/1000;
+			if(temp<0.05) temp=0.05;
+			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);		//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)
 			break;
 	}
 	return 0;
@@ -224,6 +247,8 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
 			DiscardAsyncTimer(TimerID);
 			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+			FlushInQ(measureComPort);	   														//Clear input and output buffer,在测试开始之前还应该清楚一次
+			FlushOutQ(measureComPort);
 		  	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
@@ -467,6 +492,12 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			InstallPopup (hPrjPanel);
 			LoadAllProject(ProjectSavePath);
+//<<<<<<< HEAD
+//			SetPanelPos(hPrjListPanel, 90, -10);
+//			SetPanelSize(hPrjListPanel, 115, 1300);
+//			DisplayPanel(hPrjListPanel);
+//=======
+//>>>>>>> e73900e378028359f1677ade8da974220349c79d
 			break;
 	}	 
 	return 0;

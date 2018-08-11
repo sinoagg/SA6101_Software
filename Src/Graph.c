@@ -36,28 +36,12 @@ GraphTypeDef Graph1;
 GraphTypeDef Graph2;
 //==============================================================================
 // Global functions
- 	int currentY_val=1000;      
-void SetYAxis(int hGraphPanel,int currentY_val,GraphTypeDef* pGraph )
-{
-	pGraph->graphHanle=hGraphPanel;
 
-	if(pGraph->pGraphAttr->yAxisTail > currentY_val)
-    {
-		pGraph->pGraphAttr->yAxisTail = pGraph->pGraphAttr->yAxisTail * 2;
-			SetAxisScalingMode(pGraph->graphHanle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§  
 
-	}else if(pGraph->pGraphAttr->yAxisHead > currentY_val || pGraph->pGraphAttr->yAxisHead >=0)
-	{
-	   pGraph->pGraphAttr->yAxisTail = pGraph->pGraphAttr->yAxisTail / 2;
-	   	SetAxisScalingMode(pGraph->graphHanle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§  
-
-	}
-
-}
-
-int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
+int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph)
 {
 	int i;
+	pGraph->graphHandle=hGraphPanel;
 	pGraph->graphIndex=graphIndex;
 	pGraph->numOfCurve=numOfCurve;
 	CurveTypeDef* pCurveArray = (CurveTypeDef *)malloc(numOfCurve * sizeof(CurveTypeDef)); 	//Curve Array Saving pointers to curve structure
@@ -72,7 +56,7 @@ int GraphInit(int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGrap
 	GraphAttrTypeDef* pGraphAttr = (GraphAttrTypeDef *)malloc(sizeof(CurveTypeDef));
 	if(pGraphAttr==NULL) return -1;
 	pGraph->pGraphAttr=pGraphAttr;
-	SetYAxis(pGraph->graphHanle,currentY_val,pGraph);
+	
 	return 0;
 }
 
@@ -86,11 +70,36 @@ int GraphDeinit(GraphTypeDef* pGraph)
 	return 0;
 }
 
+void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)
+{
+	if(pGraph->pGraphAttr->yAxisTail < currentY_Val)
+	{
+		pGraph->pGraphAttr->yAxisTail = currentY_Val*2;
+	}
+	else if(pGraph->pGraphAttr->yAxisHead > currentY_Val)
+	{
+		pGraph->pGraphAttr->yAxisHead = currentY_Val/2;	
+	}
+	SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§
+}
+
+void SetGraphX_Axis(GraphTypeDef* pGraph, float currentY_Val)
+{
+	/*if(pGraph->pGraphAttr->yAxisTail < currentY_Val)
+	{
+		Graph1.pGraphAttr->yAxisTail = currentY_Val*2;
+		SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§
+	}
+	else if(pGraph->pGraphAttr->yAxisHead > currentY_Val)
+	{
+		Graph1.pGraphAttr->yAxisTail = currentY_Val/2;	
+	}*/	 
+}
+
 int CVICALLBACK CanvasCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-
-	int LeftButtonDown;
+		int LeftButtonDown;
 	int x;
 	int y;
 	int CtrlTop;
@@ -145,4 +154,3 @@ int CVICALLBACK CanvasCallback (int panel, int control, int event,
 	}
 	return 0;
 }
-

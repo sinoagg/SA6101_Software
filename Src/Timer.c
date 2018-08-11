@@ -71,3 +71,4 @@ int CVICALLBACK TimerCallback (int panel, int control, int event,								//¶¨Ê±È
 	
 }
 
+

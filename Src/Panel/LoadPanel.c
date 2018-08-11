@@ -83,10 +83,10 @@ int LoadInitPanel (void)
 	
 	if ((hResultDispPanel = LoadPanel (hMainPanel, "ResultDispPanel.uir", RESULTDISP)) < 0)		//load right panel
 		return -1;
-															   
+	
 	if ((hEnvCfgPanel = LoadPanel (hMainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
 		return -1;	
-																		   
+	
 	if ((hEnvResultPanel = LoadPanel (hMainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
 		return -1;													 
 
@@ -107,9 +107,9 @@ int LoadInitPanel (void)
 	
 	if ((hSettingsAboutPanel = LoadPanel (hSettingsPanel, "Settings.uir", ABOUT)) < 0)		//用于弹出Settings->About面板
 		return -1;
-										  
+
 	if ((hGraphSelectPanel = LoadPanel (hMainPanel, "Result Menu.uir", CHPANEL)) < 0)		//load hGraphSelectPanel panel
-		return -1;			
+		return -1;
 	
 	if ((hGraphPanel = LoadPanel (hMainPanel, "GraphDisp.uir", GRAPHDISP)) < 0)		//load GRAPHDISP panel
 		return -1;

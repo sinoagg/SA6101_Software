@@ -259,7 +259,7 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
 			break;
 	}
 	return 0;
@@ -271,7 +271,7 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.plotHandle, graph2SavePath); 
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath); 
 			break;
 	}
 	return 0;
@@ -283,8 +283,8 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotHandle, graph1SavePath);
-			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.plotHandle, graph2SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
+			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath);
 			break;
 	}
 	return 0;

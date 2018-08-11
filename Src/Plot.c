@@ -11,7 +11,7 @@
 //==============================================================================
 // Include files
 
-//#include "Plot.h"
+#include "Plot.h"
 #include <userint.h>
 #include "Graph.h"
 #include"LoadPanel.h"
@@ -38,20 +38,25 @@ int graph2humclr;
 int graph2preclr; 
 //==============================================================================
 // Global functions
-
+	
 int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 {
 	unsigned int colorval;
+	unsigned int pointval;
 	unsigned int plotval;
 	unsigned int lineval;
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&colorval);
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_PLOT_STYLE,&plotval);  
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_LINE_STYLE,&lineval);  
-						
+	
+	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_LINE_STYLE, &(pCurveAttr->lineStyle));
+	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle)); 
+	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE,&(pCurveAttr->pointStyle));
+	//GetCtrlVal(hSettingsGraphPanel, SETGRAPH_GRAPH1CLR1, &(pCurveAttr->lineColor));
 	int numOfDotsToPlot=pGraph->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据 
 	   
 	if(numOfDotsToPlot>0)
-	{	   
+	{
 	   	if(pGraph->pCurveArray->numOfPlotDots >= 1)																//如果有需要画图的点
 		{  																																																						 
 			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, plotval/*VAL_CONNECTED_POINTS*/,VAL_DOTTED_SOLID_SQUARE,lineval, 1,  colorval);
@@ -72,6 +77,7 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 	else
 		return 0;
 }
+
 
 
 
@@ -149,104 +155,5 @@ void DisplayTempGraph()
 	
 }
 
-int PlotCurve2(GraphTypeDef* Graph2, int hGraphPanel, int control)
-{
-	int numOfDotsToPlot=Graph2->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据
-	GetCtrlVal (hSettingsGraphPanel, SETGRAPH_GRAPH2CLR1, &graph2tempclr);
-	GetCtrlVal (hSettingsGraphPanel, SETGRAPH_GRAPH2CLR2, &graph2humclr);
-	GetCtrlVal (hSettingsGraphPanel, SETGRAPH_GRAPH2CLR3, &graph2preclr);
-	if(Graph2->pCurveArray->numOfPlotDots >=1 )//画 第二个 点
-	{
-			if(numOfDotsToPlot>0)																
-			{
-				
-				if(temp_flag == 1)  
-				{
-					
-					Graph2->plotHandle=PlotXY(hGraphPanel, control, (Graph2->pCurveArray +1)->pDotXPlot-1, (Graph2->pCurveArray +1)->pDotYPlot-1, numOfDotsToPlot+1, 
-											   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2tempclr);
-				
-				}
-				if(humidity_flag == 1)
-				{
-				//pDotXPlot	
-				//pDotYPlot	   numOfDotsToPlot		
-			
-				
-					Graph2->plotHandle=PlotXY(hGraphPanel, control, Graph2->pCurveArray->pDotXPlot-1, Graph2->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, 
-											   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2humclr);
-				}
-				if(pressure_flag == 1)
-				{
-				Graph2->plotHandle=PlotXY(hGraphPanel, control, (Graph2->pCurveArray +2)->pDotXPlot-1, (Graph2->pCurveArray +2)->pDotYPlot-1, numOfDotsToPlot+1, 
-											   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2preclr);
-				}
-				
-				Graph2->pCurveArray->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-				Graph2->pCurveArray->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-				Graph2->pCurveArray->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-				Graph2->pCurveArray->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-			
-				(Graph2->pCurveArray + 1)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-				(Graph2->pCurveArray + 1)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-				(Graph2->pCurveArray + 1)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-				(Graph2->pCurveArray + 1)->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-				
-				(Graph2->pCurveArray + 2)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-				(Graph2->pCurveArray + 2)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-				(Graph2->pCurveArray + 2)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-				(Graph2->pCurveArray + 2)->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-				
-			}
-    }
-	else //画第一个点
-	{
-			if(numOfDotsToPlot>0)																//如果有需要画图的点
-			{	
-				
-				if(temp_flag == 1)
-				{
-				Graph2->plotHandle=PlotXY(hGraphPanel, control, (Graph2->pCurveArray +1)->pDotXPlot, (Graph2->pCurveArray +1)->pDotYPlot, numOfDotsToPlot, 
-											   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2tempclr);
-				
-				}
-				
-				if(humidity_flag == 1) 
-				{
-				Graph2->plotHandle=PlotXY(hGraphPanel, control, Graph2->pCurveArray->pDotXPlot, Graph2->pCurveArray->pDotYPlot, numOfDotsToPlot, 
-											   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2humclr);
-				
-				}
-				
-				
-				
-				if(pressure_flag == 1)
-				{
-				Graph2->plotHandle=PlotXY(hGraphPanel, control, (Graph2->pCurveArray +2)->pDotXPlot, (Graph2->pCurveArray +2)->pDotYPlot, numOfDotsToPlot, 
-											   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2preclr);
-				
-				}
-				
-				Graph2->pCurveArray->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-				Graph2->pCurveArray->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-				Graph2->pCurveArray->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-				Graph2->pCurveArray->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-				
-				(Graph2->pCurveArray + 1)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-				(Graph2->pCurveArray + 1)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-				(Graph2->pCurveArray + 1)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-				(Graph2->pCurveArray + 1)->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-				
-				(Graph2->pCurveArray + 2)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-				(Graph2->pCurveArray + 2)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-				(Graph2->pCurveArray + 2)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-				(Graph2->pCurveArray + 2)->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-			}
-	}
-	if(Graph2->plotHandle<0)
-		return -1;
-	else
-		return 0;
-}
 
 

@@ -1,12 +1,16 @@
 asynctmr.obj
+Cgs_mt.obj
 Curve.obj
 EnvironmentPanel.obj
+excel2000.obj
+excelreport.obj
 ExpListPanel.obj
 File.obj
 Graph.obj
 IdVdsPanel.obj
 IdVgsPanel.obj
 ItPanel.obj
+IvPanel.obj
 LoadPanel.obj
 main.obj
 MainPanelCb.obj
@@ -19,12 +23,13 @@ SampleCfgPanel.obj
 SettingsPanel.obj
 Table.obj
 Timer.obj
-cvi.lib
 cvistart.lib
+cvi.lib
+cviauto.lib
 kernel32.lib
 toolbox.obj
+uuid.lib
 advapi32.lib
-cviauto.lib
 gdi32.lib
 user32.lib
 EXE Symbol Module
