@@ -139,7 +139,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			{
 			    
 				case SWEEP_DRAIN_VOL:				 
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); 
 					
 					
 					Table_ATTR.column = 2 ;   		//列数
@@ -157,12 +157,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
-					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-				   /* Graph1.pGraphAttr->yAxisTail=2e-1;
-						float currentY_Val=1e-2;    
-					currentY_Val=Graph1.pGraphAttr->yAxisTail;*/   
-					Graph1.pGraphAttr->yAxisHead=0; 			 
-					//SetGraphY_Axis(&Graph1,currentY_Val); 
+					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop; 
+					Graph1.pGraphAttr->yAxisHead=0;
+					Graph1.pGraphAttr->yAxisTail=2e-1;   
 					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
 					//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead, Graph1.pGraphAttr->yAxisTail);//设置 X 轴的范围
 				   	SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
@@ -171,7 +168,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				/*	GetIdVgCfg (IdVgPanel);
 					numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
 					numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;*/
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -190,7 +187,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 
 					break;
 				case NO_SWEEP_IT: 
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead=0;
@@ -201,7 +198,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 				case  NO_SWEEP_RT:
-				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线
+				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); 
 					  numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
 					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					  Graph1.pGraphAttr->xAxisHead=0;
@@ -213,13 +210,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 				case SWEEP_IV:
 					
-					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线 
+					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					  numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
 					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					  Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
 					  Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
 					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
-					     
 					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 				
 					break;
