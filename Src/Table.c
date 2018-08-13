@@ -36,14 +36,14 @@ char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K"};
 int CVICALLBACK AddTitleCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {
-	//switch (event)											  
-	//{
-	//	case EVENT_LEFT_CLICK_UP:
-	//		Table_init(Table_title_IT,column, column_width );
-	//		SetCtrlAttribute (hTablePanel, TABLE_ADDROW, ATTR_DIMMED,0);       
-	//		SetCtrlAttribute (hTablePanel, TABLE_ADDTITLE,  ATTR_DIMMED,1); 				
-	//		break;
-	//}
+	/*switch (event)											  
+	{
+		case EVENT_LEFT_CLICK_UP:
+			Table_init(Table_title_IT,column, column_width );
+			SetCtrlAttribute (hTablePanel, TABLE_ADDROW, ATTR_DIMMED,0);       
+			SetCtrlAttribute (hTablePanel, TABLE_ADDTITLE,  ATTR_DIMMED,1); 				
+			break;
+	}*/
 	return 0;
 }
 
@@ -53,7 +53,7 @@ int CVICALLBACK AddRowCallback (int panel, int control, int event,
 {   	switch (event)
 	{			   
 			case EVENT_LEFT_CLICK_UP:
-		/*		int row;
+				/*int row;
    	            InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);				          //插入1行 
 				GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  //得到当前行数
 				for(int i=1;i<=column;i++){
@@ -61,8 +61,8 @@ int CVICALLBACK AddRowCallback (int panel, int control, int event,
 					 SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (i,row ), i*100.0);//第i列     
 					//内容居中显示效果   
 					 SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (i,row ), ATTR_CELL_JUSTIFY, VAL_CENTER_CENTER_JUSTIFIED); 
-				}*/
-				/*	int MaxRow; //超出tanle高度后显示总能显示最后一行数据 
+				}
+					int MaxRow; //超出tanle高度后显示总能显示最后一行数据 
 					GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
 					SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);*/
 							

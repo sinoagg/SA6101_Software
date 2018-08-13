@@ -141,6 +141,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
  			Table_ATTR.column = 2 ;   		//列数
 			Table_ATTR.column_width = 290;  //列宽
+			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
+	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);	   	//每个实验运行之前清除上一个实验的table数据 
+			int MaxRow;  
+			
+			
 			switch(TestPara.testMode)
 			{
 			    
@@ -149,6 +154,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					
 
 					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width );
+					GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -166,6 +172,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
 					//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead, Graph1.pGraphAttr->yAxisTail);//设置 X 轴的范围
 				   	SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
+					SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);//超出tanle高度后显示总能显示最后一行数据 
 					break;
 				case SWEEP_GATE_VOL:
 				/*	GetIdVgCfg (IdVgPanel);
@@ -200,36 +207,36 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围  
 					break;
 				case  NO_SWEEP_RT:
-				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
-					  Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.column_width ); 
-					  numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
-					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					  Graph1.pGraphAttr->xAxisHead=0;
-					  Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
-					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
-					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的Y轴范
+				 	 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.column_width ); 
+					 numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
+					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					 Graph1.pGraphAttr->xAxisHead=0;
+					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
+					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的Y轴范
 					break;
 				case SWEEP_IV:
-					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
-					  Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.column_width ); 
-					  numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
-					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					  Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
-					  Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
-					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
-					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					 Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.column_width ); 
+					 numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
+					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					 Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
+					 Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
+					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
+					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 				
 					break;
-				case ID_T:
-					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
-					  Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );  
-					  
-					break;
+			/*	case ID_T:
+					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );  
+					 printf("%c","fgff");
+					break;*/
 				default:
 					break;
 			}	
 			GraphInit(hGraphPanel,graphIndex, 3, numOfDots, &Graph2);   
-			Delay(0.5);
+			Delay(0.2);
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
 			double temp=((double)TestPara.timeStep)/1000;
 			if(temp<0.05) temp=0.05;

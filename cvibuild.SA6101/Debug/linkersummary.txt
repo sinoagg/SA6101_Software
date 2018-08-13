@@ -7,6 +7,7 @@ excelreport.obj
 ExpListPanel.obj
 File.obj
 Graph.obj
+IdtPanel.obj
 IdVdsPanel.obj
 IdVgsPanel.obj
 ItPanel.obj

@@ -7,10 +7,9 @@
 
 
 
-int temp_flag,humidity_flag,pressure_flag;  
-
-
-
+int temp_flag;
+int humidity_flag;
+int pressure_flag;  
 int CVICALLBACK MesaureCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 { 	

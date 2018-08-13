@@ -11,7 +11,7 @@
 #define SEARCHCOLOR 0xA8BFCB //不可用颜色
 
 int selectedPrjIndex=0;			//当前选中的项目序号
-
+int selectPanel;   				//当前选中项目面板的句柄值
 static void DiscardAllPrjPanel(PrjHandleTypeDef *pSingleProject)
 {
 	int i=0;
@@ -19,7 +19,7 @@ static void DiscardAllPrjPanel(PrjHandleTypeDef *pSingleProject)
 	{
 		DiscardPanel((pSingleProject+i)->hSinglePrjPanel);
 		i++;
-	}
+	}	 
 }
 
 static int RecallAllPanelState(char* pConfigSavePath)
@@ -87,15 +87,15 @@ int CVICALLBACK PIC_ExitPrjCallback (int panel, int control, int event,
 	}
 	return 0;
 }
-	int selectPanel;
+
 static void SelectProject(int panel, int select)
 {
 	
-	selectPanel=GetActivePanel();
+	selectPanel=GetActivePanel(); //获得当前点击面板句柄值
 	if(select)
 	{
 		
-		SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
+		SetPanelAttribute(panel, ATTR_BACKCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
@@ -104,7 +104,7 @@ static void SelectProject(int panel, int select)
 	}
 	else
 	{
-		SetPanelAttribute (panel, ATTR_BACKCOLOR, BGCOLOR);
+		SetPanelAttribute(panel, ATTR_BACKCOLOR, BGCOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, BGCOLOR);
@@ -158,10 +158,7 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			/*int searchVal;
-			GetCtrlVal(panel,PROPANEL_NUMERIC,&searchVal);
-			printf("%d",searchVal);*/
-			if(selectPanel)	SelectProject(selectPanel,0);  
+			if(selectPanel)	 SelectProject(selectPanel,0);				//取消当前选中状态  
 			SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
 			SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );

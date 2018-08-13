@@ -17,6 +17,7 @@
 #include "ItPanel.h"
 #include "RtPanel.h"
 #include "IvPanel.h"
+#include "IdtPanel.h"
 
 //==============================================================================
 // Constants
@@ -73,9 +74,10 @@ int LoadInitPanel (void)
 	if ((IdVgPanel.panelHandle = LoadPanel (hMainPanel, "Id-Vgs Configuration.uir", IDVGS_CFG)) < 0)		//load middle panel
 		return -1;
 	
-	if((hIdtPanel = LoadPanel(hMainPanel,"Id-t Configuration.uir",IDT_CFG))<0) //load Id-t panel
+	if(( IdtPanel.panelHandle= LoadPanel(hMainPanel,"Id-t Configuration.uir",IDT_CFG))<0) //load Id-t panel
 		return -1;
-	
+		hIdtPanel = IdtPanel.panelHandle;
+		
 	if ((hBasicSamplePanel = LoadPanel (hMainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
 		return -1;	  
 

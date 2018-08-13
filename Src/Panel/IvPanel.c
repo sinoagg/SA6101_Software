@@ -36,7 +36,7 @@
 	 IVPANEL_VG_STOP,
 	 IVPANEL_VG_STEP,
 	 IVPANEL_VG_MODE,
-	 IVPANEL_VG_MODE,
+	 //IVPANEL_VG_MODE,
 	};
 //==============================================================================
 // Global functions
@@ -44,7 +44,7 @@
 /// HIFN  What does your function do?
 /// HIPAR x/What inputs does your function expect?
 /// HIRET What does your function return?
-int Define_Your_Functions_Here (int x)
-{
-	return x;
-}
+//int Define_Your_Functions_Here (int x)
+//{
+//	return x;
+//}

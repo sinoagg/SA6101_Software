@@ -125,9 +125,9 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 			SetGateDisp(panel, UNFOCUS);
 			break;
 		case EVENT_VAL_CHANGED:
-		    int valu;
-		    GetCtrlVal(panel,IDVGS_CFG_DRAINMODE,&valu);
-			if(valu==2)
+		    int val;
+		    GetCtrlVal(panel,IDVGS_CFG_DRAINMODE,&val);
+			if(val==2)
 			{
 		        DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STOP,ATTR_VISIBLE,1);
@@ -137,7 +137,7 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 				SetCtrlAttribute(panel, IDVGS_CFG_TXT_STEP,ATTR_VISIBLE,1);
 				SetCtrlAttribute(panel, IDVGS_CFG_MV_STEP,ATTR_VISIBLE,1);
 			}
-			else if(valu==0)
+			else if(val==0)
 			{
 				DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Bias.ico");
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STOP,ATTR_VISIBLE,0);
