@@ -52,11 +52,14 @@ static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStartID, &(pTestPara->VdStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStopID, &(pTestPara->VdStop));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStepID, &(pTestPara->VdStep));
+	
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStartID, &(pTestPara->VgStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStopID, &(pTestPara->VgStop));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VgStepID, &(pTestPara->VgStep));
+	
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->drainModeID, &(pTestPara->drainOutputMode));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->gateModeID, &(pTestPara->gateOutputMode));
+	
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));

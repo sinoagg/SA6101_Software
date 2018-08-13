@@ -1,3 +1,4 @@
+#include <ansi_c.h>
 #include "Result Menu.h"
 #include <userint.h>
 #include "Project.h"
@@ -86,11 +87,14 @@ int CVICALLBACK PIC_ExitPrjCallback (int panel, int control, int event,
 	}
 	return 0;
 }
-
+	int selectPanel;
 static void SelectProject(int panel, int select)
 {
+	
+	selectPanel=GetActivePanel();
 	if(select)
 	{
+		
 		SetPanelAttribute (panel, ATTR_BACKCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
@@ -134,7 +138,7 @@ int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,
 			
 			SelectProject(panel, 1);
 			selectedPrjIndex=GetPanelIndex(panel);
-			int i=0;
+			int i=0;		 
 			while(SingleProject[i].index!=-1)
 			{
 				if(i!=selectedPrjIndex)
@@ -154,10 +158,11 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			/*SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjListPanel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjListPanel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
-			SetCtrlAttribute (hPrjListPanel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);*/
+			/*int searchVal;
+			GetCtrlVal(panel,PROPANEL_NUMERIC,&searchVal);
+			printf("%d",searchVal);*/
+			if(selectPanel)	SelectProject(selectPanel,0);  
+			SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
 			SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 

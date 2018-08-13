@@ -30,16 +30,14 @@
    ExpPanelTypeDef IvPanel={
 	 0,
 	 IVPANEL_VG_START,
+	 IVPANEL_VG_STOP,
+	 IVPANEL_VG_STEP,
 	 IVPANEL_VG_START,
-	 IVPANEL_VG_START,
-	 IVPANEL_VG_START,
-	 IVPANEL_VG_START,
-	 IVPANEL_VG_START,
+	 IVPANEL_VG_STOP,
+	 IVPANEL_VG_STEP,
 	 IVPANEL_VG_MODE,
 	 IVPANEL_VG_MODE,
-	 IVPANEL_VG_START,
-	 IVPANEL_VG_START,
- };
+	};
 //==============================================================================
 // Global functions
 

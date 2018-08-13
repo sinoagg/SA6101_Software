@@ -41,13 +41,14 @@ int graph2preclr;
 	
 int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 {
-	unsigned int colorval;
-	unsigned int pointval;
-	unsigned int plotval;
-	unsigned int lineval;
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&colorval);
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_PLOT_STYLE,&plotval);  
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_LINE_STYLE,&lineval);  
+	unsigned int lineColor;
+	unsigned int pointStyle;
+	unsigned int plotStyle;
+	unsigned int lineStyle;
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&lineColor);
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_POINT_STYLE,&pointStyle);
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_PLOT_STYLE,&plotStyle);  
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_LINE_STYLE,&lineStyle);  
 	
     int numOfDotsToPlot=pGraph->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据 
 	   
@@ -55,12 +56,12 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 	{
 	   	if(pGraph->pCurveArray->numOfPlotDots >= 1)																//如果有需要画图的点
 		{  																																																						 
-			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, plotval/*VAL_CONNECTED_POINTS*/,VAL_DOTTED_SOLID_SQUARE,lineval, 1,  colorval);
+			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, plotStyle,pointStyle,lineStyle, 1,  lineColor);
 			//pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT, pCurveAttr->plotStyle, pCurveAttr->pointStyle, (pCurveAttr->lineStyle), 1, pCurveAttr->lineColor);
 		}
 		else
 		{   		
-			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,plotval /*VAL_CONNECTED_POINTS*/, VAL_DOTTED_SOLID_SQUARE,  lineval, 1, colorval);
+			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,plotStyle, pointStyle,  lineStyle, 1, lineColor);
 		//	pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,pCurveAttr->plotStyle, pCurveAttr->pointStyle, (pCurveAttr->lineStyle), 1, pCurveAttr->lineColor);
 		}
 		pGraph->pCurveArray->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
@@ -212,8 +213,8 @@ void DisplayTempGraph()
 	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_PEN_WIDTH, 2);			        //线的宽度
 	    CanvasDrawLine (hGraphPanel, GRAPHDISP_CANVAS, MakePoint (110, 87), MakePoint (150, 87));		//canvas画线
 		
-		//PlotXY(hGraphPanel, GRAPHDISP_GRAPH2, (Graph2.pCurveArray  + 2)->pDotXHead, (Graph2.pCurveArray  + 2)->pDotYHead, (Graph2.pCurveArray  + 2)->numOfPlotDots, 
-			   //VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2preclr);
+		PlotXY(hGraphPanel, GRAPHDISP_GRAPH2, (Graph2.pCurveArray  + 2)->pDotXHead, (Graph2.pCurveArray  + 2)->pDotYHead, (Graph2.pCurveArray  + 2)->numOfPlotDots, 
+			   VAL_FLOAT, VAL_FLOAT, VAL_CONNECTED_POINTS, VAL_DOTTED_SOLID_SQUARE, VAL_SOLID, 1, graph2preclr);
 	}
 	else
 	{
