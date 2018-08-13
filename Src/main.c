@@ -11,7 +11,7 @@
 #include "Plot.h"
 #include "Protocol.h"
 #include "Graph.h"
-#include"Cgs_mt.h"
+#include "Cgs_mt.h"
 
 extern int TimerID;
 unsigned char measureComPort;				//Serial Com Number
@@ -21,7 +21,9 @@ unsigned char measUartTxBuf[32]={0};
 unsigned char measUartRxBuf[1024]={0};
 
 unsigned char SA11_Status=0;
+
 GraphTypeDef Graph2;
+
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {

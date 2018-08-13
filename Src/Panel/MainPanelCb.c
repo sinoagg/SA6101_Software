@@ -58,8 +58,13 @@ int TimerID;
 char configSavePath[512]={0};
 FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针，最多只能加载一个文件夹下的64个文件
 PrjHandleTypeDef SingleProject[64];	
-Table_TypeDef Table_ATTR;
-char Table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
+
+char table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
+char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
+char table_title_IT[11][20] ={"t(ms)","I(mA)"};
+char table_title_RT[11][20] ={"t(ms)","R(Ω)"};
+char table_title_IV[11][20] ={"V(mV)","I(mA)"};
+char table_title_Idt[11][20] ={"t(ms)","Id(A)"}; 
 
 //==============================================================================
 // Global functions
@@ -134,18 +139,16 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				return -1; 
 			TestPara.testMode=(enum TestMode)expType;
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
- 		
+ 			Table_ATTR.column = 2 ;   		//列数
+			Table_ATTR.column_width = 290;  //列宽
 			switch(TestPara.testMode)
 			{
 			    
 				case SWEEP_DRAIN_VOL:				 
 					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); 
 					
-					
-					Table_ATTR.column = 2 ;   		//列数
-					Table_ATTR.column_width = 290;  //列宽  	
-					Table_init(Table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width );
-				
+
+					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width );
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -169,6 +172,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
 					numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;*/
 					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.column_width );
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -187,6 +191,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 				case NO_SWEEP_IT: 
 					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.column_width ); 
 					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead=0;
@@ -195,7 +200,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围  
 					break;
 				case  NO_SWEEP_RT:
-				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); 
+				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					  Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.column_width ); 
 					  numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
 					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					  Graph1.pGraphAttr->xAxisHead=0;
@@ -204,8 +210,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的Y轴范
 					break;
 				case SWEEP_IV:
-					
 					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					  Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.column_width ); 
 					  numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
 					  GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					  Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
@@ -214,8 +220,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 				
 					break;
-				case IDT:
-					  
+				case ID_T:
+					  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+					  Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );  
 					  
 					break;
 				default:

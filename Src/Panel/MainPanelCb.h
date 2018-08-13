@@ -29,6 +29,7 @@
 #include "File.h"
 #include "ItPanel.h"
 #include "RtPanel.h"
+#include "TablePanel.h"
 
 //==============================================================================
 // Constants

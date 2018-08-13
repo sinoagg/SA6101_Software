@@ -50,7 +50,7 @@ enum TestMode
 	NO_SWEEP_IT=3,
 	NO_SWEEP_RT=4,
 	SWEEP_IV=5,
-	IDT=6
+	ID_T=6
 };
 
 enum OutputModeType
