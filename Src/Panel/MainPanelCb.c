@@ -181,8 +181,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
-					//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围
-					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);
+					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);	//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					 
 					break;
@@ -193,9 +192,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
-					//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围
-					   
-					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围  
 					break;
 				case  NO_SWEEP_RT:
 				 	  DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); 
@@ -204,9 +201,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					  Graph1.pGraphAttr->xAxisHead=0;
 					  Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
 					  SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
-					 //设置缩放模式和图形轴的范围或缩放模式以及条形图的y轴范围
-					    
-					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					  SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的Y轴范
 					break;
 				case SWEEP_IV:
 					
@@ -226,7 +221,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				default:
 					break;
 			}	
-			
+			GraphInit(hGraphPanel,graphIndex, 3, numOfDots, &Graph2);   
 			Delay(0.5);
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
 			double temp=((double)TestPara.timeStep)/1000;
@@ -434,19 +429,19 @@ static int SaveConfigToFile(char* pConfigSavePath)
 	}
 	return 0;
 	
-}
+}													
 
 static int LoadAndDispPrj(FileLableTypeDef *pFileLable, char index)						//index为prj所在位置排序
 {
 	int hSinglePrjPanel;
-	if ((hSinglePrjPanel = LoadPanel (hPrjPanel, "Project.uir", DEFPANEL)) < 0)		//load projects panel
+	if ((hSinglePrjPanel = LoadPanel (hPrjListPanel, "Project.uir", DEFPANEL)) < 0)		//load projects panel
 		return -1;
 	SetCtrlVal(hSinglePrjPanel, DEFPANEL_NAME, pFileLable->FileName);
 	SetCtrlVal(hSinglePrjPanel, DEFPANEL_DATE, pFileLable->FileDate);
 	SetCtrlVal(hSinglePrjPanel, DEFPANEL_TIME, pFileLable->FileTime);
 	SetCtrlVal(hSinglePrjPanel, DEFPANEL_DESC, pFileLable->FileDesc);
-	SetPanelPos(hSinglePrjPanel, 90+index*117, -10);
-	SetPanelSize(hSinglePrjPanel, 115, 1300);
+	SetPanelPos(hSinglePrjPanel, index*117, -10);
+	SetPanelSize(hSinglePrjPanel, 115, 1425);
 	DisplayPanel(hSinglePrjPanel);
 	return hSinglePrjPanel;
 }
@@ -489,7 +484,13 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
+			SetPanelSize(hPrjPanel,700,1400);
+			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
+			SetPanelSize(hPrjListPanel,550,1399);
+			SetPanelPos(hPrjListPanel,90,0);
+			DisplayPanel(hPrjListPanel); 
+			
 			LoadAllProject(ProjectSavePath);
 //<<<<<<< HEAD
 //			SetPanelPos(hPrjListPanel, 90, -10);

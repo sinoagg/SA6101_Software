@@ -32,8 +32,6 @@ typedef struct
 	float xAxisTail;
 	float yAxisHead;
 	float yAxisTail;
-	//int xAxisMax;
-	//int yAxisMax;
 }GraphAttrTypeDef;		
 		
 typedef struct
@@ -55,6 +53,7 @@ extern GraphTypeDef Graph2;
 // Global functions
 int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
 int GraphDeinit(GraphTypeDef* pGraph);
+
 void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val);  
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val);  
 

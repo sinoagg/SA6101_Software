@@ -10,6 +10,8 @@
 #include "MainPanelCb.h"
 #include "Plot.h"
 #include "Protocol.h"
+#include "Graph.h"
+#include"Cgs_mt.h"
 
 extern int TimerID;
 unsigned char measureComPort;				//Serial Com Number
@@ -19,7 +21,8 @@ unsigned char measUartTxBuf[32]={0};
 unsigned char measUartRxBuf[1024]={0};
 
 unsigned char SA11_Status=0;
-
+GraphTypeDef Graph2;
+void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
 	static int leftNum=0;
@@ -100,8 +103,34 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
+	int status;
+	int rxNum;																							  
+	int i=0;
+	static a = 0;
+	Rx_CGS_DataTypeDef Rx_CGS_Data;
+	rxNum = GetInQLen(controlComPort);  									//读取串口中发送来的数据数量
+	if(rxNum>500) rxNum=500;											//防止超过内存范围
+	ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, rxNum);	
 	
-
+	while(rxNum>=14)
+	{			 
+		ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);							// 从 串口中取出 环境测量参数
+		*(Graph2.pCurveArray->pDotX++) = a++;
+		*((Graph2.pCurveArray + 1)->pDotX++) = a-1; 
+		*((Graph2.pCurveArray + 2)->pDotX++) = a-1; 
+	    *(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.environmental_humidity; 		 //环境湿度
+		*((Graph2.pCurveArray + 1)->pDotY++) = Rx_CGS_Data.environmental_temp;		 //环境温度
+		*((Graph2.pCurveArray + 2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		 //环境压强
+		(Graph2.pCurveArray +1)->numOfDotsToPlot++;
+		(Graph2.pCurveArray +2)->numOfDotsToPlot++; 
+		Graph2.pCurveArray->numOfDotsToPlot++; 
+		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.environmental_temp);			//环境温度
+		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.environmental_humidity);		//环境湿度
+		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure);				 	//压强
+		rxNum -=14; 
+		i++; 
+	}
+	PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线图*/          
 }
 
 int main (int argc, char *argv[])
@@ -116,8 +145,10 @@ int main (int argc, char *argv[])
 	//else SA11_Status=1;
 	
 	LoadInitPanel(); 
+	CheckPortStatus(controlComPort, 14, CtrlComCallback); 
 	RunUserInterface();
 	CloseCom(measureComPort);
+	
 	if(SA11_Status==1) CloseCom(controlComPort);
 	DiscardPanel (hMainPanel);
 	return 0;

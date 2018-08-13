@@ -113,7 +113,7 @@ static char GetPanelIndex(int panel)
 {
 	int top;
 	GetPanelAttribute(panel, ATTR_TOP, &top);
-	return (char)((top-90)/117);								//减去偏置，除以单个高度
+	return (char)((top)/117);								//减去偏置，除以单个高度
 }
 
 int CVICALLBACK PrjSelectCallback (int panel, int event, void *callbackData,

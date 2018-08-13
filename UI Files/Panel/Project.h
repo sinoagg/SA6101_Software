@@ -21,7 +21,9 @@
 #define  DEFPANEL_DESC                    6       /* control type: textMsg, callback function: (none) */
 #define  DEFPANEL_PICS                    7       /* control type: picture, callback function: (none) */
 
-#define  PROPANEL                         2       /* callback function: PrjPanelCallback */
+#define  LISTPANEL                        2
+
+#define  PROPANEL                         3       /* callback function: PrjPanelCallback */
 #define  PROPANEL_SPLITTER                2       /* control type: splitter, callback function: (none) */
 #define  PROPANEL_STRING                  3       /* control type: string, callback function: (none) */
 #define  PROPANEL_SEARCH                  4       /* control type: command, callback function: SearchCallback */

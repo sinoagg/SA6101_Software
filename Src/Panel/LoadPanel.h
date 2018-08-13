@@ -70,6 +70,7 @@ extern int hPrjPanel;
 extern int hPrjListPanel;
 extern int hIdtPanel;
 
+
 //==============================================================================
 // Global functions
 

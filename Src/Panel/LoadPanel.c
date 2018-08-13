@@ -55,6 +55,7 @@ int hPrjListPanel;
 int hResultDispPanel;
 int hIdtPanel;
 
+
 //==============================================================================
 // Global functions
 
@@ -131,6 +132,8 @@ int LoadInitPanel (void)
 		
 	if ((hPrjPanel = LoadPanel (hMainPanel, "Project.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
+		if ((hPrjListPanel = LoadPanel (hPrjPanel, "Project.uir", LISTPANEL)) < 0)		//load projects panel
+		return -1;												  
 	//if((hPrjListPanel = LoadPanel(hPrjPanel,"Project.uir",DEFPANEL))<0)
 	//	return -1;
 	
