@@ -78,13 +78,12 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;
 			Graph1.pCurveArray->time += TestPara.timeStep;
 		}
-		
+		leftNum-=MEASURE_UART_RX_LEN;
+		i++; 
 		if(RxData.rxStopSign==0x01)													//if complete the test, stop the timer
 		{
 			DiscardAsyncTimer(TimerID);
 		}
-		leftNum-=MEASURE_UART_RX_LEN;
-		i++;
 	}
 	
 	for(j=0;j++;j<leftNum) //把最后几个字节散开的数据往前挪
@@ -140,7 +139,7 @@ int main (int argc, char *argv[])
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=3;
+	measureComPort=4;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;

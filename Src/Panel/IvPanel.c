@@ -36,7 +36,7 @@
 	 IVPANEL_VG_STOP,
 	 IVPANEL_VG_STEP,
 	 IVPANEL_VG_MODE,
-	 //IVPANEL_VG_MODE,
+	 IVPANEL_VG_MODE,
 	};
 //==============================================================================
 // Global functions

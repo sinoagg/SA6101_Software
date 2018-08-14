@@ -34,6 +34,7 @@
 #include "LoadPanel.h"
 #include "Plot.h"
 #include "LoadPanel.h"
+#include "Cgs_mt.h"
 //==============================================================================
 // Constants
 
@@ -59,6 +60,7 @@ int CVICALLBACK TimerCallback (int panel, int control, int event,								//¶¨Ê±È
 		case EVENT_TIMER_TICK:
 			ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
 			//SA10_ProtocolQuery(contrlComPort, CONTROL_MEASURE_DEV_ADDR, ctrlUartTxBuf);
+			Read_CGS_Value(controlComPort);  
 			break;
 	}
 	

@@ -91,7 +91,7 @@ int CVICALLBACK PIC_ExitPrjCallback (int panel, int control, int event,
 static void SelectProject(int panel, int select)
 {
 	
-	selectPanel=GetActivePanel(); //获得当前点击面板句柄值
+	selectPanel=GetActivePanel(); //获得当前选中项目面板的句柄值 
 	if(select)
 	{
 		

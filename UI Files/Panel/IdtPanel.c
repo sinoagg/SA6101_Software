@@ -33,9 +33,10 @@ ExpPanelTypeDef IdtPanel={
 	IDT_CFG_GATEMODE, 
 	IDT_CFG_VD_START, 
 	IDT_CFG_DRAINMODE, 
-	//IDVGS_CFG_VD_STEP, 
-	//IDVGS_CFG_DRAINMODE, 
-	//IDVGS_CFG_GATEMODE,
+	IDT_CFG_VG_START, 
+	IDT_CFG_GATEMODE, 
+	IDT_CFG_VD_START, 
+	IDT_CFG_DRAINMODE,
 	
 };
 //==============================================================================

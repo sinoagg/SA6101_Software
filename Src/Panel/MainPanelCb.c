@@ -227,11 +227,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 				
 					break;
-			/*	case ID_T:
+				case ID_T:
 					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );  
-					 printf("%c","fgff");
-					break;*/
+					
+					break;
 				default:
 					break;
 			}	
