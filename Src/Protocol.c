@@ -48,7 +48,7 @@ enum MsgType
 TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
-static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
+static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara) //¶ÁÈ¡Êý¾Ý
 {
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStartID, &(pTestPara->VdStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStopID, &(pTestPara->VdStop));
@@ -173,7 +173,7 @@ void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned 
 }
 
 void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData)	//Get data from UART Rx Buffer
-{
+{																			//
 	pRxData->rxDevAddr=*pmeasUartRxBuf;
 	pRxData->rxStopSign=*(pmeasUartRxBuf+1);
 	pRxData->rxVdtest=(((int)*(pmeasUartRxBuf+2))<<8)|*(pmeasUartRxBuf+3);

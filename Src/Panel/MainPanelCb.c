@@ -113,13 +113,13 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
  			DisplayPanel(hGraphPanel);
 		   
 			SetPanelPos(hResultDispPanel, 105, 1600);
-			SetPanelSize(hResultDispPanel, 449, 300);
+			SetPanelSize(hResultDispPanel, 449, 315);
 			DisplayPanel(hResultDispPanel);
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
 			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
 			SetPanelPos(hEnvResultPanel, 556, 1600);
-			SetPanelSize(hEnvResultPanel, 449, 300);
+			SetPanelSize(hEnvResultPanel, 449, 315);
 			DisplayPanel(hEnvResultPanel);
 				    
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);//当鼠标释放时         //禁用 开始按钮      
@@ -170,7 +170,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->yAxisHead=0;
 					Graph1.pGraphAttr->yAxisTail=2e-1;   
 					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
-					//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead, Graph1.pGraphAttr->yAxisTail);//设置 X 轴的范围
 				   	SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
 					SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);//超出tanle高度后显示总能显示最后一行数据 
 					break;
@@ -229,7 +228,14 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 				case ID_T:
 					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
-					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );  
+					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );
+					 numOfDots = TestPara.runTime*1000/TestPara.timeStep;
+					 GraphInit(hGraphPanel,graphIndex,numOfCurve,numOfDots,&Graph1);
+					 Graph1.pGraphAttr->xAxisHead=0;
+					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
+					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					 
 					
 					break;
 				default:
@@ -321,11 +327,11 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayPanel(IdVgPanel.panelHandle);
 			
 			SetPanelPos(hBasicSamplePanel, 105, 1600);
-			SetPanelSize(hBasicSamplePanel, 449, 300);
+			SetPanelSize(hBasicSamplePanel, 449, 315);
 			DisplayPanel(hBasicSamplePanel);
 			
 			SetPanelPos(hEnvCfgPanel, 556, 1600);
-			SetPanelSize(hEnvCfgPanel, 449, 300);
+			SetPanelSize(hEnvCfgPanel, 449, 315);
 			DisplayPanel(hEnvCfgPanel);
 			break;
 	}
@@ -342,7 +348,7 @@ static void DispResultMenu(void)
 static void DispResultNumber(void)
 {
 	SetPanelPos(hResultDispPanel, 105, 1600);
-	SetPanelSize(hResultDispPanel, 449, 300);
+	SetPanelSize(hResultDispPanel, 449, 315);
 	DisplayPanel(hResultDispPanel);
 }
 static void DispRuntime(int display)
@@ -356,7 +362,7 @@ static void DispRuntime(int display)
 static void DispEnvironmentCfg(void)
 {
 	SetPanelPos(hEnvResultPanel, 556, 1600);
-	SetPanelSize(hEnvResultPanel, 449, 300);
+	SetPanelSize(hEnvResultPanel, 449, 315);
 	DisplayPanel(hEnvResultPanel);
 }
 

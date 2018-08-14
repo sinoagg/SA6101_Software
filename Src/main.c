@@ -25,19 +25,20 @@ unsigned char SA11_Status=0;
 GraphTypeDef Graph2;
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
+
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
 	static int leftNum=0;
 	int row;
-	int rxNum=0;
+	int rxNum=0;           
 	int i=0, j=0;
-	RxDataTypeDef RxData;
+	RxDataTypeDef RxData;   //接收数据类型
 	RxData.rxStopSign=0x00;
-	rxNum = GetInQLen(portNumber);  									//读取串口中发送来的数据数量
+	rxNum = GetInQLen(portNumber); //获取指定串行口输入队列内的字符数 //读取串口中发送来的数据数量
 	if(rxNum>500) rxNum=500;											//防止超过内存范围
-	ComRd(portNumber, (char *)measUartRxBuf+leftNum, rxNum);					//Read UART Buffer to local buffer at one time  
+	ComRd(portNumber, (char *)measUartRxBuf+leftNum, rxNum);//指定端口读取一定长度字符并存放在缓冲区[字符型数组]中//Read UART Buffer to local buffer at one time  
 	leftNum+=rxNum;
-	while(leftNum>=MEASURE_UART_RX_LEN)
+	while(leftNum>=MEASURE_UART_RX_LEN)	   //MEASURE_UART_RX_LEN=20  20个为一组
 	{
 		
 		InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);				          //插入1行 
@@ -54,30 +55,46 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
 		SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2,row), *(Graph1.pCurveArray->pDotY-1));
 		
+		int MaxRow; //超出table高度后显示总能显示最后一行数据 
+		GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
+		SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);
 		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
-			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));
-			
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));//写入数据   
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
+		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *( Graph1.pCurveArray->pDotX-1));  
+		}
 		else if(TestPara.testMode==NO_SWEEP_IT)
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));   
 		}
 		else if(TestPara.testMode==NO_SWEEP_RT)
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));  
 		}
 		else if(TestPara.testMode==SWEEP_IV)
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;
 			Graph1.pCurveArray->time += TestPara.timeStep;
+		    SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));   
+
 		}
+		else if(TestPara.testMode==ID_T)
+		{
+			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time;
+			Graph1.pCurveArray->time += TestPara.timeStep;
+			SetTableCellVal(hTablePanel,TABLE_DISTABLE,MakePoint(1,row),*(Graph1.pCurveArray->pDotX-1));
+		}
+		
 		leftNum-=MEASURE_UART_RX_LEN;
 		i++; 
 		if(RxData.rxStopSign==0x01)													//if complete the test, stop the timer
@@ -102,6 +119,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	}
 }
 
+
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
 	int status;
@@ -110,28 +128,28 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 	static a = 0;
 	Rx_CGS_DataTypeDef Rx_CGS_Data;
 	rxNum = GetInQLen(controlComPort);  									//读取串口中发送来的数据数量
-	if(rxNum>500) rxNum=500;											//防止超过内存范围
+	if(rxNum>500) rxNum=500;												//防止超过内存范围
 	ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, rxNum);	
 	
 	while(rxNum>=14)
 	{			 
-		ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);							// 从 串口中取出 环境测量参数
+		ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);				// 从 串口中取出 环境测量参数
 		*(Graph2.pCurveArray->pDotX++) = a++;
 		*((Graph2.pCurveArray + 1)->pDotX++) = a-1; 
 		*((Graph2.pCurveArray + 2)->pDotX++) = a-1; 
-	    *(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.environmental_humidity; 		 //环境湿度
-		*((Graph2.pCurveArray + 1)->pDotY++) = Rx_CGS_Data.environmental_temp;		 //环境温度
-		*((Graph2.pCurveArray + 2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		 //环境压强
+	    *(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.humidity; 		 					//湿度
+		*((Graph2.pCurveArray + 1)->pDotY++) = Rx_CGS_Data.temperature;		 			//温度
+		*((Graph2.pCurveArray + 2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		 	//压强
 		(Graph2.pCurveArray +1)->numOfDotsToPlot++;
 		(Graph2.pCurveArray +2)->numOfDotsToPlot++; 
 		Graph2.pCurveArray->numOfDotsToPlot++; 
-		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.environmental_temp);			//环境温度
-		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.environmental_humidity);		//环境湿度
-		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure);				 	//压强
+		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.temperature);	
+		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.humidity);		
+		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure);	
 		rxNum -=14; 
 		i++; 
 	}
-	PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线图*/          
+	PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线图      
 }
 
 int main (int argc, char *argv[])
@@ -142,8 +160,8 @@ int main (int argc, char *argv[])
 	measureComPort=4;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
-	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
-	//else SA11_Status=1;
+	if(CheckPortStatus(controlComPort,14,CtrlComCallback)<0) SA11_Status=0;
+	else SA11_Status=1;
 	
 	LoadInitPanel(); 
 	CheckPortStatus(controlComPort, 14, CtrlComCallback); 
@@ -165,7 +183,7 @@ static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, vo
 		return -1;
 	}
 	else
-	{
+	{					//  指定串口， 设置可响应的事件 ，输入缓存区的最小字节 ，，，，，
 		InstallComCallback (portNumber, LWRS_RECEIVE, uartRxLen, 0, pFunc, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
 		SetCTSMode(portNumber, LWRS_HWHANDSHAKE_OFF);
 		FlushInQ(portNumber);	   														//Clear input and output buffer
