@@ -61,10 +61,10 @@ PrjHandleTypeDef SingleProject[64];
 
 char table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
 char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
-char table_title_IT[11][20] ={"t(ms)","I(mA)"};
-char table_title_RT[11][20] ={"t(ms)","R(Ω)"};
-char table_title_IV[11][20] ={"V(mV)","I(mA)"};
-char table_title_Idt[11][20] ={"t(ms)","Id(A)"}; 
+char table_title_IT[11][20] ={"t(s)","I(A)"};
+char table_title_RT[11][20] ={"t(s)","R(Ω)"};
+char table_title_IV[11][20] ={"V(mV)","I(A)"};
+char table_title_Idt[11][20] ={"t(s)","Id(A)"}; 
 
 //==============================================================================
 // Global functions
@@ -193,8 +193,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);	//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					 
 					break;
+					
 				case NO_SWEEP_IT: 
 					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.column_width ); 
@@ -205,6 +205,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围  
 					break;
+					
 				case  NO_SWEEP_RT:
 				 	 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.column_width ); 
@@ -215,6 +216,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的Y轴范
 					break;
+					
 				case SWEEP_IV:
 					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.column_width ); 
@@ -224,8 +226,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
 					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-				
 					break;
+					
 				case ID_T:
 					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );
@@ -235,14 +237,13 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
 					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					 break;
 					 
-					
-					break;
 				default:
 					break;
 			}	
 			GraphInit(hGraphPanel,graphIndex, 3, numOfDots, &Graph2);   
-			Delay(0.2);
+			Delay(0.5);
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART
 			double temp=((double)TestPara.timeStep)/1000;
 			if(temp<0.05) temp=0.05;
@@ -351,7 +352,7 @@ static void DispResultNumber(void)
 	SetPanelSize(hResultDispPanel, 449, 315);
 	DisplayPanel(hResultDispPanel);
 }
-static void DispRuntime(int display)
+static void DispRuntime(int display)			   
 { 
 	SetCtrlAttribute(hResultDispPanel,RESULTDISP_SAMPLETIME,ATTR_VISIBLE,display);
 	SetCtrlAttribute(hResultDispPanel,RESULTDISP_TIME,ATTR_VISIBLE,display);

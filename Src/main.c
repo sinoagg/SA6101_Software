@@ -41,32 +41,32 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	while(leftNum>=MEASURE_UART_RX_LEN)	   //MEASURE_UART_RX_LEN=20  20个为一组
 	{
 		
-		InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);				          //插入1行 
-		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  //得到当前行数
+		InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);		//插入1行 
+		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 					    //得到当前行数
 
-		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
-		
+		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);				//get data from uart buffer
+																					
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
 		//SetGraphY_Axis(&Graph1, RxData.rxIdmeasured.num_float);
 		
-		Graph1.pCurveArray->numOfDotsToPlot++;								//number of dots to plot increase
+		Graph1.pCurveArray->numOfDotsToPlot++;										//number of dots to plot increase
 		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
 		SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2,row), *(Graph1.pCurveArray->pDotY-1));
 		
-		int MaxRow; //超出table高度后显示总能显示最后一行数据 
+		int MaxRow; 													
 		GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
-		SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);
+		SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow); //超出table高度后显示总能显示最后一行数据    
 		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
-			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;							//get x, set pointer to the next data
 			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *(Graph1.pCurveArray->pDotX-1));//写入数据   
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 		{
-			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;							//get x, set pointer to the next data
 			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1,row), *( Graph1.pCurveArray->pDotX-1));  
 		}
 		else if(TestPara.testMode==NO_SWEEP_IT)

@@ -76,10 +76,10 @@ int LoadInitPanel (void)
 	
 	if(( IdtPanel.panelHandle= LoadPanel(hMainPanel,"Id-t Configuration.uir",IDT_CFG))<0) //load Id-t panel
 		return -1;
-		hIdtPanel = IdtPanel.panelHandle;
+		hIdtPanel = IdtPanel.panelHandle;	 
 		
 	if ((hBasicSamplePanel = LoadPanel (hMainPanel, "Sample Configuration.uir", SAMPLE_CFG)) < 0)		//load right panel
-		return -1;	  
+		return -1;	  				
 
 	if ((hAdvanceSamplePanel = LoadPanel (hMainPanel, "Sample Configuration.uir", SAMPLE_ADV)) < 0)		//load right panel
 		return -1;
@@ -88,7 +88,7 @@ int LoadInitPanel (void)
 		return -1;
 	
 	if ((hEnvCfgPanel = LoadPanel (hMainPanel, "Environment.uir", ENVIRONMEN)) < 0)		//load Enviroment panel
-		return -1;	
+		return -1;														 
 	
 	if ((hEnvResultPanel = LoadPanel (hMainPanel, "Environment.uir", ENVIRPANEL)) < 0)		//load Enviroment panel
 		return -1;													 

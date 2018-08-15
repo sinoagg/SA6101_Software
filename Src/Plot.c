@@ -150,7 +150,7 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 		return 0;
 }
 
-void DisplayTempGraph()
+void DisplayEnvironmentGraph()
 {
 
 	DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1, VAL_IMMEDIATE_DRAW);	//先清除环境测量曲线图中的所有曲线

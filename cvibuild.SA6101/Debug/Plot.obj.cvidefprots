@@ -6,7 +6,7 @@ Prototype="int PlotCurve(GraphTypeDef *pGraph, int hGraphPanel, int control);"
 Class="Function"
 Prototype="int PlotCurve2(GraphTypeDef *pGraph2, int hGraphPanel, int control);"
 
-[DisplayTempGraph]
+[DisplayEnvironmentGraph]
 Class="Function"
-Prototype="void DisplayTempGraph();"
+Prototype="void DisplayEnvironmentGraph();"
 
