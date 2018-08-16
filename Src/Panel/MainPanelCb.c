@@ -195,8 +195,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.column_width ); 
 					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					//Graph1.pGraphAttr->xAxisHead=0;
-					/*Graph1.pGraphAttr->xAxisTail=TestPara.runTime*1000;*/
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					break;
 					
@@ -204,8 +202,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.column_width ); 
 					 numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-				/*	 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;*/
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					break;
 					
@@ -222,8 +218,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );
 					 numOfDots = TestPara.runTime*1000/TestPara.timeStep;
 					 GraphInit(hGraphPanel,graphIndex,numOfCurve,numOfDots,&Graph1);
-					 /*Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;*/
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
 					 break;
 					 
