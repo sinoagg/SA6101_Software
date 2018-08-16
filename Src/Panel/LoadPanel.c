@@ -148,6 +148,6 @@ int LoadInitPanel (void)
 	SetPanelPos(IdVdPanel.panelHandle, 105, 305);
 	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	DisplayPanel(IdVdPanel.panelHandle);
-
+	//SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);         
 	return 0;
 }

@@ -20,7 +20,7 @@
 
 #include "cvidef.h"
 #include "Graph.h" 
-
+#include "Curve.h"
 //==============================================================================
 // Constants
 

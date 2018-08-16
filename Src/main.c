@@ -40,24 +40,17 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	leftNum+=rxNum;
 	while(leftNum>=MEASURE_UART_RX_LEN)	   //MEASURE_UART_RX_LEN=20  20个为一组
 	{
-		
-		InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);		//插入1行 
-		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 					    //得到当前行数
-
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);				//get data from uart buffer
-																					
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
 		//SetGraphY_Axis(&Graph1, RxData.rxIdmeasured.num_float);
-		
 		Graph1.pCurveArray->numOfDotsToPlot++;										//number of dots to plot increase
 		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;				//get y, set pointer to the next data
+		InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1, 1, VAL_CELL_NUMERIC);		//插入1行 
+		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 						//得到当前行数     
 		SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2,row), *(Graph1.pCurveArray->pDotY-1));
-		
-		int MaxRow; 													
-		GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
-		SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow); //超出table高度后显示总能显示最后一行数据    
+		SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,row); 	//超出table高度后显示总能显示最后一行数据    
 		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
@@ -112,7 +105,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	if(RxData.rxStopSign==0x01)
 	{
 		GraphDeinit(&Graph1);												//内存释放在画图之后
-		GraphDeinit(&Graph2);
+		GraphDeinit(&Graph2);												
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 	    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
@@ -183,7 +176,7 @@ static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, vo
 		return -1;
 	}
 	else
-	{					//  指定串口， 设置可响应的事件 ，输入缓存区的最小字节 ，，，，，
+	{					// (指定串口,设置可响应的事件,输入缓存区的最小字节,0，,0)
 		InstallComCallback (portNumber, LWRS_RECEIVE, uartRxLen, 0, pFunc, 0);   //binding Callback function to serial input data		18 bytes received will calling for an interrupt
 		SetCTSMode(portNumber, LWRS_HWHANDSHAKE_OFF);
 		FlushInQ(portNumber);	   														//Clear input and output buffer

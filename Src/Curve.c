@@ -48,6 +48,7 @@ int curveInit(CurveTypeDef* pCurve, int curveIndex, int numOfTotalDots, CurveAtt
 	pCurve->pDotYPlot=pCurve->pDotY;				//画图的指针指向数据的指针 	
 	pCurve->pCurveAttr=pCurveAttr;					//直接把指针指向其他定义好的CurveAttr， 这里没有必要重新定义
 	
+	
 	return 0;
 	
 }

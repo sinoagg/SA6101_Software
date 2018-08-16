@@ -49,7 +49,7 @@ int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, Gr
 	CurveTypeDef* pCurveArray = (CurveTypeDef *)malloc(numOfCurve * sizeof(CurveTypeDef)); 	//Curve Array Saving pointers to curve structure
 	if(pCurveArray==NULL) return -1;
 	pGraph->pCurveArray=pCurveArray;
-	
+
 	for(i=0;i<numOfCurve;i++)		//init curve
 	{
 		if(curveInit(pCurveArray+i, i, numOfDots, GetSettingsCurveAttr(graphIndex, i))==-1) return -1;
@@ -72,34 +72,6 @@ int GraphDeinit(GraphTypeDef* pGraph)
 	return 0;
 }
 
-//void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)
-//{
-//	if(pGraph->pGraphAttr->yAxisTail < currentY_Val &&  pGraph->pGraphAttr->yAxisHead >=0)
-//	{
-//		pGraph->pGraphAttr->yAxisTail = currentY_Val*2;
-//		//SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§
-
-//	}
-//     else if(pGraph->pGraphAttr->yAxisHead > currentY_Val && pGraph->pGraphAttr->yAxisHead >=0)
-//	{
-//		pGraph->pGraphAttr->yAxisHead = currentY_Val/2;	
-//		SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, pGraph->pGraphAttr->yAxisHead, pGraph->pGraphAttr->yAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§
-
-//	}
-//}
-
-	/*void SetGraphX_Axis(GraphTypeDef* pGraph, float currentY_Val)
-{
-if(pGraph->pGraphAttr->yAxisTail < currentY_Val)
-	{
-		Graph1.pGraphAttr->yAxisTail = currentY_Val*2;
-		SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§
-	}
-	else if(pGraph->pGraphAttr->yAxisHead > currentY_Val)
-	{
-		Graph1.pGraphAttr->yAxisTail = currentY_Val/2;	
-	}	 
-}*/
 
 int CVICALLBACK CanvasCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)

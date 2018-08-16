@@ -64,7 +64,7 @@ char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
 char table_title_IT[11][20] ={"t(s)","I(A)"};
 char table_title_RT[11][20] ={"t(s)","R(Ω)"};
 char table_title_IV[11][20] ={"V(mV)","I(A)"};
-char table_title_Idt[11][20] ={"t(s)","Id(A)"}; 
+char table_title_Idt[11][20] ={"t(s)","Id(A)"}; 										  
 
 //==============================================================================
 // Global functions
@@ -95,41 +95,48 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 	return 0;
 }
 
+static void RunEvent()
+{
+	SetPanelPos(hResultMenuPanel, 105, 305);  
+	SetPanelSize(hResultMenuPanel, 65, 1293);      
+ 	DisplayPanel(hResultMenuPanel);  
+	SetPanelPos(hEnvResultPanel, 556, 1600);
+	SetPanelSize(hEnvResultPanel, 449, 315);
+	DisplayPanel(hEnvResultPanel);
+	
+	SetPanelPos(hGraphPanel, 172, 305);  
+	SetPanelSize(hGraphPanel, 833, 1293);
+	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+ 	DisplayPanel(hGraphPanel);
+	
+	SetPanelPos(hResultDispPanel, 105, 1600);
+	SetPanelSize(hResultDispPanel, 449, 315);
+	DisplayPanel(hResultDispPanel);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
+	
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");			    
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);//当鼠标释放时         //禁用 开始按钮      
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
+	
+}
 
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK_UP:
-		    SetPanelPos(hResultMenuPanel, 105, 305);  
-	     	SetPanelSize(hResultMenuPanel, 65, 1293);      
- 			DisplayPanel(hResultMenuPanel);  
-			
-			SetPanelPos(hGraphPanel, 172, 305);  
-	     	SetPanelSize(hGraphPanel, 833, 1293);
-			SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
- 			DisplayPanel(hGraphPanel);
-		   
-			SetPanelPos(hResultDispPanel, 105, 1600);
-			SetPanelSize(hResultDispPanel, 449, 315);
-			DisplayPanel(hResultDispPanel);
-			SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
-			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
-			SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
-			SetPanelPos(hEnvResultPanel, 556, 1600);
-			SetPanelSize(hEnvResultPanel, 449, 315);
-			DisplayPanel(hEnvResultPanel);
-				    
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);//当鼠标释放时         //禁用 开始按钮      
-		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       //恢复 停止按钮
-	        SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        //禁用 保存按钮
+		case EVENT_LEFT_CLICK_UP: 
+			RunEvent();
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); //清空曲线图上的所有曲线 
-			
 			FlushInQ(measureComPort);	   														//Clear input and output buffer,在测试开始之前还应该清楚一次
 			FlushOutQ(measureComPort);
-		
+			
 			int expType;
 			int graphIndex=1;	//currently only deal with one graph circumstance
 			int numOfCurve=1;
@@ -143,18 +150,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			Table_ATTR.column_width = 290;  //列宽
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
 	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);	   	//每个实验运行之前清除上一个实验的table数据 
-			int MaxRow;  
-			
-			
 			switch(TestPara.testMode)
 			{
-			    
 				case SWEEP_DRAIN_VOL:				 
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW); 
-					
-
 					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width );
-					GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
@@ -167,17 +166,14 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop; 
-					Graph1.pGraphAttr->yAxisHead=0;
-					Graph1.pGraphAttr->yAxisTail=2e-1;   
 					SetCtrlAttribute(hGraphPanel, GRAPHDISP_GRAPH1, ATTR_ENABLE_ZOOM_AND_PAN, 1 );
-				   	SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
-					SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);//超出tanle高度后显示总能显示最后一行数据 
+				   	//SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X 轴的范围
 					break;
+				
 				case SWEEP_GATE_VOL:
 				/*	GetIdVgCfg (IdVgPanel);
 					numOfCurve=abs(IdVgCfg.cfgVdstart-IdVgCfg.cfgVdstop)/IdVgCfg.cfgVdstep;
 					numOfDots=abs(IdVgCfg.cfgVgstart-IdVgCfg.cfgVgstop)/IdVgCfg.cfgVgstep;*/
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.column_width );
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
@@ -192,51 +188,43 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
 					//SetAxisScalingMode(int PanelHandle,int ControlID,int Axis(变化轴),int AxisScaling(轴缩放模式),double min,double max);	//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范
-					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					//SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 					
-				case NO_SWEEP_IT: 
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
+				case NO_SWEEP_IT:
 					Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.column_width ); 
 					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+					//Graph1.pGraphAttr->xAxisHead=0;
+					/*Graph1.pGraphAttr->xAxisTail=TestPara.runTime*1000;*/
 					SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
-					SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的X,Y轴范围  
 					break;
 					
 				case  NO_SWEEP_RT:
-				 	 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.column_width ); 
 					 numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+				/*	 Graph1.pGraphAttr->xAxisHead=0;
+					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;*/
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);//使能控件的缩放和拖动
-					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);//设置缩放模式和图形轴的范围或缩放模式以及条形图的Y轴范
 					break;
 					
 				case SWEEP_IV:
-					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.column_width ); 
 					 numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					 Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
 					 Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
-					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 					
 				case ID_T:
-					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
 					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );
 					 numOfDots = TestPara.runTime*1000/TestPara.timeStep;
 					 GraphInit(hGraphPanel,graphIndex,numOfCurve,numOfDots,&Graph1);
-					 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
+					 /*Graph1.pGraphAttr->xAxisHead=0;
+					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;*/
 					 SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);
-					 SetAxisScalingMode(hGraphPanel,GRAPHDISP_GRAPH1,VAL_BOTTOM_XAXIS,VAL_MANUAL,Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					 break;
 					 
 				default:
@@ -322,8 +310,7 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 		
-			//点击Configure图标回到Id_vds界面
-			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+			SetPanelPos(IdVgPanel.panelHandle, 104, 305);//点击Configure图标回到Id_vds界面
 			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 			DisplayPanel(IdVgPanel.panelHandle);
 			
@@ -380,7 +367,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DispResultMenu();
 			DispResultTableGraph();
 			DispResultNumber();
-
 		    DispEnvironmentCfg();
 			int index;
 			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
@@ -388,8 +374,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				DispRuntime(1);
 			else 
 				DispRuntime(0);
-		   	DispEnvironmentCfg();
-
 			break;
 	}
 	return 0;
@@ -401,7 +385,7 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-	         InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
+	         InstallPopup (hSettingsPanel);   		//弹出hSettingsPanel 
 
 			SetPanelPos(hSettingsPrjPanel, 5, 170);
 			SetPanelSize(hSettingsPrjPanel, 350, 650);
@@ -414,10 +398,12 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 
 static int SaveAllPanelState(char* pConfigSavePath)
 {
-	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 1);						
+	SavePanelState(IdVdPanel.panelHandle, pConfigSavePath, 1);						
 	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 2);						
 	SavePanelState(hIT_Panel, pConfigSavePath, 3);
 	SavePanelState(hRT_Panel, pConfigSavePath, 4);
+	SavePanelState(hIV_Panel,pConfigSavePath,5);
+	SavePanelState(hIdtPanel,pConfigSavePath,6);
 	SavePanelState(hBasicSamplePanel, pConfigSavePath, 10);
 	SavePanelState(hAdvanceSamplePanel, pConfigSavePath, 11);
 	SavePanelState(hEnvCfgPanel, pConfigSavePath, 14);
@@ -428,7 +414,7 @@ static int SaveAllPanelState(char* pConfigSavePath)
 
 static int SaveConfigToFile(char* pConfigSavePath)
 {
-	FILE * fp = NULL;							//表示打开的文件
+	FILE * fp = NULL;									//表示打开的文件
 	fp = fopen(pConfigSavePath, "w");
 	if(fp == NULL)
 	{
@@ -442,7 +428,7 @@ static int SaveConfigToFile(char* pConfigSavePath)
 		char description[maxCommentSize];
 		PromptPopup("Message", "Please enter description for this configuration:", description, maxCommentSize-1);
 		//fprintf(fp, "Date:%s	Time:%s\r\n", DateStr(), TimeStr());
-		SaveAllPanelState(pConfigSavePath);		//保存所有面板的数据 
+		SaveAllPanelState(pConfigSavePath);				//保存所有面板的数据 
 		fp = fopen(pConfigSavePath, "a+");
 		fprintf(fp, "\r\n%-61s\r\n", description);		//左对齐打满64字符
 		fclose(fp);//关闭文件
@@ -473,24 +459,22 @@ static int LoadAllProject(char* pProjectSavePath)
 	char tempFilePath[512];
 	char index=0;
 	char tempPathToSearch[512];
-	
 	InitSingleProject(SingleProject);
-	
 	sprintf(tempPathToSearch, "%s%s", pProjectSavePath, "\\*.sac");
 	if(0==GetFirstFile(tempPathToSearch, 1, 1, 1, 1, 1, 0, tempFileName))		//如果第一个文件获取成功
 	{
 		sprintf(tempFilePath, "%s%s%s", pProjectSavePath, "\\", tempFileName);
 		pFileLable[index] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
-		InitFileLable(pFileLable[index], tempFilePath); 				//读文件时间和文件名称及description，并展示
+		InitFileLable(pFileLable[index], tempFilePath); 						//读文件时间和文件名称及description，并展示
 		SingleProject[index].hSinglePrjPanel = LoadAndDispPrj(pFileLable[index], index);
 		SingleProject[index].index=index;
 		index++;
 		
-		while(GetNextFile(tempFileName)==0)								//如果读取正确，持续读取
+		while(GetNextFile(tempFileName)==0)										//如果读取正确，持续读取
 		{
 			sprintf(tempFilePath, "%s%s%s", pProjectSavePath, "\\", tempFileName);
 			pFileLable[index] = (FileLableTypeDef *)malloc(sizeof(FileLableTypeDef));
-			InitFileLable(pFileLable[index], tempFilePath); //读文件时间和文件名称及description
+			InitFileLable(pFileLable[index], tempFilePath); 					//读文件时间和文件名称及description
 			SingleProject[index].hSinglePrjPanel = LoadAndDispPrj(pFileLable[index], index);
 			SingleProject[index].index=index;
 			index++;
@@ -508,17 +492,12 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 			SetPanelSize(hPrjPanel,700,1400);
 			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
+			
 			SetPanelSize(hPrjListPanel,550,1399);
 			SetPanelPos(hPrjListPanel,90,0);
 			DisplayPanel(hPrjListPanel); 
 			
 			LoadAllProject(ProjectSavePath);
-//<<<<<<< HEAD
-//			SetPanelPos(hPrjListPanel, 90, -10);
-//			SetPanelSize(hPrjListPanel, 115, 1300);
-//			DisplayPanel(hPrjListPanel);
-//=======
-//>>>>>>> e73900e378028359f1677ade8da974220349c79d
 			break;
 	}	 
 	return 0;

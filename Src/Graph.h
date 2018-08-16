@@ -40,7 +40,6 @@ typedef struct
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
     int plotHandle;									//后期需要整改属于plot
-	
 	GraphAttrTypeDef* pGraphAttr;
 	CurveTypeDef* pCurveArray;						//pointer to curve array
 }GraphTypeDef;
@@ -54,8 +53,8 @@ extern GraphTypeDef Graph2;
 int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
 int GraphDeinit(GraphTypeDef* pGraph);
 
-void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val);  
-void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val);  
+/*void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val);  
+void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val); */ 
 
 #ifdef __cplusplus
     }
