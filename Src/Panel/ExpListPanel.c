@@ -1,4 +1,3 @@
-#include <ansi_c.h>
 #include <userint.h>
 #include "Experiment List.h"
 
@@ -59,18 +58,14 @@ static void ChangeImg(void)
 	DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 }
 
-static void DisplayCfgPanel(int display)
+static void DisplaySampleCfgPanel(int display)
 {
 	if(display)
 	{
 		SetPanelPos(hBasicSamplePanel, 104, 1600);
-		SetPanelSize(hBasicSamplePanel, 450 ,315);
+		SetPanelSize(hBasicSamplePanel, 450 ,300);
 		DisplayPanel(hBasicSamplePanel);
-		
-		SetPanelPos(hEnvCfgPanel, 556, 1600);
-		SetPanelSize(hEnvCfgPanel, 449, 315);
-		DisplayPanel(hEnvCfgPanel);
-	}											  
+	}
 	else 
 		HidePanel(hBasicSamplePanel);
 }
@@ -81,19 +76,6 @@ static void DisplayRunTime(int display)
 	SetCtrlAttribute(hBasicSamplePanel, SAMPLE_CFG_RUNTIME,ATTR_VISIBLE, display);
 	SetCtrlAttribute(hBasicSamplePanel, SAMPLE_CFG_RUNTIME_UNIT,ATTR_VISIBLE, display);
 }
-
-static void RunStatus()
-{   
-	int val;
-	GetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,&val); 
-//	printf("%d",val);
-	if(val==1)
-		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0);	
-	else
-		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
-
-}
-
 
 int CVICALLBACK TreeCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
@@ -106,7 +88,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
 			if(index==TWO_TERMINAL)
 			{   SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
-				DisplayCfgPanel(0);	
+				DisplaySampleCfgPanel(0);	
 			}
 			else if(index==EXP_I_T)	//加载I-T
 			{ 
@@ -115,8 +97,8 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hIT_Panel, 104, 305);
 				SetPanelSize(hIT_Panel, 901, 1293);
 				DisplayPanel(hIT_Panel);
-				RunStatus();
-		        DisplayCfgPanel(1);
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
+		        DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
 			}
 			else if(index==EXP_R_T)	//加载R-T 
@@ -126,8 +108,8 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hRT_Panel, 104, 305);
 				SetPanelSize(hRT_Panel, 901, 1293);
 				DisplayPanel(hRT_Panel);
-				RunStatus();      
-				DisplayCfgPanel(1);
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
+				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
 			}
 			else if(index==EXP_I_V)
@@ -138,14 +120,14 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(hIV_Panel, 104, 305);
 				SetPanelSize(hIV_Panel, 901, 1293);
 				DisplayPanel(hIV_Panel);
-				RunStatus();
-				DisplayCfgPanel(1);
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
+				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
 			}
 			else if(index==FOUR_TERMINAL) 
 			{
 				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1); 
-				DisplayCfgPanel(0);
+				DisplaySampleCfgPanel(0);
 			}
 			else if(index==EXP_ID_VDS)// 加载Id_Vds Configuration   
 			{
@@ -154,8 +136,8 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
-				RunStatus();
-				DisplayCfgPanel(1);
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
+				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
 			}
 			else if(index==EXP_ID_VGS)//  加载Id_Vgs Configuration  
@@ -165,8 +147,8 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 				SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVgPanel.panelHandle);
-				RunStatus();
-				DisplayCfgPanel(1);
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
+				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
 			}else if(index==EXP_ID_T)//Id-T
 			{
@@ -175,8 +157,8 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			    SetPanelPos(hIdtPanel, 104, 305);
 				SetPanelSize(hIdtPanel, 901, 1293);
 				DisplayPanel(hIdtPanel);
-				RunStatus();
-				DisplayCfgPanel(1);
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0); 
+				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
 			}
 			break;

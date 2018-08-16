@@ -25,9 +25,7 @@ char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K"};
 			SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,i,ATTR_COLUMN_WIDTH,column_width); 			  //设置列宽
 			SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE, i, ATTR_LABEL_TEXT, ABC[i-1]);              //列标号
 		    SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (i, 1), table_title[i-1]);	          //分别设置标题 
-	/*		int MaxRow; //超出tanle高度后显示总能显示最后一行数据 
-			GetNumTableRows(hTablePanel,TABLE_DISTABLE,&MaxRow);
-			SetCtrlAttribute(hTablePanel,TABLE_DISTABLE,ATTR_FIRST_VISIBLE_ROW,MaxRow);*/
+
 			
 			}
 			

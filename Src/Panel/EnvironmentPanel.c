@@ -9,8 +9,7 @@
 
 int temp_flag;
 int humidity_flag;
-int pressure_flag;
-
+int pressure_flag;  
 int CVICALLBACK MesaureCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
 { 	
@@ -35,6 +34,17 @@ int CVICALLBACK MesaureCallback (int panel, int control, int event,
 	return 0;
 }
 
+int CVICALLBACK TemperatureCallback (int panel, int control, int event,
+									 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+		DisplayTempGraph();              
+			break;
+	}
+	return 0;
+}
 
 int CVICALLBACK LegendCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
@@ -51,26 +61,13 @@ int CVICALLBACK LegendCallback (int panel, int control, int event,
 	return 0;
 }
 
-int CVICALLBACK TemperatureCallback (int panel, int control, int event,
-									 void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_COMMIT:
-		DisplayEnvironmentGraph();              
-			break;
-	}
-	return 0;
-}
-
-
 int CVICALLBACK HumidityCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
 	{
 		case EVENT_COMMIT:
-		 	DisplayEnvironmentGraph();     
+		 	DisplayTempGraph();     
 			break;
 	}
 	return 0;
@@ -82,7 +79,7 @@ int CVICALLBACK PressureCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-		   	DisplayEnvironmentGraph();     
+		   	DisplayTempGraph();     
 			break;
 	}
 	return 0;

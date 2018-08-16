@@ -340,7 +340,7 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 			SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath);*/
 		SaveSheet();
 		SaveGraph1();
-		SaveGraph2();
+		//SaveGraph2();
 			break;
 	}
 	return 0;

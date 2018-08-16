@@ -74,6 +74,9 @@ typedef struct
 	int VgStart;									//voltage gate start
 	int VgStop;									//voltage gate stop
 	int VgStep;									//voltage gate step
+	int Current_Start;									//start2
+	int Current_Stop;									//stop2
+	int Current_Step;
 	unsigned int quietTime;
 	unsigned int timeStep;
 	unsigned long int runTime;								//effective only under R-t and I-t mode
@@ -88,7 +91,7 @@ typedef struct
 typedef struct
 {
 	unsigned char rxDevAddr;						//received Device Address
-	unsigned char rxStopSign;						//received Stop Sign £º0x00 nonstop£¬ 0x01 curve stop£¬ 0x02 test stop
+	unsigned char rxStopSign;						//received Stop Sign 0x00 nonstop 0x01 curve stop 0x02 test stop
 	int rxVdtest;									//voltage drain undertest
 	int rxVgtest;									//voltage gate undertest
 	Float_Union_Data rxIdmeasured;					//Id measured

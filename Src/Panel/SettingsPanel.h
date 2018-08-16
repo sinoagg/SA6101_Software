@@ -37,7 +37,6 @@ extern char ProjectSavePath[512];	   //本地工作目录Dir
 // Global functions
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex);
 
-
 #ifdef __cplusplus
     }
 #endif

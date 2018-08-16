@@ -30,12 +30,12 @@
 enum MsgType
 {
 	MSG_TYPE_NULL=0,
-	MSG_TYPE_SETTING=0x11,	  	//ÉèÖÃÃüÁî				
-	MSG_TYPE_RUN=0x12,		  	//ÆðÊ¼ÃüÁî
-	MSG_TYPE_STOP=0x13,		  	//Í£Ö¹ÃüÁî
-	MSG_TYPE_QUERY=0x14,	  	//ÂÖÑ¯ÃüÁî
-	MSG_TYPE_CALIBRATION=0x15,	//Ð£×¼ÃüÁî
-	MSG_TYPE_REPORT_ID=0xFF   	//²éÑ¯ÃüÁî
+	MSG_TYPE_SETTING=0x11,					
+	MSG_TYPE_RUN=0x12,
+	MSG_TYPE_STOP=0x13,
+	MSG_TYPE_QUERY=0x14,
+	MSG_TYPE_CALIBRATION=0x15,
+	MSG_TYPE_REPORT_ID=0xFF
 };
 //==============================================================================
 // Static global variables
@@ -48,7 +48,7 @@ enum MsgType
 TestParaTypeDef TestPara;
 //==============================================================================
 // Global functions
-static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara) //¶ÁÈ¡Êý¾Ý
+static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 {
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStartID, &(pTestPara->VdStart));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->VdStopID, &(pTestPara->VdStop));
@@ -82,31 +82,31 @@ static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth
 static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
 	*pmeasUartTxBuf=devAddr;
-	*(pmeasUartTxBuf+1)=MSG_TYPE_SETTING;                      			//ÃüÁîÀàÐÍ  
-	*(pmeasUartTxBuf+2)=(unsigned char)(pTestPara->testMode);  			//²âÊÔÀàÐÍ
-	*(pmeasUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);   	
-	*(pmeasUartTxBuf+5)=(unsigned char)((pTestPara->VdStart)&0xFF); 	
-	*(pmeasUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);		
-	*(pmeasUartTxBuf+7)=(unsigned char)((pTestPara->VdStop)&0xFF);  	
-	*(pmeasUartTxBuf+8)=(unsigned char)((pTestPara->VdStep)>>8);    	
-	*(pmeasUartTxBuf+9)=(unsigned char)((pTestPara->VdStep)&0xFF);  
-	*(pmeasUartTxBuf+10)=(unsigned char)((pTestPara->VgStart)>>8);  	
-	*(pmeasUartTxBuf+11)=(unsigned char)((pTestPara->VgStart)&0xFF);	
-	*(pmeasUartTxBuf+12)=(unsigned char)((pTestPara->VgStop)>>8);   
-	*(pmeasUartTxBuf+13)=(unsigned char)((pTestPara->VgStop)&0xFF); 	
-	*(pmeasUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);   
+	*(pmeasUartTxBuf+1)=MSG_TYPE_SETTING;     
+	*(pmeasUartTxBuf+2)=(unsigned char)(pTestPara->testMode);
+	*(pmeasUartTxBuf+4)=(unsigned char)((pTestPara->VdStart)>>8);
+	*(pmeasUartTxBuf+5)=(unsigned char)((pTestPara->VdStart)&0xFF);
+	*(pmeasUartTxBuf+6)=(unsigned char)((pTestPara->VdStop)>>8);
+	*(pmeasUartTxBuf+7)=(unsigned char)((pTestPara->VdStop)&0xFF);
+	*(pmeasUartTxBuf+8)=(unsigned char)((pTestPara->VdStep)>>8);
+	*(pmeasUartTxBuf+9)=(unsigned char)((pTestPara->VdStep)&0xFF);
+	*(pmeasUartTxBuf+10)=(unsigned char)((pTestPara->VgStart)>>8);
+	*(pmeasUartTxBuf+11)=(unsigned char)((pTestPara->VgStart)&0xFF);
+	*(pmeasUartTxBuf+12)=(unsigned char)((pTestPara->VgStop)>>8);
+	*(pmeasUartTxBuf+13)=(unsigned char)((pTestPara->VgStop)&0xFF);
+	*(pmeasUartTxBuf+14)=(unsigned char)((pTestPara->VgStep)>>8);
 	*(pmeasUartTxBuf+15)=(unsigned char)((pTestPara->VgStep)&0xFF);
-	*(pmeasUartTxBuf+16)=(unsigned char)((pTestPara->quietTime)>>8); 	
+	*(pmeasUartTxBuf+16)=(unsigned char)((pTestPara->quietTime)>>8);
 	*(pmeasUartTxBuf+17)=(unsigned char)((pTestPara->quietTime)&0xFF);
-	*(pmeasUartTxBuf+18)=(unsigned char)((pTestPara->timeStep)>>8);  	
+	*(pmeasUartTxBuf+18)=(unsigned char)((pTestPara->timeStep)>>8);
 	*(pmeasUartTxBuf+19)=(unsigned char)((pTestPara->timeStep)&0xFF);
-	*(pmeasUartTxBuf+20)=(unsigned char)((pTestPara->runTime)>>8);	  	
+	*(pmeasUartTxBuf+20)=(unsigned char)((pTestPara->runTime)>>8);
 	*(pmeasUartTxBuf+21)=(unsigned char)((pTestPara->runTime)&0xFF);
-	*(pmeasUartTxBuf+22)=(unsigned char)((pTestPara->sampleRate)>>8);   
+	*(pmeasUartTxBuf+22)=(unsigned char)((pTestPara->sampleRate)>>8);
 	*(pmeasUartTxBuf+23)=(unsigned char)((pTestPara->sampleRate)&0xFF);
-	*(pmeasUartTxBuf+24)=(unsigned char)((pTestPara->sampleNumber)>>8); 
+	*(pmeasUartTxBuf+24)=(unsigned char)((pTestPara->sampleNumber)>>8);
 	*(pmeasUartTxBuf+25)=(unsigned char)((pTestPara->sampleNumber)&0xFF);
-	*(pmeasUartTxBuf+26)=(unsigned char)(pTestPara->rangeMode);			 
+	*(pmeasUartTxBuf+26)=(unsigned char)(pTestPara->rangeMode);
 	*(pmeasUartTxBuf+27)=(unsigned char)(pTestPara->maxRange);
 	*(pmeasUartTxBuf+28)=(unsigned char)(pTestPara->minRange);
 	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1); 
@@ -173,7 +173,7 @@ void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned 
 }
 
 void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData)	//Get data from UART Rx Buffer
-{																			//
+{
 	pRxData->rxDevAddr=*pmeasUartRxBuf;
 	pRxData->rxStopSign=*(pmeasUartRxBuf+1);
 	pRxData->rxVdtest=(((int)*(pmeasUartRxBuf+2))<<8)|*(pmeasUartRxBuf+3);

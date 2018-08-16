@@ -4,7 +4,6 @@
 #include "Project.h"
 #include "LoadPanel.h"
 #include "MainPanelCb.h"
-#include "SettingsPanel.h"
 
 #define CHANGECOLOR 0x94CEFF //浅蓝
 #define BGCOLOR 	0xFFFFFF
@@ -25,12 +24,10 @@ static void DiscardAllPrjPanel(PrjHandleTypeDef *pSingleProject)
 
 static int RecallAllPanelState(char* pConfigSavePath)
 {
-	RecallPanelState(IdVdPanel.panelHandle, pConfigSavePath, 1);						
+	RecallPanelState(IdVgPanel.panelHandle, pConfigSavePath, 1);						
 	RecallPanelState(IdVgPanel.panelHandle, pConfigSavePath, 2);						
 	RecallPanelState(hIT_Panel, pConfigSavePath, 3);
 	RecallPanelState(hRT_Panel, pConfigSavePath, 4);
-	RecallPanelState(hIV_Panel,pConfigSavePath,5);
-	RecallPanelState(hIdtPanel,pConfigSavePath,6);
 	RecallPanelState(hBasicSamplePanel, pConfigSavePath, 10);
 	RecallPanelState(hAdvanceSamplePanel, pConfigSavePath, 11);
 	RecallPanelState(hEnvCfgPanel, pConfigSavePath, 14);
@@ -44,9 +41,9 @@ int CVICALLBACK TXT_OpenPrjCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK_UP:
-			///printf("%s","打开project");
+		case EVENT_COMMIT:
 			RecallAllPanelState(pFileLable[selectedPrjIndex]->pFileName);//load all panel and other parameters
+			
 			DiscardAllPrjPanel(SingleProject);
 			RemovePopup (hPrjPanel);
 			break;
@@ -59,9 +56,8 @@ int CVICALLBACK PIC_OpenPrjCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK_UP:
+		case EVENT_COMMIT:
 			RecallAllPanelState(pFileLable[selectedPrjIndex]->pFileName);//load all panel and other parameters
-			
 			DiscardAllPrjPanel(SingleProject);
 			RemovePopup (hPrjPanel);
 			break;
@@ -162,17 +158,10 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			if(selectPanel)	 SelectProject(selectPanel,0);				//取消当前选中状态  
-			else   
-			{
-				char c[10];
-				GetCtrlVal(hPrjPanel,PROPANEL_STRING,&c[0]);
-				printf("%s",c);
-				
-			}
+			SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
 			SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 
-		
 			break;
 	}
 	return 0;

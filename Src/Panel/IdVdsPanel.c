@@ -116,7 +116,7 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 		case EVENT_VAL_CHANGED:
 			int val;
 			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
-			if(val==2) //
+			if(val==2)
 			{
 		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
 				SetCtrlAttribute(panel, IDVDS_CFG_VG_STOP,ATTR_VISIBLE,1);

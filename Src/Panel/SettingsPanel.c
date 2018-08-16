@@ -29,21 +29,19 @@ static void GetSingleCurveAttr(CurveAttrTypeDef *pCurveAttr, int GraphIndex, int
 	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle));
 	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE,&(pCurveAttr->pointStyle));
 	//根据index获取颜色
+/*																		                                                                                                                                                                                                                                  
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR1,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR2,&(pCurveAttr->lineColor));
 	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR3,&(pCurveAttr->lineColor));
-	printf("%d",pCurveAttr->lineColor);
-	
-
+*/
 }
 
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 {
 	CurveAttrTypeDef* pCurveAttr;
-
 	if(GraphIndex==GRAPH1)
 	{
 		switch(CurveIndex)

@@ -73,16 +73,16 @@ void ProtocolGet_CGS_Data(unsigned char* meas_CGS_UartRxBuf, Rx_CGS_DataTypeDef*
 		
 		Rx_CGS_Data->Evaporation_temp = (unsigned int)(*(meas_CGS_UartRxBuf+7) << 8)|(*(meas_CGS_UartRxBuf+8)); 								//蒸发温度
 		
-		Rx_CGS_Data->humidity = (unsigned int)(*(meas_CGS_UartRxBuf+9) << 8)|(*(meas_CGS_UartRxBuf+10));  						//环境湿度
+		Rx_CGS_Data->environmental_humidity = (unsigned int)(*(meas_CGS_UartRxBuf+9) << 8)|(*(meas_CGS_UartRxBuf+10));  						//环境湿度
 		
 		
 		if(*(meas_CGS_UartRxBuf+11) == 0xff)
 		{
-			Rx_CGS_Data->temperature= (int)(*(meas_CGS_UartRxBuf+11) << 8)|(*(meas_CGS_UartRxBuf+12)) - 65536;							//环境温度 	
+			Rx_CGS_Data->environmental_temp = (int)(*(meas_CGS_UartRxBuf+11) << 8)|(*(meas_CGS_UartRxBuf+12)) - 65536;							//环境温度 	
 		}
 		else
 		{
-			Rx_CGS_Data->temperature= (int)(*(meas_CGS_UartRxBuf+11) << 8)|(*(meas_CGS_UartRxBuf+12));									//环境温度 	
+			Rx_CGS_Data->environmental_temp = (int)(*(meas_CGS_UartRxBuf+11) << 8)|(*(meas_CGS_UartRxBuf+12));									//环境温度 	
 		}
 		
 }

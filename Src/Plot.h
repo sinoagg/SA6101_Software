@@ -20,7 +20,7 @@
 
 #include "cvidef.h"
 #include "Graph.h" 
-#include "Curve.h"
+
 //==============================================================================
 // Constants
 
@@ -35,7 +35,7 @@
 
 int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control);
 int PlotCurve2(GraphTypeDef* pGraph2, int hGraphPanel, int control);    
-void DisplayEnvironmentGraph();  
+void DisplayTempGraph();  
 #ifdef __cplusplus
     }
 #endif
