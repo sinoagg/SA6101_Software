@@ -73,6 +73,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		else if(TestPara.testMode==SWEEP_IV)
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;
+				//*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;	
 		}
 		InsertTableRows (hTablePanel,TABLE_DISTABLE , -1, 1, VAL_CELL_NUMERIC);				          	//插入1行 
 		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  	//得到当前行数
