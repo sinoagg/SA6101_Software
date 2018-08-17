@@ -56,18 +56,17 @@
 
 //==============================================================================
 // Global variables
-int TimerID;
-char configSavePath[512]={0};
 FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针，最多只能加载一个文件夹下的64个文件
 PrjHandleTypeDef SingleProject[64];	
 
-char table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
-char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
+int TimerID;
+char configSavePath[512]={0};
 char table_title_IT[11][20] ={"t(ms)","I(A)"};
-char table_title_RT[11][20] ={"t(ms)","R(Ohm)"};
+char table_title_RT[11][20] ={"t(ms)","R(Ω)"};
 char table_title_IV[11][20] ={"V(mV)","I(A)"};
 char table_title_Idt[11][20] ={"t(ms)","Id(A)"}; 
-
+char table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
+char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
 //==============================================================================
 // Global functions
 static void InitSingleProject(PrjHandleTypeDef *pSingleProject)
@@ -190,15 +189,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 					
 				case SWEEP_IV:
-					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
-					 Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.column_width ); 
 					 numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					break;
 					
 				case ID_T:
-					 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1,-1 , VAL_IMMEDIATE_DRAW);
-					 Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.column_width );  
 					 numOfDots=(TestPara.runTime*1000)/TestPara.timeStep; 
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
 					break;
@@ -211,10 +206,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
 			
 			Table_ATTR.column = 2 ;   													//列数
-			Table_ATTR.column_width = 290;  											//列宽
+			Table_ATTR.columnWidth= 290;  											//列宽
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
 	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);	   				//每个实验运行之前清除上一个实验的table数据 
-			Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.column_width); 	//表格重新初始化 与设置参数有关，应该写成函数
+			Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
 			
 			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots, &Graph2); 	//初始化图2  
 			

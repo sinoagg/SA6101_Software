@@ -70,10 +70,14 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 		}
-		else if(TestPara.testMode==SWEEP_IV)
+		else if(TestPara.testMode==SWEEP_IV) //I_V的X轴
 		{
-			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;
-				//*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;	
+		  *(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->Current;
+		}
+		else if(TestPara.testMode==ID_T)
+		{
+			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time;
+			Graph1.pCurveArray->time+=TestPara.timeStep;
 		}
 		InsertTableRows (hTablePanel,TABLE_DISTABLE , -1, 1, VAL_CELL_NUMERIC);				          	//插入1行 
 		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  	//得到当前行数
@@ -89,7 +93,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	}
 	
 	PlotCurve(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1);
-	
+																															    
 	if(RxData.rxStopSign==0x01)
 	{
 		GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
@@ -144,7 +148,7 @@ int main (int argc, char *argv[])
 	//else SA11_Status=1;
 	
 	LoadInitPanel(); 
-	//CheckPortStatus(controlComPort, 14, CtrlComCallback); 
+	//CheckPortStatus(controlComPort, 14, CtrlComCallback); //controlComPort
 	RunUserInterface();
 	CloseCom(measureComPort);
 	

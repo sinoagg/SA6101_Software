@@ -28,7 +28,7 @@
 typedef struct
 {
 	int column;									    //列
-	int column_width;								//列宽  
+	int columnWidth;								//列宽  
 	int row;										//行
 	
 }Table_TypeDef;
@@ -44,7 +44,7 @@ extern char ABC[11][20];
 
 //==============================================================================
 // Global functions
-void Table_init(char table_title[][20], int column, column_width);
+void Table_init(char table_title[][20], int column, columnWidth);
 
 
 #ifdef __cplusplus
