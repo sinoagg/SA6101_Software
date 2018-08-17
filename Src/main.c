@@ -50,34 +50,40 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		//SetGraphY_Axis(&Graph1, RxData.rxIdmeasured.num_float);
 		
 		Graph1.pCurveArray->numOfDotsToPlot++;									//number of dots to plot increase
-		*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;			//get y, set pointer to the next data
+					
 		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data 
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;
 		}
 		else if(TestPara.testMode==NO_SWEEP_IT)
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
+			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;
 		}
 		else if(TestPara.testMode==NO_SWEEP_RT)
 		{
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep;
+			*(Graph1.pCurveArray->pDotY++)=RxData.rxVdmeasured.num_float/RxData.rxIdmeasured.num_float;     
 		}
-		else if(TestPara.testMode==SWEEP_IV) //I_V的X轴
+		else if(TestPara.testMode==SWEEP_IV) 
 		{
-		  *(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->Current;
+		  *(Graph1.pCurveArray->pDotX++)=RxData.rxIdmeasured.num_float;
+		  	*(Graph1.pCurveArray->pDotY++)=RxData.rxVdmeasured.num_float;
 		}
 		else if(TestPara.testMode==ID_T)
 		{
 			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time;
 			Graph1.pCurveArray->time+=TestPara.timeStep;
+			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float; 
 		}
 		InsertTableRows (hTablePanel,TABLE_DISTABLE , -1, 1, VAL_CELL_NUMERIC);				          	//插入1行 
 		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &row); 										  	//得到当前行数

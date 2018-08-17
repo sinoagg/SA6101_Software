@@ -61,11 +61,11 @@ PrjHandleTypeDef SingleProject[64];
 
 int TimerID;
 char configSavePath[512]={0};
-char table_title_IT[11][20] ={"t(ms)","I(A)"};
-char table_title_RT[11][20] ={"t(ms)","R(Ω)"};
+char table_title_IT[11][20] ={"t(s)","I(A)"};
+char table_title_RT[11][20] ={"t(s)","R(Ω)"};
 char table_title_IV[11][20] ={"V(mV)","I(A)"};
-char table_title_Idt[11][20] ={"t(ms)","Id(A)"}; 
-char table_title_IdVd[11][20] ={"Vd(mV)","Id(A)"};
+char table_title_Idt[11][20] ={"t(s)","Id(A)"}; 
+char table_title_IdVd[11][20] ={"V(mV)","Id(A)"};
 char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
 //==============================================================================
 // Global functions
@@ -121,6 +121,10 @@ static void RunActiv()
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮      
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       		//恢复 停止按钮
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        		//禁用 保存按钮
+	
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
 }
 
 int CVICALLBACK RunCallback (int panel, int control, int event,
@@ -176,17 +180,15 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 					
 				case NO_SWEEP_IT: 
-					numOfDots=(TestPara.runTime*1000)/TestPara.timeStep;
+					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001);  //单位s
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					//X轴和Y轴均由控件自由控制
 					break;
 					
 				case NO_SWEEP_RT:
-					 numOfDots=TestPara.runTime*1000/TestPara.timeStep ;
+					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001);
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=TestPara.runTime;
-					break;
+					 break;
 					
 				case SWEEP_IV:
 					 numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
@@ -194,7 +196,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 					
 				case ID_T:
-					 numOfDots=(TestPara.runTime*1000)/TestPara.timeStep; 
+					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001); 
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
 					break;
 					
@@ -387,10 +389,12 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 
 static int SaveAllPanelState(char* pConfigSavePath)
 {
-	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 1);						
+	SavePanelState(IdVdPanel.panelHandle, pConfigSavePath, 1);						
 	SavePanelState(IdVgPanel.panelHandle, pConfigSavePath, 2);						
 	SavePanelState(hIT_Panel, pConfigSavePath, 3);
 	SavePanelState(hRT_Panel, pConfigSavePath, 4);
+	SavePanelState(hIV_Panel,pConfigSavePath, 5);
+	SavePanelState(hIdtPanel, pConfigSavePath, 6);
 	SavePanelState(hBasicSamplePanel, pConfigSavePath, 10);
 	SavePanelState(hAdvanceSamplePanel, pConfigSavePath, 11);
 	SavePanelState(hEnvCfgPanel, pConfigSavePath, 14);

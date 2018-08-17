@@ -65,6 +65,10 @@ static void DisplaySampleCfgPanel(int display)
 		SetPanelPos(hBasicSamplePanel, 104, 1600);
 		SetPanelSize(hBasicSamplePanel, 450 ,300);
 		DisplayPanel(hBasicSamplePanel);
+		
+		SetPanelPos(hEnvCfgPanel, 556, 1600);
+		SetPanelSize(hEnvCfgPanel, 449, 300);
+		DisplayPanel(hEnvCfgPanel);
 	}
 	else 
 		HidePanel(hBasicSamplePanel);
