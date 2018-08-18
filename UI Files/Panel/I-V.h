@@ -28,6 +28,9 @@
 #define  IVPANEL_TEXTMSG_20               13      /* control type: textMsg, callback function: (none) */
 #define  IVPANEL_PIC_R                    14      /* control type: picture, callback function: (none) */
 #define  IVPANEL_PIC_GND                  15      /* control type: picture, callback function: (none) */
+#define  IVPANEL_TEXTMSG                  16      /* control type: textMsg, callback function: (none) */
+#define  IVPANEL_TEXTMSG_23               17      /* control type: textMsg, callback function: (none) */
+#define  IVPANEL_TEXTMSG_24               18      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

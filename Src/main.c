@@ -41,12 +41,14 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	while(rxNum>=MEASURE_UART_RX_LEN)
 	{
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
-		if(RxData.rxStopSign==0x01)												//if received end of test signal, stop the timer right now, or new query cmd will be transmitted
-			DiscardAsyncTimer(TimerID);
+		if(RxData.rxStopSign==0x01)											//if received end of test signal, stop the timer right now, or new query cmd will be transmitted
+			DiscardAsyncTimer(TimerID);										//停止query定时器查询  
 		
-		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
-		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
+		SetCtrlVal(hResultDispPanel, RESULTDISP_VD,  RxData.rxVdtest);
+		SetCtrlVal(hResultDispPanel, RESULTDISP_VG,  RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
+		SetCtrlVal(hResultDispPanel, RESULTDISP_TIME,Graph1.pCurveArray->time*0.001);
+												
 		//SetGraphY_Axis(&Graph1, RxData.rxIdmeasured.num_float);
 		
 		Graph1.pCurveArray->numOfDotsToPlot++;									//number of dots to plot increase
@@ -64,13 +66,13 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		}
 		else if(TestPara.testMode==NO_SWEEP_IT)
 		{
-			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;
 		}
 		else if(TestPara.testMode==NO_SWEEP_RT)
 		{
-			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time;			//get x, set pointer to the next data
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxVdmeasured.num_float/RxData.rxIdmeasured.num_float;     
 		}
@@ -81,7 +83,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		}
 		else if(TestPara.testMode==ID_T)
 		{
-			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time;
+			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time*0.001;
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float; 
 		}
@@ -94,19 +96,21 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++; 
 		
-		if(RxData.rxStopSign==0x01)											//如果收到最后一个数据了，没有必要再去处理其他数据
-			break;
+		if((RxData.rxStopSign==0x01)||(Graph1.pCurveArray->numOfPlotDots == Graph1.pCurveArray->numOfTotalDots))													//如果收到最后一个数据了，没有必要再去处理其他数据
+		DiscardAsyncTimer(TimerID); 									    //停止query定时器查询  
 	}
 	
 	PlotCurve(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1);
 																															    
-	if(RxData.rxStopSign==0x01)
-	{
+	if((RxData.rxStopSign==0x01)||(Graph1.pCurveArray->numOfPlotDots == Graph1.pCurveArray->numOfTotalDots))		
+	{																		//停止query定时器查询  
+		DiscardAsyncTimer(TimerID); 
 		GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
 		GraphDeinit(&Graph2);
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 	    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+		
 	}
 }
 
@@ -118,7 +122,7 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 	static a = 0;
 	Rx_CGS_DataTypeDef Rx_CGS_Data;
 	rxNum = GetInQLen(controlComPort);  									//读取串口中发送来的数据数量
-	if(rxNum>500) rxNum=500;											//防止超过内存范围
+	if(rxNum>500) rxNum=500;												//防止超过内存范围
 	ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, rxNum);	
 	
 	while(rxNum>=14)

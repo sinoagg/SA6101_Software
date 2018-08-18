@@ -63,16 +63,20 @@ static void DisplaySampleCfgPanel(int display)
 	if(display)
 	{
 		SetPanelPos(hBasicSamplePanel, 104, 1600);
-		SetPanelSize(hBasicSamplePanel, 450 ,300);
+		SetPanelSize(hBasicSamplePanel, 450 ,320);
 		DisplayPanel(hBasicSamplePanel);
 		
 		SetPanelPos(hEnvCfgPanel, 556, 1600);
-		SetPanelSize(hEnvCfgPanel, 449, 300);
+		SetPanelSize(hEnvCfgPanel, 449, 320);
 		DisplayPanel(hEnvCfgPanel);
 	}
 	else 
+	{
 		HidePanel(hBasicSamplePanel);
+	    HidePanel(hEnvCfgPanel);
+	}
 }
+
 
 static void DisplayRunTime(int display)
 {
@@ -88,7 +92,9 @@ static void RunStatus()
 	if(val == 1)
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0);
 	else 
-		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1); 
+	{
+		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
+	}
 
 	
 }
@@ -102,10 +108,13 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			ChangeImg();
 			int index;
-			GetActiveTreeItem (panel, control, &index);//获得当前点击项目值		   
+			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);//获得当前点击项目值		   
 			if(index==TWO_TERMINAL)
 			{   SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
-				DisplaySampleCfgPanel(0);	
+				DisplaySampleCfgPanel(0);
+				SetPanelPos(hTwoTerminalPanel,124,1600);
+				SetPanelSize(hTwoTerminalPanel,881,320);
+				DisplayPanel(hTwoTerminalPanel);
 			}
 			else if(index==EXP_I_T)	//加载I-T
 			{ 
@@ -145,6 +154,10 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{
 				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1); 
 				DisplaySampleCfgPanel(0);
+				SetPanelPos(hFourTerminalPanel,124,1600);
+				SetPanelSize(hFourTerminalPanel,881,320);
+				DisplayPanel(hFourTerminalPanel);
+				
 			}
 			else if(index==EXP_ID_VDS)// 加载Id_Vds Configuration   
 			{

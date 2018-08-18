@@ -96,224 +96,6 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 	return 0;
 }
 
-static void RunActiv()
-{
- 	SetPanelPos(hResultMenuPanel, 105, 305);  
-	SetPanelSize(hResultMenuPanel, 65, 1293);      
- 	DisplayPanel(hResultMenuPanel);  
-			
-	SetPanelPos(hGraphPanel, 172, 305);  
-	SetPanelSize(hGraphPanel, 833, 1293);
-	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
- 	DisplayPanel(hGraphPanel);
-		   
-	SetPanelPos(hResultDispPanel, 105, 1600);
-	SetPanelSize(hResultDispPanel, 449, 300);
-	DisplayPanel(hResultDispPanel);
-	SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
-	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
-	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
-	SetPanelPos(hEnvResultPanel, 556, 1600);
-	SetPanelSize(hEnvResultPanel, 449, 300);
-	DisplayPanel(hEnvResultPanel);
-				    
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮      
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       		//恢复 停止按钮
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        		//禁用 保存按钮
-	
-	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
-	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
-}
-
-int CVICALLBACK RunCallback (int panel, int control, int event,
-							 void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:
-		    RunActiv();
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线 
-			
-			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
-			FlushOutQ(measureComPort);
-			
-			int expType;
-			int graphIndex=1;	//currently only deal with one graph circumstance
-			int numOfCurve=1;
-			int numOfDots=0;
-		
-			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
-				return -1; 
-			TestPara.testMode=(enum TestMode)expType;
-			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
-			switch(TestPara.testMode)
-			{
-			   	case SWEEP_DRAIN_VOL:				 
-					if(TestPara.gateOutputMode==VOL_BIAS)
-					{
-						numOfCurve=1;
-					}
-					else if(TestPara.gateOutputMode==VOL_STEP)
-					{
-						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
-					}
-					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
-					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
-				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
-					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop; 
-					break;
-					
-				case SWEEP_GATE_VOL:
-		      		if(TestPara.drainOutputMode==VOL_BIAS)
-					{
-						numOfCurve=1;
-					}else if(TestPara.drainOutputMode==VOL_STEP)
-					{
-						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
-					}
-					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
-				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
-					break;
-					
-				case NO_SWEEP_IT: 
-					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001);  //单位s
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					//X轴和Y轴均由控件自由控制
-					break;
-					
-				case NO_SWEEP_RT:
-					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001);
-					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					 break;
-					
-				case SWEEP_IV:
-					 numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
-					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					break;
-					
-				case ID_T:
-					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001); 
-					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
-					break;
-					
-				default:
-					break;
-			}
-			
-			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
-			
-			Table_ATTR.column = 2 ;   													//列数
-			Table_ATTR.columnWidth= 290;  											//列宽
-			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
-	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);	   				//每个实验运行之前清除上一个实验的table数据 
-			Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
-			
-			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots, &Graph2); 	//初始化图2  
-			
-			Delay(0.2);												  					//在设置和运行命令之间给下位机0.2秒处理
-			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);				//send RUN command to instrument via UART
-			
-			double temp=((double)TestPara.timeStep)/1000;
-			if(temp<0.03) temp=0.03;													//如果查询时间过快，会造成数据混乱，下位机响应中断过多
-			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);						//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)
-			break;
-	}
-	return 0;
-}
-
-int CVICALLBACK StopCallback (int panel, int control, int event,
-							  void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
-			DiscardAsyncTimer(TimerID);											//停止query定时器查询
-			Delay(0.1);															//在查询和停止命令间隔0.1秒
-			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
-			Delay(0.1);	
-			FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-			FlushOutQ(measureComPort);
-		  	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
-			break;
-	}
-	return 0;
-}
-
-int CVICALLBACK SaveCallback (int panel, int control, int event,
-							  void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SAVE, "Resource\\Save_pressed.ico");
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SAVE, "Resource\\Save.ico");
-			if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1,  configSavePath)>0)
-				SaveConfigToFile(configSavePath);
-			break;
-	}
-	return 0;
-}
-
-int CVICALLBACK SelectCallback (int panel, int control, int event,
-								 void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:			    //当Select被鼠标左键点击时,Select图标改变，其它两个正常状态 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
-			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-
-	 		SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-	        SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
-	        DisplayPanel(IdVgPanel.panelHandle);
-
-			HidePanel(hBasicSamplePanel);	 
-			HidePanel(hResultDispPanel);
-			HidePanel(hEnvResultPanel);
-			HidePanel(hEnvCfgPanel);
-			HidePanel(hResultDispPanel);  
-			break;
-	}
-	return 0;
-}
-
-//===================================================
-//   Configure_Callback
-int CVICALLBACK ConfigureCallback (int panel, int control, int event,
-									void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
- 		case EVENT_LEFT_CLICK_UP:			    //当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
-			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-		
-			//点击Configure图标回到Id_vds界面
-			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
-			DisplayPanel(IdVgPanel.panelHandle);
-			
-			SetPanelPos(hBasicSamplePanel, 105, 1600);
-			SetPanelSize(hBasicSamplePanel, 449, 300);
-			DisplayPanel(hBasicSamplePanel);
-			
-			SetPanelPos(hEnvCfgPanel, 556, 1600);
-			SetPanelSize(hEnvCfgPanel, 449, 300);
-			DisplayPanel(hEnvCfgPanel);
-			break;
-	}
-	return 0;
-}
-
 static void DispResultMenu(void)
 {
 	SetPanelPos(hResultMenuPanel, 105, 305);  
@@ -324,7 +106,7 @@ static void DispResultMenu(void)
 static void DispResultNumber(void)
 {
 	SetPanelPos(hResultDispPanel, 105, 1600);
-	SetPanelSize(hResultDispPanel, 449, 300);
+	SetPanelSize(hResultDispPanel, 449, 320);
 	DisplayPanel(hResultDispPanel);
 }
 static void DispRuntime(int display)
@@ -338,7 +120,7 @@ static void DispRuntime(int display)
 static void DispEnvironmentCfg(void)
 {
 	SetPanelPos(hEnvResultPanel, 556, 1600);
-	SetPanelSize(hEnvResultPanel, 449, 300);
+	SetPanelSize(hEnvResultPanel, 449, 320);
 	DisplayPanel(hEnvResultPanel);
 }
 
@@ -369,6 +151,250 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	}
 	return 0;
 }
+
+
+int CVICALLBACK SelectCallback (int panel, int control, int event,
+								 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:			    //当Select被鼠标左键点击时,Select图标改变，其它两个正常状态 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
+
+	 		SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+	        SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
+	        DisplayPanel(IdVgPanel.panelHandle);
+
+			HidePanel(hBasicSamplePanel);	 
+			HidePanel(hResultDispPanel);
+			HidePanel(hEnvResultPanel);
+			HidePanel(hEnvCfgPanel);
+			HidePanel(hResultDispPanel);
+			HidePanel(hTwoTerminalPanel);
+			HidePanel(hFourTerminalPanel);
+			break;
+	}
+	return 0;
+}
+
+//===================================================
+//   Configure_Callback
+int CVICALLBACK ConfigureCallback (int panel, int control, int event,
+									void *callbackData, int eventData1, int eventData2)
+{
+		
+	switch (event)
+	{
+ 		case EVENT_LEFT_CLICK_UP:			    //当Configure被鼠标左键点击时,Configure图标改变，其它两个正常状态 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
+			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
+		
+			//点击Configure图标回到Id_vds界面
+			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
+			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
+			DisplayPanel(IdVgPanel.panelHandle);
+			
+		/*	SetPanelPos(hBasicSamplePanel, 105, 1600);
+			SetPanelSize(hBasicSamplePanel, 449, 320);
+			DisplayPanel(hBasicSamplePanel);
+			
+			SetPanelPos(hEnvCfgPanel, 556, 1600);
+			SetPanelSize(hEnvCfgPanel, 449, 320);
+			DisplayPanel(hEnvCfgPanel);*/
+			break;
+			
+	}
+		   	TreeCallback (panel, control , event,callbackData,  eventData1,  eventData2);//调用 Experiment List中tree控件的回调函数
+
+	return 0;
+}
+
+
+static void RunActiv()
+{
+ 	SetPanelPos(hResultMenuPanel, 105, 305);  
+	SetPanelSize(hResultMenuPanel, 65, 1293);      
+ 	DisplayPanel(hResultMenuPanel);  
+			
+	SetPanelPos(hGraphPanel, 172, 305);  
+	SetPanelSize(hGraphPanel, 833, 1293);
+	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+ 	DisplayPanel(hGraphPanel);
+		   
+	SetPanelPos(hResultDispPanel, 105, 1600);
+	SetPanelSize(hResultDispPanel, 449, 320);
+	DisplayPanel(hResultDispPanel);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
+	SetPanelPos(hEnvResultPanel, 556, 1600);
+	SetPanelSize(hEnvResultPanel, 449, 320);
+	DisplayPanel(hEnvResultPanel);
+				    
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮      
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       		//恢复 停止按钮
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        		//禁用 保存按钮
+	
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,1);//运行过程中禁止设置曲线属性        
+	
+	
+}
+
+int CVICALLBACK RunCallback (int panel, int control, int event,
+							 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:
+		    RunActiv();
+			int index;
+			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
+			if(index==EXP_I_T||index==EXP_R_T||index==EXP_ID_T)
+				DispRuntime(1);
+			else 
+				DispRuntime(0);
+			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线 
+			
+			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
+			FlushOutQ(measureComPort);
+			
+			int expType;
+			int graphIndex=1;	//currently only deal with one graph circumstance
+			int numOfCurve=1;
+			int numOfDots=0;
+			Table_ATTR.column = 2 ;   								//列数
+			Table_ATTR.columnWidth= 290;  							//列宽
+			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
+	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);//每个实验运行之前清除上一个实验的table数据  
+			
+			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
+				return -1; 
+			TestPara.testMode=(enum TestMode)expType;
+			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
+			switch(TestPara.testMode)
+			{
+			   	case SWEEP_DRAIN_VOL:				 
+					if(TestPara.gateOutputMode==VOL_BIAS)
+					{
+						numOfCurve=1;
+					}
+					else if(TestPara.gateOutputMode==VOL_STEP)
+					{
+						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
+					}
+					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
+					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
+				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
+					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
+					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
+
+					break;
+					
+				case SWEEP_GATE_VOL:
+		      		if(TestPara.drainOutputMode==VOL_BIAS)
+					{
+						numOfCurve=1;
+					}else if(TestPara.drainOutputMode==VOL_STEP)
+					{
+						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
+					}
+					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
+				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
+					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth);
+					break;
+					
+				case NO_SWEEP_IT: 
+					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  //单位s
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					Graph1.pCurveArray->numOfTotalDots = numOfDots;
+					Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth);
+					//X轴和Y轴均由控件自由控制
+					break;
+					
+				case NO_SWEEP_RT:
+					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;
+					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth);
+					 break;
+					
+				case SWEEP_IV:
+					 numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
+					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth);
+					break;
+					
+				case ID_T:
+					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001); 
+					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth);
+					break;
+					
+				default:
+					break;
+			}
+			
+			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
+			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots, &Graph2); 	//初始化图2  
+			
+			Delay(0.2);												  					//在设置和运行命令之间给下位机0.2秒处理
+			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);				//send RUN command to instrument via UART
+			
+			double temp=((double)TestPara.timeStep)/1000;
+			if(temp<0.03) temp=0.03;													//如果查询时间过快，会造成数据混乱，下位机响应中断过多
+			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);						//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK StopCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
+			DiscardAsyncTimer(TimerID);											//停止query定时器查询
+			Delay(0.1);															//在查询和停止命令间隔0.1秒
+			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+			Delay(0.1);	
+			FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
+			FlushOutQ(measureComPort);
+		  	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
+		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
+			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,0);   //恢复曲线属性设置
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK SaveCallback (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:		    //当鼠标释放时
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SAVE, "Resource\\Save_pressed.ico");
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SAVE, "Resource\\Save.ico");
+			if(FileSelectPopupEx("C:\\SINOAGG\\SA6101\\", ".sac", "*.sac", "Select Path", VAL_OK_BUTTON, 0, 1,  configSavePath)>0)
+				SaveConfigToFile(configSavePath);
+			break;
+	}
+	return 0;
+}
+
+
+
 
 int CVICALLBACK SettingsCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
@@ -490,12 +516,7 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 			DisplayPanel(hPrjListPanel); 
 			
 			LoadAllProject(ProjectSavePath);
-//<<<<<<< HEAD
-//			SetPanelPos(hPrjListPanel, 90, -10);
-//			SetPanelSize(hPrjListPanel, 115, 1300);
-//			DisplayPanel(hPrjListPanel);
-//=======
-//>>>>>>> e73900e378028359f1677ade8da974220349c79d
+
 			break;
 	}	 
 	return 0;

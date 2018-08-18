@@ -33,6 +33,10 @@
 
 //==============================================================================
 // Global variables
+#define TWO_TERMINAL 0
+
+#define FOUR_TERMINAL 4
+
 int hMainPanel;
 int hExpListPanel;
 int hGraphPanel;
@@ -55,7 +59,8 @@ int hPrjPanel;
 int hPrjListPanel;
 int hResultDispPanel;
 int hIdtPanel;
-
+int hTwoTerminalPanel;
+int hFourTerminalPanel;
 
 //==============================================================================
 // Global functions
@@ -138,7 +143,11 @@ int LoadInitPanel (void)
 		return -1;												  
 	//if((hPrjListPanel = LoadPanel(hPrjPanel,"Project.uir",DEFPANEL))<0)
 	//	return -1;
-	
+			
+	if((hTwoTerminalPanel= LoadPanel(hMainPanel,"Terminal.uir",TWOTRMLPAL))<0)
+		return -1;
+	if((hFourTerminalPanel= LoadPanel(hMainPanel,"Terminal.uir",FETPANEL))<0)
+		return -1;
 	DisplayPanel (hMainPanel); 
 	
 	SetPanelPos(hExpListPanel, 105, 3);  //加载面板位置 （,top,left）  i
@@ -149,5 +158,21 @@ int LoadInitPanel (void)
 	SetPanelSize(IdVdPanel.panelHandle, 900, 1293);
 	DisplayPanel(IdVdPanel.panelHandle);
 
+		int index;
+			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);//获得当前点击项目值		   
+			if(index==TWO_TERMINAL)
+			{   SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
+				SetPanelPos(hTwoTerminalPanel,124,1600);
+				SetPanelSize(hTwoTerminalPanel,881,320);
+				DisplayPanel(hTwoTerminalPanel);
+			}
+			else if(index==FOUR_TERMINAL) 
+			{
+				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1); 
+				SetPanelPos(hFourTerminalPanel,124,1600);
+				SetPanelSize(hFourTerminalPanel,881,320);
+				DisplayPanel(hFourTerminalPanel);
+				
+			}
 	return 0;
 }
