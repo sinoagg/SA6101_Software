@@ -50,22 +50,22 @@ Batch Build Debug = False
 [File 0001]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
 File Type = "CSource"
-Disk Date = 3617401681
+Disk Date = 3617413738
 In Projects = "1,"
 Window Top = 272
 Window Left = 130
-Window Z-Order = 3
-Source Window State = "1,74,77,77,8,104,104,0,0,73,0,90,0,0,0,25,0,0,62,58,611,986,1,0,"
+Window Z-Order = 1
+Source Window State = "1,0,188,0,0,0,0,0,0,124,0,281,0,191,0,33,17,0,71,53,611,986,1,0,"
 
 [File 0002]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
 File Type = "CSource"
-Disk Date = 3617409000
+Disk Date = 3617414470
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Window Z-Order = 1
-Source Window State = "1,365,365,365,80,103,103,0,0,124,0,0,0,0,0,33,349,0,366,32,557,982,1,0,"
+Window Z-Order = 2
+Source Window State = "1,326,326,326,78,89,89,0,3,73,0,0,0,0,0,22,311,0,326,78,557,982,1,0,"
 
 [File 0003]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/I-V.uir"
@@ -84,7 +84,7 @@ Disk Date = 3617408870
 In Projects = "1,"
 Window Top = 122
 Window Left = 58
-Window Z-Order = 2
+Window Z-Order = 3
 Source Window State = "1,96,96,96,4,82,4,0,0,52,0,0,0,0,0,16,80,0,96,4,411,726,1,0,"
 
 [File 0005]

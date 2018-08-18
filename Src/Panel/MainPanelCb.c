@@ -323,7 +323,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				case NO_SWEEP_RT:
 					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth);
+					 Graph1.pCurveArray->numOfTotalDots  = numOfDots;
+					 Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth);
 					 break;
 					
 				case SWEEP_IV:
