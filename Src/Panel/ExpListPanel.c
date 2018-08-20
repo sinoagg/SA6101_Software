@@ -90,10 +90,14 @@ static void RunStatus()
 	int val;
 	GetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,&val);
 	if(val == 1)
+	{
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,0);
+		SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,0); //运行状态停止时可设置曲线属性 
+	}
 	else 
 	{
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
+		
 	}
 
 	
@@ -110,7 +114,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			int index;
 			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);//获得当前点击项目值		   
 			if(index==TWO_TERMINAL)
-			{   SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);
+			{   
 				DisplaySampleCfgPanel(0);
 				SetPanelPos(hTwoTerminalPanel,124,1600);
 				SetPanelSize(hTwoTerminalPanel,881,320);
@@ -190,6 +194,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
+				
 			}
 			break;
 	}  

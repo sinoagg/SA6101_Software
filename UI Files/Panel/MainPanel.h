@@ -24,7 +24,7 @@
 #define  MAIN_PANEL_CANVAS                9       /* control type: canvas, callback function: (none) */
 #define  MAIN_PANEL_TXT_SAVE              10      /* control type: textMsg, callback function: (none) */
 #define  MAIN_PANEL_PROJECTS              11      /* control type: picture, callback function: ProjectCallback */
-#define  MAIN_PANEL_TOOLS                 12      /* control type: picture, callback function: (none) */
+#define  MAIN_PANEL_TOOLS                 12      /* control type: picture, callback function: ToolsCallback */
 #define  MAIN_PANEL_SETTINGS              13      /* control type: picture, callback function: SettingsCallback */
 #define  MAIN_PANEL_TXT_PROJECTS          14      /* control type: textMsg, callback function: (none) */
 #define  MAIN_PANEL_TXT_SET               15      /* control type: textMsg, callback function: (none) */
@@ -60,6 +60,7 @@ int  CVICALLBACK SaveCallback(int panel, int control, int event, void *callbackD
 int  CVICALLBACK SelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SettingsCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK StopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK ToolsCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

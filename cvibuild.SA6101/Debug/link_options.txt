@@ -38,6 +38,7 @@
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\SettingsPanel.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\Table.obj
 -in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\Timer.obj
+-in:e:\GitWorkplace\Sinoagg\Software\SA6101_Software\cvibuild.SA6101\Debug\ToolsPanel.obj
 -more:d:\software\nilwcvi\nilwcvi2017\bin\msvc\cvistart.lib
 -more:d:\software\nilwcvi\nilwcvi2017\bin\msvc\cvi.lib
 -more:D:\software\SDK8.1\Lib\winv6.3\um\x86\advapi32.lib

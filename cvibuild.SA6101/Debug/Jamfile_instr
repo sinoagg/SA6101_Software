@@ -24,6 +24,7 @@ Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SettingsPanel.obj" ;
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Table.obj" ;
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" ;
+Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" ;
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "D:\\software\\SDK8.1\\Lib\\winv6.3\\um\\x86\\advapi32.lib" ;
 NoCare "D:\\software\\SDK8.1\\Lib\\winv6.3\\um\\x86\\advapi32.lib" ;
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : "c:\\ProgramData\\National Instruments\\CVI2017\\bin\\msvc\\analysis.lib" ;

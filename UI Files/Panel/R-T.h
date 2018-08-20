@@ -23,6 +23,7 @@
 #define  RTPANEL_DECORATION               8       /* control type: deco, callback function: (none) */
 #define  RTPANEL_PIC_R                    9       /* control type: picture, callback function: (none) */
 #define  RTPANEL_PIC_GND                  10      /* control type: picture, callback function: (none) */
+#define  RTPANEL_TEXTMSG                  11      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

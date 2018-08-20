@@ -23,6 +23,7 @@
 #define  ITPANEL_DECORATION_GATE          8       /* control type: deco, callback function: (none) */
 #define  ITPANEL_PIC_R                    9       /* control type: picture, callback function: (none) */
 #define  ITPANEL_PIC_GND                  10      /* control type: picture, callback function: (none) */
+#define  ITPANEL_TEXTMSG                  11      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

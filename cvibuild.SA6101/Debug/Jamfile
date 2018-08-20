@@ -84,6 +84,8 @@ LOCATE on "Table.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src
 LOCATE on "TablePanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 LOCATE on "Timer.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
 LOCATE on "Timer.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src" ;
+LOCATE on "ToolsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
+LOCATE on "ToolsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel" ;
 Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\asynctmr.c" ;
 FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" = 1 ;
 DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\asynctmr.obj.cvidefprots" ;
@@ -214,6 +216,11 @@ FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA610
 DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj.cvidefprots" ;
 OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj.out" ;
 PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\Timer.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\Src\\Panel\\ToolsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" = 27 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" ;
 Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.in.rc" ;
 Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\manifest.xml" ;
 MainFromObjects "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_Software\\cvibuild.SA6101\\Debug\\SA6101.exe" : $(PrjObjects) $(InstrObjects) ;

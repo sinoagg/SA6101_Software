@@ -1,3 +1,4 @@
+#include "Tools.h"
 #include <rs232.h>
 #include "MainPanel.h"
 
@@ -42,6 +43,8 @@
 #define EXP_ID_VDS 5
 #define EXP_ID_VGS 6
 #define EXP_ID_T 7
+#define BGCOLOR 	0xFFFFFF
+#define SEARCHCOLOR 0xA8BFCB //不可用颜色
 
 #define ENV_NUM_OF_CURVE 3								//环境曲线目前只有3种
 
@@ -192,22 +195,20 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 		
-			//点击Configure图标回到Id_vds界面
+			/*//点击Configure图标回到Id_vds界面
 			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 			DisplayPanel(IdVgPanel.panelHandle);
-			
-		/*	SetPanelPos(hBasicSamplePanel, 105, 1600);
+			SetPanelPos(hBasicSamplePanel, 105, 1600);
 			SetPanelSize(hBasicSamplePanel, 449, 320);
 			DisplayPanel(hBasicSamplePanel);
-			
 			SetPanelPos(hEnvCfgPanel, 556, 1600);
 			SetPanelSize(hEnvCfgPanel, 449, 320);
 			DisplayPanel(hEnvCfgPanel);*/
 			break;
 			
 	}
-		   	TreeCallback (panel, control , event,callbackData,  eventData1,  eventData2);//调用 Experiment List中tree控件的回调函数
+		   	TreeCallback(panel, control , event,callbackData,  eventData1,  eventData2);//调用 Experiment List中tree控件的回调函数
 
 	return 0;
 }
@@ -242,6 +243,7 @@ static void RunActiv()
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+	
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,1);//运行过程中禁止设置曲线属性        
 	
 	
@@ -512,13 +514,30 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 			SetPanelSize(hPrjPanel,700,1400);
 			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
+			SetCtrlAttribute(hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
+			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
+			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1);
 			SetPanelSize(hPrjListPanel,550,1399);
 			SetPanelPos(hPrjListPanel,90,0);
 			DisplayPanel(hPrjListPanel); 
-			
 			LoadAllProject(ProjectSavePath);
 
 			break;
 	}	 
+	return 0;
+}
+
+int CVICALLBACK ToolsCallback (int panel, int control, int event,
+							   void *callbackData, int eventData1, int eventData2)
+{
+	
+	
+		switch(event){
+		case EVENT_LEFT_CLICK_UP:
+			SetPanelSize(hToolsPanel,500,500);
+			SetPanelPos(hToolsPanel,250,400);
+			InstallPopup (hToolsPanel);
+		    break;
+	}
 	return 0;
 }

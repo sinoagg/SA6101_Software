@@ -36,6 +36,7 @@
 #include "ResultDispPanel.h"
 #include "Id-t Configuration.h"
 #include "Terminal.h"
+#include "Tools.h"
 
 
 		
@@ -73,6 +74,8 @@ extern int hPrjListPanel;
 extern int hIdtPanel;
 extern int hTwoTerminalPanel;
 extern int hFourTerminalPanel;
+extern int hToolsPanel;
+extern int hCalibrationPanel;
 
 
 //==============================================================================

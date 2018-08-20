@@ -1,0 +1,24 @@
+[ToolsPanelCallback]
+Class="Function"
+Prototype="int ToolsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
+[CalibrationCallback]
+Class="Function"
+Prototype="int CalibrationCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[OkCallback]
+Class="Function"
+Prototype="int OkCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[OutVoltageCallback]
+Class="Function"
+Prototype="int OutVoltageCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ZeroCurrentCallback]
+Class="Function"
+Prototype="int ZeroCurrentCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[DangCallback]
+Class="Function"
+Prototype="int DangCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

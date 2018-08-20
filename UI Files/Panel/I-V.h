@@ -31,6 +31,7 @@
 #define  IVPANEL_TEXTMSG                  16      /* control type: textMsg, callback function: (none) */
 #define  IVPANEL_TEXTMSG_23               17      /* control type: textMsg, callback function: (none) */
 #define  IVPANEL_TEXTMSG_24               18      /* control type: textMsg, callback function: (none) */
+#define  IVPANEL_TEXTMSG_25               19      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

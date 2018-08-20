@@ -61,6 +61,8 @@ int hResultDispPanel;
 int hIdtPanel;
 int hTwoTerminalPanel;
 int hFourTerminalPanel;
+int hToolsPanel;
+int hCalibrationPanel;
 
 //==============================================================================
 // Global functions
@@ -139,15 +141,20 @@ int LoadInitPanel (void)
 		
 	if ((hPrjPanel = LoadPanel (hMainPanel, "Project.uir", PROPANEL)) < 0)		//load projects panel
 		return -1;
-		if ((hPrjListPanel = LoadPanel (hPrjPanel, "Project.uir", LISTPANEL)) < 0)		//load projects panel
-		return -1;												  
-	//if((hPrjListPanel = LoadPanel(hPrjPanel,"Project.uir",DEFPANEL))<0)
-	//	return -1;
+	
+	if ((hPrjListPanel = LoadPanel (hPrjPanel, "Project.uir", LISTPANEL)) < 0)		//load projects panel
+		return -1;
+	
+	if ((hToolsPanel = LoadPanel(hMainPanel,"Tools.uir",TOOLSPANEL))<0)
+		return -1;
+	if((hCalibrationPanel = LoadPanel(hMainPanel,"Tools.uir",CALPANEL))<0)  
+		return -1;
 			
 	if((hTwoTerminalPanel= LoadPanel(hMainPanel,"Terminal.uir",TWOTRMLPAL))<0)
 		return -1;
 	if((hFourTerminalPanel= LoadPanel(hMainPanel,"Terminal.uir",FETPANEL))<0)
 		return -1;
+	
 	DisplayPanel (hMainPanel); 
 	
 	SetPanelPos(hExpListPanel, 105, 3);  //¼ÓÔØÃæ°åÎ»ÖÃ £¨,top,left£©  i

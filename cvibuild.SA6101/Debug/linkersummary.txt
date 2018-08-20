@@ -24,6 +24,7 @@ SampleCfgPanel.obj
 SettingsPanel.obj
 Table.obj
 Timer.obj
+ToolsPanel.obj
 cvistart.lib
 cvi.lib
 cviauto.lib
