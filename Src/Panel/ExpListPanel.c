@@ -134,7 +134,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			else if(index==EXP_R_T)	//º”‘ÿR-T 
 			{	
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "T(s)");	  
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(¶∏)");
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
 				SetPanelPos(hRT_Panel, 104, 305);
 				SetPanelSize(hRT_Panel, 901, 1293);
 				DisplayPanel(hRT_Panel);

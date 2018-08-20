@@ -65,7 +65,7 @@ PrjHandleTypeDef SingleProject[64];
 int TimerID;
 char configSavePath[512]={0};
 char table_title_IT[11][20] ={"t(s)","I(A)"};
-char table_title_RT[11][20] ={"t(s)","R(Ω)"};
+char table_title_RT[11][20] ={"t(s)","R(Ohm)"};
 char table_title_IV[11][20] ={"V(mV)","I(A)"};
 char table_title_Idt[11][20] ={"t(s)","Id(A)"}; 
 char table_title_IdVd[11][20] ={"V(mV)","Id(A)"};
@@ -137,6 +137,9 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
 			
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
 			DispResultMenu();
 			DispResultTableGraph();
 			DispResultNumber();
@@ -161,8 +164,8 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_LEFT_CLICK_UP:			    //当Select被鼠标左键点击时,Select图标改变，其它两个正常状态 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");
+		case EVENT_LEFT_CLICK_UP:			    
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select_pressed.ico");//Select被点击,Select图标改变，其它两个正常状态  
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 
