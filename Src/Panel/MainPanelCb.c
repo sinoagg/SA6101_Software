@@ -132,8 +132,8 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
- 		case EVENT_LEFT_CLICK_UP:			    //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态， 
-			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
+ 		case EVENT_LEFT_CLICK_UP:			  
+			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");   //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
 			
@@ -143,15 +143,14 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DispResultMenu();
 			DispResultTableGraph();
 			DispResultNumber();
-
 		    DispEnvironmentCfg();
-			int index;
+		/*	int index;
 			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
 			if(index==EXP_I_T||index==EXP_R_T||index==EXP_ID_T)
 				DispRuntime(1);
 			else 
-				DispRuntime(0);
-		   	DispEnvironmentCfg();
+				DispRuntime(0);*/
+		   
 
 			break;
 	}
@@ -265,7 +264,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				DispRuntime(1);
 			else 
 				DispRuntime(0);
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线 
 			
 			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
@@ -278,7 +276,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			Table_ATTR.columnWidth= 290;  							//列宽
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
 	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);//每个实验运行之前清除上一个实验的table数据  
-			
+			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线 
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
 				return -1; 
 			TestPara.testMode=(enum TestMode)expType;
@@ -295,7 +293,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
 					}
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
-					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up    
+					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
 					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
@@ -311,6 +309,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
 					}
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 	
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;

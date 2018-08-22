@@ -1,15 +1,15 @@
 //==============================================================================
 //
-// Title:		ToolsPanel.h
+// Title:		ProjectPanel.h
 // Purpose:		A short description of the interface.
 //
-// Created on:	2018/8/18 at 15:06:35 by .
+// Created on:	2018/8/20 at 9:22:39 by .
 // Copyright:	. All Rights Reserved.
 //
 //==============================================================================
 
-#ifndef __ToolsPanel_H__
-#define __ToolsPanel_H__
+#ifndef __ProjectPanel_H__
+#define __ProjectPanel_H__
 
 #ifdef __cplusplus
     extern "C" {
@@ -37,4 +37,4 @@
     }
 #endif
 
-#endif  /* ndef __ToolsPanel_H__ */
+#endif  /* ndef __ProjectPanel_H__ */

@@ -44,7 +44,6 @@ typedef struct
 	float* pDotY;									//当前接收点Y坐标地址
 	float* pDotXPlot;								//当前画线点X坐标
 	float* pDotYPlot;								//当前画线点Y坐标
-	float Current;  //接收电流值
 	CurveAttrTypeDef* pCurveAttr;
 }CurveTypeDef;
 

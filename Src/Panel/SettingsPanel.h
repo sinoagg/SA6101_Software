@@ -33,10 +33,15 @@
 //==============================================================================
 // External variables
 extern char ProjectSavePath[512];	   //本地工作目录Dir 
+extern CurveAttrTypeDef* pCurveAttr;
+
+extern CurveAttrTypeDef Graph2_CurveAttr1;
+extern CurveAttrTypeDef Graph2_CurveAttr2;
+extern CurveAttrTypeDef Graph2_CurveAttr3;
 //==============================================================================
 // Global functions
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex);
-
+   
 #ifdef __cplusplus
     }
 #endif

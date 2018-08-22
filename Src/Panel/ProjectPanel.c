@@ -166,9 +166,9 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 				SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 
+			 }
+			 
 			break;
-			}
-		
 	}
 	return 0;
 }

@@ -1,10 +1,8 @@
 #include <utility.h>
 #include "asynctmr.h"
-#include <ansi_c.h>
 #include <cvirte.h>		
 #include <userint.h>
 #include <rs232.h>
-
 #include "main.h"
 #include "LoadPanel.h"
 #include "MainPanelCb.h"
@@ -47,16 +45,14 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
-		SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);
-		//SetGraphY_Axis(&Graph1, RxData.rxIdmeasured.num_float);
-		
+	
 		Graph1.pCurveArray->numOfDotsToPlot++;									//number of dots to plot increase
 					
-		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
 			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data 
+			
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 		{
@@ -65,12 +61,16 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		}
 		else if(TestPara.testMode==NO_SWEEP_IT)
 		{
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);              
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;
+			
+			
 		}
 		else if(TestPara.testMode==NO_SWEEP_RT)
 		{
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);              
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;			//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxVdmeasured.num_float/RxData.rxIdmeasured.num_float;     
@@ -82,6 +82,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		}
 		else if(TestPara.testMode==ID_T)
 		{
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);
 			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time*0.001;
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float; 
@@ -97,6 +98,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		
 		if((RxData.rxStopSign==0x01) || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))											//如果收到最后一个数据了，没有必要再去处理其他数据
 		{
+			rxNum= 0;
 			DiscardAsyncTimer(TimerID);											//停止query定时器查询  
 		}
 		
@@ -106,8 +108,14 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	if((RxData.rxStopSign==0x01) || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))
 	{
 		DiscardAsyncTimer(TimerID);											//停止query定时器查询  
-		GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
-		GraphDeinit(&Graph2);
+	/*	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
+		GraphDeinit(&Graph2);*/
+	
+	   	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+	  	FlushInQ(portNumber);	   														//Clear input and output buffer
+		FlushOutQ(portNumber);
+	
+	
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 	    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 		SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
@@ -119,7 +127,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
-	int status;
+//	int status;
 	int rxNum;																							  
 	int i=0;
 	static a = 0;
@@ -161,7 +169,7 @@ int main (int argc, char *argv[])
 	//else SA11_Status=1;
 	
 	LoadInitPanel(); 
-	//CheckPortStatus(controlComPort, 14, CtrlComCallback); //controlComPort
+	CheckPortStatus(controlComPort, 14, CtrlComCallback); //controlComPort
 	RunUserInterface();
 	CloseCom(measureComPort);
 	

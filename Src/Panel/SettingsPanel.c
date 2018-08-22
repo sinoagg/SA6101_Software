@@ -1,5 +1,4 @@
 #include "Settings.h"
-#include <ansi_c.h>
 #include <userint.h>
 #include "LoadPanel.h"
 #include "SettingsPanel.h"
@@ -15,9 +14,10 @@ CurveAttrTypeDef Graph1_CurveAttr1;
 CurveAttrTypeDef Graph1_CurveAttr2;
 CurveAttrTypeDef Graph1_CurveAttr3;
 
-CurveAttrTypeDef Graph2_CurveAttr1;
-CurveAttrTypeDef Graph2_CurveAttr2;
-CurveAttrTypeDef Graph2_CurveAttr3;
+
+ CurveAttrTypeDef Graph2_CurveAttr1;
+ CurveAttrTypeDef Graph2_CurveAttr2;
+ CurveAttrTypeDef Graph2_CurveAttr3;
 
 char ProjectSavePath[512]="C:\\Sinoagg\\SA6101\\Users\\";	   //本地工作目录Dir
 
@@ -29,22 +29,21 @@ static void GetSingleCurveAttr(CurveAttrTypeDef *pCurveAttr, int GraphIndex, int
 	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_PLOT_STYLE, &(pCurveAttr->plotStyle));
 	GetCtrlVal(hSettingsGraphPanel, SETGRAPH_POINT_STYLE,&(pCurveAttr->pointStyle));
 	//根据index获取颜色
-/*																		                                                                                                                                                                                                                                  
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(pCurveAttr->lineColor));
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(pCurveAttr->lineColor));
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(pCurveAttr->lineColor));
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR1,&(pCurveAttr->lineColor));
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR2,&(pCurveAttr->lineColor));
-	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH2CLR3,&(pCurveAttr->lineColor));
-*/
+													                                                                                                                                                                                                                                  
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(Graph1_CurveAttr1.lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(Graph1_CurveAttr2.lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(Graph1_CurveAttr3.lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,&(Graph2_CurveAttr1.lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,&(Graph2_CurveAttr2.lineColor));
+	GetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,&(Graph2_CurveAttr3.lineColor));
 }
 
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 {
-	CurveAttrTypeDef* pCurveAttr;
+	
 	if(GraphIndex==GRAPH1)
 	{
-		switch(CurveIndex)
+		switch(CurveIndex%3)
 		{
 			case CURVE1:
 				GetSingleCurveAttr(&Graph1_CurveAttr1, GraphIndex, CurveIndex);
@@ -61,27 +60,33 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 			default:
 				GetSingleCurveAttr(&Graph1_CurveAttr1, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph1_CurveAttr1;
+				break;
 		}
 	}
-	else
+	else if(GraphIndex==GRAPH2)
 	{
-		switch(CurveIndex%3)
+		switch(CurveIndex)
 		{
 			case CURVE1:
+				GetSingleCurveAttr(&Graph2_CurveAttr1, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph2_CurveAttr1;
 				break;
 			case CURVE2:
+				GetSingleCurveAttr(&Graph2_CurveAttr2, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph2_CurveAttr2;
 				break;
 			case CURVE3:
+				GetSingleCurveAttr(&Graph2_CurveAttr3, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph2_CurveAttr3;
 				break;
 			default:
+				GetSingleCurveAttr(&Graph2_CurveAttr1, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph2_CurveAttr1;
+				break;
 		}
 	}
 	return pCurveAttr;
-}
+}		   
 
 int CVICALLBACK PrjBtnCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
