@@ -16,7 +16,7 @@ Prototype="void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, un
 
 [ProtocolCalibrate]
 Class="Function"
-Prototype="void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char *pmeasUartTxBuf);"
+Prototype="void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char *pmeasUartTxBuf, unsigned char caliType, unsigned char caliRange);"
 
 [ProtocolGetData]
 Class="Function"

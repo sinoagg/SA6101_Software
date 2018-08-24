@@ -35,9 +35,9 @@ typedef struct
 	
 	unsigned int Evaporation_temp;			//蒸发温度
 	
-	unsigned int environmental_humidity;	//环境湿度
+	unsigned int humidity;	//环境湿度
 	
-	int environmental_temp;					//环境温度 
+	int environment_temp;					//环境温度 
 
 	
 }Rx_CGS_DataTypeDef;

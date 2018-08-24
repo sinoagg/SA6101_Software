@@ -20,6 +20,8 @@
 #define COLOR_GREY 0xA9A9A9L	   //Î´µã»÷»ÒÉ«
 #define FOCUS	0
 #define UNFOCUS 1
+#define BIAS 0
+#define STEP 2
 //==============================================================================
 // Constants
 
@@ -127,7 +129,7 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 		case EVENT_VAL_CHANGED:
 		    int val;
 		    GetCtrlVal(panel,IDVGS_CFG_DRAINMODE,&val);
-			if(val==2)
+			if(val==STEP)
 			{
 		        DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Step.ico");
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STOP,ATTR_VISIBLE,1);
@@ -137,7 +139,7 @@ int CVICALLBACK IdVgDrainModeCallback (int panel, int control, int event,
 				SetCtrlAttribute(panel, IDVGS_CFG_TXT_STEP,ATTR_VISIBLE,1);
 				SetCtrlAttribute(panel, IDVGS_CFG_MV_STEP,ATTR_VISIBLE,1);
 			}
-			else if(val==0)
+			else if(val==BIAS)
 			{
 				DisplayImageFile (panel, IDVGS_CFG_PIC_IDVD_DRAIN, "Resource\\V_Bias.ico");
 				SetCtrlAttribute(panel, IDVGS_CFG_VD_STOP,ATTR_VISIBLE,0);

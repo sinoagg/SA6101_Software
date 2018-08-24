@@ -20,6 +20,8 @@
 #define COLOR_BLUE 0xA0B4DCL   // µã»÷¼¤»îÀ¶É« 
 #define FOCUS	0
 #define UNFOCUS 1
+#define BIAS 0
+#define STEP 2
 //==============================================================================
 // Constants
 
@@ -116,7 +118,7 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 		case EVENT_VAL_CHANGED:
 			int val;
 			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
-			if(val==2)
+			if(val==STEP)
 			{
 		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
 				SetCtrlAttribute(panel, IDVDS_CFG_VG_STOP,ATTR_VISIBLE,1);
@@ -126,7 +128,7 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 				SetCtrlAttribute(panel, IDVDS_CFG_TXT_STEP,ATTR_VISIBLE,1);
 				SetCtrlAttribute(panel, IDVDS_CFG_MV_STEP,ATTR_VISIBLE,1);
 			}
-			else if(val==0)
+			else if(val==BIAS)
 			{
 				DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Bias.ico");
 				SetCtrlAttribute(panel, IDVDS_CFG_VG_STOP,ATTR_VISIBLE,0);

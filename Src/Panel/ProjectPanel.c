@@ -66,6 +66,30 @@ int CVICALLBACK PIC_OpenPrjCallback (int panel, int control, int event,
 	return 0;
 }
 
+  
+static void SelectProject(int panel, int select)
+{
+	selectPanel=GetActivePanel(); //获得当前选中项目面板的句柄值 
+	if(select)
+	{
+		
+		SetPanelAttribute(selectPanel, ATTR_BACKCOLOR, CHANGECOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, COLOR);	
+	}
+	else
+	{
+		                                                                                                                               SetPanelAttribute(panel, ATTR_BACKCOLOR, BGCOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, BGCOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, BGCOLOR);
+		SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
+	}
+}
 int CVICALLBACK TXT_ExitPrjCallback (int panel, int control, int event,
 							void *callbackData, int eventData1, int eventData2)
 {
@@ -73,6 +97,10 @@ int CVICALLBACK TXT_ExitPrjCallback (int panel, int control, int event,
 	{
 		DiscardAllPrjPanel(SingleProject);
 		RemovePopup (hPrjPanel);  
+			if(selectPanel)
+				SelectProject(selectPanel,1);				//取消当前选中状态  
+		
+			 
 	}
 	return 0;
 }
@@ -84,34 +112,15 @@ int CVICALLBACK PIC_ExitPrjCallback (int panel, int control, int event,
 	{
 		DiscardAllPrjPanel(SingleProject);
 		RemovePopup (hPrjPanel);  
+			if(selectPanel)
+			   	SelectProject(selectPanel,1);				//取消当前选中状态  
+			
+			 
 	}
 	return 0;
 }
 
-static void SelectProject(int panel, int select)
-{
-	
-	selectPanel=GetActivePanel(); //获得当前选中项目面板的句柄值 
-	if(select)
-	{
-		
-		SetPanelAttribute(panel, ATTR_BACKCOLOR, CHANGECOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, COLOR);	
-	}
-	else
-	{
-		SetPanelAttribute(panel, ATTR_BACKCOLOR, BGCOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, BGCOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_TIME, ATTR_TEXT_BGCOLOR, BGCOLOR);
-		SetCtrlAttribute (panel, DEFPANEL_CANVAS, ATTR_PICT_BGCOLOR, BGCOLOR);
-	}
-}
+
 
 static char GetPanelIndex(int panel)
 {
@@ -158,11 +167,10 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			if(selectPanel)	
-				SelectProject(selectPanel,0);				//取消当前选中状态  
-			else
+			if(selectPanel)
 			{
-				SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
+				SelectProject(selectPanel,0);				//取消当前选中状态  
+				//SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
 				SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 

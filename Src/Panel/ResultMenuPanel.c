@@ -46,14 +46,14 @@ int nBitmapID;
 static void DispTable(void)
 {
 	SetPanelPos(hTablePanel, 172, 305);  
- 	SetPanelSize(hTablePanel, 833, 1293);      
+ 	//SetPanelSize(hTablePanel, 833, 1293);      
 	DisplayPanel(hTablePanel);
 }
 
 static void DispSingleGraph(void)
 {
 	SetPanelPos(hGraphPanel, 172, 305);  
-	SetPanelSize(hGraphPanel, 833, 1293);
+	//SetPanelSize(hGraphPanel, 833, 1293);
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
 	DisplayPanel(hGraphPanel);
@@ -64,7 +64,7 @@ static void DispSingleGraph(void)
 static void DispDoubleGraph(void)
 {
 	SetPanelPos(hGraphPanel, 172, 305);  
-	SetPanelSize(hGraphPanel, 833, 1293);
+	//SetPanelSize(hGraphPanel, 833, 1293);
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 	DisplayPanel(hGraphPanel);
@@ -83,7 +83,7 @@ static void DispGraphSelectCheckBox(void)
 	 
 	}
 	SetPanelPos(hGraphSelectPanel, 172, 1457);  
-	SetPanelSize(hGraphSelectPanel, 26, 140);      
+	//SetPanelSize(hGraphSelectPanel, 26, 140);      
  	DisplayPanel(hGraphSelectPanel);
 }
 

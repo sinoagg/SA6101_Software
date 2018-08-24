@@ -106,7 +106,7 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf); 
 void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
 void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
-void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
+void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf, unsigned char caliType, unsigned char caliRange);
 void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData);
 
 #ifdef __cplusplus

@@ -102,14 +102,14 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 static void DispResultMenu(void)
 {
 	SetPanelPos(hResultMenuPanel, 105, 305);  
- 	SetPanelSize(hResultMenuPanel, 65, 1293);      
+ 	//SetPanelSize(hResultMenuPanel, 65, 1293);      
 	DisplayPanel(hResultMenuPanel);
 }
 
 static void DispResultNumber(void)
 {
 	SetPanelPos(hResultDispPanel, 105, 1600);
-	SetPanelSize(hResultDispPanel, 449, 320);
+	//SetPanelSize(hResultDispPanel, 449, 320);
 	DisplayPanel(hResultDispPanel);
 }
 static void DispRuntime(int display)
@@ -123,7 +123,7 @@ static void DispRuntime(int display)
 static void DispEnvironmentCfg(void)
 {
 	SetPanelPos(hEnvResultPanel, 556, 1600);
-	SetPanelSize(hEnvResultPanel, 449, 320);
+	//SetPanelSize(hEnvResultPanel, 449, 320);
 	DisplayPanel(hEnvResultPanel);
 }
 
@@ -169,9 +169,8 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 
 	 		SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-	        SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
+	        //SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 	        DisplayPanel(IdVgPanel.panelHandle);
-
 			HidePanel(hBasicSamplePanel);	 
 			HidePanel(hResultDispPanel);
 			HidePanel(hEnvResultPanel);
@@ -196,7 +195,6 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-		
 			/*//点击Configure图标回到Id_vds界面
 			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
@@ -219,23 +217,23 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 static void RunActiv()
 {
  	SetPanelPos(hResultMenuPanel, 105, 305);  
-	SetPanelSize(hResultMenuPanel, 65, 1293);      
+	//SetPanelSize(hResultMenuPanel, 65, 1293);      
  	DisplayPanel(hResultMenuPanel);  
 			
 	SetPanelPos(hGraphPanel, 172, 305);  
-	SetPanelSize(hGraphPanel, 833, 1293);
+	//SetPanelSize(hGraphPanel, 833, 1293);
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
  	DisplayPanel(hGraphPanel);
 		   
 	SetPanelPos(hResultDispPanel, 105, 1600);
-	SetPanelSize(hResultDispPanel, 449, 320);
+	//SetPanelSize(hResultDispPanel, 449, 320);
 	DisplayPanel(hResultDispPanel);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
 	SetPanelPos(hEnvResultPanel, 556, 1600);
-	SetPanelSize(hEnvResultPanel, 449, 320);
+	//SetPanelSize(hEnvResultPanel, 449, 320);
 	DisplayPanel(hEnvResultPanel);
 				    
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮      
@@ -254,7 +252,7 @@ static void RunActiv()
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
 {
-	switch (event)
+	switch (event)																							  
 	{
 		case EVENT_LEFT_CLICK_UP:
 		    RunActiv();
@@ -265,11 +263,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			else 
 				DispRuntime(0);
 			
-			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
+			FlushInQ(measureComPort);	   							//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
 			
 			int expType;
-			int graphIndex=1;	//currently only deal with one graph circumstance
+			int graphIndex=1;										//currently only deal with one graph circumstance
 			int numOfCurve=1;
 			int numOfDots=0;
 			Table_ATTR.column = 2 ;   								//列数
@@ -281,36 +279,38 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				return -1; 
 			TestPara.testMode=(enum TestMode)expType;
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
+
 			switch(TestPara.testMode)
 			{
 			   	case SWEEP_DRAIN_VOL:				 
 					if(TestPara.gateOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
+						
 					}
 					else if(TestPara.gateOutputMode==VOL_STEP)
 					{
 						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
 					}
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
-					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 	//graph set up
+					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 		//graph set up
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
 					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
-
 					break;
 					
 				case SWEEP_GATE_VOL:
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
+						
 					}else if(TestPara.drainOutputMode==VOL_STEP)
 					{
 						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
+						
 					}
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 	
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth);
@@ -407,10 +407,9 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-	         InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
-
+	        InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
 			SetPanelPos(hSettingsPrjPanel, 5, 170);
-			SetPanelSize(hSettingsPrjPanel, 350, 650);
+			//SetPanelSize(hSettingsPrjPanel, 350, 650);
 			DisplayPanel(hSettingsPrjPanel);
 
 			break;
@@ -513,13 +512,13 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelSize(hPrjPanel,700,1400);
+			//SetPanelSize(hPrjPanel,700,1400);
 			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1);
-			SetPanelSize(hPrjListPanel,550,1399);
+			//SetPanelSize(hPrjListPanel,550,1399);
 			SetPanelPos(hPrjListPanel,90,0);
 			DisplayPanel(hPrjListPanel); 
 			LoadAllProject(ProjectSavePath);
@@ -536,7 +535,7 @@ int CVICALLBACK ToolsCallback (int panel, int control, int event,
 	
 		switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			SetPanelSize(hToolsPanel,500,500);
+			//SetPanelSize(hToolsPanel,500,500);
 			SetPanelPos(hToolsPanel,250,400);
 			InstallPopup (hToolsPanel);
 		    break;

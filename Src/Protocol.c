@@ -11,6 +11,7 @@
 //==============================================================================
 // Include files
 
+#include <ansi_c.h>
 #include <userint.h>
 #include "Protocol.h"
 #include "IdVdsPanel.h"
@@ -21,6 +22,7 @@
 #include "RtPanel.h"
 #include "IvPanel.h"
 #include "IdtPanel.h"
+#include "Graph.h"
 
 //==============================================================================
 // Constants
@@ -46,6 +48,7 @@ enum MsgType
 //==============================================================================
 // Global variables
 TestParaTypeDef TestPara;
+  GraphTypeDef* pGraph;
 //==============================================================================
 // Global functions
 static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
@@ -60,7 +63,6 @@ static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->drainModeID, &(pTestPara->drainOutputMode));
 	GetCtrlVal(pExpPanel->panelHandle, pExpPanel->gateModeID, &(pTestPara->gateOutputMode));
-	
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_QUIETTIME, &(pTestPara->quietTime));   //所有采样配置都是兼容的
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_TIMESTEP, &(pTestPara->timeStep));
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_RUNTIME, &(pTestPara->runTime));
@@ -68,7 +70,7 @@ static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_SAMPLENUMBER, &(pTestPara->sampleNumber));
 	GetCtrlVal(hBasicSamplePanel, SAMPLE_CFG_RANGESETTING, &(pTestPara->rangeMode));
 	GetCtrlVal(hAdvanceSamplePanel, SAMPLE_ADV_MAXRANGE, &(pTestPara->maxRange));
-	GetCtrlVal(hAdvanceSamplePanel, SAMPLE_ADV_MINRANGE, &(pTestPara->minRange));
+	GetCtrlVal(hAdvanceSamplePanel, SAMPLE_ADV_MINRANGE, &(pTestPara->minRange));	
 }
 
 static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth)
@@ -78,9 +80,10 @@ static unsigned char GetXorCheckVal(unsigned char* pUartBuf, unsigned char lenth
 		xorCheck^=*(pUartBuf+i);	
 	return xorCheck;	
 }
-
+	 
 static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
 {
+	
 	*pmeasUartTxBuf=devAddr;
 	*(pmeasUartTxBuf+1)=MSG_TYPE_SETTING;     
 	*(pmeasUartTxBuf+2)=(unsigned char)(pTestPara->testMode);
@@ -137,7 +140,8 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 			break;
 	}
 	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      
-	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN); //向指定串行口(comSelect)的输出队列写(SA61_UART_TX_LEN=30)入若干字节的信息;
+																	  //即将读取到的参数发送出去
 }
 
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
@@ -160,14 +164,17 @@ void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char
 {
 	*pmeasUartTxBuf=devAddr;
 	*(pmeasUartTxBuf+1)=MSG_TYPE_QUERY;
+	
 	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
 	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }
 
-void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
+void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf, unsigned char caliType, unsigned char caliRange)
 {
 	*pmeasUartTxBuf=devAddr;
 	*(pmeasUartTxBuf+1)=MSG_TYPE_CALIBRATION;
+	*(pmeasUartTxBuf+2)=caliType; 
+	*(pmeasUartTxBuf+3)=caliRange; 
 	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
 	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
 }

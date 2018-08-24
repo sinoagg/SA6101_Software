@@ -92,7 +92,7 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)
 
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
 {
-/*	if(pGraph->pGraphAttr->xAxisTail < currentX_Val)
+	if(pGraph->pGraphAttr->xAxisTail < currentX_Val)
 	{
 		Graph1.pGraphAttr->xAxisTail = currentX_Val*2;
 		SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//…Ë÷√ X  ÷·µƒ∑∂Œß
@@ -102,13 +102,13 @@ void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
 		Graph1.pGraphAttr->yAxisTail = currentX_Val/2;
 		SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//…Ë÷√ X  ÷·µƒ∑∂Œß
 
-	}	*/ 
+	}	 
 }
 
 int CVICALLBACK CanvasCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-		int LeftButtonDown;
+	int LeftButtonDown;
 	int x;
 	int y;
 	int CtrlTop;

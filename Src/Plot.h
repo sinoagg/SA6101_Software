@@ -34,8 +34,9 @@
 // Global functions
 
 int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control);
+
 int PlotCurve2(GraphTypeDef* pGraph2, int hGraphPanel, int control);    
-void DisplayTempGraph();  
+void DisplayEnvtGraph();  
 #ifdef __cplusplus
     }
 #endif
