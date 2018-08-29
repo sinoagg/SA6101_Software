@@ -31,14 +31,14 @@
 // Global variables
   ExpPanelTypeDef RtPanel={
 	 0,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_START,
-	 RTPANEL_VG_MODE,
-	 RTPANEL_VG_MODE,
+	 RTPANEL_VD_START,
+	 RTPANEL_VD_START,
+	 RTPANEL_VD_START,
+	 RTPANEL_VD_START,
+	 RTPANEL_VD_START,
+	 RTPANEL_VD_START,
+	 RTPANEL_VD_MODE,
+	 RTPANEL_VD_MODE,
 
  };
 //==============================================================================

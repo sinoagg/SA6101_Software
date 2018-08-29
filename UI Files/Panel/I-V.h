@@ -14,10 +14,10 @@
      /* Panels and Controls: */
 
 #define  IVPANEL                          1
-#define  IVPANEL_VG_STEP                  2       /* control type: numeric, callback function: (none) */
-#define  IVPANEL_VG_STOP                  3       /* control type: numeric, callback function: (none) */
-#define  IVPANEL_VG_START                 4       /* control type: numeric, callback function: (none) */
-#define  IVPANEL_VG_MODE                  5       /* control type: ring, callback function: (none) */
+#define  IVPANEL_VD_STEP                  2       /* control type: numeric, callback function: (none) */
+#define  IVPANEL_VD_STOP                  3       /* control type: numeric, callback function: (none) */
+#define  IVPANEL_VD_START                 4       /* control type: numeric, callback function: (none) */
+#define  IVPANEL_VD_MODE                  5       /* control type: ring, callback function: (none) */
 #define  IVPANEL_TXT_STEP                 6       /* control type: textMsg, callback function: (none) */
 #define  IVPANEL_PIC_GATE                 7       /* control type: picture, callback function: (none) */
 #define  IVPANEL_TXT_MODE                 8       /* control type: textMsg, callback function: (none) */

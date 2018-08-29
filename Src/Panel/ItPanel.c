@@ -32,13 +32,13 @@
  ExpPanelTypeDef ItPanel={
 	 0,
 	 ITPANEL_VD_START,
-	 ITPANEL_VD_START,
-	 ITPANEL_VD_START,
-	 ITPANEL_VD_START,
-	 ITPANEL_VD_START,
-	 ITPANEL_VD_START,
+	 ITPANEL_VD_START,//此数据不用
+	 ITPANEL_VD_START,//此数据不用
+	 ITPANEL_VD_START,//此数据不用
+	 ITPANEL_VD_START, //此数据不用
+	 ITPANEL_VD_START,//此数据不用
 	 ITPANEL_VD_MODE,
-	 ITPANEL_VD_MODE,
+	 ITPANEL_VD_MODE, //此数据不用
  };
 //==============================================================================
 // Global functions

@@ -14,8 +14,8 @@
      /* Panels and Controls: */
 
 #define  RTPANEL                          1
-#define  RTPANEL_VG_START                 2       /* control type: numeric, callback function: (none) */
-#define  RTPANEL_VG_MODE                  3       /* control type: ring, callback function: (none) */
+#define  RTPANEL_VD_START                 2       /* control type: numeric, callback function: (none) */
+#define  RTPANEL_VD_MODE                  3       /* control type: ring, callback function: (none) */
 #define  RTPANEL_PIC_GATE                 4       /* control type: picture, callback function: (none) */
 #define  RTPANEL_TXT_MPDE                 5       /* control type: textMsg, callback function: (none) */
 #define  RTPANEL_TEXTMSG_22               6       /* control type: textMsg, callback function: (none) */

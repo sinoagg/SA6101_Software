@@ -30,10 +30,11 @@
 // Types
 enum TestCmd
 {
-	CMD_START=0x11,
-	CMD_PAUSE=0x12,
+	CMD_SETTING=0x11,
+	CMD_START=0x12,
 	CMD_STOP=0x13,
-	CMD_CONTINUE=0x14
+	CMD_QUERY=0x14,
+	CMD_CALIBRATION=0x15
 };		
 
 typedef union										//float union
@@ -44,15 +45,13 @@ typedef union										//float union
 
 enum TestMode
 {
-	CALIBRATION=0,
 	SWEEP_DRAIN_VOL=1,
 	SWEEP_GATE_VOL=2,
-	NO_SWEEP_IT=3,
-	NO_SWEEP_RT=4,
-	SWEEP_IV=5,
+	SWEEP_IV=3,
+	NO_SWEEP_IT=4,
+	NO_SWEEP_RT=5,
 	ID_T=6
 };
-
 enum OutputModeType
 {
 	VOL_BIAS=0,
@@ -108,6 +107,7 @@ void ProtocolStop(unsigned char comSelect, unsigned char devAddr, unsigned char*
 void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);
 void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf, unsigned char caliType, unsigned char caliRange);
 void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData);
+void ProtocolCfgTxData(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf);  
 
 #ifdef __cplusplus
     }

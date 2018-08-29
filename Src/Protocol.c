@@ -48,7 +48,7 @@ enum MsgType
 //==============================================================================
 // Global variables
 TestParaTypeDef TestPara;
-  GraphTypeDef* pGraph;
+GraphTypeDef* pGraph;
 //==============================================================================
 // Global functions
 static void GetTestPara(ExpPanelTypeDef* pExpPanel, TestParaTypeDef* pTestPara)
@@ -115,6 +115,11 @@ static void PrepareCfgTxData(TestParaTypeDef* pTestPara, unsigned char devAddr, 
 	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1); 
 }
 
+void ProtocolCfgTxData(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
+{
+	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      
+	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN); //向指定串行口(comSelect)的输出队列写(SA61_UART_TX_LEN=30)入若干字节的信息;//即将读取到的参数发送出去
+}
 
 void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode expType, unsigned char* pmeasUartTxBuf)
 {
@@ -139,9 +144,7 @@ void ProtocolCfg(unsigned char comSelect, unsigned char devAddr, enum TestMode e
 			GetTestPara(&IdtPanel,&TestPara);
 			break;
 	}
-	PrepareCfgTxData(&TestPara, devAddr, pmeasUartTxBuf);      
-	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN); //向指定串行口(comSelect)的输出队列写(SA61_UART_TX_LEN=30)入若干字节的信息;
-																	  //即将读取到的参数发送出去
+	ProtocolCfgTxData(comSelect, devAddr, pmeasUartTxBuf);
 }
 
 void ProtocolRun(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf)
@@ -183,8 +186,8 @@ void ProtocolGetData(unsigned char* pmeasUartRxBuf, RxDataTypeDef* pRxData)	//Ge
 {
 	pRxData->rxDevAddr=*pmeasUartRxBuf;
 	pRxData->rxStopSign=*(pmeasUartRxBuf+1);
-	pRxData->rxVdtest=(((int)*(pmeasUartRxBuf+2))<<8)|*(pmeasUartRxBuf+3);
-	pRxData->rxVgtest=(((int)*(pmeasUartRxBuf+4))<<8)|*(pmeasUartRxBuf+5);
+	pRxData->rxVdtest=(short)(((*(pmeasUartRxBuf+2))<<8)|*(pmeasUartRxBuf+3));
+	pRxData->rxVgtest=(short)(((*(pmeasUartRxBuf+4))<<8)|*(pmeasUartRxBuf+5));
 	pRxData->rxIdmeasured.num_uchar[3]=*(pmeasUartRxBuf+6);
 	pRxData->rxIdmeasured.num_uchar[2]=*(pmeasUartRxBuf+7); 
 	pRxData->rxIdmeasured.num_uchar[1]=*(pmeasUartRxBuf+8); 

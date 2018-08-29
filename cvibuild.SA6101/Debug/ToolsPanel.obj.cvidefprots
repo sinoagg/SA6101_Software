@@ -6,10 +6,6 @@ Prototype="int ToolsPanelCallback(int panel, int event, void *callbackData, int 
 Class="Function"
 Prototype="int CalibrationCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[SaveCaliCallback]
-Class="Function"
-Prototype="int SaveCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-
 [OutputVoltageCaliCallback]
 Class="Function"
 Prototype="int OutputVoltageCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
@@ -21,4 +17,12 @@ Prototype="int ZeroCurrentCaliCallback(int panel, int control, int event, void *
 [RangeCaliCallback]
 Class="Function"
 Prototype="int RangeCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SaveCaliCallback]
+Class="Function"
+Prototype="int SaveCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[CancelCaliCallback]
+Class="Function"
+Prototype="int CancelCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 

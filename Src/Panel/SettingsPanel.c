@@ -41,9 +41,9 @@ static void GetSingleCurveAttr(CurveAttrTypeDef *pCurveAttr, int GraphIndex, int
 CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 {
 	
-	if(GraphIndex==GRAPH1)
+	if(GraphIndex==GRAPH1)  //GraphIndex==1
 	{
-		switch(CurveIndex)
+		switch(CurveIndex % 3)
 		{
 			case CURVE1:
 				GetSingleCurveAttr(&Graph1_CurveAttr1, GraphIndex, CurveIndex);
@@ -63,7 +63,7 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 				break;
 		}
 	}
-	else if(GraphIndex==GRAPH2%3)
+	else if(GraphIndex==GRAPH2) //GraphIndex==0
 	{
 		switch(CurveIndex)
 		{

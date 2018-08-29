@@ -36,8 +36,8 @@ typedef struct
 	int VgStepID;									//voltage gate step
 	int drainModeID;
 	int gateModeID;
-	int ItStartID;
-	int RtStartID;
+	//int ItStartID;
+	//int RtStartID;
 }ExpPanelTypeDef;
 
 

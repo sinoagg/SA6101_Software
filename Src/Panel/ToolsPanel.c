@@ -31,7 +31,8 @@
 
 //==============================================================================
 // Static functions
-#define TXTCOLOR 0xA9A9A9
+#define TXTCOLOR 0xA9A9A9  //点击变灰色
+#define TXTBGCOLOR 	0x065279L	 //结束恢复颜色
 
 #define CALI_TYPE_OUTPUT 0x00
 #define CALI_TYPE_ZERO_CURRENT 0x01  
@@ -81,19 +82,6 @@ int CVICALLBACK CalibrationCallback (int panel, int control, int event,
 
 
 
-int CVICALLBACK SaveCaliCallback (int panel, int control, int event,
-							void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_LEFT_CLICK_UP:
-			  HidePanel(hCalibrationPanel); 
-			  ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_SAVE, 0);  
-			 
-			break;
-	}
-	return 0;
-}
 
 
 int CVICALLBACK OutputVoltageCaliCallback (int panel, int control, int event,
@@ -104,7 +92,7 @@ int CVICALLBACK OutputVoltageCaliCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			 SetCtrlAttribute(panel,CALPANEL_OUTVOLCALI,ATTR_LABEL_BGCOLOR,TXTCOLOR);
-			 SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			 SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI, ATTR_IMAGE_FILE, "Resource\\bg_press.ico");
 			 ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_TYPE_OUTPUT, 0);				//send RUN command to instrument via UART 	  
 			break;
 	}
@@ -118,7 +106,7 @@ int CVICALLBACK ZeroCurrentCaliCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			 SetCtrlAttribute(panel,CALPANEL_ZEROCURCALI,ATTR_LABEL_BGCOLOR,TXTCOLOR);
-			 SetCtrlAttribute (panel,CALPANEL_ZEROCURCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			 SetCtrlAttribute (panel,CALPANEL_ZEROCURCALI, ATTR_IMAGE_FILE, "Resource\\bg_press.ico");
 			 ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_TYPE_ZERO_CURRENT, 0);
 			break;
 	}
@@ -133,9 +121,42 @@ int CVICALLBACK RangeCaliCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 			 unsigned char temp;
 			 SetCtrlAttribute(panel,CALPANEL_RANG,ATTR_LABEL_BGCOLOR,TXTCOLOR);
-			 SetCtrlAttribute (panel,CALPANEL_RANG, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			 SetCtrlAttribute (panel,CALPANEL_RANG, ATTR_IMAGE_FILE, "Resource\\bg_press.ico");
 			 GetCtrlAttribute(panel, CALPANEL_RANGESELECT, ATTR_CTRL_VAL, &temp);
 			 ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_TYPE_RANGE_CURRENT, temp);
+			break;
+	}
+	return 0;
+}
+
+
+int CVICALLBACK SaveCaliCallback (int panel, int control, int event,
+							void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:
+			  HidePanel(hCalibrationPanel); 
+			  ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_SAVE, 0);  
+			 
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK CancelCaliCallback (int panel, int control, int event,
+									void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			HidePanel(hCalibrationPanel);  
+			SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI,ATTR_LABEL_BGCOLOR,TXTBGCOLOR); 
+			SetCtrlAttribute (panel,CALPANEL_ZEROCURCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			SetCtrlAttribute (panel,CALPANEL_ZEROCURCALI,ATTR_LABEL_BGCOLOR,TXTBGCOLOR); 
+			SetCtrlAttribute (panel,CALPANEL_RANG, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			SetCtrlAttribute (panel,CALPANEL_RANG,ATTR_LABEL_BGCOLOR,TXTBGCOLOR); 
 			break;
 	}
 	return 0;

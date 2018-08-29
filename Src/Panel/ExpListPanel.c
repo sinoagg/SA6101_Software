@@ -24,6 +24,7 @@
 #include "LoadPanel.h"
 #include "R-T.h"
 #include "RtPanel.h"
+#include "ResultDispPanel.h"
 
 //==============================================================================
 // Constants
@@ -85,6 +86,14 @@ static void DisplayRunTime(int display)
 	SetCtrlAttribute(hBasicSamplePanel, SAMPLE_CFG_RUNTIME_UNIT,ATTR_VISIBLE, display);
 }
 
+static void DisplayOhm(int display)
+{
+   	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_R,ATTR_VISIBLE,display);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_OHM,ATTR_VISIBLE,display);
+	SetCtrlAttribute(hResultDispPanel, RESULTDISP_OHM_UNIT,ATTR_VISIBLE,display);
+
+}
+
 static void RunStatus()
 {
 	int val;
@@ -122,7 +131,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			}
 			else if(index==EXP_I_T)	//加载I-T
 			{ 
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "T(s)");	  //设置坐标轴
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 				SetPanelPos(hIT_Panel, 104, 305);
 				//SetPanelSize(hIT_Panel, 901, 1293);
@@ -130,17 +139,21 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				RunStatus();
 		        DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
+				DisplayOhm(0);  
+				
 			}
 			else if(index==EXP_R_T)	//加载R-T 
 			{	
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "T(s)");	  
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
 				SetPanelPos(hRT_Panel, 104, 305);
 				//SetPanelSize(hRT_Panel, 901, 1293);
-				DisplayPanel(hRT_Panel);
+				DisplayPanel(hRT_Panel);					  
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
+				DisplayOhm(1); 
+			
 			}
 			else if(index==EXP_I_V)
 			{
@@ -153,6 +166,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
+				DisplayOhm(0);  
 			}
 			else if(index==FOUR_TERMINAL) 
 			{
@@ -173,6 +187,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				RunStatus();     
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
+				DisplayOhm(0);  
 			}
 			else if(index==EXP_ID_VGS)//  加载Id_Vgs Configuration  
 			{ 	
@@ -184,6 +199,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(0);
+				DisplayOhm(0);  
 			}else if(index==EXP_ID_T)//Id-T
 			{
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	 
@@ -194,6 +210,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
 				DisplayRunTime(1);
+				DisplayOhm(0);  
 				
 			}
 			break;

@@ -97,10 +97,6 @@ int CVICALLBACK TXT_ExitPrjCallback (int panel, int control, int event,
 	{
 		DiscardAllPrjPanel(SingleProject);
 		RemovePopup (hPrjPanel);  
-			if(selectPanel)
-				SelectProject(selectPanel,1);				//取消当前选中状态  
-		
-			 
 	}
 	return 0;
 }
@@ -112,10 +108,6 @@ int CVICALLBACK PIC_ExitPrjCallback (int panel, int control, int event,
 	{
 		DiscardAllPrjPanel(SingleProject);
 		RemovePopup (hPrjPanel);  
-			if(selectPanel)
-			   	SelectProject(selectPanel,1);				//取消当前选中状态  
-			
-			 
 	}
 	return 0;
 }

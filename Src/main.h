@@ -33,7 +33,7 @@ extern unsigned char measureComPort;				//Serial Com Number
 extern unsigned char controlComPort;
 extern unsigned char measUartTxBuf[];
 extern unsigned char measUartRxBuf[];
-extern int leftNum;
+extern unsigned char curveComplete;
 //==============================================================================
 // Global functions
 

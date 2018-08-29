@@ -40,7 +40,7 @@ typedef struct
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
     int plotHandle;									//后期需要整改属于plot
-	
+	int plotCurveIndex;								//当前在画曲线
 	GraphAttrTypeDef* pGraphAttr;
 	CurveTypeDef* pCurveArray;						//pointer to curve array
 }GraphTypeDef;

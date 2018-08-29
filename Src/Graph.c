@@ -17,6 +17,7 @@
 #include "Curve.h"
 #include "Graph.h"
 #include "SettingsPanel.h"
+#include "Protocol.h"
 
 //==============================================================================
 // Constants
@@ -89,20 +90,19 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)
 
 	//}
 }
-
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
-{
-	if(pGraph->pGraphAttr->xAxisTail < currentX_Val)
+{		
+	switch(TestPara.testMode)
 	{
-		Graph1.pGraphAttr->xAxisTail = currentX_Val*2;
-		SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
+		case NO_SWEEP_IT:
+		case NO_SWEEP_RT:
+			if(pGraph->pGraphAttr->xAxisTail <= currentX_Val*(TestPara.timeStep*0.001))
+			{  	
+				Graph1.pGraphAttr->xAxisTail=Graph1.pGraphAttr->xAxisTail + Graph1.pGraphAttr->xAxisTail*0.1;
+				SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
+			}
+			break;
 	}
-	else if(pGraph->pGraphAttr->yAxisHead > currentX_Val)
-	{
-		Graph1.pGraphAttr->yAxisTail = currentX_Val/2;
-		SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
-
-	}	 
 }
 
 int CVICALLBACK CanvasCallback (int panel, int control, int event,
