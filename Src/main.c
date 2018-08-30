@@ -24,9 +24,61 @@ unsigned char curveComplete;
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
 
+
+
+static void RxDataToGraph(RxDataTypeDef *pRxData)
+	{
+		   	if(TestPara.testMode==SWEEP_DRAIN_VOL)
+		{
+			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVdtest;						//get x, set pointer to the next data
+			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=pRxData->rxIdmeasured.num_float;		//get y, set pointer to the next data 
+		}
+		else if(TestPara.testMode==SWEEP_GATE_VOL)
+		{
+			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVgtest;						//get x, set pointer to the next data
+			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=pRxData->rxIdmeasured.num_float;
+		}
+		else if(TestPara.testMode==SWEEP_IV) 
+		{
+			*(Graph1.pCurveArray->pDotX++)=pRxData->rxVdtest;
+			*(Graph1.pCurveArray->pDotY++)=pRxData->rxIdmeasured.num_float;
+		}
+		else if(TestPara.testMode==NO_SWEEP_IT)
+		{
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);              
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;		//get x, set pointer to the next data
+			Graph1.pCurveArray->time+=TestPara.timeStep; 
+			*(Graph1.pCurveArray->pDotY++)=pRxData->rxIdmeasured.num_float;
+		}
+		else if(TestPara.testMode==NO_SWEEP_RT)
+		{
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);              
+			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;		//get x, set pointer to the next data
+			Graph1.pCurveArray->time+=TestPara.timeStep;
+			*(Graph1.pCurveArray->pDotY++)=TestPara.VdStart/pRxData->rxIdmeasured.num_float*0.001;   
+			SetCtrlVal(hResultDispPanel, RESULTDISP_OHM,(TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001);
+		}
+		else if(TestPara.testMode==ID_T)
+		{
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);
+			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time*0.001;
+			Graph1.pCurveArray->time+=TestPara.timeStep;
+			*(Graph1.pCurveArray->pDotY++)=pRxData->rxIdmeasured.num_float; 
+		}
+	}
+
+static void RxDataToTable(void)
+{
+	int rowNum;									//表格新加行号 
+	InsertTableRows (hTablePanel,TABLE_DISTABLE , -1, 1, VAL_CELL_NUMERIC);				          	 	//插入1行 
+	GetNumTableRows (hTablePanel, TABLE_DISTABLE, &rowNum); 										  		//得到当前行数
+	SetCtrlAttribute(hTablePanel,TABLE_DISTABLE, ATTR_FIRST_VISIBLE_ROW, rowNum);							//显示到最近添加的一行
+	SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1, rowNum), *((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX-1));  //写入X值
+	SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2, rowNum), *((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY-1));  //写入Y值  
+}
+
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
-	int rowNum;																	//表格新加行号
 	int rxNum=0;																//串口收到字节数
 	int i=0;																	//处理接收帧数
 	RxDataTypeDef RxData;
@@ -35,69 +87,21 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	if(rxNum>1024) rxNum=1024;													//防止超过内存范围
 	rxNum-=rxNum%MEASURE_UART_RX_LEN;											//只读取接收字符组整数倍的数据，不读零散数据
 	ComRd(portNumber, (char *)measUartRxBuf, rxNum);							//Read UART Buffer to local buffer at one time  
-	/*int CurveIndex;
-	CurveIndex	= Graph1.pCurveArray->curveIndex;*/
 	while(rxNum>=MEASURE_UART_RX_LEN)
 	{														  
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
 		if(RxData.rxStopSign==0x01 || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))												//if received end of test signal, stop the timer right now, or new query cmd will be transmitted
 			DiscardAsyncTimer(TimerID);
-		
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
-	
-		(Graph1.pCurveArray+Graph1.pCurveArray->curveIndex)->numOfDotsToPlot++;									//number of dots to plot increase
-					
-		if(TestPara.testMode==SWEEP_DRAIN_VOL)
-		{
-			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=RxData.rxVdtest;						//get x, set pointer to the next data
-			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=RxData.rxIdmeasured.num_float;		//get y, set pointer to the next data 
-		}
-		else if(TestPara.testMode==SWEEP_GATE_VOL)
-		{
-			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=RxData.rxVgtest;						//get x, set pointer to the next data
-			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=RxData.rxIdmeasured.num_float;
-		}
-		else if(TestPara.testMode==SWEEP_IV) 
-		{
-			*(Graph1.pCurveArray->pDotX++)=RxData.rxVdtest;
-			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;
-		}
-		else if(TestPara.testMode==NO_SWEEP_IT)
-		{
-			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);              
-			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;		//get x, set pointer to the next data
-			Graph1.pCurveArray->time+=TestPara.timeStep; 
-			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float;
-		}
-		else if(TestPara.testMode==NO_SWEEP_RT)
-		{
-			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);              
-			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;		//get x, set pointer to the next data
-			Graph1.pCurveArray->time+=TestPara.timeStep;
-			*(Graph1.pCurveArray->pDotY++)=TestPara.VdStart/RxData.rxIdmeasured.num_float*0.001;   
-			SetCtrlVal(hResultDispPanel, RESULTDISP_OHM,(TestPara.VdStart/RxData.rxIdmeasured.num_float)*0.001);
-		}
-		else if(TestPara.testMode==ID_T)
-		{
-			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, Graph1.pCurveArray->time*0.001);
-			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time*0.001;
-			Graph1.pCurveArray->time+=TestPara.timeStep;
-			*(Graph1.pCurveArray->pDotY++)=RxData.rxIdmeasured.num_float; 
-		}
-		InsertTableRows (hTablePanel,TABLE_DISTABLE , -1, 1, VAL_CELL_NUMERIC);				          	 	//插入1行 
-		GetNumTableRows (hTablePanel, TABLE_DISTABLE, &rowNum); 										  		//得到当前行数
-		SetCtrlAttribute(hTablePanel,TABLE_DISTABLE, ATTR_FIRST_VISIBLE_ROW, rowNum);							//显示到最近添加的一行
-		SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (1, rowNum), *(Graph1.pCurveArray->pDotX-1));  //写入X值
-		SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2, rowNum), *(Graph1.pCurveArray->pDotY-1));  //写入Y值  
-	
+		(Graph1.pCurveArray+Graph1.plotCurveIndex)->numOfDotsToPlot++;									//number of dots to plot increase
+		RxDataToGraph(&RxData);
+		RxDataToTable();
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++; 
 	}	
-		//GetSettingsCurveAttr(Graph1.graphIndex,Graph1.pCurveArray->curveIndex);       
 	   	PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex); 
-		
 	  	if((RxData.rxStopSign==0x01) || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))
 		{
 		/*	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
@@ -108,6 +112,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			FlushInQ(portNumber);	   											//Clear input and output buffer
 			FlushOutQ(portNumber);
 		   	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+			Delay(1);
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
@@ -115,11 +120,8 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 }	
 	
 
-
-
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
-//	int status;
 	int rxNum;																							  
 	int i=0;
 	static a = 0;

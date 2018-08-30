@@ -45,15 +45,15 @@ CurveAttrTypeDef* GetSettingsCurveAttr(int GraphIndex, int CurveIndex)
 	{
 		switch(CurveIndex % 3)
 		{
-			case CURVE1:
+			case 0:
 				GetSingleCurveAttr(&Graph1_CurveAttr1, GraphIndex, CurveIndex);
 				pCurveAttr=&Graph1_CurveAttr1;
 				break;
-			case CURVE2:
+			case 1:
 				GetSingleCurveAttr(&Graph1_CurveAttr2, GraphIndex, CurveIndex);       
 				pCurveAttr=&Graph1_CurveAttr2;
 				break;
-			case CURVE3:
+			case 2:
 				GetSingleCurveAttr(&Graph1_CurveAttr3, GraphIndex, CurveIndex);   
 				pCurveAttr=&Graph1_CurveAttr3;
 				break;

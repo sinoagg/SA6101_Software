@@ -19,7 +19,8 @@
 #include "EnvironmentPanel.h" 
 #include "GraphDisp.h"
 #include "SettingsPanel.h"
-#include "Protocol.h"
+#include "Protocol.h"	  
+
 
 //==============================================================================
 // Constants
@@ -35,7 +36,8 @@
 
 //==============================================================================
 // Global variables
-CurveAttrTypeDef* pCurveAttr;
+
+CurveAttrTypeDef* pCurveAttr; 
 int graph2tempclr;
 int graph2humclr; 
 int graph2preclr;
@@ -43,22 +45,22 @@ int graph2preclr;
 // Global functions
 int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCurveIndex) 
 {   
-  		 
-		int numOfDotsToPlot=(pGraph->pCurveArray+plotCurveIndex)->numOfDotsToPlot;		//防止中断端去写入这个数据 
+  		pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex);           
+		int numOfDotsToPlot=(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot;		//防止中断端去写入这个数据 
 		if(numOfDotsToPlot>0)
 		{
-			if((pGraph->pCurveArray+plotCurveIndex)->numOfPlotDots >= 1)	//如果有需要画图的点
+			if((pGraph->pCurveArray)->numOfPlotDots >= 1)	//如果已经画了一个点，从上一个点开始画进行连线
 			{
 
-				pGraph->plotHandle=PlotXY(hGraphPanel, control, (pGraph->pCurveArray+plotCurveIndex)->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT,
+				pGraph->plotHandle=PlotXY(hGraphPanel, control, (pGraph->pCurveArray + plotCurveIndex)->pDotXPlot-1, (pGraph->pCurveArray + plotCurveIndex)->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT,
 										  pCurveAttr->plotStyle,
 										  pCurveAttr->pointStyle,
 										  pCurveAttr->lineStyle, 1,
 										  pCurveAttr->lineColor);
 			}
-			else
+			else											//如果一个点没画，只画一个点
 			{
-				pGraph->plotHandle=PlotXY(hGraphPanel, control, (pGraph->pCurveArray+plotCurveIndex)->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,
+				pGraph->plotHandle=PlotXY(hGraphPanel, control, (pGraph->pCurveArray + plotCurveIndex)->pDotXPlot, (pGraph->pCurveArray + plotCurveIndex)->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,
 										  pCurveAttr->plotStyle,
 										  pCurveAttr->pointStyle,
 										  pCurveAttr->lineStyle, 1,
@@ -67,15 +69,9 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 			(pGraph->pCurveArray + plotCurveIndex)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据.
-			switch(TestPara.testMode)
-	    	{
-				case NO_SWEEP_IT:
-				case NO_SWEEP_RT:
-					SetGraphX_Axis(pGraph, pGraph->pCurveArray->numOfPlotDots);
-				break;
-		 	}	
-
+			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;	//防止中断端在画图期间接收到新的数据.
+			
+			 SetGraphX_Axis(pGraph, pGraph->pCurveArray->numOfPlotDots);
 	}
 	if(pGraph->plotHandle<0)
 		return -1;
@@ -112,14 +108,8 @@ int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
 		pGraph->pCurveArray->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
 		pGraph->pCurveArray->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
 		pGraph->pCurveArray->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据
-	 	switch(TestPara.testMode)
-	    {
-			case NO_SWEEP_IT:
-			case NO_SWEEP_RT:
-				SetGraphX_Axis(pGraph,Graph1.pCurveArray->numOfPlotDots);
-			break;
-		 
-		}
+		SetGraphX_Axis(pGraph,Graph1.pCurveArray->numOfPlotDots);
+	
 	} 
 	
 	if(pGraph->plotHandle<0)																																											
