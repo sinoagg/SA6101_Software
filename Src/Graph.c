@@ -96,11 +96,18 @@ void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
 	{
 		case NO_SWEEP_IT:
 		case NO_SWEEP_RT:
+		case ID_T:
 			if(pGraph->pGraphAttr->xAxisTail <= currentX_Val*(TestPara.timeStep*0.001))
 			{  	
 				Graph1.pGraphAttr->xAxisTail=Graph1.pGraphAttr->xAxisTail + Graph1.pGraphAttr->xAxisTail*0.1;
 				SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//…Ë÷√ X  ÷·µƒ∑∂Œß
 			}
+			break;
+		case SWEEP_DRAIN_VOL:
+			
+			break;
+		case SWEEP_GATE_VOL:
+			
 			break;
 	}
 }

@@ -23,7 +23,7 @@ Window Top = 30
 Window Left = 8
 Window Bottom = 852
 Window Right = 1380
-Maximized = True
+Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -36,7 +36,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 2
+Number of Opened Files = 17
 Window Confinement Region Enabled = True
 MainColumnWidth = 239
 FileDateColumnWidth = 70
@@ -54,35 +54,142 @@ Batch Build Debug = False
 [File 0001]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
 File Type = "CSource"
-Disk Date = 3618444849
+Disk Date = 3618460474
 In Projects = "1,"
 Window Top = 272
 Window Left = 138
-Window Z-Order = 2
-Source Window State = "1,58,58,58,74,81,74,0,0,98,0,1,0,1,0,21,90,0,58,83,517,1071,1,0,"
+Window Z-Order = 5
+Source Window State = "1,95,95,95,59,67,67,0,3,98,0,1,0,1,0,21,88,0,95,59,517,1071,1,0,"
 
 [File 0002]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.c"
 File Type = "CSource"
-Disk Date = 3618445130
+Disk Date = 3618460762
 In Projects = "1,"
 Window Top = 212
 Window Left = 98
-Window Z-Order = 1
-Source Window State = "1,54,54,54,117,136,117,0,0,125,0,301,0,308,160,21,46,0,54,155,511,986,1,0,"
+Window Z-Order = 7
+Source Window State = "1,48,48,48,4,18,18,0,0,89,0,301,0,308,160,20,37,0,47,21,511,986,1,0,"
 
 [File 0003]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
 File Type = "CSource"
-Disk Date = 3618385735
+Disk Date = 3618462501
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,262,262,262,12,33,33,0,0,0,0,0,0,0,0,0,86,0,76,23,557,982,1,0,"
-Breakpoint 0001 = "590,0,enabled,"
+Window Z-Order = 3
+Source Window State = "1,355,355,355,79,85,85,0,3,89,0,0,0,0,0,22,337,6,355,79,557,982,1,0,"
+Breakpoint 0001 = "602,0,enabled,"
 Tracepoint 0001 = "0,0,560,1,"
 
 [File 0004]
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-t Configurati"
+Path Line0002 = "on.uir"
+File Type = "User Interface Resource"
+Disk Date = 3618450556
+In Projects = "1,"
+Window Top = 272
+Window Left = 138
+Window Height = 511
+Window Width = 986
+Window Z-Order = 13
+
+[File 0005]
+Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
+Path Line0002 = "tion.uir"
+File Type = "User Interface Resource"
+Disk Date = 3618352523
+In Projects = "1,"
+Window Top = 32
+Window Left = 10
+Window Height = 511
+Window Width = 986
+Window Z-Order = 4
+
+[File 0006]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
+File Type = "User Interface Resource"
+Disk Date = 3618452449
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 411
+Window Width = 726
+Window Z-Order = 15
+
+[File 0007]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
+File Type = "User Interface Resource"
+Disk Date = 3618294107
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 411
+Window Width = 726
+Window Z-Order = 16
+
+[File 0008]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Settings.uir"
+File Type = "User Interface Resource"
+Disk Date = 3618294107
+In Projects = "1,"
+Window Top = 188
+Window Left = 90
+Window Height = 411
+Window Width = 726
+Window Z-Order = 17
+
+[File 0009]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ExpListPanel.c"
+File Type = "CSource"
+Disk Date = 3618297497
+In Projects = "1,"
+Window Top = 122
+Window Left = 58
+Window Z-Order = 14
+Source Window State = "1,153,153,153,16,32,32,0,0,63,0,0,0,0,0,16,187,0,198,67,411,726,1,0,"
+
+[File 0010]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SampleCfgPanel.c"
+File Type = "CSource"
+Disk Date = 3618294107
+In Projects = "1,"
+Window Top = 31
+Window Z-Order = 12
+Source Window State = "1,42,42,42,0,48,48,0,0,51,0,0,0,0,0,15,7,0,12,21,400,600,1,0,"
+
+[File 0011]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.c"
+File Type = "CSource"
+Disk Date = 3618453959
+In Projects = "1,"
+Window Top = 62
+Window Left = 18
+Window Z-Order = 8
+Source Window State = "1,40,40,40,18,38,38,0,0,89,0,1,0,1,0,17,32,0,40,0,436,986,1,0,"
+
+[File 0012]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.c"
+File Type = "CSource"
+Disk Date = 3618450482
+In Projects = "1,"
+Window Top = 64
+Window Left = 26
+Window Z-Order = 9
+Source Window State = "1,92,92,92,5,19,19,0,0,63,0,44,0,0,0,16,47,0,56,4,411,726,1,14,"
+
+[File 0013]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.c"
+File Type = "CSource"
+Disk Date = 3618376426
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Z-Order = 6
+Source Window State = "1,169,170,169,82,82,82,0,0,63,0,0,0,0,0,16,154,0,178,21,411,726,1,0,"
+
+[File 0014]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Environment.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -92,7 +199,7 @@ Window Left = 10
 Window Height = 411
 Window Width = 726
 
-[File 0005]
+[File 0015]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Experiment List."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -103,7 +210,7 @@ Window Left = 10
 Window Height = 411
 Window Width = 726
 
-[File 0006]
+[File 0016]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/GraphDisp.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618298893
@@ -113,7 +220,7 @@ Window Left = 114
 Window Height = 611
 Window Width = 986
 
-[File 0007]
+[File 0017]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/I-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -123,7 +230,7 @@ Window Left = 42
 Window Height = 479
 Window Width = 1074
 
-[File 0008]
+[File 0018]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/I-V.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -133,29 +240,7 @@ Window Left = 74
 Window Height = 511
 Window Width = 986
 
-[File 0009]
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-t Configurati"
-Path Line0002 = "on.uir"
-File Type = "User Interface Resource"
-Disk Date = 3618355046
-In Projects = "1,"
-Window Top = 272
-Window Left = 138
-Window Height = 511
-Window Width = 986
-
-[File 0010]
-Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
-Path Line0002 = "tion.uir"
-File Type = "User Interface Resource"
-Disk Date = 3618352523
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Height = 511
-Window Width = 986
-
-[File 0011]
+[File 0019]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vgs Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
@@ -165,18 +250,9 @@ Window Top = 62
 Window Left = 26
 Window Height = 511
 Window Width = 986
+Window Z-Order = 1
 
-[File 0012]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
-File Type = "User Interface Resource"
-Disk Date = 3618294632
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 411
-Window Width = 726
-
-[File 0013]
+[File 0020]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Project.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -186,7 +262,7 @@ Window Left = 26
 Window Height = 411
 Window Width = 726
 
-[File 0014]
+[File 0021]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/R-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -196,17 +272,7 @@ Window Left = 74
 Window Height = 411
 Window Width = 686
 
-[File 0015]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
-File Type = "User Interface Resource"
-Disk Date = 3618294107
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 411
-Window Width = 726
-
-[File 0016]
+[File 0022]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/ResultDispPanel."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -217,7 +283,7 @@ Window Left = 106
 Window Height = 411
 Window Width = 726
 
-[File 0017]
+[File 0023]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Sample Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
@@ -228,17 +294,7 @@ Window Left = 10
 Window Height = 411
 Window Width = 726
 
-[File 0018]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Settings.uir"
-File Type = "User Interface Resource"
-Disk Date = 3618294107
-In Projects = "1,"
-Window Top = 188
-Window Left = 90
-Window Height = 411
-Window Width = 726
-
-[File 0019]
+[File 0024]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Table.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618298190
@@ -248,7 +304,7 @@ Window Left = 90
 Window Height = 411
 Window Width = 726
 
-[File 0020]
+[File 0025]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Terminal.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -258,7 +314,7 @@ Window Left = 122
 Window Height = 536
 Window Width = 982
 
-[File 0021]
+[File 0026]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Tools.uir"
 File Type = "User Interface Resource"
 Disk Date = 3618294107
@@ -268,7 +324,7 @@ Window Left = 122
 Window Height = 540
 Window Width = 1071
 
-[File 0022]
+[File 0027]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/EnvironmentPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -277,16 +333,7 @@ Window Top = 64
 Window Left = 26
 Source Window State = "1,52,63,52,1,2,1,0,0,0,0,0,0,0,0,0,0,0,73,16,411,726,1,0,"
 
-[File 0023]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ExpListPanel.c"
-File Type = "CSource"
-Disk Date = 3618297497
-In Projects = "1,"
-Window Top = 122
-Window Left = 58
-Source Window State = "1,153,153,153,16,32,32,0,0,0,0,0,0,0,0,0,199,0,212,28,411,726,1,0,"
-
-[File 0024]
+[File 0028]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/IdtPanel.c"
 File Type = "CSource"
 Disk Date = 3618354188
@@ -295,7 +342,7 @@ Window Top = 182
 Window Left = 90
 Source Window State = "1,22,22,22,0,1,0,0,3,0,0,0,0,0,0,0,30,0,22,1,471,898,1,0,"
 
-[File 0025]
+[File 0029]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVdsPanel.c"
 File Type = "CSource"
 Disk Date = 3618352670
@@ -304,18 +351,19 @@ Window Top = 126
 Window Left = 58
 Source Window State = "1,20,21,21,0,18,18,0,0,0,0,0,0,0,0,0,37,0,113,32,411,726,1,0,"
 
-[File 0026]
+[File 0030]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVgsPanel.c"
 File Type = "CSource"
-Disk Date = 3618352749
+Disk Date = 3618462844
 In Projects = "1,"
 Window Top = 188
 Window Left = 90
 Window Height = 411
 Window Width = 726
-Source Window State = "1,61,61,61,65,77,77,0,0,0,0,0,0,0,0,0,45,0,61,74,411,726,1,0,"
+Window Z-Order = 2
+Source Window State = "1,40,42,42,0,22,22,0,3,63,0,0,0,0,0,16,27,0,40,0,411,726,1,0,"
 
-[File 0027]
+[File 0031]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ItPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -324,7 +372,7 @@ Window Top = 182
 Window Left = 90
 Source Window State = "1,34,34,34,22,34,22,0,0,0,0,0,0,0,0,0,22,0,31,9,511,986,1,0,"
 
-[File 0028]
+[File 0032]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IvPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -333,7 +381,7 @@ Window Top = 242
 Window Left = 122
 Source Window State = "1,29,29,29,3,18,18,0,0,0,0,0,0,0,0,0,21,0,38,15,486,986,1,0,"
 
-[File 0029]
+[File 0033]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/LoadPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -342,7 +390,7 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,149,149,149,8,25,25,0,0,0,0,0,0,0,0,0,69,0,80,8,497,835,1,0,"
 
-[File 0030]
+[File 0034]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ProjectPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -351,7 +399,7 @@ Window Top = 182
 Window Left = 90
 Source Window State = "1,110,112,112,4,48,48,0,0,0,0,138,0,1,0,0,9,0,29,103,511,986,1,0,"
 
-[File 0031]
+[File 0035]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ResultMenuPanel.c"
 File Type = "CSource"
 Disk Date = 3618294713
@@ -360,7 +408,7 @@ Window Top = 126
 Window Left = 58
 Source Window State = "1,107,107,107,0,4,4,0,2,0,0,101,0,0,0,0,104,0,107,4,411,726,1,13,"
 
-[File 0032]
+[File 0036]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/RtPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -369,24 +417,7 @@ Window Top = 242
 Window Left = 122
 Source Window State = "1,34,34,34,5,21,21,0,0,0,0,0,0,0,0,0,24,0,41,10,511,986,1,0,"
 
-[File 0033]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SampleCfgPanel.c"
-File Type = "CSource"
-Disk Date = 3618294107
-In Projects = "1,"
-Window Top = 31
-Source Window State = "1,42,42,42,0,48,48,0,0,0,0,0,0,0,0,0,7,0,12,21,400,600,1,0,"
-
-[File 0034]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.c"
-File Type = "CSource"
-Disk Date = 3618388765
-In Projects = "1,"
-Window Top = 62
-Window Left = 18
-Source Window State = "1,12,14,14,0,37,37,0,0,0,0,1,0,1,0,0,73,0,88,0,436,986,1,0,"
-
-[File 0035]
+[File 0037]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Table.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -395,7 +426,7 @@ Window Top = 122
 Window Left = 58
 Source Window State = "1,20,20,20,31,42,42,0,0,0,0,0,0,0,0,0,15,0,102,35,511,986,1,0,"
 
-[File 0036]
+[File 0038]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ToolsPanel.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -404,7 +435,7 @@ Window Top = 152
 Window Left = 74
 Source Window State = "1,39,39,39,18,22,22,0,0,0,0,87,0,0,0,0,122,0,137,4,517,1035,1,26,"
 
-[File 0037]
+[File 0039]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/asynctmr.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -413,7 +444,7 @@ Window Top = 122
 Window Left = 58
 Source Window State = "1,129,129,129,12,25,25,0,0,0,0,0,0,0,0,0,124,0,129,0,511,986,1,0,"
 
-[File 0038]
+[File 0040]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Cgs_mt.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -422,23 +453,24 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,84,84,84,38,39,39,0,0,0,0,0,0,0,0,0,11,0,16,0,323,583,1,0,"
 
-[File 0039]
+[File 0041]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.c"
 File Type = "CSource"
 Disk Date = 3618294107
 In Projects = "1,"
 Window Top = 126
 Window Left = 58
-Source Window State = "1,33,33,33,4,13,13,0,3,0,0,0,0,0,0,0,25,0,33,4,411,726,1,0,"
+Window Z-Order = 10
+Source Window State = "1,33,33,33,4,13,13,0,0,63,0,0,0,0,0,16,25,0,38,7,411,726,1,0,"
 
-[File 0040]
+[File 0042]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/excel2000.c"
 File Type = "CSource"
 Disk Date = 3618294107
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0041]
+[File 0043]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/excelreport.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -447,7 +479,7 @@ Window Top = 62
 Window Left = 26
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2249,0,2266,4,427,694,1,0,"
 
-[File 0042]
+[File 0044]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/File.c"
 File Type = "CSource"
 Disk Date = 3618294107
@@ -455,24 +487,6 @@ In Projects = "1,"
 Window Top = 219
 Window Left = 106
 Source Window State = "1,57,58,57,4,64,4,0,0,0,0,3,0,3,0,0,0,0,64,133,411,726,1,0,"
-
-[File 0043]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.c"
-File Type = "CSource"
-Disk Date = 3618299282
-In Projects = "1,"
-Window Top = 64
-Window Left = 26
-Source Window State = "1,101,101,101,16,34,34,0,0,0,0,44,0,0,0,0,84,0,92,14,411,726,1,14,"
-
-[File 0044]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.c"
-File Type = "CSource"
-Disk Date = 3618376426
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Source Window State = "1,117,117,117,5,22,22,0,0,0,0,0,0,0,0,0,176,0,187,4,411,726,1,0,"
 
 [File 0045]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Timer.c"
@@ -757,7 +771,8 @@ Disk Date = 3618392633
 In Projects = "1,"
 Window Top = 95
 Window Left = 42
-Source Window State = "1,35,37,37,3,45,45,0,0,0,0,0,0,0,0,0,7,0,37,23,411,726,1,0,"
+Window Z-Order = 11
+Source Window State = "1,35,35,35,25,35,35,0,3,63,0,0,0,0,0,16,7,0,35,25,411,726,1,0,"
 
 [File 0085]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/TablePanel.h"
@@ -875,6 +890,24 @@ Source Window State = "1,33,34,34,0,48,48,0,0,0,0,0,0,0,0,0,0,0,16,44,517,1035,1
 [Tab Order]
 Tab 0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Plot.c"
 Tab 0002 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/main.c"
+Tab 0003 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Graph.c"
+Tab 0004 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-t Configurati"
+Tab 0004 Line0002 = "on.uir"
+Tab 0005 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vds Configura"
+Tab 0005 Line0002 = "tion.uir"
+Tab 0006 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/MainPanelCb.c"
+Tab 0007 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Settings.uir"
+Tab 0008 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.c"
+Tab 0009 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/MainPanel.uir"
+Tab 0010 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Result Menu.uir"
+Tab 0011 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/ExpListPanel.c"
+Tab 0012 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Protocol.c"
+Tab 0013 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SampleCfgPanel.c"
+Tab 0014 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/SettingsPanel.h"
+Tab 0015 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Curve.c"
+Tab 0016 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Src/Panel/IdVgsPanel.c"
+Tab 0017 Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/UI Files/Panel/Id-Vgs Configura"
+Tab 0017 Line0002 = "tion.uir"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
@@ -965,29 +998,818 @@ Working Directory = ""
 Environment Options = ""
 
 [Watch 1]
-Watch Expression = "Graph1"
-
-[Watch 2]
-Watch Expression = "measUartRxBuf"
-
-[Watch 3]
-Watch Expression = "pTestPara"
-
-[Watch 4]
-Watch Expression = "pRxData"
-
-[Watch 5]
 Watch Expression = "pGraph"
 
-[Watch 6]
+[Watch 2]
 Watch Expression = "numOfCurve"
 
-[Watch 7]
+[Watch 3]
 Watch Expression = "__memory(0x0996FE64,4)"
 
-[Watch 8]
+[Watch 4]
 Watch Expression = "test"
 
-[Watch 9]
+[Watch 5]
 Watch Expression = "numOfRxCurve"
+
+[Watch 6]
+Watch Expression = "Graph1"
+
+[Watch 7]
+Watch Expression = "measUartRxBuf"
+
+[Watch 8]
+Watch Expression = "pTestPara"
+
+[Watch 9]
+Watch Expression = "pRxData"
+
+[Watch 10]
+Watch Expression = "pGraph"
+
+[Watch 11]
+Watch Expression = "numOfCurve"
+
+[Watch 12]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 13]
+Watch Expression = "test"
+
+[Watch 14]
+Watch Expression = "numOfRxCurve"
+
+[Watch 15]
+Watch Expression = "Graph1"
+
+[Watch 16]
+Watch Expression = "measUartRxBuf"
+
+[Watch 17]
+Watch Expression = "pTestPara"
+
+[Watch 18]
+Watch Expression = "pRxData"
+
+[Watch 19]
+Watch Expression = "pGraph"
+
+[Watch 20]
+Watch Expression = "numOfCurve"
+
+[Watch 21]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 22]
+Watch Expression = "test"
+
+[Watch 23]
+Watch Expression = "numOfRxCurve"
+
+[Watch 24]
+Watch Expression = "Graph1"
+
+[Watch 25]
+Watch Expression = "measUartRxBuf"
+
+[Watch 26]
+Watch Expression = "pTestPara"
+
+[Watch 27]
+Watch Expression = "pRxData"
+
+[Watch 28]
+Watch Expression = "pGraph"
+
+[Watch 29]
+Watch Expression = "numOfCurve"
+
+[Watch 30]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 31]
+Watch Expression = "test"
+
+[Watch 32]
+Watch Expression = "numOfRxCurve"
+
+[Watch 33]
+Watch Expression = "Graph1"
+
+[Watch 34]
+Watch Expression = "measUartRxBuf"
+
+[Watch 35]
+Watch Expression = "pTestPara"
+
+[Watch 36]
+Watch Expression = "pRxData"
+
+[Watch 37]
+Watch Expression = "pGraph"
+
+[Watch 38]
+Watch Expression = "numOfCurve"
+
+[Watch 39]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 40]
+Watch Expression = "test"
+
+[Watch 41]
+Watch Expression = "numOfRxCurve"
+
+[Watch 42]
+Watch Expression = "Graph1"
+
+[Watch 43]
+Watch Expression = "measUartRxBuf"
+
+[Watch 44]
+Watch Expression = "pTestPara"
+
+[Watch 45]
+Watch Expression = "pRxData"
+
+[Watch 46]
+Watch Expression = "pGraph"
+
+[Watch 47]
+Watch Expression = "numOfCurve"
+
+[Watch 48]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 49]
+Watch Expression = "test"
+
+[Watch 50]
+Watch Expression = "numOfRxCurve"
+
+[Watch 51]
+Watch Expression = "Graph1"
+
+[Watch 52]
+Watch Expression = "measUartRxBuf"
+
+[Watch 53]
+Watch Expression = "pTestPara"
+
+[Watch 54]
+Watch Expression = "pRxData"
+
+[Watch 55]
+Watch Expression = "pGraph"
+
+[Watch 56]
+Watch Expression = "numOfCurve"
+
+[Watch 57]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 58]
+Watch Expression = "test"
+
+[Watch 59]
+Watch Expression = "numOfRxCurve"
+
+[Watch 60]
+Watch Expression = "Graph1"
+
+[Watch 61]
+Watch Expression = "measUartRxBuf"
+
+[Watch 62]
+Watch Expression = "pTestPara"
+
+[Watch 63]
+Watch Expression = "pRxData"
+
+[Watch 64]
+Watch Expression = "pGraph"
+
+[Watch 65]
+Watch Expression = "numOfCurve"
+
+[Watch 66]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 67]
+Watch Expression = "test"
+
+[Watch 68]
+Watch Expression = "numOfRxCurve"
+
+[Watch 69]
+Watch Expression = "Graph1"
+
+[Watch 70]
+Watch Expression = "measUartRxBuf"
+
+[Watch 71]
+Watch Expression = "pTestPara"
+
+[Watch 72]
+Watch Expression = "pRxData"
+
+[Watch 73]
+Watch Expression = "pGraph"
+
+[Watch 74]
+Watch Expression = "numOfCurve"
+
+[Watch 75]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 76]
+Watch Expression = "test"
+
+[Watch 77]
+Watch Expression = "numOfRxCurve"
+
+[Watch 78]
+Watch Expression = "Graph1"
+
+[Watch 79]
+Watch Expression = "measUartRxBuf"
+
+[Watch 80]
+Watch Expression = "pTestPara"
+
+[Watch 81]
+Watch Expression = "pRxData"
+
+[Watch 82]
+Watch Expression = "pGraph"
+
+[Watch 83]
+Watch Expression = "numOfCurve"
+
+[Watch 84]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 85]
+Watch Expression = "test"
+
+[Watch 86]
+Watch Expression = "numOfRxCurve"
+
+[Watch 87]
+Watch Expression = "Graph1"
+
+[Watch 88]
+Watch Expression = "measUartRxBuf"
+
+[Watch 89]
+Watch Expression = "pTestPara"
+
+[Watch 90]
+Watch Expression = "pRxData"
+
+[Watch 91]
+Watch Expression = "pGraph"
+
+[Watch 92]
+Watch Expression = "numOfCurve"
+
+[Watch 93]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 94]
+Watch Expression = "test"
+
+[Watch 95]
+Watch Expression = "numOfRxCurve"
+
+[Watch 96]
+Watch Expression = "Graph1"
+
+[Watch 97]
+Watch Expression = "measUartRxBuf"
+
+[Watch 98]
+Watch Expression = "pTestPara"
+
+[Watch 99]
+Watch Expression = "pRxData"
+
+[Watch 100]
+Watch Expression = "pGraph"
+
+[Watch 101]
+Watch Expression = "numOfCurve"
+
+[Watch 102]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 103]
+Watch Expression = "test"
+
+[Watch 104]
+Watch Expression = "numOfRxCurve"
+
+[Watch 105]
+Watch Expression = "Graph1"
+
+[Watch 106]
+Watch Expression = "measUartRxBuf"
+
+[Watch 107]
+Watch Expression = "pTestPara"
+
+[Watch 108]
+Watch Expression = "pRxData"
+
+[Watch 109]
+Watch Expression = "pGraph"
+
+[Watch 110]
+Watch Expression = "numOfCurve"
+
+[Watch 111]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 112]
+Watch Expression = "test"
+
+[Watch 113]
+Watch Expression = "numOfRxCurve"
+
+[Watch 114]
+Watch Expression = "Graph1"
+
+[Watch 115]
+Watch Expression = "measUartRxBuf"
+
+[Watch 116]
+Watch Expression = "pTestPara"
+
+[Watch 117]
+Watch Expression = "pRxData"
+
+[Watch 118]
+Watch Expression = "pGraph"
+
+[Watch 119]
+Watch Expression = "numOfCurve"
+
+[Watch 120]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 121]
+Watch Expression = "test"
+
+[Watch 122]
+Watch Expression = "numOfRxCurve"
+
+[Watch 123]
+Watch Expression = "Graph1"
+
+[Watch 124]
+Watch Expression = "measUartRxBuf"
+
+[Watch 125]
+Watch Expression = "pTestPara"
+
+[Watch 126]
+Watch Expression = "pRxData"
+
+[Watch 127]
+Watch Expression = "pGraph"
+
+[Watch 128]
+Watch Expression = "numOfCurve"
+
+[Watch 129]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 130]
+Watch Expression = "test"
+
+[Watch 131]
+Watch Expression = "numOfRxCurve"
+
+[Watch 132]
+Watch Expression = "Graph1"
+
+[Watch 133]
+Watch Expression = "measUartRxBuf"
+
+[Watch 134]
+Watch Expression = "pTestPara"
+
+[Watch 135]
+Watch Expression = "pRxData"
+
+[Watch 136]
+Watch Expression = "pGraph"
+
+[Watch 137]
+Watch Expression = "numOfCurve"
+
+[Watch 138]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 139]
+Watch Expression = "test"
+
+[Watch 140]
+Watch Expression = "numOfRxCurve"
+
+[Watch 141]
+Watch Expression = "Graph1"
+
+[Watch 142]
+Watch Expression = "measUartRxBuf"
+
+[Watch 143]
+Watch Expression = "pTestPara"
+
+[Watch 144]
+Watch Expression = "pRxData"
+
+[Watch 145]
+Watch Expression = "pGraph"
+
+[Watch 146]
+Watch Expression = "numOfCurve"
+
+[Watch 147]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 148]
+Watch Expression = "test"
+
+[Watch 149]
+Watch Expression = "numOfRxCurve"
+
+[Watch 150]
+Watch Expression = "Graph1"
+
+[Watch 151]
+Watch Expression = "measUartRxBuf"
+
+[Watch 152]
+Watch Expression = "pTestPara"
+
+[Watch 153]
+Watch Expression = "pRxData"
+
+[Watch 154]
+Watch Expression = "pGraph"
+
+[Watch 155]
+Watch Expression = "numOfCurve"
+
+[Watch 156]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 157]
+Watch Expression = "test"
+
+[Watch 158]
+Watch Expression = "numOfRxCurve"
+
+[Watch 159]
+Watch Expression = "Graph1"
+
+[Watch 160]
+Watch Expression = "measUartRxBuf"
+
+[Watch 161]
+Watch Expression = "pTestPara"
+
+[Watch 162]
+Watch Expression = "pRxData"
+
+[Watch 163]
+Watch Expression = "pGraph"
+
+[Watch 164]
+Watch Expression = "numOfCurve"
+
+[Watch 165]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 166]
+Watch Expression = "test"
+
+[Watch 167]
+Watch Expression = "numOfRxCurve"
+
+[Watch 168]
+Watch Expression = "Graph1"
+
+[Watch 169]
+Watch Expression = "measUartRxBuf"
+
+[Watch 170]
+Watch Expression = "pTestPara"
+
+[Watch 171]
+Watch Expression = "pRxData"
+
+[Watch 172]
+Watch Expression = "pGraph"
+
+[Watch 173]
+Watch Expression = "numOfCurve"
+
+[Watch 174]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 175]
+Watch Expression = "test"
+
+[Watch 176]
+Watch Expression = "numOfRxCurve"
+
+[Watch 177]
+Watch Expression = "Graph1"
+
+[Watch 178]
+Watch Expression = "measUartRxBuf"
+
+[Watch 179]
+Watch Expression = "pTestPara"
+
+[Watch 180]
+Watch Expression = "pRxData"
+
+[Watch 181]
+Watch Expression = "pGraph"
+
+[Watch 182]
+Watch Expression = "numOfCurve"
+
+[Watch 183]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 184]
+Watch Expression = "test"
+
+[Watch 185]
+Watch Expression = "numOfRxCurve"
+
+[Watch 186]
+Watch Expression = "Graph1"
+
+[Watch 187]
+Watch Expression = "measUartRxBuf"
+
+[Watch 188]
+Watch Expression = "pTestPara"
+
+[Watch 189]
+Watch Expression = "pRxData"
+
+[Watch 190]
+Watch Expression = "pGraph"
+
+[Watch 191]
+Watch Expression = "numOfCurve"
+
+[Watch 192]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 193]
+Watch Expression = "test"
+
+[Watch 194]
+Watch Expression = "numOfRxCurve"
+
+[Watch 195]
+Watch Expression = "Graph1"
+
+[Watch 196]
+Watch Expression = "measUartRxBuf"
+
+[Watch 197]
+Watch Expression = "pTestPara"
+
+[Watch 198]
+Watch Expression = "pRxData"
+
+[Watch 199]
+Watch Expression = "pGraph"
+
+[Watch 200]
+Watch Expression = "numOfCurve"
+
+[Watch 201]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 202]
+Watch Expression = "test"
+
+[Watch 203]
+Watch Expression = "numOfRxCurve"
+
+[Watch 204]
+Watch Expression = "Graph1"
+
+[Watch 205]
+Watch Expression = "measUartRxBuf"
+
+[Watch 206]
+Watch Expression = "pTestPara"
+
+[Watch 207]
+Watch Expression = "pRxData"
+
+[Watch 208]
+Watch Expression = "pGraph"
+
+[Watch 209]
+Watch Expression = "numOfCurve"
+
+[Watch 210]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 211]
+Watch Expression = "test"
+
+[Watch 212]
+Watch Expression = "numOfRxCurve"
+
+[Watch 213]
+Watch Expression = "Graph1"
+
+[Watch 214]
+Watch Expression = "measUartRxBuf"
+
+[Watch 215]
+Watch Expression = "pTestPara"
+
+[Watch 216]
+Watch Expression = "pRxData"
+
+[Watch 217]
+Watch Expression = "pGraph"
+
+[Watch 218]
+Watch Expression = "numOfCurve"
+
+[Watch 219]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 220]
+Watch Expression = "test"
+
+[Watch 221]
+Watch Expression = "numOfRxCurve"
+
+[Watch 222]
+Watch Expression = "Graph1"
+
+[Watch 223]
+Watch Expression = "measUartRxBuf"
+
+[Watch 224]
+Watch Expression = "pTestPara"
+
+[Watch 225]
+Watch Expression = "pRxData"
+
+[Watch 226]
+Watch Expression = "pGraph"
+
+[Watch 227]
+Watch Expression = "numOfCurve"
+
+[Watch 228]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 229]
+Watch Expression = "test"
+
+[Watch 230]
+Watch Expression = "numOfRxCurve"
+
+[Watch 231]
+Watch Expression = "Graph1"
+
+[Watch 232]
+Watch Expression = "measUartRxBuf"
+
+[Watch 233]
+Watch Expression = "pTestPara"
+
+[Watch 234]
+Watch Expression = "pRxData"
+
+[Watch 235]
+Watch Expression = "pGraph"
+
+[Watch 236]
+Watch Expression = "numOfCurve"
+
+[Watch 237]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 238]
+Watch Expression = "test"
+
+[Watch 239]
+Watch Expression = "numOfRxCurve"
+
+[Watch 240]
+Watch Expression = "Graph1"
+
+[Watch 241]
+Watch Expression = "measUartRxBuf"
+
+[Watch 242]
+Watch Expression = "pTestPara"
+
+[Watch 243]
+Watch Expression = "pRxData"
+
+[Watch 244]
+Watch Expression = "pGraph"
+
+[Watch 245]
+Watch Expression = "numOfCurve"
+
+[Watch 246]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 247]
+Watch Expression = "test"
+
+[Watch 248]
+Watch Expression = "numOfRxCurve"
+
+[Watch 249]
+Watch Expression = "plotCurveIndex"
+
+[Watch 250]
+Watch Expression = "plotCurveIndex"
+
+[Watch 251]
+Watch Expression = "Graph1"
+
+[Watch 252]
+Watch Expression = "measUartRxBuf"
+
+[Watch 253]
+Watch Expression = "pTestPara"
+
+[Watch 254]
+Watch Expression = "pRxData"
+
+[Watch 255]
+Watch Expression = "pGraph"
+
+[Watch 256]
+Watch Expression = "numOfCurve"
+
+[Watch 257]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 258]
+Watch Expression = "test"
+
+[Watch 259]
+Watch Expression = "numOfRxCurve"
+
+[Watch 260]
+Watch Expression = "plotCurveIndex"
+
+[Watch 261]
+Watch Expression = "plotCurveIndex"
+
+[Watch 262]
+Watch Expression = "Graph1"
+
+[Watch 263]
+Watch Expression = "measUartRxBuf"
+
+[Watch 264]
+Watch Expression = "pTestPara"
+
+[Watch 265]
+Watch Expression = "pRxData"
+
+[Watch 266]
+Watch Expression = "pGraph"
+
+[Watch 267]
+Watch Expression = "numOfCurve"
+
+[Watch 268]
+Watch Expression = "__memory(0x0996FE64,4)"
+
+[Watch 269]
+Watch Expression = "test"
+
+[Watch 270]
+Watch Expression = "numOfRxCurve"
+
+[Watch 271]
+Watch Expression = "plotCurveIndex"
+
+[Watch 272]
+Watch Expression = "plotCurveIndex"
 

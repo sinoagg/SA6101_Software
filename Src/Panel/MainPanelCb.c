@@ -261,7 +261,17 @@ int CVICALLBACK StepThreadFunction(void* temp)
 			curveComplete=0;
 			numOfRxCurve++;
 			Graph1.plotCurveIndex++;
-			TestPara.VgStart+=TestPara.VgStep;
+			switch(TestPara.testMode)
+			{
+				case SWEEP_DRAIN_VOL:
+					TestPara.VgStart+=TestPara.VgStep;       
+					break;
+				case SWEEP_GATE_VOL:
+					TestPara.VdStart+= TestPara.VdStep;
+					break;
+					
+			}
+			
 			Delay(1);
 			ProtocolCfgTxData(measureComPort, DEV_ADDR, measUartTxBuf);
 			Delay(1);
@@ -269,8 +279,10 @@ int CVICALLBACK StepThreadFunction(void* temp)
 			double temp=((double)TestPara.timeStep)/1000;
 			if(temp<0.03) temp=0.03;													//如果查询时间过快，会造成数据混乱，下位机响应中断过多
 			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);						//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)
-		}	
+		}
+	
 	}
+	//Graph1.plotCurveIndex=0;      
 	return 0;
 }
 
@@ -296,11 +308,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			
 			FlushInQ(measureComPort);	   							//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
-			
+			Graph1.plotCurveIndex=0; 								//每次实验开始之前初始化CurveIndex
+			curveComplete=0;
 			int expType;
 			int graphIndex=0;										//currently only deal with one graph circumstance
 			int numOfDots=0;
-			
 			Table_ATTR.column = 2;   								//列数
 			Table_ATTR.columnWidth= 290;  							//列宽
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
@@ -336,20 +348,18 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
 						numOfCurve=1;
-						
-					}else if(TestPara.drainOutputMode==VOL_STEP)
+					 }
+					 else if(TestPara.drainOutputMode==VOL_STEP)
 					{
 						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
-						
 					}
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
-					Graph1.plotCurveIndex=0;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 	
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth);
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-
+					CreateMonitorThread(numOfCurve);   
 					break;
 					
 				case NO_SWEEP_IT: 
@@ -422,6 +432,8 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置
+			
+			Graph1.plotCurveIndex=0; 								//每次实验开始之后初始化CurveIndex       
 			break;
 	}
 	return 0;
