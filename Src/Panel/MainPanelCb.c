@@ -241,11 +241,9 @@ static void RunActive()
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮      
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED, 0);       		//恢复 停止按钮
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED,1);        		//禁用 保存按钮
-	
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
-	
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,1);//运行过程中禁止设置曲线属性        
 	
 	
@@ -269,8 +267,7 @@ int CVICALLBACK StepThreadFunction(void* temp)
 				case SWEEP_GATE_VOL:
 					TestPara.VdStart+= TestPara.VdStep;
 					break;
-					
-			}
+			}									   
 			
 			Delay(1);
 			ProtocolCfgTxData(measureComPort, DEV_ADDR, measUartTxBuf);
@@ -387,6 +384,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 break;
 					
 				case SWEEP_IV:
+					numOfCurve=1;  
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth);

@@ -4,18 +4,8 @@
 #include "TablePanel.h"
 
 Table_TypeDef Table_ATTR;
-
 char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K"};
-
-//char Table_title_IV[11][20] ={"Current(A)","Voltage(V)","Current(A)","Voltage(V)"};
-//char Table_title_VI[11][20] ={"Current(A)","Voltage(V)","Current(A)","Voltage(V)"}; 
-//char Table_title_IT[11][20] ={"Current(A)","Time(S)","Current(A)","Time(S)"};
- //int column=4;        //列数
- //int column_width=290;//列宽
-
-
-
-   void Table_init(char table_title[][20], int column, columnWidth) //初始化列名设置    
+void Table_init(char table_title[][20], int column, columnWidth) //初始化列名设置    
 {			
 		   
 			InsertTableColumns(hTablePanel,TABLE_DISTABLE,1,column,VAL_CELL_STRING);              //向表中插入多少列 
