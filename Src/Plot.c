@@ -71,7 +71,7 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 			(pGraph->pCurveArray + plotCurveIndex)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;	//防止中断端在画图期间接收到新的数据.
 			
-			 SetGraphX_Axis(pGraph,(pGraph->pCurveArray+plotCurveIndex)->numOfPlotDots);
+			 SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
 	}
 	if(pGraph->plotHandle<0)
 		return -1;

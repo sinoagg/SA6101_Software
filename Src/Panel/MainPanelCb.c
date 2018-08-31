@@ -334,13 +334,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1); 		//graph set up
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
-					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
+					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
 					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
-					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,(Graph1.pGraphAttr->xAxisHead+Graph1.pGraphAttr->xAxisTail));
 					//newThread
 					CreateMonitorThread(numOfCurve);
 					break;
-					
 				case SWEEP_GATE_VOL:
 		      		if(TestPara.drainOutputMode==VOL_BIAS)
 					{
@@ -353,9 +352,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 	
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
-				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
+				    Graph1.pGraphAttr->xAxisTail = numOfDots*0.01;
 					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth);
-					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,(Graph1.pGraphAttr->xAxisHead+Graph1.pGraphAttr->xAxisTail));
 					CreateMonitorThread(numOfCurve);   
 					break;
 					
@@ -385,9 +384,13 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					
 				case SWEEP_IV:
 					numOfCurve=1;  
-					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;
+					numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth);
+					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
+				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+
 					break;
 					
 				case ID_T:
@@ -396,6 +399,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pCurveArray->numOfTotalDots  = numOfDots;
 					Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth);
+				    Graph1.pGraphAttr->xAxisHead=0;
+					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+				
 					break;
 			}
 			
