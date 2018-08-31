@@ -1,0 +1,20 @@
+[MesaureCallback]
+Class="Function"
+Prototype="int MesaureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[LegendCallback]
+Class="Function"
+Prototype="int LegendCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[TemperatureCallback]
+Class="Function"
+Prototype="int TemperatureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[HumidityCallback]
+Class="Function"
+Prototype="int HumidityCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[PressureCallback]
+Class="Function"
+Prototype="int PressureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

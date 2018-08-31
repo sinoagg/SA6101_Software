@@ -1,0 +1,20 @@
+[Table_init]
+Class="Function"
+Prototype="void Table_init(char (*table_title)[20], int column, int columnWidth);"
+
+[AddTitleCallback]
+Class="Function"
+Prototype="int AddTitleCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[AddRowCallback]
+Class="Function"
+Prototype="int AddRowCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[DeleteCalback]
+Class="Function"
+Prototype="int DeleteCalback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ColorCallback]
+Class="Function"
+Prototype="int ColorCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

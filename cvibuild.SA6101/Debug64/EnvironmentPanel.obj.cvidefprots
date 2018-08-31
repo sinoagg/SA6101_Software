@@ -1,0 +1,8 @@
+[MesaureCallback]
+Class="Function"
+Prototype="int MesaureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[TemperatureCallback]
+Class="Function"
+Prototype="int TemperatureCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

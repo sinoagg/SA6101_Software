@@ -1,0 +1,20 @@
+[LaunchExcelCB]
+Class="Function"
+Prototype="int LaunchExcelCB();"
+
+[ShutDownExcelCB]
+Class="Function"
+Prototype="int ShutDownExcelCB();"
+
+[ShowAndOpenExcelCB]
+Class="Function"
+Prototype="int ShowAndOpenExcelCB();"
+
+[InitExcelCB]
+Class="Function"
+Prototype="int InitExcelCB();"
+
+[SaveExcelCB]
+Class="Function"
+Prototype="int SaveExcelCB(int panel, int control);"
+

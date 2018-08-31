@@ -1,0 +1,48 @@
+[IdVgGateDecoCallback]
+Class="Function"
+Prototype="int IdVgGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainDecoCallback]
+Class="Function"
+Prototype="int IdVgDrainDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgGateModeCallback]
+Class="Function"
+Prototype="int IdVgGateModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainModeCallback]
+Class="Function"
+Prototype="int IdVgDrainModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainStartCallback]
+Class="Function"
+Prototype="int IdVgDrainStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainStopCallback]
+Class="Function"
+Prototype="int IdVgDrainStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainStepCallback]
+Class="Function"
+Prototype="int IdVgDrainStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgGateStartCallback]
+Class="Function"
+Prototype="int IdVgGateStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgGateStopCallback]
+Class="Function"
+Prototype="int IdVgGateStopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgGateStepCallback]
+Class="Function"
+Prototype="int IdVgGateStepCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgGatePicCallback]
+Class="Function"
+Prototype="int IdVgGatePicCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdVgDrainPicCallback]
+Class="Function"
+Prototype="int IdVgDrainPicCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
