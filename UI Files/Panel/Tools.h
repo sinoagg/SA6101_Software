@@ -14,7 +14,7 @@
      /* Panels and Controls: */
 
 #define  CALPANEL                         1
-#define  CALPANEL_RANGESELECT             2       /* control type: ring, callback function: (none) */
+#define  CALPANEL_RANGESELECT             2       /* control type: ring, callback function: RangeSelectCallback */
 #define  CALPANEL_RANG                    3       /* control type: pictButton, callback function: RangeCaliCallback */
 #define  CALPANEL_ZEROCURCALI             4       /* control type: pictButton, callback function: ZeroCurrentCaliCallback */
 #define  CALPANEL_OUTVOLCALI              5       /* control type: pictButton, callback function: OutputVoltageCaliCallback */
@@ -43,6 +43,7 @@ int  CVICALLBACK CalibrationCallback(int panel, int control, int event, void *ca
 int  CVICALLBACK CancelCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OutputVoltageCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK RangeCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK RangeSelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SaveCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ToolsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ZeroCurrentCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

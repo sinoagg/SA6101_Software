@@ -8,7 +8,7 @@ Prototype="int GraphDeinit(GraphTypeDef *pGraph);"
 
 [SetGraphY_Axis]
 Class="Function"
-Prototype="void SetGraphY_Axis(GraphTypeDef *pGraph, float currentY_Val);"
+Prototype="void SetGraphY_Axis(GraphTypeDef Graph1, float currentY_Val);"
 
 [SetGraphX_Axis]
 Class="Function"

@@ -47,7 +47,7 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 {   
   		pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 
 		int numOfDotsToPlot=(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot;		//防止中断端去写入这个数据 
-		if(numOfDotsToPlot>0)
+		if((numOfDotsToPlot + plotCurveIndex) >0)
 		{
 			if((pGraph->pCurveArray+plotCurveIndex)->numOfPlotDots >= 1)	//如果已经画了一个点，从上一个点开始画进行连线
 			{
@@ -72,6 +72,7 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;	//防止中断端在画图期间接收到新的数据.
 			
 			 SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
+			
 	}
 	if(pGraph->plotHandle<0)
 		return -1;

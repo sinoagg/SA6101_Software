@@ -32,6 +32,7 @@ static void RxDataToGraph(RxDataTypeDef *pRxData)
 		{
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVdtest;						//get x, set pointer to the next data
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=pRxData->rxIdmeasured.num_float;		//get y, set pointer to the next data 
+			 //SetGraphY_Axis(Graph1,(pRxData->rxIdmeasured.num_float));                
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 		{
