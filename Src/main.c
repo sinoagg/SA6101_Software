@@ -28,7 +28,7 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackD
 
 static void RxDataToGraph(RxDataTypeDef *pRxData)
 	{
-		   	if(TestPara.testMode==SWEEP_DRAIN_VOL)
+		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVdtest;						//get x, set pointer to the next data
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=pRxData->rxIdmeasured.num_float;		//get y, set pointer to the next data 
@@ -78,22 +78,22 @@ static void RxDataToTable(void)
 	SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (2, rowNum), *((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY-1));  //写入Y值  
 }
 
-//static void TestStop(RxDataTypeDef *pRxData,int portNumber)
-//{
-//	/*	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
-//	GraphDeinit(&Graph2);*/
-//	pRxData->rxStopSign=0;
-//	Graph1.pCurveArray->numOfPlotDots=0;
-//	curveComplete=1;
-//	FlushInQ(portNumber);	   											//Clear input and output buffer
-//	FlushOutQ(portNumber);
-//	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
-//	Delay(1);
-//	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置  
-//	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮 //注释掉后可以在运行中点击停止     
-//	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-//	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮	
-//}
+static void TestStop(RxDataTypeDef *pRxData,int portNumber)
+{
+	/*	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
+	GraphDeinit(&Graph2);*/
+	pRxData->rxStopSign=0;
+	Graph1.pCurveArray->numOfPlotDots=0;
+	/*curveComplete=1;*/
+	FlushInQ(portNumber);	   											//Clear input and output buffer
+	FlushOutQ(portNumber);
+	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
+	Delay(1);
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置  
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮 //注释掉后可以在运行中点击停止     
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮	
+}
 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
@@ -108,8 +108,8 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	while(rxNum>=MEASURE_UART_RX_LEN)
 	{														  
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
-		if(RxData.rxStopSign==0x01 || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))												//if received end of test signal, stop the timer right now, or new query cmd will be transmitted
-			DiscardAsyncTimer(TimerID);
+	/*	if(RxData.rxStopSign==0x01 || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))												//if received end of test signal, stop the timer right now, or new query cmd will be transmitted
+			DiscardAsyncTimer(TimerID);*/
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
@@ -121,36 +121,24 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	}
 		    
 	   	PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex); 
-		 if((RxData.rxStopSign==0x01) || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))
-		 {
-		 	 RxData.rxStopSign=0;
-			Graph1.pCurveArray->numOfPlotDots=0;
-			curveComplete=1;
-			FlushInQ(portNumber);	   											//Clear input and output buffer
-			FlushOutQ(portNumber);
-			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send RUN command to instrument via UART 
-			Delay(1);
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置  
-			/*SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮 //注释掉后可以在运行中点击停止     
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮	*/
-		 }
-		
-/*		switch(TestPara.testMode)
+		switch(TestPara.testMode)
 			{
 				case NO_SWEEP_IT:
 				case NO_SWEEP_RT:
 					 if((RxData.rxStopSign==0x01) || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))
-					 TestStop(&RxData,portNumber);
+					 	TestStop(&RxData,portNumber);
 					break;
-				case ID_T:
+				case ID_T:				 
 					break;
 				case SWEEP_DRAIN_VOL:
 				case SWEEP_GATE_VOL:
-					if((RxData.rxStopSign==0x01)&&(Graph1.plotCurveIndex +1 == Graph1.numOfCurve))
-					 TestStop(&RxData,portNumber);  
+					if((RxData.rxStopSign == 0x01)&&(Graph1.plotCurveIndex +1 == Graph1.numOfCurve))
+						TestStop(&RxData,portNumber);
+					else if(RxData.rxStopSign == 0x01)
+						curveComplete=1; 
 					break;
-			}*/  
+			}  
+	   
 	   
 }	
 	
