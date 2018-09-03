@@ -72,16 +72,12 @@ int CVICALLBACK CalibrationCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			//SetPanelSize(hCalibrationPanel,279,386);
 			SetPanelPos(hCalibrationPanel,250,920);
 			InstallPopup (hCalibrationPanel);
 			break;
 	}
 	return 0;
 }
-
-
-
 
 
 int CVICALLBACK OutputVoltageCaliCallback (int panel, int control, int event,

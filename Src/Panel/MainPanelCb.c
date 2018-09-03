@@ -337,11 +337,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  		//graph set up
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-					Graph1.pGraphAttr->yAxisHead=0;
-					Graph1.pGraphAttr->yAxisTail=numOfDots*0.000001;
+					Graph1.pGraphAttr->yAxisHead=0.9e-3;
+					Graph1.pGraphAttr->yAxisTail=1.0e-3;
 					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
-					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-			        //SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 X  轴的范围
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);      //X
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);		//Y
 
 					//newThread
 					CreateMonitorThread(numOfCurve);
@@ -373,7 +373,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					//X轴和Y轴均由控件自由控制
 					break;
 					
 				case NO_SWEEP_RT:
@@ -444,7 +443,6 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置
 			numOfCurve = 0;
-			//Graph1.plotCurveIndex=0; 								//每次实验开始之后初始化CurveIndex       
 			break;
 	}
 	return 0;
@@ -476,7 +474,6 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 	        InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
 			SetPanelPos(hSettingsPrjPanel, 5, 170);
-			//SetPanelSize(hSettingsPrjPanel, 350, 650);
 			DisplayPanel(hSettingsPrjPanel);
 
 			break;
@@ -579,13 +576,11 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			//SetPanelSize(hPrjPanel,700,1400);
 			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1);
-			//SetPanelSize(hPrjListPanel,550,1399);
 			SetPanelPos(hPrjListPanel,90,0);
 			DisplayPanel(hPrjListPanel); 
 			LoadAllProject(ProjectSavePath);
@@ -602,7 +597,6 @@ int CVICALLBACK ToolsCallback (int panel, int control, int event,
 	
 		switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			//SetPanelSize(hToolsPanel,500,500);
 			SetPanelPos(hToolsPanel,250,400);
 			InstallPopup (hToolsPanel);
 		    break;

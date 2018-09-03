@@ -95,7 +95,6 @@ int CVICALLBACK PrjBtnCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelPos(hSettingsPrjPanel, 5, 170);
-			//SetPanelSize(hSettingsPrjPanel, 350, 650);
 			DisplayPanel(hSettingsPrjPanel);
 			HidePanel(hSettingsGraphPanel);
 			HidePanel(hSettingsAboutPanel);
@@ -119,7 +118,6 @@ int CVICALLBACK GraphBtnCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelPos(hSettingsGraphPanel, 5, 170);
-			//SetPanelSize(hSettingsGraphPanel, 350, 650);
 			DisplayPanel(hSettingsGraphPanel);
 			HidePanel(hSettingsPrjPanel);
 			HidePanel(hSettingsAboutPanel);
@@ -141,7 +139,6 @@ int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 			SetPanelPos(hSettingsAboutPanel, 5, 170);
-			//SetPanelSize(hSettingsAboutPanel, 350, 650);
 			DisplayPanel(hSettingsAboutPanel);
 			HidePanel(hSettingsGraphPanel);
 			HidePanel(hSettingsPrjPanel);

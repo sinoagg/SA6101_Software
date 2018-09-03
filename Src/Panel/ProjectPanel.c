@@ -162,7 +162,6 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 			if(selectPanel)
 			{
 				SelectProject(selectPanel,0);				//取消当前选中状态  
-				//SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
 				SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 

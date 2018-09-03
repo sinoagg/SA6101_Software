@@ -54,7 +54,7 @@ extern GraphTypeDef Graph2;
 int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
 int GraphDeinit(GraphTypeDef* pGraph);
 
-void SetGraphY_Axis(GraphTypeDef Graph1, float currentY_Val);  
+void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val);  
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val);  
 
 #ifdef __cplusplus

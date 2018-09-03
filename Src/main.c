@@ -22,6 +22,8 @@ unsigned char measUartRxBuf[1024]={0};
 unsigned char SA11_Status=0;				//open comport status
 unsigned char curveComplete;
 
+
+
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
 
 
@@ -32,7 +34,7 @@ static void RxDataToGraph(RxDataTypeDef *pRxData)
 		{
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVdtest;						//get x, set pointer to the next data
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY++)=pRxData->rxIdmeasured.num_float;		//get y, set pointer to the next data 
-			 //SetGraphY_Axis(Graph1,(pRxData->rxIdmeasured.num_float));                
+			              
 		}
 		else if(TestPara.testMode==SWEEP_GATE_VOL)
 		{
@@ -104,7 +106,8 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	rxNum = GetInQLen(portNumber);  											//读取串口中发送来的数据数量
 	if(rxNum>1024) rxNum=1024;													//防止超过内存范围
 	rxNum-=rxNum%MEASURE_UART_RX_LEN;											//只读取接收字符组整数倍的数据，不读零散数据
-	ComRd(portNumber, (char *)measUartRxBuf, rxNum);							//Read UART Buffer to local buffer at one time  
+	ComRd(portNumber, (char *)measUartRxBuf, rxNum);							//Read UART Buffer to local buffer at one time 
+	float rxIdmeasured =0; 
 	while(rxNum>=MEASURE_UART_RX_LEN)
 	{														  
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
@@ -113,6 +116,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
+		rxIdmeasured = RxData.rxIdmeasured.num_float;   
 		(Graph1.pCurveArray+Graph1.plotCurveIndex)->numOfDotsToPlot++;									//number of dots to plot increase
 		RxDataToGraph(&RxData);
 		RxDataToTable();
@@ -120,7 +124,8 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		i++; 
 	}
 		    
-	   	PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex); 
+	   	PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured); 
+		//PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex);
 		switch(TestPara.testMode)
 			{
 				case NO_SWEEP_IT:
@@ -138,10 +143,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 						curveComplete=1; 
 					break;
 			}  
-	   
-	   
-}	
-	
+}			   
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
@@ -152,7 +154,6 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 	rxNum = GetInQLen(controlComPort);  								//读取串口中发送来的数据数量
 	if(rxNum>500) rxNum=500;											//防止超过内存范围
 	ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, rxNum);	
-	
 	while(rxNum>=14)
 	{			 
 		ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);			// 从串口中取出环境测量参数

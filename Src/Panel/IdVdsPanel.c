@@ -46,8 +46,6 @@ ExpPanelTypeDef IdVdPanel={
 	IDVDS_CFG_VG_STEP,
 	IDVDS_CFG_DRAINMODE,
 	IDVDS_CFG_GATEMODE,
-	
-	
 	}; 
 
 
@@ -58,12 +56,10 @@ static void SetDrainDisp(int panel, char focus)
 	if(focus==FOCUS)
 	{
 		DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\Drain_pressed.png");// change picture 
-		//SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor together with picture
 	}
 	else
 	{
 		DisplayImageFile (panel, IDVDS_CFG_PIC_DRAIN, "Resource\\Drain.png");// change picture 
-		//SetCtrlAttribute (panel, IDVDS_CFG_TXT_DRAIN, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor together with picture
 	}
 }
 
@@ -72,12 +68,10 @@ static void SetGateDisp(int panel, char focus)
 	if(focus==FOCUS)
 	{
 		DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\gate_pressed.png");// change picture 
-		//SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_BLUE);// change text bgcolor together with picture
 	}
 	else
 	{
 		DisplayImageFile (panel, IDVDS_CFG_PIC_GATE, "Resource\\gate.png");// change picture 
-		//SetCtrlAttribute (panel, IDVDS_CFG_TXT_GATE, ATTR_TEXT_BGCOLOR, COLOR_GREY);// change text bgcolor together with picture
 	}
 }
 
@@ -117,7 +111,7 @@ int CVICALLBACK IdVdGateModeCallback (int panel, int control, int event,
 		 	break;
 		case EVENT_VAL_CHANGED:
 			int val;
-			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);
+			GetCtrlVal(panel,IDVDS_CFG_GATEMODE,&val);	    
 			if(val==STEP)
 			{
 		    	DisplayImageFile (panel, IDVDS_CFG_PIC_IDVD_GATE, "Resource\\V_Step.ico");
