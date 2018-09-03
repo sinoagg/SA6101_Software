@@ -1,0 +1,24 @@
+[GetSettingsCurveAttr]
+Class="Function"
+Prototype="CurveAttrTypeDef *GetSettingsCurveAttr(int GraphIndex, int CurveIndex);"
+
+[PrjBtnCallback]
+Class="Function"
+Prototype="int PrjBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[GraphBtnCallback]
+Class="Function"
+Prototype="int GraphBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[AboutBtnCallback]
+Class="Function"
+Prototype="int AboutBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[PrjDirCallback]
+Class="Function"
+Prototype="int PrjDirCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SettingsPanelCallback]
+Class="Function"
+Prototype="int SettingsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
