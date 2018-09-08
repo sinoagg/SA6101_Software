@@ -44,9 +44,9 @@ extern char ABC[11][20];
 
 //==============================================================================
 // Global functions
-void Table_init(char table_title[][20], int column, columnWidth);
-
-
+void Table(char table_title[][20], int column, columnWidth, int row);
+//void Table_init(char table_title[][20], int column, columnWidth); 
+   
 #ifdef __cplusplus
     }
 #endif

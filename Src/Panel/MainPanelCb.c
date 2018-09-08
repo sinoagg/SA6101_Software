@@ -14,6 +14,7 @@
 
 //==============================================================================
 // Include files
+#include "LoadPanel.h"
 #include <utility.h>
 #include <formatio.h>
 #include "asynctmr.h"
@@ -21,7 +22,6 @@
 #include <ansi_c.h>
 #include <cvirte.h>		
 #include <userint.h>
-#include "LoadPanel.h"
 #include "Protocol.h"
 #include "Timer.h"
 #include "SampleCfgPanel.h"
@@ -63,15 +63,18 @@
 // Global variables
 FileLableTypeDef *pFileLable[64];									//存所有FileLable的指针，最多只能加载一个文件夹下的64个文件
 PrjHandleTypeDef SingleProject[64];	
+char cellRange[] = "A1:Z65536"; 
+
+CmtThreadFunctionID abnmDCThreadId;  //异常发生时数据缓存函数的线程Id 
 
 int TimerID;
 char configSavePath[512]={0};
-char table_title_IT[11][20] ={"t(s)","I(A)"};
-char table_title_RT[11][20] ={"t(s)","R(Ohm)"};
-char table_title_IV[11][20] ={"V(mV)","I(A)"};
-char table_title_Idt[11][20] ={"t(s)","Id(A)"}; 
-char table_title_IdVd[11][20] ={"V(mV)","Id(A)"};
-char table_title_IdVg[11][20] ={"Vg(mV)","Id(A)"};
+char table_title_IT[11][20]  ={ "t(s)","I(A)","Vd(mV)"};
+char table_title_RT[11][20]  ={ "t(s)","R(Ohm)" ,"Vd(mV)"};
+char table_title_IV[11][20]  ={"Vd(mV)","I(A)"};
+char table_title_Idt[11][20] ={"Id(A)"  ,"t(s)","Vd(mV)"}; 
+char table_title_IdVd[11][20]={"Vd(mV)","Id(A)","Vg(mV)"};
+char table_title_IdVg[11][20]={"Vg(mV)","Id(A)","Vd(mV)"};
 int numOfCurve=0;
 
 //==============================================================================
@@ -97,6 +100,8 @@ int CVICALLBACK MAIN_PANEL_Callback (int panel, int event, void *callbackData,
 
 			break;
 		case EVENT_CLOSE:
+			    ShutDownExcelCB();
+			    SaveSystemClose(0);  //软件正常关闭状态为0
 			   	QuitUserInterface(0); 
 			break;
 	}
@@ -148,14 +153,6 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 			DispResultTableGraph();
 			DispResultNumber();
 		    DispEnvironmentCfg();
-		/*	int index;
-			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
-			if(index==EXP_I_T||index==EXP_R_T||index==EXP_ID_T)
-				DispRuntime(1);
-			else 
-				DispRuntime(0);*/
-		   
-
 			break;
 	}
 	return 0;
@@ -173,7 +170,6 @@ int CVICALLBACK SelectCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
 
 	 		SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-	        //SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 	        DisplayPanel(IdVgPanel.panelHandle);
 			HidePanel(hBasicSamplePanel);	 
 			HidePanel(hResultDispPanel);
@@ -199,16 +195,6 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure_pressed.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze.ico");
-			/*//点击Configure图标回到Id_vds界面
-			SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-			SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
-			DisplayPanel(IdVgPanel.panelHandle);
-			SetPanelPos(hBasicSamplePanel, 105, 1600);
-			SetPanelSize(hBasicSamplePanel, 449, 320);
-			DisplayPanel(hBasicSamplePanel);
-			SetPanelPos(hEnvCfgPanel, 556, 1600);
-			SetPanelSize(hEnvCfgPanel, 449, 320);
-			DisplayPanel(hEnvCfgPanel);*/
 			break;
 			
 	}
@@ -221,23 +207,20 @@ int CVICALLBACK ConfigureCallback (int panel, int control, int event,
 static void RunActive()
 {
  	SetPanelPos(hResultMenuPanel, 105, 305);  
-	//SetPanelSize(hResultMenuPanel, 65, 1293);      
+    
  	DisplayPanel(hResultMenuPanel);  
 			
 	SetPanelPos(hGraphPanel, 172, 305);  
-	//SetPanelSize(hGraphPanel, 833, 1293);
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
  	DisplayPanel(hGraphPanel);
 		   
 	SetPanelPos(hResultDispPanel, 105, 1600);
-	//SetPanelSize(hResultDispPanel, 449, 320);
 	DisplayPanel(hResultDispPanel);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_SAMPLETIME,ATTR_VISIBLE,0);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME,ATTR_VISIBLE,0);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TIME_UNIT,ATTR_VISIBLE,0);
 	SetPanelPos(hEnvResultPanel, 556, 1600);
-	//SetPanelSize(hEnvResultPanel, 449, 320);
 	DisplayPanel(hEnvResultPanel);
 				    
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮      
@@ -256,9 +239,10 @@ int CVICALLBACK StepThreadFunction(void* temp)
 	int numOfRxCurve=0;
 	while(numOfRxCurve < numOfCurve-1)
 	{
-		if(curveComplete==1)															//一组曲线数据接收完毕
+		if((curveComplete==1)&&(rows>0))															//一组曲线数据接收完毕
 		{
 			curveComplete=0;
+			rows=0;
 			numOfRxCurve++;
 			Graph1.plotCurveIndex++;
 			switch(TestPara.testMode)
@@ -281,7 +265,7 @@ int CVICALLBACK StepThreadFunction(void* temp)
 		}
 	
 	}
-	//Graph1.plotCurveIndex=0;      
+     
 	return 0;
 }
 
@@ -290,6 +274,22 @@ void CreateMonitorThread(int numOfCurve)
 	int threadID;
 	CmtScheduleThreadPoolFunction(DEFAULT_THREAD_POOL_HANDLE, StepThreadFunction, NULL, &threadID);	
 }
+
+ int CVICALLBACK AbnmDCThreadFunction (void *functionData)
+{ 
+    int n = 1;   	 //每十分之n更新一次缓存去的数据   
+	while(Graph1.pCurveArray->numOfPlotDots < Graph1.pCurveArray->numOfTotalDots)
+	{
+		if(Graph1.pCurveArray->numOfPlotDots > 0 && Graph1.pCurveArray->numOfPlotDots >= (Graph1.pCurveArray->numOfTotalDots * n) / 10)  //每十分之一的总点数时更新一次缓存区
+		{
+			LaunchExcelCB();
+			SaveExcelCB(hTablePanel, TABLE_DISTABLE, cellRange);
+			n +=1;
+		}
+	}
+	return 0;
+}
+
 
 int CVICALLBACK RunCallback (int panel, int control, int event,
 							 void *callbackData, int eventData1, int eventData2)
@@ -305,23 +305,23 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			else 
 				DispRuntime(0);
 			
-			FlushInQ(measureComPort);	   							//Clear input and output buffer,在测试开始之前还应该清除一次
+			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
-			Graph1.plotCurveIndex=0; 								//每次实验开始之前初始化CurveIndex
+			Graph1.plotCurveIndex=0; 													//每次实验开始之前初始化CurveIndex
 			curveComplete=0;
+			rows=0;
 			int expType;
-			int graphIndex=0;										//currently only deal with one graph circumstance
+			int graphIndex=0;															//currently only deal with one graph circumstance
 			int numOfDots=0;
-			Table_ATTR.column = 2;   								//列数
-			Table_ATTR.columnWidth= 290;  							//列宽
+			Table_ATTR.column = 3;
+			Table_ATTR.columnWidth= 90;  												//列宽
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
-	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);//每个实验运行之前清除上一个实验的table数据  
+	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线 
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
 				return -1; 
 			TestPara.testMode=(enum TestMode)expType;
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
-
 			switch(TestPara.testMode)
 			{
 			   	case SWEEP_DRAIN_VOL:				 
@@ -333,16 +333,18 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					{
 						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
 					}
-					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; 
-					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  		//graph set up
+					 													//列数
+					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
+					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);   
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-					Graph1.pGraphAttr->yAxisHead=0.9e-3;
-					Graph1.pGraphAttr->yAxisTail=1.0e-3;
-					Table_init(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth); 	//表格重新初始化 与设置参数有关，应该写成函数
-					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);      //X
-					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);		//Y
-
+					Table_ATTR.column = 3*numOfCurve; 
+					Table_ATTR.row =numOfDots; 
+					/*Graph1.pGraphAttr->yAxisHead=1e-13;
+	   				Graph1.pGraphAttr->yAxisTail=1.1e-13;*/
+							//graph set up  
+                    Table(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  	//表格重新初始化 与设置参数有关，应该写数成函*/
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					//newThread
 					CreateMonitorThread(numOfCurve);
 					break;
@@ -355,11 +357,17 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					{
 						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
 					}
-					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 	
+				 	
+					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数  
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);   
+					Table_ATTR.row =  numOfDots; 	
+					Table_ATTR.column = 3*numOfCurve;  
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
-					Table_init(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth);
+					/*Graph1.pGraphAttr->yAxisHead=1e-13;
+	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; */
+					
+					Table(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					CreateMonitorThread(numOfCurve);   
 					break;
@@ -369,10 +377,14 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  //单位s
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Table_init(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth);
+					Table_ATTR.column = 3*numOfCurve;  
+					Table_ATTR.row =  numOfDots;	
 					Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
+					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId); //开辟新的线程
+					//Y轴均由控件自由控制
 					break;
 					
 				case NO_SWEEP_RT:
@@ -380,20 +392,24 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					 Graph1.pCurveArray->numOfTotalDots  = numOfDots;
-					 Table_init(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth);
+					 Table_ATTR.column = 3*numOfCurve;
+					 Table_ATTR.row =  numOfDots;
 					 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
+					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.01; 
+					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					 SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-				
+
 					 break;
 					
 				case SWEEP_IV:
 					numOfCurve=1;  
 					numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Table_init(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth);
+					Table_ATTR.column = 2*numOfCurve;
+					Table_ATTR.row =  numOfDots;
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
-				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
+				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop; 
+					Table(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 
 					break;
@@ -402,10 +418,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfCurve=1;
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001); 
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Graph1.pCurveArray->numOfTotalDots  = numOfDots;
-					Table_init(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth);
+				 	Graph1.pCurveArray->numOfTotalDots  = numOfDots;
+			    	Table_ATTR.column = 3*numOfCurve;
+					Table_ATTR.row =  numOfDots;
 				    Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
+					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01; 
+					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 				
 					break;
@@ -443,7 +461,8 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置
 			numOfCurve = 0;
-			break;
+ 							
+		break;
 	}
 	return 0;
 }
@@ -474,6 +493,7 @@ int CVICALLBACK SettingsCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 	        InstallPopup (hSettingsPanel);    //弹出hSettingsPanel 
 			SetPanelPos(hSettingsPrjPanel, 5, 170);
+			//SetPanelSize(hSettingsPrjPanel, 350, 650);
 			DisplayPanel(hSettingsPrjPanel);
 
 			break;
@@ -576,11 +596,13 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
+			//SetPanelSize(hPrjPanel,700,1400);
 			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
 			SetCtrlAttribute(hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1);
+			//SetPanelSize(hPrjListPanel,550,1399);
 			SetPanelPos(hPrjListPanel,90,0);
 			DisplayPanel(hPrjListPanel); 
 			LoadAllProject(ProjectSavePath);
@@ -597,6 +619,7 @@ int CVICALLBACK ToolsCallback (int panel, int control, int event,
 	
 		switch(event){
 		case EVENT_LEFT_CLICK_UP:
+			//SetPanelSize(hToolsPanel,500,500);
 			SetPanelPos(hToolsPanel,250,400);
 			InstallPopup (hToolsPanel);
 		    break;

@@ -181,5 +181,14 @@ int LoadInitPanel (void)
 				DisplayPanel(hFourTerminalPanel);
 				
 			}
+			
+	int temp = CheckSystemClose();
+	if(temp == 1)
+	{   
+		LaunchExcelCB();
+		ShowAndOpenExcelCB();
+	}
+	InitSystemClose(1);  //初始化异常关闭状态为1
 	return 0;
+	
 }

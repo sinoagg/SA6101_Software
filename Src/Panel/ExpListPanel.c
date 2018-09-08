@@ -64,11 +64,9 @@ static void DisplaySampleCfgPanel(int display)
 	if(display)
 	{
 		SetPanelPos(hBasicSamplePanel, 104, 1600);
-		//SetPanelSize(hBasicSamplePanel, 450 ,320);
 		DisplayPanel(hBasicSamplePanel);
 		
 		SetPanelPos(hEnvCfgPanel, 556, 1600);
-		//SetPanelSize(hEnvCfgPanel, 449, 320);
 		DisplayPanel(hEnvCfgPanel);
 	}
 	else 
@@ -109,7 +107,6 @@ static void RunStatus()
 		
 	}
 
-	
 }
 
 
@@ -126,7 +123,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{   
 				DisplaySampleCfgPanel(0);
 				SetPanelPos(hTwoTerminalPanel,124,1600);
-				//SetPanelSize(hTwoTerminalPanel,881,320);
 				DisplayPanel(hTwoTerminalPanel);
 			}
 			else if(index==EXP_I_T)	//º”‘ÿI-T
@@ -134,7 +130,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //…Ë÷√◊¯±Í÷·
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 				SetPanelPos(hIT_Panel, 104, 305);
-				//SetPanelSize(hIT_Panel, 901, 1293);
 				DisplayPanel(hIT_Panel);
 				RunStatus();
 		        DisplaySampleCfgPanel(1);
@@ -147,7 +142,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
 				SetPanelPos(hRT_Panel, 104, 305);
-				//SetPanelSize(hRT_Panel, 901, 1293);
 				DisplayPanel(hRT_Panel);					  
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
@@ -161,7 +155,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 				SetPanelPos(hIV_Panel, 104, 305);
-				//SetPanelSize(hIV_Panel, 901, 1293);
 				DisplayPanel(hIV_Panel);
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
@@ -173,7 +166,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED,1); 
 				DisplaySampleCfgPanel(0);
 				SetPanelPos(hFourTerminalPanel,124,1600);
-				//SetPanelSize(hFourTerminalPanel,881,320);
 				DisplayPanel(hFourTerminalPanel);
 				
 			}
@@ -182,7 +174,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
-				//SetPanelSize(IdVdPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVdPanel.panelHandle);
 				RunStatus();     
 				DisplaySampleCfgPanel(1);
@@ -194,7 +185,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
-				//SetPanelSize(IdVgPanel.panelHandle, 901, 1293);
 				DisplayPanel(IdVgPanel.panelHandle);
 				RunStatus();    
 				DisplaySampleCfgPanel(1);
@@ -205,7 +195,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 			    SetPanelPos(hIdtPanel, 104, 305);
-				//SetPanelSize(hIdtPanel, 901, 1293);
 				DisplayPanel(hIdtPanel);
 				RunStatus();    
 				DisplaySampleCfgPanel(1);

@@ -16,7 +16,9 @@
 #endif
 
 //==============================================================================
-// Include files
+// Include files  
+#include "AbnormalDataCache.h" 
+#include "Table.h"
 
 #include "cvidef.h"
 #include "MainPanel.h"
@@ -27,7 +29,6 @@
 #include "GraphDisp.h"
 #include "Environment.h"
 #include "Result Menu.h"
-#include "Table.h"
 #include "I-T.h"
 #include "R-T.h" 
 #include "I-V.h"  
@@ -37,7 +38,7 @@
 #include "Id-t Configuration.h"
 #include "Terminal.h"
 #include "Tools.h"
-
+#include "system_ini.h"   
 
 		
 

@@ -33,9 +33,8 @@
 //==============================================================================
 // Global functions
 
-int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control);
-int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int CurveIndex,float rxIdmeasured); 
-//int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int CurveIndex);
+//int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control);					
+int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int CurveIndex,float rxIdmeasured);
 int PlotCurve2(GraphTypeDef* pGraph2, int hGraphPanel, int control);    
 void DisplayEnvtGraph();  
 #ifdef __cplusplus

@@ -75,33 +75,36 @@ int GraphDeinit(GraphTypeDef* pGraph)
 	return 0;
 }
 
-void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val ==>rxIdmeasured
+void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val ==>Id
 {
+	
+	Graph1.pGraphAttr->yAxisHead=1e-13;
+	Graph1.pGraphAttr->yAxisTail=1.1e-13; 
 	switch(TestPara.testMode)
-	{  
-		case SWEEP_DRAIN_VOL:
+	{   
 		case SWEEP_GATE_VOL: 
-			if(Graph1.pGraphAttr->yAxisTail <= currentY_Val)
+		case SWEEP_DRAIN_VOL:
+		case SWEEP_IV:
+			if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
 			{
-				Graph1.pGraphAttr->yAxisTail=currentY_Val + currentY_Val*0.1;
+				Graph1.pGraphAttr->yAxisTail=currentY_Val+currentY_Val*0.1;
 				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
 			}
-			else if(currentY_Val<= Graph1.pGraphAttr->yAxisHead)
+	      else if((currentY_Val <= Graph1.pGraphAttr->yAxisHead))
 			{
-				Graph1.pGraphAttr->yAxisHead=currentY_Val + currentY_Val*0.1;
+			    Graph1.pGraphAttr->yAxisHead=currentY_Val;
 				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
 			}
 			else 
 			{
-				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL,Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
-
+				 SetCtrlAttribute (Graph1.graphHandle,GRAPHDISP_GRAPH1 , ATTR_YLOOSE_FIT_AUTOSCALING,1);  
 			}
-		
+	
 			break;
 	}
 }
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
-{		
+{					 
 	switch(TestPara.testMode)
 	{
 		case NO_SWEEP_IT:

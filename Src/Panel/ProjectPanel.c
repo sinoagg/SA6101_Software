@@ -72,7 +72,6 @@ static void SelectProject(int panel, int select)
 	selectPanel=GetActivePanel(); //获得当前选中项目面板的句柄值 
 	if(select)
 	{
-		
 		SetPanelAttribute(selectPanel, ATTR_BACKCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, CHANGECOLOR);
@@ -82,7 +81,7 @@ static void SelectProject(int panel, int select)
 	}
 	else
 	{
-		                                                                                                                               SetPanelAttribute(panel, ATTR_BACKCOLOR, BGCOLOR);
+        SetPanelAttribute(panel, ATTR_BACKCOLOR, BGCOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_NAME, ATTR_TEXT_BGCOLOR, BGCOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DESC, ATTR_TEXT_BGCOLOR, BGCOLOR);
 		SetCtrlAttribute (panel, DEFPANEL_DATE, ATTR_TEXT_BGCOLOR, BGCOLOR);
@@ -162,9 +161,11 @@ int CVICALLBACK SearchCallback (int panel, int control, int event,
 			if(selectPanel)
 			{
 				SelectProject(selectPanel,0);				//取消当前选中状态  
+				//SetPanelAttribute(hPrjListPanel, ATTR_BACKCOLOR, BGCOLOR); 
 				SetCtrlAttribute (hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
 				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_TEXT_BGCOLOR,SEARCHCOLOR );
-				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1); 
+				SetCtrlAttribute (hPrjPanel,PROPANEL_TXT_OPENPRJ , ATTR_DIMMED, 1);
+				selectPanel=0;
 			 }
 			 
 			break;

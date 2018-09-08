@@ -50,7 +50,7 @@ extern PrjHandleTypeDef SingleProject[];
 //==============================================================================
 //// Global functions
 static int SaveConfigToFile(char* pConfigSavePath);
-
+ int CVICALLBACK AbnmDCThreadFunction (void *functionData);
 
 #ifdef __cplusplus
     }
