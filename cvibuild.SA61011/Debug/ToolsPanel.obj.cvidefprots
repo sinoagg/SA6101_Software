@@ -30,3 +30,7 @@ Prototype="int CancelCaliCallback(int panel, int control, int event, void *callb
 Class="Function"
 Prototype="int RangeSelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
+[CaliPanelCallback]
+Class="Function"
+Prototype="int CaliPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+

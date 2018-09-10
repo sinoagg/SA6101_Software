@@ -29,15 +29,16 @@
 //==============================================================================
 // Global variables
 ExpPanelTypeDef IdtPanel={
-	0, 
+	0,
+	IDT_CFG_VD_START,
 	IDT_CFG_VG_START, 
-	IDT_CFG_GATEMODE, 
 	IDT_CFG_VD_START, 
-	IDT_CFG_DRAINMODE, 
-	IDT_CFG_VG_START, 
-	IDT_CFG_GATEMODE, 
-	IDT_CFG_VD_START, 
+	IDT_CFG_VG_START,
+	IDT_CFG_VD_START,
+	IDT_CFG_VD_START,
 	IDT_CFG_DRAINMODE,
+	IDT_CFG_GATEMODE,
+	
 	
 };
 //==============================================================================

@@ -43,7 +43,6 @@ int CVICALLBACK LegendCallback (int panel, int control, int event,
 	{   
 		int legendval;
 		GetCtrlVal(hEnvResultPanel,ENVIRPANEL_LEGEND, &legendval);
-
 		SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_VISIBLE, legendval);
 		SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_LEFT, 1070); 
 		SetCtrlAttribute (hGraphPanel, GRAPHDISP_CANVAS, ATTR_TOP, 450);

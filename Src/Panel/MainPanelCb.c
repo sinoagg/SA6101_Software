@@ -242,7 +242,7 @@ int CVICALLBACK StepThreadFunction(void* temp)
 		if((curveComplete==1)&&(rows>0))															//一组曲线数据接收完毕
 		{
 			curveComplete=0;
-			rows=0;
+			rows=0;			     //table中行的标志来量，每条曲线从1开始到最后一个点
 			numOfRxCurve++;
 			Graph1.plotCurveIndex++;
 			switch(TestPara.testMode)
@@ -340,8 +340,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
 					Table_ATTR.column = 3*numOfCurve; 
 					Table_ATTR.row =numOfDots; 
-					/*Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-13;*/
+					Graph1.pGraphAttr->yAxisHead=1e-13;
+	   				Graph1.pGraphAttr->yAxisTail=1.1e-13;
 							//graph set up  
                     Table(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  	//表格重新初始化 与设置参数有关，应该写数成函*/
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
@@ -364,9 +364,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Table_ATTR.column = 3*numOfCurve;  
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
-					/*Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; */
-					
+					Graph1.pGraphAttr->yAxisHead=9.8e-10;
+	   				Graph1.pGraphAttr->yAxisTail=9.9e-10; 
 					Table(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					CreateMonitorThread(numOfCurve);   
@@ -383,7 +382,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId); //开辟新的线程
+					//CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId); //开辟新的线程
 					//Y轴均由控件自由控制
 					break;
 					
@@ -408,7 +407,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Table_ATTR.column = 2*numOfCurve;
 					Table_ATTR.row =  numOfDots;
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
-				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop; 
+				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
+					Graph1.pGraphAttr->yAxisHead=1e-13;
+	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
 					Table(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 
@@ -435,7 +436,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			
 			Delay(0.2);												  					//在设置和运行命令之间给下位机0.2秒处理
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);				//send RUN command to instrument via UART
-			
 			double temp=((double)TestPara.timeStep)/1000;
 			if(temp<0.03) temp=0.03;													//如果查询时间过快，会造成数据混乱，下位机响应中断过多
 			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);						//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)

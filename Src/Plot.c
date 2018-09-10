@@ -44,9 +44,8 @@ int graph2preclr;
 //==============================================================================
 // Global functions
 int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCurveIndex,float rxIdmeasured)       
-//int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCurveIndex) 
 {   
-     	//printf("rxIdmeasured=%f",rxIdmeasured*10000000);
+     	
   		pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 
 		int numOfDotsToPlot=(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot;		//防止中断端去写入这个数据 
 		if((numOfDotsToPlot + plotCurveIndex) >0)

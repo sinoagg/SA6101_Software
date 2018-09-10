@@ -13,7 +13,7 @@
 
      /* Panels and Controls: */
 
-#define  CALPANEL                         1
+#define  CALPANEL                         1       /* callback function: CaliPanelCallback */
 #define  CALPANEL_RANGESELECT             2       /* control type: ring, callback function: RangeSelectCallback */
 #define  CALPANEL_RANG                    3       /* control type: pictButton, callback function: RangeCaliCallback */
 #define  CALPANEL_ZEROCURCALI             4       /* control type: pictButton, callback function: ZeroCurrentCaliCallback */
@@ -40,6 +40,7 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK CalibrationCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK CaliPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK CancelCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OutputVoltageCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK RangeCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

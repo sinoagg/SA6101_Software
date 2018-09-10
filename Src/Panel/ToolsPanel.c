@@ -136,8 +136,14 @@ int CVICALLBACK SaveCaliCallback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:
-			  HidePanel(hCalibrationPanel); 
-			  ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_SAVE, 0);  
+			  //HidePanel(hCalibrationPanel); 
+			  ProtocolCalibrate(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf, CALI_SAVE, 0); 
+			  SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			  SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI,ATTR_LABEL_BGCOLOR,TXTBGCOLOR); 
+			  SetCtrlAttribute (panel,CALPANEL_ZEROCURCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			  SetCtrlAttribute (panel,CALPANEL_ZEROCURCALI,ATTR_LABEL_BGCOLOR,TXTBGCOLOR); 
+			  SetCtrlAttribute (panel,CALPANEL_RANG, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			  SetCtrlAttribute (panel,CALPANEL_RANG,ATTR_LABEL_BGCOLOR,TXTBGCOLOR);
 			 
 			break;
 	}
@@ -149,7 +155,7 @@ int CVICALLBACK CancelCaliCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
-		case EVENT_COMMIT:
+		case EVENT_LEFT_CLICK_UP:
 			HidePanel(hCalibrationPanel);								//È¡Ïû--»Ö¸´×´Ì¬  
 			SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI, ATTR_IMAGE_FILE, "Resource\\bg.ico");
 			SetCtrlAttribute (panel,CALPANEL_OUTVOLCALI,ATTR_LABEL_BGCOLOR,TXTBGCOLOR); 
@@ -170,6 +176,24 @@ int CVICALLBACK RangeSelectCallback (int panel, int control, int event,
 		case EVENT_VAL_CHANGED: 						//ÇÐ»»µµÎ»£¬¸ü¸Ärun×´Ì¬ 
 			SetCtrlAttribute(panel,CALPANEL_RANG,ATTR_LABEL_BGCOLOR,TXTBGCOLOR);
 			SetCtrlAttribute (panel,CALPANEL_RANG, ATTR_IMAGE_FILE, "Resource\\bg.ico");
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK CaliPanelCallback (int panel, int event, void *callbackData,
+								   int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_GOT_FOCUS:
+
+			break;
+		case EVENT_LOST_FOCUS:
+
+			break;
+		case EVENT_CLOSE:
+			HidePanel(hCalibrationPanel);
 			break;
 	}
 	return 0;

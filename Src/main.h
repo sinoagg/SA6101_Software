@@ -34,7 +34,7 @@ extern unsigned char controlComPort;
 extern unsigned char measUartTxBuf[];
 extern unsigned char measUartRxBuf[];
 extern unsigned char curveComplete;
-extern unsigned int rows; 
+extern  int rows; 
 //==============================================================================
 // Global functions
 
