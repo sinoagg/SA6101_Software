@@ -71,9 +71,31 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 			(pGraph->pCurveArray + plotCurveIndex)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;	//防止中断端在画图期间接收到新的数据.
-																 
-			 SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
-			SetGraphY_Axis(pGraph,rxIdmeasured);   
+			SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
+			SetGraphY_Axis(pGraph,rxIdmeasured);              
+			 
+			/*switch(TestPara.testMode)
+			{   
+				case SWEEP_GATE_VOL:
+					SetGraphY_Axis(pGraph,rxIdmeasured);
+					break;
+				case SWEEP_DRAIN_VOL:
+					SetGraphY_Axis(pGraph,rxIdmeasured);
+					break;
+				case SWEEP_IV:
+			 		SetGraphY_Axis(pGraph,rxIdmeasured);
+					break;
+				case NO_SWEEP_IT:
+						SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);  
+					break;
+				case NO_SWEEP_RT:
+						SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);  
+					break;
+				case ID_T:
+					SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);  
+					break;
+			}*/
+		
 	}
 	if(pGraph->plotHandle<0)
 		return -1;

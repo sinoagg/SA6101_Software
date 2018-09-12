@@ -24,6 +24,8 @@
 #define  ITPANEL_PIC_R                    9       /* control type: picture, callback function: (none) */
 #define  ITPANEL_PIC_GND                  10      /* control type: picture, callback function: (none) */
 #define  ITPANEL_TEXTMSG                  11      /* control type: textMsg, callback function: (none) */
+#define  ITPANEL_RING                     12      /* control type: ring, callback function: (none) */
+#define  ITPANEL_TEXTMSG_2                13      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

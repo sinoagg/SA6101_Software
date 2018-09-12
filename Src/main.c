@@ -22,17 +22,29 @@ unsigned char measUartRxBuf[1024]={0};
 
 unsigned char SA11_Status=0;				//open comport status
 unsigned char curveComplete;
-int rows; 
+int rows;
+int curveIndex =1;   
 #define TXTCOLOR 0x3399FF
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
-#define kStartMessage ""
 
+static void Annotation(int panel,int control)
+{
+	     char curve[80];
+		 sprintf(curve,"%s%d","Curve",curveIndex);
+		 AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve,-20,20);
+		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_CAPTION_BGCOLOR, VAL_RED);
+		 ProcessDrawEvents();
+	     SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_YAXIS, VAL_LEFT_YAXIS);
+		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_XAXIS, VAL_BOTTOM_XAXIS); 
+		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_LINE_COLOR, VAL_DK_BLUE);
+		 ProcessDrawEvents(); 
+}
 
 static void RxDataToGraph(RxDataTypeDef *pRxData)
 	{
-		char str[80];
-		int time = Graph1.pCurveArray->time*0.001;
-		sprintf(str,"%s%d","",time); 
+		char time[80];
+		int str = Graph1.pCurveArray->time*0.001;
+		sprintf(time,"%s%d","",str); 
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVdtest;						//get x, set pointer to the next data
@@ -51,40 +63,62 @@ static void RxDataToGraph(RxDataTypeDef *pRxData)
 		}
 		else if(TestPara.testMode==NO_SWEEP_IT)	   
 		{
-			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, str);              
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, time);              
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;							//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep; 
 			*(Graph1.pCurveArray->pDotY++)=pRxData->rxIdmeasured.num_float;
 		}
-		else if(TestPara.testMode==NO_SWEEP_RT)
+		else if(TestPara.testMode == NO_SWEEP_RT)
 		{
-			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME,str);              
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME,time);              
 			*(Graph1.pCurveArray->pDotX++)=Graph1.pCurveArray->time*0.001;							//get x, set pointer to the next data
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 			*(Graph1.pCurveArray->pDotY++)=(TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001;   
 			SetCtrlVal(hResultDispPanel, RESULTDISP_OHM,(TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001);
+			
+			if(((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001) <= Graph1.pGraphAttr->yAxisHead)
+			{
+				 Graph1.pGraphAttr->yAxisHead =((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001); 
+				 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+			}
+			else if(((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)>= Graph1.pGraphAttr->yAxisTail)
+			{
+				Graph1.pGraphAttr->yAxisTail =  (TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 + ((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)* 0.1;
+				SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+			}
 		}
 		else if(TestPara.testMode==ID_T)
 		{
-			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, str);
+			SetCtrlVal(hResultDispPanel, RESULTDISP_TIME, time);
 			*(Graph1.pCurveArray->pDotX++)= Graph1.pCurveArray->time*0.001;
 			Graph1.pCurveArray->time+=TestPara.timeStep;
 			*(Graph1.pCurveArray->pDotY++)=pRxData->rxIdmeasured.num_float; 
 		}
-		 //AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,	pRxData->rxVdtest,	pRxData->rxIdmeasured.num_float,kStartMessage,pRxData->rxVdtest,pRxData->rxIdmeasured.num_float);
-		 //SetAnnotationAttribute(hGraphPanel, GRAPHDISP_GRAPH1, 1, ATTR_ANNOTATION_OFFSET_MODE, VAL_TOP_LEFT_OFFSET);
-		 //SetAnnotationAttribute(hGraphPanel, GRAPHDISP_GRAPH1, 1, ATTR_ANNOTATION_LINE_COLOR, VAL_TRANSPARENT);
-         //SetAnnotationAttribute(hGraphPanel, GRAPHDISP_GRAPH1, 1, ATTR_ANNOTATION_GLYPH_COLOR, VAL_TRANSPARENT);
-    	 //SetAnnotationAttribute(hGraphPanel, GRAPHDISP_GRAPH1, 1, ATTR_ANNOTATION_CAPTION_ALWAYS_IN_VIEW, TRUE);
-    	// SetAnnotationAttribute(hGraphPanel, GRAPHDISP_GRAPH1, 1, ATTR_ANNOTATION_CAPTION_BOLD, 1);
-    	// SetAnnotationAttribute(hGraphPanel, GRAPHDISP_GRAPH1, 1, ATTR_ANNOTATION_CAPTION_BGCOLOR, 0x555588);
-    
-		//GetLegendItemFromPoint(hGraphPanel,GRAPHDISP_GRAPH1,MakePoint(*(Graph1.pCurveArray->pDotX),*(Graph1.pCurveArray->pDotY)),   
+	
+		
+		 switch(TestPara.testMode)
+    	 {    
+			case SWEEP_GATE_VOL:
+				Annotation(hGraphPanel,GRAPHDISP_GRAPH1);
+				SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVgtest));	
+			    SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_YVALUE,(double)pRxData->rxIdmeasured.num_float);
+				
+				break;
+			case SWEEP_DRAIN_VOL:
+				Annotation(hGraphPanel,GRAPHDISP_GRAPH1);  
+				SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVdtest));	
+				SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_YVALUE,(double)pRxData->rxIdmeasured.num_float);
+
+				break;
+		
+		 }
+		 ProcessDrawEvents();
+		 curveIndex++;					  
 	}
 
 static void RxDataToTable(RxDataTypeDef *pRxData)
 {
-	//rows  table中行的标志来量，每条曲线从(rows+1)=1开始到最后一个点 
+	//rows  table中行的标志来量，每条曲线从(rows+1)=1开始到最后一个点;一条曲线结束时置0 
 	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+1, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);//第一列
 	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+2, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);//第二列
 															 
@@ -92,16 +126,14 @@ static void RxDataToTable(RxDataTypeDef *pRxData)
 	SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+2, rows+1), *((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotY-1));  //写入Y值 
 	
 		switch(TestPara.testMode)
-    	{
+    	{    
 			case SWEEP_DRAIN_VOL:
 				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR); //第三列  
-				SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1),(float)pRxData->rxVgtest);  //写入vg值  
-			     
+				SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint(Graph1.plotCurveIndex*3+3, rows+1),(float)pRxData->rxVgtest);  //写入vg值  
 				break;
 			case SWEEP_GATE_VOL:
 				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);             
 				SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1),(float)pRxData->rxVdtest);  //写入vd值  
-			
 				break;
 			case NO_SWEEP_IT:
 			case NO_SWEEP_RT:
@@ -121,8 +153,7 @@ static void RxDataToTable(RxDataTypeDef *pRxData)
 }
 static void TestStop(RxDataTypeDef *pRxData,int portNumber)
 {
-	/*	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
-	GraphDeinit(&Graph2);*/
+
 	DiscardAsyncTimer(TimerID);											//停止query定时器查询
 	pRxData->rxStopSign=0;
 	Graph1.pCurveArray->numOfPlotDots=0;
@@ -135,9 +166,29 @@ static void TestStop(RxDataTypeDef *pRxData,int portNumber)
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0);   //恢复曲线属性设置  
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);        //禁用 停止按钮 //注释掉后可以在运行中点击停止     
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);        //恢复 开始按钮
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);       //恢复 保存按钮	
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);       //恢复 保存按钮
+	
+	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
+	GraphDeinit(&Graph2);
+	
 }
 
+static void  DispVgTest(RxDataTypeDef *pRxData)  //IT、RT模式下Vg不显示
+{
+	  switch(TestPara.testMode)
+		{
+			case NO_SWEEP_IT:
+			case NO_SWEEP_RT:
+				SetCtrlVal(hResultDispPanel, RESULTDISP_VG,0); 
+				break;
+			case SWEEP_DRAIN_VOL:
+			case SWEEP_GATE_VOL:
+			case SWEEP_IV:
+			case ID_T:
+				SetCtrlVal(hResultDispPanel, RESULTDISP_VG, pRxData->rxVgtest); 
+				break;
+		}
+}
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
 	int rxNum=0;																//串口收到字节数
@@ -155,7 +206,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	{														  
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
-		SetCtrlVal(hResultDispPanel, RESULTDISP_VG, RxData.rxVgtest);
+		DispVgTest(&RxData);
 		SetCtrlVal(hResultDispPanel, RESULTDISP_IDS, RxData.rxIdmeasured.num_float);
 		(Graph1.pCurveArray+Graph1.plotCurveIndex)->numOfDotsToPlot++;									//number of dots to plot increase
 		rxIdmeasured = RxData.rxIdmeasured.num_float;
@@ -163,11 +214,12 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		RxDataToTable(&RxData);
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++; 
-			
+
 	}
-		    
+		 
 	   	/*PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex);*/ 
-		PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured); 
+		PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured);
+
 		switch(TestPara.testMode)
 		{
 			case NO_SWEEP_IT:
@@ -207,7 +259,7 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 	if(rxNum>500) rxNum=500;											//防止超过内存范围
 	ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, rxNum);	
 	
-	while(rxNum>=14)
+	while(rxNum>=15)
 	{			 
 		ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);			// 从串口中取出环境测量参数
 		*(Graph2.pCurveArray->pDotX++) = a++;
@@ -222,7 +274,7 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.environment_temp);			//显示温度   
 		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.humidity);					//显示湿度     
 		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure*0.001);		 		//显示压强         		 
-		rxNum -=14; 
+		rxNum -=15; 
 		i++; 
 	}
 	
@@ -234,14 +286,14 @@ int main (int argc, char *argv[])
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=3;
-	controlComPort=5;
+	measureComPort=5;
+	controlComPort=4;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
 	//else SA11_Status=1;
 	
 	LoadInitPanel(); 
-	//CheckPortStatus(controlComPort, 14, CtrlComCallback); //controlComPort
+	//CheckPortStatus(controlComPort, 15, CtrlComCallback); //controlComPort
 	RunUserInterface();
 	CloseCom(measureComPort);
 	

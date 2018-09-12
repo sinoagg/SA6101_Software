@@ -14,9 +14,10 @@
      /* Panels and Controls: */
 
 #define  GRAPHDISP                        1
-#define  GRAPHDISP_GRAPH1                 2       /* control type: graph, callback function: (none) */
-#define  GRAPHDISP_GRAPH2                 3       /* control type: graph, callback function: (none) */
-#define  GRAPHDISP_CANVAS                 4       /* control type: canvas, callback function: CanvasCallback */
+#define  GRAPHDISP_GRAPH10                2       /* control type: graph, callback function: (none) */
+#define  GRAPHDISP_GRAPH1                 3       /* control type: graph, callback function: (none) */
+#define  GRAPHDISP_GRAPH2                 4       /* control type: graph, callback function: (none) */
+#define  GRAPHDISP_CANVAS                 5       /* control type: canvas, callback function: CanvasCallback */
 
 
      /* Control Arrays: */

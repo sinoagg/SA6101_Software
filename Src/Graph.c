@@ -14,10 +14,11 @@
 //==============================================================================
 // Include files
 #include <ansi_c.h>
-#include "Curve.h"
+#include "Curve.h"	  
+#include "Protocol.h"
 #include "Graph.h"
 #include "SettingsPanel.h"
-#include "Protocol.h"
+
 
 //==============================================================================
 // Constants
@@ -84,6 +85,8 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 		case SWEEP_GATE_VOL: 
 		case SWEEP_DRAIN_VOL:
 		case SWEEP_IV:
+		case NO_SWEEP_IT:
+		case ID_T:
 			if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
 			{
 				Graph1.pGraphAttr->yAxisTail=currentY_Val+currentY_Val*0.1;
@@ -91,7 +94,7 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 			}
 	      else if((currentY_Val <= Graph1.pGraphAttr->yAxisHead) && (currentY_Val>=0))
 			{
-			    Graph1.pGraphAttr->yAxisHead=currentY_Val;
+			    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.8;
 				
 				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
 			}
@@ -102,14 +105,19 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 			    SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
 
 			}
-		/*	else 
+			else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
 			{
-				 SetCtrlAttribute (Graph1.graphHandle,GRAPHDISP_GRAPH1 , ATTR_YLOOSE_FIT_AUTOSCALING,1);  
-			}*/
-	
-			break;
-	
+				 Graph1.pGraphAttr->yAxisHead = currentY_Val*0.5;
+				 SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
+			}
+			else if(currentY_Val >= Graph1.pGraphAttr->yAxisTail)
+			{
+				 Graph1.pGraphAttr->yAxisTail =   currentY_Val + currentY_Val*0.1;
+				 SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
+			}
 			
+			break;
+
 	}
 }
 void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
