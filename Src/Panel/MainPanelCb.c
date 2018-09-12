@@ -242,7 +242,7 @@ int CVICALLBACK StepThreadFunction(void* temp)
 		if((curveComplete==1)&&(rows>0))															//一组曲线数据接收完毕
 		{
 			curveComplete=0;
-			rows=0;			     //table中行的标志来量，每条曲线从1开始到最后一个点
+			rows=1;			     //table中行的标志来量，每条曲线从1开始到最后一个点
 			numOfRxCurve++;
 			Graph1.plotCurveIndex++;
 			switch(TestPara.testMode)
@@ -309,7 +309,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			FlushOutQ(measureComPort);
 			Graph1.plotCurveIndex=0; 													//每次实验开始之前初始化CurveIndex
 			curveComplete=0;
-			rows=0;
+			rows=1;
 			curveIndex=1;                                                              //用于添加注解
 			int expType;
 			int graphIndex=0;															//currently only deal with one graph circumstance
@@ -343,7 +343,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
 					Table_ATTR.column = 3*numOfCurve; 
-					Table_ATTR.row =numOfDots; 
+					Table_ATTR.row =numOfDots+1; 
 					Graph1.pGraphAttr->yAxisHead=1e-13;
 	   				Graph1.pGraphAttr->yAxisTail=1.1e-13;
                     Table(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  	//表格重新初始化 与设置参数有关，应该写数成函*/
@@ -363,7 +363,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				 	
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数  
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);   
-					Table_ATTR.row =  numOfDots; 	
+					Table_ATTR.row =  numOfDots+1; 	
 					Table_ATTR.column = 3*numOfCurve;  
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
@@ -380,11 +380,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pCurveArray->numOfTotalDots = numOfDots;
 					Table_ATTR.column = 3*numOfCurve;  
-					Table_ATTR.row =  numOfDots;	
+					Table_ATTR.row =  numOfDots+1;	
 					Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
-					Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
+					Graph1.pGraphAttr->yAxisHead=1.01e-10;
+	   				Graph1.pGraphAttr->yAxisTail=1.015e-10; 
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					//CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId); //开辟新的线程
@@ -397,11 +397,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					 Graph1.pCurveArray->numOfTotalDots  = numOfDots;
 					 Table_ATTR.column = 3*numOfCurve;
-					 Table_ATTR.row =  numOfDots;
+					 Table_ATTR.row =  numOfDots+1;
 					 Graph1.pGraphAttr->xAxisHead=0;
 					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
-					 Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				 Graph1.pGraphAttr->yAxisTail=1.1e-13;
+					 Graph1.pGraphAttr->yAxisHead=1.01e+9;
+	   				Graph1.pGraphAttr->yAxisTail=1.015e+9;
 					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					   
@@ -412,7 +412,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Table_ATTR.column = 2*numOfCurve;
-					Table_ATTR.row =  numOfDots;
+					Table_ATTR.row =  numOfDots+1;
 					Graph1.pGraphAttr->xAxisHead = TestPara.VgStart;
 				    Graph1.pGraphAttr->xAxisTail = TestPara.VgStop;
 					Graph1.pGraphAttr->yAxisHead=1e-13;
@@ -430,11 +430,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 				 	Graph1.pCurveArray->numOfTotalDots  = numOfDots;
 			    	Table_ATTR.column = 3*numOfCurve;
-					Table_ATTR.row =  numOfDots;
+					Table_ATTR.row =  numOfDots+1;
 				    Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01; 
-					Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
+					Graph1.pGraphAttr->yAxisHead=1.01e-9;
+	   				Graph1.pGraphAttr->yAxisTail=1.02e-9; 
 					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 

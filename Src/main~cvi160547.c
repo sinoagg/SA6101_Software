@@ -119,8 +119,8 @@ static void RxDataToGraph(RxDataTypeDef *pRxData)
 static void RxDataToTable(RxDataTypeDef *pRxData)
 {
 	//rows  table中行的标志来量，每条曲线从(rows+1)=1开始到最后一个点;一条曲线结束时置0 
-	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+1, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);//第一列
-	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+2, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);//第二列
+	/*SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+1, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);//第一列
+	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+2, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);//第二列*/
 	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+1, rows+1), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);
 	SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+2, rows+1), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);
 	SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+1, rows+1), *((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX-1));  //写入X值
@@ -129,12 +129,12 @@ static void RxDataToTable(RxDataTypeDef *pRxData)
 		switch(TestPara.testMode)
     	{    
 			case SWEEP_DRAIN_VOL:
-				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR); //第三列
+				//SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR); //第三列
 				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1), ATTR_CELL_TYPE, VAL_CELL_NUMERIC); 
 				SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint(Graph1.plotCurveIndex*3+3, rows+1),(float)pRxData->rxVgtest);  //写入vg值  
 				break;
 			case SWEEP_GATE_VOL:
-				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);
+				//SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);
 				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1), ATTR_CELL_TYPE, VAL_CELL_NUMERIC); 
 				SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1),(float)pRxData->rxVdtest);  //写入vd值  
 				break;
@@ -143,7 +143,7 @@ static void RxDataToTable(RxDataTypeDef *pRxData)
 			case ID_T: 
 				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);
 				SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+3, rows+1),(float)pRxData->rxVdtest);  //写入vd值
-				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);       
+				//SetTableCellAttribute (hTablePanel, TABLE_DISTABLE,MakePoint (Graph1.plotCurveIndex*3+3, rows+1)  , ATTR_TEXT_COLOR, TXTCOLOR);       
 				break;
 		  }
 

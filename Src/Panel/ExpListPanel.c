@@ -129,6 +129,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{ 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //…Ë÷√◊¯±Í÷·
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 1);
 				SetPanelPos(hIT_Panel, 104, 305);
 				DisplayPanel(hIT_Panel);
 				RunStatus();
@@ -141,6 +142,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{	
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 1);         
 				SetPanelPos(hRT_Panel, 104, 305);
 				DisplayPanel(hRT_Panel);					  
 				RunStatus();    
@@ -154,6 +156,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 				SetPanelPos(hIV_Panel, 104, 305);
 				DisplayPanel(hIV_Panel);
 				RunStatus();    
@@ -173,6 +176,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
 				DisplayPanel(IdVdPanel.panelHandle);
 				RunStatus();     
@@ -184,6 +188,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{ 	
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 				DisplayPanel(IdVgPanel.panelHandle);
 				RunStatus();    
@@ -194,6 +199,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			{
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	 
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 			    SetPanelPos(hIdtPanel, 104, 305);
 				DisplayPanel(hIdtPanel);
 				RunStatus();    

@@ -111,7 +111,7 @@ static void SaveSheet()
 	GetNumTableRows (hTablePanel,TABLE_DISTABLE,&row );
 	rowa=row+1;
 	char str[80];
-	sprintf(str,"%s%d","A1:D",rowa);
+	sprintf(str,"%s%d","A1:IV",rowa);
 	Excel_NewApp (NULL, 1, LOCALE_NEUTRAL, 0, &ExcelAppHandle);	  //create a new Application object, and obtain a handle to the object.
 	Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppWorkbooks, CAVT_OBJHANDLE, &ExcelWorkbooksHandle);
 	Excel_WorkbooksAdd (ExcelWorkbooksHandle, NULL, CA_DEFAULT_VAL,&ExcelWorkbookHandle);
@@ -119,8 +119,7 @@ static void SaveSheet()
 	Excel_SheetsItem (ExcelSheetsHandle, NULL, CA_VariantInt(1),&ExcelWorksheetHandle);
 	Excel_WorksheetActivate (ExcelWorksheetHandle, NULL);	 
 	ExcelRpt_WriteDataFromTableControl (ExcelWorksheetHandle, str, hTablePanel, TABLE_DISTABLE);	//write data from table control
-	ExcelRpt_WorkbookSave (ExcelWorkbookHandle, sheetSavePath, ExRConst_DefaultFileFormat);
-
+	ExcelRpt_WorkbookSave (ExcelWorkbookHandle, sheetSavePath,ExRConst_DefaultFileFormat );   //ExRConst_Excel2						 ExRConst_DefaultFileFormat
 	Excel_AppQuit (ExcelAppHandle, NULL);
 
 

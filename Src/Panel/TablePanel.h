@@ -36,7 +36,7 @@ typedef struct
 
 extern Table_TypeDef Table_Date;
 extern Table_TypeDef Table_ATTR; 
-extern char ABC[11][20];
+extern char AB[11][20];
 
 
 //==============================================================================

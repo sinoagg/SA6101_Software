@@ -5,14 +5,14 @@
 #include "Protocol.h" 
 
 Table_TypeDef Table_ATTR;
-//char ABC[11][20] ={"A","B","C","D","E","F","G","H","I","J","K", "L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+char AB[11][20] ={"A","B","C"};
 
 void Table(char table_title[][20], int column,int  columnWidth,int row) //初始化列名设置    
 {			
 		   
 	                               
-			InsertTableColumns(hTablePanel,TABLE_DISTABLE,1,column,VAL_USE_MASTER_CELL_TYPE);                     //向表中插入多少列 
-			InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1 , row, VAL_USE_MASTER_CELL_TYPE);				      //插入row行 
+			InsertTableColumns(hTablePanel,TABLE_DISTABLE,1,column,VAL_CELL_STRING);                     //向表中插入多少列 
+			InsertTableRows (hTablePanel,TABLE_DISTABLE ,-1 , row, VAL_CELL_STRING);				      //插入row行 
 			switch(TestPara.testMode)
 			{
 				case SWEEP_GATE_VOL: 
@@ -25,6 +25,7 @@ void Table(char table_title[][20], int column,int  columnWidth,int row) //初始化
 						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_USE_LABEL_TEXT,1);                   //启用列首
 						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_COLUMN_WIDTH,columnWidth); 		   //设置列宽
 						SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE,j, ATTR_LABEL_TEXT, table_title[(j+2)%3]); //列标号
+						SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (j, 1), table_title[(j+2)%3]);	          //分别设置标题
 					}
 					break;
 				case SWEEP_IV:
@@ -33,6 +34,7 @@ void Table(char table_title[][20], int column,int  columnWidth,int row) //初始化
 						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_USE_LABEL_TEXT,1);                   //启用列首
 						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_COLUMN_WIDTH,columnWidth); 		   //设置列宽
 						SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE,j, ATTR_LABEL_TEXT, table_title[(j+1)%2]); //列标号
+						SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (j, 1),table_title[(j+2)%3]);	          //分别设置标题
 					}
 					break;
 				}
