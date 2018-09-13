@@ -74,28 +74,7 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 			SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
 			SetGraphY_Axis(pGraph,rxIdmeasured);              
 			 
-			/*switch(TestPara.testMode)
-			{   
-				case SWEEP_GATE_VOL:
-					SetGraphY_Axis(pGraph,rxIdmeasured);
-					break;
-				case SWEEP_DRAIN_VOL:
-					SetGraphY_Axis(pGraph,rxIdmeasured);
-					break;
-				case SWEEP_IV:
-			 		SetGraphY_Axis(pGraph,rxIdmeasured);
-					break;
-				case NO_SWEEP_IT:
-						SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);  
-					break;
-				case NO_SWEEP_RT:
-						SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);  
-					break;
-				case ID_T:
-					SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);  
-					break;
-			}*/
-		
+			    
 	}
 	if(pGraph->plotHandle<0)
 		return -1;
