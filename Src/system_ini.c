@@ -36,7 +36,7 @@ int SaveSystemClose(int temp)
 {
 	GetProjectDir(dirName);
 	MakePathname (dirName, "systemClose.ini", pathName);
-	if (!(myInifile = Ini_New (0)))/* Create a new Inifile object and read it from a file */ 
+	if (!(myInifile = Ini_New (0)))						/* Create a new Inifile object and read it from a file */ 
 	{
 		MessagePopup("Inifile","Error allocating memory for Inifile");
 		return -1;
@@ -54,7 +54,7 @@ int CheckSystemClose()
 	int temp;
 	GetProjectDir(dirName);
 	MakePathname (dirName, "systemClose.ini", pathName); 
-	if (!(myInifile = Ini_New (0)))/* Create a new Inifile object and read it from a file */ 
+	if (!(myInifile = Ini_New (0)))						/* Create a new Inifile object and read it from a file */ 
 	{
 		MessagePopup("Inifile","Error allocating memory for Inifile");
 		return -1;
@@ -77,7 +77,7 @@ int InitSystemClose(int temp)
 {
  	GetProjectDir(dirName);
 	MakePathname (dirName, "systemClose.ini", pathName);
-	if (!(myInifile = Ini_New (0)))/* Create a new Inifile object and read it from a file */ 
+	if (!(myInifile = Ini_New (0)))					/* Create a new Inifile object and read it from a file */ 
 	{
 		MessagePopup("Inifile","Error allocating memory for Inifile");
 		return -1;

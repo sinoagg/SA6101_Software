@@ -78,9 +78,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 
 void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val ==>Id
 {
-	
-	 
-	switch(TestPara.testMode)
+	 switch(TestPara.testMode)
 	{   
 		case SWEEP_GATE_VOL: 
 		case SWEEP_DRAIN_VOL:
@@ -94,18 +92,18 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 			{
 				Graph1.pGraphAttr->yAxisTail=currentY_Val+currentY_Val*0.1;
 				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
-			} 
+			} 		    
 			else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
 			{
-			    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.8;
+			    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.01;
 				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 			}
 		}
 		else
 		{
-		   if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)   //
+		   if(currentY_Val <= Graph1.pGraphAttr->yAxisHead) //
 			{
-				Graph1.pGraphAttr->yAxisHead = currentY_Val+currentY_Val*1.5;
+				Graph1.pGraphAttr->yAxisHead = currentY_Val+currentY_Val*0.01;
 			     SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 
 			}
@@ -116,37 +114,7 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 			}
 		}
 			
-			
-		/*	if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
-			{
-				Graph1.pGraphAttr->yAxisTail=currentY_Val+currentY_Val*0.1;
-				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
-			}
-	      else if( (currentY_Val>=0) && (currentY_Val <= Graph1.pGraphAttr->yAxisHead))
-			{
-			    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.8;
-				
-				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
-			}
-			else if((currentY_Val<0)&&(currentY_Val <= Graph1.pGraphAttr->yAxisHead))   //
-			{
-				Graph1.pGraphAttr->yAxisHead = currentY_Val;
-				Graph1.pGraphAttr->yAxisTail=currentY_Val-currentY_Val*1.5;
-			    SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
-
-			}
-			else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
-			{
-				 Graph1.pGraphAttr->yAxisHead = currentY_Val*0.5;
-				 SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
-			}
-			else if(currentY_Val >= Graph1.pGraphAttr->yAxisTail)
-			{
-				 Graph1.pGraphAttr->yAxisTail =   currentY_Val + currentY_Val*0.1;
-				 SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
-			}
-			*/
-			break;
+		break;
 
 	}
 }

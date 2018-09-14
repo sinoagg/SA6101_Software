@@ -111,7 +111,7 @@ static void SaveSheet()
 	GetNumTableRows (hTablePanel,TABLE_DISTABLE,&row );
 	rowa=row+1;
 	char str[80];
-	sprintf(str,"%s%d","A1:IV",rowa);
+	sprintf(str,"%s%d","A1:IV",rowa);	 //A-IV列 1-rowa行 A1-IVrowa
 	Excel_NewApp (NULL, 1, LOCALE_NEUTRAL, 0, &ExcelAppHandle);	  //create a new Application object, and obtain a handle to the object.
 	Excel_GetProperty (ExcelAppHandle, NULL, Excel_AppWorkbooks, CAVT_OBJHANDLE, &ExcelWorkbooksHandle);
 	Excel_WorkbooksAdd (ExcelWorkbooksHandle, NULL, CA_DEFAULT_VAL,&ExcelWorkbookHandle);
@@ -124,8 +124,8 @@ static void SaveSheet()
 
 
 }
-
-static void SaveGraph0(int control,char path[])
+char path[] = "C:\\SINOAGG\\SA6101\\2.xls";
+static void SaveGraphs(int control,char path[])
 {
 	GetCtrlAttribute (hGraphPanel, control, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
 	GetCtrlAttribute (hGraphPanel, control, ATTR_LEFT, &rc.left);
@@ -136,27 +136,6 @@ static void SaveGraph0(int control,char path[])
 	DiscardBitmap (nBitmapID);
 	
 }
-//static void SaveGraph1()
-//{
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_LEFT, &rc.left);
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_HEIGHT, &rc.height);
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_WIDTH, &rc.width);
-//	GetPanelDisplayBitmap (hGraphPanel, VAL_FULL_PANEL, rc, &nBitmapID);
-//	SaveBitmapToJPEGFile (nBitmapID, graph1SavePath, JPEG_INTERLACE, 100);
-//	DiscardBitmap (nBitmapID);
-//}
-
-//static void SaveGraph2()
-//{
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_LEFT, &rc.left);
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_HEIGHT, &rc.height);
-//	GetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_WIDTH, &rc.width);
-//	GetPanelDisplayBitmap (hGraphPanel, VAL_FULL_PANEL, rc, &nBitmapID);
-//	SaveBitmapToJPEGFile (nBitmapID, graph2SavePath, JPEG_INTERLACE, 100);
-//	DiscardBitmap (nBitmapID);
-//}
 
 int CVICALLBACK TableCallback (int panel, int control, int event,						//点击table图标切换到table面板     
 							   void *callbackData, int eventData1, int eventData2)
@@ -324,7 +303,7 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 		case EVENT_COMMIT:
 			//SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
 			//SaveGraph1();
-			SaveGraph0(GRAPHDISP_GRAPH1,graph1SavePath);
+			SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath);
 			break;
 	}
 	return 0;
@@ -338,7 +317,7 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 		case EVENT_COMMIT:
 			//SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath); 
 			 //SaveGraph2();
-			 SaveGraph0(GRAPHDISP_GRAPH2,graph2SavePath);
+			 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
 			break;
 	}
 	return 0;
@@ -351,8 +330,8 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 			SaveSheet();
-			SaveGraph0(GRAPHDISP_GRAPH1,graph1SavePath);
-			SaveGraph0(GRAPHDISP_GRAPH2,graph2SavePath);
+			SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath);
+			SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
 			break;
 	}
 	return 0;

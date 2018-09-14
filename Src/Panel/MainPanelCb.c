@@ -314,13 +314,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			int expType;
 			int graphIndex=0;															//currently only deal with one graph circumstance
 			int numOfDots=0;
-			Table_ATTR.column = 3;
 			Table_ATTR.columnWidth= 90;  												//列宽
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
 	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
-			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
-			DeleteGraphAnnotation (hGraphPanel, GRAPHDISP_GRAPH1,-1 );                  //清空曲线注释
+			//SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
+			DeleteGraphAnnotation (hGraphPanel, GRAPHDISP_GRAPH1,-1 );                  //清空上个实验曲线注释
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
 				return -1; 
 			TestPara.testMode=(enum TestMode)expType;
@@ -337,12 +336,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					{
 						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
 					}
-					 													//列数
+					 													
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  //graph set up     
 				    Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 					Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-					Table_ATTR.column = 3*numOfCurve; 
+					Table_ATTR.column = 3*numOfCurve;   //列数      
 					Table_ATTR.row =numOfDots+1; 
 					Graph1.pGraphAttr->yAxisHead=1e-13;
 	   				Graph1.pGraphAttr->yAxisTail=1.1e-13;
@@ -401,10 +400,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 Graph1.pGraphAttr->xAxisHead=0;
 					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
 					 Graph1.pGraphAttr->yAxisHead=1.01e+9;
-	   				Graph1.pGraphAttr->yAxisTail=1.015e+9;
+	   				 Graph1.pGraphAttr->yAxisTail=1.015e+9;
 					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					   
 					 break;
 					
 				case SWEEP_IV:
@@ -419,7 +417,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
 					Table(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					/*SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_YLOOSE_FIT_AUTOSCALING,1);*/
 					break;
 					
 				case ID_T:
@@ -437,12 +434,11 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	   				Graph1.pGraphAttr->yAxisTail=1.02e-9; 
 					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-
 					break;
 			}
 			
-			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
+			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
+			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
 			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots, &Graph2); 	//初始化图2  
 			
 			Delay(0.2);												  					//在设置和运行命令之间给下位机0.2秒处理
