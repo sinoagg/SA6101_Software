@@ -24,20 +24,18 @@
 #define  IDT_CFG_TEXTMSG                  9       /* control type: textMsg, callback function: (none) */
 #define  IDT_CFG_DRAINMODE                10      /* control type: ring, callback function: IdtDrainModeCallback */
 #define  IDT_CFG_TEXTMSG_18               11      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_RING                     12      /* control type: ring, callback function: (none) */
-#define  IDT_CFG_TEXTMSG_2                13      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_TEXTMSG_19               14      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_PIC_DRAIN                15      /* control type: picture, callback function: (none) */
-#define  IDT_CFG_TXT_DRAIN                16      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_VG_START                 17      /* control type: numeric, callback function: IdtGateStartCallback */
-#define  IDT_CFG_TEXTMSG_8                18      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_GATEMODE                 19      /* control type: ring, callback function: IdtGateModeCallback */
-#define  IDT_CFG_MV_START                 20      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_TXT_START                21      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_PIC_GATE                 22      /* control type: picture, callback function: (none) */
-#define  IDT_CFG_TXT_GATE                 23      /* control type: textMsg, callback function: (none) */
-#define  IDT_CFG_DECORATION_DRAIN         24      /* control type: deco, callback function: IdtDrainDecoCallback */
-#define  IDT_CFG_DECORATION_GATE          25      /* control type: deco, callback function: IdtGateDecoCallback */
+#define  IDT_CFG_TEXTMSG_19               12      /* control type: textMsg, callback function: (none) */
+#define  IDT_CFG_PIC_DRAIN                13      /* control type: picture, callback function: (none) */
+#define  IDT_CFG_TXT_DRAIN                14      /* control type: textMsg, callback function: (none) */
+#define  IDT_CFG_VG_START                 15      /* control type: numeric, callback function: IdtGateStartCallback */
+#define  IDT_CFG_TEXTMSG_8                16      /* control type: textMsg, callback function: (none) */
+#define  IDT_CFG_GATEMODE                 17      /* control type: ring, callback function: IdtGateModeCallback */
+#define  IDT_CFG_MV_START                 18      /* control type: textMsg, callback function: (none) */
+#define  IDT_CFG_TXT_START                19      /* control type: textMsg, callback function: (none) */
+#define  IDT_CFG_PIC_GATE                 20      /* control type: picture, callback function: (none) */
+#define  IDT_CFG_TXT_GATE                 21      /* control type: textMsg, callback function: (none) */
+#define  IDT_CFG_DECORATION_DRAIN         22      /* control type: deco, callback function: IdtDrainDecoCallback */
+#define  IDT_CFG_DECORATION_GATE          23      /* control type: deco, callback function: IdtGateDecoCallback */
 
 
      /* Control Arrays: */

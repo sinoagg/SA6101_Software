@@ -118,16 +118,16 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 
 	}
 }
-void SetGraphX_Axis(GraphTypeDef* pGraph, float currentX_Val)
+void SetGraphX_Axis(GraphTypeDef* pGraph, float NumOfDots)
 {					 
 	switch(TestPara.testMode)
 	{
 		case NO_SWEEP_IT:
 		case NO_SWEEP_RT:
 		case ID_T:
-			if(pGraph->pGraphAttr->xAxisTail < currentX_Val*(TestPara.timeStep*0.001)) //已画点数*Step ===》实际x轴长度
+			if(pGraph->pGraphAttr->xAxisTail <= NumOfDots*(TestPara.timeStep*0.01)) //已画点数*Step ===》实际x轴长度
 			{  	
-				Graph1.pGraphAttr->xAxisTail=Graph1.pGraphAttr->xAxisTail + Graph1.pGraphAttr->xAxisTail*0.1;
+				Graph1.pGraphAttr->xAxisTail=NumOfDots*(TestPara.timeStep*0.001)+ NumOfDots*(TestPara.timeStep*0.001)*0.1;
 				SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
 			}
 			break;

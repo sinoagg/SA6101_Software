@@ -20,6 +20,10 @@
 #define  SAMPLE_ADV_MINRANGE              5       /* control type: ring, callback function: (none) */
 #define  SAMPLE_ADV_TEXTMSG_6             6       /* control type: textMsg, callback function: (none) */
 #define  SAMPLE_ADV_TEXTMSG_7             7       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_ADV_LINEAR                8       /* control type: ring, callback function: (none) */
+#define  SAMPLE_ADV_TEXTMSG_2             9       /* control type: textMsg, callback function: (none) */
+#define  SAMPLE_ADV_RING_3                10      /* control type: ring, callback function: (none) */
+#define  SAMPLE_ADV_TEXTMSG_26            11      /* control type: textMsg, callback function: (none) */
 
 #define  SAMPLE_CFG                       2
 #define  SAMPLE_CFG_RANGESETTING          2       /* control type: ring, callback function: (none) */

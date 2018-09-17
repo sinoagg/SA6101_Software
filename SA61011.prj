@@ -32,9 +32,8 @@ FolderEx 2 = "Src"
 Folder 3 = "Src/Panel"
 FolderEx 3 = "Panel"
 FolderEx 3 Parent = 2
-Folder 4 = "Src/Resource"
+Folder 4 = "Resource"
 FolderEx 4 = "Resource"
-FolderEx 4 Parent = 2
 Folder 5 = "Include Files"
 FolderEx 5 = "Include Files"
 Folder 6 = "Include Files/Panel"
@@ -472,308 +471,8 @@ Folder = "Src/Panel"
 Folder Id = 3
 
 [File 0035]
-File Type = "Unknown"
-Res Id = 35
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/analyze.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/analyze.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0036]
-File Type = "Unknown"
-Res Id = 36
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Arrow.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Arrow.png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0037]
-File Type = "Unknown"
-Res Id = 37
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Config.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Config.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0038]
-File Type = "Unknown"
-Res Id = 38
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Configure(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(a).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0039]
-File Type = "Unknown"
-Res Id = 39
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Configure(b).ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(b).ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0040]
-File Type = "Unknown"
-Res Id = 40
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/FET.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/FET.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0041]
-File Type = "Unknown"
-Res Id = 41
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/GND.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/GND.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0042]
-File Type = "Unknown"
-Res Id = 42
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/I.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0043]
-File Type = "Unknown"
-Res Id = 43
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/I_Bias.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I_Bias.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0044]
-File Type = "Unknown"
-Res Id = 44
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/jiantou.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/jiantou.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0045]
-File Type = "Unknown"
-Res Id = 45
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/My Projects.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Projects.png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0046]
-File Type = "Unknown"
-Res Id = 46
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/My Settings.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Settings.png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0047]
-File Type = "Unknown"
-Res Id = 47
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Run.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Run.png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0048]
-File Type = "Unknown"
-Res Id = 48
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Save(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(a).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0049]
-File Type = "Unknown"
-Res Id = 49
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Save(b).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(b).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0050]
-File Type = "Unknown"
-Res Id = 50
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Save_Path(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(a).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0051]
-File Type = "Unknown"
-Res Id = 51
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Save_Path(b).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(b).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0052]
-File Type = "Unknown"
-Res Id = 52
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Select(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(a).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0053]
-File Type = "Unknown"
-Res Id = 53
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Select(b).ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(b).ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0054]
-File Type = "Unknown"
-Res Id = 54
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Stop.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Stop.png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0055]
-File Type = "Unknown"
-Res Id = 55
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/Tools.png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Tools.png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0056]
-File Type = "Unknown"
-Res Id = 56
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/User(a).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(a).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0057]
-File Type = "Unknown"
-Res Id = 57
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/User(b).png"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(b).png"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0058]
-File Type = "Unknown"
-Res Id = 58
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/V.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0059]
-File Type = "Unknown"
-Res Id = 59
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "Resource/V_Bias.ico"
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V_Bias.ico"
-Exclude = False
-Project Flags = 0
-Folder = "Src/Resource"
-Folder Id = 4
-
-[File 0060]
 File Type = "CSource"
-Res Id = 60
+Res Id = 35
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/AbnormalDataCache.c"
@@ -784,9 +483,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0061]
+[File 0036]
 File Type = "CSource"
-Res Id = 61
+Res Id = 36
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/asynctmr.c"
@@ -797,9 +496,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0062]
+[File 0037]
 File Type = "CSource"
-Res Id = 62
+Res Id = 37
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Cgs_mt.c"
@@ -810,9 +509,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0063]
+[File 0038]
 File Type = "CSource"
-Res Id = 63
+Res Id = 38
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Curve.c"
@@ -823,9 +522,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0064]
+[File 0039]
 File Type = "CSource"
-Res Id = 64
+Res Id = 39
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/excel2000.c"
@@ -836,9 +535,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0065]
+[File 0040]
 File Type = "CSource"
-Res Id = 65
+Res Id = 40
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/excelreport.c"
@@ -849,9 +548,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0066]
+[File 0041]
 File Type = "CSource"
-Res Id = 66
+Res Id = 41
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/File.c"
@@ -862,9 +561,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0067]
+[File 0042]
 File Type = "CSource"
-Res Id = 67
+Res Id = 42
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Graph.c"
@@ -875,9 +574,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0068]
+[File 0043]
 File Type = "CSource"
-Res Id = 68
+Res Id = 43
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/inifile.c"
@@ -888,9 +587,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0069]
+[File 0044]
 File Type = "CSource"
-Res Id = 69
+Res Id = 44
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/main.c"
@@ -901,9 +600,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0070]
+[File 0045]
 File Type = "CSource"
-Res Id = 70
+Res Id = 45
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Plot.c"
@@ -914,9 +613,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0071]
+[File 0046]
 File Type = "CSource"
-Res Id = 71
+Res Id = 46
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Protocol.c"
@@ -927,9 +626,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0072]
+[File 0047]
 File Type = "CSource"
-Res Id = 72
+Res Id = 47
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/system_ini.c"
@@ -940,9 +639,9 @@ Project Flags = 0
 Folder = "Src"
 Folder Id = 2
 
-[File 0073]
+[File 0048]
 File Type = "CSource"
-Res Id = 73
+Res Id = 48
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "Src/Timer.c"
@@ -952,6 +651,306 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Src"
 Folder Id = 2
+
+[File 0049]
+File Type = "Unknown"
+Res Id = 49
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/analyze.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/analyze.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0050]
+File Type = "Unknown"
+Res Id = 50
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Arrow.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Arrow.png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0051]
+File Type = "Unknown"
+Res Id = 51
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Config.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Config.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0052]
+File Type = "Unknown"
+Res Id = 52
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Configure(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(a).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0053]
+File Type = "Unknown"
+Res Id = 53
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Configure(b).ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Configure(b).ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0054]
+File Type = "Unknown"
+Res Id = 54
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/FET.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/FET.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0055]
+File Type = "Unknown"
+Res Id = 55
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/GND.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/GND.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0056]
+File Type = "Unknown"
+Res Id = 56
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/I.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0057]
+File Type = "Unknown"
+Res Id = 57
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/I_Bias.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/I_Bias.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0058]
+File Type = "Unknown"
+Res Id = 58
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/jiantou.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/jiantou.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0059]
+File Type = "Unknown"
+Res Id = 59
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/My Projects.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Projects.png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0060]
+File Type = "Unknown"
+Res Id = 60
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/My Settings.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/My Settings.png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0061]
+File Type = "Unknown"
+Res Id = 61
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Run.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Run.png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0062]
+File Type = "Unknown"
+Res Id = 62
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Save(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(a).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0063]
+File Type = "Unknown"
+Res Id = 63
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Save(b).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save(b).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0064]
+File Type = "Unknown"
+Res Id = 64
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Save_Path(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(a).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0065]
+File Type = "Unknown"
+Res Id = 65
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Save_Path(b).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Save_Path(b).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0066]
+File Type = "Unknown"
+Res Id = 66
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Select(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(a).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0067]
+File Type = "Unknown"
+Res Id = 67
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Select(b).ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Select(b).ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0068]
+File Type = "Unknown"
+Res Id = 68
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Stop.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Stop.png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0069]
+File Type = "Unknown"
+Res Id = 69
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/Tools.png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/Tools.png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0070]
+File Type = "Unknown"
+Res Id = 70
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/User(a).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(a).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0071]
+File Type = "Unknown"
+Res Id = 71
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/User(b).png"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/User(b).png"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0072]
+File Type = "Unknown"
+Res Id = 72
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/V.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
+
+[File 0073]
+File Type = "Unknown"
+Res Id = 73
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Resource/V_Bias.ico"
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_Software/Resource/V_Bias.ico"
+Exclude = False
+Project Flags = 0
+Folder = "Resource"
+Folder Id = 4
 
 [File 0074]
 File Type = "Include"

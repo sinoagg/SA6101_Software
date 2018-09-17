@@ -10,6 +10,10 @@
 #include "Graph.h"
 #include "LoadPanel.h"
 #include <userint.h>  
+
+int sheet = 0;
+int graph1 = 0;
+int graph2 = 0;
 //==============================================================================
 // Constants
 
@@ -31,6 +35,9 @@ enum GraphDispSelect
 char sheetSavePath[512];
 char graph1SavePath[512];
 char graph2SavePath[512];
+char sheetPath[512] = " C:\\SINOAGG\SA6101\\UserData\\Sheet.xls";
+char graph1Path[512] = "C:\\SINOAGG\SA6101\\UserData\\Graph1.jpg";
+char graph2Path[512]= "C:\\SINOAGG\SA6101\\UserData\\Graph2.jpg";
 //==============================================================================
 // Static functions
 static int SaveGraph(int panel, int control, int plotHandle, const char path[]); 
@@ -83,7 +90,6 @@ static void DispGraphSelectCheckBox(void)
 	 
 	}
 	SetPanelPos(hGraphSelectPanel, 172, 1457);  
-	//SetPanelSize(hGraphSelectPanel, 26, 140);      
  	DisplayPanel(hGraphSelectPanel);
 }
 
@@ -124,7 +130,6 @@ static void SaveSheet()
 
 
 }
-char path[] = "C:\\SINOAGG\\SA6101\\2.xls";
 static void SaveGraphs(int control,char path[])
 {
 	GetCtrlAttribute (hGraphPanel, control, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
@@ -253,6 +258,7 @@ int CVICALLBACK BrowseSheetCallback (int panel, int control, int event,
 	switch (event)
 	{			
 		case EVENT_LEFT_CLICK_UP:
+			sheet = 1;
 			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\", ".xls", "*.xls", "Select Path", VAL_OK_BUTTON, 0, 1, 1, 1, sheetSavePath)>0)
 				SetCtrlVal(panel, SAVEDATA_SHEETPATH, sheetSavePath);
 			else 
@@ -268,7 +274,7 @@ int CVICALLBACK BrowseGraph1Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-		     
+		    graph1=1; 
 			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\UserData", ".jpg", "*.jpg;*.png;*.bmp;*.tif", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 1, graph1SavePath)>0)
 				SetCtrlVal(panel, SAVEDATA_GRAPH1PATH, graph1SavePath);
 			else 
@@ -284,6 +290,7 @@ int CVICALLBACK BrowseGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
+			graph2 =1;
 			if(FileSelectPopup ("C:\\SINOAGG\\SA6101\\UserData", ".jpg", "*.jpg;*.png;*.bmp;*.tif", "Select Path", VAL_OK_BUTTON, 0, 0, 1, 1, graph2SavePath)>0)
 				SetCtrlVal(panel, SAVEDATA_GRAPH2PATH, graph2SavePath);
 			else 
@@ -301,8 +308,6 @@ int CVICALLBACK SaveGraph1Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			//SaveGraph(hGraphPanel, GRAPHDISP_GRAPH1, Graph1.graphHandle, graph1SavePath);
-			//SaveGraph1();
 			SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath);
 			break;
 	}
@@ -315,24 +320,52 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			//SaveGraph(hGraphPanel, GRAPHDISP_GRAPH2, Graph2.graphHandle, graph2SavePath); 
-			 //SaveGraph2();
 			 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
 			break;
 	}
 	return 0;
 }
 
+
 int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 								 void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_COMMIT:
-			SaveSheet();
-			SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath);
-			SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
-			break;
+	{ 
+		switch (event)
+		{
+			case EVENT_LEFT_CLICK_UP:
+			
+				if(sheet==1 && graph1==1)
+				{   
+					SaveSheet(); 
+					SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath); 
+					RemovePopup(hSaveDataPanel);   
+				}
+				else if(sheet==1 && graph2==1)
+				{
+					SaveSheet(); 
+					SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath); 
+					RemovePopup(hSaveDataPanel);   
+				}
+				else if(graph1==1 && graph2==1)
+				{
+				   	 SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath); 
+					 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath); 
+					 RemovePopup(hSaveDataPanel);   
+				}
+				 else if(sheet == 1 && graph1==1 && graph2 ==1)
+				 {
+					 SaveSheet(); 
+					 SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath); 
+					 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
+					 RemovePopup(hSaveDataPanel);   
+				 }
+				 else
+				 {
+				    MessagePopup ("Message", "Please select a valid path");
+
+				 }
+				
+				break;
 	}
 	return 0;
 }

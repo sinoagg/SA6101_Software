@@ -89,7 +89,7 @@ static void DisplayOhm(int display)
    	SetCtrlAttribute(hResultDispPanel, RESULTDISP_TXT_R,ATTR_VISIBLE,display);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_OHM,ATTR_VISIBLE,display);
 	SetCtrlAttribute(hResultDispPanel, RESULTDISP_OHM_UNIT,ATTR_VISIBLE,display);
-
+	SetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_DIMMED, display); 
 }
 
 static void RunStatus()
@@ -144,6 +144,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 1);         
 				SetPanelPos(hRT_Panel, 104, 305);
+				
 				DisplayPanel(hRT_Panel);					  
 				RunStatus();    
 				DisplaySampleCfgPanel(1);

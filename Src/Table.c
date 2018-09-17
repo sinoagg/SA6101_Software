@@ -19,7 +19,6 @@ void Table(char table_title[][20], int column,int  columnWidth,int row) //初始化
 				case SWEEP_DRAIN_VOL:
 				case NO_SWEEP_IT:
 				case NO_SWEEP_RT:
-				case ID_T:
 					for(int j=1;j<=column;j++)
 					{	
 						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_USE_LABEL_TEXT,1);                   //启用列首
@@ -35,6 +34,15 @@ void Table(char table_title[][20], int column,int  columnWidth,int row) //初始化
 						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_COLUMN_WIDTH,columnWidth); 		   //设置列宽
 						SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE,j, ATTR_LABEL_TEXT, table_title[(j+1)%2]); //列标号
 						SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (j, 1),table_title[(j+2)%3]);	          //分别设置标题
+					}
+					break;
+				case ID_T:
+					for(int j=1;j<=column;j++)
+					{
+						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_USE_LABEL_TEXT,1);                   //启用列首
+						SetTableColumnAttribute(hTablePanel,TABLE_DISTABLE,j,ATTR_COLUMN_WIDTH,columnWidth); 		   //设置列宽
+						SetTableColumnAttribute(hTablePanel, TABLE_DISTABLE,j, ATTR_LABEL_TEXT, table_title[(j+3)%4]); //列标号
+						SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (j, 1),table_title[(j+3)%4]);	          //分别设置标题
 					}
 					break;
 				}
