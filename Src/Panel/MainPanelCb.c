@@ -141,18 +141,41 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 {
 	switch (event)
 	{
- 		case EVENT_LEFT_CLICK_UP:			  
+ 		case EVENT_LEFT_CLICK_UP:
+			
 			DisplayImageFile (hMainPanel, MAIN_PANEL_SELECT, "Resource\\Select.ico");   //当Analyze被鼠标左键点击时,Analyze图标改变，其它两个正常状态
 			DisplayImageFile (hMainPanel, MAIN_PANEL_CONFIGURE, "Resource\\Configure.ico"); 
 			DisplayImageFile (hMainPanel, MAIN_PANEL_ANALYZE, "Resource\\Analyze_pressed.ico");
+			int val;
+	  	    GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
+	        if(val)
+			{	
+		    	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");                          
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
+				SetPanelPos(hGraphPanel, 172, 305);  
+				//SetPanelSize(hGraphPanel, 833, 1293);
+				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
+				DisplayPanel(hGraphPanel);
+				
+			}
+			else
+			{   	
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+				SetPanelPos(hGraphPanel, 172, 305);  
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+				DisplayPanel(hGraphPanel);
+			}
 			
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
-			DispResultMenu();
-			DispResultTableGraph();
+			DispResultMenu(); 
+			DispEnvironmentCfg();
+			//DispResultTableGraph();
 			DispResultNumber();
-		    DispEnvironmentCfg();
+		   
 			break;
 	}
 	return 0;
@@ -229,7 +252,32 @@ static void RunActive()
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 	DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,1);//运行过程中禁止设置曲线属性        
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,1);//运行过程中禁止设置曲线属性   
+	
+	int val;
+	  	    GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
+	        if(val)
+			{	
+		    	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");                          
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
+				SetPanelPos(hGraphPanel, 172, 305);  
+				//SetPanelSize(hGraphPanel, 833, 1293);
+				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
+				DisplayPanel(hGraphPanel);
+				
+			}
+			else
+			{   	
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+				SetPanelPos(hGraphPanel, 172, 305);  
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+				DisplayPanel(hGraphPanel);
+			}
 	
 	
 }
@@ -318,6 +366,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
 	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
+			//RefreshGraph (hGraphPanel, GRAPHDISP_GRAPH1);   							 //刷新曲线
 			//SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
 			DeleteGraphAnnotation (hGraphPanel, GRAPHDISP_GRAPH1,-1 );                  //清空上个实验曲线注释
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
@@ -388,7 +437,6 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 					
 				case NO_SWEEP_IT:
-					//SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_YLOOSE_FIT_AUTOSCALING,1);
 					numOfCurve=1;
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  //单位s
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
@@ -397,15 +445,17 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Table_ATTR.row =  numOfDots+1;	
 					Graph1.pGraphAttr->xAxisHead=0;
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
-					Graph1.pGraphAttr->yAxisHead=1.47e-5;
-	   				Graph1.pGraphAttr->yAxisTail=1.48e-5; 
+					Graph1.pGraphAttr->yAxisHead=1.0e-8;
+	   				Graph1.pGraphAttr->yAxisTail=9.8e-8; 
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					//SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 					//CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId); //开辟新的线程
 					//Y轴均由控件自由控制
 					break;
 					
 				case NO_SWEEP_RT:
+				   	 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线  
 					 numOfCurve=1;
 					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
@@ -418,6 +468,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	   				 Graph1.pGraphAttr->yAxisTail=5.55e+3;
 					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					 //SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 					 break;
 					
 				case SWEEP_IV:
@@ -442,8 +493,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 					
 				case ID_T:
-			/*		SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1  , ATTR_YLOOSE_FIT_AUTOSCALING_UNIT, 1);
-					SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_YLOOSE_FIT_AUTOSCALING,1); */
+					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
+				
 					numOfCurve=1;
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1; 
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
@@ -456,6 +507,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	   				Graph1.pGraphAttr->yAxisTail=1.64e-3; 
 					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					//SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 					break;
 			}
 			

@@ -83,9 +83,6 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 		case SWEEP_GATE_VOL: 
 		case SWEEP_DRAIN_VOL:
 		case SWEEP_IV:
-		case NO_SWEEP_IT:
-		case ID_T:
-	
 		if(currentY_Val >= 0)
 		{
 			if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
@@ -115,6 +112,44 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 		}
 			
 		break;
+		
+		case NO_SWEEP_IT:
+		case ID_T:
+			if(currentY_Val >= 0)
+			{
+				if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+				{
+					Graph1.pGraphAttr->yAxisHead=currentY_Val*0.5;
+					Graph1.pGraphAttr->yAxisTail=currentY_Val*1.5;   
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+				} 		    
+				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
+				{
+					
+				    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.5;
+					Graph1.pGraphAttr->yAxisTail=currentY_Val*1.5; 
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+				}
+			
+			}
+			else
+			{
+			  	if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+				{
+					Graph1.pGraphAttr->yAxisTail=currentY_Val*0.5;
+					Graph1.pGraphAttr->yAxisHead=currentY_Val*1.5;  
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+				} 		    
+				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
+				{
+				    Graph1.pGraphAttr->yAxisHead=currentY_Val*1.5;
+					Graph1.pGraphAttr->yAxisTail=currentY_Val*0.5;     
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+				}
+		
+				
+			}
+			break;
 
 	}
 }
@@ -125,9 +160,9 @@ void SetGraphX_Axis(GraphTypeDef* pGraph, float NumOfDots)
 		case NO_SWEEP_IT:
 		case NO_SWEEP_RT:
 		case ID_T:
-			if(pGraph->pGraphAttr->xAxisTail <= NumOfDots*(TestPara.timeStep*0.01)) //已画点数*Step ===》实际x轴长度
+			if(pGraph->pGraphAttr->xAxisTail <= NumOfDots*(TestPara.timeStep*0.001)) //已画点数*Step ===》实际x轴长度
 			{  	
-				Graph1.pGraphAttr->xAxisTail=NumOfDots*(TestPara.timeStep*0.001)+ NumOfDots*(TestPara.timeStep*0.001)*0.1;
+				Graph1.pGraphAttr->xAxisTail=NumOfDots*(TestPara.timeStep*0.001)*1.01;
 				SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
 			}
 			break;

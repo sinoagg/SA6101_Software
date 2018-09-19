@@ -68,16 +68,23 @@ static void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured)
 			*(Graph1.pCurveArray->pDotY++)=(TestPara.VdStart/rxIdmeasured)*0.001;   
 			SetCtrlVal(hResultDispPanel, RESULTDISP_OHM,(TestPara.VdStart/rxIdmeasured)*0.001);
 		
-			if(((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001) <= Graph1.pGraphAttr->yAxisHead)
-			{
-				 Graph1.pGraphAttr->yAxisHead =((TestPara.VdStart/rxIdmeasured)*0.001)*0.9; 
-				 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
+			if(((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)>= 0)
+			{																	 
+				if((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 >= Graph1.pGraphAttr->yAxisTail)
+				{
+					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.5;   
+					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.5;  
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß    
+				}
+				else if((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 <= Graph1.pGraphAttr->yAxisHead )  
+				{
+					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.5;   
+					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.5;  
+					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
+				}
+			
 			}
-			else if(((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)>= Graph1.pGraphAttr->yAxisTail)
-			{
-				Graph1.pGraphAttr->yAxisTail =  (TestPara.VdStart/rxIdmeasured)*0.001 + ((TestPara.VdStart/rxIdmeasured)*0.001)* 0.1;
-				SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
-			}
+	
 		}
 		else if(TestPara.testMode==ID_T)
 		{
@@ -314,8 +321,8 @@ int main (int argc, char *argv[])
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=6;
-	controlComPort=4;
+	measureComPort=7;
+	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
 	//else SA11_Status=1;
