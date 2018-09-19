@@ -444,9 +444,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Table_ATTR.column = 3*numOfCurve;  
 					Table_ATTR.row =  numOfDots+1;	
 					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
-					Graph1.pGraphAttr->yAxisHead=1.0e-8;
-	   				Graph1.pGraphAttr->yAxisTail=9.8e-8; 
+					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001;
+					Graph1.pGraphAttr->yAxisHead=5.0e-8;
+	   				Graph1.pGraphAttr->yAxisTail=5.08e-8; 
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					//SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//ÉèÖÃ Y  ÖáµÄ·¶Î§
@@ -463,7 +463,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 Table_ATTR.column = 3*numOfCurve;
 					 Table_ATTR.row =  numOfDots+1;
 					 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.01;
+					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.001;
 					 Graph1.pGraphAttr->yAxisHead=5.51e+3;
 	   				 Graph1.pGraphAttr->yAxisTail=5.55e+3;
 					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
@@ -502,7 +502,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			    	Table_ATTR.column = 4*numOfCurve;
 					Table_ATTR.row =  numOfDots+1;
 				    Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=numOfDots*0.01; 
+					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001; 
 					Graph1.pGraphAttr->yAxisHead=1.6e-3;
 	   				Graph1.pGraphAttr->yAxisTail=1.64e-3; 
 					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    

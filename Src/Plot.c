@@ -83,44 +83,6 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 }	
 
 
-//int PlotCurve(GraphTypeDef* pGraph, int hGraphPanel, int control)
-//{
-//    int numOfDotsToPlot=pGraph->pCurveArray->numOfDotsToPlot;							//防止中断端去写入这个数据
-//	GetSettingsCurveAttr(pGraph->graphIndex,pGraph->pCurveArray->curveIndex);			//根据不同的CurveIndex返回不同的pCurveAttr(设置不同的颜色)
-//	if(numOfDotsToPlot>0)
-//	{		 
-//	   	if(pGraph->pCurveArray->numOfPlotDots >= 1)																//如果有需要画图的点
-//		{  																																																						 
-//			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot-1, pGraph->pCurveArray->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT,
-//									  pCurveAttr->plotStyle,
-//									  pCurveAttr->pointStyle,
-//									  pCurveAttr->lineStyle, 1,
-//									  pCurveAttr->lineColor);
-//		  }
-//		else
-//		{   		
-//			pGraph->plotHandle=PlotXY(hGraphPanel, control, pGraph->pCurveArray->pDotXPlot, pGraph->pCurveArray->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,
-//									  pCurveAttr->plotStyle,
-//									  pCurveAttr->pointStyle,
-//									  pCurveAttr->lineStyle, 1,
-//									  pCurveAttr->lineColor);
-//		}
-//		pGraph->pCurveArray->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
-//		pGraph->pCurveArray->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
-//		pGraph->pCurveArray->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
-//		pGraph->pCurveArray->numOfDotsToPlot-=numOfDotsToPlot;		//防止中断端在画图期间接收到新的数据
-//		SetGraphX_Axis(pGraph,Graph1.pCurveArray->numOfPlotDots);
-//	
-//	} 
-//	
-//	if(pGraph->plotHandle<0)																																											
-//		return -1;
-//	else
-//		return 0;
-//	
-//	
-//}
-
 
  int PlotCurve2(GraphTypeDef* pGraph2, int hGraphPanel, int control)
 {						

@@ -72,14 +72,14 @@ static void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured)
 			{																	 
 				if((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 >= Graph1.pGraphAttr->yAxisTail)
 				{
-					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.5;   
-					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.5;  
+					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.09;   
+					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.9;  
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß    
 				}
 				else if((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 <= Graph1.pGraphAttr->yAxisHead )  
 				{
-					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.5;   
-					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.5;  
+					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.09;   
+					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.9;  
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//…Ë÷√ Y  ÷·µƒ∑∂Œß
 				}
 			
@@ -321,7 +321,7 @@ int main (int argc, char *argv[])
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
 	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=7;
+	measureComPort=5;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
