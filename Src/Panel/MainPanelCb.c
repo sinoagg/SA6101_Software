@@ -355,6 +355,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
 			Graph1.plotCurveIndex=0; 													//每次实验开始之前初始化CurveIndex
+			
 			curveComplete=0;
 			rows=1;
 			curveIndex=1;                                                               //用于添加注解
@@ -444,6 +445,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  //单位s
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pCurveArray->numOfTotalDots = numOfDots;
+					Graph1.pCurveArray->time=0;  
 					Table_ATTR.column = 3*numOfCurve;  
 					Table_ATTR.row =  numOfDots+1;	
 					Graph1.pGraphAttr->xAxisHead=0;
