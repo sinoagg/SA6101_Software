@@ -35,7 +35,8 @@ extern unsigned char measUartTxBuf[];
 extern unsigned char measUartRxBuf[];
 extern unsigned char curveComplete;
 extern  int rows;    
-extern int curveIndex ;  
+extern int curveIndex ;
+extern unsigned char queryFlag; 					//串口接收时要屏蔽数据查询 
 //==============================================================================
 // Global functions
 

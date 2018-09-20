@@ -46,7 +46,7 @@ int graph2preclr;
 int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCurveIndex,float rxIdmeasured)       
 {   
      	
-  		pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 
+  		
 		int numOfDotsToPlot=(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot;		//防止中断端去写入这个数据 
 		if((numOfDotsToPlot + plotCurveIndex) >0)
 		{
@@ -54,24 +54,24 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 			{
 
 				pGraph->plotHandle=PlotXY(hGraphPanel, control, (pGraph->pCurveArray + plotCurveIndex)->pDotXPlot-1, (pGraph->pCurveArray + plotCurveIndex)->pDotYPlot-1, numOfDotsToPlot+1, VAL_FLOAT, VAL_FLOAT,
-										  pCurveAttr->plotStyle,
-										  pCurveAttr->pointStyle,
-										  pCurveAttr->lineStyle, 1,
-										  pCurveAttr->lineColor);
+									pGraph->pCurveArray->pCurveAttr->plotStyle,
+									pGraph->pCurveArray->pCurveAttr->pointStyle,
+									pGraph->pCurveArray->pCurveAttr->lineStyle, 1,
+									pGraph->pCurveArray->pCurveAttr->lineColor);
 			}
 			else											//如果一个点没画，只画一个点
 			{
 				pGraph->plotHandle=PlotXY(hGraphPanel, control, (pGraph->pCurveArray + plotCurveIndex)->pDotXPlot, (pGraph->pCurveArray + plotCurveIndex)->pDotYPlot, numOfDotsToPlot, VAL_FLOAT, VAL_FLOAT,
-										  pCurveAttr->plotStyle,
-										  pCurveAttr->pointStyle,
-										  pCurveAttr->lineStyle, 1,
-										  pCurveAttr->lineColor);
+									pGraph->pCurveArray->pCurveAttr->plotStyle,
+									pGraph->pCurveArray->pCurveAttr->pointStyle,
+									pGraph->pCurveArray->pCurveAttr->lineStyle, 1,
+									pGraph->pCurveArray->pCurveAttr->lineColor);
 			}
 			(pGraph->pCurveArray + plotCurveIndex)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;	//防止中断端在画图期间接收到新的数据.
-			SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
+			//SetGraphX_Axis(pGraph,pGraph->pCurveArray->numOfPlotDots);
 			SetGraphY_Axis(pGraph,rxIdmeasured);              
 			 
 			    
