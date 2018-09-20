@@ -13,6 +13,7 @@
 #include "Graph.h"
 #include "Cgs_mt.h"
 
+
 unsigned char queryFlag = 1; 				//串口接收时要屏蔽数据查询  
 const char IDquery[] = {0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 						   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -23,7 +24,9 @@ const char CloseIDquery[] = {0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
 						        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x13};
 char USART_RX_Buffer[40];   //接收 
 
+
 extern int TimerID;
+
 unsigned char measureComPort;				//Serial Com Number
 unsigned char controlComPort;
 
@@ -36,18 +39,15 @@ int rows;
 int curveIndex ;   
 #define TXTCOLOR 0x3399FF
 #define ANNOTATIONCOLOR 0x508EF4
-void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData);
+
+void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
+
 static int DeviceQuery();
 static void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured)
 	{   
 		char time[80];
 		int str = Graph1.pCurveArray->time*0.001;
 		sprintf(time,"%s%d","",str); 
-	/*	int log;
-		GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_CTRL_INDEX,&log );*/
-		//GetActiveTreeItem (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, &log);//获得当前点击项目值
-
-		
 		if(TestPara.testMode==SWEEP_DRAIN_VOL)
 		{   
 			*((Graph1.pCurveArray+Graph1.plotCurveIndex)->pDotX++)=pRxData->rxVdtest;								//get x, set pointer to the next data
@@ -161,8 +161,8 @@ static void TestStop(RxDataTypeDef *pRxData,int portNumber)
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);        //禁用 停止按钮 //注释掉后可以在运行中点击停止     
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);        //恢复 开始按钮
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);       //恢复 保存按钮
-	GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
-	GraphDeinit(&Graph2);
+	//GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
+	//GraphDeinit(&Graph2);
 	
 }
 
@@ -188,10 +188,9 @@ static void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 	 
 	 if(TestPara.testMode==SWEEP_DRAIN_VOL)
 	 {
-		
 		 char curve[80];
 		 sprintf(curve,"%s%d","Vg=",pRxData->rxVgtest);
-		 AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve ,-50,-25);
+		 AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve ,-65,-25);
 		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_CAPTION_BGCOLOR, VAL_RED);
 		 ProcessDrawEvents();
 		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_YAXIS, VAL_LEFT_YAXIS);
@@ -205,7 +204,7 @@ static void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 	 {
 		 char curve[80];
 		 sprintf(curve,"%s%d","Vd=",pRxData->rxVdtest);
-		 AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve   ,-50,-25);
+		 AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve   ,-65,-25);
 		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_CAPTION_BGCOLOR, VAL_DK_MAGENTA);
 		 ProcessDrawEvents();
 		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_YAXIS, VAL_LEFT_YAXIS);
@@ -224,7 +223,9 @@ static void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
+
 	queryFlag = 0;     
+
 	int rxNum=0;																//串口收到字节数
 	int i=0;																	//处理接收帧数
 	RxDataTypeDef RxData;
@@ -239,8 +240,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 	int log; 
 	while(rxNum>=MEASURE_UART_RX_LEN)
 	{	
-		
-		GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_CTRL_INDEX,&log );
+		GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_CTRL_INDEX,&log);
 		ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
 		SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 		DispVgTest(&RxData);
@@ -258,18 +258,14 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		RxDataToTable(&RxData);
 		rxNum-=MEASURE_UART_RX_LEN;
 		i++; 
-
 	}
-		 
 		PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured);
-
+		SetGraph_Axis(hGraphPanel,GRAPHDISP_GRAPH1,&Graph1,TestPara.testMode);
 		switch(TestPara.testMode)
 		{
 			case NO_SWEEP_IT:
 			case NO_SWEEP_RT:
 			case SWEEP_IV:
-				
-				
 				 if((RxData.rxStopSign==0x01) || (Graph1.pCurveArray->numOfTotalDots == Graph1.pCurveArray->numOfPlotDots))
 				 	 TestStop(&RxData,portNumber);
 				break;
@@ -285,19 +281,22 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 					AddGraphAnnotations(&RxData,rxIdmeasured);                                 
 					curveComplete=1; 
 					rows=1;		                      // 第二条曲线开始 大于0的任意值
-					
+				
 					DiscardAsyncTimer(TimerID);       //第一条线之后的每条线结束时关闭定时器
 				}
 				break;
+
 		
 		}  
 
 	  queryFlag = 1;     
+
 }	
 	
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
+
 	queryFlag = 0;														//接收时屏蔽查询，不在查询数据
 	int rxNum;																							  
 	Rx_CGS_DataTypeDef Rx_CGS_Data;
@@ -341,22 +340,28 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 	FlushOutQ(controlComPort);
 		
 	queryFlag = 1;																//接收时屏蔽查询，不在查询数据 
+
+		
 }
 
 int main (int argc, char *argv[])
 {
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
+
 	//measureComPort=argc;		//pass measureComPort variable
 	DeviceQuery();	  
 	//measureComPort=9;
-	controlComPort=5;
+
+//	measureComPort=2;
+	controlComPort=2;
+
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
 	//else SA11_Status=1;
 	
 	LoadInitPanel(); 
-	//CheckPortStatus(controlComPort, 15, CtrlComCallback); //controlComPort
+	CheckPortStatus(controlComPort, 15, CtrlComCallback); //controlComPort
 	RunUserInterface();
 	CloseCom(measureComPort);
 	

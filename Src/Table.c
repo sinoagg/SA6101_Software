@@ -51,7 +51,6 @@ void Table(char table_title[][20], int column,int  columnWidth,int row) //初始化
 			
 }
 
-
  //隔行添加背景色
 int CVICALLBACK ColorCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)

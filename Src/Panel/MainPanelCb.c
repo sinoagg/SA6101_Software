@@ -354,6 +354,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			
 			FlushInQ(measureComPort);	   												//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
+			
+			GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
+			GraphDeinit(&Graph2);
+			
 			Graph1.plotCurveIndex=0; 													//每次实验开始之前初始化CurveIndex
 			
 			curveComplete=0;
@@ -442,16 +446,22 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					
 				case NO_SWEEP_IT:
 					numOfCurve=1;
-					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  //单位s
+					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  					//单位s
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					Graph1.pCurveArray->numOfTotalDots = numOfDots;
 					Graph1.pCurveArray->time=0;  
 					Table_ATTR.column = 3*numOfCurve;  
 					Table_ATTR.row =  numOfDots+1;	
 					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001;
-					Graph1.pGraphAttr->yAxisHead=5.0e-8;
-	   				Graph1.pGraphAttr->yAxisTail=5.08e-8; 
+//<<<<<<< HEAD
+//					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001;
+//					Graph1.pGraphAttr->yAxisHead=5.0e-8;
+//	   				Graph1.pGraphAttr->yAxisTail=5.08e-8; 
+//=======
+					Graph1.pGraphAttr->xAxisTail=10;								//X轴的初始化固定
+					Graph1.pGraphAttr->yAxisHead=1.47e-5;
+	   				Graph1.pGraphAttr->yAxisTail=1.48e-5; 
+
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
@@ -521,15 +531,16 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					break;
 			}
 			
-			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
-			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots, &Graph2); 	//初始化图2  
+			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);							//使能控件的缩放和拖动  
+			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1 , VAL_IMMEDIATE_DRAW); 							//清除上个实验绘制曲线
 			
-			Delay(0.2);												  					//在设置和运行命令之间给下位机0.2秒处理
-			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);				//send RUN command to instrument via UART
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+1, &Graph2); 							//初始化图2 
+			Graph1.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 	//得到曲线的属性 
+			Delay(0.2);												  											//在设置和运行命令之间给下位机0.2秒处理
+			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);										//send RUN command to instrument via UART
 			double temp=((double)TestPara.timeStep)/1000;
-			if(temp<0.03) temp=0.03;													//如果查询时间过快，会造成数据混乱，下位机响应中断过多
-			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);						//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)
+			if(temp<0.03) temp=0.03;																			//如果查询时间过快，会造成数据混乱，下位机响应中断过多
+			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);												//Create Asynchronous (Timer time interval according to sample interval, continue generating evernt, enabled, callback function name, passing no pointer)
 			break;
 	}
 	return 0;

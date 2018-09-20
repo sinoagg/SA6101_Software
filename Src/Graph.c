@@ -112,6 +112,7 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 		}
 			
 		break;
+
 		
 		case NO_SWEEP_IT:
 		case ID_T:
@@ -162,13 +163,33 @@ void SetGraphX_Axis(GraphTypeDef* pGraph, float NumOfDots)
 		case ID_T:
 			if(pGraph->pGraphAttr->xAxisTail<= NumOfDots*(TestPara.timeStep*0.001)) //已画点数*Step ===》实际x轴长度
 			{  	
+
 				Graph1.pGraphAttr->xAxisTail=NumOfDots*(TestPara.timeStep*0.001)+NumOfDots*(TestPara.timeStep*0.001)*0.1;
+
 				SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
 			}
 			break;
 	}
 }
 
+
+
+void SetGraph_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph,enum TestMode testMode)//坐标轴自动调整  
+{
+	switch(TestPara.testMode)
+	{
+		case NO_SWEEP_IT:
+			
+				if(pGraph->pGraphAttr->xAxisTail <= pGraph->pCurveArray->numOfPlotDots * TestPara.timeStep * 0.001) //已画点数*Step ===》实际x轴长度
+				{
+					Graph1.pGraphAttr->xAxisTail=(pGraph->pCurveArray->numOfPlotDots * TestPara.timeStep * 0.001)*1.02; 
+					SetAxisScalingMode(graphDispPanel, controlfloat, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
+				}
+				
+			break;
+
+	}
+}
 int CVICALLBACK CanvasCallback (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
@@ -177,8 +198,6 @@ int CVICALLBACK CanvasCallback (int panel, int control, int event,
 	int y;
 	int CtrlTop;
 	int CtrlLeft;
-
-
 	static int OldX = 0;	  //局部静态变量，旧X、坐标值 
 	static int OldY = 0;	
 	switch (event)
@@ -188,7 +207,6 @@ int CVICALLBACK CanvasCallback (int panel, int control, int event,
 			GetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, &CtrlLeft);
 			GetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_TOP, &CtrlTop);
 			GetGlobalMouseState (&panel, &x, &y, &LeftButtonDown, NULL, NULL);	     // 获得鼠标绝对位置、按键等属性
-		
 			if (LeftButtonDown == 1)	  // 当鼠标左键按下时
 			{
 				SetCtrlAttribute (panel, GRAPHDISP_CANVAS, ATTR_LEFT, CtrlLeft + (x-OldX) );

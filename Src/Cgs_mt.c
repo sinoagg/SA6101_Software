@@ -52,7 +52,7 @@ GraphTypeDef Graph_Temp;
 void Read_CGS_Value(unsigned char comSelect)
 {
 	
-   	ComWrt(comSelect, (const char*)meas_CGS_UartTxBuf, 8);
+   	//ComWrt(comSelect, (const char*)meas_CGS_UartTxBuf, 8);
 	
 }
 void ProtocolGet_CGS_Data(unsigned char* meas_CGS_UartRxBuf, Rx_CGS_DataTypeDef* Rx_CGS_Data)	//Get data from UART Rx Buffer
@@ -62,7 +62,7 @@ void ProtocolGet_CGS_Data(unsigned char* meas_CGS_UartRxBuf, Rx_CGS_DataTypeDef*
 		
 		Rx_CGS_Data->pressure = pow(10, (0.778*( ((*(meas_CGS_UartRxBuf+3) << 8)|(*(meas_CGS_UartRxBuf+4))) /1000.0 - 3.575)));  				//压力值
 		
-		if(*(meas_CGS_UartRxBuf+5) == 0xff)
+		if(*(meas_CGS_UartRxBuf+5) == 0x80)
 		{
 			Rx_CGS_Data->heating_stage_temp = ((int)(*(meas_CGS_UartRxBuf+5) << 8)|(*(meas_CGS_UartRxBuf+6))) - 65536; 							//热台温度  
 		}
@@ -76,7 +76,7 @@ void ProtocolGet_CGS_Data(unsigned char* meas_CGS_UartRxBuf, Rx_CGS_DataTypeDef*
 		Rx_CGS_Data->humidity = (unsigned int)(*(meas_CGS_UartRxBuf+9) << 8)|(*(meas_CGS_UartRxBuf+10));  						//环境湿度
 		
 		
-		if(*(meas_CGS_UartRxBuf+11) == 0xff)
+		if(*(meas_CGS_UartRxBuf+11) == 0x80)
 		{
 			Rx_CGS_Data->environment_temp = (int)(*(meas_CGS_UartRxBuf+11) << 8)|(*(meas_CGS_UartRxBuf+12)) - 65536;							//环境温度 	
 		}
