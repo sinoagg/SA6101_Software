@@ -55,16 +55,22 @@
 int CVICALLBACK TimerCallback (int panel, int control, int event,								//定时去查询
 								void *callbackData, int eventData1, int eventData2)
 {
-	switch (event)
+		switch (event)
 	{
 		case EVENT_TIMER_TICK:
-			ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
+			
+			//ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
 			//SA10_ProtocolQuery(contrlComPort, CONTROL_MEASURE_DEV_ADDR, ctrlUartTxBuf);
-			//Read_CGS_Value(controlComPort);  
+			
+			if(queryFlag == 1)//串口接收时要屏蔽数据查询
+			{
+				ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); 
+				Delay(0.020);
+				Read_CGS_Value(controlComPort);
+				Delay(0.020);
+			}
 			break;
 	}
-	
-
 	
 	
 	return 0;

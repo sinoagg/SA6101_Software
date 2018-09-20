@@ -13,6 +13,7 @@
 #include "Graph.h"
 #include "Cgs_mt.h"
 
+unsigned char queryFlag = 1; 				//串口接收时要屏蔽数据查询  
 const char IDquery[] = {0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 						   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 						   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF};
@@ -223,6 +224,7 @@ static void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 
 void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbackData)
 {
+	queryFlag = 0;     
 	int rxNum=0;																//串口收到字节数
 	int i=0;																	//处理接收帧数
 	RxDataTypeDef RxData;
@@ -290,40 +292,55 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		
 		}  
 
-	   
+	  queryFlag = 1;     
 }	
 	
 
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
 {
+	queryFlag = 0;														//接收时屏蔽查询，不在查询数据
 	int rxNum;																							  
-	int i=0;
-	static a = 0;
 	Rx_CGS_DataTypeDef Rx_CGS_Data;
+	Rx_CGS_Data.environment_temp = 0;
+	Rx_CGS_Data.humidity = 0;
+	Rx_CGS_Data.pressure = 0;
 	rxNum = GetInQLen(controlComPort);  								//读取串口中发送来的数据数量
 	if(rxNum>500) rxNum=500;											//防止超过内存范围
-	ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, rxNum);	
-	
 	while(rxNum>=15)
-	{			 
-		ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);			// 从串口中取出环境测量参数
-		*(Graph2.pCurveArray->pDotX++) = a++;
-		*((Graph2.pCurveArray + 1)->pDotX++) = a-1; 
-		*((Graph2.pCurveArray + 2)->pDotX++) = a-1; 
-	    *(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.humidity; 		 				 //环境湿度      
-		*((Graph2.pCurveArray + 1)->pDotY++) = Rx_CGS_Data.environment_temp;		 //环境温度     
-		*((Graph2.pCurveArray + 2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		 //压强    
-		(Graph2.pCurveArray +1)->numOfDotsToPlot++;
-		(Graph2.pCurveArray +2)->numOfDotsToPlot++; 
-		Graph2.pCurveArray->numOfDotsToPlot++; 
-		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.environment_temp);			//显示温度   
-		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.humidity);					//显示湿度     
-		SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure*0.001);		 		//显示压强         		 
+	{	
+		if(Graph1.pCurveArray->numOfPlotDots >= 1)
+		{
+			ComRd(controlComPort, (char *)meas_CGS_UartRxBuf, 15);
+			ProtocolGet_CGS_Data(meas_CGS_UartRxBuf, &Rx_CGS_Data);			// 从串口中取出环境测量参数
+		
+			*(Graph2.pCurveArray->pDotX++) = Graph1.pCurveArray->numOfPlotDots-1;
+			*((Graph2.pCurveArray + 1)->pDotX++) = Graph1.pCurveArray->numOfPlotDots-1; 
+			*((Graph2.pCurveArray + 2)->pDotX++) = Graph1.pCurveArray->numOfPlotDots-1; 
+		
+		    *(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.humidity; 		 				 //环境湿度      
+			*((Graph2.pCurveArray + 1)->pDotY++) = Rx_CGS_Data.environment_temp;		 //环境温度     
+			*((Graph2.pCurveArray + 2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		 //压强
+		
+			Graph2.pCurveArray->numOfDotsToPlot++;  
+			(Graph2.pCurveArray +1)->numOfDotsToPlot++;
+			(Graph2.pCurveArray +2)->numOfDotsToPlot++;
+		}
+		else
+		{
+		FlushInQ(controlComPort);	   											
+		FlushOutQ(controlComPort);
+		}
 		rxNum -=15; 
-		i++; 
 	}
+	SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.environment_temp);			//显示温度   
+	SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.humidity);					//显示湿度     
+	SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure*0.001);		 		//显示压强
+	PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线2图
 	
-	PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线2图          
+	FlushInQ(controlComPort);	   											
+	FlushOutQ(controlComPort);
+		
+	queryFlag = 1;																//接收时屏蔽查询，不在查询数据 
 }
 
 int main (int argc, char *argv[])
