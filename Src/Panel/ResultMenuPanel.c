@@ -61,7 +61,7 @@ static void DispSingleGraph(void)
 {
 	SetPanelPos(hGraphPanel, 172, 305);  
 	//SetPanelSize(hGraphPanel, 833, 1293);
-	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 730);
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
 	DisplayPanel(hGraphPanel);
 	//HidePanel(hGraphSelectPanel);
@@ -140,7 +140,7 @@ static void SaveGraphs(int control,char path[])
 	SaveBitmapToJPEGFile (nBitmapID, path, JPEG_INTERLACE, 100);
 	DiscardBitmap (nBitmapID);
 	
-}
+}							
 
 int CVICALLBACK TableCallback (int panel, int control, int event,						//点击table图标切换到table面板     
 							   void *callbackData, int eventData1, int eventData2)
@@ -320,7 +320,7 @@ int CVICALLBACK SaveGraph2Callback (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
+			 SaveGraphs(GRAPHDISP_DECORATION_GRAPH,graph2SavePath);
 			break;
 	}
 	return 0;
@@ -338,33 +338,37 @@ int CVICALLBACK SaveAllCallback (int panel, int control, int event,
 				{   
 					SaveSheet(); 
 					SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath); 
-					RemovePopup(hSaveDataPanel);   
+					RemovePopup(hSaveDataPanel);
+					DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
 				}
 				else if(sheet==1 && graph2==1)
 				{
 					SaveSheet(); 
-					SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath); 
-					RemovePopup(hSaveDataPanel);   
+					SaveGraphs(GRAPHDISP_DECORATION_GRAPH,graph2SavePath); 
+					RemovePopup(hSaveDataPanel); 
+					DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
 				}
 				else if(graph1==1 && graph2==1)
 				{
 				   	 SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath); 
-					 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath); 
-					 RemovePopup(hSaveDataPanel);   
+					 SaveGraphs(GRAPHDISP_DECORATION_GRAPH,graph2SavePath); 
+					 RemovePopup(hSaveDataPanel);  
+					 DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
 				}
 				 else if(sheet == 1 && graph1==1 && graph2 ==1)
 				 {
 					 SaveSheet(); 
 					 SaveGraphs(GRAPHDISP_GRAPH1,graph1SavePath); 
-					 SaveGraphs(GRAPHDISP_GRAPH2,graph2SavePath);
-					 RemovePopup(hSaveDataPanel);   
+					 SaveGraphs(GRAPHDISP_DECORATION_GRAPH,graph2SavePath); 
+					 RemovePopup(hSaveDataPanel); 
+					 DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
 				 }
 				 else
 				 {
 				    MessagePopup ("Message", "Please select a valid path");
 
 				 }
-				
+				                   
 				break;
 	}
 	return 0;

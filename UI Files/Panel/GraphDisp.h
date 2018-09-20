@@ -18,6 +18,7 @@
 #define  GRAPHDISP_GRAPH1                 3       /* control type: graph, callback function: (none) */
 #define  GRAPHDISP_GRAPH2                 4       /* control type: graph, callback function: (none) */
 #define  GRAPHDISP_CANVAS                 5       /* control type: canvas, callback function: CanvasCallback */
+#define  GRAPHDISP_DECORATION_GRAPH       6       /* control type: deco, callback function: (none) */
 
 
      /* Control Arrays: */

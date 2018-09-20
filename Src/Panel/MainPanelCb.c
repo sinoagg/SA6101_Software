@@ -166,14 +166,13 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
 				SetPanelPos(hGraphPanel, 172, 305);  
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 750);
 				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
 				DisplayPanel(hGraphPanel);
 			}
 			
 			DispResultMenu(); 
 			DispEnvironmentCfg();
-			//DispResultTableGraph();
 			DispResultNumber();
 		   
 			break;
@@ -402,6 +401,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
 						Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
 					}
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
+				    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					//newThread
 					CreateMonitorThread(numOfCurve);
@@ -432,6 +433,8 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
 						Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
 					}
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					CreateMonitorThread(numOfCurve);   
 					break;
@@ -449,13 +452,14 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	   				Graph1.pGraphAttr->yAxisTail=5.08e-8; 
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
+				    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 					//SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 					//CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId); //开辟新的线程
 					//Y轴均由控件自由控制
 					break;
 					
 				case NO_SWEEP_RT:
-				   	 DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线  
 					 numOfCurve=1;
 					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
@@ -468,7 +472,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	   				 Graph1.pGraphAttr->yAxisTail=5.55e+3;
 					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					 //SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
+					 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
+					 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
+					//SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 					 break;
 					
 				case SWEEP_IV:
@@ -489,12 +495,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 						Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
 						Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
 					}
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					break;
 					
 				case ID_T:
-					DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
-				
 					numOfCurve=1;
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1; 
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
@@ -505,7 +511,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001; 
 					Graph1.pGraphAttr->yAxisHead=1.6e-3;
 	   				Graph1.pGraphAttr->yAxisTail=1.64e-3; 
-					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	    
+					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	 
+					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					//SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 					break;
@@ -677,7 +685,11 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 {
 	switch(event){
 		case EVENT_LEFT_CLICK_UP:
-			//SetPanelSize(hPrjPanel,700,1400);
+		/*	//SetPanelSize(hPrjPanel,700,1400);
+			char ProSavePath[512];
+			GetCtrlVal(hSettingsPrjPanel, ENVT_PROPATH, &ProSavePath[0]); 
+			Delay(0.1);
+			//printf("%s",ProSavePath);
 			SetPanelPos(hPrjPanel,150,300);
 			InstallPopup (hPrjPanel);
 			SetCtrlAttribute(hPrjPanel,PROPANEL_PIC_OPENPRJ , ATTR_DIMMED, 1);
@@ -686,6 +698,18 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 			//SetPanelSize(hPrjListPanel,550,1399);
 			SetPanelPos(hPrjListPanel,90,0);
 			DisplayPanel(hPrjListPanel); 
+			LoadAllProject(ProSavePath);*/
+			/*InstallPopup (proPanel);
+			SetPanelPos(projectPanel, 85, 0);
+			SetPanelSize(projectPanel, 380, 1250);
+			DisplayPanel(projectPanel);
+			*/
+			
+			
+			InstallPopup (hPrjPanel);
+		    SetPanelPos(hPrjListPanel,90,0); 
+			SetPanelSize(hPrjListPanel, 700, 1400);
+			DisplayPanel(hPrjListPanel);
 			LoadAllProject(ProjectSavePath);
 
 			break;

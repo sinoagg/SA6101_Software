@@ -13,6 +13,15 @@
 #include "Graph.h"
 #include "Cgs_mt.h"
 
+const char IDquery[] = {0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+						   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+						   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF};
+
+const char CloseIDquery[] = {0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+						        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+						        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x13};
+char USART_RX_Buffer[40];   //接收 
+
 extern int TimerID;
 unsigned char measureComPort;				//Serial Com Number
 unsigned char controlComPort;
@@ -26,7 +35,8 @@ int rows;
 int curveIndex ;   
 #define TXTCOLOR 0x3399FF
 #define ANNOTATIONCOLOR 0x508EF4
-void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData); 
+void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void * callbackData);
+static int DeviceQuery();
 static void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured)
 	{   
 		char time[80];
@@ -72,14 +82,14 @@ static void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured)
 			{																	 
 				if((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 >= Graph1.pGraphAttr->yAxisTail)
 				{
-					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.09;   
-					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.9;  
+					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.005;   
+					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.991;  
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围    
 				}
 				else if((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001 <= Graph1.pGraphAttr->yAxisHead )  
 				{
-					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.09;   
-					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.9;  
+					Graph1.pGraphAttr->yAxisTail=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*1.005;   
+					Graph1.pGraphAttr->yAxisHead=((TestPara.VdStart/pRxData->rxIdmeasured.num_float)*0.001)*0.991;  
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				}
 			
@@ -320,8 +330,9 @@ int main (int argc, char *argv[])
 {
 	if (InitCVIRTE (0, argv, 0) == 0)
 		return -1;	/* out of memory */
-	//measureComPort=argc;		//pass measureComPort variable 
-	measureComPort=5;
+	//measureComPort=argc;		//pass measureComPort variable
+	DeviceQuery();	  
+	//measureComPort=9;
 	controlComPort=5;
 	if(CheckPortStatus(measureComPort, MEASURE_UART_RX_LEN, MeasureComCallback)<0) return -1;
 	//if(CheckPortStatus(controlComPort)<0) SA11_Status=0;
@@ -355,5 +366,41 @@ static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, vo
 		FlushOutQ(portNumber);
 		return 0;
 	}
+}
+
+static int DeviceQuery()
+{
+	unsigned char i; 
+	int b, strLen;
+	for(i = 1; i<=10; i++)
+		{
+			SetBreakOnLibraryErrors (0);
+			b = OpenComConfig(i, "", 115200, 0, 8, 1, 30, 30);  //设置和打开串口 
+		    if(b<0 )
+			{
+				
+			}else
+			{	
+			    ComWrt(i, IDquery, 30);//发送查询指令
+				Delay(3);
+				strLen = GetInQLen (i);
+				ComRd (i,USART_RX_Buffer,strLen);
+				if((USART_RX_Buffer[1]== '6') && (USART_RX_Buffer[2] == '1') &&  
+				(USART_RX_Buffer[3] == '0') && (USART_RX_Buffer[4]== '1'))
+				{
+					measureComPort = i;
+					FlushInQ(measureComPort);	   														//Clear input and output buffer
+					FlushOutQ(measureComPort);
+					CloseCom (measureComPort);
+					break;
+				}
+				else
+				{
+					CloseCom(i);
+				}
+				SetCTSMode (i, LWRS_HWHANDSHAKE_OFF);   //无硬件交互
+			}
+       }
+	return 0;
 }
 

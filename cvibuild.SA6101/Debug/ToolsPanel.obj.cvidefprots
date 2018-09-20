@@ -1,0 +1,36 @@
+[ToolsPanelCallback]
+Class="Function"
+Prototype="int ToolsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+
+[CalibrationCallback]
+Class="Function"
+Prototype="int CalibrationCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[OutputVoltageCaliCallback]
+Class="Function"
+Prototype="int OutputVoltageCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[ZeroCurrentCaliCallback]
+Class="Function"
+Prototype="int ZeroCurrentCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[RangeCaliCallback]
+Class="Function"
+Prototype="int RangeCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[SaveCaliCallback]
+Class="Function"
+Prototype="int SaveCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[CancelCaliCallback]
+Class="Function"
+Prototype="int CancelCaliCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[RangeSelectCallback]
+Class="Function"
+Prototype="int RangeSelectCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[CaliPanelCallback]
+Class="Function"
+Prototype="int CaliPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+

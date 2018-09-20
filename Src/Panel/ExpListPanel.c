@@ -127,8 +127,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			}
 			else if(index==EXP_I_T)	//加载I-T
 			{ 
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 1);
 				SetPanelPos(hIT_Panel, 104, 305);
 				DisplayPanel(hIT_Panel);
@@ -140,8 +138,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			}
 			else if(index==EXP_R_T)	//加载R-T 
 			{	
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 1);         
 				SetPanelPos(hRT_Panel, 104, 305);
 				
@@ -155,8 +151,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			else if(index==EXP_I_V)
 			{
 				
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 				SetPanelPos(hIV_Panel, 104, 305);
 				DisplayPanel(hIV_Panel);
@@ -175,8 +169,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			}
 			else if(index==EXP_ID_VDS)// 加载Id_Vds Configuration   
 			{
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 				SetPanelPos(IdVdPanel.panelHandle, 104, 305);
 				DisplayPanel(IdVdPanel.panelHandle);
@@ -187,8 +179,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			}
 			else if(index==EXP_ID_VGS)//  加载Id_Vgs Configuration  
 			{ 	
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 				SetPanelPos(IdVgPanel.panelHandle, 104, 305);
 				DisplayPanel(IdVgPanel.panelHandle);
@@ -198,8 +188,6 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 				DisplayOhm(0);  
 			}else if(index==EXP_ID_T)//Id-T
 			{
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	 
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
 				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
 			    SetPanelPos(hIdtPanel, 104, 305);
 				DisplayPanel(hIdtPanel);

@@ -1,0 +1,20 @@
+[GraphInit]
+Class="Function"
+Prototype="int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef *pGraph);"
+
+[GraphDeinit]
+Class="Function"
+Prototype="int GraphDeinit(GraphTypeDef *pGraph);"
+
+[SetGraphY_Axis]
+Class="Function"
+Prototype="void SetGraphY_Axis(GraphTypeDef *pGraph, float currentY_Val);"
+
+[SetGraphX_Axis]
+Class="Function"
+Prototype="void SetGraphX_Axis(GraphTypeDef *pGraph, float NumOfDots);"
+
+[CanvasCallback]
+Class="Function"
+Prototype="int CanvasCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
