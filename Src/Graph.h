@@ -55,9 +55,9 @@ int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, Gr
 int GraphDeinit(GraphTypeDef* pGraph);
 
 void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val);  
-void SetGraphX_Axis(GraphTypeDef* pGraph, float NumOfDots); 
-void SetGraph_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph,enum TestMode testMode);//坐标轴自动调整
-
+//void SetGraphX_Axis(GraphTypeDef* pGraph, float NumOfDots); 
+void SetGraphX_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph);//坐标轴自动调整
+		  
 #ifdef __cplusplus
     }
 #endif

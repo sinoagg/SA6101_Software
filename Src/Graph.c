@@ -1,4 +1,5 @@
 #include <userint.h>
+#include "limits.h"
 #include "GraphDisp.h"
 
 //==============================================================================
@@ -36,6 +37,9 @@
 // Global variables
 GraphTypeDef Graph1;
 GraphTypeDef Graph2;
+#  define INT_MIN   (-INT_MAX - 1)
+#  define INT_MAX   2147483647
+
  
 //==============================================================================
 // Global functions
@@ -100,13 +104,13 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 		{
 		   if(currentY_Val <= Graph1.pGraphAttr->yAxisHead) //
 			{
-				Graph1.pGraphAttr->yAxisHead = currentY_Val+currentY_Val*0.01;
+				Graph1.pGraphAttr->yAxisHead = currentY_Val+currentY_Val*0.1;
 			     SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 
 			}
 			else if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
 			{
-				Graph1.pGraphAttr->yAxisTail=currentY_Val-currentY_Val*0.001;
+				Graph1.pGraphAttr->yAxisTail=currentY_Val-currentY_Val*0.01;
 				SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 			}
 		}
@@ -118,13 +122,14 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 		case ID_T:
 			if(currentY_Val >= 0)
 			{
-				if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+				
+				if(currentY_Val >INT_MIN )
 				{
 					Graph1.pGraphAttr->yAxisHead=currentY_Val*0.991;
 					Graph1.pGraphAttr->yAxisTail=currentY_Val*1.005;   
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				} 		    
-				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
+				else if(currentY_Val <= INT_MAX)
 				{
 					
 				    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.991;
@@ -135,13 +140,13 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 			}
 			else
 			{
-			  	if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+			  	if(currentY_Val >= INT_MIN )
 				{
 					Graph1.pGraphAttr->yAxisTail=currentY_Val*0.991;
 					Graph1.pGraphAttr->yAxisHead=currentY_Val*1.005;  
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				} 		    
-				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
+				else if(currentY_Val <=INT_MAX)
 				{
 				    Graph1.pGraphAttr->yAxisHead=currentY_Val*1.005;
 					Graph1.pGraphAttr->yAxisTail=currentY_Val*0.991;     
@@ -151,38 +156,22 @@ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val)  //currentY_ Val =
 				
 			}
 			break;
-
 	}
 }
-void SetGraphX_Axis(GraphTypeDef* pGraph, float NumOfDots)
-{					 
+
+
+void SetGraphX_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph)//坐标轴自动调整  
+{
 	switch(TestPara.testMode)
-	{
+	{  
 		case NO_SWEEP_IT:
 		case NO_SWEEP_RT:
 		case ID_T:
-			if(pGraph->pGraphAttr->xAxisTail<= NumOfDots*(TestPara.timeStep*0.001)) //已画点数*Step ===》实际x轴长度
-			{  	
-
-				Graph1.pGraphAttr->xAxisTail=NumOfDots*(TestPara.timeStep*0.001)+NumOfDots*(TestPara.timeStep*0.001)*0.1;
-
-				SetAxisScalingMode(pGraph->graphHandle, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
-			}
-			break;
-	}
-}
-
-
-
-void SetGraph_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph,enum TestMode testMode)//坐标轴自动调整  
-{
-	switch(TestPara.testMode)
-	{
-		case NO_SWEEP_IT:
+	
 			
 				if(pGraph->pGraphAttr->xAxisTail <= pGraph->pCurveArray->numOfPlotDots * TestPara.timeStep * 0.001) //已画点数*Step ===》实际x轴长度
 				{
-					Graph1.pGraphAttr->xAxisTail=(pGraph->pCurveArray->numOfPlotDots * TestPara.timeStep * 0.001)*1.02; 
+					Graph1.pGraphAttr->xAxisTail=(pGraph->pCurveArray->numOfPlotDots * TestPara.timeStep * 0.001)*1.20; 
 					SetAxisScalingMode(graphDispPanel, controlfloat, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead, Graph1.pGraphAttr->xAxisTail);//设置 X  轴的范围
 				}
 				

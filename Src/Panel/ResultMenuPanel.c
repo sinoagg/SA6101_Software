@@ -207,6 +207,8 @@ int CVICALLBACK GraphSelectCallback (int panel, int control, int event,
 			SetCtrlAttribute (hEnvResultPanel, ENVIRPANEL_LEGEND, ATTR_VISIBLE, 1);
 			SetCtrlAttribute (hEnvResultPanel, ENVIRPANEL_TXT_LEGEND, ATTR_VISIBLE, 1);
 			SetCtrlVal(hEnvResultPanel, ENVIRPANEL_LEGEND,1);
+			
+			
 		}
 		else
 		{   

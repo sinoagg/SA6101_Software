@@ -62,10 +62,14 @@ int CVICALLBACK TimerCallback (int panel, int control, int event,								//¶¨Ê±È
 			//ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
 			//SA10_ProtocolQuery(contrlComPort, CONTROL_MEASURE_DEV_ADDR, ctrlUartTxBuf);
 			
-			if(queryFlag == 1)//´®¿Ú½ÓÊÕÊ±ÒªÆÁ±ÎÊý¾Ý²éÑ¯
+			if(measure_Uart_Flag == 1)											//´®¿Ú½ÓÊÕÊ±ÒªÆÁ±ÎÊý¾Ý²éÑ¯
 			{
-				ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); 
+				ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
 				Delay(0.020);
+			}
+			
+			if(control_Uart_Flag == 1)
+			{
 				Read_CGS_Value(controlComPort);
 				Delay(0.020);
 			}

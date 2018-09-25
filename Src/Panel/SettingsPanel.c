@@ -187,3 +187,32 @@ int  CVICALLBACK SettingsPanelCallback(int panel, int event, void *callbackData,
 	return 0;
 }
 
+int CVICALLBACK UpdateHardware (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK UpdateSoftware (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_LEFT_CLICK_UP:
+			int handle;
+		    LaunchExecutableEx ("..\\Updates\\SystemUpdate.exe", LE_SHOWNA, &handle);
+			while((ExecutableHasTerminated (handle)) == 0)
+			{
+			}
+			QuitUserInterface (0);
+			LaunchExecutable ("..\\Updates\\replace.exe");
+			break;
+	}
+	return 0;
+}

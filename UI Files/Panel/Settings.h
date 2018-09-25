@@ -15,6 +15,8 @@
 
 #define  ABOUT                            1
 #define  ABOUT_PICTURE                    2       /* control type: picture, callback function: (none) */
+#define  ABOUT_UPDATESOFT                 3       /* control type: command, callback function: UpdateSoftware */
+#define  ABOUT_UPDATEHARD                 4       /* control type: command, callback function: UpdateHardware */
 
 #define  ENVT                             2
 #define  ENVT_PROPATH                     2       /* control type: string, callback function: (none) */
@@ -66,6 +68,8 @@ int  CVICALLBACK GraphBtnCallback(int panel, int control, int event, void *callb
 int  CVICALLBACK PrjBtnCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PrjDirCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK SettingsPanelCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK UpdateHardware(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK UpdateSoftware(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

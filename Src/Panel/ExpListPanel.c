@@ -151,7 +151,7 @@ int CVICALLBACK TreeCallback (int panel, int control, int event,
 			else if(index==EXP_I_V)
 			{
 				
-				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 0);         
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_VG, ATTR_DIMMED, 1);         
 				SetPanelPos(hIV_Panel, 104, 305);
 				DisplayPanel(hIV_Panel);
 				RunStatus();    

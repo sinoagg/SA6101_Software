@@ -69,12 +69,12 @@ CmtThreadFunctionID abnmDCThreadId;  //异常发生时数据缓存函数的线程Id
 
 int TimerID;
 char configSavePath[512]={0};
-char table_title_IT[11][20]  ={ "t(s)","I(A)","Vd(mV)"};
-char table_title_RT[11][20]  ={ "t(s)","R(Ohm)" ,"Vd(mV)"};
-char table_title_IV[11][20]  ={"Vd(mV)","I(A)"};
-char table_title_Idt[11][20] ={"t(s)" ,"Id(A)","Vd(mV)","Vg(mV)"}; 
-char table_title_IdVd[11][20]={"Vd(mV)","Id(A)","Vg(mV)"};
-char table_title_IdVg[11][20]={"Vg(mV)","Id(A)","Vd(mV)"};
+char table_title_IT[11][20]  ={ "t(s)","I(A)","Vd(mV)","Temp(℃)","Hum(%RH)","Press(kPa)"};
+char table_title_RT[11][20]  ={ "t(s)","R(Ohm)" ,"Vd(mV)","Temp(℃)","Hum(%RH)","Press(kPa)"};
+char table_title_IV[11][20]  ={"Vd(mV)","I(A)","Temp(℃)","Hum(%RH)","Press(kPa)"};
+char table_title_Idt[11][20] ={"t(s)" ,"Id(A)","Vd(mV)","Vg(mV)","Temp(℃)","Hum(%RH)","Press(kPa)"}; 
+char table_title_IdVd[11][20]={"Vd(mV)","Id(A)","Vg(mV)","Temp(℃)","Hum(%RH)","Press(kPa)"};
+char table_title_IdVg[11][20]={"Vg(mV)","Id(A)","Vd(mV)","Temp(℃)","Hum(%RH)","Press(kPa)"};
 int numOfCurve=0;
 
 //==============================================================================
@@ -254,29 +254,29 @@ static void RunActive()
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED,1);//运行过程中禁止设置曲线属性   
 	
 	int val;
-	  	    GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
-	        if(val)
-			{	
-		    	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");                          
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
-				SetPanelPos(hGraphPanel, 172, 305);  
-				//SetPanelSize(hGraphPanel, 833, 1293);
-				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-				DisplayPanel(hGraphPanel);
-				
-			}
-			else
-			{   	
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
-				DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
-				SetPanelPos(hGraphPanel, 172, 305);  
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
-				DisplayPanel(hGraphPanel);
-			}
+    GetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, &val);
+    if(val)
+	{	
+    	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");                          
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");              
+		SetPanelPos(hGraphPanel, 172, 305);  
+		//SetPanelSize(hGraphPanel, 833, 1293);
+		SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
+		DisplayPanel(hGraphPanel);
+		
+	}
+	else
+	{   	
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico"); 
+		DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico");
+		SetPanelPos(hGraphPanel, 172, 305);  
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+		SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+		DisplayPanel(hGraphPanel);
+	}
 	
 	
 }
@@ -286,10 +286,11 @@ int CVICALLBACK StepThreadFunction(void* temp)
 	int numOfRxCurve=0;
 	while(numOfRxCurve < numOfCurve-1)
 	{
-		if((curveComplete==1)&&(rows>0))															//一组曲线数据接收完毕
+		if((curveComplete==1)&&(rows>0)&&(graphrows>0))															//一组曲线数据接收完毕
 		{
 			curveComplete=0;
-			rows=1;			     //table中行的标志来量，每条曲线从1开始到最后一个点
+			rows=2;			     //table中行的标志来量，每条曲线从1开始到最后一个点
+			graphrows=2;
 			numOfRxCurve++;
 			Graph1.plotCurveIndex++;
 			switch(TestPara.testMode)
@@ -344,6 +345,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	switch (event)																							  
 	{
 		case EVENT_LEFT_CLICK_UP:
+			
 		    RunActive();
 			int index;
 			GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index);
@@ -361,7 +363,9 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			Graph1.plotCurveIndex=0; 													//每次实验开始之前初始化CurveIndex
 			
 			curveComplete=0;
-			rows=1;
+			rows=2;
+			graphrows=2;
+			x2 = 0;
 			curveIndex=1;                                                               //用于添加注解
 			int expType;
 			int graphIndex=0;															//currently only deal with one graph circumstance
@@ -370,14 +374,12 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
 	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
-			//RefreshGraph (hGraphPanel, GRAPHDISP_GRAPH1);   							 //刷新曲线
-			//SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH1,ATTR_ENABLE_ZOOM_AND_PAN,1);	//使能控件的缩放和拖动  
 			DeleteGraphAnnotation (hGraphPanel, GRAPHDISP_GRAPH1,-1 );                  //清空上个实验曲线注释
 			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
 				return -1; 
 			TestPara.testMode=(enum TestMode)expType;
 			ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf);		//send config to instrument via UART 
-			//ClearAxisItems(hGraphPanel, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS);				  
+					  
 			switch(TestPara.testMode)
 			{
 			   	case SWEEP_DRAIN_VOL:				 
@@ -392,7 +394,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 													
 					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
 					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  //graph set up     
-					Table_ATTR.column = 3*numOfCurve;   //列数      
+					Table_ATTR.column = 6*numOfCurve;   //列数      
 					Table_ATTR.row =numOfDots+1; 
 					Graph1.pGraphAttr->yAxisHead=1e-13;
 	   				Graph1.pGraphAttr->yAxisTail=1.1e-13;
@@ -425,7 +427,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数  
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);   
 					Table_ATTR.row =  numOfDots+1; 	
-					Table_ATTR.column = 3*numOfCurve;  
+					Table_ATTR.column = 6*numOfCurve;  
 					Graph1.pGraphAttr->yAxisHead=1e-13;
 	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
 					Table(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
@@ -447,21 +449,15 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 				case NO_SWEEP_IT:
 					numOfCurve=1;
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;  					//单位s
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots+10,&Graph1);
 					Graph1.pCurveArray->numOfTotalDots = numOfDots;
 					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column = 3*numOfCurve;  
+					Table_ATTR.column = 6*numOfCurve;   
 					Table_ATTR.row =  numOfDots+1;	
 					Graph1.pGraphAttr->xAxisHead=0;
-//<<<<<<< HEAD
-//					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001;
-//					Graph1.pGraphAttr->yAxisHead=5.0e-8;
-//	   				Graph1.pGraphAttr->yAxisTail=5.08e-8; 
-//=======
 					Graph1.pGraphAttr->xAxisTail=10;								//X轴的初始化固定
-					Graph1.pGraphAttr->yAxisHead=1.47e-5;
-	   				Graph1.pGraphAttr->yAxisTail=1.48e-5; 
-
+					Graph1.pGraphAttr->yAxisHead=1.0047e-5;
+	   				Graph1.pGraphAttr->yAxisTail=1.0048e-5; 
 					Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
 					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
 					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
@@ -476,10 +472,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					 numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1;
 					 GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 					 Graph1.pCurveArray->numOfTotalDots  = numOfDots;
-					 Table_ATTR.column = 3*numOfCurve;
+					 Table_ATTR.column =6*numOfCurve;
 					 Table_ATTR.row =  numOfDots+1;
 					 Graph1.pGraphAttr->xAxisHead=0;
-					 Graph1.pGraphAttr->xAxisTail=numOfDots*0.001;
+					 Graph1.pGraphAttr->xAxisTail=10;
 					 Graph1.pGraphAttr->yAxisHead=5.51e+3;
 	   				 Graph1.pGraphAttr->yAxisTail=5.55e+3;
 					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
@@ -493,7 +489,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfCurve=1;  
 					numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Table_ATTR.column = 2*numOfCurve;
+					Table_ATTR.column = 5*numOfCurve;
 					Table_ATTR.row =  numOfDots+1;
 					Graph1.pGraphAttr->yAxisHead=1e-13;
 	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
@@ -517,10 +513,10 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 					numOfDots=TestPara.runTime/(TestPara.timeStep*0.001)+1; 
 					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
 				 	Graph1.pCurveArray->numOfTotalDots  = numOfDots;
-			    	Table_ATTR.column = 4*numOfCurve;
+			    	Table_ATTR.column = 7*numOfCurve;
 					Table_ATTR.row =  numOfDots+1;
 				    Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=numOfDots*0.001; 
+					Graph1.pGraphAttr->xAxisTail=10; 
 					Graph1.pGraphAttr->yAxisHead=1.6e-3;
 	   				Graph1.pGraphAttr->yAxisTail=1.64e-3; 
 					Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 	
@@ -534,7 +530,7 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);							//使能控件的缩放和拖动  
 			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1 , VAL_IMMEDIATE_DRAW); 							//清除上个实验绘制曲线
 			
-			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+1, &Graph2); 							//初始化图2 
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+10, &Graph2); 							//初始化图2 
 			Graph1.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 	//得到曲线的属性 
 			Delay(0.2);												  											//在设置和运行命令之间给下位机0.2秒处理
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);										//send RUN command to instrument via UART

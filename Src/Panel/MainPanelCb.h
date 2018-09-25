@@ -47,6 +47,7 @@ extern unsigned char measureComPort;
 extern unsigned char controlComPort; 
 extern FileLableTypeDef *pFileLable[];
 extern PrjHandleTypeDef SingleProject[];
+extern int x2;
 //==============================================================================
 //// Global functions
 static int SaveConfigToFile(char* pConfigSavePath);

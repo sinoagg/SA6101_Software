@@ -38,6 +38,7 @@ extern Table_TypeDef Table_Date;
 extern Table_TypeDef Table_ATTR; 
 
 
+extern char AB[11][20];
 
 //==============================================================================
 // External variables

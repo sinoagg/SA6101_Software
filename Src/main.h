@@ -24,6 +24,9 @@
 // Constants
 #define MEASURE_DEV_ADDR 0x01
 #define MEASURE_UART_RX_LEN 20
+		
+#define TXTCOLOR 0x3399FF
+#define ANNOTATIONCOLOR 0x508EF4
 //==============================================================================
 // Types
 
@@ -36,7 +39,9 @@ extern unsigned char measUartRxBuf[];
 extern unsigned char curveComplete;
 extern  int rows;    
 extern int curveIndex ;
-extern unsigned char queryFlag; 					//串口接收时要屏蔽数据查询 
+extern int graphrows;
+extern unsigned char measure_Uart_Flag; 					//电学测量串口接收时要屏蔽数据查询 
+extern unsigned char control_Uart_Flag; 					//环境参数串口接收时要屏蔽数据查询
 //==============================================================================
 // Global functions
 
@@ -44,7 +49,7 @@ void CVICALLBACK ComCallback(int portNumber, int eventMask, void * callbackData)
 int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
 
 static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen,void (*pFunc)(int, int, void*));
-
+void DeviceQuery();
 #ifdef __cplusplus
     }
 #endif
