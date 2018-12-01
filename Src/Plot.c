@@ -21,7 +21,7 @@
 #include "SettingsPanel.h"
 #include "Protocol.h"	  
 #include <userint.h> 
-
+#include"main.h"
 //==============================================================================
 // Constants
 
@@ -36,15 +36,12 @@
 
 //==============================================================================
 // Global variables
-int temp_flag;
-int humidity_flag;
-int pressure_flag; 
+
 CurveAttrTypeDef* pCurveAttr; 
 int CurveNums;
 int graph2tempclr;
 int graph2humclr; 
 int graph2preclr;
-int plots=0;
 //==============================================================================
 // Global functions
 int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCurveIndex,float rxIdmeasured,unsigned char rxStopSign,float ohm)       
@@ -52,7 +49,7 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 		int numOfDotsToPlot=(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot;		//防止中断端去写入这个数据
 		if(CurveNums>3)											   
 		{			
-			if(((numOfDotsToPlot + plotCurveIndex) >0) && (rxStopSign != 0x03))
+			if((numOfDotsToPlot + plotCurveIndex) >0) 
 			{
 				if((pGraph->pCurveArray+plotCurveIndex)->numOfPlotDots >= 1)	//如果已经画了一个点，从上一个点开始画进行连线
 				{
@@ -74,7 +71,7 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 		}
 		else
 		{
-			 if(((numOfDotsToPlot + plotCurveIndex) >0) && (rxStopSign != 0x03))
+			 if((numOfDotsToPlot + plotCurveIndex) >0) 
 			{
 				if((pGraph->pCurveArray+plotCurveIndex)->numOfPlotDots >= 1)	//如果已经画了一个点，从上一个点开始画进行连线
 				{
@@ -94,12 +91,13 @@ int PlotCurve1(GraphTypeDef* pGraph, int graphDispPanel, int control, int plotCu
 				}
 			 }									
 		}  
-			plots++;
-			if(rxStopSign != 0x03)SetGraphY_Axis(pGraph,rxIdmeasured,ohm,plots);               
+			SetGraphY_Axis(pGraph,rxIdmeasured,ohm);          
 			(pGraph->pCurveArray + plotCurveIndex)->numOfPlotDots+=numOfDotsToPlot;		//画图总点数递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotXPlot+=numOfDotsToPlot;			//画图点X坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->pDotYPlot+=numOfDotsToPlot;			//画图点Y坐标指针递增
 			(pGraph->pCurveArray + plotCurveIndex)->numOfDotsToPlot-=numOfDotsToPlot;	//防止中断端在画图期间接收到新的数据.
+			
+			   
 	if(pGraph->plotHandle<0)
 		return -1;
 	else

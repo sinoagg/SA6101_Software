@@ -15,10 +15,10 @@ Project 0001 = "SA6101.prj"
 Project 0001 Folder Resource Collapsed = True
 Project 0001 FolderId 4 Collapsed = True
 Drag Bar Left = 310
-Window Top = 110
-Window Left = 534
-Window Bottom = 957
-Window Right = 1542
+Window Top = 338
+Window Left = -1374
+Window Bottom = 1340
+Window Right = -366
 Maximized = True
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 9
+Number of Opened Files = 7
 Window Confinement Region Enabled = True
 MainColumnWidth = 293
 FileDateColumnWidth = 70
@@ -42,175 +42,107 @@ FileSizeColumnWidth = 70
 Version = 1700
 Don't Update DistKit = False
 Platform Code = 4
-Build Configuration = "Debug"
+Build Configuration = "Release"
 Warn User If Debugging Release = 1
 Batch Build Release = True
 Batch Build Debug = False
 
 [File 0001]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/MainPanelCb.c"
-File Type = "CSource"
-Disk Date = 3626146288
-In Projects = "1,"
-Window Top = 152
-Window Left = 66
-Window Z-Order = 4
-Source Window State = "1,356,356,356,12,29,29,0,3,60,0,431,0,0,0,16,339,0,356,12,368,629,1,0,"
-
-[File 0002]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Graph.c"
-File Type = "CSource"
-Disk Date = 3626152015
-In Projects = "1,"
-Window Top = 62
-Window Left = 26
-Source Window State = "1,82,83,82,4,30,4,0,0,0,0,0,0,0,0,0,95,0,147,23,305,809,1,0,"
-
-[File 0003]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SettingsPanel.c"
-File Type = "CSource"
-Disk Date = 3626222027
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Z-Order = 5
-Source Window State = "1,837,837,837,8,28,28,0,0,80,0,761,0,0,0,22,746,0,746,56,494,809,1,0,"
-
-[File 0004]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/main.c"
 File Type = "CSource"
-Disk Date = 3626224954
+Disk Date = 3626496317
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Window Z-Order = 3
-Source Window State = "1,51,51,51,0,4,4,0,0,80,0,0,0,0,0,25,186,0,196,17,557,809,1,0,"
+Window Z-Order = 1
+Source Window State = "1,124,147,124,28,75,28,0,0,134,0,189,0,189,0,28,120,0,147,24,557,809,1,0,"
 
-[File 0005]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Plot.c"
+[File 0002]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SampleCfgPanel.c"
 File Type = "CSource"
-Disk Date = 3626064399
+Disk Date = 3626407992
 In Projects = "1,"
-Window Top = 62
-Window Left = 26
-Source Window State = "1,49,49,49,4,14,14,0,0,0,0,43,0,0,0,0,72,0,62,58,305,809,1,16,"
+Window Top = 242
+Window Left = -94
+Source Window State = "1,125,125,125,18,25,25,0,0,80,0,52,0,0,0,25,111,0,129,57,557,809,1,65,"
 
-[File 0006]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Timer.c"
+[File 0003]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/DataProcess.c"
 File Type = "CSource"
-Disk Date = 3626160179
+Disk Date = 3626491222
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Window Z-Order = 2
-Source Window State = "1,79,80,79,0,0,0,0,0,80,0,45,0,1,0,22,68,0,79,31,494,809,1,0,"
+Source Window State = "1,254,254,254,19,45,45,0,0,80,0,0,0,0,0,21,246,0,256,30,473,809,1,0,"
 
-[File 0007]
+[File 0004]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Timer.c"
+File Type = "CSource"
+Disk Date = 3626491724
+In Projects = "1,"
+Window Top = 32
+Window Left = 10
+Window Z-Order = 4
+Source Window State = "1,78,83,78,21,108,21,0,0,80,0,45,0,1,0,22,14,0,85,54,494,809,1,0,"
+
+[File 0005]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/main.h"
 File Type = "Include"
-Disk Date = 3626151136
+Disk Date = 3626485831
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Window Z-Order = 8
-Source Window State = "1,51,51,51,21,38,38,0,3,80,0,0,0,0,0,13,39,0,51,21,305,809,1,0,"
+Source Window State = "1,67,68,67,0,0,0,0,0,80,0,40,0,0,0,13,61,0,72,31,305,809,1,0,"
 
-[File 0008]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/AutoSaveDataPanel.c"
+[File 0006]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Cgs_mt.c"
 File Type = "CSource"
-Disk Date = 3626056150
-In Projects = "1,"
-Window Top = 212
-Window Left = 106
-Source Window State = "1,106,106,106,4,14,14,0,3,0,0,239,0,239,0,0,94,0,106,4,431,809,1,0,"
-
-[File 0009]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/EnvironmentPanel.c"
-File Type = "CSource"
-Disk Date = 3625182480
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Z-Order = 9
-Source Window State = "1,91,91,91,25,42,42,0,3,80,0,0,0,0,0,19,78,0,91,25,431,809,1,0,"
-
-[File 0010]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ResultMenuPanel.c"
-File Type = "CSource"
-Disk Date = 3626126156
-In Projects = "1,"
-Window Top = 212
-Window Left = 106
-Source Window State = "1,178,181,181,0,32,32,0,0,0,0,89,0,0,0,0,216,0,231,19,557,809,1,0,"
-
-[File 0011]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/AbnormalDataCache.c"
-File Type = "CSource"
-Disk Date = 3624940288
-In Projects = "1,"
-Window Top = 32
-Window Left = -94
-Source Window State = "1,96,96,96,52,53,52,0,3,0,0,60,0,99,0,0,0,0,96,53,557,809,1,0,"
-
-[File 0012]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/inifile.c"
-File Type = "CSource"
-Disk Date = 3620163548
+Disk Date = 3626477510
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
-Source Window State = "1,1359,1359,1359,52,59,59,0,0,0,0,0,0,0,0,0,1345,0,1362,42,494,809,1,0,"
+Source Window State = "1,52,52,52,5,19,19,0,0,80,0,0,0,0,0,13,43,0,54,4,305,809,1,0,"
 
-[File 0013]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Protocol.c"
-File Type = "CSource"
-Disk Date = 3626222406
+[File 0007]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Protocol.h"
+File Type = "Include"
+Disk Date = 3625213030
+In Projects = "1,"
+Window Top = 302
+Window Left = 154
+Source Window State = "1,77,77,77,22,29,29,0,0,80,0,0,0,0,0,25,60,0,77,57,557,809,1,0,"
+
+[File 0008]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Timer.h"
+File Type = "Include"
+Disk Date = 3626485831
 In Projects = "1,"
 Window Top = 272
 Window Left = 117
-Window Z-Order = 1
-Source Window State = "1,170,170,170,5,18,18,0,0,132,0,77,0,0,0,24,164,0,176,4,557,809,1,12,"
+Source Window State = "1,38,39,38,0,0,0,0,0,90,0,0,0,0,0,23,20,0,38,0,517,898,1,0,"
 
-[File 0014]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/DataProcess.c"
-File Type = "CSource"
-Disk Date = 3626151204
-In Projects = "1,"
-Window Top = 32
-Window Left = 10
-Window Z-Order = 7
-Source Window State = "1,224,224,224,4,35,4,0,0,80,0,0,0,0,0,21,206,0,229,26,473,809,1,0,"
-
-[File 0015]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/DataProcess.h"
-File Type = "Include"
-Disk Date = 3626151193
-In Projects = "1,"
-Window Top = 62
-Window Left = 26
-Source Window State = "1,42,42,42,5,20,20,0,0,0,0,0,0,0,0,0,18,0,40,24,473,809,1,0,"
-
-[File 0016]
+[File 0009]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/AutoSaveData.uir"
 File Type = "User Interface Resource"
-Disk Date = 3623900602
+Disk Date = 3626391154
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Window Height = 431
 Window Width = 809
 
-[File 0017]
+[File 0010]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Environment.uir"
 File Type = "User Interface Resource"
-Disk Date = 3626134699
+Disk Date = 3626401178
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
 Window Height = 347
 Window Width = 773
 
-[File 0018]
+[File 0011]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Experiment List."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -221,17 +153,17 @@ Window Left = 10
 Window Height = 494
 Window Width = 809
 
-[File 0019]
+[File 0012]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/GraphDisp.uir"
 File Type = "User Interface Resource"
-Disk Date = 3626133656
+Disk Date = 3626488660
 In Projects = "1,"
 Window Top = 92
 Window Left = -94
 Window Height = 536
 Window Width = 809
 
-[File 0020]
+[File 0013]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/I-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3624852872
@@ -241,7 +173,7 @@ Window Left = 10
 Window Height = 494
 Window Width = 809
 
-[File 0021]
+[File 0014]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/I-V.uir"
 File Type = "User Interface Resource"
 Disk Date = 3620775436
@@ -251,7 +183,7 @@ Window Left = 42
 Window Height = 494
 Window Width = 809
 
-[File 0022]
+[File 0015]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Id-t Configurati"
 Path Line0002 = "on.uir"
 File Type = "User Interface Resource"
@@ -262,7 +194,7 @@ Window Left = 58
 Window Height = 494
 Window Width = 809
 
-[File 0023]
+[File 0016]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Id-Vds Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
@@ -273,7 +205,7 @@ Window Left = 74
 Window Height = 494
 Window Width = 809
 
-[File 0024]
+[File 0017]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Id-Vgs Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
@@ -284,17 +216,17 @@ Window Left = 90
 Window Height = 494
 Window Width = 809
 
-[File 0025]
+[File 0018]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/MainPanel.uir"
 File Type = "User Interface Resource"
-Disk Date = 3626039627
+Disk Date = 3626247853
 In Projects = "1,"
 Window Top = 212
 Window Left = -94
 Window Height = 368
 Window Width = 809
 
-[File 0026]
+[File 0019]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Project.uir"
 File Type = "User Interface Resource"
 Disk Date = 3623916250
@@ -304,7 +236,7 @@ Window Left = 10
 Window Height = 494
 Window Width = 809
 
-[File 0027]
+[File 0020]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/R-T.uir"
 File Type = "User Interface Resource"
 Disk Date = 3624852872
@@ -314,7 +246,7 @@ Window Left = 106
 Window Height = 494
 Window Width = 809
 
-[File 0028]
+[File 0021]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Result Menu.uir"
 File Type = "User Interface Resource"
 Disk Date = 3625095014
@@ -324,7 +256,7 @@ Window Left = 40
 Window Height = 557
 Window Width = 809
 
-[File 0029]
+[File 0022]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/ResultDispPanel."
 Path Line0002 = "uir"
 File Type = "User Interface Resource"
@@ -335,28 +267,28 @@ Window Left = 10
 Window Height = 557
 Window Width = 809
 
-[File 0030]
+[File 0023]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Sample Configura"
 Path Line0002 = "tion.uir"
 File Type = "User Interface Resource"
-Disk Date = 3625808769
+Disk Date = 3626407520
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
 Window Height = 557
 Window Width = 809
 
-[File 0031]
+[File 0024]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Settings.uir"
 File Type = "User Interface Resource"
-Disk Date = 3626076378
+Disk Date = 3626488990
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
 Window Height = 305
 Window Width = 809
 
-[File 0032]
+[File 0025]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Table.uir"
 File Type = "User Interface Resource"
 Disk Date = 3624828988
@@ -366,7 +298,7 @@ Window Left = 26
 Window Height = 410
 Window Width = 809
 
-[File 0033]
+[File 0026]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Terminal.uir"
 File Type = "User Interface Resource"
 Disk Date = 3622865504
@@ -376,7 +308,7 @@ Window Left = 10
 Window Height = 410
 Window Width = 809
 
-[File 0034]
+[File 0027]
 Path Line0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/TerminalPanel.ui"
 Path Line0002 = "r"
 File Type = "User Interface Resource"
@@ -387,7 +319,7 @@ Window Left = 42
 Window Height = 379
 Window Width = 858
 
-[File 0035]
+[File 0028]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/Tools.uir"
 File Type = "User Interface Resource"
 Disk Date = 3623915592
@@ -397,16 +329,35 @@ Window Left = 42
 Window Height = 410
 Window Width = 809
 
-[File 0036]
+[File 0029]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/AutoSaveDataPanel.c"
+File Type = "CSource"
+Disk Date = 3626390500
+In Projects = "1,"
+Window Top = 212
+Window Left = 106
+Source Window State = "1,182,182,182,16,43,43,0,0,0,0,234,0,234,0,0,168,0,178,34,431,809,1,0,"
+
+[File 0030]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/EnvironmentPanel.c"
+File Type = "CSource"
+Disk Date = 3625182480
+In Projects = "1,"
+Window Top = 32
+Window Left = 10
+Source Window State = "1,91,91,91,25,42,42,0,3,0,0,0,0,0,0,0,78,0,91,25,431,809,1,0,"
+
+[File 0031]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ExpListPanel.c"
 File Type = "CSource"
 Disk Date = 3625095804
 In Projects = "1,"
 Window Top = 92
 Window Left = 34
-Source Window State = "1,205,205,205,16,26,26,0,0,0,0,0,0,0,0,0,181,0,198,42,431,809,1,0,"
+Window Z-Order = 6
+Source Window State = "1,205,205,205,16,26,26,0,0,80,0,0,0,0,0,19,103,0,121,58,431,809,1,0,"
 
-[File 0037]
+[File 0032]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/IdtPanel.c"
 File Type = "CSource"
 Disk Date = 3624226578
@@ -415,7 +366,7 @@ Window Top = 242
 Window Left = 70
 Source Window State = "1,67,68,67,0,0,0,0,0,0,0,0,0,0,0,0,102,0,126,50,517,898,1,0,"
 
-[File 0038]
+[File 0033]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/IdVdsPanel.c"
 File Type = "CSource"
 Disk Date = 3623706466
@@ -424,7 +375,7 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,115,116,116,4,55,55,0,0,0,0,0,0,0,0,0,107,0,112,35,494,809,1,0,"
 
-[File 0039]
+[File 0034]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/IdVgsPanel.c"
 File Type = "CSource"
 Disk Date = 3623706466
@@ -433,7 +384,7 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,106,106,106,16,36,36,0,0,0,0,0,0,0,0,0,86,0,96,47,494,809,1,0,"
 
-[File 0040]
+[File 0035]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ItPanel.c"
 File Type = "CSource"
 Disk Date = 3620163548
@@ -442,23 +393,33 @@ Window Top = 92
 Window Left = 42
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,7,515,809,1,0,"
 
-[File 0041]
+[File 0036]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/IvPanel.c"
 File Type = "CSource"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0042]
+[File 0037]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/LoadPanel.c"
 File Type = "CSource"
 Disk Date = 3624333402
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Source Window State = "1,116,116,116,9,23,23,0,0,134,0,209,0,209,0,35,117,0,132,49,347,809,1,0,"
+Source Window State = "1,82,82,82,58,70,70,0,0,0,0,209,0,209,0,0,75,0,82,85,347,809,1,0,"
 
-[File 0043]
+[File 0038]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/MainPanelCb.c"
+File Type = "CSource"
+Disk Date = 3626491274
+In Projects = "1,"
+Window Top = 152
+Window Left = 66
+Window Z-Order = 3
+Source Window State = "1,825,828,825,8,40,8,0,0,60,0,431,0,0,0,16,806,0,821,66,368,629,1,0,"
+
+[File 0039]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ProjectPanel.c"
 File Type = "CSource"
 Disk Date = 3623916040
@@ -467,7 +428,16 @@ Window Top = 212
 Window Left = 106
 Source Window State = "1,192,192,192,64,81,81,0,3,0,0,0,0,0,0,0,181,0,192,64,494,809,1,0,"
 
-[File 0044]
+[File 0040]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ResultMenuPanel.c"
+File Type = "CSource"
+Disk Date = 3626317816
+In Projects = "1,"
+Window Top = 212
+Window Left = 106
+Source Window State = "1,233,234,233,0,0,0,0,0,0,0,89,0,0,0,0,222,0,233,17,557,809,1,0,"
+
+[File 0041]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/RtPanel.c"
 File Type = "CSource"
 Disk Date = 3620163548
@@ -476,25 +446,25 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,494,898,1,0,"
 
-[File 0045]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SampleCfgPanel.c"
+[File 0042]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SettingsPanel.c"
 File Type = "CSource"
-Disk Date = 3625972543
+Disk Date = 3626414616
 In Projects = "1,"
-Window Top = 242
-Window Left = -94
-Source Window State = "1,87,87,87,71,73,73,0,0,0,0,52,0,0,0,0,73,0,84,94,557,809,1,65,"
+Window Top = 32
+Window Left = 10
+Source Window State = "1,653,653,653,58,78,78,0,0,0,0,761,0,0,0,0,644,0,645,50,494,809,1,0,"
 
-[File 0046]
+[File 0043]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Table.c"
 File Type = "CSource"
 Disk Date = 3626048950
 In Projects = "1,"
 Window Top = 62
 Window Left = 26
-Source Window State = "1,43,43,43,5,12,12,0,3,0,0,18,0,0,0,0,33,0,43,5,305,809,1,0,"
+Source Window State = "1,43,43,43,5,12,12,0,0,0,0,18,0,0,0,0,0,0,2,15,305,809,1,0,"
 
-[File 0047]
+[File 0044]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ToolsPanel.c"
 File Type = "CSource"
 Disk Date = 3624225992
@@ -503,34 +473,34 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,128,128,128,80,103,103,0,0,0,0,0,0,0,0,0,114,0,128,28,431,809,1,0,"
 
-[File 0048]
+[File 0045]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/AbnormalDataCache.c"
+File Type = "CSource"
+Disk Date = 3624940288
+In Projects = "1,"
+Window Top = 32
+Window Left = -94
+Source Window State = "1,77,77,77,17,29,29,0,3,0,0,60,0,99,0,0,62,0,77,17,557,809,1,0,"
+
+[File 0046]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/asynctmr.c"
 File Type = "CSource"
 Disk Date = 3620163548
 In Projects = "1,"
 Window Top = 182
 Window Left = 90
-Source Window State = "1,129,129,129,12,25,25,0,0,0,0,0,0,0,0,0,122,0,129,0,347,809,1,0,"
+Source Window State = "1,525,525,525,14,36,36,0,3,0,0,0,0,0,0,0,518,0,525,14,347,809,1,0,"
 
-[File 0049]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Cgs_mt.c"
-File Type = "CSource"
-Disk Date = 3625785036
-In Projects = "1,"
-Window Top = 62
-Window Left = 26
-Source Window State = "1,58,77,58,8,101,8,0,0,0,0,0,0,0,0,0,55,0,54,43,305,809,1,0,"
-
-[File 0050]
+[File 0047]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Curve.c"
 File Type = "CSource"
-Disk Date = 3620163548
+Disk Date = 3626239576
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Source Window State = "1,44,44,44,12,27,27,0,3,0,0,0,0,0,0,0,26,0,44,12,517,898,1,0,"
+Source Window State = "1,45,46,45,0,0,0,0,0,0,0,0,0,0,0,0,35,0,45,0,517,898,1,0,"
 
-[File 0051]
+[File 0048]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/cvixml.c"
 File Type = "CSource"
 Disk Date = 3573565200
@@ -539,7 +509,7 @@ Window Top = 212
 Window Left = 106
 Source Window State = "1,1877,1877,1877,21,49,49,0,0,0,0,0,0,0,0,0,119,0,127,0,402,898,1,0,"
 
-[File 0052]
+[File 0049]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/excel2000.c"
 File Type = "CSource"
 Disk Date = 3620163548
@@ -548,7 +518,7 @@ Window Top = 92
 Window Left = 42
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1672,0,1683,0,494,809,1,0,"
 
-[File 0053]
+[File 0050]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/excelreport.c"
 File Type = "CSource"
 Disk Date = 3622185592
@@ -557,14 +527,33 @@ Window Top = 122
 Window Left = 58
 Source Window State = "1,2297,2297,2297,11,94,11,0,0,0,0,0,0,0,0,0,2204,0,2220,63,494,809,1,0,"
 
-[File 0054]
+[File 0051]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/File.c"
 File Type = "CSource"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0055]
+[File 0052]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Graph.c"
+File Type = "CSource"
+Disk Date = 3626494185
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Window Z-Order = 5
+Source Window State = "1,136,136,136,66,89,66,0,0,80,0,0,0,0,0,13,121,0,84,8,305,809,1,0,"
+
+[File 0053]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/inifile.c"
+File Type = "CSource"
+Disk Date = 3620163548
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Source Window State = "1,1359,1359,1359,52,59,59,0,0,0,0,0,0,0,0,0,1345,0,1362,42,494,809,1,0,"
+
+[File 0054]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/msxmldom.c"
 File Type = "CSource"
 Disk Date = 3624603898
@@ -572,6 +561,16 @@ In Projects = "1,"
 Window Top = 33
 Window Left = -94
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,30,427,742,1,0,"
+
+[File 0055]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Plot.c"
+File Type = "CSource"
+Disk Date = 3626392383
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Window Z-Order = 7
+Source Window State = "1,93,94,93,0,0,0,0,0,80,0,43,0,0,0,13,88,0,104,0,305,809,1,16,"
 
 [File 0056]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/progressbar.c"
@@ -583,6 +582,15 @@ Window Left = 58
 Source Window State = "1,885,885,885,19,29,29,0,3,0,0,0,0,0,0,0,868,0,885,19,326,809,1,0,"
 
 [File 0057]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Protocol.c"
+File Type = "CSource"
+Disk Date = 3626244946
+In Projects = "1,"
+Window Top = 272
+Window Left = 117
+Source Window State = "1,190,190,190,52,65,65,0,3,0,0,77,0,0,0,0,164,0,190,52,557,809,1,12,"
+
+[File 0058]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/system_ini.c"
 File Type = "CSource"
 Disk Date = 3621042756
@@ -591,157 +599,157 @@ Window Top = 182
 Window Left = 90
 Source Window State = "1,56,56,56,10,19,19,0,3,0,0,0,0,0,0,0,47,0,56,10,494,809,1,0,"
 
-[File 0058]
+[File 0059]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/analyze.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0059]
+[File 0060]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Arrow.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0060]
+[File 0061]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Config.ico"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0061]
+[File 0062]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Configure(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0062]
+[File 0063]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Configure(b).ico"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0063]
+[File 0064]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/FET.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0064]
+[File 0065]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/GND.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0065]
+[File 0066]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/I.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0066]
+[File 0067]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/I_Bias.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0067]
+[File 0068]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/jiantou.ico"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0068]
+[File 0069]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/My Projects.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0069]
+[File 0070]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/My Settings.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0070]
+[File 0071]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Run.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0071]
+[File 0072]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Save(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0072]
+[File 0073]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Save(b).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0073]
+[File 0074]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Save_Path(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0074]
+[File 0075]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Save_Path(b).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0075]
+[File 0076]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Select(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0076]
+[File 0077]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Select(b).ico"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0077]
+[File 0078]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Stop.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0078]
+[File 0079]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/Tools.png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0079]
+[File 0080]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/User(a).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0080]
+[File 0081]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/User(b).png"
 File Type = "Unknown"
 Disk Date = 0
 In Projects = "1,"
 
-[File 0081]
+[File 0082]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/V.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0082]
+[File 0083]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Resource/V_Bias.ico"
 File Type = "Unknown"
 Disk Date = 3624605108
 In Projects = "1,"
 
-[File 0083]
+[File 0084]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/EnvironmentPanel.h"
 File Type = "Include"
 Disk Date = 3625182620
@@ -750,7 +758,7 @@ Window Top = 212
 Window Left = 106
 Source Window State = "1,29,29,29,0,52,52,0,0,0,0,0,0,0,0,0,20,0,29,6,431,809,1,0,"
 
-[File 0084]
+[File 0085]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ExpListPanel.h"
 File Type = "Include"
 Disk Date = 3624226102
@@ -759,28 +767,28 @@ Window Top = 152
 Window Left = 74
 Source Window State = "1,38,39,39,0,28,28,0,0,0,0,0,0,0,0,0,24,0,38,0,410,809,1,0,"
 
-[File 0085]
+[File 0086]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/UI Files/Panel/IdtPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0086]
+[File 0087]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/IdVdsPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0087]
+[File 0088]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/IdVgsPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0088]
+[File 0089]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ItPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
@@ -789,39 +797,39 @@ Window Top = 122
 Window Left = 58
 Source Window State = "1,32,32,32,24,31,31,0,0,0,0,0,0,0,0,0,15,0,32,18,410,809,1,0,"
 
-[File 0089]
+[File 0090]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/IvPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0090]
+[File 0091]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/LoadPanel.h"
 File Type = "Include"
 Disk Date = 3623641624
 In Projects = "1,"
 Window Top = 242
 Window Left = -94
-Source Window State = "1,62,62,62,11,28,28,0,0,0,0,93,0,93,0,0,44,0,64,35,494,809,1,0,"
+Source Window State = "1,62,62,62,11,28,28,0,0,0,0,93,0,93,0,0,56,0,64,35,494,809,1,0,"
 
-[File 0091]
+[File 0092]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/MainPanelCb.h"
 File Type = "Include"
-Disk Date = 3625962004
+Disk Date = 3626477473
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,53,53,53,13,21,21,0,0,0,0,0,0,0,0,0,15,0,32,31,494,809,1,0,"
+Source Window State = "1,54,54,54,13,21,21,0,0,0,0,0,0,0,0,0,10,0,54,19,494,809,1,0,"
 
-[File 0092]
+[File 0093]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ProjectPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0093]
+[File 0094]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ResultMenuPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
@@ -830,14 +838,14 @@ Window Top = 92
 Window Left = 42
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,536,809,1,0,"
 
-[File 0094]
+[File 0095]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/RtPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0095]
+[File 0096]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SampleCfgPanel.h"
 File Type = "Include"
 Disk Date = 3620163548
@@ -846,7 +854,7 @@ Window Top = 212
 Window Left = 106
 Source Window State = "1,21,21,21,0,35,35,0,3,0,0,0,0,0,0,0,0,0,21,0,494,809,1,0,"
 
-[File 0096]
+[File 0097]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SettingsPanel.h"
 File Type = "Include"
 Disk Date = 3622417962
@@ -855,7 +863,7 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,42,42,42,4,15,15,0,0,0,0,0,0,0,0,0,15,0,20,15,305,809,1,0,"
 
-[File 0097]
+[File 0098]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/TablePanel.h"
 File Type = "Include"
 Disk Date = 3626049242
@@ -864,7 +872,7 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,47,47,47,60,70,70,0,0,0,0,0,0,0,0,0,28,0,47,60,473,809,1,0,"
 
-[File 0098]
+[File 0099]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/AbnormalDataCache.h"
 File Type = "Include"
 Disk Date = 3622776580
@@ -873,16 +881,16 @@ Window Top = 92
 Window Left = 42
 Source Window State = "1,34,34,34,4,21,21,0,0,0,0,0,0,0,0,0,9,0,28,28,431,809,1,0,"
 
-[File 0099]
+[File 0100]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/asynctmr.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,54,54,54,12,25,25,0,3,0,0,0,0,0,0,0,44,0,54,12,389,809,1,0,"
+Source Window State = "1,62,62,62,14,36,36,0,0,0,0,0,0,0,0,0,42,0,69,71,389,809,1,0,"
 
-[File 0100]
+[File 0101]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/AutoSaveDataPanel.h"
 File Type = "Include"
 Disk Date = 3625109732
@@ -891,39 +899,48 @@ Window Top = 242
 Window Left = 122
 Source Window State = "1,44,44,44,5,15,15,0,3,0,0,0,0,0,0,0,32,0,44,5,431,809,1,0,"
 
-[File 0101]
+[File 0102]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Cgs_mt.h"
 File Type = "Include"
 Disk Date = 3623737618
 In Projects = "1,"
 Window Top = 212
 Window Left = 106
-Source Window State = "1,10,10,10,8,20,20,0,3,0,0,0,0,0,0,0,0,0,10,8,389,809,1,0,"
+Source Window State = "1,42,42,42,1,19,19,0,3,0,0,0,0,0,0,0,9,0,42,1,389,809,1,0,"
 
-[File 0102]
+[File 0103]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Curve.h"
 File Type = "Include"
-Disk Date = 3624420112
+Disk Date = 3626239389
 In Projects = "1,"
 Window Top = 152
 Window Left = 74
-Source Window State = "1,37,37,37,8,21,21,0,0,0,0,0,0,0,0,0,43,0,54,1,494,898,1,0,"
+Source Window State = "1,47,47,47,4,21,4,0,0,0,0,0,0,0,0,0,34,0,47,20,494,898,1,0,"
 
-[File 0103]
+[File 0104]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/cvixml.h"
 File Type = "Include"
 Disk Date = 3573565200
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0104]
+[File 0105]
+Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/DataProcess.h"
+File Type = "Include"
+Disk Date = 3626387518
+In Projects = "1,"
+Window Top = 62
+Window Left = 26
+Source Window State = "1,41,41,41,5,24,24,0,0,0,0,0,0,0,0,0,17,0,51,37,473,809,1,0,"
+
+[File 0106]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/excel2000.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0105]
+[File 0107]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/excelreport.h"
 File Type = "Include"
 Disk Date = 3620163548
@@ -932,30 +949,32 @@ Window Top = 62
 Window Left = 26
 Source Window State = "1,725,725,725,16,50,50,0,0,0,0,707,0,0,0,0,12,0,21,0,431,809,1,46,"
 
-[File 0106]
+[File 0108]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/File.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0107]
+[File 0109]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Graph.h"
 File Type = "Include"
-Disk Date = 3626064569
+Disk Date = 3626401158
 In Projects = "1,"
 Window Top = 32
 Window Left = 10
-Source Window State = "1,61,61,61,5,19,19,0,3,0,0,44,0,0,0,0,56,0,61,5,305,809,1,13,"
+Source Window State = "1,44,44,44,8,22,22,0,0,80,0,44,0,0,0,13,38,0,47,21,305,809,1,13,"
 
-[File 0108]
+[File 0110]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/inifile.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 92
+Window Left = 42
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,379,898,1,0,"
 
-[File 0109]
+[File 0111]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/msxmldom.h"
 File Type = "Include"
 Disk Date = 3573565200
@@ -964,47 +983,30 @@ Window Top = 32
 Window Left = 10
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,114,0,13,23,557,809,1,0,"
 
-[File 0110]
+[File 0112]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Plot.h"
 File Type = "Include"
 Disk Date = 3626064547
 In Projects = "1,"
 Window Top = 92
 Window Left = 42
-Source Window State = "1,32,32,32,0,25,25,0,0,0,0,0,0,0,0,0,14,0,39,47,305,809,1,0,"
+Source Window State = "1,32,32,32,0,25,25,0,0,0,0,0,0,0,0,0,0,0,30,44,305,809,1,0,"
 
-[File 0111]
+[File 0113]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/progressbar.h"
 File Type = "Include"
 Disk Date = 3573565200
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 122
+Window Left = 58
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,305,809,1,0,"
 
-[File 0112]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Protocol.h"
-File Type = "Include"
-Disk Date = 3625213030
-In Projects = "1,"
-Window Top = 302
-Window Left = 154
-Window Z-Order = 6
-Source Window State = "1,108,108,108,5,18,18,0,3,80,0,0,0,0,0,25,94,0,108,5,557,809,1,0,"
-
-[File 0113]
+[File 0114]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/system_ini.h"
 File Type = "Include"
 Disk Date = 3620163548
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
-
-[File 0114]
-Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Timer.h"
-File Type = "Include"
-Disk Date = 3626133709
-In Projects = "1,"
-Window Top = 272
-Window Left = 117
-Source Window State = "1,31,31,31,14,22,22,0,3,0,0,0,0,0,0,0,20,0,31,14,517,898,1,0,"
 
 [File 0115]
 Path = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ToolsPanel.h"
@@ -1014,15 +1016,13 @@ In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [Tab Order]
-Tab 0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Timer.c"
-Tab 0002 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/main.c"
-Tab 0003 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/main.h"
-Tab 0004 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/DataProcess.c"
-Tab 0005 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/EnvironmentPanel.c"
-Tab 0006 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/MainPanelCb.c"
-Tab 0007 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Protocol.c"
-Tab 0008 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Protocol.h"
-Tab 0009 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/SettingsPanel.c"
+Tab 0001 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/DataProcess.c"
+Tab 0002 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/MainPanelCb.c"
+Tab 0003 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/main.c"
+Tab 0004 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Plot.c"
+Tab 0005 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Graph.c"
+Tab 0006 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Panel/ExpListPanel.c"
+Tab 0007 = "/e/GitWorkplace/Sinoagg/Software/SA6101_realTime/Src/Timer.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

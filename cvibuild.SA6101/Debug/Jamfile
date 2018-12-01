@@ -1,0 +1,285 @@
+CCFLAGS = -g ;
+HDRS = 	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files"
+	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel"
+	"e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\activex\\word"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\activex\\excel"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\custctrl"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\custctrl\\custsupp"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\cvirtsup"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\datasock"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\daqUtil"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\printing"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\toolbox"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\reportgen"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\toolslib\\localui"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\instr"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\toolslib\\custctrl"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\instr"
+	"C:\\ProgramData\\National Instruments\\CVI2017\\instr"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include"
+	"D:\\software\\NILWCVI\\Shared\\CVI\\include"
+	"C:\\ProgramData\\National Instruments\\CVI2017\\include"
+	"C:\\ProgramData\\National Instruments\\CVI\\include"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include\\ansi"
+	"d:\\software\\nilwcvi\\nilwcvi2017\\include\\clang\\3.3"
+	"C:\\Program Files (x86)\\IVI Foundation\\IVI\\Include"
+	"C:\\Program Files (x86)\\IVI Foundation\\VISA\\winnt\\include"
+	"D:\\software\\NILWCVI\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
+	"d:\\software\\NILWCVI\\NILWCVI2017\\bin"
+	"c:\\ProgramData\\National Instruments\\CVI2017\\bin"
+	"d:\\software\\NILWCVI\\Shared\\CVI\\Bin"
+	;
+include Jamfile_instr ;
+LOCATE on "AbnormalDataCache.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "AbnormalDataCache.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "asynctmr.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "asynctmr.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "AutoSaveDataPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "AutoSaveDataPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "Cgs_mt.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Cgs_mt.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Curve.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Curve.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "cvixml.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "cvixml.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "DataProcess.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "DataProcess.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "EnvironmentPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "EnvironmentPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "excel2000.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "excel2000.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "excelreport.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "excelreport.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "ExpListPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "ExpListPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "File.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "File.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Graph.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Graph.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "IdtPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel" ;
+LOCATE on "IdtPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel" ;
+LOCATE on "IdVdsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "IdVdsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "IdVgsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "IdVgsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "inifile.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "inifile.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "ItPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "ItPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "IvPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "IvPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "LoadPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "LoadPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "main.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "main.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "MainPanelCb.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "MainPanelCb.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "msxmldom.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "msxmldom.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Plot.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Plot.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "progressbar.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "progressbar.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "ProjectPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "ProjectPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "Protocol.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Protocol.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "ResultMenuPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "ResultMenuPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "RtPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "RtPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "SampleCfgPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "SampleCfgPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "SettingsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "SettingsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "system_ini.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "system_ini.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Table.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "TablePanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "Timer.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "Timer.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src" ;
+LOCATE on "ToolsPanel.c" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+LOCATE on "ToolsPanel.h" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\AbnormalDataCache.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj" = 1 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AbnormalDataCache.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\asynctmr.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj" = 2 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\asynctmr.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\AutoSaveDataPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj" = 3 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\AutoSaveDataPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Cgs_mt.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj" = 4 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Cgs_mt.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Curve.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj" = 5 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Curve.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\cvixml.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj" = 6 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\cvixml.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\DataProcess.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj" = 7 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\DataProcess.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\EnvironmentPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj" = 8 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\EnvironmentPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\excel2000.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj" = 9 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excel2000.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\excelreport.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj" = 10 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\excelreport.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\ExpListPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = 11 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ExpListPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\File.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj" = 12 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\File.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Graph.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj" = 13 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Graph.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\IdtPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj" = 14 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdtPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\IdVdsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = 15 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVdsPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\IdVgsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = 16 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IdVgsPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\inifile.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj" = 17 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\inifile.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\ItPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj" = 18 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ItPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\IvPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj" = 19 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\IvPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\LoadPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = 20 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\LoadPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\main.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj" = 21 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\main.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\MainPanelCb.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = 22 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\MainPanelCb.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\msxmldom.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj" = 23 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\msxmldom.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Plot.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj" = 24 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Plot.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\progressbar.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj" = 25 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\progressbar.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\ProjectPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj" = 26 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ProjectPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Protocol.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj" = 27 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Protocol.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\ResultMenuPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" = 28 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ResultMenuPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\RtPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj" = 29 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\RtPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\SampleCfgPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = 30 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SampleCfgPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\SettingsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj" = 31 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SettingsPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\system_ini.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj" = 32 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\system_ini.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Table.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj" = 33 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Table.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Timer.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj" = 34 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\Timer.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Src\\Panel\\ToolsPanel.c" ;
+FILENUM on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" = 35 ;
+DEFPROTS on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj.cvidefprots" ;
+OUTFILE on "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" = "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj.out" ;
+PrjObjects += "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\ToolsPanel.obj" ;
+Object "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\resources.in.rc" ;
+Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\resources.res" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\manifest.xml" ;
+MainFromObjects "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SA6101.exe" : $(PrjObjects) $(InstrObjects) ;
+Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\link_options.txt" ;
+Depends "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SA6101.exe" : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\resources.res" ;
+Depends all : "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Debug\\SA6101.exe" ;

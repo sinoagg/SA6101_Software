@@ -37,11 +37,10 @@ char imgpatn[80];
 #define MAX_PATHNAME_LEN 1024
 //==============================================================================
 // Static global variables
-static char expName[10][20] = {  "Two","I-t", "R-t", "I-v","Four", "Id-Vds", "Id-Vgs", "Id-t"};   
+static char expName[10][20] = {"Two","I-t", "R-t", "I-V","Four", "Id-Vds", "Id-Vgs", "Id-t"};   
 static int i = 0;    
 static int flag = 0;
 char AutoDataSavePath[512];
-//实验测试命名的编号 
  //==============================================================================
 // Static functions
 
@@ -84,7 +83,7 @@ void AutoSaveSheetAndGraph()   //自动保存Excel和Jpg文件
 	char ch;
 	GetActiveTreeItem (hExpListPanel, EXP_LIST_TREE, &index); //获得当前点击项目值
 	sprintf(tempFileName,"%s%s%d", expName[index], "_test",i+1);
-	sprintf(autoSaveXLSFileName ,"%s%s%s%s%s",AutoDataSavePath,"\\",tempFileName,Datetime,".xls");                ;
+	sprintf(autoSaveXLSFileName ,"%s%s%s%s%s%s",AutoDataSavePath,"\\",tempFileName,"_",Datetime,".xls");                ;
 	GetProjectDir (autoSavePathName);//得到Project当前目录名    
 	FILE *fpr = NULL;
 	FILE *fpw = NULL;
@@ -100,10 +99,10 @@ void AutoSaveSheetAndGraph()   //自动保存Excel和Jpg文件
 	fpr = NULL;
 	fpw = NULL;	
 	char str[80]; 
-	sprintf(str,"%s%s%s",tempFileName,Datetime,".xls");
-	sprintf(autoSaveJPGFileName,"%s%s%s%s%s",AutoDataSavePath,"\\",tempFileName, Datetime,".jpg");         
+	sprintf(str,"%s%s%s%s",tempFileName,"_",Datetime,".xls");
+	sprintf(autoSaveJPGFileName,"%s%s%s%s%s%s",AutoDataSavePath,"\\",tempFileName,"_",Datetime,".jpg");         
 	char img[80];
-	sprintf(img,"%s%s%s",tempFileName, Datetime,".jpg");
+	sprintf(img,"%s%s%s%s",tempFileName,"_", Datetime,".jpg");
 	SaveGraphs(autoSaveJPGFileName);	
     char item[30];
     sprintf(item,"%s%d","Test ",i+1);
@@ -127,8 +126,6 @@ void OpenExcelCallbacks(char label[])
 	}
 	else 
 		GetCtrlVal(hSettingsPrjPanel, ENVT_AUTOSAVEPATH, AutoDataSavePath);  //获得选择保存数据路径      
-	
-	
 //	GetCtrlVal(hAutoSavePanelPanel, AUTOPANEL_AUTOSAVEPATH, AutoDataSavePath);  
 	//SetWaitCursor (1);
 	 LaunchError=ExcelRpt_ApplicationNew(1, &applicationHandle);
@@ -183,7 +180,7 @@ int CVICALLBACK ImgCallback (int panel, int event, void *callbackData,
 	return 0;
 }
 
-int CVICALLBACK AutoSaveDataCallback (int panel, int control, int event,
+int CVICALLBACK DisplayAutoSaveDataCallback (int panel, int control, int event,
 									  void *callbackData, int eventData1, int eventData2)
 {	
 	int excelValue;
@@ -200,7 +197,6 @@ int CVICALLBACK AutoSaveDataCallback (int panel, int control, int event,
 				GetValueFromIndex (hAutoSavePanelPanel, AUTOPANEL_AUTOLIST, index, &imageValue);  
 				GetLabelFromIndex (hAutoSavePanelPanel, AUTOPANEL_AUTOLIST, index, images);     
 				DiaplayImgCallbacks (images) ;   
-			  
 			}
 			else if ((index+2)%3==0)//index为:1、4、7、10、13、16.。。。。   	   
 			{   
@@ -213,14 +209,14 @@ int CVICALLBACK AutoSaveDataCallback (int panel, int control, int event,
 	return 0;
 }
 
- char DataSavePath[512];
+char DataSavePath[512];
 int CVICALLBACK AutoSaveCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {   
 	GetProjectDir (autoSavePathName);//得到Project当前目录名   
 	switch (event)		   
 	{													   
-		case EVENT_COMMIT:		 
+		case EVENT_COMMIT:		 															  //Settings面板中选择自动保存路径
 			if(DirSelectPopup ("C:\\Users\\", "Select Directory", 1, 1, DataSavePath)>0)
 			{
 				SetCtrlVal(hSettingsPrjPanel, ENVT_AUTOSAVEPATH, DataSavePath);
@@ -228,10 +224,9 @@ int CVICALLBACK AutoSaveCallback (int panel, int control, int event,
 			}
 			else
 			{
-				sprintf(autoSavePathName,"%s%s",autoSavePathName,"\\Data"); 
+				sprintf(autoSavePathName,"%s%s",autoSavePathName,"\\Data"); 				//不选择则默认项目路径下的data路径为数据保存路径
 				SetCtrlVal(hSettingsPrjPanel, ENVT_AUTOSAVEPATH, autoSavePathName);
 				return -1;
-				
 			}
 			break;
 		}

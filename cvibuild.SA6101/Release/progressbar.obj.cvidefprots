@@ -1,0 +1,92 @@
+[ProgressBar_Create]
+Class="Function"
+Prototype="int ProgressBar_Create(int panel, const char *label, int top, int left, int vertical);"
+
+[ProgressBar_ConvertFromSlide]
+Class="Function"
+Prototype="int ProgressBar_ConvertFromSlide(int panel, int slideCtrl);"
+
+[ProgressBar_Revert]
+Class="Function"
+Prototype="int ProgressBar_Revert(int panel, int progressBarCtrl);"
+
+[ProgressBar_SetAttribute]
+Class="Function"
+Prototype="int ProgressBar_SetAttribute(int panel, int progressBarCtrl, int attribute, ...);"
+
+[ProgressBar_GetAttribute]
+Class="Function"
+Prototype="int ProgressBar_GetAttribute(int panel, int progressBarCtrl, int attribute, void *value);"
+
+[ProgressBar_SetPercentage]
+Class="Function"
+Prototype="int ProgressBar_SetPercentage(int panel, int progressBarCtrl, double percentage, char *label);"
+
+[ProgressBar_GetPercentage]
+Class="Function"
+Prototype="int ProgressBar_GetPercentage(int panel, int progressBarCtrl, double *percentage);"
+
+[ProgressBar_SetMilestones]
+Class="Function"
+Prototype="int ProgressBar_SetMilestones(int panel, int progressBarCtrl, ...);"
+
+[ProgressBar_AddMilestone]
+Class="Function"
+Prototype="int ProgressBar_AddMilestone(int panel, int progressBarCtrl, double percentage);"
+
+[ProgressBar_LoadMilestones]
+Class="Function"
+Prototype="int ProgressBar_LoadMilestones(int panel, int progressBarCtrl, char *dataFile, int includeTimeData);"
+
+[ProgressBar_SaveMilestones]
+Class="Function"
+Prototype="int ProgressBar_SaveMilestones(int panel, int progressBarCtrl, char *dataFile, int includeTimeData);"
+
+[ProgressBar_ClearMilestones]
+Class="Function"
+Prototype="int ProgressBar_ClearMilestones(int panel, int progressBarCtrl);"
+
+[ProgressBar_GetNumMilestones]
+Class="Function"
+Prototype="int ProgressBar_GetNumMilestones(int panel, int progressBarCtrl, unsigned int *numMilestones);"
+
+[ProgressBar_GetMilestone]
+Class="Function"
+Prototype="int ProgressBar_GetMilestone(int panel, int progressBarCtrl, unsigned int milestoneIndex, double *percentage);"
+
+[ProgressBar_GetCurrentMilestoneIndex]
+Class="Function"
+Prototype="int ProgressBar_GetCurrentMilestoneIndex(int panel, int progressBarCtrl, unsigned int *milestoneIndex);"
+
+[ProgressBar_AdvanceMilestone]
+Class="Function"
+Prototype="int ProgressBar_AdvanceMilestone(int panel, int progressBarCtrl, char *label);"
+
+[ProgressBar_SetTotalTimeEstimate]
+Class="Function"
+Prototype="int ProgressBar_SetTotalTimeEstimate(int panel, int progressBarCtrl, double expectedTime);"
+
+[ProgressBar_GetTotalTimeEstimate]
+Class="Function"
+Prototype="int ProgressBar_GetTotalTimeEstimate(int panel, int progressBarCtrl, double *expectedTime);"
+
+[ProgressBar_Start]
+Class="Function"
+Prototype="int ProgressBar_Start(int panel, int progressBarCtrl, char *label);"
+
+[ProgressBar_End]
+Class="Function"
+Prototype="int ProgressBar_End(int panel, int progressBarCtrl, double *totalTime, char *label);"
+
+[ProgressBar_Abort]
+Class="Function"
+Prototype="int ProgressBar_Abort(int panel, int progressBarCtrl, int fillToEnd, char *label);"
+
+[ProgressBar_Pause]
+Class="Function"
+Prototype="int ProgressBar_Pause(int panel, int progressBarCtrl, char *label);"
+
+[ProgressBar_Resume]
+Class="Function"
+Prototype="int ProgressBar_Resume(int panel, int progressBarCtrl, char *label);"
+

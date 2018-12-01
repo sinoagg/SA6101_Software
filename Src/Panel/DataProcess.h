@@ -31,7 +31,7 @@
  extern Rx_CGS_DataTypeDef Rx_CGS_Data;  
 //==============================================================================
 // Global functions
-void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data);   
+void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data,float reTime);   
 
 int CheckOpenCom(unsigned char* measureComPort,unsigned char* controlComPort,unsigned char* measure_Uart_Flag,unsigned char* control_Uart_Flag)  ;
 int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, void (*pFunc)(int, int, void*));
@@ -42,6 +42,8 @@ void CheckCloseCom(int SA6101_UART_Status,unsigned char measureComPort,unsigned 
 void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured) ;
 void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured);
 void DeviceQuery();
+/*
+void  GetData(Rx_CGS_DataTypeDef* Rx_CGS_Data);    */ 
 #ifdef __cplusplus
     }
 #endif

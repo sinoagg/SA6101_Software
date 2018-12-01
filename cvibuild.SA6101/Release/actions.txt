@@ -1,0 +1,10 @@
+
+CallCC.bat 7 "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\Src\Panel\DataProcess.c" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\DataProcess.obj" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\DataProcess.obj.cvidefprots" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\DataProcess.obj.out" 
+
+CallCC.bat 21 "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\Src\main.c" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\main.obj" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\main.obj.cvidefprots" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\main.obj.out" 
+
+CallCC.bat 22 "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\Src\Panel\MainPanelCb.c" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\MainPanelCb.obj" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\MainPanelCb.obj.cvidefprots" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\MainPanelCb.obj.out" 
+
+CallCC.bat 34 "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\Src\Timer.c" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\Timer.obj" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\Timer.obj.cvidefprots" "e:\GitWorkplace\Sinoagg\Software\SA6101_realTime\cvibuild.SA6101\Release\Timer.obj.out" 
+
+CallLink.bat -cmd:link_options.txt

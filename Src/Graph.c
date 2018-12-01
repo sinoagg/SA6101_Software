@@ -17,6 +17,7 @@
 #include "Graph.h"
 #include "SettingsPanel.h"
 #include"Plot.h"
+#include "Cgs_mt.h" 
 //==============================================================================
 // Constants
 
@@ -34,6 +35,7 @@
 // Global variables
 GraphTypeDef Graph1;
 GraphTypeDef Graph2;
+Rx_CGS_DataTypeDef Rx_CGS_Data;  
 //==============================================================================
 // Global functions
 float ohm;
@@ -72,17 +74,16 @@ int GraphDeinit(GraphTypeDef* pGraph)
 	return 0;
 }
 
-
- void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val,float ohm,int plots)  //curren  tY_ Val ==>Id
+ void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val,float ohm)  //curren  tY_ Val ==>Id
 {
 	 switch(TestPara.testMode)
 	{   
 		case SWEEP_GATE_VOL: 
 		case SWEEP_DRAIN_VOL:
 		case SWEEP_IV:
-		if(plots==1)
+		if((Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex==1)   
 		{
-			if(currentY_Val >= 0)
+			if(currentY_Val >0)
 			{
 				if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
 				{
@@ -116,7 +117,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 		}
 		else
 		{
-			if(currentY_Val >= 0)
+			if(currentY_Val > 0)
 			{
 				if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
 				{
@@ -125,7 +126,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 				} 		    
 				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
 				{
-				    Graph1.pGraphAttr->yAxisHead=currentY_Val*0.9;
+				    Graph1.pGraphAttr->yAxisHead=currentY_Val;   //currentY_Val*0.9
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				}
 			}
@@ -133,7 +134,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 			{
 			   if(currentY_Val <= Graph1.pGraphAttr->yAxisHead) //
 				{
-					Graph1.pGraphAttr->yAxisHead = currentY_Val*1.1;
+					Graph1.pGraphAttr->yAxisHead = currentY_Val;  //currentY_Val*1.1
 				    SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				}
 				else if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
@@ -142,11 +143,12 @@ int GraphDeinit(GraphTypeDef* pGraph)
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				}
 			}
+	
         	}
 		break;
 		case NO_SWEEP_IT:
 		case ID_T:
-			if(Graph1.pCurveArray->numOfPlotDots<1)
+			if((Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex==1)
 			{
 				if(currentY_Val>0)
 				{
@@ -210,9 +212,9 @@ int GraphDeinit(GraphTypeDef* pGraph)
 			}
 			break;
 		case NO_SWEEP_RT:
-				if( plots == 1)
+				if((Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex==1)                    
 				{  	
-					if(ohm>=0)
+					if(ohm>0)
 					{
 						if(ohm>= Graph1.pGraphAttr->yAxisTail )
 						{
@@ -295,7 +297,22 @@ void SetGraphX_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph,flo
 			break;
 	  }
 }
-
+float max = 0;
+float a,b,c;
+void SetGraph2_YAxis(int control,GraphTypeDef* pGraph)
+{								//*(pGraph->pCurveArray->pDotY) 
+	a=Rx_CGS_Data.humidity; 		 			//环境湿度      
+	b= Rx_CGS_Data.heating_stage_temp;				//热台温度     
+	c= Rx_CGS_Data.pressure*0.001;				//压强
+	
+	  
+	max=(a>b?a:b)>(b>c?b:c)?(a>b?a:b):(b>c?b:c);
+	if(pGraph->pGraphAttr->yAxisTail <= max)			//温度值
+	{
+		pGraph->pGraphAttr->yAxisTail=pGraph->pGraphAttr->yAxisTail+50;
+		SetAxisScalingMode(Graph2.graphHandle,control , VAL_LEFT_YAXIS  , VAL_MANUAL, 0, pGraph->pGraphAttr->yAxisTail);
+	}
+}
 
 
 

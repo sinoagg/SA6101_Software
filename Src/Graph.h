@@ -38,7 +38,7 @@ typedef struct
 		
 typedef struct
 {
-	int graphHandle;									//graph handle 
+	int graphHandle;								//graph handle 
 	int graphIndex;									//graph Index
 	int numOfCurve;									//number of Curves
     int plotHandle;									//后期需要整改属于plot
@@ -57,8 +57,8 @@ extern GraphTypeDef Graph2;
 int GraphInit(int hGraphPanel, int graphIndex, int numOfCurve, int numOfDots, GraphTypeDef* pGraph);
 int GraphDeinit(GraphTypeDef* pGraph);
 
-void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val,float ohm,int plots);  
-
+void SetGraphY_Axis(GraphTypeDef* pGraph, float currentY_Val,float ohm);  
+void SetGraph2_YAxis(int control,GraphTypeDef* pGraph); 
 void SetGraphX_Axis(int graphDispPanel,int controlfloat,GraphTypeDef* pGraph,float reTime);//坐标轴自动调整
 #ifdef __cplusplus
     }

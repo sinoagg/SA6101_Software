@@ -175,7 +175,7 @@ void ProtocolQuery(unsigned char comSelect, unsigned char devAddr, unsigned char
 	
 	*(pmeasUartTxBuf+SA61_UART_TX_LEN-1)=GetXorCheckVal(pmeasUartTxBuf, SA61_UART_TX_LEN-1);
 	ComWrt(comSelect, (const char*)pmeasUartTxBuf, SA61_UART_TX_LEN);
-	Delay(0.020);
+
 }
 
 void ProtocolCalibrate(unsigned char comSelect, unsigned char devAddr, unsigned char* pmeasUartTxBuf, unsigned char caliType, unsigned char caliRange)

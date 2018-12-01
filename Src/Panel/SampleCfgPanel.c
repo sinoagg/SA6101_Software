@@ -119,3 +119,21 @@ int CVICALLBACK RampleRateCallback (int panel, int control, int event,
 	}
 	return 0;
 }
+
+int CVICALLBACK RunTimeCallback (int panel, int control, int event,
+								 void *callbackData, int eventData1, int eventData2)
+{
+	 unsigned int runTime;
+	 GetCtrlAttribute (panel,control,ATTR_CTRL_VAL,&runTime );
+	switch (event)
+	{
+		case EVENT_VAL_CHANGED:
+			if(runTime>65535)
+			{
+				MessagePopup ("Tips", "The maximum value is 65535");    
+				SetCtrlAttribute(panel,control,ATTR_CTRL_VAL,65535);  
+			}
+			break;
+	}
+	return 0;
+}

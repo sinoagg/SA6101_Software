@@ -1,0 +1,60 @@
+#include "D:\software\NILWCVI\Shared\MSDTRedistributables\SDKHeaderFiles\8.1\winver.h"
+
+2 ICON "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\Resource\\6010.ico"
+1 24 "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\cvibuild.SA6101\\Release\\manifest.xml"
+
+
+STRINGTABLE DISCARDABLE
+BEGIN
+  65535  "SA6101"
+END
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+ FILEFLAGS 0L
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "SA6101 (Release x86)\0"
+            VALUE "FileVersion", "1.0\0"
+            VALUE "InternalName", "SA6101\0"
+            VALUE "LegalCopyright", "Copyright   2018\0"
+            VALUE "OriginalFilename", "SA6101.exe\0"
+            VALUE "ProductName", " SA6101\0"
+            VALUE "ProductVersion", "1.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 0x4b0
+    END
+END
+
+AutoSaveData.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\AutoSaveData.uir"
+Environment.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Environment.uir"
+Experiment|List.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Experiment List.uir"
+GraphDisp.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\GraphDisp.uir"
+I-T.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\I-T.uir"
+I-V.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\I-V.uir"
+Id-t|Configuration.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Id-t Configuration.uir"
+Id-Vds|Configuration.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Id-Vds Configuration.uir"
+Id-Vgs|Configuration.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Id-Vgs Configuration.uir"
+MainPanel.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\MainPanel.uir"
+Project.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Project.uir"
+R-T.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\R-T.uir"
+Result|Menu.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Result Menu.uir"
+ResultDispPanel.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\ResultDispPanel.uir"
+Sample|Configuration.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Sample Configuration.uir"
+Settings.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Settings.uir"
+Table.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Table.uir"
+Terminal.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Terminal.uir"
+TerminalPanel.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\TerminalPanel.uir"
+Tools.uir UIRFileType "e:\\GitWorkplace\\Sinoagg\\Software\\SA6101_realTime\\UI Files\\Panel\\Tools.uir"

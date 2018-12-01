@@ -36,7 +36,7 @@
 #define  SAMPLE_CFG_SAMPLERATE            2       /* control type: ring, callback function: RampleRateCallback */
 #define  SAMPLE_CFG_RANGESETTING          3       /* control type: ring, callback function: (none) */
 #define  SAMPLE_CFG_ADVCSET               4       /* control type: textMsg, callback function: AdvancSetCallback */
-#define  SAMPLE_CFG_RUNTIME               5       /* control type: numeric, callback function: (none) */
+#define  SAMPLE_CFG_RUNTIME               5       /* control type: numeric, callback function: RunTimeCallback */
 #define  SAMPLE_CFG_TEXTMSG               6       /* control type: textMsg, callback function: (none) */
 #define  SAMPLE_CFG_SAMPLEDELAY           7       /* control type: numeric, callback function: (none) */
 #define  SAMPLE_CFG_QUIETTIME             8       /* control type: numeric, callback function: (none) */
@@ -65,6 +65,7 @@
 int  CVICALLBACK AdvancSetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK BasicSetCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK RampleRateCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK RunTimeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

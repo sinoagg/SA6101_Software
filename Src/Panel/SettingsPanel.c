@@ -247,7 +247,7 @@ int CVICALLBACK AboutBtnCallback (int panel, int control, int event,
 			softwareVersions =  (currentSoftVersion[4] - '0') * 100 +  (currentSoftVersion[5]- '0') * 10 + (currentSoftVersion[6]- '0'); 
 			SetCtrlVal (hSettingsAboutPanel, ABOUT_NUMERIC_HCV, hardwareCircuitVersions);   //修改ABOUT界面上硬件电路版本号
 			SetCtrlVal (hSettingsAboutPanel, ABOUT_NUMERIC_ESV, embeddedSoftwareVersions);
-			SetCtrlVal (hSettingsAboutPanel, ABOUT_NUMERIC_MPV, mechanicalPowerVersions);
+		//	SetCtrlVal (hSettingsAboutPanel, ABOUT_NUMERIC_MPV, mechanicalPowerVersions);
 			SetCtrlVal (hSettingsAboutPanel, ABOUT_NUMERIC_SV, softwareVersions);  
 //=======================================================================================================================================    
 			DisplayPanel(hSettingsAboutPanel);
@@ -648,6 +648,11 @@ int CVICALLBACK UpdateSoftware (int panel, int control, int event,
 				CVIXMLGetChildElementByTag(hRootElem, "SoftwareVersion", &hChildElem); //获得标签SoftwareVersion 子元素
 				CVIXMLGetAttributeByIndex(hChildElem, 0, &hSoftwareCurrAttr);
 				CVIXMLSetAttributeValue (hSoftwareCurrAttr, serversSoftVersion);  //将修改本地xml文件中的版本号  
+				
+				CVIXMLGetChildElementByTag(hRootElem, "UpdateVersion", &hChildElem); //获得标签UpdateVersion 子元素
+				CVIXMLGetAttributeByIndex(hChildElem, 0, &hUpdateCurrAttr);
+				CVIXMLSetAttributeValue (hUpdateCurrAttr, serversUpdateVersion);  //将修改本地xml文件中的版本号  
+				
 				CVIXMLSaveDocument (hLoDocument, 0, NULL);
 				SoftwareChange(0);  
 				MessagePopup ("Warning", "Update successfully");

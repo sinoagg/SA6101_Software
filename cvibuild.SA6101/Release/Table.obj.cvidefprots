@@ -1,0 +1,12 @@
+[ITTable]
+Class="Function"
+Prototype="void ITTable(char (*table_title)[20], int column, int columnWidth);"
+
+[Table]
+Class="Function"
+Prototype="void Table(char (*table_title)[20], int column, int columnWidth, int row);"
+
+[ColorCallback]
+Class="Function"
+Prototype="int ColorCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

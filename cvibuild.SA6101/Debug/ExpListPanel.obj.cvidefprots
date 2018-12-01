@@ -1,0 +1,8 @@
+[TreeCallback]
+Class="Function"
+Prototype="int TreeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[TxtCallback]
+Class="Function"
+Prototype="int TxtCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

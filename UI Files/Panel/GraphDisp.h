@@ -17,7 +17,7 @@
 #define  GRAPHDISP_GRAPH1                 2       /* control type: graph, callback function: (none) */
 #define  GRAPHDISP_GRAPH2                 3       /* control type: graph, callback function: (none) */
 #define  GRAPHDISP_CANVAS                 4       /* control type: canvas, callback function: CanvasCallback */
-#define  GRAPHDISP_TIMER                  5       /* control type: timer, callback function: EvtTimerCalback */
+#define  GRAPHDISP_GRAPH1CANVAS           5       /* control type: canvas, callback function: (none) */
 
 
      /* Control Arrays: */
@@ -33,7 +33,6 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK CanvasCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK EvtTimerCalback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus

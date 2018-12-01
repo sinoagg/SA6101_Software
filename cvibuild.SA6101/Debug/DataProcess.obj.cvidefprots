@@ -1,0 +1,44 @@
+[CheckOpenCom]
+Class="Function"
+Prototype="int CheckOpenCom(unsigned char *measureComPort, unsigned char *controlComPort, unsigned char *measure_Uart_Flag, unsigned char *control_Uart_Flag);"
+
+[CheckPortStatus]
+Class="Function"
+Prototype="int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen, void (*pFunc)(int, int, void *));"
+
+[CheckCloseCom]
+Class="Function"
+Prototype="void CheckCloseCom(int SA6101_UART_Status, unsigned char measureComPort, unsigned char controlComPort);"
+
+[DeviceQuery]
+Class="Function"
+Prototype="void DeviceQuery();"
+
+[SetGraphAnnotation]
+Class="Function"
+Prototype="void SetGraphAnnotation();"
+
+[TestStop]
+Class="Function"
+Prototype="void TestStop(RxDataTypeDef *pRxData, int portNumber);"
+
+[TestStopActions]
+Class="Function"
+Prototype="void TestStopActions(RxDataTypeDef *pRxData, int portNumber, float rxIdmeasured);"
+
+[AddGraphAnnotations]
+Class="Function"
+Prototype="void AddGraphAnnotations(RxDataTypeDef *pRxData, float rxIdmeasured);"
+
+[RxDataToGraph]
+Class="Function"
+Prototype="void RxDataToGraph(RxDataTypeDef *pRxData, float rxIdmeasured, float ohm);"
+
+[RxDataToTable]
+Class="Function"
+Prototype="void RxDataToTable(RxDataTypeDef *pRxData);"
+
+[Rx_CGS_DataToTable]
+Class="Function"
+Prototype="void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef *Rx_CGS_Data, float reTime);"
+

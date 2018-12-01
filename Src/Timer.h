@@ -35,6 +35,7 @@
 // Global functions
 
 int CVICALLBACK TimerCallback (int reserved, int timerId, int event, void *callbackData, int eventData1, int eventData2);
+
 #ifdef __cplusplus
     }
 #endif

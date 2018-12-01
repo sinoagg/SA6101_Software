@@ -39,6 +39,7 @@
 #include "LoadPanel.h"
 #include "Cgs_mt.h"
 #include"MainPanelCb.h"
+#include"DataProcess.h"
 //==============================================================================
 // Constants
 
@@ -57,66 +58,37 @@
 // Global functions
 
 int numTime=0;
-int controlTime=0; 
-float envtTime=0;
+float envtTime;   
 float ohm;
 float rxIdmeasured;
+int controlTime=0;
 int CVICALLBACK TimerCallback (int panel, int control, int event,								//定时去查询
 								void *callbackData, int eventData1, int eventData2)
 {   
-	ohm = (TestPara.VdStart*0.001/RxData.rxIdmeasured.num_float);     
-	reTime = RxData.realTime*0.001;
-	if(log==1)   //log or Linear
-		rxIdmeasured=log10(RxData.rxIdmeasured.num_float);
-	else
-		rxIdmeasured = RxData.rxIdmeasured.num_float; 
-	SetCtrlVal(hResultDispPanel, RESULTDISP_IDS,rxIdmeasured);  
-	  
 	switch (event)
 	{
 		case EVENT_TIMER_TICK:
+		
+		
 				if(measure_Uart_Flag == 1)											//串口接收时要屏蔽数据查询
 				{
 					ProtocolQuery(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
-					if(measUartRxBuf[0]!=0x01)
-					{
-						FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-					}
-					else
-					{
-						if(measUartRxBuf[1]!=0x03)PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured,RxData.rxStopSign,ohm);
-				        if(measUartRxBuf[1]!=0x03)SetGraphX_Axis(hGraphPanel,GRAPHDISP_GRAPH1,&Graph1,reTime); 	
-					}
-	}
-	
-			 if((TestPara.testMode==SWEEP_DRAIN_VOL)||(TestPara.testMode==SWEEP_GATE_VOL)||(TestPara.testMode==SWEEP_IV))
-			 {
-				if(control_Uart_Flag == 1)
-				{
-					 Read_CGS_Value(controlComPort);
 				}
-			 }
+				if(control_Uart_Flag == 1)                
+				{
+					Read_CGS_Value(controlComPort);
+					SetGraph2_YAxis(GRAPHDISP_GRAPH2,&Graph2);   
+
+					SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.heating_stage_temp);		//热台温度   
+					SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.humidity);					//显示湿度     
+					SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure*0.001);		 		//显示压强		  
+
+				}
+		
 			break;
 	}
-
+	
 	return 0;
 }
 
- int CVICALLBACK EvtTimerCalback (int panel, int control, int event,
-								  void *callbackData, int eventData1, int eventData2)
- {
-	 switch (event)
-	 {
-		 case EVENT_TIMER_TICK:
-			if(Graph1.pCurveArray->numOfPlotDots>0)
-		   	  {
-				if(control_Uart_Flag == 1)
-				{
-					 Read_CGS_Value(controlComPort);
-					 envtTime++;
-				}
-			  }
-			 break;
-	 }
-	 return 0;
- }
+

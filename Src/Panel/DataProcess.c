@@ -47,7 +47,11 @@ const char IDquery1[] = {0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0
 						 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 						 0x00, 0x00, 0x00, 0x00,0x00,0xFF};
 const char IDquery2[] = {0x11, 0x03, 0x00, 0x02, 0x00, 0x05, 0x26, 0x99};
-int TimerID;                 
+int TimerID; 
+
+int rows;         //graph1 table填写数据标志位
+int graphrows;    //graph2
+float ohm; 
 //==============================================================================
 // Global functions
 
@@ -192,35 +196,34 @@ void DeviceQuery()
  
 void SetGraphAnnotation()
 {
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_CAPTION_BGCOLOR, (Graph1.pCurveArray+ Graph1.plotCurveIndex)->pCurveAttr->lineColor/*VAL_RED*/);   // 注释背景色
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_CAPTION_COLOR,VAL_WHITE);  //  注释字体色
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_LINE_COLOR,(Graph1.pCurveArray+ Graph1.plotCurveIndex)->pCurveAttr->lineColor);//注释连线色
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_CAPTION_FONT, VAL_MENU_FONT);
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_GLYPH_STYLE, VAL_SOLID_CIRCLE);	//实心圆
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_GLYPH_COLOR, (Graph1.pCurveArray+ Graph1.plotCurveIndex)->pCurveAttr->lineColor); //注释远点颜色
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_CAPTION_BGCOLOR, (Graph1.pCurveArray+ Graph1.plotCurveIndex)->pCurveAttr->lineColor/*VAL_RED*/);   // 注释背景色
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_CAPTION_COLOR,VAL_WHITE);  //  注释字体色
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_LINE_COLOR,(Graph1.pCurveArray+ Graph1.plotCurveIndex)->pCurveAttr->lineColor);//注释连线色
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_CAPTION_FONT, VAL_MENU_FONT);
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_GLYPH_STYLE, VAL_SOLID_CIRCLE);	//实心圆
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_GLYPH_COLOR, (Graph1.pCurveArray+ Graph1.plotCurveIndex)->pCurveAttr->lineColor); //注释远点颜色
 	 
 }
+
+
+
 void TestStop(RxDataTypeDef *pRxData,int portNumber)		  
 {
 	Delay(1);		                //等待异常情况下数据缓存完成
 	threadFlag = 0;					//缓存数据的线程  
 	control_Uart_Flag = 0;			//停止时环境测量也停止 因为出现一直查询的问题 
-	measure_Uart_Flag = 0;		 	//停止时查询停止，      
+	measure_Uart_Flag = 0;		 	//停止时查询停止， 
 	reTime=0;
 	CountFlag=0;       				//停止线程中二次发送指令
-	Graph1.pCurveArray->numOfPlotDots=0; 
+	Graph1.pCurveArray->numOfPlotDots=0;
+	Graph1.pCurveArray->plotIndex=0;
+	Graph1.plotCurveIndex=0;
 	pRxData->rxStopSign=0;
 	curveComplete=0; 	  			//控制多线模式的线程标志量
 	CurveNums=0;					//用于超过三条时随机添加颜色
 	envtTime=0;
-	plots=0;
-	controlTime=0;
-	Delay(0.1);															//在查询和停止命令间隔0.1秒
-	if((TestPara.testMode==NO_SWEEP_IT)||(TestPara.testMode==NO_SWEEP_RT)||(TestPara.testMode==ID_T))
-	{
-	 	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);		//send STOP command to instrument via UART 
-	}
-	Delay(0.1);	
+	Delay(0.1);															
+	DiscardAsyncTimer(TimerID);			//停止query定时器查询    	   EvtTimerId       
 	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
 	FlushOutQ(measureComPort);
 	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
@@ -231,32 +234,35 @@ void TestStop(RxDataTypeDef *pRxData,int portNumber)
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_PRINT, ATTR_DIMMED,0);     	//恢复 打印按钮                   
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0); 	//恢复曲线属性设置
 	SetCtrlAttribute (hResultMenuPanel, RESULTMENU_SAVE, ATTR_DIMMED,0);	//恢复保存数据按钮 
-	//SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED, 0);	//恢复曲线叠加按钮  
-	SetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR1,0xFF4600);//红色系
-	SetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,0x24786E);//绿色系
-	SetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,0x008FFF);//蓝色系
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED, 0);	//恢复曲线叠加按钮  
 	AutoSaveSheetAndGraph();
-	DiscardAsyncTimer(TimerID);	   //停止query定时器查询
-	DiscardAsyncTimer(EvtTimerId);
+
 }
 
-
 void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
-{
-
-   switch(TestPara.testMode)
+{   
+	float j;
+    switch(TestPara.testMode)
 	{				  
 		case NO_SWEEP_IT:
 		case NO_SWEEP_RT:
 		case ID_T:
-			 if(RxData.rxStopSign==0x01)//大于等于，
+			 if(RxData.rxStopSign==0x01)
 			 {
+				if((controlComPort>0)&&(temp_flag||humidity_flag ||pressure_flag))
+				{
+					 j=(float)TestPara.runTime - envtTime*timeSteps;
+			         for(int i=0;i<=j;i++)
+					 {
+					   DisplayEnvtTime(); 
+					 }
+				}
+				 Delay(0.01);
 				 TestStop(&RxData,portNumber);
 			 }
 			break;
 		case SWEEP_DRAIN_VOL:
 		case SWEEP_GATE_VOL:
-		case SWEEP_IV:          
 			if((RxData.rxStopSign == 0x01)&&(Graph1.plotCurveIndex +1 == Graph1.numOfCurve))//实验结束
 			{   
 				AddGraphAnnotations(&RxData,rxIdmeasured); 
@@ -264,63 +270,65 @@ void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
 			}
 			else if(RxData.rxStopSign == 0x01)											 //一条曲线结束
 			{   
-				AddGraphAnnotations(&RxData,rxIdmeasured); 
-				DiscardAsyncTimer(TimerID);       //第一条线之后的每条线结束时关闭定时器             
+				AddGraphAnnotations(&RxData,rxIdmeasured);
+				DiscardAsyncTimer(TimerID);		
 				curveComplete=1; 				   //控制多条线时进入线程
 				CountFlag=1;					   //实验结束或者停止时防止再次进入线程       
 				rows=2;		                       //第二条曲线开始 数据从第二行开始写入
 				graphrows=2;					   //环境写入数据从除列标题外第二行开始
-				controlTime=0;
 				GraphDeinit(&Graph2); 
-				GraphInit(hGraphPanel,0, 3, Graph1.pCurveArray->numOfTotalDots+1, &Graph2);//Graph1.pCurveArray->numOfTotalDots+3==》zhizheng 
+				GraphInit(hGraphPanel,0, 3, Graph1.pCurveArray->numOfTotalDots+100, &Graph2);//Graph1.pCurveArray->numOfTotalDots+3==》zhizheng 
 				CurveNums++;
+			    //(Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex=0;                                
 				if(TestPara.testMode==SWEEP_DRAIN_VOL)  TestPara.VdStart=vdstart;     
 				else if(TestPara.testMode==SWEEP_GATE_VOL)TestPara.VgStart=vgstart;    
 				}
 			break;
+			case SWEEP_IV:          
+			if(RxData.rxStopSign == 0x01)
+			{   
+				TestStop(&RxData,portNumber);
+			}
+			break;
 	}  
-
-
-
 }
 void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 {   
+	char curveVg[80];
+	char curveVd[80];
+	
+	
 	if(TestPara.testMode==SWEEP_DRAIN_VOL)   //idvd
 	 {
-		 char curve[80];
-		 sprintf(curve,"%s%d","Vg=",pRxData->rxVgtest);
-		 TestPara.VdStart = vdstart;
+		 //char curve[80];
+		 //sprintf(curve,"%s%d","Vg=",pRxData->rxVgtest);
+		 //TestPara.VdStart = vdstart;
+		 
+		 sprintf(curveVg,"%s%d","Vg=",TestPara.VgStart);     
 		 if (TestPara.VdStart>TestPara.VdStop)
-		 	AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve ,80,0); //注释位置
+		 	AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVg ,80,0); //注释位置
 		 else
-		 	AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve ,-80,0);   
+		 	AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVg ,-80,0);   
 		 SetGraphAnnotation();
-		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVdtest));	
+		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1,curveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVdtest));	
 
 	 } 
 	 else if(TestPara.testMode==SWEEP_GATE_VOL)
 	 {
-		char curve[80];
-		sprintf(curve,"%s%d","Vd=",pRxData->rxVdtest);
-		TestPara.VgStart = vgstart;      
+		//char curve[80];
+	//	sprintf(curve,"%s%d","Vd=",pRxData->rxVdtest);
+		//TestPara.VgStart = vgstart;      
+		sprintf(curveVd,"%s%d","Vd=",TestPara.VdStart);                   
 		if (TestPara.VgStart>TestPara.VgStop)
-			AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve ,80,0);
+			AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVd ,80,0);
 		else
-			AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curve ,-80,0);  
+			AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVd ,-80,0);  
 		SetGraphAnnotation();
-		SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVgtest));	
+		SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1,curveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVgtest));	
 	 }
-	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex+1, ATTR_ANNOTATION_YVALUE,(double)rxIdmeasured);
+	 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1, curveIndex+1, ATTR_ANNOTATION_YVALUE,(double)rxIdmeasured);
+	 curveIndex++;
 }
-
-
-
-
-
-
-
-
-
 
 void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured,float ohm)
 
@@ -429,7 +437,7 @@ void RxDataToTable(RxDataTypeDef *pRxData)
 }
 
 
-void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data)
+void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data,float reTime)
 {
 	int temp,hum,press;
 	GetCtrlVal(hEnvCfgPanel,ENVIRONMEN_TEMPTER,&temp); 
@@ -458,7 +466,7 @@ void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data)
 		case NO_SWEEP_IT:
 		case NO_SWEEP_RT:
 			SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+4, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);  //设置第四列第graphrows单元格的数据类型
-			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+4, graphrows),envtTime*timeStep-timeStep) ;  //填入第四列第graphrows行的数据
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+4, graphrows),reTime) ;  //填入第四列第graphrows行的数据
 			SetTableCellRangeAttribute (hTablePanel, TABLE_DISTABLE, MakeRect(1,1,rows,4), ATTR_PRECISION, 3);
 			/* SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*7+4, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);  //设置第四列第graphrows单元格的数据类型
 			 SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*7+4, graphrows),(float)Rx_CGS_Data->heating_stage_temp) ;  //填入第四列第graphrows行的数据
@@ -500,7 +508,7 @@ void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data)
 			break;
 		case ID_T:		 //一条线对用七列 从第五列开始
 		    SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+5, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);  //设置第四列第graphrows单元格的数据类型
-			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+5, graphrows),envtTime*timeStep-timeStep) ;  //填入第四列第graphrows行的数据
+			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+5, graphrows),reTime) ;  //填入第四列第graphrows行的数据
 			SetTableCellRangeAttribute (hTablePanel, TABLE_DISTABLE, MakeRect(1,1,rows,5), ATTR_PRECISION, 3);
 			 if(temp)
 			{
@@ -523,3 +531,4 @@ void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data)
 		graphrows++; 
 
 }
+

@@ -14,7 +14,7 @@
      /* Panels and Controls: */
 
 #define  AUTOPANEL                        1
-#define  AUTOPANEL_AUTOLIST               2       /* control type: tree, callback function: AutoSaveDataCallback */
+#define  AUTOPANEL_AUTOLIST               2       /* control type: tree, callback function: DisplayAutoSaveDataCallback */
 
 #define  IMGPANEL                         2       /* callback function: ImgCallback */
 #define  IMGPANEL_PICTURE                 2       /* control type: picture, callback function: (none) */
@@ -32,7 +32,7 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK AutoSaveDataCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK DisplayAutoSaveDataCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK ImgCallback(int panel, int event, void *callbackData, int eventData1, int eventData2);
 
 

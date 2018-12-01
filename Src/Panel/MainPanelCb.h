@@ -47,11 +47,12 @@ extern unsigned char measureComPort;
 extern unsigned char controlComPort; 
 extern FileLableTypeDef *pFileLable[];
 extern PrjHandleTypeDef SingleProject[];
+extern int controlTime; 
 //extern int x2;
 //extern int xAxis;
 extern int vdstart;
 extern int vgstart;
-extern float timeStep;
+extern float timeSteps;
 //==============================================================================
 //// Global functions
 static int SaveConfigToFile(char* pConfigSavePath);

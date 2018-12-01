@@ -229,9 +229,7 @@ int CVICALLBACK GraphCallback (int panel, int control, int event,						//点击gra
 			SetCtrlAttribute (hTablePanel, TABLE_DISTABLE, ATTR_VISIBLE,0 ); 
 			HidePanel(hTablePanel);           //隐藏table面板、table表格 提高速率       
 			if(resultDispSelect==DISP_GRAPH)  //如果此时在显示图的时候还去点击图的图标，则认为是想切换显示
-			{	
 		  		DispGraphSelectCheckBox();
-			}
 			else
 			{
 				resultDispSelect=DISP_GRAPH;

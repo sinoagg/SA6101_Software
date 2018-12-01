@@ -1,0 +1,24 @@
+[IdtGateDecoCallback]
+Class="Function"
+Prototype="int IdtGateDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdtGateModeCallback]
+Class="Function"
+Prototype="int IdtGateModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdtGateStartCallback]
+Class="Function"
+Prototype="int IdtGateStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdtDrainDecoCallback]
+Class="Function"
+Prototype="int IdtDrainDecoCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdtDrainModeCallback]
+Class="Function"
+Prototype="int IdtDrainModeCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[IdtDrainStartCallback]
+Class="Function"
+Prototype="int IdtDrainStartCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+

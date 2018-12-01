@@ -19,6 +19,7 @@
 #include "Cgs_mt.h"
 #include "Graph.h"
 #include "LoadPanel.h"
+#include "MainPanelCb.h"  
 
 //==============================================================================
 // Constants
@@ -51,6 +52,7 @@ GraphTypeDef Graph_Temp;
 //
 void Read_CGS_Value(unsigned char comSelect)
 {
+	Delay((double)timeSteps);                          
    	ComWrt(comSelect, (const char*)meas_CGS_UartTxBuf, 8);
 }
 void ProtocolGet_CGS_Data(unsigned char* meas_CGS_UartRxBuf, Rx_CGS_DataTypeDef* Rx_CGS_Data)	//Get data from UART Rx Buffer
