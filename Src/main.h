@@ -70,6 +70,7 @@ static int CheckPortStatus(unsigned char portNumber, unsigned char uartRxLen,voi
 void RxDataToGraph(RxDataTypeDef *pRxData,float rxIdmeasured,float ohm);
 void RxDataToTable(RxDataTypeDef *pRxData);
 void DisplayEnvtTime();
+void DisplayEvntIv();
 void DeviceQuery();
 #ifdef __cplusplus
     }

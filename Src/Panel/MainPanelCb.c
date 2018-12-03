@@ -318,11 +318,6 @@ static void RunActive()
 	//SetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR2,0x24786E);//绿色系
 	//SetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,0x008FFF);//蓝色系   
 	
-   //=======================================================
-  	
-   
-   
-
 }
 void SetGraph2DisplayData()
 {
@@ -380,11 +375,10 @@ void MakeColors()	  //随机产生曲线颜色
 	SetCtrlVal(hSettingsGraphPanel,SETGRAPH_GRAPH1CLR3,graphColor2);
  }
 
-
 int CVICALLBACK StepThreadFunction(void* temp)
 {
-	int direction;
-	GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_DIRECTION, ATTR_CTRL_VAL,&direction); 
+/*	int direction;
+	GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_DIRECTION, ATTR_CTRL_VAL,&direction);*/ 
 	int numOfRxCurve=0;
 	  
 		while(numOfRxCurve < numOfCurve-1)
@@ -438,7 +432,6 @@ int CVICALLBACK StepThreadFunction(void* temp)
 					}
 			}
 	 }
-
 	return 0;
 }
 
@@ -450,7 +443,6 @@ void CreateMonitorThread(int numOfCurve)
 
  int CVICALLBACK AbnmDCThreadFunction (void *functionData)
 { 
-   /* int n = 1;  */ 	  
 	while(threadFlag == 1)
 	{
 		if(Graph1.pCurveArray->numOfPlotDots > 0)  //每十分之一的总点数时更新一次缓存区
@@ -468,397 +460,36 @@ int CVICALLBACK RunCallback (int panel, int control, int event,
 	{
 		case EVENT_LEFT_CLICK_UP:
 		    RunActive();
-			threadFlag = 0; 
-			CountFlag = 0;	  													//标志在停止时不在进入多曲线线程   
-			CurveNums=1;														//超出四条添加随机色
 			GraphDeinit(&Graph1);												//内存释放在画图之后，如果在画图之前释放导致错误
 			GraphDeinit(&Graph2);
 			FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清除一次
 			FlushOutQ(measureComPort);
 			FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
 			FlushOutQ(controlComPort);	
-			Graph1.plotCurveIndex=0; 											//每次实验开始之前初始化CurveIndex
-			curveComplete=0;
-			rows=2;
-			graphrows=2;
-			int expType;
-			int graphIndex=0;															//currently only deal with one graph circumstance
-			int numOfDots=0;
-			int direction; //是否为double
-			GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_DIRECTION, ATTR_CTRL_VAL,&direction); 
-			reTime=0;
-			curveIndex=0;         
-			measure_Uart_Flag=1; 	 //开启查询
-			Table_ATTR.columnWidth= 90;  												//列宽
-			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
-	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
+			curveIndex=0;      
+			DeleteGraphPlot(hGraphPanel, GRAPHDISP_GRAPH1, -1, VAL_IMMEDIATE_DRAW); 	//清空曲线图上的所有曲线
 			DeleteGraphAnnotation (hGraphPanel, GRAPHDISP_GRAPH1,-1 );                  //清空上个实验曲线注释
-			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);							//使能控件的缩放和拖动  
-			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1 , VAL_IMMEDIATE_DRAW); 							//清除上个实验绘制曲线
-			GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_SAMPLERATE,&TestPara.sampleRate);
-			GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_SAMPLENUMBER,&TestPara.sampleNumber); 
-			GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_CTRL_INDEX,&logs); 
-			CanvasClear (hGraphPanel,GRAPHDISP_GRAPH1CANVAS , VAL_ENTIRE_OBJECT);      //清除画布图例
-			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
-				return -1; 
-			TestPara.testMode=(enum TestMode)expType;
-			GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_DRAIN,&drain);
-			GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_GATE,&gate);    
-			if((drain==0)&&(gate==1))
-			{ 																								  //0x04 
-			    ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,ONLYGATE);		//send config to instrument via UART               	
-			}
-			else if(drain && gate)
-			{  																								  //0x0c
-			    ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,BOTH);		//send config to instrument via UART               	
-			}else if((drain==1)&&(gate==0))
-			{																								   //0x08      
-				 ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,NOLYDRAIN);
-			}
-			else  if((drain==0)&&(gate==0))
-			{
-				 ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,BOTHNONE);   
-			}
-			timeSteps =  TestPara.sampleNumber*1.0/TestPara.sampleRate*1.0 + TestPara.SampleDelay/1000.0;    //计算时间间隔 
-			switch(TestPara.testMode)
-			{
-			   	case SWEEP_DRAIN_VOL:				 
-					if(TestPara.gateOutputMode==VOL_BIAS)
-					   	numOfCurve=1;
-					else if(TestPara.gateOutputMode==VOL_STEP)
-						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
-					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;            
-					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  //graph set up 
-					Table_ATTR.column =6*numOfCurve ;
-					Table_ATTR.row =  numOfDots; 
-					Graph1.pGraphAttr->yAxisHead=1e-12;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-12; 
-					if(logs) 
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A");  
-						Table(tableTitleLog_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT,22);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
-                    	Table(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  	//表格重新初始化 与设置参数有关，应该写数成函*/
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 90);
-					}
-					if (TestPara.VdStart>TestPara.VdStop)
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VdStop;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VdStart;
-					}else
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
-					if (TestPara.VdStart>TestPara.VdStop)
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStop;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStart;
-					}else
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStart;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStop;
-					} vdstart  = TestPara.VdStart;   
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
-					CreateMonitorThread(numOfCurve);
-					break;
-				case SWEEP_GATE_VOL:
-		      		if(TestPara.drainOutputMode==VOL_BIAS)
-					{
-						numOfCurve=1;
-					 }
-					 else if(TestPara.drainOutputMode==VOL_STEP)
-					{
-						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
-					}
-					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数  
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);   
-					Table_ATTR.row =  numOfDots; 	
-					Table_ATTR.column =6*numOfCurve ;          
-					Graph1.pGraphAttr->yAxisHead=1e-12; 
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-12; 
-					if (TestPara.VgStart>TestPara.VgStop)
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStop;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStart;
-					}else
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A"); 
-						Table(tableTitleLog_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 22);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
-						Table(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT,90);
-					}
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
-					Graph2.pGraphAttr->xAxisHead=0;
-					Graph2.pGraphAttr->xAxisTail=10;
-					if (TestPara.VgStart>TestPara.VgStop)
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VgStop;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VgStart;
-					}else
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VgStart;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VgStop;
-					}
-					vgstart  = TestPara.VgStart;    
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
-					CreateMonitorThread(numOfCurve);    
-					break;
-				   case NO_SWEEP_IT:
-					numOfCurve=1;
-					numOfDots=TestPara.runTime/timeSteps+100; 					
-					GraphInit(hGraphPanel,graphIndex,numOfCurve,numOfDots,&Graph1); 
-					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column =7*numOfCurve ;
-					Table_ATTR.row =  numOfDots+100;
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=10;	
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(I)/A");     
-						Table(tableTitleLog_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(I)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 30);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
-						Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95);
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2);          
-					Graph2.pGraphAttr->xAxisHead=0;
-					Graph2.pGraphAttr->xAxisTail=10; 
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);
-					//EvtTimerId = NewAsyncTimer((double)timeStep, -1, 1, EvtTimerCalback, 0);	 
-					break;
-				case NO_SWEEP_RT:
-					numOfCurve=1;
-					numOfDots=TestPara.runTime/timeSteps+100; 				
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
-					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column =7*numOfCurve; 
-					Table_ATTR.row =  numOfDots+100 ;
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=10;	
-					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
-					 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
-					 SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
-	    			 SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95); 
-					 GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2); 
-					 Graph2.pGraphAttr->xAxisHead=0;
-					 Graph2.pGraphAttr->xAxisTail=10; 
-					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);       
-					 //EvtTimerId = NewAsyncTimer(timeStep, -1, 1, EvtTimerCalback, 0);	 
-					 break;
-				case SWEEP_IV:
-					numOfCurve=1;  
-					numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Table_ATTR.column =5*numOfCurve ;          
-					Table_ATTR.row =  numOfDots;
-					Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
-					if (TestPara.VgStart>TestPara.VgStop)
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStop;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStart;
-					}else
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(I)/A");
-						Table(tableTitleLog_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(I)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 30);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
-						Table(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95);
-					}
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
-					if (TestPara.VdStart>TestPara.VdStop)
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStop;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStart;
-					}else
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStart;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStop;
-					} vdstart  = TestPara.VdStart;      
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);  
-				
-					break;
-				
-				case ID_T:
-					numOfCurve=1;
-					numOfDots=TestPara.runTime/timeSteps+100; 			
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
-					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column =7*numOfCurve; 
-					Table_ATTR.row =  numOfDots+100 ;   ;
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=10;	
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A");     
-						Table(tableTitleLog_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 22);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
-						Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 90);
-					}
-					  
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);  
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2);  
-					Graph2.pGraphAttr->xAxisHead=0;
-					Graph2.pGraphAttr->xAxisTail=10; 
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
-					//EvtTimerId = NewAsyncTimer(timeStep, -1, 1, EvtTimerCalback, 0);	 
-					break;																																		 
-			}
-			
-			threadFlag = 1;
-			CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId);//开辟新的线程缓存实验数据
-	   		Graph1.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 		//得到曲线的属性 
-			Graph2.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph2.graphIndex,Graph2.plotCurveIndex); 		//得到曲线的属性     
-			SetGraph2DisplayData();																					//控制是否绘制环境曲线，如果勾选且连接环境端口，则打开环境查询																				//运行之前选择要填入保存的环境数据
-			DisplayEnvtGraph();																						//显示选择的曲线   
-			Graph1.pCurveArray->plotIndex=0;
-			//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Delay(1);												  												//在设置和运行命令之间给下位机0.2秒处理
+			DeleteGraphPlot (hGraphPanel, GRAPHDISP_GRAPH2, -1 , VAL_IMMEDIATE_DRAW); 	//清除上个实验绘制曲线
+			RunMainAction();
+			Delay(1);												  												//在设置和运行命令之间给下位机1秒处理
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);											//send RUN command to instrument via UART
-			double temp=0.05;        
+			double temp=0.05;
 			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);	
-			  
 		break;
 		}
 	return 0;
 }
-/*
-*停止时所有的标志变量置为0、1
-*/
-void TestStopAction()
-{
-	measure_Uart_Flag=0;
-	control_Uart_Flag=0; 
-	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-	FlushOutQ(measureComPort);
-	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-	FlushOutQ(controlComPort);	
-	CountFlag=0;  
-	envtTime=0;
-	curveComplete=0;
-	threadFlag = 0;
-	CurveNums=1;
-	numOfCurve = 0;  
-	Graph1.pCurveArray->numOfPlotDots=0;	 
-	//ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);
-	DiscardAsyncTimer(TimerID);			//停止query定时器查询    	   EvtTimerId
-	DiscardAsyncTimer(EvtTimerId);	
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_PRINT, ATTR_DIMMED,0);      //恢复 打印按钮
-	//SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED, 0);      //恢复曲线叠加按钮    
-	SetCtrlAttribute (hResultMenuPanel, RESULTMENU_SAVE, ATTR_DIMMED,0); 		//恢复  保存数据按钮        
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0); //恢复曲线属性设置
 
-
-}
 
 int CVICALLBACK StopCallback (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
-	unsigned char counter=10;    //在查询和停止命令间隔0.1秒 
 	switch (event)
 	{
 		case EVENT_LEFT_CLICK_UP:		         //当鼠标释放时 
-			measure_Uart_Flag=0;
-			control_Uart_Flag=0; 
+			TestStopFlag();
 			Delay(0.01);
-			FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-			FlushOutQ(measureComPort);
-			FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-			FlushOutQ(controlComPort);	
-			ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); //send STOP command to instrument via UART		  ///0x03 设备停止成功   
-			while(counter>0)
-			{
-				Delay(0.1);
-			 	if(TestPara.StopSign == 0x03)
-				{
-					counter = 0;
-				}
-			 	else 
-				{
-					 ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); //send STOP command to instrument via UART		  ///0x03 设备停止成功  
-					 counter--;
-				}
-			}
-			measure_Uart_Flag=0;
-			control_Uart_Flag=0; 
-			FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-			FlushOutQ(measureComPort);
-			FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-			FlushOutQ(controlComPort);	
-			CountFlag=0;  
-			envtTime=0;
-			curveComplete=0;
-		    threadFlag = 0;
-			CurveNums=1;
-			numOfCurve = 0;  
-			controlTime=0;
-			Graph1.pCurveArray->numOfPlotDots=0;
-			Graph1.pCurveArray->plotIndex=0;   
-			Graph1.plotCurveIndex=0;
-			Delay(0.01);
-			DiscardAsyncTimer(TimerID);			//停止query定时器查询    	   EvtTimerId
+			DiscardAsyncTimer(TimerID);			//停止query定时器查询    	  
 		  	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
@@ -866,8 +497,6 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED, 0);      //恢复曲线叠加按钮    
 			SetCtrlAttribute (hResultMenuPanel, RESULTMENU_SAVE, ATTR_DIMMED,0); 		//恢复  保存数据按钮        
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0); //恢复曲线属性设置
-			
-			
 		    //=================数据自动保存===================
 		   AutoSaveSheetAndGraph();
 		
@@ -1026,18 +655,16 @@ int CVICALLBACK ProjectCallback (int panel, int control, int event,
 int CVICALLBACK ToolsCallback (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
-	
-	
-		switch(event){
+	switch(event)
+	{
 		case EVENT_LEFT_CLICK_UP:
 			//SetPanelSize(hToolsPanel,500,500);
 			SetPanelPos(hToolsPanel,250,500);
 			InstallPopup (hToolsPanel);
-		    break;
+	    break;
 	}
 	return 0;
 }
-
 
 int CVICALLBACK RunAgainCallback (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
@@ -1047,301 +674,13 @@ int CVICALLBACK RunAgainCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:
 		    RunActive();
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED,1);				//当鼠标释放时, 禁用开始按钮 
-			threadFlag = 0; 
-			CountFlag = 0;	  													//标志在停止时不在进入多曲线线程   
-			CurveNums=1;														//超出四条添加随机色
-			Graph1.plotCurveIndex=0; 											//每次实验开始之前初始化CurveIndex
-			Graph1.pCurveArray->plotIndex=0;   
-			curveComplete=0;
-			rows=2;
-			graphrows=2;
-			int expType;
-			int graphIndex=0;															//currently only deal with one graph circumstance
-			int numOfDots=0;
-			int direction; //是否为double
-			GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_DIRECTION, ATTR_CTRL_VAL,&direction); 
-			reTime=0;
-			measure_Uart_Flag=1; 	 //开启查询
-			Table_ATTR.columnWidth= 90;  												//列宽
-			DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
-	 		DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
-			SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);							//使能控件的缩放和拖动  
-			GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_SAMPLERATE,&TestPara.sampleRate);
-			GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_SAMPLENUMBER,&TestPara.sampleNumber); 
-			GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_CTRL_INDEX,&logs); 
-			if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
-				return -1; 
-			TestPara.testMode=(enum TestMode)expType;
-			
-			if((drain==0)&&(gate==1))
-			{ 																								  //0x04 
-			    ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,ONLYGATE);		//send config to instrument via UART               	
-			}
-			else if(drain && gate)
-			{  																								  //0x0c
-			    ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,BOTH);		//send config to instrument via UART               	
-			}else if((drain==1)&&(gate==0))
-			{																								   //0x08      
-				 ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,NOLYDRAIN);
-			}
-			else  if((drain==0)&&(gate==0))
-			{
-				 ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,BOTHNONE);   
-			}
-			switch(TestPara.testMode)
-			{
-			   	case SWEEP_DRAIN_VOL:				 
-					if(TestPara.gateOutputMode==VOL_BIAS)
-					   	numOfCurve=1;
-					else if(TestPara.gateOutputMode==VOL_STEP)
-						numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
-					numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;            
-					GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  //graph set up 
-					Table_ATTR.column =6*numOfCurve ;
-					Table_ATTR.row =  numOfDots; 
-					Graph1.pGraphAttr->yAxisHead=1e-12;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-12; 
-					if(logs) 
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A");  
-						Table(tableTitleLog_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT,22);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
-                    	Table(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  	//表格重新初始化 与设置参数有关，应该写数成函*/
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 90);
-					}
-					if (TestPara.VdStart>TestPara.VdStop)
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VdStop;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VdStart;
-					}else
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
-					if (TestPara.VdStart>TestPara.VdStop)
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStop;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStart;
-					}else
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStart;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStop;
-					} vdstart  = TestPara.VdStart;   
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
-					CreateMonitorThread(numOfCurve);
-					break;
-				case SWEEP_GATE_VOL:
-		      		if(TestPara.drainOutputMode==VOL_BIAS)
-					{
-						numOfCurve=1;
-					 }
-					 else if(TestPara.drainOutputMode==VOL_STEP)
-					{
-						numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
-					}
-					numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数  
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);   
-					Table_ATTR.row =  numOfDots; 	
-					Table_ATTR.column =6*numOfCurve ;          
-					Graph1.pGraphAttr->yAxisHead=1e-12; 
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-12; 
-					if (TestPara.VgStart>TestPara.VgStop)
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStop;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStart;
-					}else
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A"); 
-						Table(tableTitleLog_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 22);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
-						Table(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT,90);
-					}
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
-					Graph2.pGraphAttr->xAxisHead=0;
-					Graph2.pGraphAttr->xAxisTail=10;
-					if (TestPara.VgStart>TestPara.VgStop)
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VgStop;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VgStart;
-					}else
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VgStart;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VgStop;
-					}
-					vgstart  = TestPara.VgStart;    
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
-					CreateMonitorThread(numOfCurve);    
-					break;
-				   case NO_SWEEP_IT:
-					numOfCurve=1;
-					numOfDots=TestPara.runTime/timeSteps+100; 					
-					GraphInit(hGraphPanel,graphIndex,numOfCurve,numOfDots,&Graph1); 
-					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column =7*numOfCurve ;
-					Table_ATTR.row =  numOfDots+100;
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=10;	
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(I)/A");     
-						Table(tableTitleLog_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(I)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 30);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
-						Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95);
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2);          
-					Graph2.pGraphAttr->xAxisHead=0;
-					Graph2.pGraphAttr->xAxisTail=10; 
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);
-					//EvtTimerId = NewAsyncTimer((double)timeStep, -1, 1, EvtTimerCalback, 0);	          
-					break;
-				case NO_SWEEP_RT:
-					numOfCurve=1;
-					numOfDots=TestPara.runTime/timeSteps+100; 				
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
-					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column =7*numOfCurve; 
-					Table_ATTR.row =  numOfDots+100 ;
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=10;	
-					 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
-					 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
-					 SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
-	    			 SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95); 
-					 GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2); 
-					 Graph2.pGraphAttr->xAxisHead=0;
-					 Graph2.pGraphAttr->xAxisTail=10; 
-					 //EvtTimerId = NewAsyncTimer((double)timeStep, -1, 1, EvtTimerCalback, 0);	          
-					 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);       
-					 break;
-				case SWEEP_IV:
-					numOfCurve=1;  
-					numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
-					Table_ATTR.column =5*numOfCurve ;          
-					Table_ATTR.row =  numOfDots;
-					Graph1.pGraphAttr->yAxisHead=1e-13;
-	   				Graph1.pGraphAttr->yAxisTail=1.1e-13; 
-					if (TestPara.VgStart>TestPara.VgStop)
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStop;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStart;
-					}else
-					{
-						Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
-						Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
-					}
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(I)/A");
-						Table(tableTitleLog_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(I)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 30);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
-						Table(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95);
-					}
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
-					if (TestPara.VdStart>TestPara.VdStop)
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStop;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStart;
-					}else
-					{
-						Graph2.pGraphAttr->xAxisHead=TestPara.VdStart;
-						Graph2.pGraphAttr->xAxisTail=TestPara.VdStop;
-					} vdstart  = TestPara.VdStart;      
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);  
-					break;
-				
-				case ID_T:
-					numOfCurve=1;
-					numOfDots=TestPara.runTime/timeSteps+100; 			
-					GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
-					Graph1.pCurveArray->numOfTotalDots = numOfDots;
-					Graph1.pCurveArray->time=0;  
-					Table_ATTR.column =7*numOfCurve; 
-					Table_ATTR.row =  numOfDots+100 ; 
-					Graph1.pGraphAttr->xAxisHead=0;
-					Graph1.pGraphAttr->xAxisTail=10;	
-					SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");
-					if(logs)
-					{
-						SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A");     
-						Table(tableTitleLog_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 22);
-					}
-					else
-					{
-				   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
-						Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
-						SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
-	    				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 90);
-					}
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);  
-					GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2);  
-					Graph2.pGraphAttr->xAxisHead=0;
-					Graph2.pGraphAttr->xAxisTail=10; 
-					SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
-					//EvtTimerId = NewAsyncTimer((double)timeStep, -1, 1, EvtTimerCalback, 0);	          
-					break;																																		 
-			}			   
-			MakeColors();          
-		    Graph1.pCurveArray->plotIndex=0;       
-			threadFlag = 1;
-			CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId);//开辟新的线程缓存实验数据
-			Graph1.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 		//得到曲线的属性 
-			Graph2.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph2.graphIndex,Graph2.plotCurveIndex); 		//得到曲线的属性     
-			SetGraph2DisplayData();																					//运行之前选择要填入保存的环境数据
-			DisplayEnvtGraph();	//显示选择的曲线   
-	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			//GetSampleRate();
-			Delay(1);												  												//在设置和运行命令之间给下位机0.2秒处理
+			MakeColors();        
+			RunMainAction();
+			Delay(1);												  												//在设置和运行命令之间给下位机1秒处理
 			ProtocolRun(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf);											//send RUN command to instrument via UART
 			double temp=0.05;
-			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);	
+			TimerID = NewAsyncTimer(temp, -1, 1, TimerCallback, 0);	  
+		    
 		break;
 		}
 		
@@ -1364,3 +703,348 @@ int CVICALLBACK PrintCallback (int panel, int control, int event,
 	return 0;
 }
 
+
+/*
+*停止时所有的标志变量置为0、1
+*/
+void TestStopFlag()
+{
+	unsigned char counter=10;               
+	measure_Uart_Flag=0;
+	control_Uart_Flag=0; 
+	Delay(0.01);
+	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
+	FlushOutQ(measureComPort);										    //停止之后曲线上窜问题
+	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
+	FlushOutQ(controlComPort);	
+	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); //send STOP command to instrument via UART		  ///0x03 设备停止成功   
+	while(counter>0)
+	{
+		Delay(0.1);
+	 	if(TestPara.StopSign == 0x03)
+		{
+			counter = 0;
+		}
+	 	else 
+		{
+			 ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); //send STOP command to instrument via UART		  ///0x03 设备停止成功  
+			 counter--;
+		}
+	}
+	measure_Uart_Flag=0;
+	control_Uart_Flag=0; 
+	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
+	FlushOutQ(measureComPort);
+	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
+	FlushOutQ(controlComPort);	
+	CountFlag=0;  
+	envtTime=0;
+	curveComplete=0;
+    threadFlag = 0;
+	CurveNums=1;
+	numOfCurve = 0;  
+	controlTime=0;
+	Graph1.pCurveArray->numOfPlotDots=0;
+	Graph1.pCurveArray->plotIndex=0;   
+	Graph1.plotCurveIndex=0;
+
+}
+
+
+
+
+ int  RunMainAction() //实验开始准备
+{
+	int graphIndex=0;															//currently only deal with one graph circumstance
+	int numOfDots=0;
+	int expType;
+	threadFlag = 0; 
+	CountFlag = 0;	  													//标志在停止时不在进入多曲线线程   
+	CurveNums=1;														//超出四条添加随机色
+	Graph1.plotCurveIndex=0; 											//每次实验开始之前初始化CurveIndex
+	curveComplete=0;
+	rows=2;
+	graphrows=2;
+	int direction; //是否为double
+	GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_DIRECTION, ATTR_CTRL_VAL,&direction); 
+	reTime=0;
+	measure_Uart_Flag=1; 	 //开启查询
+	Table_ATTR.columnWidth= 90;  												//列宽
+	DeleteTableRows (hTablePanel, TABLE_DISTABLE, 1, -1); 		
+	DeleteTableColumns (hTablePanel, TABLE_DISTABLE, 1, -1);					//每个实验运行之前清除上一个实验的table数据  
+	SetCtrlAttribute(hGraphPanel,GRAPHDISP_GRAPH2,ATTR_ENABLE_ZOOM_AND_PAN,1);							//使能控件的缩放和拖动    
+	GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_SAMPLERATE,&TestPara.sampleRate);
+	GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_SAMPLENUMBER,&TestPara.sampleNumber); 
+	if(GetCtrlVal(hExpListPanel, EXP_LIST_TREE, &expType)<0)
+			return -1; 
+	TestPara.testMode=(enum TestMode)expType;
+	GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_DRAIN,&drain);
+	GetCtrlVal(hAdvanceSamplePanel,SAMPLE_ADV_GATE,&gate);    
+	if((drain==0)&&(gate==1))
+	{ 																								  //0x04 
+	    ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,ONLYGATE);		//send config to instrument via UART               	
+	}
+	else if(drain && gate)
+	{  																								  //0x0c
+	    ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,BOTH);		//send config to instrument via UART               	
+	}else if((drain==1)&&(gate==0))
+	{																								   //0x08      
+		 ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,NOLYDRAIN);
+	}
+	else  if((drain==0)&&(gate==0))
+	{
+		 ProtocolCfg(measureComPort, MEASURE_DEV_ADDR, (enum TestMode)TestPara.testMode, measUartTxBuf,BOTHNONE);   
+	}
+		
+	timeSteps =  TestPara.sampleNumber*1.0/TestPara.sampleRate*1.0 + TestPara.SampleDelay/1000.0;    //计算时间间隔 
+	GetCtrlAttribute (hAdvanceSamplePanel, SAMPLE_ADV_LINEAR, ATTR_CTRL_INDEX,&logs);            
+	switch(TestPara.testMode)
+	{
+	   	case SWEEP_DRAIN_VOL:				 
+			if(TestPara.gateOutputMode==VOL_BIAS)
+			   	numOfCurve=1;
+			else if(TestPara.gateOutputMode==VOL_STEP)
+				numOfCurve=abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1; 
+			numOfDots=abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;            
+			GraphInit(hGraphPanel, graphIndex, numOfCurve, numOfDots, &Graph1);  //graph set up 
+			Table_ATTR.column =6*numOfCurve ;
+			Table_ATTR.row =  numOfDots; 
+			Graph1.pGraphAttr->yAxisHead=1e-12;
+			Graph1.pGraphAttr->yAxisTail=1.1e-12; 
+			if(logs) 
+			{
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A");  
+				Table(tableTitleLog_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT,22);
+			}
+			else
+			{
+		   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
+	        	Table(table_title_IdVd, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  	//表格重新初始化 与设置参数有关，应该写数成函*/
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 90);
+			}
+			if (TestPara.VdStart>TestPara.VdStop)
+			{
+				Graph1.pGraphAttr->xAxisHead=TestPara.VdStop;
+				Graph1.pGraphAttr->xAxisTail=TestPara.VdStart;
+			}else
+			{
+				Graph1.pGraphAttr->xAxisHead=TestPara.VdStart;
+				Graph1.pGraphAttr->xAxisTail=TestPara.VdStop;
+			}
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vd(mV)");	 
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
+			if (TestPara.VdStart>TestPara.VdStop)
+			{
+				Graph2.pGraphAttr->xAxisHead=TestPara.VdStop;
+				Graph2.pGraphAttr->xAxisTail=TestPara.VdStart;
+			}else
+			{
+				Graph2.pGraphAttr->xAxisHead=TestPara.VdStart;
+				Graph2.pGraphAttr->xAxisTail=TestPara.VdStop;
+			} vdstart  = TestPara.VdStart;   
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
+			CreateMonitorThread(numOfCurve);
+			break;
+		case SWEEP_GATE_VOL:
+	  		if(TestPara.drainOutputMode==VOL_BIAS)
+			{
+				numOfCurve=1;
+			 }
+			 else if(TestPara.drainOutputMode==VOL_STEP)
+			{
+				numOfCurve = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1; //曲线
+			}
+			numOfDots = abs(TestPara.VgStart-TestPara.VgStop)/TestPara.VgStep+1;	  //点数  
+			GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);   
+			Table_ATTR.row =  numOfDots; 	
+			Table_ATTR.column =6*numOfCurve ;          
+			Graph1.pGraphAttr->yAxisHead=1e-12; 
+			Graph1.pGraphAttr->yAxisTail=1.1e-12; 
+			if (TestPara.VgStart>TestPara.VgStop)
+			{
+				Graph1.pGraphAttr->xAxisHead=TestPara.VgStop;
+				Graph1.pGraphAttr->xAxisTail=TestPara.VgStart;
+			}else
+			{
+				Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
+				Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
+			}
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "Vg(mV)");	 
+			if(logs)
+			{
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A"); 
+				Table(tableTitleLog_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 22);
+			}
+			else
+			{
+		   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
+				Table(table_title_IdVg, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT,90);
+			}
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
+			Graph2.pGraphAttr->xAxisHead=0;
+			Graph2.pGraphAttr->xAxisTail=10;
+			if (TestPara.VgStart>TestPara.VgStop)
+			{
+				Graph2.pGraphAttr->xAxisHead=TestPara.VgStop;
+				Graph2.pGraphAttr->xAxisTail=TestPara.VgStart;
+			}else
+			{
+				Graph2.pGraphAttr->xAxisHead=TestPara.VgStart;
+				Graph2.pGraphAttr->xAxisTail=TestPara.VgStop;
+			}
+			vgstart  = TestPara.VgStart;    
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
+			CreateMonitorThread(numOfCurve);    
+			break;
+		   case NO_SWEEP_IT:
+			numOfCurve=1;
+			numOfDots=TestPara.runTime/timeSteps+100; 					
+			GraphInit(hGraphPanel,graphIndex,numOfCurve,numOfDots,&Graph1); 
+			Graph1.pCurveArray->numOfTotalDots = numOfDots;
+			Graph1.pCurveArray->time=0;  
+			Table_ATTR.column =7*numOfCurve ;
+			Table_ATTR.row =  numOfDots+100;
+			Graph1.pGraphAttr->xAxisHead=0;
+			Graph1.pGraphAttr->xAxisTail=10;	
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+			if(logs)
+			{
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(I)/A");     
+				Table(tableTitleLog_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(I)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 30);
+			}
+			else
+			{
+		   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
+				Table(table_title_IT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95);
+			}
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  //设置坐标轴
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2);          
+			Graph2.pGraphAttr->xAxisHead=0;
+			Graph2.pGraphAttr->xAxisTail=10; 
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);
+			break;
+		case NO_SWEEP_RT:
+			numOfCurve=1;
+			numOfDots=TestPara.runTime/timeSteps+100; 				
+			GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
+			Graph1.pCurveArray->numOfTotalDots = numOfDots;
+			Graph1.pCurveArray->time=0;  
+			Table_ATTR.column =7*numOfCurve; 
+			Table_ATTR.row =  numOfDots+100 ;
+			Graph1.pGraphAttr->xAxisHead=0;
+			Graph1.pGraphAttr->xAxisTail=10;	
+			 Table(table_title_RT, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+			 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+			 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");	  
+			 SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "R(Ohm)");
+			 SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
+			 SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95); 
+			 GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2); 
+			 Graph2.pGraphAttr->xAxisHead=0;
+			 Graph2.pGraphAttr->xAxisTail=10; 
+			 SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);       
+			 break;
+		case SWEEP_IV:
+			numOfCurve=1;  
+			numOfDots = abs(TestPara.VdStart-TestPara.VdStop)/TestPara.VdStep+1;
+			GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1);
+			Table_ATTR.column =5*numOfCurve ;          
+			Table_ATTR.row =  numOfDots;
+			Graph1.pGraphAttr->yAxisHead=1e-13;
+			Graph1.pGraphAttr->yAxisTail=1.1e-13; 
+			if (TestPara.VgStart>TestPara.VgStop)
+			{
+				Graph1.pGraphAttr->xAxisHead=TestPara.VgStop;
+				Graph1.pGraphAttr->xAxisTail=TestPara.VgStart;
+			}else
+			{
+				Graph1.pGraphAttr->xAxisHead=TestPara.VgStart;
+				Graph1.pGraphAttr->xAxisTail=TestPara.VgStop;
+			}
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "V(mV)");		  
+			if(logs)
+			{
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(I)/A");
+				Table(tableTitleLog_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(I)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 30);
+			}
+			else
+			{
+		   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "I(A)");
+				Table(table_title_IV, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);  
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "I");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 95);
+			}
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+50, &Graph2); 							//初始化图2       
+			if (TestPara.VdStart>TestPara.VdStop)
+			{
+				Graph2.pGraphAttr->xAxisHead=TestPara.VdStop;
+				Graph2.pGraphAttr->xAxisTail=TestPara.VdStart;
+			}else
+			{
+				Graph2.pGraphAttr->xAxisHead=TestPara.VdStart;
+				Graph2.pGraphAttr->xAxisTail=TestPara.VdStop;
+			} vdstart  = TestPara.VdStart;      
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail);  
+	
+			break;
+	
+		case ID_T:
+			numOfCurve=1;
+			numOfDots=TestPara.runTime/timeSteps+100; 			
+			GraphInit(hGraphPanel, graphIndex,numOfCurve,numOfDots,&Graph1); 
+			Graph1.pCurveArray->numOfTotalDots = numOfDots;
+			Graph1.pCurveArray->time=0;  
+			Table_ATTR.column =7*numOfCurve; 
+			Table_ATTR.row =  numOfDots+100 ;   ;
+			Graph1.pGraphAttr->xAxisHead=0;
+			Graph1.pGraphAttr->xAxisTail=10;	
+			SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_XNAME, "t(s)");
+			if(logs)
+			{
+				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "log10(Id)/A");     
+				Table(tableTitleLog_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row);
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "log10(Id)");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 22);
+			}
+			else
+			{
+		   	    SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_YNAME, "Id(A)");
+				Table(table_title_Idt, Table_ATTR.column, Table_ATTR.columnWidth,Table_ATTR.row); 
+				SetCtrlAttribute (hResultDispPanel,RESULTDISP_TXT_IDS , ATTR_CTRL_VAL, "Id");
+				SetCtrlAttribute (hResultDispPanel, RESULTDISP_TXT_IDS, ATTR_LEFT, 90);
+			}
+		  
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH1, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph1.pGraphAttr->xAxisHead,Graph1.pGraphAttr->xAxisTail);  
+			GraphInit(hGraphPanel,graphIndex, ENV_NUM_OF_CURVE, numOfDots+500, &Graph2);  
+			Graph2.pGraphAttr->xAxisHead=0;
+			Graph2.pGraphAttr->xAxisTail=10; 
+			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
+			break;																																		 
+	}
+     		Graph1.pCurveArray->plotIndex=0;       
+			threadFlag = 1;
+			CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId);//开辟新的线程缓存实验数据
+			Graph1.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 		//得到曲线的属性 
+			Graph2.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph2.graphIndex,Graph2.plotCurveIndex); 		//得到曲线的属性     
+			SetGraph2DisplayData();																					//运行之前选择要填入保存的环境数据
+			DisplayEnvtGraph();	//显示选择的曲线   
+	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			
+	return 0;
+}

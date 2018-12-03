@@ -78,7 +78,6 @@ int CVICALLBACK TimerCallback (int panel, int control, int event,								//∂® ±»
 				{
 					Read_CGS_Value(controlComPort);
 					SetGraph2_YAxis(GRAPHDISP_GRAPH2,&Graph2);   
-
 					SetCtrlVal (hEnvResultPanel, ENVIRPANEL_TEMPERATURE, Rx_CGS_Data.heating_stage_temp);		//»»Ã®Œ¬∂»   
 					SetCtrlVal (hEnvResultPanel, ENVIRPANEL_HUMIDITY,  Rx_CGS_Data.humidity);					//œ‘ æ ™∂»     
 					SetCtrlVal (hEnvResultPanel, ENVIRPANEL_PRESSURE, Rx_CGS_Data.pressure*0.001);		 		//œ‘ æ—π«ø		  

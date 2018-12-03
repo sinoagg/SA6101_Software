@@ -6,11 +6,15 @@ Prototype="void MeasureComCallback(int portNumber, int eventMask, void *callback
 Class="Function"
 Prototype="void CtrlComCallback(int portNumber, int eventMask, void *callbackData);"
 
+[main]
+Class="Function"
+Prototype="int main(int argc, char **argv);"
+
 [DisplayEnvtTime]
 Class="Function"
 Prototype="void DisplayEnvtTime();"
 
-[main]
+[DisplayEvntIv]
 Class="Function"
-Prototype="int main(int argc, char **argv);"
+Prototype="void DisplayEvntIv();"
 

@@ -14,3 +14,7 @@ Prototype="int main(int argc, char **argv);"
 Class="Function"
 Prototype="void DisplayEnvtTime();"
 
+[DisplayEvntIv]
+Class="Function"
+Prototype="void DisplayEvntIv();"
+

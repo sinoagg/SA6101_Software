@@ -34,9 +34,8 @@ unsigned char curveComplete;
 
 
 float ohm;      
-
 float reTime=0; 
- float envtTime=0;  
+float envtTime=0;  
 RxDataTypeDef RxData; 
 #define TXTCOLOR 0x3399FF
 #define ANNOTATIONCOLOR 0x508EF4
@@ -67,7 +66,6 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 			(Graph1.pCurveArray+Graph1.plotCurveIndex)->numOfDotsToPlot++;		  //number of dots to plot increase
 			(Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex++;     		 //接收数据点的索引
-			//printf("%d\n",(Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex);
 			ohm = (TestPara.VdStart*0.001/RxData.rxIdmeasured.num_float);     
 			reTime = RxData.realTime*0.001;
 			if(logs==1)   //log or Linear
@@ -92,7 +90,6 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 		if(temp_flag||humidity_flag ||pressure_flag)
 			 control_Uart_Flag = 1;      
 	}
-	    
 }	
 	
 void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackData)
@@ -101,7 +98,6 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 	control_Uart_Flag = 0;          
 	int rxNum;
 	int i,j;
-	int x=0;
 	Rx_CGS_Data.heating_stage_temp = 0;
 	Rx_CGS_Data.humidity = 0;
 	Rx_CGS_Data.pressure = 0;	 //初始化
@@ -122,30 +118,8 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 					case SWEEP_IV:
 						for(i = 0; i<=j; i++)
 						{
-							if(TestPara.testMode==SWEEP_GATE_VOL)  //idvg
-							{															 
-								*(Graph2.pCurveArray->pDotX++)=TestPara.VgStart;
-								*((Graph2.pCurveArray +1)->pDotX++) =TestPara.VgStart;        
-								*((Graph2.pCurveArray +2)->pDotX++) = TestPara.VgStart;
-								 if(TestPara.VgStart>TestPara.VgStop)TestPara.VgStart-=TestPara.VgStep; 
-								else TestPara.VgStart+=TestPara.VgStep; 
-							}
-							else	  //idvd IdVd、IV
-							{
-								*(Graph2.pCurveArray->pDotX++)=TestPara.VdStart;
-								*((Graph2.pCurveArray +1)->pDotX++) =TestPara.VdStart;        
-								*((Graph2.pCurveArray +2)->pDotX++) = TestPara.VdStart;
-								if(TestPara.VdStart>TestPara.VdStop)TestPara.VdStart-=TestPara.VdStep; 
-								else TestPara.VdStart+=TestPara.VdStep; 
-							}
-								*(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.humidity; 		 			//环境湿度      
-								*((Graph2.pCurveArray+1)->pDotY++) = Rx_CGS_Data.heating_stage_temp;	//热台温度     
-								*((Graph2.pCurveArray+2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		//压强
-								Graph2.pCurveArray->numOfDotsToPlot++;  
-								(Graph2.pCurveArray +1)->numOfDotsToPlot++;
-								(Graph2.pCurveArray +2)->numOfDotsToPlot++;
-								Rx_CGS_DataToTable(&Rx_CGS_Data,0);
-						}
+							DisplayEvntIv();   
+						 }
 						break;
 					case NO_SWEEP_IT:
 					case NO_SWEEP_RT:
@@ -154,8 +128,8 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 					{
 					    DisplayEnvtTime();
 					}
-						break;
-					 }
+					break;
+				}
 			}
 			else
 			{
@@ -164,13 +138,11 @@ void CVICALLBACK CtrlComCallback(int portNumber, int eventMask, void* callbackDa
 			}
 	rxNum -=CONTROL_URAT_RX_LEN;
 	}
-	
 	PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线2图 
 	SetGraphX_Axis(hGraphPanel,GRAPHDISP_GRAPH2,&Graph2,envtTime*timeSteps); 
 	measure_Uart_Flag = 1;	  //防止数据查询互相影响
 	control_Uart_Flag = 1;          
 }
-
 
 int main (int argc, char *argv[])
 {
@@ -188,9 +160,6 @@ int main (int argc, char *argv[])
 	return 0;
 }
 
-
-
-
 void DisplayEnvtTime()
 {
 	*(Graph2.pCurveArray->pDotX++) =envtTime*timeSteps;       
@@ -199,9 +168,36 @@ void DisplayEnvtTime()
 	*(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.humidity; 		 			 //环境湿度      
 	*((Graph2.pCurveArray+1)->pDotY++) = Rx_CGS_Data.heating_stage_temp;	 //热台温度     
 	*((Graph2.pCurveArray+2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		 //压强
-	envtTime+=1;
 	Graph2.pCurveArray->numOfDotsToPlot++;  
 	(Graph2.pCurveArray +1)->numOfDotsToPlot++;					    
 	(Graph2.pCurveArray +2)->numOfDotsToPlot++;
-	Rx_CGS_DataToTable(&Rx_CGS_Data,envtTime*timeSteps);        
+	Rx_CGS_DataToTable(&Rx_CGS_Data,envtTime*timeSteps);  
+	envtTime+=1;      
+}
+
+void DisplayEvntIv()
+{
+	if(TestPara.testMode==SWEEP_GATE_VOL)  //idvg
+	{															 
+		*(Graph2.pCurveArray->pDotX++)=TestPara.VgStart;
+		*((Graph2.pCurveArray +1)->pDotX++) =TestPara.VgStart;        
+		*((Graph2.pCurveArray +2)->pDotX++) = TestPara.VgStart;
+		 if(TestPara.VgStart>TestPara.VgStop)TestPara.VgStart-=TestPara.VgStep; 
+		else TestPara.VgStart+=TestPara.VgStep; 
+	}
+	else	  //idvd IdVd、IV
+	{
+		*(Graph2.pCurveArray->pDotX++)=TestPara.VdStart;
+		*((Graph2.pCurveArray +1)->pDotX++) =TestPara.VdStart;        
+		*((Graph2.pCurveArray +2)->pDotX++) = TestPara.VdStart;
+		if(TestPara.VdStart>TestPara.VdStop)TestPara.VdStart-=TestPara.VdStep; 
+		else TestPara.VdStart+=TestPara.VdStep; 
+	}
+		*(Graph2.pCurveArray->pDotY++) = Rx_CGS_Data.humidity; 		 			//环境湿度      
+		*((Graph2.pCurveArray+1)->pDotY++) = Rx_CGS_Data.heating_stage_temp;	//热台温度     
+		*((Graph2.pCurveArray+2)->pDotY++) = Rx_CGS_Data.pressure * 0.001;		//压强
+		Graph2.pCurveArray->numOfDotsToPlot++;  
+		(Graph2.pCurveArray +1)->numOfDotsToPlot++;
+		(Graph2.pCurveArray +2)->numOfDotsToPlot++;
+		Rx_CGS_DataToTable(&Rx_CGS_Data,0);
 }

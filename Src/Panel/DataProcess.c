@@ -51,7 +51,6 @@ int TimerID;
 
 int rows;         //graph1 table填写数据标志位
 int graphrows;    //graph2
-float ohm; 
 //==============================================================================
 // Global functions
 
@@ -211,17 +210,17 @@ void TestStop(RxDataTypeDef *pRxData,int portNumber)
 {
 	Delay(1);		                //等待异常情况下数据缓存完成
 	threadFlag = 0;					//缓存数据的线程  
-	control_Uart_Flag = 0;			//停止时环境测量也停止 因为出现一直查询的问题 
-	measure_Uart_Flag = 0;		 	//停止时查询停止， 
 	reTime=0;
+	envtTime=0;      
 	CountFlag=0;       				//停止线程中二次发送指令
+	CurveNums=0;					//用于超过三条时随机添加颜色               
+	curveComplete=0; 	  			//控制多线模式的线程标志量                     
+	pRxData->rxStopSign=0;    
+	control_Uart_Flag = 0;			//停止时环境测量也停止 因为出现一直查询的问题 
+	measure_Uart_Flag = 0;		 	//停止时查询停止，
+	Graph1.plotCurveIndex=0; 
+	Graph1.pCurveArray->plotIndex=0;   
 	Graph1.pCurveArray->numOfPlotDots=0;
-	Graph1.pCurveArray->plotIndex=0;
-	Graph1.plotCurveIndex=0;
-	pRxData->rxStopSign=0;
-	curveComplete=0; 	  			//控制多线模式的线程标志量
-	CurveNums=0;					//用于超过三条时随机添加颜色
-	envtTime=0;
 	Delay(0.1);															
 	DiscardAsyncTimer(TimerID);			//停止query定时器查询    	   EvtTimerId       
 	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
@@ -234,8 +233,9 @@ void TestStop(RxDataTypeDef *pRxData,int portNumber)
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_PRINT, ATTR_DIMMED,0);     	//恢复 打印按钮                   
 	SetCtrlAttribute (hMainPanel, MAIN_PANEL_SETTINGS, ATTR_DIMMED, 0); 	//恢复曲线属性设置
 	SetCtrlAttribute (hResultMenuPanel, RESULTMENU_SAVE, ATTR_DIMMED,0);	//恢复保存数据按钮 
-	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED, 0);	//恢复曲线叠加按钮  
-	AutoSaveSheetAndGraph();
+	SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUNAGAIN, ATTR_DIMMED, 0);	//恢复曲线叠加按钮 
+	
+	AutoSaveSheetAndGraph(); //自动保存数据
 
 }
 
@@ -245,7 +245,7 @@ void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
     switch(TestPara.testMode)
 	{				  
 		case NO_SWEEP_IT:
-		case NO_SWEEP_RT:
+		case NO_SWEEP_RT:					 
 		case ID_T:
 			 if(RxData.rxStopSign==0x01)
 			 {
@@ -256,6 +256,7 @@ void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
 					 {
 					   DisplayEnvtTime(); 
 					 }
+					 PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线2图                                
 				}
 				 Delay(0.01);
 				 TestStop(&RxData,portNumber);
@@ -265,11 +266,29 @@ void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
 		case SWEEP_GATE_VOL:
 			if((RxData.rxStopSign == 0x01)&&(Graph1.plotCurveIndex +1 == Graph1.numOfCurve))//实验结束
 			{   
+				if((controlComPort>0)&&(temp_flag||humidity_flag ||pressure_flag))
+				{
+					 j = (Graph1.pCurveArray + Graph1.plotCurveIndex )->numOfPlotDots - Graph2.pCurveArray->numOfPlotDots;                    
+			         for(int i=0;i<j;i++)
+					 {
+					   DisplayEvntIv(); 
+					 }
+					 PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线2图                                
+				}
 				AddGraphAnnotations(&RxData,rxIdmeasured); 
 				TestStop(&RxData,portNumber);
 			}
 			else if(RxData.rxStopSign == 0x01)											 //一条曲线结束
 			{   
+				if((controlComPort>0)&&(temp_flag||humidity_flag ||pressure_flag))
+				{
+					 j = (Graph1.pCurveArray + Graph1.plotCurveIndex )->numOfPlotDots - Graph2.pCurveArray->numOfPlotDots;                    
+			         for(int i=0;i<j;i++)
+					 {
+					   DisplayEvntIv(); 
+					 }
+					 PlotCurve2(&Graph2, hGraphPanel, GRAPHDISP_GRAPH2);//画曲线2图                                
+				}
 				AddGraphAnnotations(&RxData,rxIdmeasured);
 				DiscardAsyncTimer(TimerID);		
 				curveComplete=1; 				   //控制多条线时进入线程
@@ -279,7 +298,7 @@ void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
 				GraphDeinit(&Graph2); 
 				GraphInit(hGraphPanel,0, 3, Graph1.pCurveArray->numOfTotalDots+100, &Graph2);//Graph1.pCurveArray->numOfTotalDots+3==》zhizheng 
 				CurveNums++;
-			    //(Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex=0;                                
+			    (Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex=2; //index=1或者=0时出现每条曲线从头到尾的调整坐标轴                               
 				if(TestPara.testMode==SWEEP_DRAIN_VOL)  TestPara.VdStart=vdstart;     
 				else if(TestPara.testMode==SWEEP_GATE_VOL)TestPara.VgStart=vgstart;    
 				}
@@ -296,14 +315,9 @@ void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 {   
 	char curveVg[80];
 	char curveVd[80];
-	
-	
 	if(TestPara.testMode==SWEEP_DRAIN_VOL)   //idvd
 	 {
-		 //char curve[80];
-		 //sprintf(curve,"%s%d","Vg=",pRxData->rxVgtest);
-		 //TestPara.VdStart = vdstart;
-		 
+		 TestPara.VdStart = vdstart;	     //添加环境后曲线注释在右边
 		 sprintf(curveVg,"%s%d","Vg=",TestPara.VgStart);     
 		 if (TestPara.VdStart>TestPara.VdStop)
 		 	AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVg ,80,0); //注释位置
@@ -311,13 +325,10 @@ void AddGraphAnnotations(RxDataTypeDef *pRxData,float rxIdmeasured)
 		 	AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVg ,-80,0);   
 		 SetGraphAnnotation();
 		 SetAnnotationAttribute (hGraphPanel, GRAPHDISP_GRAPH1,curveIndex+1, ATTR_ANNOTATION_XVALUE,(double)(pRxData->rxVdtest));	
-
 	 } 
 	 else if(TestPara.testMode==SWEEP_GATE_VOL)
 	 {
-		//char curve[80];
-	//	sprintf(curve,"%s%d","Vd=",pRxData->rxVdtest);
-		//TestPara.VgStart = vgstart;      
+	    TestPara.VgStart = vgstart;      
 		sprintf(curveVd,"%s%d","Vd=",TestPara.VdStart);                   
 		if (TestPara.VgStart>TestPara.VgStop)
 			AddGraphAnnotation(hGraphPanel,GRAPHDISP_GRAPH1,0.0,0.0,curveVd ,80,0);

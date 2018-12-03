@@ -122,14 +122,10 @@ void OpenExcelCallbacks(char label[])
 		sprintf(AutoDataSavePath,"%s%s",AutoDataSavePath,"\\Data"); 
 		SetCtrlVal(hSettingsPrjPanel, ENVT_AUTOSAVEPATH, AutoDataSavePath);
 		GetCtrlVal(hSettingsPrjPanel, ENVT_AUTOSAVEPATH, AutoDataSavePath);
-		//GetCtrlVal(hAutoSavePanelPanel, AUTOPANEL_AUTOSAVEPATH, AutoDataSavePath);  //获得选择保存数据路径  
 	}
 	else 
 		GetCtrlVal(hSettingsPrjPanel, ENVT_AUTOSAVEPATH, AutoDataSavePath);  //获得选择保存数据路径      
-//	GetCtrlVal(hAutoSavePanelPanel, AUTOPANEL_AUTOSAVEPATH, AutoDataSavePath);  
-	//SetWaitCursor (1);
 	 LaunchError=ExcelRpt_ApplicationNew(1, &applicationHandle);
-	//SetWaitCursor (0);
 	//if (LaunchError<0)
 	//{
 	//	MessagePopup ("自动启动Excel错误:", "通过自动接口试图启动Excel发生错误。");
@@ -139,7 +135,8 @@ void OpenExcelCallbacks(char label[])
 	ExcelRpt_WorkbookOpen (applicationHandle, AutoDataSavePath, &workbookHandle); 	//打开该路经下的EXCEL文件     			
 	ExcelRpt_GetWorksheetFromIndex (workbookHandle, 1, &worksheetHandle);
 	ExcelRpt_ActivateWorksheet (worksheetHandle); //激活该句柄的电子表格sheet
-		
+	Delay(0.01);
+	CA_DiscardObjHandle(applicationHandle);	
 }
 
  void  DiaplayImgCallbacks (char labels[] )

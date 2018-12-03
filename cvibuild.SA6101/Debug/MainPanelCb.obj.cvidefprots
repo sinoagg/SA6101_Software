@@ -38,10 +38,6 @@ Prototype="int AbnmDCThreadFunction(void *functionData);"
 Class="Function"
 Prototype="int RunCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 
-[TestStopAction]
-Class="Function"
-Prototype="void TestStopAction();"
-
 [StopCallback]
 Class="Function"
 Prototype="int StopCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
@@ -69,4 +65,12 @@ Prototype="int RunAgainCallback(int panel, int control, int event, void *callbac
 [PrintCallback]
 Class="Function"
 Prototype="int PrintCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+
+[TestStopFlag]
+Class="Function"
+Prototype="void TestStopFlag();"
+
+[RunMainAction]
+Class="Function"
+Prototype="int RunMainAction();"
 

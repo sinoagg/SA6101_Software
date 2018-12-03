@@ -42,7 +42,8 @@ typedef struct
 int  CVICALLBACK AUTOSAVECB(int panel, int event, void *callbackData, int eventData1, int eventData2);  
 
 void AutoSaveSheetAndGraph();
-void SaveGraphs(char path[]);
+
+void SaveGraphs(char path[]);      
 #ifdef __cplusplus
     }
 #endif

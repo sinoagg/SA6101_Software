@@ -57,7 +57,8 @@ extern float timeSteps;
 //// Global functions
 static int SaveConfigToFile(char* pConfigSavePath);
 int CVICALLBACK AbnmDCThreadFunction (void *functionData);		 //声明多线程回调函数
-
+void TestStopFlag();   
+int RunMainAction();
 #ifdef __cplusplus
     }
 #endif

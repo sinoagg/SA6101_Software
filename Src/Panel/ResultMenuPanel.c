@@ -182,7 +182,7 @@ static void SaveSheet(char path[])
 	DiscardBitmap (nBitmapID);
 	
 }	
-static void SaveGraph1(int control,char path[])
+ void SaveGraph1(int control,char path[])
 {
 	GetCtrlAttribute (hGraphPanel, control, ATTR_TOP, &rc.top);		//得到所要截取的波形图表坐标  
 	GetCtrlAttribute (hGraphPanel, control, ATTR_LEFT, &rc.left);
