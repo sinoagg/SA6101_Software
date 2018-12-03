@@ -55,33 +55,23 @@ static void DispTable(void)
 	SetPanelPos(hTablePanel, 172, 305);  
 	DisplayPanel(hTablePanel);
 	SetCtrlAttribute ( hTablePanel,TABLE_DISTABLE,ATTR_VISIBLE,1 );  
-	/*SetCtrlAttribute ( hGraphPanel,GRAPHDISP_GRAPH1,ATTR_VISIBLE,0);                
-	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);     */           
 }
 
-static void DispSingleGraph(void)
+ void DispSingleGraph(void)
 {
-	
-	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 680);
+	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 750);
 	SetCtrlAttribute ( hGraphPanel,GRAPHDISP_GRAPH1,ATTR_VISIBLE,1 );                
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
-	//SetPanelPos(hGraphPanel, 172, 305);    
-	//DisplayPanel(hGraphPanel);
     HidePanel(hTablePanel); //隐藏table面板、table表格 提高速率
 }
 
-static void DispDoubleGraph(void)
+ void DispDoubleGraph(void)
 {
-	
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
 	SetCtrlAttribute ( hGraphPanel,GRAPHDISP_GRAPH1,ATTR_VISIBLE,1 );                
 	SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_LEFT, 5);   
 	SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2 , ATTR_LEFT, 28); 
-	//SetPanelPos(hGraphPanel, 172, 305);       
-	//DisplayPanel(hGraphPanel);
-	
-	
 }
 
 static void DispGraphSelectCheckBox(void)
@@ -92,7 +82,6 @@ static void DispGraphSelectCheckBox(void)
 	}
 	else{
 		SetCtrlVal(hGraphSelectPanel, CHPANEL_CHECKBOX, 1);
-	 
 	}
 	SetPanelPos(hGraphSelectPanel, 172, 1457);  
  	DisplayPanel(hGraphSelectPanel);

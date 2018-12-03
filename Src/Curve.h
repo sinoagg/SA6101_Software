@@ -45,7 +45,7 @@ typedef struct
 	float* pDotXPlot;								//当前画线点X坐标
 	float* pDotYPlot;								//当前画线点Y坐标
 	int* pDotXt;									//当前接收点X坐标地址
-	int plotIndex;
+	int pointsIndex;
 	CurveAttrTypeDef* pCurveAttr;
 }CurveTypeDef;
 

@@ -1,3 +1,11 @@
+[DispSingleGraph]
+Class="Function"
+Prototype="void DispSingleGraph();"
+
+[DispDoubleGraph]
+Class="Function"
+Prototype="void DispDoubleGraph();"
+
 [DispResultTableGraph]
 Class="Function"
 Prototype="void DispResultTableGraph();"

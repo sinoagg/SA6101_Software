@@ -209,6 +209,7 @@ void SetGraphAnnotation()
 void TestStop(RxDataTypeDef *pRxData,int portNumber)		  
 {
 	Delay(1);		                //等待异常情况下数据缓存完成
+	DiscardAsyncTimer(TimerID);			//停止query定时器查询    	 
 	threadFlag = 0;					//缓存数据的线程  
 	reTime=0;
 	envtTime=0;      
@@ -219,10 +220,9 @@ void TestStop(RxDataTypeDef *pRxData,int portNumber)
 	control_Uart_Flag = 0;			//停止时环境测量也停止 因为出现一直查询的问题 
 	measure_Uart_Flag = 0;		 	//停止时查询停止，
 	Graph1.plotCurveIndex=0; 
-	Graph1.pCurveArray->plotIndex=0;   
+	Graph1.pCurveArray->pointsIndex=0;   
 	Graph1.pCurveArray->numOfPlotDots=0;
 	Delay(0.1);															
-	DiscardAsyncTimer(TimerID);			//停止query定时器查询    	   EvtTimerId       
 	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
 	FlushOutQ(measureComPort);
 	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
@@ -298,7 +298,7 @@ void TestStopActions(RxDataTypeDef *pRxData,int portNumber,float rxIdmeasured)
 				GraphDeinit(&Graph2); 
 				GraphInit(hGraphPanel,0, 3, Graph1.pCurveArray->numOfTotalDots+100, &Graph2);//Graph1.pCurveArray->numOfTotalDots+3==》zhizheng 
 				CurveNums++;
-			    (Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex=2; //index=1或者=0时出现每条曲线从头到尾的调整坐标轴                               
+			    (Graph1.pCurveArray+Graph1.plotCurveIndex)->pointsIndex=2; //index=1或者=0时出现每条曲线从头到尾的调整坐标轴                               
 				if(TestPara.testMode==SWEEP_DRAIN_VOL)  TestPara.VdStart=vdstart;     
 				else if(TestPara.testMode==SWEEP_GATE_VOL)TestPara.VgStart=vgstart;    
 				}
@@ -478,7 +478,7 @@ void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data,float reTime)
 		case NO_SWEEP_RT:
 			SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+4, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);  //设置第四列第graphrows单元格的数据类型
 			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+4, graphrows),reTime) ;  //填入第四列第graphrows行的数据
-			SetTableCellRangeAttribute (hTablePanel, TABLE_DISTABLE, MakeRect(1,1,rows,4), ATTR_PRECISION, 3);
+			SetTableCellRangeAttribute (hTablePanel, TABLE_DISTABLE, MakeRect(1,4,rows,1), ATTR_PRECISION, 3);
 			/* SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*7+4, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);  //设置第四列第graphrows单元格的数据类型
 			 SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*7+4, graphrows),(float)Rx_CGS_Data->heating_stage_temp) ;  //填入第四列第graphrows行的数据
 			*/
@@ -520,7 +520,7 @@ void Rx_CGS_DataToTable(Rx_CGS_DataTypeDef* Rx_CGS_Data,float reTime)
 		case ID_T:		 //一条线对用七列 从第五列开始
 		    SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+5, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);  //设置第四列第graphrows单元格的数据类型
 			SetTableCellVal (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*8+5, graphrows),reTime) ;  //填入第四列第graphrows行的数据
-			SetTableCellRangeAttribute (hTablePanel, TABLE_DISTABLE, MakeRect(1,1,rows,5), ATTR_PRECISION, 3);
+			SetTableCellRangeAttribute (hTablePanel, TABLE_DISTABLE, MakeRect(1,5,rows,1), ATTR_PRECISION, 3);
 			 if(temp)
 			{
 				SetTableCellAttribute (hTablePanel, TABLE_DISTABLE, MakePoint (Graph1.plotCurveIndex*3+6, graphrows), ATTR_CELL_TYPE, VAL_CELL_NUMERIC);

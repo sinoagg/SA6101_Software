@@ -81,17 +81,17 @@ int GraphDeinit(GraphTypeDef* pGraph)
 		case SWEEP_GATE_VOL: 
 		case SWEEP_DRAIN_VOL:
 		case SWEEP_IV:
-		if((Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex==1)   
+		if((Graph1.pCurveArray+Graph1.plotCurveIndex)->pointsIndex==1)   
 		{
-			if(currentY_Val >0)
+			if(currentY_Val >0)				 
 			{
-				if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+				if(currentY_Val >=Graph1.pGraphAttr->yAxisTail )
 				{
 					Graph1.pGraphAttr->yAxisHead = currentY_Val;
 					Graph1.pGraphAttr->yAxisTail =  currentY_Val*1.1;
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				} 		    
-				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
+				else if(currentY_Val < Graph1.pGraphAttr->yAxisHead)
 				{
 				    Graph1.pGraphAttr->yAxisHead=currentY_Val;
 					 Graph1.pGraphAttr->yAxisTail =  currentY_Val*1.1;  
@@ -106,7 +106,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 				    Graph1.pGraphAttr->yAxisTail=currentY_Val*0.9; 
 				    SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				}
-				else if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+				else if(currentY_Val > Graph1.pGraphAttr->yAxisTail )
 				{
 
 					Graph1.pGraphAttr->yAxisHead=currentY_Val;
@@ -124,7 +124,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 					Graph1.pGraphAttr->yAxisTail=currentY_Val*1.1;
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				} 		    
-				else if(currentY_Val <= Graph1.pGraphAttr->yAxisHead)
+				else if(currentY_Val < Graph1.pGraphAttr->yAxisHead)
 				{
 				    Graph1.pGraphAttr->yAxisHead=currentY_Val;   //currentY_Val*0.9
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
@@ -137,7 +137,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 					Graph1.pGraphAttr->yAxisHead = currentY_Val;  //currentY_Val*1.1
 				    SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
 				}
-				else if(currentY_Val >= Graph1.pGraphAttr->yAxisTail )
+				else if(currentY_Val >Graph1.pGraphAttr->yAxisTail )
 				{
 					Graph1.pGraphAttr->yAxisTail=currentY_Val*0.9;
 					SetAxisScalingMode(Graph1.graphHandle, GRAPHDISP_GRAPH1, VAL_LEFT_YAXIS, VAL_MANUAL, Graph1.pGraphAttr->yAxisHead,Graph1.pGraphAttr->yAxisTail);//设置 Y  轴的范围
@@ -146,9 +146,9 @@ int GraphDeinit(GraphTypeDef* pGraph)
 	
         	}
 		break;
-		case NO_SWEEP_IT:
+		case NO_SWEEP_IT:			   //电流为0停止时曲线会上窜
 		case ID_T:
-			if((Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex==1)
+			if(Graph1.pCurveArray->pointsIndex==1)
 			{
 				if(currentY_Val>0)
 				{
@@ -212,7 +212,7 @@ int GraphDeinit(GraphTypeDef* pGraph)
 			}
 			break;
 		case NO_SWEEP_RT:
-				if((Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex==1)                    
+				if(Graph1.pCurveArray->pointsIndex==1)                  
 				{  	
 					if(ohm>0)
 					{

@@ -34,7 +34,7 @@ static char updateSoftFilePath[MAX_PATHNAME_LEN];
 static char *serversSoftVersion = NULL;
 static char *currentSoftVersion = NULL;
 
-static char *currentSoftVersion1 = NULL; 
+
 static char *serversUpdateVersion = NULL;
 static char *currentUpdateVersion = NULL;
 static char *serversHardVersion = NULL;
@@ -45,9 +45,9 @@ static CVIXMLDocument	 hLoDocument = 0;
 static CVIXMLDocument    hUpDocument = 0;
 static CVIXMLElement	 hRootElem = 0;
 static CVIXMLElement    hChildElem = 0;
-static CVIXMLElement    hTestElem = 0;  
+  
 static CVIXMLAttribute  hSoftwareCurrAttr = 0;
-static CVIXMLAttribute  hSoftwareCurrAttr1 = 0;
+
 static CVIXMLAttribute  hUpdateCurrAttr = 0; 
 static CVIXMLAttribute  hHardCurrAttr = 0; 
 int MSGCTRL;

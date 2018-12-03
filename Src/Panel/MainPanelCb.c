@@ -175,18 +175,14 @@ int CVICALLBACK AnalyzeCallback (int panel, int control, int event,
 	        if(val)
 			{	
 		    	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
-				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_VISIBLE,1); 
+				DispDoubleGraph();
 				DisplayPanel(hGraphPanel);
 				
 			}
 			else
 			{   	
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 750);
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_VISIBLE, 1);             
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
+				DispSingleGraph();
 			
 			}
 			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");                          
@@ -285,19 +281,13 @@ static void RunActive()
     if(val)
 			{	
 		    	DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\DoubleGraph.ico");
-				SetCtrlAttribute (hGraphPanel,GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 400); //如果CheckBox是选中状态则显示两个graph     
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 1);
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_VISIBLE,1); 
+				DispDoubleGraph();
 				DisplayPanel(hGraphPanel);
-				
 			}
 			else
 			{   	
 				DisplayImageFile (hResultMenuPanel, RESULTMENU_GRAPH, "Resource\\Graph_pressed.ico");//进入Analyze默认到graph图标
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1 , ATTR_HEIGHT, 750);
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH1, ATTR_VISIBLE, 1);             
-				SetCtrlAttribute (hGraphPanel, GRAPHDISP_GRAPH2, ATTR_VISIBLE, 0);
-			
+				DispSingleGraph();
 			}
 			DisplayImageFile (hResultMenuPanel, RESULTMENU_TABLE, "Resource\\Table.ico");                          
 			DisplayImageFile (hResultMenuPanel, RESULTMENU_SAVE, "Resource\\saveData.ico"); 
@@ -489,7 +479,6 @@ int CVICALLBACK StopCallback (int panel, int control, int event,
 		case EVENT_LEFT_CLICK_UP:		         //当鼠标释放时 
 			TestStopFlag();
 			Delay(0.01);
-			DiscardAsyncTimer(TimerID);			//停止query定时器查询    	  
 		  	SetCtrlAttribute (hMainPanel, MAIN_PANEL_STOP, ATTR_DIMMED,1);      //禁用 停止按钮      
 		    SetCtrlAttribute (hMainPanel, MAIN_PANEL_RUN, ATTR_DIMMED, 0);      //恢复 开始按钮
 			SetCtrlAttribute (hMainPanel, MAIN_PANEL_SAVE, ATTR_DIMMED, 0);     //恢复 保存按钮
@@ -709,19 +698,20 @@ int CVICALLBACK PrintCallback (int panel, int control, int event,
 */
 void TestStopFlag()
 {
+	DiscardAsyncTimer(TimerID);			//停止query定时器查询    
 	unsigned char counter=10;               
 	measure_Uart_Flag=0;
 	control_Uart_Flag=0; 
 	Delay(0.01);
 	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-	FlushOutQ(measureComPort);										    //停止之后曲线上窜问题
+	FlushOutQ(measureComPort);
 	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
 	FlushOutQ(controlComPort);	
 	ProtocolStop(measureComPort, MEASURE_DEV_ADDR, measUartTxBuf); //send STOP command to instrument via UART		  ///0x03 设备停止成功   
 	while(counter>0)
 	{
 		Delay(0.1);
-	 	if(TestPara.StopSign == 0x03)
+	 	if(RxData.rxStopSign == 0x03)
 		{
 			counter = 0;
 		}
@@ -731,27 +721,19 @@ void TestStopFlag()
 			 counter--;
 		}
 	}
-	measure_Uart_Flag=0;
-	control_Uart_Flag=0; 
-	FlushInQ(measureComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-	FlushOutQ(measureComPort);
-	FlushInQ(controlComPort);	   										//Clear input and output buffer,在测试开始之前还应该清楚一次
-	FlushOutQ(controlComPort);	
 	CountFlag=0;  
 	envtTime=0;
-	curveComplete=0;
+	curveComplete=0;														  
     threadFlag = 0;
 	CurveNums=1;
 	numOfCurve = 0;  
 	controlTime=0;
 	Graph1.pCurveArray->numOfPlotDots=0;
-	Graph1.pCurveArray->plotIndex=0;   
+	Graph1.pCurveArray->pointsIndex=0;   
 	Graph1.plotCurveIndex=0;
 
+
 }
-
-
-
 
  int  RunMainAction() //实验开始准备
 {
@@ -1037,7 +1019,7 @@ void TestStopFlag()
 			SetAxisScalingMode(hGraphPanel, GRAPHDISP_GRAPH2, VAL_BOTTOM_XAXIS, VAL_MANUAL, Graph2.pGraphAttr->xAxisHead,Graph2.pGraphAttr->xAxisTail); 
 			break;																																		 
 	}
-     		Graph1.pCurveArray->plotIndex=0;       
+     		Graph1.pCurveArray->pointsIndex=0;       
 			threadFlag = 1;
 			CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AbnmDCThreadFunction, NULL, &abnmDCThreadId);//开辟新的线程缓存实验数据
 			Graph1.pCurveArray->pCurveAttr = GetSettingsCurveAttr(Graph1.graphIndex,Graph1.plotCurveIndex); 		//得到曲线的属性 

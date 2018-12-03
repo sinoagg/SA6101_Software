@@ -32,6 +32,8 @@
 //==============================================================================
 // Global functions
 void DispResultTableGraph(void);
+ void DispSingleGraph(void);
+ void DispDoubleGraph(void); 
 
 #ifdef __cplusplus
     }

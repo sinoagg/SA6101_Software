@@ -65,7 +65,7 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			ProtocolGetData(measUartRxBuf+i*MEASURE_UART_RX_LEN, &RxData);			//get data from uart buffer
 			SetCtrlVal(hResultDispPanel, RESULTDISP_VD, RxData.rxVdtest);
 			(Graph1.pCurveArray+Graph1.plotCurveIndex)->numOfDotsToPlot++;		  //number of dots to plot increase
-			(Graph1.pCurveArray+Graph1.plotCurveIndex)->plotIndex++;     		 //接收数据点的索引
+			(Graph1.pCurveArray+Graph1.plotCurveIndex)->pointsIndex++;     		 //接收数据点的索引
 			ohm = (TestPara.VdStart*0.001/RxData.rxIdmeasured.num_float);     
 			reTime = RxData.realTime*0.001;
 			if(logs==1)   //log or Linear
@@ -73,14 +73,14 @@ void CVICALLBACK MeasureComCallback(int portNumber, int eventMask, void* callbac
 			else
 				rxIdmeasured = RxData.rxIdmeasured.num_float; 
 			SetCtrlVal(hResultDispPanel, RESULTDISP_IDS,rxIdmeasured);  
-			if(measUartRxBuf[1]!=0x03)RxDataToGraph(&RxData,rxIdmeasured,ohm);
-			if(measUartRxBuf[1]!=0x03)RxDataToTable(&RxData);
+			if(RxData.rxStopSign!=0x03)RxDataToGraph(&RxData,rxIdmeasured,ohm);
+			if(RxData.rxStopSign!=0x03)RxDataToTable(&RxData);
 			rxNum-=MEASURE_UART_RX_LEN;
 			i++; 
 		}
 	
-		if(measUartRxBuf[1]!=0x03)PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured,RxData.rxStopSign,ohm);
-		if(measUartRxBuf[1]!=0x03)SetGraphX_Axis(hGraphPanel,GRAPHDISP_GRAPH1,&Graph1,reTime); 	
+		if(RxData.rxStopSign!=0x03)PlotCurve1(&Graph1, hGraphPanel, GRAPHDISP_GRAPH1, Graph1.plotCurveIndex,rxIdmeasured,RxData.rxStopSign,ohm);
+		if(RxData.rxStopSign!=0x03)SetGraphX_Axis(hGraphPanel,GRAPHDISP_GRAPH1,&Graph1,reTime); 	
 		 TestStopActions(&RxData,portNumber,rxIdmeasured);
 	}
 	measure_Uart_Flag = 1; 
