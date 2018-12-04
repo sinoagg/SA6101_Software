@@ -732,7 +732,6 @@ void TestStopFlag()
 	Graph1.pCurveArray->pointsIndex=0;   
 	Graph1.plotCurveIndex=0;
 
-
 }
 
  int  RunMainAction() //实验开始准备
